@@ -1106,7 +1106,7 @@ const refreshV2OperationCommon = {
   leafEvidence: z.array(refreshLeafEvidenceSchema).min(1).max(100),
   reviewerExplanation: z.string().trim().min(30).max(2000)
 };
-const organizationRefreshOperationV2Schema = z.discriminatedUnion("operation", [
+export const organizationRefreshOperationV2Schema = z.discriminatedUnion("operation", [
   z.object({
     operation: z.literal("set_field"),
     ...refreshV2OperationCommon,
@@ -1147,7 +1147,7 @@ const capabilityRefreshV2Schema = capabilityV3Schema.omit({ slug: true });
 const participationRefreshV2Schema = programParticipationDetailsV3Schema;
 const relationshipRefreshV2Schema = relationshipV3Schema;
 
-function validateOrganizationRefreshV2Field(
+export function validateOrganizationRefreshV2Field(
   field: (typeof organizationRefreshV2SafeFieldValues)[number],
   value: unknown
 ) {

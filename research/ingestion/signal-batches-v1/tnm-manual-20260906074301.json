@@ -1,0 +1,201 @@
+{
+  "schemaVersion": "research_signal_batch_v1",
+  "signalBatchId": "tnm-manual-20260906074301-signals",
+  "runId": "tnm-manual-20260906074301",
+  "createdAt": "2026-09-06T08:00:31.916859Z",
+  "watermarkStart": "2026-09-06T07:43:01.879Z",
+  "watermarkEnd": "2026-09-06T08:00:31.919644Z",
+  "sourceFamilyCounters": {
+    "official_company": 16,
+    "government_procurement": 5,
+    "source_book": 2,
+    "ecosystem_program": 0,
+    "industry_publication": 0,
+    "gmail_newsletter": 2,
+    "linkedin_chrome": 0,
+    "other_discovery": 0
+  },
+  "warnings": [
+    "Dossier collection includes historical technical and procurement evidence; this is not a seven-day monitoring-completeness assertion.",
+    "No authenticated LinkedIn lead was needed to resolve the named questions; public original sources and the read-only defence newsletter search provided discovery coverage."
+  ],
+  "signals": [
+    {
+      "signalId": "tnm-manual-20260906074301-kraken-q2-signal",
+      "fingerprint": "100ef0b64dec3c83f6200fffe6a71cd0e5884e33261c1ccc323d96ba63f8de53",
+      "sourceChannel": "official_company",
+      "sourceFamily": "Kraken Robotics",
+      "discoveryOrigin": {
+        "url": "https://www.krakenrobotics.com/news-releases/kraken-robotics-reports-q2-2026-financial-results/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Kraken Robotics",
+        "technology": "SeaPower",
+        "program": null,
+        "issuer": "Kraken Robotics",
+        "eventDate": "2026-08-27",
+        "amount": null,
+        "details": "Kraken reported an unnamed XL-UUV battery supply agreement in its August 27 results and distinguished standalone Q2 revenue from the acquired group.",
+        "observedAt": "2026-09-06T08:00:31.916859Z",
+        "effectiveDate": null,
+        "changeSummary": "Kraken Robotics current activity changes to the 2026-08-27 results and XL-UUV agreement; the reviewer can distinguish signed supply access from delivered revenue."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://www.krakenrobotics.com/news-releases/kraken-robotics-reports-q2-2026-financial-results/"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "kraken-robotics-kraken-q2",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "10000000-0000-4000-8000-000000000001",
+          "slug": "kraken-robotics",
+          "matchMethods": [
+            "slug",
+            "name",
+            "website_domain"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-12T10:53:54.093745+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://www.krakenrobotics.com/news-releases/kraken-robotics-reports-q2-2026-financial-results/",
+          "outcome": "Kraken reported an unnamed XL-UUV battery supply agreement in its August 27 results and distinguished standalone Q2 revenue from the acquired group."
+        }
+      ],
+      "warnings": [],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "tnm-manual-20260906074301-kraken-amendment-signal",
+      "fingerprint": "02c604a27a0a7f463e2843afc1aa34baf917fc267b0f849f8bf4ba630b8c4754",
+      "sourceChannel": "government_procurement",
+      "sourceFamily": "Public Services and Procurement Canada",
+      "discoveryOrigin": {
+        "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8472-105270/001/qf-003",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "Kraken Robotics",
+        "technology": "Remote Minehunting and Disposal System",
+        "program": null,
+        "issuer": "Public Services and Procurement Canada",
+        "eventDate": "2026-06-11",
+        "amount": "CAD -12,154,000.20",
+        "details": "CanadaBuys amendment W8472-105270/001/QF reduces the stated contract by C$12,154,000.20 and lists December 29, 2028 expiry; its link to the unnamed revenue reversal is not established.",
+        "observedAt": "2026-09-06T08:00:31.916859Z",
+        "effectiveDate": null,
+        "changeSummary": "Kraken Robotics reviewed questions now identify the 2026-06-11 W8472-105270/001/QF scope amendment so a reviewer can verify remaining obligations without inferring cancellation."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8472-105270/001/qf-003"
+      ],
+      "signalType": "contract_or_award",
+      "sourceClusterId": "kraken-robotics-kraken-amendment",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "10000000-0000-4000-8000-000000000001",
+          "slug": "kraken-robotics",
+          "matchMethods": [
+            "slug",
+            "name",
+            "website_domain"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-12T10:53:54.093745+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "government_procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8472-105270/001/qf-003",
+          "outcome": "CanadaBuys amendment W8472-105270/001/QF reduces the stated contract by C$12,154,000.20 and lists December 29, 2028 expiry; its link to the unnamed revenue reversal is not established."
+        }
+      ],
+      "warnings": [],
+      "disposition": "qualified",
+      "deferralRationale": null
+    },
+    {
+      "signalId": "tnm-manual-20260906074301-cove-communitech-signal",
+      "fingerprint": "860f93d132e6c10250ebf7a1cd5c27ebedb100f1eb1d9227bd2fce33999cf4fa",
+      "sourceChannel": "official_company",
+      "sourceFamily": "COVE",
+      "discoveryOrigin": {
+        "url": "https://covesolutions.com/news/cove-and-communitech-join-forces-to-accelerate-canadas-dual-use-technology-innovation-ecosystem/",
+        "gmailMessageId": null,
+        "gmailThreadId": null,
+        "linkedinUrl": null
+      },
+      "extracted": {
+        "organization": "COVE",
+        "technology": null,
+        "program": null,
+        "issuer": "COVE",
+        "eventDate": "2026-09-02",
+        "amount": null,
+        "details": "COVE announced a Communitech collaboration connecting Atlantic testing and Waterloo technology networks, including future September 14–18 event activity.",
+        "observedAt": "2026-09-06T08:00:31.916859Z",
+        "effectiveDate": null,
+        "changeSummary": "COVE current activity and organization relationship record the 2026-09-02 Communitech collaboration; the reviewer can distinguish a planned access opportunity from completed adoption."
+      },
+      "redirectUrls": [],
+      "canonicalUrls": [
+        "https://covesolutions.com/news/cove-and-communitech-join-forces-to-accelerate-canadas-dual-use-technology-innovation-ecosystem/"
+      ],
+      "signalType": "partnership_or_consortium",
+      "sourceClusterId": "cove-cove-communitech",
+      "supersedesSignalIds": [],
+      "canonicalEvidenceStatus": "resolved",
+      "liveEntityMatches": [
+        {
+          "entityType": "organization",
+          "entityId": "5f376a4e-3e39-4633-9b6c-c88afac8b418",
+          "slug": "cove",
+          "matchMethods": [
+            "slug",
+            "name",
+            "website_domain"
+          ],
+          "confidence": "high",
+          "baselineUpdatedAt": "2026-08-11T11:55:37.584299+00:00"
+        }
+      ],
+      "intendedOutcomes": [
+        "organization_refresh"
+      ],
+      "recoveryAttempts": [
+        {
+          "channel": "official_company",
+          "url": "https://covesolutions.com/news/cove-and-communitech-join-forces-to-accelerate-canadas-dual-use-technology-innovation-ecosystem/",
+          "outcome": "COVE announced a Communitech collaboration connecting Atlantic testing and Waterloo technology networks, including future September 14–18 event activity."
+        }
+      ],
+      "warnings": [],
+      "disposition": "qualified",
+      "deferralRationale": null
+    }
+  ]
+}

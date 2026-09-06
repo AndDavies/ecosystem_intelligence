@@ -2,7 +2,7 @@
 
 Status: canonical project operating contract
 Owner: Andrew Davies
-Last reviewed: 2026-09-05
+Last reviewed: 2026-09-06
 
 This file is the concise operating map for Codex work in Ecosystem Intelligence. Begin here, then follow the linked contract for the system being changed.
 
@@ -22,7 +22,7 @@ Production Supabase project `facoactpdckkhciamflk` and the deployed application 
 
 ## Start every material task
 
-1. Read the [Project Overview](context/governance/True%20North%20Map%20Project%20Overview.md), [Project Status](context/governance/Project%20Status.md), and [Cross-System Contract](context/governance/Cross-System%20Change%20And%20Regression%20Contract.md).
+1. Read the short [Project Status](context/governance/Project%20Status.md), then the linked contract sections for the affected system. Read the [Project Overview](context/governance/True%20North%20Map%20Project%20Overview.md) when product context is needed and the [Cross-System Contract](context/governance/Cross-System%20Change%20And%20Regression%20Contract.md) when choosing checks or changing a shared boundary. Reuse instructions already read in the current task; dated archives are optional.
 2. Run `git status --short --branch` and `git worktree list`. Separate deployed state, tracked state, uncommitted work, and ignored private artifacts.
 3. Read live production when current records, queues, taxonomy, subscribers, migrations, schedules, or publication state affect the task.
 4. Name the systems touched before editing and preserve unrelated user work.
@@ -43,6 +43,10 @@ Production Supabase project `facoactpdckkhciamflk` and the deployed application 
 | Security and reliability backlog | [Remediation Log](context/governance/Security%20And%20Reliability%20Remediation%20Log.md) |
 | Brand and public language | [Brand System](content/brand/True%20North%20Map%20Brand%20System.md) |
 | Marketing and outreach | [Marketing and Outreach Operations](context/governance/Marketing%20And%20Outreach%20Operations.md) |
+
+## Research execution
+
+Research runs in the calling Codex task with the owner-selected model and effort. Do not introduce a research API client, model default, custom agent or effort override. Use the installed coordinator and its mode-specific references, `research:doctor`, supported workbench helpers and `research:finalize`; do not recreate per-run snapshot/assembly scripts. Public assistant inference separately requires an explicit server model setting and has no code fallback.
 
 ## Data, evidence, and publication authority
 

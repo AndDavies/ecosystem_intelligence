@@ -192,7 +192,7 @@ describe("canonical organization repair snapshot", () => {
     expect(issues(batch, blocked).some((issue) => issue.includes("blocked by protected production references"))).toBe(true);
   });
 
-  it("passes the exact private snapshot through validate and smoke finalizer steps", () => {
+  it("passes the exact private snapshot through the single complete finalizer gate", () => {
     const { run, batch } = artifacts();
     const plan = buildResearchFinalizePlan({
       runPath: `research/ingestion/runs/${runId}.json`,
@@ -202,10 +202,9 @@ describe("canonical organization repair snapshot", () => {
       mode: "check-only"
     });
     const validate = plan.steps.find((step) => step.id === "validate");
-    const smoke = plan.steps.find((step) => step.id === "smoke");
+
     expect(validate?.args).toContain(run.outputs.canonicalRepairSnapshot);
-    expect(smoke?.args).toContain("--canonical-snapshot");
-    expect(smoke?.args).toContain(run.outputs.canonicalRepairSnapshot);
+    expect(plan.steps).toHaveLength(1);
   });
 
   it("keeps the portable snapshot schema strict and compilable", async () => {

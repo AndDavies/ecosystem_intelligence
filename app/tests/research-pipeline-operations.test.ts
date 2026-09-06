@@ -112,7 +112,7 @@ describe("research pipeline operational controls", () => {
       mode: "apply"
     });
     expect(apply.steps.map((step) => step.id)).toEqual([
-      "validate", "logos", "validate-after-logos", "smoke", "review", "stage", "import", "reconcile"
+      "logos", "validate", "review", "stage", "import", "reconcile"
     ]);
 
     const zero = buildResearchFinalizePlan({
@@ -123,7 +123,7 @@ describe("research pipeline operational controls", () => {
       mode: "apply"
     });
     expect(zero.zeroCandidateDisposition).toBe(true);
-    expect(zero.steps.map((step) => step.id)).toEqual(["validate", "smoke"]);
+    expect(zero.steps.map((step) => step.id)).toEqual(["validate"]);
   });
 
   it("validates production-shaped synthetic regression cases with trace metadata", () => {

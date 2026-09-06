@@ -1,0 +1,353 @@
+{
+  "schemaVersion": "research_collection_plan_v1",
+  "planId": "tnm-manual-20260906074301-collection-plan",
+  "runId": "tnm-manual-20260906074301",
+  "createdAt": "2026-09-06T07:43:01.879Z",
+  "status": "complete",
+  "intelligenceRequirement": "Enrich Kraken Robotics and COVE against the exact September 6 production snapshot: recover Kraken product interfaces, Canadian facilities and post-Covelya financial/operating boundaries; recover COVE test infrastructure, DIANA access, Sea Tracker actor roles and the September 2 Communitech collaboration. Preserve existing reviewed mission links; do not infer that a program supplies procurement eligibility or that announced orders are revenue.",
+  "targetSubjects": [
+    {
+      "subjectId": "organization-kraken-robotics",
+      "subjectType": "organization",
+      "name": "Kraken Robotics",
+      "aliases": [],
+      "canonicalIdentifiers": [
+        "kraken-robotics",
+        "10000000-0000-4000-8000-000000000001",
+        "https://truenorthmap.ca/organizations/kraken-robotics",
+        "krakenrobotics.com"
+      ]
+    },
+    {
+      "subjectId": "organization-cove",
+      "subjectType": "organization",
+      "name": "COVE",
+      "aliases": [
+        "Centre for Ocean Ventures and Entrepreneurship"
+      ],
+      "canonicalIdentifiers": [
+        "cove",
+        "5f376a4e-3e39-4633-9b6c-c88afac8b418",
+        "https://truenorthmap.ca/organizations/cove",
+        "coveocean.com"
+      ]
+    }
+  ],
+  "priorityQuestions": [
+    {
+      "questionId": "identity-canadian-presence",
+      "subjectType": "organization",
+      "question": "What is the canonical organization identity, ownership context, aliases, and evidence of an active Canadian operating presence?",
+      "targetFieldPaths": [
+        "organization.name",
+        "organization.aliases",
+        "organization.primaryLocation",
+        "organization.publicContact",
+        "organization.canadianFootprint"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "capability-definition",
+      "subjectType": "technology",
+      "question": "Which products, facilities, test services, variants or operating functions are documented, and what specifications, interfaces, dependencies, access constraints and applications can be stated with accurate attribution? Separate stated specifications from independently demonstrated performance; strengthen the evidence threshold for any stronger intended claim.",
+      "targetFieldPaths": [
+        "capabilities.*.summary",
+        "capabilities.*.features",
+        "capabilities.*.applications",
+        "capabilities.*.maturity",
+        "capabilities.*.commercialAvailability",
+        "organization.operatingContext"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "program-access-definition",
+      "subjectType": "program",
+      "question": "Which current programs, member or cohort pathways, committees, services, eligibility rules, geographic boundaries, application routes, delivery partners, and outcome claims define how a business can use or join this organization?",
+      "targetFieldPaths": [
+        "organization.description",
+        "organization.operatingContext",
+        "organization.canadianFootprint",
+        "organization.publicContact",
+        "programParticipations.*.participation.publicSummary",
+        "programParticipations.*.participation.lifecycleStage",
+        "relationships.*.publicSummary"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "proof-and-current-state",
+      "subjectType": "signal",
+      "question": "Which trials, evaluations, deployments, contracts, procurement lifecycle events, public programs, customer activity, partnerships, and dated developments materially change the current record, and which consequential performance or outcome claims need an independent source before they are stated as proof?",
+      "targetFieldPaths": [
+        "organization.currentActivity",
+        "organization.currentActivityAsOf",
+        "programParticipations.*.participation.publicSummary",
+        "programParticipations.*.participation.lifecycleStage",
+        "fundingEvents.*.disclosedSummary",
+        "relationships.*.publicSummary",
+        "demandSource.summary",
+        "requirements.*.problemStatement"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "mission-public-need-read",
+      "subjectType": "demand",
+      "question": "Which current Mission Area or exact published Public Need could this capability inform, what source-backed premises support each side, and what constraint prevents the relationship from being treated as proven fit?",
+      "targetFieldPaths": [
+        "capabilities.*.missionMatches",
+        "requirements.*.problemStatement",
+        "requirements.*.desiredEndState",
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "anchor_plus_independent_corroboration"
+    },
+    {
+      "questionId": "editorial-profile-readiness",
+      "subjectType": "organization",
+      "question": "Does the evidence support an executive description, current activity, operating context, Canadian footprint, and at most four specific first-conversation questions without converting missing fields into public unknowns?",
+      "targetFieldPaths": [
+        "organization.description",
+        "organization.currentActivity",
+        "organization.operatingContext",
+        "organization.canadianFootprint",
+        "organization.reviewedQuestions"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "unknowns-and-tradeoffs",
+      "subjectType": "signal",
+      "question": "Which material facts are not found, not publicly stated, conflicted, stale, superseded, constrained, or not applicable, and how does each gap affect the reviewer decision?",
+      "targetFieldPaths": [
+        "reviewWarnings",
+        "reviewerRationale"
+      ],
+      "evidenceThreshold": "one_anchor"
+    },
+    {
+      "questionId": "reviewer-action",
+      "subjectType": "signal",
+      "question": "What single bounded verification, comparison, review, Working List, or private demand-matching action should follow from the evidence without contacting, accepting, or publishing autonomously?",
+      "targetFieldPaths": [
+        "reviewerRationale",
+        "reviewWarnings"
+      ],
+      "evidenceThreshold": "one_anchor"
+    }
+  ],
+  "collectionLanes": [
+    {
+      "lane": "official_site",
+      "purpose": "Collect durable official site evidence or an independently attributable corroborating source for material claims.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "\"Kraken Robotics\" Canada official site",
+        "\"Kraken Robotics\" product platform technology specification interface deployment contract customer official site",
+        "\"COVE\" Canada official site",
+        "\"COVE\" program eligibility cohort service intake partner outcome application official site"
+      ],
+      "expectedClaims": [
+        "identity or actor role",
+        "specific capability, variant, interface, constraint, proof event, demand, program, contract, relationship, or current-activity detail",
+        "decision-relevant unknown or verification path"
+      ]
+    },
+    {
+      "lane": "technical_documents",
+      "purpose": "Collect durable technical documents evidence or an independently attributable corroborating source for material claims.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "\"Kraken Robotics\" Canada technical documents",
+        "\"Kraken Robotics\" product platform technology specification interface deployment contract customer technical documents",
+        "\"COVE\" Canada technical documents",
+        "\"COVE\" program eligibility cohort service intake partner outcome application technical documents"
+      ],
+      "expectedClaims": [
+        "identity or actor role",
+        "specific capability, variant, interface, constraint, proof event, demand, program, contract, relationship, or current-activity detail",
+        "decision-relevant unknown or verification path"
+      ]
+    },
+    {
+      "lane": "corporate_registry",
+      "purpose": "Collect durable corporate registry evidence or an independently attributable corroborating source for material claims.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "\"Kraken Robotics\" Canada corporate registry",
+        "\"Kraken Robotics\" product platform technology specification interface deployment contract customer corporate registry",
+        "\"COVE\" Canada corporate registry",
+        "\"COVE\" program eligibility cohort service intake partner outcome application corporate registry"
+      ],
+      "expectedClaims": [
+        "identity or actor role",
+        "specific capability, variant, interface, constraint, proof event, demand, program, contract, relationship, or current-activity detail",
+        "decision-relevant unknown or verification path"
+      ]
+    },
+    {
+      "lane": "patent_ip",
+      "purpose": "Collect durable patent ip evidence or an independently attributable corroborating source for material claims.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "\"Kraken Robotics\" Canada patent ip",
+        "\"Kraken Robotics\" product platform technology specification interface deployment contract customer patent ip",
+        "\"COVE\" Canada patent ip",
+        "\"COVE\" program eligibility cohort service intake partner outcome application patent ip"
+      ],
+      "expectedClaims": [
+        "identity or actor role",
+        "specific capability, variant, interface, constraint, proof event, demand, program, contract, relationship, or current-activity detail",
+        "decision-relevant unknown or verification path"
+      ]
+    },
+    {
+      "lane": "government_procurement",
+      "purpose": "Collect durable government procurement evidence or an independently attributable corroborating source for material claims.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "\"Kraken Robotics\" Canada government procurement",
+        "\"Kraken Robotics\" product platform technology specification interface deployment contract customer government procurement",
+        "\"COVE\" Canada government procurement",
+        "\"COVE\" program eligibility cohort service intake partner outcome application government procurement"
+      ],
+      "expectedClaims": [
+        "identity or actor role",
+        "specific capability, variant, interface, constraint, proof event, demand, program, contract, relationship, or current-activity detail",
+        "decision-relevant unknown or verification path"
+      ]
+    },
+    {
+      "lane": "proactive_disclosure",
+      "purpose": "Collect durable proactive disclosure evidence or an independently attributable corroborating source for material claims.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "\"Kraken Robotics\" Canada proactive disclosure",
+        "\"Kraken Robotics\" product platform technology specification interface deployment contract customer proactive disclosure",
+        "\"COVE\" Canada proactive disclosure",
+        "\"COVE\" program eligibility cohort service intake partner outcome application proactive disclosure"
+      ],
+      "expectedClaims": [
+        "identity or actor role",
+        "specific capability, variant, interface, constraint, proof event, demand, program, contract, relationship, or current-activity detail",
+        "decision-relevant unknown or verification path"
+      ]
+    },
+    {
+      "lane": "customer_partner_program",
+      "purpose": "Collect durable customer partner program evidence or an independently attributable corroborating source for material claims.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "\"Kraken Robotics\" Canada customer partner program",
+        "\"Kraken Robotics\" product platform technology specification interface deployment contract customer customer partner program",
+        "\"COVE\" Canada customer partner program",
+        "\"COVE\" program eligibility cohort service intake partner outcome application customer partner program"
+      ],
+      "expectedClaims": [
+        "identity or actor role",
+        "specific capability, variant, interface, constraint, proof event, demand, program, contract, relationship, or current-activity detail",
+        "decision-relevant unknown or verification path"
+      ]
+    },
+    {
+      "lane": "industry_publication",
+      "purpose": "Collect durable industry publication evidence or an independently attributable corroborating source for material claims.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "\"Kraken Robotics\" Canada industry publication",
+        "\"Kraken Robotics\" product platform technology specification interface deployment contract customer industry publication",
+        "\"COVE\" Canada industry publication",
+        "\"COVE\" program eligibility cohort service intake partner outcome application industry publication"
+      ],
+      "expectedClaims": [
+        "identity or actor role",
+        "specific capability, variant, interface, constraint, proof event, demand, program, contract, relationship, or current-activity detail",
+        "decision-relevant unknown or verification path"
+      ]
+    },
+    {
+      "lane": "ecosystem_directory",
+      "purpose": "Collect durable ecosystem directory evidence or an independently attributable corroborating source for material claims.",
+      "sourcePosture": "strong_corroboration",
+      "queryPatterns": [
+        "\"Kraken Robotics\" Canada ecosystem directory",
+        "\"Kraken Robotics\" product platform technology specification interface deployment contract customer ecosystem directory",
+        "\"COVE\" Canada ecosystem directory",
+        "\"COVE\" program eligibility cohort service intake partner outcome application ecosystem directory"
+      ],
+      "expectedClaims": [
+        "identity or actor role",
+        "specific capability, variant, interface, constraint, proof event, demand, program, contract, relationship, or current-activity detail",
+        "decision-relevant unknown or verification path"
+      ]
+    },
+    {
+      "lane": "authenticated_discovery_feed",
+      "purpose": "Find named leads and recent activity in authenticated newsletters or targeted social pages, then resolve every material assertion to durable evidence.",
+      "sourcePosture": "discovery_only",
+      "queryPatterns": [
+        "\"Kraken Robotics\" Canada authenticated discovery feed",
+        "\"Kraken Robotics\" product platform technology specification interface deployment contract customer authenticated discovery feed",
+        "\"COVE\" Canada authenticated discovery feed",
+        "\"COVE\" program eligibility cohort service intake partner outcome application authenticated discovery feed"
+      ],
+      "expectedClaims": [
+        "identity or actor role",
+        "specific capability, variant, interface, constraint, proof event, demand, program, contract, relationship, or current-activity detail",
+        "decision-relevant unknown or verification path"
+      ]
+    },
+    {
+      "lane": "bilingual_public_web",
+      "purpose": "Collect durable bilingual public web evidence or an independently attributable corroborating source for material claims.",
+      "sourcePosture": "evidence_anchor",
+      "queryPatterns": [
+        "\"Kraken Robotics\" Canada bilingual public web",
+        "\"Kraken Robotics\" product platform technology specification interface deployment contract customer bilingual public web",
+        "\"COVE\" Canada bilingual public web",
+        "\"COVE\" program eligibility cohort service intake partner outcome application bilingual public web"
+      ],
+      "expectedClaims": [
+        "identity or actor role",
+        "specific capability, variant, interface, constraint, proof event, demand, program, contract, relationship, or current-activity detail",
+        "decision-relevant unknown or verification path"
+      ]
+    }
+  ],
+  "languagePlan": {
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "frenchSearchRequired": true,
+    "exceptionReason": null
+  },
+  "coverageDimensions": [
+    "identity_ownership",
+    "canadian_presence",
+    "offering_mandate",
+    "technical_specifications",
+    "maturity_deployment",
+    "customers_contracts_programs",
+    "procurement_demand",
+    "partnerships_financing",
+    "public_contacts",
+    "current_activity",
+    "source_diversity",
+    "contradictions"
+  ],
+  "stopConditions": [
+    "Stop a subject only after the coverage vector records every dimension as covered, partial, not found, or not applicable with supporting claims or search attempts.",
+    "Treat the dossier as saturated only when actual complementary investigation accounts for material questions and no identified feasible follow-up is likely to change the capability definition, proof or current state, Mission or Public Need read, material unknowns, or reviewer action. Record the actual low or zero marginal yield; do not repeat searches merely to satisfy a formula.",
+    "Do not stop on source count alone; every selected candidate needs a specific decision use, evidence basis, visible uncertainty, and bounded next reviewer action."
+  ],
+  "prohibitedActions": [
+    "social_interaction",
+    "access_control_bypass",
+    "personal_data_collection",
+    "canonical_database_write",
+    "candidate_approval_or_publication"
+  ]
+}

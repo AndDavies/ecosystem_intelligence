@@ -57,6 +57,14 @@
     "repository:hygiene": "pnpm --dir app exec node scripts/validate-repository-hygiene.mjs && pnpm --dir app exec node scripts/validate-governance-control-plane.mjs",
     "security:validate": "pnpm --dir app audit --audit-level high",
     "release:validate": "pnpm repository:hygiene && pnpm security:validate && pnpm typecheck && pnpm test && pnpm lint && pnpm scale:validate && pnpm build",
-    "product:summary": "pnpm --dir app product:summary --"
+    "product:summary": "pnpm --dir app product:summary --",
+    "research:doctor": "pnpm --dir app research:doctor",
+    "research:snapshot": "pnpm --dir app research:snapshot",
+    "research:init": "pnpm --dir app research:init",
+    "research:collect": "pnpm --dir app research:collect",
+    "research:operation": "pnpm --dir app research:operation",
+    "research:assemble": "pnpm --dir app research:assemble",
+    "research:candidate": "pnpm --dir app research:candidate",
+    "research:focus": "pnpm --dir app research:focus"
   }
 }

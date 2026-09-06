@@ -2,9 +2,20 @@
 
 Status: canonical research orchestration contract
 Owner: Andrew Davies
-Last reviewed: 2026-09-04
+Last reviewed: 2026-09-06
 Public brand: True North Map
 Canonical domain: `https://truenorthmap.ca`
+
+## Codex research efficiency contract (September 6)
+
+Research uses the calling Codex task's owner-selected model and effort. There is no research OpenAI API executor, model default or separate Agents SDK service. `research:doctor` checks Node 24 and optional PDF extraction. The private workbench (`research:snapshot`, `research:init`, `research:collect`, `research:candidate`, `research:operation`, `research:focus`, `research:assemble`) replaces ad hoc per-run plumbing; its detailed operator contract is installed with the coordinator. Raw snapshots, caches, focus files and receipts remain ignored local artifacts.
+
+An immutable ordinary-refresh snapshot preserves raw timestamps and complete child baselines; it is a bounded REST capture, not a transaction. Intake still checks deployed compatibility, current duplicate/target state, exact candidate parity and live baselines. Deterministic IDs and evidence paths are mechanical; Codex must supply inspected claims, coverage dispositions, inference, scores and meaningful reviewer text. Focused enrichment is a local scope within `dossier_enrichment`, not a new public mode or an exemption from required coverage. Retained evidence must be inspected and referenced; it cannot be silently imported as newly researched proof.
+
+`research:finalize` now uses one complete validation gate shared with `research:smoke`. Missing private logo dispositions are prepared before that gate; default mode only checks, file-only creates local review/staging output, and apply alone uses tracked private intake followed by exact live reconciliation. The immutable-input digest and local receipt separate sealed research from verified intake and record phase durations/failures. A matching uncertain/successful intake resumes with validation and live reconciliation, never a blind import. A changed payload after an intake attempt requires investigating the original transaction and a new run for revised research. A valid zero-candidate dossier creates no intake artifacts.
+
+Do not reclassify historical event counters as current-state counts. New assembly derives countable artifact totals and primary discovery lanes separately from recovery routes; source fetch and finalizer records preserve actual attempts/timings. Compare fixed inputs and quality gates before claiming a speedup. Schema/lineage tests do not replace human assessment of factual corrections, decision usefulness and reviewer effort.
+
 
 ## Outcome
 
@@ -160,7 +171,7 @@ Supported public-demand issuers include NATO, the Government of Canada, DND, CAF
 
 ## Validation and artifacts
 
-The executable contract is `app/src/lib/research/pipeline-schema.ts`. The orchestrator is `app/scripts/autonomous-research.ts`. Portable JSON contracts live under `research/ingestion/schema/`. The machine-readable `.agents/skills/tnm-research-workflow-registry.json` is the authority for mode envelopes, artifact roots and the ordered finalizer; its generated Markdown reference is checked for drift. `research:finalize --plan` previews the exact guarded sequence, ordinary `research:finalize` performs validation plus non-writing smoke, `--file-only` adds local review/staging output, and `--apply` alone invokes tracked private intake and exact production reconciliation. Logo preparation is globally bounded, serializes each website host, skips existing dispositions and retains downloader retry/failure telemetry. `research:eval` runs synthetic production-shaped identity, provenance and sufficiency regressions. Historical `research:smoke --file-only` still means no database import but can regenerate local review and staging artifacts; it is not a read-only command.
+The executable contract is `app/src/lib/research/pipeline-schema.ts`. The orchestrator is `app/scripts/autonomous-research.ts`. Portable JSON contracts live under `research/ingestion/schema/`. The machine-readable `.agents/skills/tnm-research-workflow-registry.json` is the authority for mode envelopes, artifact roots and the ordered finalizer; its generated Markdown reference is checked for drift. `research:finalize --plan` previews the exact guarded sequence, ordinary `research:finalize` performs the shared complete validation gate, `--file-only` adds local review/staging output, and `--apply` alone invokes tracked private intake and exact production reconciliation. Logo preparation is globally bounded, serializes each website host, skips existing dispositions and retains downloader retry/failure telemetry. `research:eval` runs synthetic production-shaped identity, provenance and sufficiency regressions. Historical `research:smoke --file-only` still means no database import but can regenerate local review and staging artifacts; it is not a read-only command.
 
 ```mermaid
 flowchart LR
@@ -171,7 +182,7 @@ flowchart LR
   P["research_prospect_inventory_v1"] --> V
   L["source_lead_batch_v2"] --> V
   C["research_candidate_batch_v2"] --> V
-  V --> CK["Validation plus check-only smoke"]
+  V --> CK["Shared complete validation gate"]
   CK --> RP["File-only review and staging"]
   RP --> TI["Apply through tracked trusted intake"]
   TI --> CR["candidate_changes: pending + reviewer rationale"]

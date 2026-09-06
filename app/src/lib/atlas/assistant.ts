@@ -15,13 +15,14 @@ import type {
   AtlasSnapshot
 } from "@/types/atlas";
 
-export const ATLAS_ASSISTANT_MODEL = process.env.OPENAI_MODEL?.trim() || "gpt-5.6-luna";
+export const ATLAS_ASSISTANT_MODEL = process.env.OPENAI_MODEL?.trim() || "";
 export const ATLAS_ASSISTANT_ANONYMOUS_LIMIT = 3;
 export const ATLAS_ASSISTANT_MEMBER_LIMIT = 20;
 export const ATLAS_ASSISTANT_CANDIDATE_LIMIT = 16;
 
 export type AtlasAssistantFailureClass =
   | "missing_key"
+  | "missing_model"
   | "authentication"
   | "insufficient_quota"
   | "rate_limit"
@@ -451,11 +452,11 @@ export async function runAtlasAssistant(input: {
     errorCode: null
   };
 
-  if (!process.env.OPENAI_API_KEY) {
+  if (!process.env.OPENAI_API_KEY || !ATLAS_ASSISTANT_MODEL) {
     return {
       answer: null,
       fallbackReason: "unavailable",
-      metrics: { ...emptyMetrics, failureClass: "missing_key" }
+      metrics: { ...emptyMetrics, failureClass: !process.env.OPENAI_API_KEY ? "missing_key" : "missing_model" }
     };
   }
 

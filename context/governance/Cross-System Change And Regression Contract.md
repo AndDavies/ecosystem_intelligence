@@ -2,8 +2,12 @@
 
 Status: canonical operating contract
 Owner: Andrew Davies
-Last reviewed: 2026-09-05
+Last reviewed: 2026-09-06
 Effective: 2026-07-26
+
+## Codex research efficiency contract (September 6)
+
+Research uses the calling Codex task's selected model and effort. Follow the [shared efficiency contract](Autonomous%20Ecosystem%20Research%20Pipeline.md#codex-research-efficiency-contract-september-6) for the supported workbench, local focus scope, single finalizer gate, resumable receipt and measurement. No public schema, research API executor, model default, or Review/Publish authority change is introduced. The optional public assistant requires an explicit server model setting.
 
 ## Purpose
 

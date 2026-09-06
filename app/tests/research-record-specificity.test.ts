@@ -47,8 +47,7 @@ describe("pipeline 1.7 record-specific research gate", () => {
   it("applies the same complete-artifact gate during private review intake", async () => {
     const coordinator = await readFile(path.resolve("scripts/autonomous-research.ts"), "utf8");
     const importSlice = coordinator.slice(coordinator.indexOf("async function assertRecordSpecificStaging"), coordinator.indexOf("async function smoke"));
-    expect(importSlice).toContain("researchRecordSpecificityIssues");
-    expect(importSlice).toContain("researchReviewLineageIssues");
+    expect(importSlice).toContain("completeResearchRunIssues");
     expect(importSlice).toContain("stagingPayloadParityIssues");
     expect(importSlice).toContain("recordSpecificArtifactRequirements");
     expect(importSlice).toContain("requiresRecordSpecificResearchContract(run.data.agentVersion)");

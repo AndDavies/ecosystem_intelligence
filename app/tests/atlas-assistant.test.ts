@@ -69,12 +69,35 @@ function answer(overrides: Partial<RawAssistantAnswer> = {}): RawAssistantAnswer
 }
 
 describe("Ask True North output guardrails", () => {
-  it("defaults to GPT-5.6 Luna while preserving the server-only model override", async () => {
+  it("does not select a model when the owner has not configured one", async () => {
     vi.stubEnv("OPENAI_MODEL", "");
     vi.resetModules();
     const { ATLAS_ASSISTANT_MODEL } = await import("@/lib/atlas/assistant");
-    expect(ATLAS_ASSISTANT_MODEL).toBe("gpt-5.6-luna");
+    expect(ATLAS_ASSISTANT_MODEL).toBe("");
     vi.unstubAllEnvs();
+  });
+
+  it("does not call the API or reserve inference availability without an explicit model", async () => {
+    vi.stubEnv("OPENAI_API_KEY", "test-only-unused");
+    vi.stubEnv("OPENAI_MODEL", "   ");
+    vi.resetModules();
+    try {
+      const { runAtlasAssistant } = await import("@/lib/atlas/assistant");
+      const { hasOpenAiEnv } = await import("@/lib/supabase/env");
+      expect(hasOpenAiEnv()).toBe(false);
+      const result = await runAtlasAssistant({snapshot:citedSnapshot(),query:"Underwater sensing",priorTurns:[],safetyIdentifier:"test"});
+      expect(result.answer).toBeNull();
+      expect(result.metrics.failureClass).toBe("missing_model");
+    } finally { vi.unstubAllEnvs(); }
+  });
+
+  it("uses an explicitly configured model verbatim without choosing an alternative", async () => {
+    vi.stubEnv("OPENAI_MODEL", " owner-selected-model ");
+    vi.resetModules();
+    try {
+      const { ATLAS_ASSISTANT_MODEL } = await import("@/lib/atlas/assistant");
+      expect(ATLAS_ASSISTANT_MODEL).toBe("owner-selected-model");
+    } finally { vi.unstubAllEnvs(); }
   });
 
   it("keeps a strong fit only when it has strong evidence, two support points, and no material gap", () => {

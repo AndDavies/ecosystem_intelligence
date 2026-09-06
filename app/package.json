@@ -50,7 +50,15 @@
     "links:inventory": "tsx scripts/inventory-internal-links.ts",
     "indexnow:submit": "tsx scripts/submit-indexnow.ts",
     "signals:publish": "tsx scripts/publish-daily-signals.ts",
-    "product:summary": "tsx scripts/export-product-activity.ts"
+    "product:summary": "tsx scripts/export-product-activity.ts",
+    "research:doctor": "tsx scripts/research-workbench.ts doctor",
+    "research:snapshot": "tsx scripts/research-workbench.ts snapshot",
+    "research:init": "tsx scripts/research-workbench.ts init",
+    "research:collect": "tsx scripts/research-workbench.ts collect",
+    "research:operation": "tsx scripts/research-workbench.ts operation",
+    "research:assemble": "tsx scripts/research-workbench.ts assemble",
+    "research:candidate": "tsx scripts/research-workbench.ts candidate",
+    "research:focus": "tsx scripts/research-workbench.ts focus"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "1.1.20",

@@ -3,7 +3,7 @@ import type { ResearchCandidateBatchV2, ResearchRun } from "./pipeline-schema";
 export type ResearchFinalizeMode = "check-only" | "file-only" | "apply";
 
 export interface ResearchFinalizeStep {
-  id: "validate" | "logos" | "validate-after-logos" | "smoke" | "review" | "stage" | "import" | "reconcile";
+  id: "validate" | "logos" | "review" | "stage" | "import" | "reconcile";
   script: string;
   args: string[];
   effect: "none" | "local" | "admin-review";
@@ -23,21 +23,6 @@ function artifactPaths(runPath: string, run: ResearchRun) {
   ].filter((value): value is string => Boolean(value));
 }
 
-function smokeArgs(runPath: string, run: ResearchRun, candidatePath: string) {
-  const args = ["--run", runPath];
-  const append = (flag: string, value: string | null | undefined) => {
-    if (value) args.push(flag, value);
-  };
-  append("--collection-plan", run.outputs.collectionPlan);
-  append("--claims", run.outputs.claimLedger);
-  append("--canonical-snapshot", run.outputs.canonicalRepairSnapshot);
-  append("--prospects", run.outputs.prospectInventory);
-  append("--signals", run.outputs.signalBatch);
-  append("--leads", run.outputs.sourceLeadBatch);
-  args.push("--candidates", candidatePath, "--check-only");
-  return args;
-}
-
 export function buildResearchFinalizePlan(options: {
   runPath: string;
   run: ResearchRun;
@@ -53,12 +38,7 @@ export function buildResearchFinalizePlan(options: {
     throw new Error(`Run candidateBatch output '${run.outputs.candidateBatch ?? "missing"}' does not match '${candidatePath}'.`);
   }
 
-  const steps: ResearchFinalizeStep[] = [{
-    id: "validate",
-    script: "research:validate",
-    args: artifactPaths(runPath, run),
-    effect: "none"
-  }];
+  const steps: ResearchFinalizeStep[] = [];
   const missingLogoCount = batch.candidates.filter((candidate) =>
     candidate.candidateKind === "organization_bundle" && !candidate.candidateLogo
   ).length;
@@ -68,14 +48,9 @@ export function buildResearchFinalizePlan(options: {
       script: "research:logos",
       args: ["--run", run.runId, "--candidates", candidatePath, "--concurrency", String(options.logoConcurrency ?? 4), "--apply"],
       effect: "local"
-    }, {
-      id: "validate-after-logos",
-      script: "research:validate",
-      args: artifactPaths(runPath, run),
-      effect: "none"
     });
   }
-  steps.push({ id: "smoke", script: "research:smoke", args: smokeArgs(runPath, run, candidatePath), effect: "none" });
+  steps.push({ id: "validate", script: "research:validate", args: artifactPaths(runPath, run), effect: "none" });
 
   if (batch.candidates.length === 0) return { runId: run.runId, candidateCount: 0, missingLogoCount, zeroCandidateDisposition: true, steps };
   if (mode === "check-only") return { runId: run.runId, candidateCount: batch.candidates.length, missingLogoCount, zeroCandidateDisposition: false, steps };

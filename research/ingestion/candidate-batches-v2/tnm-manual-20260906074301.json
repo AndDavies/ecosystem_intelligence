@@ -1,0 +1,2259 @@
+{
+  "schemaVersion": "research_candidate_batch_v2",
+  "batchId": "tnm-manual-20260906074301-candidates",
+  "runId": "tnm-manual-20260906074301",
+  "title": "Kraken Robotics and COVE: operating detail and access-path enrichment",
+  "status": "candidate",
+  "createdAt": "2026-09-06T08:00:31.916859Z",
+  "selectedGap": {
+    "coverageView": "ecosystem_support",
+    "dimension": "dossier-targets:2",
+    "reason": "The owner selected 2 exact published organizations for comprehensive, review-first organization-dossier enrichment without automatic activation or publication; the complete target identities are recorded in the collection plan.",
+    "score": 1000
+  },
+  "sourceLeadBatchPath": "research/ingestion/source-leads-v2/tnm-manual-20260906074301.json",
+  "guardrailNotes": [
+    "Private exact-baseline refresh proposals only; no acceptance, publication, canonical repair, provider change or outreach."
+  ],
+  "candidates": [
+    {
+      "schemaVersion": "organization_refresh_bundle_v2",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "tnm-manual-20260906074301-kraken-robotics",
+      "sourceLeadIds": [
+        "tnm-manual-20260906074301-kraken-robotics-lead"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coverage value: Kraken Robotics operating context now distinguishes KATFISH towing and topside processing, with August 27 results and Canadian delivery detail that help assess a supplier conversation. Evidence: 10 sources from Kraken Robotics and Canadian government buyers separate manufacturer specifications, reported finances and the RMDS contract amendment. Mission/Public Need read: Existing underwater ISR relationships remain unchanged; KATFISH towing and topside processing provide the concrete capability premise without creating a new demand match. Unknowns: The C$12,154,000.20 contract reduction is not explicitly connected to the C$1.5 million revenue reversal, and the XL-UUV customer remains unnamed. Reviewer action: Inspect the operating context and reviewed questions against W8472-105270/001/QF and the KATFISH fact sheet before accepting the proposed dossier.",
+      "reviewTier": "amber",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "The CanadaBuys C$12,154,000.20 reduction on W8472-105270/001/QF is not explicitly linked by the reviewed documents to Kraken's C$1.5 million Q2 revenue reversal; do not equate the two amounts or infer cancellation.",
+        "SeaPower brochure specifies 2 kWh minimum while the current product page says 1.8 kWh; confirm the offered module and certification package rather than treating the ranges as interchangeable.",
+        "The XL-UUV battery customer is unnamed, and announced orders, master supply agreements and management guidance do not establish delivered revenue or future production throughput."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-09-06T07:45:14.401907Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Intentional existing target resolved by exact published ID and slug in the complete 585-organization snapshot; no active Review overlap or other conflicting identity was found."
+      },
+      "sources": [
+        {
+          "id": "kraken-katfish",
+          "title": "KATFISH manufacturer technical specification",
+          "url": "https://www.krakenrobotics.com/wp-content/uploads/2026/01/KATFISH_Kraken_Flyer_Letter.pdf",
+          "publisher": "Kraken Robotics",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-09-06T08:00:31.916859Z",
+          "locator": "PDF pages 1-2; operational parameters and standard equipment; copyright 2025, publication day unspecified",
+          "summary": "Technical sheet distinguishes real-time and processed resolution, towing conditions, data formats and topside equipment; manufacturer maxima require configuration verification."
+        },
+        {
+          "id": "kraken-seapower",
+          "title": "SeaPower manufacturer product and integration specifications",
+          "url": "https://www.krakenrobotics.com/wp-content/uploads/2025/05/SeaPower_Kraken_Flyer_A4.pdf",
+          "publisher": "Kraken Robotics",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-09-06T08:00:31.916859Z",
+          "locator": "PDF page 2; Advanced Technology, BMS and certification wording; V.050225",
+          "summary": "Manufacturer specifies pressure-tolerant cells, BMS telemetry and power controls and a 6000 m depth rating; standards wording says designed for compliance."
+        },
+        {
+          "id": "kraken-statements",
+          "title": "Kraken Robotics June 2026 interim financial statements",
+          "url": "https://www.krakenrobotics.com/wp-content/uploads/2026/08/Kraken-Robotics-Inc.-Q2-26-Financial-Statements-FINAL.pdf",
+          "publisher": "Kraken Robotics",
+          "sourceKind": "official_report",
+          "publishedAt": null,
+          "accessedAt": "2026-09-06T08:00:31.916859Z",
+          "locator": "PDF page 24, Note 22; amounts in thousands of Canadian dollars",
+          "summary": "Subsequent events explain Covelya acquisition consideration, cash, debt and shares; initial acquisition accounting remained incomplete when issued."
+        },
+        {
+          "id": "kraken-q2",
+          "title": "Kraken Robotics reports Q2 2026 financial results",
+          "url": "https://www.krakenrobotics.com/news-releases/kraken-robotics-reports-q2-2026-financial-results/",
+          "publisher": "Kraken Robotics",
+          "sourceKind": "official_company_news",
+          "publishedAt": null,
+          "accessedAt": "2026-09-06T08:00:31.916859Z",
+          "locator": "August 27, 2026; financial highlights and new orders",
+          "summary": "Quarterly results distinguish standalone Kraken from post-July acquisition scope and report a new XL-UUV battery supply agreement."
+        },
+        {
+          "id": "dnd-rmds",
+          "title": "DND Remote Mine-hunting and Disposal System contract award",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2022/12/minister-anand-announces-remote-mine-hunting-and-disposal-system-contract-award-to-increase-safety-for-royal-canadian-navy-ships-and-crews.html",
+          "publisher": "Department of National Defence",
+          "sourceKind": "government_service_page",
+          "publishedAt": null,
+          "accessedAt": "2026-09-06T08:00:31.916859Z",
+          "locator": "December 8, 2022; award and two-contract breakdown",
+          "summary": "The buyer describes acquisition and support contracts for two RCN systems; historical planned operational timing is not evidence of acceptance or present completion."
+        },
+        {
+          "id": "kraken-contact",
+          "title": "Kraken Robotics Canadian locations and sales contact",
+          "url": "https://www.krakenrobotics.com/contact/",
+          "publisher": "Kraken Robotics",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-09-06T08:00:31.916859Z",
+          "locator": "Our Locations, Americas and Sales Inquiries",
+          "summary": "Official contact page names Mount Pearl headquarters and a Dartmouth location and provides a sales enquiry form and head-office phone."
+        },
+        {
+          "id": "kraken-facility",
+          "title": "Kraken Robotics 2025 financial results and Nova Scotia capacity",
+          "url": "https://www.krakenrobotics.com/news-releases/kraken-robotics-reports-2025-financial-results/",
+          "publisher": "Kraken Robotics",
+          "sourceKind": "official_company_news",
+          "publishedAt": null,
+          "accessedAt": "2026-09-06T08:00:31.916859Z",
+          "locator": "April 16, 2026; key highlights, new battery manufacturing facility",
+          "summary": "Company reported completion of a Nova Scotia battery facility; this establishes the announced capacity investment but not measured production throughput."
+        },
+        {
+          "id": "kraken-mda",
+          "title": "Kraken Robotics Q2 2026 management discussion and analysis",
+          "url": "https://www.krakenrobotics.com/wp-content/uploads/2026/08/Kraken-MDA-Q2-2026-FINAL.pdf",
+          "publisher": "Kraken Robotics",
+          "sourceKind": "official_report",
+          "publishedAt": null,
+          "accessedAt": "2026-09-06T08:00:31.916859Z",
+          "locator": "PDF page 7, Other loss; amounts in thousands of Canadian dollars",
+          "summary": "Management identifies the supplier arbitration provision and its royalty, interest and legal-cost basis, rather than describing it as an operating shutdown."
+        },
+        {
+          "id": "kraken-amendment",
+          "title": "CanadaBuys RMDS amendment W8472-105270/001/QF",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8472-105270/001/qf-003",
+          "publisher": "Public Services and Procurement Canada",
+          "sourceKind": "award_or_contract",
+          "publishedAt": null,
+          "accessedAt": "2026-09-06T08:00:31.916859Z",
+          "locator": "Browser-verified English and French notice; amendment date 2026/06/11, header and contract duration",
+          "summary": "Buyer notice shows a negative C$12,154,000.20 amendment and December 29, 2028 expiry; no published explanation links it to a particular financial revenue reversal."
+        },
+        {
+          "id": "kraken-seapower-page",
+          "title": "SeaPower current product page capacity range",
+          "url": "https://www.krakenrobotics.com/products/seapower/",
+          "publisher": "Kraken Robotics",
+          "sourceKind": "official_company_product",
+          "publishedAt": null,
+          "accessedAt": "2026-09-06T08:00:31.916859Z",
+          "locator": "Scalable Energy from 1.8 kWh to 5 MWh; compare brochure V.050225",
+          "summary": "The current webpage names a 1.8 kWh lower range while the brochure uses 2 kWh; both are manufacturer material, not independent validation."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "tnm-manual-20260906074301-evidence-001",
+          "sourceId": "kraken-katfish",
+          "fieldPath": "operations.kraken-robotics-description.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "KATFISH is a stabilized towed synthetic-aperture sonar with real-time and post-processed seabed imaging.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-002",
+          "sourceId": "kraken-seapower",
+          "fieldPath": "operations.kraken-robotics-description.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "SeaPower uses encapsulated lithium-ion cells and battery-management electronics for pressure-tolerant subsea power.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-003",
+          "sourceId": "kraken-statements",
+          "fieldPath": "operations.kraken-robotics-description.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Kraken acquired all Covelya shares on July 2, 2026, as disclosed in subsequent events.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-004",
+          "sourceId": "kraken-q2",
+          "fieldPath": "operations.kraken-robotics-current-activity.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The August 27, 2026 results report C$27.3 million standalone Q2 revenue, a new XL-UUV battery agreement and a C$1.5 million integration-project revenue reversal.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-005",
+          "sourceId": "kraken-q2",
+          "fieldPath": "operations.kraken-robotics-current-activity-as-of.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The Q2 results and XL-UUV agreement announcement is dated August 27, 2026.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-006",
+          "sourceId": "kraken-katfish",
+          "fieldPath": "operations.kraken-robotics-operating-context.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "KATFISH pairs a towed sonar with topside processing, tow cable and winch; ISO20 and USV launch/recovery systems are optional equipment.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-007",
+          "sourceId": "dnd-rmds",
+          "fieldPath": "operations.kraken-robotics-operating-context.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "DND awarded Kraken Robotic Systems acquisition and in-service support contracts for two Remote Mine-hunting and Disposal Systems.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-008",
+          "sourceId": "kraken-contact",
+          "fieldPath": "operations.kraken-robotics-canadian-footprint.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Kraken lists Mount Pearl headquarters at 189 Glencoe Drive and a Dartmouth location at 464 Cutler Avenue.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-009",
+          "sourceId": "kraken-facility",
+          "fieldPath": "operations.kraken-robotics-canadian-footprint.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Kraken reported completion of a new Nova Scotia battery manufacturing facility in its April 16, 2026 results announcement.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-010",
+          "sourceId": "kraken-statements",
+          "fieldPath": "operations.kraken-robotics-disclosed-financing-summary.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The Covelya consideration comprised C$355 million cash on hand, C$125 million term debt and C$135 million shares, subject to adjustments.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-011",
+          "sourceId": "kraken-mda",
+          "fieldPath": "operations.kraken-robotics-disclosed-financing-summary.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Kraken recognized C$6.911 million estimated royalty, interest and legal/arbitration costs connected to a 2017 supplier contract.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-012",
+          "sourceId": "kraken-contact",
+          "fieldPath": "operations.kraken-robotics-public-contact.after.contactPageUrl",
+          "claimClass": "source_backed",
+          "excerpt": "Kraken directs sales inquiries to the form on https://www.krakenrobotics.com/contact/.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-013",
+          "sourceId": "kraken-katfish",
+          "fieldPath": "operations.kraken-robotics-public-contact.after.publicEmail",
+          "claimClass": "source_backed",
+          "excerpt": "The KATFISH fact sheet publishes sales@krakenrobotics.com for sales inquiries.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-014",
+          "sourceId": "kraken-contact",
+          "fieldPath": "operations.kraken-robotics-public-contact.after.publicPhone",
+          "claimClass": "source_backed",
+          "excerpt": "The Mount Pearl headquarters phone is +1 709 757 5757.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-015",
+          "sourceId": "kraken-contact",
+          "fieldPath": "operations.kraken-robotics-public-contact.after.linkedInUrl",
+          "claimClass": "source_backed",
+          "excerpt": "The official enquiry route is retained; no additional public value is asserted for this optional contact leaf.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-016",
+          "sourceId": "kraken-katfish",
+          "fieldPath": "operations.kraken-robotics-portfoliosummary.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "KATFISH specifies 4–10 knots, 300 m depth, 3 cm real-time and 2 cm processed imagery, GeoTIFF/XTF output and topside processing/storage interfaces.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-017",
+          "sourceId": "kraken-seapower",
+          "fieldPath": "operations.kraken-robotics-portfoliosummary.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "SeaPower specifies a 6000 m rating, per-cell BMS monitoring and software power control; standards wording is designed for compliance.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-018",
+          "sourceId": "kraken-amendment",
+          "fieldPath": "operations.kraken-robotics-reviewed-questions.after.0.id",
+          "claimClass": "derived",
+          "excerpt": "The June 11, 2026 buyer amendment reduces W8472-105270/001/QF by C$12,154,000.20 and lists expiry on December 29, 2028.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-019",
+          "sourceId": "kraken-q2",
+          "fieldPath": "operations.kraken-robotics-reviewed-questions.after.0.id",
+          "claimClass": "derived",
+          "excerpt": "The Q2 release separately reports a C$1.5 million revenue reversal on an unnamed integration project.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-020",
+          "sourceId": "kraken-katfish",
+          "fieldPath": "operations.kraken-robotics-reviewed-questions.after.0.id",
+          "claimClass": "derived",
+          "excerpt": "The KATFISH sheet distinguishes real-time and post-processed resolutions and specifies topside storage and launch/recovery options.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-021",
+          "sourceId": "kraken-amendment",
+          "fieldPath": "operations.kraken-robotics-reviewed-questions.after.0.question",
+          "claimClass": "derived",
+          "excerpt": "The June 11, 2026 buyer amendment reduces W8472-105270/001/QF by C$12,154,000.20 and lists expiry on December 29, 2028.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-022",
+          "sourceId": "kraken-q2",
+          "fieldPath": "operations.kraken-robotics-reviewed-questions.after.0.question",
+          "claimClass": "derived",
+          "excerpt": "The Q2 release separately reports a C$1.5 million revenue reversal on an unnamed integration project.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-023",
+          "sourceId": "kraken-katfish",
+          "fieldPath": "operations.kraken-robotics-reviewed-questions.after.0.question",
+          "claimClass": "derived",
+          "excerpt": "The KATFISH sheet distinguishes real-time and post-processed resolutions and specifies topside storage and launch/recovery options.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-024",
+          "sourceId": "kraken-amendment",
+          "fieldPath": "operations.kraken-robotics-reviewed-questions.after.0.context",
+          "claimClass": "derived",
+          "excerpt": "The June 11, 2026 buyer amendment reduces W8472-105270/001/QF by C$12,154,000.20 and lists expiry on December 29, 2028.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-025",
+          "sourceId": "kraken-q2",
+          "fieldPath": "operations.kraken-robotics-reviewed-questions.after.0.context",
+          "claimClass": "derived",
+          "excerpt": "The Q2 release separately reports a C$1.5 million revenue reversal on an unnamed integration project.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-026",
+          "sourceId": "kraken-katfish",
+          "fieldPath": "operations.kraken-robotics-reviewed-questions.after.0.context",
+          "claimClass": "derived",
+          "excerpt": "The KATFISH sheet distinguishes real-time and post-processed resolutions and specifies topside storage and launch/recovery options.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-027",
+          "sourceId": "kraken-amendment",
+          "fieldPath": "operations.kraken-robotics-reviewed-questions.after.0.confidence",
+          "claimClass": "derived",
+          "excerpt": "The June 11, 2026 buyer amendment reduces W8472-105270/001/QF by C$12,154,000.20 and lists expiry on December 29, 2028.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-028",
+          "sourceId": "kraken-q2",
+          "fieldPath": "operations.kraken-robotics-reviewed-questions.after.0.confidence",
+          "claimClass": "derived",
+          "excerpt": "The Q2 release separately reports a C$1.5 million revenue reversal on an unnamed integration project.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-029",
+          "sourceId": "kraken-katfish",
+          "fieldPath": "operations.kraken-robotics-reviewed-questions.after.0.confidence",
+          "claimClass": "derived",
+          "excerpt": "The KATFISH sheet distinguishes real-time and post-processed resolutions and specifies topside storage and launch/recovery options.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-030",
+          "sourceId": "kraken-amendment",
+          "fieldPath": "operations.kraken-robotics-reviewed-questions.after.1.id",
+          "claimClass": "derived",
+          "excerpt": "The June 11, 2026 buyer amendment reduces W8472-105270/001/QF by C$12,154,000.20 and lists expiry on December 29, 2028.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-031",
+          "sourceId": "kraken-q2",
+          "fieldPath": "operations.kraken-robotics-reviewed-questions.after.1.id",
+          "claimClass": "derived",
+          "excerpt": "The Q2 release separately reports a C$1.5 million revenue reversal on an unnamed integration project.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-032",
+          "sourceId": "kraken-katfish",
+          "fieldPath": "operations.kraken-robotics-reviewed-questions.after.1.id",
+          "claimClass": "derived",
+          "excerpt": "The KATFISH sheet distinguishes real-time and post-processed resolutions and specifies topside storage and launch/recovery options.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-033",
+          "sourceId": "kraken-amendment",
+          "fieldPath": "operations.kraken-robotics-reviewed-questions.after.1.question",
+          "claimClass": "derived",
+          "excerpt": "The June 11, 2026 buyer amendment reduces W8472-105270/001/QF by C$12,154,000.20 and lists expiry on December 29, 2028.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-034",
+          "sourceId": "kraken-q2",
+          "fieldPath": "operations.kraken-robotics-reviewed-questions.after.1.question",
+          "claimClass": "derived",
+          "excerpt": "The Q2 release separately reports a C$1.5 million revenue reversal on an unnamed integration project.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-035",
+          "sourceId": "kraken-katfish",
+          "fieldPath": "operations.kraken-robotics-reviewed-questions.after.1.question",
+          "claimClass": "derived",
+          "excerpt": "The KATFISH sheet distinguishes real-time and post-processed resolutions and specifies topside storage and launch/recovery options.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-036",
+          "sourceId": "kraken-amendment",
+          "fieldPath": "operations.kraken-robotics-reviewed-questions.after.1.context",
+          "claimClass": "derived",
+          "excerpt": "The June 11, 2026 buyer amendment reduces W8472-105270/001/QF by C$12,154,000.20 and lists expiry on December 29, 2028.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-037",
+          "sourceId": "kraken-q2",
+          "fieldPath": "operations.kraken-robotics-reviewed-questions.after.1.context",
+          "claimClass": "derived",
+          "excerpt": "The Q2 release separately reports a C$1.5 million revenue reversal on an unnamed integration project.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-038",
+          "sourceId": "kraken-katfish",
+          "fieldPath": "operations.kraken-robotics-reviewed-questions.after.1.context",
+          "claimClass": "derived",
+          "excerpt": "The KATFISH sheet distinguishes real-time and post-processed resolutions and specifies topside storage and launch/recovery options.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-039",
+          "sourceId": "kraken-amendment",
+          "fieldPath": "operations.kraken-robotics-reviewed-questions.after.1.confidence",
+          "claimClass": "derived",
+          "excerpt": "The June 11, 2026 buyer amendment reduces W8472-105270/001/QF by C$12,154,000.20 and lists expiry on December 29, 2028.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-040",
+          "sourceId": "kraken-q2",
+          "fieldPath": "operations.kraken-robotics-reviewed-questions.after.1.confidence",
+          "claimClass": "derived",
+          "excerpt": "The Q2 release separately reports a C$1.5 million revenue reversal on an unnamed integration project.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-041",
+          "sourceId": "kraken-katfish",
+          "fieldPath": "operations.kraken-robotics-reviewed-questions.after.1.confidence",
+          "claimClass": "derived",
+          "excerpt": "The KATFISH sheet distinguishes real-time and post-processed resolutions and specifies topside storage and launch/recovery options.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-092",
+          "sourceId": "kraken-katfish",
+          "fieldPath": "executiveRelevanceSummary",
+          "claimClass": "derived",
+          "excerpt": "KATFISH documented integration requirements make a configuration-specific supplier discussion useful; performance needs the offered-system context.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-093",
+          "sourceId": "dnd-rmds",
+          "fieldPath": "executiveRelevanceSummary",
+          "claimClass": "derived",
+          "excerpt": "DND RMDS award gives Canadian buyer evidence for Kraken's integration role; current acceptance is a separate question.",
+          "confidence": "moderate"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "10000000-0000-4000-8000-000000000001",
+        "slug": "kraken-robotics",
+        "matchMethods": [
+          "slug",
+          "name",
+          "website_domain"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-12T10:53:54.093745+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "10000000-0000-4000-8000-000000000001",
+          "slug": "kraken-robotics",
+          "name": "Kraken Robotics",
+          "legal_name": null,
+          "description": "See the seabed and underwater objects in high resolution from a towable survey system. Kraken Robotics develops synthetic-aperture sonar, subsea imaging, power, and robotic technology from Canada.",
+          "website_url": "https://www.krakenrobotics.com/",
+          "entity_kind": "company",
+          "organization_categories": [
+            "commercial_company",
+            "defence_supplier",
+            "dual_use"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": null,
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": null,
+          "profile_data": {
+            "publicContact": {
+              "contactPageUrl": "https://www.krakenrobotics.com/"
+            }
+          },
+          "publication_status": "published",
+          "source_confidence": "moderate",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-08-12T10:53:54.093745+00:00",
+          "published_at": "2026-04-24T00:00:00+00:00",
+          "created_at": "2026-07-15T22:27:18.512726+00:00",
+          "updated_at": "2026-08-12T10:53:54.093745+00:00",
+          "editorial_profile_version": "organization_editorial_profile_v1",
+          "current_activity": "On July 2, 2026, Kraken Robotics closed its approximately C$615 million acquisition of Covelya Group, adding Sonardyne, EIVA, Forcys, Voyis and Chelsea while establishing a broader Kraken Group governance structure.",
+          "current_activity_as_of": "2026-07-02",
+          "operating_context": "Kraken Robotics is a St. John's marine-technology group developing synthetic-aperture sonar, subsea batteries and underwater sensing systems, with acquired specialist subsidiaries retained as distinct operating businesses. Its published capability portfolio includes Synthetic-aperture sonar and subsea energy systems.",
+          "canadian_footprint": "Kraken Robotics has a documented Canadian operating presence in St. John's, Newfoundland and Labrador, Canada. Its public organization and capability evidence should be read at that location and national scope only where the cited sources explicitly support it.",
+          "reviewed_questions": [
+            {
+              "id": "kraken-robotics-first-conversation",
+              "context": "Kraken Robotics's public evidence establishes its current role and offering, but it does not answer every access, configuration, eligibility, maturity or buyer question needed for a first business-development conversation.",
+              "question": "Which Synthetic-aperture sonar and subsea energy systems configurations are commercially available now, what integration or qualification work is required, and which public customer or deployment evidence can be shared?",
+              "confidence": "moderate"
+            }
+          ],
+          "executive_relevance_summary": null
+        },
+        "locations": [
+          {
+            "id": "f6a1ab55-886d-481b-b6b5-55c1b032d2bc",
+            "organization_id": "10000000-0000-4000-8000-000000000001",
+            "location_id": "30000000-0000-4000-8000-000000000001",
+            "location_role": "headquarters",
+            "is_primary": true,
+            "publication_status": "published",
+            "created_at": "2026-07-15T22:27:18.512726+00:00",
+            "updated_at": "2026-07-15T22:27:18.512726+00:00"
+          }
+        ],
+        "capabilities": [
+          {
+            "id": "20000000-0000-4000-8000-000000000001",
+            "organization_id": "10000000-0000-4000-8000-000000000001",
+            "slug": "kraken-katfish-sas",
+            "name": "KATFISH Towed Synthetic Aperture Sonar",
+            "summary": "Tow a stabilized synthetic-aperture sonar to produce high-resolution seabed imagery and find subsea objects across wide survey areas.",
+            "capability_type": "Towed Synthetic Aperture Sonar",
+            "core_features": [
+              "High-resolution underwater survey",
+              "Seabed imaging",
+              "Subsea object detection"
+            ],
+            "technology_readiness_level": null,
+            "maturity": null,
+            "commercial_availability": null,
+            "defence_applications": [
+              "Underwater ISR",
+              "Route survey",
+              "Subsea infrastructure awareness"
+            ],
+            "novelty": [],
+            "technical_tags": [
+              "hardware",
+              "underwater_sensing",
+              "synthetic_aperture_sonar",
+              "maritime"
+            ],
+            "publication_status": "published",
+            "source_confidence": "high",
+            "last_reviewed_at": "2026-07-19T20:10:32.645435+00:00",
+            "published_at": "2026-04-24T00:00:00+00:00",
+            "created_at": "2026-07-15T22:27:18.512726+00:00",
+            "updated_at": "2026-07-19T20:10:32.645435+00:00"
+          },
+          {
+            "id": "57c7f489-be0b-4d17-bd87-df1ac02755b4",
+            "organization_id": "10000000-0000-4000-8000-000000000001",
+            "slug": "kraken-seapower-subsea-batteries",
+            "name": "SeaPower Subsea Batteries",
+            "summary": "Power long-endurance underwater vehicles with modular, pressure-tolerant lithium-ion battery systems designed for deep and complex subsea missions.",
+            "capability_type": "Pressure-tolerant subsea battery system",
+            "core_features": [
+              "Pressure-tolerant polymer encapsulation",
+              "Integrated battery management system",
+              "Modular and scalable architecture",
+              "Systems scalable from 1.8 kWh to 5 MWh"
+            ],
+            "technology_readiness_level": null,
+            "maturity": null,
+            "commercial_availability": null,
+            "defence_applications": [
+              "Long-endurance uncrewed underwater vehicles",
+              "Extra-large uncrewed underwater vehicles",
+              "Subsea energy storage and underwater missions"
+            ],
+            "novelty": [],
+            "technical_tags": [
+              "subsea batteries",
+              "underwater power",
+              "pressure tolerant",
+              "UUV endurance"
+            ],
+            "publication_status": "published",
+            "source_confidence": "high",
+            "last_reviewed_at": "2026-07-23T21:01:14.928169+00:00",
+            "published_at": "2026-07-23T21:01:14.928169+00:00",
+            "created_at": "2026-07-23T21:01:14.928169+00:00",
+            "updated_at": "2026-07-23T21:01:14.928169+00:00"
+          },
+          {
+            "id": "c0be4ba2-fe8f-4239-a7d9-8e14aad054c3",
+            "organization_id": "10000000-0000-4000-8000-000000000001",
+            "slug": "kraken-synthetic-aperture-sonar",
+            "name": "Kraken Synthetic Aperture Sonar",
+            "summary": "Integrate modular synthetic-aperture sonar payloads that combine high-resolution underwater imaging, bathymetric mapping and real-time processing across vehicle sizes.",
+            "capability_type": "Modular synthetic aperture sonar payload",
+            "core_features": [
+              "Simultaneous imaging and bathymetric mapping",
+              "Modular 60 cm, 120 cm and 180 cm arrays",
+              "Real-time full-swath processing",
+              "Constant resolution across the survey swath"
+            ],
+            "technology_readiness_level": null,
+            "maturity": null,
+            "commercial_availability": null,
+            "defence_applications": [
+              "Mine countermeasure operations",
+              "Critical underwater infrastructure inspection",
+              "Port and harbour security",
+              "Route survey and seabed mapping"
+            ],
+            "novelty": [],
+            "technical_tags": [
+              "synthetic aperture sonar",
+              "bathymetry",
+              "underwater sensing",
+              "mine countermeasures"
+            ],
+            "publication_status": "published",
+            "source_confidence": "high",
+            "last_reviewed_at": "2026-07-23T21:01:14.928169+00:00",
+            "published_at": "2026-07-23T21:01:14.928169+00:00",
+            "created_at": "2026-07-23T21:01:14.928169+00:00",
+            "updated_at": "2026-07-23T21:01:14.928169+00:00"
+          },
+          {
+            "id": "9521989c-d5b3-49a1-a9ce-2763c197489b",
+            "organization_id": "10000000-0000-4000-8000-000000000001",
+            "slug": "kraken-remote-minehunting-disposal-system",
+            "name": "Remote Minehunting and Disposal System integration",
+            "summary": "Kraken is the Canadian prime integrator for two RCN Remote Minehunting and Disposal System payloads combining REMUS AUVs, AquaPix synthetic-aperture sonar, SEAFOX mine-disposal vehicles and a containerized command centre.",
+            "capability_type": "Naval mine-countermeasure system or subsystem",
+            "core_features": [
+              "Two classes of autonomous underwater vehicles",
+              "AquaPix synthetic-aperture sonar",
+              "Mine-disposal vehicles",
+              "Containerized command, launch and recovery centre"
+            ],
+            "technology_readiness_level": null,
+            "maturity": null,
+            "commercial_availability": null,
+            "defence_applications": [
+              "Sea-mine detection and classification",
+              "Mine identification and neutralization",
+              "Standoff route clearance",
+              "Underwater domain awareness"
+            ],
+            "novelty": [],
+            "technical_tags": [
+              "mine countermeasures",
+              "naval mine warfare",
+              "underwater systems",
+              "MCM"
+            ],
+            "publication_status": "published",
+            "source_confidence": "high",
+            "last_reviewed_at": "2026-07-29T19:02:16.726688+00:00",
+            "published_at": "2026-07-29T19:02:16.726688+00:00",
+            "created_at": "2026-07-29T19:02:16.726688+00:00",
+            "updated_at": "2026-07-29T19:02:16.726688+00:00"
+          }
+        ],
+        "programParticipations": []
+      },
+      "operations": [
+        {
+          "operation": "set_field",
+          "operationId": "kraken-robotics-description",
+          "entityType": "organization",
+          "targetId": "10000000-0000-4000-8000-000000000001",
+          "field": "description",
+          "before": "See the seabed and underwater objects in high resolution from a towable survey system. Kraken Robotics develops synthetic-aperture sonar, subsea imaging, power, and robotic technology from Canada.",
+          "after": "Kraken Robotics supplies seabed imaging and subsea power systems to naval, uncrewed-vehicle and offshore users. Its Canadian operating business develops KATFISH towed synthetic-aperture sonar, vehicle-integrated SAS and SeaPower pressure-tolerant batteries, alongside subsea survey services. The July 2026 Covelya acquisition expanded the group; individual subsidiary products and delivery responsibilities remain distinct.",
+          "evidenceIds": [
+            "tnm-manual-20260906074301-evidence-001",
+            "tnm-manual-20260906074301-evidence-002",
+            "tnm-manual-20260906074301-evidence-003"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-001",
+                "tnm-manual-20260906074301-evidence-002",
+                "tnm-manual-20260906074301-evidence-003"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update description to distinguish KATFISH towed sonar, SeaPower batteries and the July 2026 Covelya group expansion."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "kraken-robotics-current-activity",
+          "entityType": "organization",
+          "targetId": "10000000-0000-4000-8000-000000000001",
+          "field": "current_activity",
+          "before": "On July 2, 2026, Kraken Robotics closed its approximately C$615 million acquisition of Covelya Group, adding Sonardyne, EIVA, Forcys, Voyis and Chelsea while establishing a broader Kraken Group governance structure.",
+          "after": "On August 27, 2026, Kraken reported Q2 revenue of C$27.3 million, excluding Covelya because that acquisition closed after the quarter. It also announced a long-term subsea-battery supply agreement with an unnamed XL-UUV developer. The release reported a C$1.5 million reversal of previously recognized integration-project revenue following a scope reduction.",
+          "evidenceIds": [
+            "tnm-manual-20260906074301-evidence-004"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-004"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update current activity to the August 27, 2026 standalone results and unnamed XL-UUV battery agreement."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "kraken-robotics-current-activity-as-of",
+          "entityType": "organization",
+          "targetId": "10000000-0000-4000-8000-000000000001",
+          "field": "current_activity_as_of",
+          "before": "2026-07-02",
+          "after": "2026-08-27",
+          "evidenceIds": [
+            "tnm-manual-20260906074301-evidence-005"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-005"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update current activity as of to 2026-08-27, the dated results announcement."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "kraken-robotics-operating-context",
+          "entityType": "organization",
+          "targetId": "10000000-0000-4000-8000-000000000001",
+          "field": "operating_context",
+          "before": "Kraken Robotics is a St. John's marine-technology group developing synthetic-aperture sonar, subsea batteries and underwater sensing systems, with acquired specialist subsidiaries retained as distinct operating businesses. Its published capability portfolio includes Synthetic-aperture sonar and subsea energy systems.",
+          "after": "KATFISH addresses towed seabed survey; Kraken SAS is a vehicle payload, while SeaPower supplies energy to underwater platforms. Integrators must distinguish the sonar's real-time and post-processed outputs and provide the required towing, launch/recovery, processing and storage arrangement. DND's RMDS award establishes a separate Canadian prime-integration role; it should not be read as proof that every product has the same qualification or delivery stage.",
+          "evidenceIds": [
+            "tnm-manual-20260906074301-evidence-006",
+            "tnm-manual-20260906074301-evidence-007"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-006",
+                "tnm-manual-20260906074301-evidence-007"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update operating context to distinguish KATFISH towing and topside processing from the RMDS prime-integration role."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "kraken-robotics-canadian-footprint",
+          "entityType": "organization",
+          "targetId": "10000000-0000-4000-8000-000000000001",
+          "field": "canadian_footprint",
+          "before": "Kraken Robotics has a documented Canadian operating presence in St. John's, Newfoundland and Labrador, Canada. Its public organization and capability evidence should be read at that location and national scope only where the cited sources explicitly support it.",
+          "after": "Kraken lists its headquarters at 189 Glencoe Drive, Mount Pearl, Newfoundland and Labrador, and a Nova Scotia location at 464 Cutler Avenue, Dartmouth. Its April 2026 results announcement reported completion of a new Nova Scotia battery manufacturing facility. The facility announcement supports a Canadian production footprint, but does not quantify current qualified output or available delivery slots.",
+          "evidenceIds": [
+            "tnm-manual-20260906074301-evidence-008",
+            "tnm-manual-20260906074301-evidence-009"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-008",
+                "tnm-manual-20260906074301-evidence-009"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update Canadian footprint with 189 Glencoe Drive, Mount Pearl and 464 Cutler Avenue, Dartmouth."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "kraken-robotics-disclosed-financing-summary",
+          "entityType": "organization",
+          "targetId": "10000000-0000-4000-8000-000000000001",
+          "field": "disclosed_financing_summary",
+          "before": null,
+          "after": "Note 22 of Kraken's June 2026 statements records approximately C$615 million consideration for Covelya: C$355 million cash on hand, C$125 million term debt and C$135 million shares, subject to closing adjustments. Separately, the Q2 MD&A records a C$6.911 million provision for probable costs in a supplier arbitration relating to a 2017 contract. These are acquisition financing and an estimated obligation, not new sales.",
+          "evidenceIds": [
+            "tnm-manual-20260906074301-evidence-010",
+            "tnm-manual-20260906074301-evidence-011"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-010",
+                "tnm-manual-20260906074301-evidence-011"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Add disclosed financing summary with C$125 million term debt and the C$6.911 million supplier-arbitration provision."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "kraken-robotics-public-contact",
+          "entityType": "organization",
+          "targetId": "10000000-0000-4000-8000-000000000001",
+          "field": "public_contact",
+          "before": {
+            "contactPageUrl": "https://www.krakenrobotics.com/",
+            "publicEmail": null,
+            "publicPhone": null,
+            "linkedInUrl": null
+          },
+          "after": {
+            "contactPageUrl": "https://www.krakenrobotics.com/contact/",
+            "publicEmail": "sales@krakenrobotics.com",
+            "publicPhone": "+1 709 757 5757",
+            "linkedInUrl": null
+          },
+          "evidenceIds": [
+            "tnm-manual-20260906074301-evidence-012",
+            "tnm-manual-20260906074301-evidence-013",
+            "tnm-manual-20260906074301-evidence-014",
+            "tnm-manual-20260906074301-evidence-015"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after.contactPageUrl",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-012"
+              ]
+            },
+            {
+              "fieldPath": "after.publicEmail",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-013"
+              ]
+            },
+            {
+              "fieldPath": "after.publicPhone",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-014"
+              ]
+            },
+            {
+              "fieldPath": "after.linkedInUrl",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-015"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update public contact with sales@krakenrobotics.com and the official sales enquiry page."
+        },
+        {
+          "operation": "set_profile_field",
+          "operationId": "kraken-robotics-portfoliosummary",
+          "entityType": "organization",
+          "targetId": "10000000-0000-4000-8000-000000000001",
+          "profileField": "portfolioSummary",
+          "before": null,
+          "after": "KATFISH's published operating envelope is 4–10 knots, 5–30 m survey altitude and a 300 m maximum depth rating. Its fact sheet separates 3 cm real-time SAS from 2 cm post-processed imagery, lists GeoTIFF/XTF and other outputs, and specifies a topside processing rack, 28 TB storage and gigabit Ethernet. SeaPower's brochure describes a 6000 m rating, per-cell temperature/voltage monitoring and software-controlled power; it says designed for compliance with named standards, not that every supplied configuration holds certification.",
+          "evidenceIds": [
+            "tnm-manual-20260906074301-evidence-016",
+            "tnm-manual-20260906074301-evidence-017"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-016",
+                "tnm-manual-20260906074301-evidence-017"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Add portfolioSummary with 3 cm real-time versus 2 cm processed KATFISH imagery and SeaPower configuration limits."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "kraken-robotics-reviewed-questions",
+          "entityType": "organization",
+          "targetId": "10000000-0000-4000-8000-000000000001",
+          "field": "reviewed_questions",
+          "before": [
+            {
+              "id": "kraken-robotics-first-conversation",
+              "context": "Kraken Robotics's public evidence establishes its current role and offering, but it does not answer every access, configuration, eligibility, maturity or buyer question needed for a first business-development conversation.",
+              "question": "Which Synthetic-aperture sonar and subsea energy systems configurations are commercially available now, what integration or qualification work is required, and which public customer or deployment evidence can be shared?",
+              "confidence": "moderate"
+            }
+          ],
+          "after": [
+            {
+              "id": "kraken-rmds-scope",
+              "question": "Which RMDS deliverables and support obligations remain after the June 2026 amendment, and does that amendment relate to the Q2 integration-project revenue reversal?",
+              "context": "CanadaBuys records a C$12,154,000.20 reduction on W8472-105270/001/QF with a 2028 expiry. Kraken separately reports a C$1.5 million revenue reversal on an unnamed integration project; the reviewed documents do not explicitly connect them.",
+              "confidence": "moderate"
+            },
+            {
+              "id": "kraken-katfish-data-path",
+              "question": "For the proposed vessel and survey speed, what real-time imagery, post-processing latency, storage and launch/recovery configuration will the supplied KATFISH system deliver?",
+              "context": "The fact sheet separates 3 cm real-time imagery from 2 cm post-processed imagery and specifies 330 GB/hr dual-sided data, a topside processing rack and optional launch/recovery equipment. These distinctions affect vessel and data-system integration.",
+              "confidence": "moderate"
+            }
+          ],
+          "evidenceIds": [
+            "tnm-manual-20260906074301-evidence-018",
+            "tnm-manual-20260906074301-evidence-019",
+            "tnm-manual-20260906074301-evidence-020",
+            "tnm-manual-20260906074301-evidence-021",
+            "tnm-manual-20260906074301-evidence-022",
+            "tnm-manual-20260906074301-evidence-023",
+            "tnm-manual-20260906074301-evidence-024",
+            "tnm-manual-20260906074301-evidence-025",
+            "tnm-manual-20260906074301-evidence-026",
+            "tnm-manual-20260906074301-evidence-027",
+            "tnm-manual-20260906074301-evidence-028",
+            "tnm-manual-20260906074301-evidence-029",
+            "tnm-manual-20260906074301-evidence-030",
+            "tnm-manual-20260906074301-evidence-031",
+            "tnm-manual-20260906074301-evidence-032",
+            "tnm-manual-20260906074301-evidence-033",
+            "tnm-manual-20260906074301-evidence-034",
+            "tnm-manual-20260906074301-evidence-035",
+            "tnm-manual-20260906074301-evidence-036",
+            "tnm-manual-20260906074301-evidence-037",
+            "tnm-manual-20260906074301-evidence-038",
+            "tnm-manual-20260906074301-evidence-039",
+            "tnm-manual-20260906074301-evidence-040",
+            "tnm-manual-20260906074301-evidence-041"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after.0.id",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-018",
+                "tnm-manual-20260906074301-evidence-019",
+                "tnm-manual-20260906074301-evidence-020"
+              ]
+            },
+            {
+              "fieldPath": "after.0.question",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-021",
+                "tnm-manual-20260906074301-evidence-022",
+                "tnm-manual-20260906074301-evidence-023"
+              ]
+            },
+            {
+              "fieldPath": "after.0.context",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-024",
+                "tnm-manual-20260906074301-evidence-025",
+                "tnm-manual-20260906074301-evidence-026"
+              ]
+            },
+            {
+              "fieldPath": "after.0.confidence",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-027",
+                "tnm-manual-20260906074301-evidence-028",
+                "tnm-manual-20260906074301-evidence-029"
+              ]
+            },
+            {
+              "fieldPath": "after.1.id",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-030",
+                "tnm-manual-20260906074301-evidence-031",
+                "tnm-manual-20260906074301-evidence-032"
+              ]
+            },
+            {
+              "fieldPath": "after.1.question",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-033",
+                "tnm-manual-20260906074301-evidence-034",
+                "tnm-manual-20260906074301-evidence-035"
+              ]
+            },
+            {
+              "fieldPath": "after.1.context",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-036",
+                "tnm-manual-20260906074301-evidence-037",
+                "tnm-manual-20260906074301-evidence-038"
+              ]
+            },
+            {
+              "fieldPath": "after.1.confidence",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-039",
+                "tnm-manual-20260906074301-evidence-040",
+                "tnm-manual-20260906074301-evidence-041"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Replace reviewed questions with the W8472-105270/001/QF scope reconciliation and KATFISH data-path decision."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "kraken-robotics-executive-relevance-summary",
+          "entityType": "organization",
+          "targetId": "10000000-0000-4000-8000-000000000001",
+          "field": "executive_relevance_summary",
+          "before": null,
+          "after": "Kraken offers a Canadian route to subsea imaging, battery integration and naval-system delivery, with DND buyer evidence for RMDS. The useful next conversation is configuration-specific: distinguish KATFISH real-time outputs from processed imagery, and verify power and launch/recovery interfaces. Its expanded group scope and Q2 financial obligations also make delivery responsibility and current contract scope worth checking before a supplier decision.",
+          "evidenceIds": [
+            "tnm-manual-20260906074301-evidence-092",
+            "tnm-manual-20260906074301-evidence-093"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-092",
+                "tnm-manual-20260906074301-evidence-093"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Add executive relevance summary centered on KATFISH configuration and RMDS delivery responsibility."
+        }
+      ],
+      "sourceChannels": [
+        "official_company",
+        "government_procurement"
+      ],
+      "signalIds": [
+        "tnm-manual-20260906074301-kraken-q2-signal",
+        "tnm-manual-20260906074301-kraken-amendment-signal"
+      ],
+      "corroboration": [],
+      "executiveRelevanceSummary": "Kraken offers a Canadian route to subsea imaging, battery integration and naval-system delivery, with DND buyer evidence for RMDS. The useful next conversation is configuration-specific: distinguish KATFISH real-time outputs from processed imagery, and verify power and launch/recovery interfaces. Its expanded group scope and Q2 financial obligations also make delivery responsibility and current contract scope worth checking before a supplier decision."
+    },
+    {
+      "schemaVersion": "organization_refresh_bundle_v2",
+      "candidateKind": "organization_refresh_bundle",
+      "candidateId": "tnm-manual-20260906074301-cove",
+      "sourceLeadIds": [
+        "tnm-manual-20260906074301-cove-lead"
+      ],
+      "confidence": "moderate",
+      "reviewStatus": "candidate_pending",
+      "reviewerRationale": "Coverage value: COVE operating context now identifies Stella Maris test requirements and DRDC experimentation roles, helping companies decide which access conversation to pursue. Evidence: 8 sources from COVE, Department of National Defence and Ultra Maritime establish the test service, DIANA operator role, funding announcement and Communitech collaboration. Mission/Public Need read: No new mission relationship is created; Stella Maris test requirements and the Sea Tracker experimentation pathway are access evidence rather than proof of a technology fit. Unknowns: Project-specific funding and trial access remain conditional, while the historical Start-Up Yard intake is not confirmed open. Reviewer action: Review the operating context and September 2, 2026 current activity with the Communitech relationship, preserving the planned-event and intake limits.",
+      "reviewTier": "amber",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "The September 14–18 Waterloo Tech Week activity is planned; the September 2 collaboration does not establish completed adoption, funding or procurement outcomes.",
+        "Stella Maris funding is conditional and project-specific; published material does not give a tariff, confirmed slot, interface acceptance or classification/security approval for a particular deployment.",
+        "Sea Tracker is supplied by Ultra Maritime for DRDC experimentation; COVE collaboration does not establish ownership of the sonar product or unrestricted third-party access to defence trials.",
+        "The old Start-Up Yard program URL returns 404 and the current service index labels Incubators coming soon; verify current intake before routing a company to the historical participation record."
+      ],
+      "duplicateCheck": {
+        "status": "clear",
+        "checkedAt": "2026-09-06T07:45:14.401907Z",
+        "methods": [
+          "canonical_url",
+          "website_domain",
+          "slug",
+          "legal_name",
+          "alias",
+          "fuzzy_name"
+        ],
+        "matches": [],
+        "note": "Intentional existing target resolved by exact published ID and slug in the complete 585-organization snapshot; no active Review overlap or other conflicting identity was found."
+      },
+      "sources": [
+        {
+          "id": "cove-stella",
+          "title": "COVE Stella Maris test infrastructure and project inquiry",
+          "url": "https://covesolutions.com/programs-services/stella-maris-testing-solution/",
+          "publisher": "COVE",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-09-06T08:00:31.916859Z",
+          "locator": "Capabilities, funding caveat and testing inquiry form",
+          "summary": "The service provides subsea/dockside infrastructure, shoreside operations and a data portal; applicants supply test objectives, interfaces, duration and dates."
+        },
+        {
+          "id": "dnd-diana",
+          "title": "DND describes Canada participation in NATO DIANA",
+          "url": "https://www.canada.ca/en/department-national-defence/maple-leaf/defence/2026/03/canada-advances-defence-innovation-through-nato-diana.html",
+          "publisher": "Department of National Defence",
+          "sourceKind": "government_service_page",
+          "publishedAt": null,
+          "accessedAt": "2026-09-06T08:00:31.916859Z",
+          "locator": "March 12, 2026; selection, curriculum and COVE location",
+          "summary": "DND independently identifies the Dartmouth accelerator site and explains selection, six-month acceleration and the separate allied adoption service."
+        },
+        {
+          "id": "cove-contact",
+          "title": "COVE Dartmouth office and program enquiry route",
+          "url": "https://covesolutions.com/contact/",
+          "publisher": "COVE",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-09-06T08:00:31.916859Z",
+          "locator": "Program and partnership enquiry form; footer office and phone",
+          "summary": "COVE publishes a Dartmouth address, phone and enquiry form with a program-information purpose."
+        },
+        {
+          "id": "cove-communitech",
+          "title": "COVE and Communitech announce dual-use collaboration",
+          "url": "https://covesolutions.com/news/cove-and-communitech-join-forces-to-accelerate-canadas-dual-use-technology-innovation-ecosystem/",
+          "publisher": "COVE",
+          "sourceKind": "official_company_news",
+          "publishedAt": null,
+          "accessedAt": "2026-09-06T08:00:31.916859Z",
+          "locator": "September 2, 2026; opening, collaboration and planned Waterloo Tech Week event",
+          "summary": "COVE announces collaboration connecting Atlantic testing and Waterloo technology communities, with a future event rather than completed adoption outcomes."
+        },
+        {
+          "id": "ultra-seatracker",
+          "title": "Ultra Maritime Sea Tracker for DRDC experimentation",
+          "url": "https://umaritime.com/ultra-maritime-delivers-sea-tracker/",
+          "publisher": "Ultra Maritime",
+          "sourceKind": "official_company_news",
+          "publishedAt": null,
+          "accessedAt": "2026-09-06T08:00:31.916859Z",
+          "locator": "December 3, 2025; providing modular solution to DRDC",
+          "summary": "The supplier identifies DRDC as the experimentation recipient and COVE and ACOA as collaborators; Sea Tracker is Ultra Maritime equipment, not a COVE-owned sonar product."
+        },
+        {
+          "id": "cove-seatracker",
+          "title": "COVE announces at-sea underwater sensing test collaboration",
+          "url": "https://coveocean.com/news/cove-leads-new-at-sea-testing-capability-to-advance-canadas-maritime-security-innovation-and-dual-use-technology-development/",
+          "publisher": "COVE",
+          "sourceKind": "official_company_news",
+          "publishedAt": null,
+          "accessedAt": "2026-09-06T08:00:31.916859Z",
+          "locator": "December 4, 2025; funding and partner roles",
+          "summary": "COVE describes an at-sea testing collaboration with DRDC, Ultra Maritime and ACOA and announces C$9,690,773 federal project funding."
+        },
+        {
+          "id": "cove-diana",
+          "title": "NATO DIANA Accelerator at COVE",
+          "url": "https://coveocean.com/nato-diana-accelerator/",
+          "publisher": "COVE",
+          "sourceKind": "incubator_program_directory",
+          "publishedAt": null,
+          "accessedAt": "2026-09-06T08:00:31.916859Z",
+          "locator": "Official accelerator role and facilities; dynamic network counts omitted",
+          "summary": "COVE identifies itself as an accelerator site giving selected innovators facilities, mentorship and defence-network access; no universal eligibility is inferred."
+        },
+        {
+          "id": "cove-program-index",
+          "title": "COVE current programs and services index",
+          "url": "https://covesolutions.com/programs-services/",
+          "publisher": "COVE",
+          "sourceKind": "official_organization_profile",
+          "publishedAt": null,
+          "accessedAt": "2026-09-06T08:00:31.916859Z",
+          "locator": "Incubate + Accelerate; Incubators marked Coming soon",
+          "summary": "Current service index advertises testing and acceleration but labels incubation coming soon; the former Start-Up Yard URL returns 404, without proving closure."
+        }
+      ],
+      "fieldEvidence": [
+        {
+          "id": "tnm-manual-20260906074301-evidence-042",
+          "sourceId": "cove-stella",
+          "fieldPath": "operations.cove-description.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "COVE provides Stella Maris subsea/dockside testing with shoreside operations and a data portal.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-043",
+          "sourceId": "dnd-diana",
+          "fieldPath": "operations.cove-description.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "DND identifies COVE as a DIANA curriculum site for innovators selected through the program process.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-044",
+          "sourceId": "cove-contact",
+          "fieldPath": "operations.cove-website-url.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "COVE publishes its Dartmouth office and contact form at https://covesolutions.com/contact/.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-045",
+          "sourceId": "cove-communitech",
+          "fieldPath": "operations.cove-current-activity.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "COVE announced its Communitech collaboration on September 2, 2026, including planned Waterloo Tech Week activity on September 14–18.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-046",
+          "sourceId": "cove-communitech",
+          "fieldPath": "operations.cove-current-activity-as-of.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The COVE and Communitech collaboration announcement is dated September 2, 2026.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-047",
+          "sourceId": "cove-stella",
+          "fieldPath": "operations.cove-operating-context.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The Stella Maris inquiry requests test objectives, interfaces, deployment requirements, duration and dates; funding may be available to eligible Canadian start-ups and SMEs.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-048",
+          "sourceId": "dnd-diana",
+          "fieldPath": "operations.cove-operating-context.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "DIANA uses selection before its six-month accelerator curriculum, including delivery at COVE.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-049",
+          "sourceId": "ultra-seatracker",
+          "fieldPath": "operations.cove-operating-context.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "Ultra Maritime says it is providing Sea Tracker to DRDC for ASW experimentation through collaboration with COVE and ACOA.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-050",
+          "sourceId": "cove-contact",
+          "fieldPath": "operations.cove-canadian-footprint.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "COVE publishes its office address as 27 Parker Street, Dartmouth, Nova Scotia B2Y 4T5.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-051",
+          "sourceId": "dnd-diana",
+          "fieldPath": "operations.cove-canadian-footprint.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "DND locates the COVE DIANA accelerator in Dartmouth, Nova Scotia.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-052",
+          "sourceId": "cove-communitech",
+          "fieldPath": "operations.cove-canadian-footprint.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "The September 2 announcement connects Halifax-based COVE with Communitech in Waterloo Region through collaboration.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-053",
+          "sourceId": "cove-contact",
+          "fieldPath": "operations.cove-public-contact.after.contactPageUrl",
+          "claimClass": "source_backed",
+          "excerpt": "COVE invites program information and partnership enquiries through https://covesolutions.com/contact/.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-054",
+          "sourceId": "cove-contact",
+          "fieldPath": "operations.cove-public-contact.after.publicEmail",
+          "claimClass": "source_backed",
+          "excerpt": "The official enquiry route is retained; no additional public value is asserted for this optional contact leaf.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-055",
+          "sourceId": "cove-contact",
+          "fieldPath": "operations.cove-public-contact.after.publicPhone",
+          "claimClass": "source_backed",
+          "excerpt": "COVE publishes the phone number 902 334 2683 beside its Dartmouth address.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-056",
+          "sourceId": "cove-contact",
+          "fieldPath": "operations.cove-public-contact.after.linkedInUrl",
+          "claimClass": "source_backed",
+          "excerpt": "The official enquiry route is retained; no additional public value is asserted for this optional contact leaf.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-057",
+          "sourceId": "cove-seatracker",
+          "fieldPath": "operations.cove-disclosed-financing-summary.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "COVE reported a total of C$9,690,773 federal funding toward the at-sea testing project on December 4, 2025.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-058",
+          "sourceId": "cove-communitech",
+          "fieldPath": "operations.cove-child-8.value.relatedOrganizationName",
+          "claimClass": "source_backed",
+          "excerpt": "The September 2, 2026 announcement names Communitech as COVE's collaborator in linking Atlantic testing and Waterloo technology networks.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-059",
+          "sourceId": "cove-communitech",
+          "fieldPath": "operations.cove-child-8.value.relatedOrganizationSlug",
+          "claimClass": "source_backed",
+          "excerpt": "The September 2, 2026 announcement names Communitech as COVE's collaborator in linking Atlantic testing and Waterloo technology networks.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-060",
+          "sourceId": "cove-communitech",
+          "fieldPath": "operations.cove-child-8.value.relationshipType",
+          "claimClass": "source_backed",
+          "excerpt": "The September 2, 2026 announcement names Communitech as COVE's collaborator in linking Atlantic testing and Waterloo technology networks.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-061",
+          "sourceId": "cove-communitech",
+          "fieldPath": "operations.cove-child-8.value.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "The September 2, 2026 announcement names Communitech as COVE's collaborator in linking Atlantic testing and Waterloo technology networks.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-062",
+          "sourceId": "cove-diana",
+          "fieldPath": "operations.cove-child-9.value.program.slug",
+          "claimClass": "source_backed",
+          "excerpt": "COVE identifies itself as an official NATO DIANA accelerator providing mentorship, facilities and defence-network connections.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-063",
+          "sourceId": "cove-diana",
+          "fieldPath": "operations.cove-child-9.value.program.name",
+          "claimClass": "source_backed",
+          "excerpt": "COVE identifies itself as an official NATO DIANA accelerator providing mentorship, facilities and defence-network connections.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-064",
+          "sourceId": "cove-diana",
+          "fieldPath": "operations.cove-child-9.value.program.programType",
+          "claimClass": "source_backed",
+          "excerpt": "COVE identifies itself as an official NATO DIANA accelerator providing mentorship, facilities and defence-network connections.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-065",
+          "sourceId": "cove-diana",
+          "fieldPath": "operations.cove-child-9.value.program.operatorName",
+          "claimClass": "source_backed",
+          "excerpt": "COVE identifies itself as an official NATO DIANA accelerator providing mentorship, facilities and defence-network connections.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-066",
+          "sourceId": "cove-diana",
+          "fieldPath": "operations.cove-child-9.value.program.websiteUrl",
+          "claimClass": "source_backed",
+          "excerpt": "COVE identifies itself as an official NATO DIANA accelerator providing mentorship, facilities and defence-network connections.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-067",
+          "sourceId": "cove-diana",
+          "fieldPath": "operations.cove-child-9.value.program.summary",
+          "claimClass": "source_backed",
+          "excerpt": "COVE identifies itself as an official NATO DIANA accelerator providing mentorship, facilities and defence-network connections.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-068",
+          "sourceId": "cove-diana",
+          "fieldPath": "operations.cove-child-9.value.participation.participationType",
+          "claimClass": "source_backed",
+          "excerpt": "COVE identifies itself as an official NATO DIANA accelerator providing mentorship, facilities and defence-network connections.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-069",
+          "sourceId": "cove-diana",
+          "fieldPath": "operations.cove-child-9.value.participation.cohortLabel",
+          "claimClass": "source_backed",
+          "excerpt": "COVE identifies itself as an official NATO DIANA accelerator providing mentorship, facilities and defence-network connections.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-070",
+          "sourceId": "cove-diana",
+          "fieldPath": "operations.cove-child-9.value.participation.publicSummary",
+          "claimClass": "source_backed",
+          "excerpt": "COVE identifies itself as an official NATO DIANA accelerator providing mentorship, facilities and defence-network connections.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-071",
+          "sourceId": "dnd-diana",
+          "fieldPath": "operations.cove-child-9.value.participation.lifecycleStage",
+          "claimClass": "source_backed",
+          "excerpt": "DND's March 12, 2026 account identifies COVE in Dartmouth among sites delivering the accelerator curriculum.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-072",
+          "sourceId": "cove-diana",
+          "fieldPath": "operations.cove-child-9.value.participation.announcedOn",
+          "claimClass": "source_backed",
+          "excerpt": "COVE identifies itself as an official NATO DIANA accelerator providing mentorship, facilities and defence-network connections.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-073",
+          "sourceId": "cove-diana",
+          "fieldPath": "operations.cove-child-9.value.participation.startedOn",
+          "claimClass": "source_backed",
+          "excerpt": "COVE identifies itself as an official NATO DIANA accelerator providing mentorship, facilities and defence-network connections.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-074",
+          "sourceId": "cove-diana",
+          "fieldPath": "operations.cove-child-9.value.participation.endedOn",
+          "claimClass": "source_backed",
+          "excerpt": "COVE identifies itself as an official NATO DIANA accelerator providing mentorship, facilities and defence-network connections.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-075",
+          "sourceId": "cove-stella",
+          "fieldPath": "operations.cove-reviewed-questions.after.0.id",
+          "claimClass": "derived",
+          "excerpt": "Stella Maris asks applicants to define interfaces, objectives and testing dates before a project arrangement; funding is conditional.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-076",
+          "sourceId": "ultra-seatracker",
+          "fieldPath": "operations.cove-reviewed-questions.after.0.id",
+          "claimClass": "derived",
+          "excerpt": "Ultra Maritime provides Sea Tracker to DRDC for experimentation with COVE and ACOA collaboration.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-077",
+          "sourceId": "cove-stella",
+          "fieldPath": "operations.cove-reviewed-questions.after.0.question",
+          "claimClass": "derived",
+          "excerpt": "Stella Maris asks applicants to define interfaces, objectives and testing dates before a project arrangement; funding is conditional.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-078",
+          "sourceId": "ultra-seatracker",
+          "fieldPath": "operations.cove-reviewed-questions.after.0.question",
+          "claimClass": "derived",
+          "excerpt": "Ultra Maritime provides Sea Tracker to DRDC for experimentation with COVE and ACOA collaboration.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-079",
+          "sourceId": "cove-stella",
+          "fieldPath": "operations.cove-reviewed-questions.after.0.context",
+          "claimClass": "derived",
+          "excerpt": "Stella Maris asks applicants to define interfaces, objectives and testing dates before a project arrangement; funding is conditional.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-080",
+          "sourceId": "ultra-seatracker",
+          "fieldPath": "operations.cove-reviewed-questions.after.0.context",
+          "claimClass": "derived",
+          "excerpt": "Ultra Maritime provides Sea Tracker to DRDC for experimentation with COVE and ACOA collaboration.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-081",
+          "sourceId": "cove-stella",
+          "fieldPath": "operations.cove-reviewed-questions.after.0.confidence",
+          "claimClass": "derived",
+          "excerpt": "Stella Maris asks applicants to define interfaces, objectives and testing dates before a project arrangement; funding is conditional.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-082",
+          "sourceId": "ultra-seatracker",
+          "fieldPath": "operations.cove-reviewed-questions.after.0.confidence",
+          "claimClass": "derived",
+          "excerpt": "Ultra Maritime provides Sea Tracker to DRDC for experimentation with COVE and ACOA collaboration.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-083",
+          "sourceId": "cove-stella",
+          "fieldPath": "operations.cove-reviewed-questions.after.1.id",
+          "claimClass": "derived",
+          "excerpt": "Stella Maris asks applicants to define interfaces, objectives and testing dates before a project arrangement; funding is conditional.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-084",
+          "sourceId": "ultra-seatracker",
+          "fieldPath": "operations.cove-reviewed-questions.after.1.id",
+          "claimClass": "derived",
+          "excerpt": "Ultra Maritime provides Sea Tracker to DRDC for experimentation with COVE and ACOA collaboration.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-085",
+          "sourceId": "cove-stella",
+          "fieldPath": "operations.cove-reviewed-questions.after.1.question",
+          "claimClass": "derived",
+          "excerpt": "Stella Maris asks applicants to define interfaces, objectives and testing dates before a project arrangement; funding is conditional.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-086",
+          "sourceId": "ultra-seatracker",
+          "fieldPath": "operations.cove-reviewed-questions.after.1.question",
+          "claimClass": "derived",
+          "excerpt": "Ultra Maritime provides Sea Tracker to DRDC for experimentation with COVE and ACOA collaboration.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-087",
+          "sourceId": "cove-stella",
+          "fieldPath": "operations.cove-reviewed-questions.after.1.context",
+          "claimClass": "derived",
+          "excerpt": "Stella Maris asks applicants to define interfaces, objectives and testing dates before a project arrangement; funding is conditional.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-088",
+          "sourceId": "ultra-seatracker",
+          "fieldPath": "operations.cove-reviewed-questions.after.1.context",
+          "claimClass": "derived",
+          "excerpt": "Ultra Maritime provides Sea Tracker to DRDC for experimentation with COVE and ACOA collaboration.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-089",
+          "sourceId": "cove-stella",
+          "fieldPath": "operations.cove-reviewed-questions.after.1.confidence",
+          "claimClass": "derived",
+          "excerpt": "Stella Maris asks applicants to define interfaces, objectives and testing dates before a project arrangement; funding is conditional.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-090",
+          "sourceId": "ultra-seatracker",
+          "fieldPath": "operations.cove-reviewed-questions.after.1.confidence",
+          "claimClass": "derived",
+          "excerpt": "Ultra Maritime provides Sea Tracker to DRDC for experimentation with COVE and ACOA collaboration.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-091",
+          "sourceId": "cove-program-index",
+          "fieldPath": "operations.cove-description.after.value",
+          "claimClass": "source_backed",
+          "excerpt": "COVE's current service index labels incubation as coming soon rather than publishing an open intake route.",
+          "confidence": "high"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-094",
+          "sourceId": "cove-stella",
+          "fieldPath": "executiveRelevanceSummary",
+          "claimClass": "derived",
+          "excerpt": "Stella Maris offers a project-specific inquiry path suitable for scoping a marine technology trial.",
+          "confidence": "moderate"
+        },
+        {
+          "id": "tnm-manual-20260906074301-evidence-095",
+          "sourceId": "dnd-diana",
+          "fieldPath": "executiveRelevanceSummary",
+          "claimClass": "derived",
+          "excerpt": "DND identifies COVE accelerator delivery; this supports a selected-program conversation rather than automatic procurement access.",
+          "confidence": "moderate"
+        }
+      ],
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "5f376a4e-3e39-4633-9b6c-c88afac8b418",
+        "slug": "cove",
+        "matchMethods": [
+          "slug",
+          "name",
+          "website_domain"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-11T11:55:37.584299+00:00"
+      },
+      "beforeRecord": {
+        "organization": {
+          "id": "5f376a4e-3e39-4633-9b6c-c88afac8b418",
+          "slug": "cove",
+          "name": "COVE",
+          "legal_name": null,
+          "description": "Move an ocean-technology idea closer to a customer, trial, or investment. COVE connects companies with waterfront facilities, shared equipment, programs, mentors, and marine-sector expertise in Nova Scotia.",
+          "website_url": "https://coveocean.com/",
+          "entity_kind": "incubator",
+          "organization_categories": [
+            "ocean_technology",
+            "cluster_operator"
+          ],
+          "founded_year": null,
+          "employee_range": null,
+          "company_stage": null,
+          "ownership": null,
+          "commercial_status": null,
+          "disclosed_financing_summary": null,
+          "defence_posture": null,
+          "dual_use_posture": null,
+          "profile_data": {
+            "sectorFocus": "Early-stage ocean-technology commercialization and access to marine-sector infrastructure and expertise.",
+            "publicContact": {
+              "contactPageUrl": "https://coveocean.com/"
+            }
+          },
+          "publication_status": "published",
+          "source_confidence": "moderate",
+          "freshness_status": "current",
+          "last_reviewed_at": "2026-08-11T11:55:37.584299+00:00",
+          "published_at": "2026-07-19T10:37:13.260461+00:00",
+          "created_at": "2026-07-19T10:37:13.260461+00:00",
+          "updated_at": "2026-08-11T11:55:37.584299+00:00",
+          "editorial_profile_version": "organization_editorial_profile_v1",
+          "current_activity": null,
+          "current_activity_as_of": null,
+          "operating_context": "Nova Scotia ocean-technology incubator and ecosystem hub supporting early-stage commercialization through programs, incubation space, services, shared equipment, domain expertise, mentoring, and sector connections. Its published program portfolio includes COVE Start-Up Yard.",
+          "canadian_footprint": "COVE has a documented Canadian operating presence in Dartmouth, Nova Scotia, Canada. Its public organization and capability evidence should be read at that location and national scope only where the cited sources explicitly support it.",
+          "reviewed_questions": [
+            {
+              "id": "cove-first-conversation",
+              "context": "COVE's public evidence establishes its current role and offering, but it does not answer every access, configuration, eligibility, maturity or buyer question needed for a first business-development conversation.",
+              "question": "Which COVE Start-Up Yard is the best fit now, what eligibility and geography rules apply, and which public contact owns the first conversation?",
+              "confidence": "moderate"
+            }
+          ],
+          "executive_relevance_summary": null
+        },
+        "locations": [
+          {
+            "id": "4c6b8be8-cf1f-46a2-b830-9316a738d065",
+            "organization_id": "5f376a4e-3e39-4633-9b6c-c88afac8b418",
+            "location_id": "e5e9e0e7-6840-4ab7-97ed-0f3817b84b9b",
+            "location_role": "headquarters",
+            "is_primary": true,
+            "publication_status": "published",
+            "created_at": "2026-07-19T10:37:13.260461+00:00",
+            "updated_at": "2026-07-19T10:37:13.260461+00:00"
+          }
+        ],
+        "capabilities": [],
+        "programParticipations": [
+          {
+            "id": "01885f2c-4907-473f-95df-c672ab59f0b9",
+            "organization_id": "5f376a4e-3e39-4633-9b6c-c88afac8b418",
+            "program_id": "8d3bdae8-c56d-4434-8a70-c9f3da439204",
+            "participation_type": "operator",
+            "cohort_label": null,
+            "started_on": null,
+            "ended_on": null,
+            "publication_status": "published",
+            "created_at": "2026-07-19T10:37:13.260461+00:00",
+            "updated_at": "2026-08-09T22:28:47.759461+00:00",
+            "public_summary": "Incubation program and facility helping early-stage ocean-technology companies commercialize through workspace, services, funding access, shared equipment, technical expertise, mentorship, and community connections.",
+            "lifecycle_stage": null,
+            "announced_on": null,
+            "external_identifiers": []
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operation": "set_field",
+          "operationId": "cove-description",
+          "entityType": "organization",
+          "targetId": "5f376a4e-3e39-4633-9b6c-c88afac8b418",
+          "field": "description",
+          "before": "Move an ocean-technology idea closer to a customer, trial, or investment. COVE connects companies with waterfront facilities, shared equipment, programs, mentors, and marine-sector expertise in Nova Scotia.",
+          "after": "COVE helps marine and dual-use technology companies test equipment, develop commercial pathways and connect with partners from its Dartmouth waterfront base. Stella Maris offers subsea and dockside testing, shoreside working facilities and a data portal. COVE is also a NATO DIANA accelerator site serving selected innovators. Its current service index labels incubation as coming soon, so the historical Start-Up Yard listing is not an established current intake route.",
+          "evidenceIds": [
+            "tnm-manual-20260906074301-evidence-042",
+            "tnm-manual-20260906074301-evidence-043",
+            "tnm-manual-20260906074301-evidence-091"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-042",
+                "tnm-manual-20260906074301-evidence-043",
+                "tnm-manual-20260906074301-evidence-091"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update description to make Stella Maris subsea testing and the selected-innovator DIANA route concrete."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "cove-website-url",
+          "entityType": "organization",
+          "targetId": "5f376a4e-3e39-4633-9b6c-c88afac8b418",
+          "field": "website_url",
+          "before": "https://coveocean.com/",
+          "after": "https://covesolutions.com/",
+          "evidenceIds": [
+            "tnm-manual-20260906074301-evidence-044"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-044"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update website URL to https://covesolutions.com/, the official site linked from existing COVE pages."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "cove-current-activity",
+          "entityType": "organization",
+          "targetId": "5f376a4e-3e39-4633-9b6c-c88afac8b418",
+          "field": "current_activity",
+          "before": null,
+          "after": "On September 2, 2026, COVE announced collaboration with Communitech to connect Atlantic operational testing and defence-end-user access with Waterloo expertise in AI, quantum and advanced technology. The organizations plan to co-host activity during Waterloo Tech Week, September 14–18, 2026, involving DIANA innovators, investors and industry participants.",
+          "evidenceIds": [
+            "tnm-manual-20260906074301-evidence-045"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-045"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Add current activity for the September 2, 2026 Communitech collaboration and planned Waterloo Tech Week activity."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "cove-current-activity-as-of",
+          "entityType": "organization",
+          "targetId": "5f376a4e-3e39-4633-9b6c-c88afac8b418",
+          "field": "current_activity_as_of",
+          "before": null,
+          "after": "2026-09-02",
+          "evidenceIds": [
+            "tnm-manual-20260906074301-evidence-046"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-046"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Add current activity as of 2026-09-02, distinct from the future event dates."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "cove-operating-context",
+          "entityType": "organization",
+          "targetId": "5f376a4e-3e39-4633-9b6c-c88afac8b418",
+          "field": "operating_context",
+          "before": "Nova Scotia ocean-technology incubator and ecosystem hub supporting early-stage commercialization through programs, incubation space, services, shared equipment, domain expertise, mentoring, and sector connections. Its published program portfolio includes COVE Start-Up Yard.",
+          "after": "Stella Maris supports short-term dockside trials and longer subsea deployments with shoreside operations and remote data access. A test enquiry asks for the technology, objectives, interfacing/deployment requirements, duration and preferred dates; funding may be available for eligible Canadian start-ups and SMEs. DIANA is a separate competitively selected accelerator pathway. In the Sea Tracker collaboration, Ultra Maritime supplies the modular sonar solution to DRDC for experimentation, while COVE and ACOA support the initiative.",
+          "evidenceIds": [
+            "tnm-manual-20260906074301-evidence-047",
+            "tnm-manual-20260906074301-evidence-048",
+            "tnm-manual-20260906074301-evidence-049"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-047",
+                "tnm-manual-20260906074301-evidence-048",
+                "tnm-manual-20260906074301-evidence-049"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update operating context with Stella Maris test requirements and the distinct Ultra Maritime-to-DRDC Sea Tracker role."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "cove-canadian-footprint",
+          "entityType": "organization",
+          "targetId": "5f376a4e-3e39-4633-9b6c-c88afac8b418",
+          "field": "canadian_footprint",
+          "before": "COVE has a documented Canadian operating presence in Dartmouth, Nova Scotia, Canada. Its public organization and capability evidence should be read at that location and national scope only where the cited sources explicitly support it.",
+          "after": "COVE operates at 27 Parker Street, Dartmouth, Nova Scotia, with direct waterfront testing infrastructure. DND independently identifies its Dartmouth DIANA accelerator site. The Communitech collaboration extends connections to Waterloo Region; it is evidence of a cross-regional partnership, not a second COVE-owned operating facility.",
+          "evidenceIds": [
+            "tnm-manual-20260906074301-evidence-050",
+            "tnm-manual-20260906074301-evidence-051",
+            "tnm-manual-20260906074301-evidence-052"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-050",
+                "tnm-manual-20260906074301-evidence-051",
+                "tnm-manual-20260906074301-evidence-052"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update Canadian footprint with 27 Parker Street, Dartmouth and the bounded Waterloo collaboration."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "cove-public-contact",
+          "entityType": "organization",
+          "targetId": "5f376a4e-3e39-4633-9b6c-c88afac8b418",
+          "field": "public_contact",
+          "before": {
+            "contactPageUrl": "https://coveocean.com/",
+            "publicEmail": null,
+            "publicPhone": null,
+            "linkedInUrl": null
+          },
+          "after": {
+            "contactPageUrl": "https://covesolutions.com/contact/",
+            "publicEmail": null,
+            "publicPhone": "+1 902 334 2683",
+            "linkedInUrl": null
+          },
+          "evidenceIds": [
+            "tnm-manual-20260906074301-evidence-053",
+            "tnm-manual-20260906074301-evidence-054",
+            "tnm-manual-20260906074301-evidence-055",
+            "tnm-manual-20260906074301-evidence-056"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after.contactPageUrl",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-053"
+              ]
+            },
+            {
+              "fieldPath": "after.publicEmail",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-054"
+              ]
+            },
+            {
+              "fieldPath": "after.publicPhone",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-055"
+              ]
+            },
+            {
+              "fieldPath": "after.linkedInUrl",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-056"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Update public contact to https://covesolutions.com/contact/ and +1 902 334 2683."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "cove-disclosed-financing-summary",
+          "entityType": "organization",
+          "targetId": "5f376a4e-3e39-4633-9b6c-c88afac8b418",
+          "field": "disclosed_financing_summary",
+          "before": null,
+          "after": "COVE's December 4, 2025 announcement reported C$9,690,773 in federal funding toward the at-sea testing project involving DRDC, Ultra Maritime and ACOA. The announcement establishes a project-level funding commitment; it does not disclose the disbursement schedule or make that sum available as unrestricted grants to COVE clients.",
+          "evidenceIds": [
+            "tnm-manual-20260906074301-evidence-057"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-057"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Add disclosed financing summary for the C$9,690,773 at-sea project funding, with its project-level scope."
+        },
+        {
+          "operation": "add_child",
+          "operationId": "cove-child-8",
+          "entityType": "organization_relationship",
+          "parentId": "5f376a4e-3e39-4633-9b6c-c88afac8b418",
+          "evidenceIds": [
+            "tnm-manual-20260906074301-evidence-058",
+            "tnm-manual-20260906074301-evidence-059",
+            "tnm-manual-20260906074301-evidence-060",
+            "tnm-manual-20260906074301-evidence-061"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "value.relatedOrganizationName",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-058"
+              ]
+            },
+            {
+              "fieldPath": "value.relatedOrganizationSlug",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-059"
+              ]
+            },
+            {
+              "fieldPath": "value.relationshipType",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-060"
+              ]
+            },
+            {
+              "fieldPath": "value.publicSummary",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-061"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Add organization relationship to exact published Communitech for the September 2, 2026 technology-commercialization collaboration.",
+          "value": {
+            "relatedOrganizationName": "Communitech",
+            "relatedOrganizationSlug": "communitech",
+            "relationshipType": "Technology-commercialization collaboration",
+            "publicSummary": "COVE announced collaboration with Communitech on September 2, 2026, connecting Atlantic test infrastructure and Waterloo technology networks, including planned Waterloo Tech Week activity with DIANA innovators."
+          }
+        },
+        {
+          "operation": "add_child",
+          "operationId": "cove-child-9",
+          "entityType": "program_participation",
+          "parentId": "5f376a4e-3e39-4633-9b6c-c88afac8b418",
+          "evidenceIds": [
+            "tnm-manual-20260906074301-evidence-062",
+            "tnm-manual-20260906074301-evidence-063",
+            "tnm-manual-20260906074301-evidence-064",
+            "tnm-manual-20260906074301-evidence-065",
+            "tnm-manual-20260906074301-evidence-066",
+            "tnm-manual-20260906074301-evidence-067",
+            "tnm-manual-20260906074301-evidence-068",
+            "tnm-manual-20260906074301-evidence-069",
+            "tnm-manual-20260906074301-evidence-070",
+            "tnm-manual-20260906074301-evidence-071",
+            "tnm-manual-20260906074301-evidence-072",
+            "tnm-manual-20260906074301-evidence-073",
+            "tnm-manual-20260906074301-evidence-074"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "value.program.slug",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-062"
+              ]
+            },
+            {
+              "fieldPath": "value.program.name",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-063"
+              ]
+            },
+            {
+              "fieldPath": "value.program.programType",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-064"
+              ]
+            },
+            {
+              "fieldPath": "value.program.operatorName",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-065"
+              ]
+            },
+            {
+              "fieldPath": "value.program.websiteUrl",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-066"
+              ]
+            },
+            {
+              "fieldPath": "value.program.summary",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-067"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.participationType",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-068"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.cohortLabel",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-069"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.publicSummary",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-070"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.lifecycleStage",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-071"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.announcedOn",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-072"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.startedOn",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-073"
+              ]
+            },
+            {
+              "fieldPath": "value.participation.endedOn",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-074"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Add program participation as operator of NATO DIANA Accelerator at COVE, without assigning COVE a cohort-company role.",
+          "value": {
+            "program": {
+              "slug": "nato-diana-cove",
+              "name": "NATO DIANA Accelerator at COVE",
+              "programType": "Defence and dual-use accelerator site",
+              "operatorName": "COVE",
+              "websiteUrl": "https://coveocean.com/nato-diana-accelerator/",
+              "summary": "COVE provides a Canadian delivery site for the NATO DIANA accelerator, giving competitively selected dual-use innovators mentorship, facilities and access to defence networks."
+            },
+            "participation": {
+              "participationType": "operator",
+              "cohortLabel": null,
+              "publicSummary": "COVE operates a Dartmouth accelerator site for selected NATO DIANA innovators; it is the site operator, not a cohort company.",
+              "lifecycleStage": "operational",
+              "announcedOn": null,
+              "startedOn": null,
+              "endedOn": null,
+              "externalIdentifiers": []
+            }
+          }
+        },
+        {
+          "operation": "set_field",
+          "operationId": "cove-reviewed-questions",
+          "entityType": "organization",
+          "targetId": "5f376a4e-3e39-4633-9b6c-c88afac8b418",
+          "field": "reviewed_questions",
+          "before": [
+            {
+              "id": "cove-first-conversation",
+              "context": "COVE's public evidence establishes its current role and offering, but it does not answer every access, configuration, eligibility, maturity or buyer question needed for a first business-development conversation.",
+              "question": "Which COVE Start-Up Yard is the best fit now, what eligibility and geography rules apply, and which public contact owns the first conversation?",
+              "confidence": "moderate"
+            }
+          ],
+          "after": [
+            {
+              "id": "cove-stella-test-scope",
+              "question": "Which Stella Maris setup, interfaces, test window and project-specific funding conditions fit the proposed sensor trial?",
+              "context": "The published enquiry asks for interfacing/deployment requirements, test objectives, duration and preferred dates; funding may be available for eligible Canadian start-ups and SMEs. A project needs a scoped test arrangement rather than an assumed open slot.",
+              "confidence": "moderate"
+            },
+            {
+              "id": "cove-seatracker-access",
+              "question": "Can this proposed sensor participate in the DRDC Sea Tracker experimentation pathway, and who authorizes the trial and data access?",
+              "context": "Ultra Maritime identifies DRDC as the experimentation recipient and COVE and ACOA as collaborators. That source does not establish unrestricted access for other technology companies or disclose trial security conditions.",
+              "confidence": "moderate"
+            }
+          ],
+          "evidenceIds": [
+            "tnm-manual-20260906074301-evidence-075",
+            "tnm-manual-20260906074301-evidence-076",
+            "tnm-manual-20260906074301-evidence-077",
+            "tnm-manual-20260906074301-evidence-078",
+            "tnm-manual-20260906074301-evidence-079",
+            "tnm-manual-20260906074301-evidence-080",
+            "tnm-manual-20260906074301-evidence-081",
+            "tnm-manual-20260906074301-evidence-082",
+            "tnm-manual-20260906074301-evidence-083",
+            "tnm-manual-20260906074301-evidence-084",
+            "tnm-manual-20260906074301-evidence-085",
+            "tnm-manual-20260906074301-evidence-086",
+            "tnm-manual-20260906074301-evidence-087",
+            "tnm-manual-20260906074301-evidence-088",
+            "tnm-manual-20260906074301-evidence-089",
+            "tnm-manual-20260906074301-evidence-090"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after.0.id",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-075",
+                "tnm-manual-20260906074301-evidence-076"
+              ]
+            },
+            {
+              "fieldPath": "after.0.question",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-077",
+                "tnm-manual-20260906074301-evidence-078"
+              ]
+            },
+            {
+              "fieldPath": "after.0.context",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-079",
+                "tnm-manual-20260906074301-evidence-080"
+              ]
+            },
+            {
+              "fieldPath": "after.0.confidence",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-081",
+                "tnm-manual-20260906074301-evidence-082"
+              ]
+            },
+            {
+              "fieldPath": "after.1.id",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-083",
+                "tnm-manual-20260906074301-evidence-084"
+              ]
+            },
+            {
+              "fieldPath": "after.1.question",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-085",
+                "tnm-manual-20260906074301-evidence-086"
+              ]
+            },
+            {
+              "fieldPath": "after.1.context",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-087",
+                "tnm-manual-20260906074301-evidence-088"
+              ]
+            },
+            {
+              "fieldPath": "after.1.confidence",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-089",
+                "tnm-manual-20260906074301-evidence-090"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Replace reviewed questions with Stella Maris test-scope and DRDC Sea Tracker access decisions."
+        },
+        {
+          "operation": "set_field",
+          "operationId": "cove-executive-relevance-summary",
+          "entityType": "organization",
+          "targetId": "5f376a4e-3e39-4633-9b6c-c88afac8b418",
+          "field": "executive_relevance_summary",
+          "before": null,
+          "after": "COVE is a practical entry point for marine-technology testing and selected DIANA acceleration in Dartmouth. Stella Maris provides a concrete test enquiry path, while the Sea Tracker collaboration has DRDC-specific operating roles. A useful first conversation is to scope the trial, interfaces, access authority and funding conditions; the Communitech collaboration broadens connections but does not establish adoption or procurement.",
+          "evidenceIds": [
+            "tnm-manual-20260906074301-evidence-094",
+            "tnm-manual-20260906074301-evidence-095"
+          ],
+          "leafEvidence": [
+            {
+              "fieldPath": "after",
+              "evidenceIds": [
+                "tnm-manual-20260906074301-evidence-094",
+                "tnm-manual-20260906074301-evidence-095"
+              ]
+            }
+          ],
+          "reviewerExplanation": "Add executive relevance summary centered on Stella Maris trial scope and DIANA access."
+        }
+      ],
+      "sourceChannels": [
+        "official_company",
+        "government_procurement"
+      ],
+      "signalIds": [
+        "tnm-manual-20260906074301-cove-communitech-signal"
+      ],
+      "corroboration": [
+        {
+          "claim": "COVE is a Dartmouth NATO DIANA accelerator site; the operator is independently identified by DND.",
+          "sourceIds": [
+            "cove-diana",
+            "dnd-diana"
+          ]
+        }
+      ],
+      "executiveRelevanceSummary": "COVE is a practical entry point for marine-technology testing and selected DIANA acceleration in Dartmouth. Stella Maris provides a concrete test enquiry path, while the Sea Tracker collaboration has DRDC-specific operating roles. A useful first conversation is to scope the trial, interfaces, access authority and funding conditions; the Communitech collaboration broadens connections but does not establish adoption or procurement."
+    }
+  ],
+  "deferred": []
+}

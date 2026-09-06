@@ -1,3 +1,6 @@
+import { pathToFileURL } from "node:url";
+import { isDeepStrictEqual } from "node:util";
+import { completeResearchRunIssues } from "../src/lib/research/run-validation";
 import { access, mkdir, readdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import type { z } from "zod";
@@ -20,11 +23,8 @@ import {
   researchProspectInventoryV1Schema,
   reviewCandidateIntakeIssues,
   researchRunCompletionIssues,
-  researchRunSchema,
   researchCandidateQualityIssues,
-  researchRecordSpecificityIssues,
-  researchReviewLineageIssues,
-  requiresResearchQualityContract,
+  researchRunSchema,
   requiresRecordSpecificResearchContract,
   sourceLeadBatchV2Schema,
   type ResearchCandidateBatchV2,
@@ -47,7 +47,6 @@ import { assertDeployedResearchReviewContract, researchCandidateContractIssues, 
 import {
   researchWorkflowCliModeValues,
   researchWorkflowModeConfiguration,
-  researchWorkflowModeForRunMode,
   researchWorkflowRunMode
 } from "../src/lib/research/workflow-registry";
 import { withResearchWriterLock } from "../src/lib/research/single-writer-lock";
@@ -1184,8 +1183,8 @@ async function prepareRun(args: string[]) {
     workflowMode.typedDispositionMayReplaceCandidate
       ? "9. Do not manufacture a candidate to meet a count. A target with no supportable change ends in the appropriate typed disposition with its evidence and unresolved questions preserved."
       : "9. If the batch remains below its minimum, record a specific underTargetReason and exhaustionEvidence before completion.",
-    `10. Preview the deterministic guarded sequence with \`pnpm research:finalize -- --run research/ingestion/runs/${runId}.json --plan\`. The plan derives this non-writing smoke gate internally: \`pnpm research:smoke -- ${smokeArguments}\`.`,
-    `11. When the complete batch is final and private intake is authorized, run \`pnpm research:finalize -- --run research/ingestion/runs/${runId}.json --apply\`. It validates, prepares any missing private organization-logo dispositions, validates again, smoke-checks without writing, generates review/staging artifacts only when candidates exist, imports only through the tracked path, and reconciles the exact run in production. Use \`--file-only\` instead when Admin Review intake is unavailable but local review/staging artifacts are explicitly needed.`,
+    `10. Preview the deterministic guarded sequence with \`pnpm research:finalize -- --run research/ingestion/runs/${runId}.json --plan\`. The standalone diagnostic uses the same gate; do not repeat it after successful finalization: \`pnpm research:smoke -- ${smokeArguments}\`.`,
+    `11. When the complete batch is final and private intake is authorized, run \`pnpm research:finalize -- --run research/ingestion/runs/${runId}.json --apply\`. It prepares any missing private organization-logo dispositions, validates the complete artifact set once, generates review/staging artifacts only when candidates exist, imports only through the tracked path, and reconciles the exact run in production. Use \`--file-only\` instead when Admin Review intake is unavailable but local review/staging artifacts are explicitly needed.`,
     `12. Stop after exact Admin Review reconciliation. An all-disposition zero-candidate batch stops after validation and smoke without an empty intake. Do not approve or publish.`,
     "",
     "## Live coverage snapshot",
@@ -1488,7 +1487,7 @@ function validateCandidateEvidence(batch: ResearchCandidateBatchV2, errors: stri
   }
 }
 
-async function validateCandidateFile(filePath: string): Promise<ValidationReport> {
+async function validateCandidateFile(filePath: string, strictLinkability = false): Promise<ValidationReport> {
   const parsed = await readArtifact(filePath, researchCandidateBatchV2Schema);
   if (!parsed.success) {
     return { kind: "candidate_batch", filePath, id: path.basename(filePath), errors: formatZodIssues(parsed.error), warnings: [], counts: {} };
@@ -1534,6 +1533,10 @@ async function validateCandidateFile(filePath: string): Promise<ValidationReport
       }
     }
   }
+
+  const linkability = assessCandidateBatchLinkability(batch.candidates, coverage);
+  (strictLinkability ? errors : warnings).push(...linkability.errors);
+  warnings.push(...linkability.warnings);
 
   const sourceLeadPath = path.resolve(workspaceRoot, batch.sourceLeadBatchPath);
   if (!(await fileExists(sourceLeadPath))) {
@@ -1636,7 +1639,7 @@ async function validateArtifactSnapshot(args: string[]) {
     else if (value.schemaVersion === "canonical_organization_repair_snapshot_v1") reports.push(await validateCanonicalRepairSnapshotFile(filePath));
     else if (value.schemaVersion === "research_prospect_inventory_v1") reports.push(await validateProspectFile(filePath));
     else if (value.schemaVersion === "source_lead_batch_v2") reports.push(await validateSourceLeadFile(filePath));
-    else if (value.schemaVersion === "research_candidate_batch_v2") reports.push(await validateCandidateFile(filePath));
+    else if (value.schemaVersion === "research_candidate_batch_v2") reports.push(await validateCandidateFile(filePath, positional.length > 0));
     else if (value.schemaVersion === "research_signal_batch_v1") reports.push(await validateSignalFile(filePath));
     else reports.push({ kind: "candidate_batch", filePath, id: path.basename(filePath), errors: ["Unknown research artifact schemaVersion."], warnings: [], counts: {} });
   }
@@ -1673,15 +1676,15 @@ async function validateArtifactSnapshot(args: string[]) {
       runReport?.errors.push(`Pipeline 1.7 run ${run.data.runId} requires a complete collection plan and claim ledger.`);
       continue;
     }
-    runReport?.errors.push(...researchReviewLineageIssues({ run: run.data, leads: leads.data, signals: signals?.success ? signals.data : null, ledger: ledger.data, batch: batch.data }));
-    runReport?.errors.push(...researchRecordSpecificityIssues({
-      run: run.data,
-      plan: plan.data,
+    for (const [output, version] of Object.entries({collectionPlan:"research_collection_plan_v1",claimLedger:"research_claim_ledger_v1",prospectInventory:"research_prospect_inventory_v1",signalBatch:"research_signal_batch_v1",sourceLeadBatch:"source_lead_batch_v2",candidateBatch:"research_candidate_batch_v2"})) {
+      const artifactPath = sameRun?.get(version);
+      if (artifactPath && run.data.outputs[output as keyof typeof run.data.outputs] !== relative(artifactPath)) runReport?.errors.push(`Run ${output} output does not match the validated artifact path.`);
+    }
+    runReport?.errors.push(...completeResearchRunIssues({
+      run: run.data, plan: plan.data, ledger: ledger.data,
       prospects: prospects?.success ? prospects.data : null,
       signals: signals?.success ? signals.data : null,
-      leads: leads.data,
-      ledger: ledger.data,
-      batch: batch.data
+      leads: leads.data, batch: batch.data
     }));
     runReport?.errors.push(...canonicalRepairSnapshotParityIssues({
       run: run.data,
@@ -1949,20 +1952,11 @@ async function assertRecordSpecificStaging(staging: Record<string, unknown>) {
   if (canonicalRunIssues.length > 0) {
     throw new Error(`Current research review intake for ${runId} stopped: ${canonicalRunIssues.join("; ")}`);
   }
-  const lineageIssues = researchReviewLineageIssues({ run: run.data, leads: leads.data, signals: signals?.success ? signals.data : null, ledger: ledger.data, batch: batch.data });
-  if (lineageIssues.length > 0) {
-    throw new Error(`Current research review intake for ${runId} stopped: ${lineageIssues.join("; ")}`);
-  }
-  const specificityIssues = researchRecordSpecificityIssues({
-    run: run.data,
-    plan: plan.data,
-    prospects: prospects?.success ? prospects.data : null,
-    signals: signals?.success ? signals.data : null,
-    leads: leads.data,
-    ledger: ledger.data,
-    batch: batch.data
+  const completeIssues = completeResearchRunIssues({
+    run: run.data, plan: plan.data, ledger: ledger.data, leads: leads.data, batch: batch.data,
+    prospects: prospects?.success ? prospects.data : null, signals: signals?.success ? signals.data : null
   });
-  if (specificityIssues.length > 0) throw new Error(`Current research review intake stopped: ${specificityIssues.join("; ")}`);
+  if (completeIssues.length) throw new Error(`Current research review intake stopped: ${completeIssues.join("; ")}`);
 }
 
 async function importStagingUnlocked(stagingPath: string) {
@@ -2064,7 +2058,7 @@ async function reconcileReview(runPath: string, candidatePath: string) {
   const candidateIds = [...expected.keys()];
   const { data: rows, error: rowsError } = await client
     .from("candidate_changes")
-    .select("research_run_id, client_candidate_id, candidate_kind, schema_version, target_entity_id, status, published_at")
+    .select("research_run_id, client_candidate_id, candidate_kind, schema_version, target_entity_id, status, published_at, proposed_record, before_record")
     .in("client_candidate_id", candidateIds);
   if (rowsError) throw new Error(`Could not reconcile production candidate rows: ${rowsError.message}`);
 
@@ -2080,6 +2074,10 @@ async function reconcileReview(runPath: string, candidatePath: string) {
       issues.push(`Unexpected candidate ${candidateId || "<missing>"} was returned by reconciliation.`);
       continue;
     }
+    const existing = candidate.candidateKind === "organization_refresh_bundle" || candidate.candidateKind === "organization_canonical_repair_bundle" || candidate.candidateKind === "demand_refresh_bundle";
+    if (row.target_entity_id !== (existing ? candidate.targetMatch.entityId : null)) issues.push(`Candidate ${candidateId} target changed.`);
+    if (!isDeepStrictEqual(row.proposed_record, candidate) || !isDeepStrictEqual(row.before_record, existing ? candidate.beforeRecord : null)) issues.push(`Candidate ${candidateId} payload differs from the sealed local artifact.`);
+    if (row.status !== "pending" || row.published_at) issues.push(`Candidate ${candidateId} has moved beyond private pending intake; do not replay import.`);
     if (row.research_run_id !== storedRun.id) issues.push(`Candidate ${candidateId} is linked to a different research run.`);
     if (row.candidate_kind !== candidate.candidateKind) issues.push(`Candidate ${candidateId} kind drifted from ${candidate.candidateKind} to ${row.candidate_kind}.`);
     if (row.schema_version !== candidate.schemaVersion) issues.push(`Candidate ${candidateId} schema drifted from ${candidate.schemaVersion} to ${row.schema_version}.`);
@@ -2137,127 +2135,18 @@ async function smoke(args: string[]) {
     throw new Error("Smoke test requires --run, --leads, and --candidates paths.");
   }
 
-  const runReport = await validateRunFile(runPath);
-  const collectionPlanReport = collectionPlanPath ? await validateCollectionPlanFile(collectionPlanPath) : null;
-  const claimLedgerReport = claimLedgerPath ? await validateClaimLedgerFile(claimLedgerPath) : null;
-  const canonicalSnapshotReport = canonicalSnapshotPath ? await validateCanonicalRepairSnapshotFile(canonicalSnapshotPath) : null;
-  const leadReport = await validateSourceLeadFile(leadPath);
-  const candidateReport = await validateCandidateFile(candidatePath);
-  const prospectReport = prospectPath ? await validateProspectFile(prospectPath) : null;
-  const signalReport = signalPath ? await validateSignalFile(signalPath) : null;
-  const reports = [
-    runReport,
-    ...(collectionPlanReport ? [collectionPlanReport] : []),
-    ...(claimLedgerReport ? [claimLedgerReport] : []),
-    ...(canonicalSnapshotReport ? [canonicalSnapshotReport] : []),
-    ...(prospectReport ? [prospectReport] : []),
-    ...(signalReport ? [signalReport] : []),
-    leadReport,
-    candidateReport
-  ];
-  const run = await readArtifact(runPath, researchRunSchema);
-  const collectionPlan = collectionPlanPath ? await readArtifact(collectionPlanPath, researchCollectionPlanV1Schema) : null;
-  const claimLedger = claimLedgerPath ? await readArtifact(claimLedgerPath, researchClaimLedgerV1Schema) : null;
-  const canonicalSnapshot = canonicalSnapshotPath ? await readArtifact(canonicalSnapshotPath, canonicalOrganizationRepairSnapshotV1Schema) : null;
-  const leadBatch = await readArtifact(leadPath, sourceLeadBatchV2Schema);
-  const batch = await readArtifact(candidatePath, researchCandidateBatchV2Schema);
-  const prospects = prospectPath ? await readArtifact(prospectPath, researchProspectInventoryV1Schema) : null;
-  const signals = signalPath ? await readArtifact(signalPath, researchSignalBatchV1Schema) : null;
-  if (run.success && run.data.status !== "completed") runReport.errors.push("Smoke-test run must have status completed.");
-  const recordSpecificRequirements = run.success ? recordSpecificArtifactRequirements(run.data) : null;
-  if (run.success && run.data.osintArtifactsRequired && !collectionPlanPath) runReport.errors.push("OSINT-enabled smoke test requires --collection-plan.");
-  if (run.success && run.data.osintArtifactsRequired && !claimLedgerPath) runReport.errors.push("OSINT-enabled smoke test requires --claims.");
-  if (run.success && run.data.mode === "canonical_repair" && !canonicalSnapshotPath) runReport.errors.push("Canonical-repair smoke test requires --canonical-snapshot.");
-  if (recordSpecificRequirements?.prospects && !prospectPath) runReport.errors.push("This pipeline 1.7 run requires --prospects.");
-  if (recordSpecificRequirements?.signals && !signalPath) runReport.errors.push("This pipeline 1.7 run requires --signals.");
-  if (run.success && batch.success && batch.data.candidates.length < 1) {
-    const workflowMode = researchWorkflowModeForRunMode(run.data.mode);
-    if (!workflowMode?.typedDispositionMayReplaceCandidate) {
-      candidateReport.errors.push("Smoke test must create at least one review-ready candidate for this workflow mode.");
-    } else if (batch.data.deferred.length < 1 || batch.data.deferred.some((item) => !item.readinessDisposition)) {
-      candidateReport.errors.push("A zero-candidate run requires at least one structured research_required or no_material_change disposition.");
-    }
-  }
-  if (run.success && batch.success && run.data.counters.candidatesCreated !== batch.data.candidates.length) runReport.errors.push("Run candidate counter does not match candidate batch size.");
-  if (run.success && collectionPlan?.success) {
-    if (collectionPlan.data.runId !== run.data.runId) collectionPlanReport?.errors.push("Collection plan runId does not match the research run.");
-    if (collectionPlan.data.status !== "complete") collectionPlanReport?.errors.push("Smoke-test collection plan must have status complete.");
-    if (run.data.outputs.collectionPlan && relative(collectionPlanPath as string) !== run.data.outputs.collectionPlan) runReport.errors.push("Run collection-plan output does not match the smoke-test artifact.");
-  }
-  if (run.success && claimLedger?.success) {
-    if (claimLedger.data.runId !== run.data.runId) claimLedgerReport?.errors.push("Claim ledger runId does not match the research run.");
-    if (claimLedger.data.status !== "complete") claimLedgerReport?.errors.push("Smoke-test claim ledger must have status complete.");
-    if (run.data.outputs.claimLedger && relative(claimLedgerPath as string) !== run.data.outputs.claimLedger) runReport.errors.push("Run claim-ledger output does not match the smoke-test artifact.");
-    if ((run.data.counters.claimsCollected ?? 0) !== claimLedger.data.claims.length) runReport.errors.push("Run claim counter does not match claim ledger.");
-    if ((run.data.counters.claimsConflicted ?? 0) !== claimLedger.data.claims.filter((claim) => claim.status === "conflicted").length) runReport.errors.push("Run conflicted-claim counter does not match claim ledger.");
-    if ((run.data.counters.coverageSubjects ?? 0) !== claimLedger.data.subjects.length) runReport.errors.push("Run coverage-subject counter does not match claim ledger.");
-  }
-  if (run.success && run.data.mode === "canonical_repair" && canonicalSnapshot?.success && collectionPlan?.success && batch.success) {
-    if (canonicalSnapshot.data.runId !== run.data.runId) canonicalSnapshotReport?.errors.push("Canonical repair snapshot runId does not match the research run.");
-    if (run.data.outputs.canonicalRepairSnapshot !== relative(canonicalSnapshotPath as string)) runReport.errors.push("Run canonical-repair snapshot output does not match the smoke-test artifact.");
-    canonicalSnapshotReport?.errors.push(...canonicalRepairSnapshotParityIssues({
-      run: run.data,
-      batch: batch.data,
-      snapshot: canonicalSnapshot.data,
-      targetSlugs: canonicalPlanTargetSlugs(collectionPlan.data)
-    }));
-  }
-  if (batch.success && claimLedger?.success) {
-    if (run.success && leadBatch.success && requiresRecordSpecificResearchContract(run.data.agentVersion)) {
-      claimLedgerReport?.errors.push(...researchReviewLineageIssues({ run: run.data, leads: leadBatch.data, signals: signals?.success ? signals.data : null, ledger: claimLedger.data, batch: batch.data }));
-    }
-    if (run.success && requiresResearchQualityContract(run.data.agentVersion)) {
-      claimLedgerReport?.errors.push(...researchClaimLedgerQualityIssues(claimLedger.data));
-      for (const candidate of batch.data.candidates) candidateReport.errors.push(...researchCandidateQualityIssues(candidate));
-    }
-  }
-  if (run.success && requiresRecordSpecificResearchContract(run.data.agentVersion) && collectionPlan?.success && claimLedger?.success && leadBatch.success && batch.success) {
-    candidateReport.errors.push(...researchRecordSpecificityIssues({
-      run: run.data,
-      plan: collectionPlan.data,
-      prospects: prospects?.success ? prospects.data : null,
-      signals: signals?.success ? signals.data : null,
-      leads: leadBatch.data,
-      ledger: claimLedger.data,
-      batch: batch.data
-    }));
-  }
-  if (run.success && prospects?.success) {
-    if (prospects.data.runId !== run.data.runId) prospectReport?.errors.push("Prospect inventory runId does not match the research run.");
-    if ((run.data.counters.uniqueProspects ?? 0) !== prospects.data.prospects.length) runReport.errors.push("Run unique-prospect counter does not match prospect inventory size.");
-    const lanes = new Set(prospects.data.prospects.map((prospect) => prospect.discoveryLane)).size;
-    if ((run.data.counters.sourceLanesSearched ?? 0) !== lanes) runReport.errors.push("Run source-lane counter does not match prospect inventory.");
-  }
-  if (run.success && signals?.success) {
-    if (signals.data.runId !== run.data.runId) signalReport?.errors.push("Signal batch runId does not match the research run.");
-    if ((run.data.counters.signalsExtracted ?? 0) !== signals.data.signals.length) runReport.errors.push("Run signal counter does not match signal batch size.");
-    const dispositioned = signals.data.signals.filter((signal) => signal.disposition !== undefined).length;
-    if ((run.data.counters.signalsDispositioned ?? 0) !== dispositioned) runReport.errors.push("Run dispositioned-signal counter does not match signal batch.");
-    const families = Object.values(signals.data.sourceFamilyCounters).filter((count) => count > 0).length;
-    if ((run.data.counters.sourceFamiliesSearched ?? 0) !== families) runReport.errors.push("Run source-family counter does not match signal batch.");
-  }
-  if (run.success && run.data.mode === "bootstrap" && batch.success) {
-    const kinds = new Set(batch.data.candidates.filter((candidate) => candidate.candidateKind === "organization_bundle").map((candidate) => candidate.organization.entityKind));
-    for (const kind of ["company", "accelerator", "incubator", "investor_funder"]) {
-      if (!kinds.has(kind as never)) candidateReport.errors.push(`Bootstrap smoke test is missing ${kind}.`);
-    }
-  }
-  if (batch.success) {
-    const coverage = await loadResearchCoverage();
-    const linkabilityAssessment = assessCandidateBatchLinkability(batch.data.candidates, coverage);
-    candidateReport.errors.push(...linkabilityAssessment.errors);
-    candidateReport.warnings.push(...linkabilityAssessment.warnings);
-  }
-
-  console.log(formatValidation(reports, { detailedWarnings: true }));
-  if (reports.some((report) => report.errors.length > 0)) {
-    process.exitCode = 1;
-    return;
-  }
+  const paths = [runPath, collectionPlanPath, claimLedgerPath, canonicalSnapshotPath, prospectPath, signalPath, leadPath, candidatePath].filter((p): p is string => Boolean(p));
+  const reports = await validateArtifacts(paths);
+  if (reports.some(report => report.errors.length)) return;
+  const run = researchRunSchema.parse(await readJson(runPath));
+  const parsedBatch = researchCandidateBatchV2Schema.parse(await readJson(candidatePath));
+  if (run.status !== "completed") throw new Error("Seal research artifacts before smoke; verified intake is recorded separately.");
+  const batch = { success: true as const, data: parsedBatch };
   if (options.get("check-only") === "true") {
     console.log(`Smoke check passed without writing review, staging, or database artifacts: ${batch.success ? batch.data.candidates.length : 0} candidates validated.`);
     return;
   }
+  if (!batch.data.candidates.length) { console.log("Validated zero-candidate disposition; no intake artifacts created."); return; }
   const reviewPath = await writeReview(candidatePath);
   const stagingPath = await writeStaging(runPath, candidatePath);
   if (options.get("file-only") !== "true") await importStaging(stagingPath);
@@ -2266,9 +2155,7 @@ async function smoke(args: string[]) {
   console.log(`Staging export: ${relative(stagingPath)}`);
 }
 
-async function main() {
-  const command = process.argv[2] ?? "validate";
-  const args = process.argv.slice(3);
+export async function runResearchCommand(command: string, args: string[]) {
   if (command === "prepare") {
     return withResearchWriterLock(workspaceRoot, "research-prepare", () => prepareRun(args));
   }
@@ -2287,6 +2174,7 @@ async function main() {
     );
   }
   if (command === "import") {
+    researchCoveragePromise = null; // Fresh live authority at the write boundary.
     const { options, positional } = parseOptions(args);
     const stagingPath = options.get("staging") ?? positional[0];
     if (!stagingPath) throw new Error("Import requires --staging <research/ingestion/staging/file.json>.");
@@ -2303,7 +2191,7 @@ async function main() {
   throw new Error(`Unknown autonomous research command '${command}'.`);
 }
 
-main().catch((error) => {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) runResearchCommand(process.argv[2] ?? "validate", process.argv.slice(3)).catch((error) => {
   console.error(error instanceof Error ? error.message : error);
   process.exitCode = 1;
 });

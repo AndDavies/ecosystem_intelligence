@@ -1,0 +1,282 @@
+{
+  "schemaVersion": "source_lead_batch_v2",
+  "leadBatchId": "tnm-manual-20260906074301-leads",
+  "runId": "tnm-manual-20260906074301",
+  "createdAt": "2026-09-06T08:00:31.916859Z",
+  "scope": {
+    "description": "Enrich Kraken Robotics and COVE against the exact September 6 production snapshot: recover Kraken product interfaces, Canadian facilities and post-Covelya financial/operating boundaries; recover COVE test infrastructure, DIANA access, Sea Tracker actor roles and the September 2 Communitech collaboration. Preserve existing reviewed mission links; do not infer that a program supplies procurement eligibility or that announced orders are revenue.",
+    "targetMissionAreaSlugs": [
+      "arctic-domain-awareness",
+      "underwater-isr",
+      "autonomous-patrol-and-monitoring",
+      "edge-data-processing"
+    ],
+    "targetTechnicalDomainSlugs": [
+      "sensing-and-isr",
+      "autonomous-systems",
+      "mission-software-and-data",
+      "space-and-earth-observation",
+      "aerospace-and-mobility",
+      "communications-and-cyber",
+      "test-training-and-sustainment",
+      "advanced-manufacturing-and-integration"
+    ],
+    "targetOrganizationKinds": [
+      "company",
+      "incubator"
+    ],
+    "targetDemandIssuerTypes": []
+  },
+  "leads": [
+    {
+      "leadType": "record_refresh_lead",
+      "id": "tnm-manual-20260906074301-kraken-robotics-lead",
+      "source": {
+        "id": "kraken-q2",
+        "title": "Kraken Robotics reports Q2 2026 financial results",
+        "url": "https://www.krakenrobotics.com/news-releases/kraken-robotics-reports-q2-2026-financial-results/",
+        "publisher": "Kraken Robotics",
+        "sourceKind": "official_company_news",
+        "publishedAt": null,
+        "accessedAt": "2026-09-06T08:00:31.916859Z",
+        "locator": "August 27, 2026; financial highlights and new orders",
+        "summary": "Quarterly results distinguish standalone Kraken from post-July acquisition scope and report a new XL-UUV battery supply agreement."
+      },
+      "discoveryPath": [
+        "https://www.krakenrobotics.com/news-releases/kraken-robotics-reports-q2-2026-financial-results/",
+        "https://www.krakenrobotics.com/wp-content/uploads/2026/01/KATFISH_Kraken_Flyer_Letter.pdf"
+      ],
+      "possibleMissionAreaSlugs": [
+        "underwater-isr"
+      ],
+      "possibleTechnicalDomainSlugs": [
+        "sensing-and-isr"
+      ],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "August 27, 2026; financial highlights and new orders",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://www.krakenrobotics.com/",
+        "websiteDomain": "www.krakenrobotics.com",
+        "stableSlug": "kraken-robotics",
+        "legalName": null,
+        "aliases": []
+      },
+      "followUpQuestions": [
+        "Which RMDS deliverables and support obligations remain after the June 2026 amendment, and does that amendment relate to the Q2 integration-project revenue reversal?",
+        "For the proposed vessel and survey speed, what real-time imagery, post-processing latency, storage and launch/recovery configuration will the supplied KATFISH system deliver?"
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "The CanadaBuys C$12,154,000.20 reduction on W8472-105270/001/QF is not explicitly linked by the reviewed documents to Kraken's C$1.5 million Q2 revenue reversal; do not equate the two amounts or infer cancellation.",
+        "SeaPower brochure specifies 2 kWh minimum while the current product page says 1.8 kWh; confirm the offered module and certification package rather than treating the ranges as interchangeable.",
+        "The XL-UUV battery customer is unnamed, and announced orders, master supply agreements and management guidance do not establish delivered revenue or future production throughput."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.krakenrobotics.com/news-releases/kraken-robotics-reports-q2-2026-financial-results/",
+          "outcome": "Kraken Q2 newsroom retrieval resolved the August 27 standalone reporting boundary, XL-UUV agreement and revenue reversal; direct Python access returned 403 but the web reader recovered the document."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.krakenrobotics.com/wp-content/uploads/2026/01/KATFISH_Kraken_Flyer_Letter.pdf",
+          "outcome": "KATFISH two-page fact sheet recovered resolution modes, 300 m depth, 4–10 knot envelope, data formats and topside storage; no field-performance guarantee was inferred."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://www.krakenrobotics.com/wp-content/uploads/2025/05/SeaPower_Kraken_Flyer_A4.pdf",
+          "outcome": "SeaPower brochure recovered BMS controls and 6000 m rating; comparison with the current product page left the 2 kWh versus 1.8 kWh minimum as a configuration question."
+        },
+        {
+          "lane": "corporate_registry",
+          "url": "https://www.krakenrobotics.com/wp-content/uploads/2026/08/Kraken-Robotics-Inc.-Q2-26-Financial-Statements-FINAL.pdf",
+          "outcome": "Kraken interim financial statements Note 22 resolved cash, term-debt and equity components of the Covelya transaction; acquisition accounting was still provisional when issued."
+        },
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.krakenrobotics.com/wp-content/uploads/2026/08/Kraken-MDA-Q2-2026-FINAL.pdf",
+          "outcome": "Kraken Q2 MD&A page 7 resolved the C$6.911 million supplier-arbitration provision into royalty, interest and legal-cost estimates; no shutdown or final court judgment was established."
+        },
+        {
+          "lane": "procurement",
+          "url": "https://canadabuys.canada.ca/en/tender-opportunities/contract-history/w8472-105270/001/qf-003",
+          "outcome": "CanadaBuys web fetch was blocked; normal browser recovery in French and English verified the June 11 amendment of C$-12,154,000.20 and December 29, 2028 expiry, without establishing a link to the C$1.5 million revenue reversal."
+        },
+        {
+          "lane": "government_awards",
+          "url": "https://www.canada.ca/en/department-national-defence/news/2022/12/minister-anand-announces-remote-mine-hunting-and-disposal-system-contract-award-to-increase-safety-for-royal-canadian-navy-ships-and-crews.html",
+          "outcome": "DND original award separated the RMDS acquisition and support contracts and Canadian recipient; its expected 2025 operation date was not promoted to current acceptance."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://www.krakenrobotics.com/contact/",
+          "outcome": "Kraken official contact page verified Mount Pearl and Dartmouth addresses plus head-office phone; KATFISH fact sheet supplied the public sales email."
+        },
+        {
+          "lane": "company_newsroom",
+          "url": "https://www.krakenrobotics.com/news-releases/kraken-robotics-reports-2025-financial-results/",
+          "outcome": "Kraken April results confirmed announced Nova Scotia facility completion; no current measured throughput or available production slots were published in the inspected material."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://www.krakenrobotics.com/press-releases/",
+          "outcome": "Targeted defence-newsletter discovery found an August 20 CDR acquisition lead; public statements and filings supplied the evidence, and no newsletter wording entered public proposed fields."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "10000000-0000-4000-8000-000000000001",
+        "slug": "kraken-robotics",
+        "matchMethods": [
+          "slug",
+          "name",
+          "website_domain"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-12T10:53:54.093745+00:00"
+      },
+      "signalIds": [
+        "tnm-manual-20260906074301-kraken-q2-signal",
+        "tnm-manual-20260906074301-kraken-amendment-signal"
+      ],
+      "refreshSummary": "Assess Kraken Robotics as a KATFISH towing and topside processing supplier alongside its Canadian RMDS integration role: Department of National Defence buyer evidence and the August 27 results change the delivery-scope and financial questions worth asking. The operating context and current activity changes are fully proposed for human review.",
+      "intendedChanges": [
+        "Update description to distinguish KATFISH towed sonar, SeaPower batteries and the July 2026 Covelya group expansion.",
+        "Update current activity to the August 27, 2026 standalone results and unnamed XL-UUV battery agreement.",
+        "Update current activity as of to 2026-08-27, the dated results announcement.",
+        "Update operating context to distinguish KATFISH towing and topside processing from the RMDS prime-integration role.",
+        "Update Canadian footprint with 189 Glencoe Drive, Mount Pearl and 464 Cutler Avenue, Dartmouth.",
+        "Add disclosed financing summary with C$125 million term debt and the C$6.911 million supplier-arbitration provision.",
+        "Update public contact with sales@krakenrobotics.com and the official sales enquiry page.",
+        "Add portfolioSummary with 3 cm real-time versus 2 cm processed KATFISH imagery and SeaPower configuration limits.",
+        "Replace reviewed questions with the W8472-105270/001/QF scope reconciliation and KATFISH data-path decision.",
+        "Add executive relevance summary centered on KATFISH configuration and RMDS delivery responsibility."
+      ]
+    },
+    {
+      "leadType": "record_refresh_lead",
+      "id": "tnm-manual-20260906074301-cove-lead",
+      "source": {
+        "id": "cove-communitech",
+        "title": "COVE and Communitech announce dual-use collaboration",
+        "url": "https://covesolutions.com/news/cove-and-communitech-join-forces-to-accelerate-canadas-dual-use-technology-innovation-ecosystem/",
+        "publisher": "COVE",
+        "sourceKind": "official_company_news",
+        "publishedAt": null,
+        "accessedAt": "2026-09-06T08:00:31.916859Z",
+        "locator": "September 2, 2026; opening, collaboration and planned Waterloo Tech Week event",
+        "summary": "COVE announces collaboration connecting Atlantic testing and Waterloo technology communities, with a future event rather than completed adoption outcomes."
+      },
+      "discoveryPath": [
+        "https://covesolutions.com/news/cove-and-communitech-join-forces-to-accelerate-canadas-dual-use-technology-innovation-ecosystem/",
+        "https://covesolutions.com/programs-services/stella-maris-testing-solution/"
+      ],
+      "possibleMissionAreaSlugs": [],
+      "possibleTechnicalDomainSlugs": [],
+      "sourceConfidence": "high",
+      "alignmentConfidence": "moderate",
+      "evidenceLocator": "September 2, 2026; opening, collaboration and planned Waterloo Tech Week event",
+      "duplicateFingerprint": {
+        "canonicalUrl": "https://coveocean.com/",
+        "websiteDomain": "coveocean.com",
+        "stableSlug": "cove",
+        "legalName": null,
+        "aliases": [
+          "Centre for Ocean Ventures and Entrepreneurship"
+        ]
+      },
+      "followUpQuestions": [
+        "Which Stella Maris setup, interfaces, test window and project-specific funding conditions fit the proposed sensor trial?",
+        "Can this proposed sensor participate in the DRDC Sea Tracker experimentation pathway, and who authorizes the trial and data access?"
+      ],
+      "discoveryLane": "company_newsroom",
+      "inclusionScore": 96,
+      "completenessScore": 88,
+      "reviewWarnings": [
+        "The September 14–18 Waterloo Tech Week activity is planned; the September 2 collaboration does not establish completed adoption, funding or procurement outcomes.",
+        "Stella Maris funding is conditional and project-specific; published material does not give a tariff, confirmed slot, interface acceptance or classification/security approval for a particular deployment.",
+        "Sea Tracker is supplied by Ultra Maritime for DRDC experimentation; COVE collaboration does not establish ownership of the sonar product or unrestricted third-party access to defence trials.",
+        "The old Start-Up Yard program URL returns 404 and the current service index labels Incubators coming soon; verify current intake before routing a company to the historical participation record."
+      ],
+      "recoveryAttempts": [
+        {
+          "lane": "company_newsroom",
+          "url": "https://covesolutions.com/news/cove-and-communitech-join-forces-to-accelerate-canadas-dual-use-technology-innovation-ecosystem/",
+          "outcome": "COVE September 2 announcement resolved the Communitech collaboration and planned September 14–18 event; targeted counterpart search yielded no separate completion evidence."
+        },
+        {
+          "lane": "technical_documentation",
+          "url": "https://covesolutions.com/programs-services/stella-maris-testing-solution/",
+          "outcome": "COVE Stella Maris detailed service page recovered subsea, dockside, shoreside and data access plus project enquiry fields; the linked extra resource failed, while the detailed page answered the access mechanics."
+        },
+        {
+          "lane": "government_program",
+          "url": "https://www.canada.ca/en/department-national-defence/maple-leaf/defence/2026/03/canada-advances-defence-innovation-through-nato-diana.html",
+          "outcome": "DND March 12 DIANA account independently verified COVE Dartmouth curriculum delivery and competitive selection; the French counterpart confirmed the same facts rather than adding independent evidence."
+        },
+        {
+          "lane": "accelerator_cohort",
+          "url": "https://coveocean.com/nato-diana-accelerator/",
+          "outcome": "COVE official DIANA page established accelerator operator status and facilities/mentorship access; dynamic network-size counts were omitted because dated sources describe different totals."
+        },
+        {
+          "lane": "customer_partner",
+          "url": "https://umaritime.com/ultra-maritime-delivers-sea-tracker/",
+          "outcome": "Ultra Maritime December 3 Sea Tracker announcement established supplier-to-DRDC experimentation roles and named COVE/ACOA collaboration; it did not establish unrestricted public test access."
+        },
+        {
+          "lane": "company_newsroom",
+          "url": "https://coveocean.com/news/cove-leads-new-at-sea-testing-capability-to-advance-canadas-maritime-security-innovation-and-dual-use-technology-development/",
+          "outcome": "COVE December 4 at-sea announcement recorded C$9,690,773 federal project funding; targeted government funding search did not recover a separate award breakdown, so it remains attributed project funding."
+        },
+        {
+          "lane": "official_directory",
+          "url": "https://covesolutions.com/contact/",
+          "outcome": "COVE official contact page verified 27 Parker Street, Dartmouth, phone and program enquiry; email was obscured and is left null."
+        },
+        {
+          "lane": "broad_web",
+          "url": "https://covesolutions.com/programs-services/",
+          "outcome": "COVE current service index labels Incubators coming soon; the former Start-Up Yard URL returned 404 and historical cohort search did not establish a current open intake or closure."
+        }
+      ],
+      "disposition": "qualified",
+      "doNotIngestReason": null,
+      "targetMatch": {
+        "entityType": "organization",
+        "entityId": "5f376a4e-3e39-4633-9b6c-c88afac8b418",
+        "slug": "cove",
+        "matchMethods": [
+          "slug",
+          "name",
+          "website_domain"
+        ],
+        "confidence": "high",
+        "baselineUpdatedAt": "2026-08-11T11:55:37.584299+00:00"
+      },
+      "signalIds": [
+        "tnm-manual-20260906074301-cove-communitech-signal"
+      ],
+      "refreshSummary": "Assess COVE as a route to Stella Maris test requirements and DRDC experimentation access: Department of National Defence verifies DIANA delivery, while the September 2 Communitech collaboration expands the partner conversation without establishing adoption. The operating context and current activity changes are fully proposed for human review.",
+      "intendedChanges": [
+        "Update description to make Stella Maris subsea testing and the selected-innovator DIANA route concrete.",
+        "Update website URL to https://covesolutions.com/, the official site linked from existing COVE pages.",
+        "Add current activity for the September 2, 2026 Communitech collaboration and planned Waterloo Tech Week activity.",
+        "Add current activity as of 2026-09-02, distinct from the future event dates.",
+        "Update operating context with Stella Maris test requirements and the distinct Ultra Maritime-to-DRDC Sea Tracker role.",
+        "Update Canadian footprint with 27 Parker Street, Dartmouth and the bounded Waterloo collaboration.",
+        "Update public contact to https://covesolutions.com/contact/ and +1 902 334 2683.",
+        "Add disclosed financing summary for the C$9,690,773 at-sea project funding, with its project-level scope.",
+        "Add organization relationship to exact published Communitech for the September 2, 2026 technology-commercialization collaboration.",
+        "Add program participation as operator of NATO DIANA Accelerator at COVE, without assigning COVE a cohort-company role.",
+        "Replace reviewed questions with Stella Maris test-scope and DRDC Sea Tracker access decisions.",
+        "Add executive relevance summary centered on Stella Maris trial scope and DIANA access."
+      ]
+    }
+  ]
+}

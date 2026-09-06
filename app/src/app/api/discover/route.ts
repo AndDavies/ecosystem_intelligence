@@ -201,7 +201,7 @@ export async function POST(request: Request) {
           outputTokens: null,
           cachedInputTokens: null,
           candidateCount: 0,
-          failureClass: hasOpenAiEnv() ? "dependency_unavailable" as const : "missing_key" as const,
+          failureClass: hasOpenAiEnv() ? "dependency_unavailable" as const : process.env.OPENAI_API_KEY?.trim() ? "missing_model" as const : "missing_key" as const,
           errorCode: null
         }
       };

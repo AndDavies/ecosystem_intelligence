@@ -15,5 +15,5 @@ export function hasSupabaseAdminEnv() {
 }
 
 export function hasOpenAiEnv() {
-  return Boolean(process.env.OPENAI_API_KEY);
+  return Boolean(process.env.OPENAI_API_KEY?.trim() && process.env.OPENAI_MODEL?.trim());
 }
