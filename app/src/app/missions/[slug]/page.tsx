@@ -1,3 +1,4 @@
+import { TopicIcon } from "@/components/atlas/topic-icon";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -161,7 +162,7 @@ export default async function MissionDetailPage({
   ];
 
   return (
-    <PublicPageShell
+    <PublicPageShell variant="dossier"
       eyebrow="Mission area and Use Case"
       title={result.missionArea.name}
       description={result.missionArea.summary}
@@ -222,7 +223,7 @@ export default async function MissionDetailPage({
 
       {treatment && showTreatmentIntro ? (
         <>
-          <section className="mt-7 rounded-[18px] bg-[var(--atlas-blue-soft)] px-5 py-6 sm:px-7" aria-labelledby="mission-contribution-heading">
+          <section className="mt-7 border-y border-[var(--atlas-border)] bg-[var(--atlas-blue-soft)] px-5 py-6 sm:px-7" aria-labelledby="mission-contribution-heading">
             <p className="atlas-eyebrow">Our assessment</p>
             <h2 id="mission-contribution-heading" className="mt-2 font-[family-name:var(--font-barlow)] text-2xl font-extrabold tracking-[-0.04em] text-[var(--atlas-ink)]">How Canadian capability may contribute</h2>
             <p className="mt-3 max-w-4xl text-sm leading-6 text-[var(--atlas-ink-soft)]">{treatment.contributionSummary}</p>
@@ -254,7 +255,7 @@ export default async function MissionDetailPage({
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             {presentedPublicNeeds.map((demand) => (
               <PublicCard key={demand.id} className="flex h-full flex-col">
-                <span className="flex size-9 items-center justify-center rounded-lg bg-[var(--atlas-evidence-soft)] text-[var(--atlas-evidence)]"><FileText className="size-4" aria-hidden="true" /></span>
+                <TopicIcon title={demand.title} />
                 <h3 className="mt-4 text-base font-extrabold tracking-[-0.02em] text-[var(--atlas-ink)]">{demand.title}</h3>
                 <p className="mt-2 text-xs leading-5 text-[var(--atlas-muted)]">{demand.technologyCount} {demand.technologyCount === 1 ? "technology is" : "technologies are"} connected to both records through separate human review.</p>
                 {demand.connectingCapabilities.length ? (

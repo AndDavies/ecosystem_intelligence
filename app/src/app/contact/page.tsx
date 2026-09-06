@@ -11,7 +11,7 @@ export const metadata = {
 
 export default function ContactPage() {
   return (
-    <PublicPageShell eyebrow="Contact" title="Start a useful conversation." description="Send a private message about partnerships, media, privacy, or the atlas. Organization additions and corrections should use the reviewed contribution workflow." backHref="/" backLabel="Home">
+    <PublicPageShell variant="form" eyebrow="Contact" title="Start a useful conversation." description="Send a private message about partnerships, media, privacy, or the atlas. Organization additions and corrections should use the reviewed contribution workflow." backHref="/" backLabel="Home">
       <div className="mx-auto max-w-3xl">
         <PublicCard title="Contact Andrew" eyebrow="Private inbox">
           <ContactForm />

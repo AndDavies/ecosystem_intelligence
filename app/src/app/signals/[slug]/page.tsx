@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import { SignalVisual } from "@/components/atlas/signal-visual";
+import { signalLeadVisual, signalStoryVisual, type SignalVisual as SignalVisualData } from "@/lib/signals/visuals";
+import { getAtlasOrganizationLogos } from "@/lib/atlas/repository";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -9,7 +11,6 @@ import {
   CircleHelp,
   Clock3,
   Compass,
-  ExternalLink,
   FileCheck2,
   Lightbulb
 } from "lucide-react";
@@ -83,6 +84,16 @@ export default async function SignalEditionPage({ params }: { params: Promise<{ 
   if (!edition) notFound();
 
   const url = `/signals/${edition.slug}`;
+  const organizationLinks = edition.items.flatMap((item) => item.links.filter((link) => link.type === "organization"));
+  const logos = edition.isLocalPreview ? {} : await getAtlasOrganizationLogos([...new Set(organizationLinks.map((link) => link.id))]);
+  const storyVisuals = edition.items.map((item): SignalVisualData | null => {
+    const selected = signalStoryVisual(edition.slug, item);
+    if (selected) return selected;
+    const link = item.links.find((candidate) => candidate.type === "organization" && logos[candidate.id]);
+    const logo = link ? logos[link.id] : null;
+    return logo && link ? { url: logo.publicUrl, alt: link.label, attribution: link.label, sourceUrl: link.href, kind: "logo" } : null;
+  });
+  const leadVisual = signalLeadVisual(edition) ?? storyVisuals.find(Boolean) ?? null;
   const editionTags = collectSignalTags(edition.items);
   const { deck, bottomLine, boundary } = signalEditionPresentation(edition);
   const navigationItems = edition.items.map((item, index) => ({ id: item.slug, label: item.title, position: index + 1 }));
@@ -130,26 +141,24 @@ export default async function SignalEditionPage({ params }: { params: Promise<{ 
     ]} />
 
     <article aria-labelledby="signal-edition-title" className="mt-6 sm:mt-8">
-      <header className={`atlas-tonal-surface atlas-tonal-paper mx-auto w-full overflow-hidden shadow-[var(--atlas-shadow-soft)] ${edition.heroImage ? "lg:grid lg:grid-cols-[minmax(0,1.08fr)_minmax(380px,0.92fr)]" : ""}`}>
-        <div className="min-w-0 px-5 py-8 sm:px-8 sm:py-10 lg:flex lg:min-h-[400px] lg:flex-col lg:justify-center lg:px-12 lg:py-9">
-          <div className="flex flex-wrap items-center gap-3">
-            <p className="font-heading text-xs font-extrabold uppercase tracking-[0.16em] text-[var(--atlas-primary)]">Canadian Defence Signals</p>
-            {edition.isLocalPreview ? <span className="rounded-full bg-[var(--atlas-signal-soft)] px-3 py-1 text-xs font-extrabold text-[var(--atlas-ink)]">Local preview · not published</span> : null}
-          </div>
-          <h1 id="signal-edition-title" className="mt-5 max-w-[18ch] font-heading text-[clamp(2.25rem,4.7vw,4rem)] font-extrabold leading-[0.98] tracking-[-0.055em] text-[var(--atlas-ink)]">{edition.title}</h1>
-          <SignalNarrative text={deck} className="mt-6 max-w-2xl text-[17px] leading-8 text-[var(--atlas-ink-soft)] sm:text-lg" />
-          <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3 border-t border-[var(--atlas-border)] pt-5 text-sm text-[var(--atlas-muted)]">
-            <span className="inline-flex items-center gap-2"><CalendarDays className="size-4 text-[var(--atlas-primary)]" aria-hidden="true" /><time dateTime={edition.publishedAt}>{dateFormatter.format(new Date(edition.publishedAt))}</time></span>
-            <span className="inline-flex items-center gap-2"><Clock3 className="size-4 text-[var(--atlas-primary)]" aria-hidden="true" />{readingMinutes} min read</span>
+      <header className="atlas-signal-masthead">
+        <div className="atlas-signal-heading">
+          <p className="atlas-eyebrow !text-white">Canadian Defence Signals</p>
+          {edition.isLocalPreview ? <span className="text-sm text-[var(--atlas-signal)]">Local preview · not published</span> : null}
+          <h1 id="signal-edition-title"><SignalTitle title={edition.title} /></h1>
+          <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm text-white/80">
+            <span className="inline-flex items-center gap-2"><CalendarDays className="size-4" aria-hidden="true" /><time dateTime={edition.publishedAt}>{dateFormatter.format(new Date(edition.publishedAt))}</time></span>
+            <span className="inline-flex items-center gap-2"><Clock3 className="size-4" aria-hidden="true" />{readingMinutes} min read</span>
             {modifiedAt ? <span>Updated <time dateTime={modifiedAt}>{dateFormatter.format(new Date(modifiedAt))}</time></span> : null}
           </div>
           <div className="mt-5"><SignalEditionShare title={edition.title} path={url} /></div>
         </div>
-        {edition.heroImage ? <EditorialHero image={edition.heroImage} /> : null}
+        <SignalVisual visual={leadVisual} priority />
       </header>
-
-      <section aria-labelledby="briefing-snapshot-heading" className="mx-auto mt-12 w-full pb-12 sm:mt-16 sm:pb-16 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(280px,0.36fr)] lg:gap-8">
-        <div className="atlas-tonal-surface atlas-tonal-signal min-w-0 p-6 sm:p-8 lg:p-10">
+      <div className="atlas-signal-reading-grid">
+        <div className="atlas-signal-reading">
+      <section aria-labelledby="briefing-snapshot-heading" className="atlas-signal-summary">
+        <div className="min-w-0">
           <p className="font-heading text-xs font-extrabold uppercase tracking-[0.16em] text-[var(--atlas-primary)]">Editorial briefing snapshot</p>
           <h2 id="briefing-snapshot-heading" className="mt-3 font-heading text-3xl font-extrabold tracking-[-0.04em] sm:text-4xl">The Bottom Line</h2>
           <SignalNarrative text={bottomLine} className="mt-5 max-w-[48rem] text-[17px] leading-8 text-[var(--atlas-ink-soft)] sm:text-lg" />
@@ -159,23 +168,20 @@ export default async function SignalEditionPage({ params }: { params: Promise<{ 
           </nav> : null}
           <div className="mt-6 flex flex-wrap gap-2">{editionTags.slice(0, 8).map((tag) => <SignalTagPill key={tag} tag={tag} surface="signal" />)}</div>
         </div>
-        <div className="atlas-tonal-surface atlas-tonal-blue mt-6 min-w-0 p-6 sm:p-8 lg:mt-0">
-          <SignalArticleNavigation items={navigationItems} label="In this edition" />
-        </div>
       </section>
-
-      <NorthSignalInline placement="newsletter_inline_signals" trigger="signals_bottom_line" className="mx-auto mb-12 w-full" />
-
-      <div className="mx-auto w-full xl:grid xl:grid-cols-[minmax(0,1fr)_minmax(280px,300px)] xl:gap-12">
-        <div className="min-w-0">
-          {edition.items.map((item, index) => <section key={item.id} id={item.slug} tabIndex={-1} aria-labelledby={`${item.slug}-heading`} className="scroll-mt-28 mb-6 rounded-[18px] bg-white p-5 outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-signal)] focus-visible:ring-offset-4 sm:p-8">
+      <section className="atlas-signal-introduction" aria-label="In context">
+        <p className="atlas-eyebrow">In context</p>
+        <SignalNarrative text={deck} className="mt-4 text-lg leading-8" />
+      </section>
+      <details className="atlas-signal-mobile-contents border-y border-[var(--atlas-border)] py-3 lg:hidden"><summary className="min-h-11 cursor-pointer py-3 font-bold">In this edition</summary><SignalArticleNavigation items={navigationItems} label="In this edition" /></details>
+          {edition.items.map((item, index) => <section key={item.id} id={item.slug} tabIndex={-1} aria-labelledby={`${item.slug}-heading`} className="atlas-signal-story scroll-mt-28 border-t border-[var(--atlas-border-strong)] py-8">
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-              <span className="font-heading text-sm font-extrabold text-[var(--atlas-primary)]">{String(index + 1).padStart(2, "0")}</span>
+              <span className="atlas-signal-number">{String(index + 1).padStart(2, "0")}</span>
               <span className="font-heading text-xs font-extrabold uppercase tracking-[0.14em] text-[var(--atlas-primary)]">{signalLaneLabels[item.lane]}</span>
             </div>
-            <h2 id={`${item.slug}-heading`} className="mt-5 max-w-[18ch] font-heading text-3xl font-extrabold leading-[1.04] tracking-[-0.045em] sm:text-[2.65rem]">{item.title}</h2>
-            <p className="mt-5 max-w-[46rem] rounded-2xl bg-[var(--atlas-blue-soft)] px-5 py-4 text-xl font-semibold leading-8 text-[var(--atlas-ink-soft)]">{item.bottomLine}</p>
-            <SignalNarrative text={item.executiveSummary} className="mt-6 max-w-[47rem] text-[17px] leading-8 text-[var(--atlas-ink-soft)]" />
+            <div className="atlas-signal-story-heading"><h2 id={`${item.slug}-heading`} className="mt-4 font-heading text-3xl font-bold leading-tight tracking-[-0.035em]">{item.title}</h2>{storyVisuals[index] ? <SignalVisual visual={storyVisuals[index]} compact /> : null}</div>
+            <p className="mt-5 text-lg font-semibold leading-8 text-[var(--atlas-ink-soft)]">{item.bottomLine}</p>
+            <SignalNarrative text={item.executiveSummary} className="mt-5 text-lg leading-8 text-[var(--atlas-ink-soft)]" />
 
             {edition.packetSchemaVersion === "daily_signals_packet_v3" ? <SignalEditorialDetails item={item} /> : <div className="mt-8 grid gap-3 md:grid-cols-2">
               <SignalBlock title="What the public record says" text={item.sourceFact} icon={FileCheck2} tone="fact" />
@@ -184,7 +190,7 @@ export default async function SignalEditionPage({ params }: { params: Promise<{ 
               <SignalBlock title="Practical next step" text={item.nextStep ?? ""} icon={Compass} tone="next" />
             </div>}
 
-            <div className="mt-8 grid gap-6 rounded-2xl bg-[var(--atlas-blue-soft)] p-5 sm:grid-cols-[minmax(0,1fr)_auto] sm:p-6">
+            <div className="mt-6 grid gap-5 border-t border-[var(--atlas-border)] py-5">
               <div className="min-w-0">
                 <h3 className="font-heading text-sm font-extrabold uppercase tracking-[0.12em] text-[var(--atlas-ink)]">Original source{item.sources.length === 1 ? "" : "s"}</h3>
                 <ul className="mt-3 space-y-3">{item.sources.map((source) => <li key={source.id} className="min-w-0">
@@ -193,7 +199,7 @@ export default async function SignalEditionPage({ params }: { params: Promise<{ 
                   {source.locator ? <span className="block text-sm leading-6 text-[var(--atlas-muted)]">{source.locator}</span> : null}
                 </li>)}</ul>
               </div>
-              {item.links.length ? <div className="flex max-w-sm flex-wrap gap-2 sm:justify-end">{item.links.map((link) => <Link key={`${link.type}:${link.id}`} href={link.href} prefetch={false} className="atlas-pill atlas-pill-paper atlas-pill-link min-h-11 gap-2 px-4 text-sm font-bold no-underline hover:bg-[var(--atlas-ink)] hover:text-white hover:no-underline">{link.label}<ArrowRight className="size-4" aria-hidden="true" /></Link>)}</div> : null}
+              {item.links.length ? <div className="flex flex-wrap gap-3">{item.links.map((link) => <Link key={`${link.type}:${link.id}`} href={link.href} prefetch={false} className="atlas-prose-link inline-flex min-h-11 items-center gap-2 text-sm font-bold">{link.label}<ArrowRight className="size-4" aria-hidden="true" /></Link>)}</div> : null}
             </div>
           </section>)}
 
@@ -201,18 +207,17 @@ export default async function SignalEditionPage({ params }: { params: Promise<{ 
             <p className="font-heading text-xs font-extrabold uppercase tracking-[0.16em] text-[var(--atlas-primary)]">Carry the signal forward</p>
             <h2 id="continue-heading" className="mt-3 font-heading text-3xl font-extrabold tracking-[-0.04em]">Continue in True North Map</h2>
             <p className="mt-3 max-w-2xl text-base leading-7 text-[var(--atlas-muted)]">Follow the edition into the organizations, technologies, Defence needs and Mission areas already connected to its record.</p>
-            <div className="mt-6 grid gap-3 sm:grid-cols-2">{continuationLinks.map((link, index) => <InternalLink key={`${link.targetType}:${link.targetSlug}`} link={link} module="signal_record_links" position={index + 1} variant="plain" className="flex min-h-20 items-center justify-between gap-4 rounded-2xl bg-[var(--atlas-surface-muted)] px-5 py-4 text-[var(--atlas-ink)] no-underline transition-colors hover:bg-[var(--atlas-blue-soft)] hover:text-[var(--atlas-primary)] hover:no-underline">
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">{continuationLinks.map((link, index) => <InternalLink key={`${link.targetType}:${link.targetSlug}`} link={link} module="signal_record_links" position={index + 1} variant="plain" className="flex min-h-20 items-center justify-between gap-4 border-t border-[var(--atlas-border)] py-4 text-[var(--atlas-ink)] no-underline transition-colors hover:bg-[var(--atlas-blue-soft)] hover:text-[var(--atlas-primary)] hover:no-underline">
               <span><span className="block text-xs font-extrabold uppercase tracking-[0.12em] text-[var(--atlas-muted)]">{continuationLabels[link.targetType] ?? "Record"}</span><span className="mt-1 block font-heading text-lg font-extrabold">{link.label}</span></span><ArrowRight className="size-5 shrink-0" aria-hidden="true" />
             </InternalLink>)}</div>
           </section> : null}
         </div>
 
-        <aside aria-label="Article section navigation" className="hidden xl:block">
-          <div className="atlas-tonal-surface atlas-tonal-blue sticky top-24 mt-12 p-5">
-            <SignalArticleNavigation items={navigationItems} label="In this edition" compact />
-          </div>
+        <aside aria-label="Article section navigation" className="atlas-signal-contents hidden lg:block">
+          <div className="atlas-signal-contents-sticky"><SignalArticleNavigation items={navigationItems} label="Contents" compact /><Link href="/north-signal" className="atlas-prose-link mt-5 inline-flex min-h-11 items-center gap-2 text-sm font-bold">Free weekly briefing <ArrowRight className="size-4" /></Link></div>
         </aside>
       </div>
+      <NorthSignalInline placement="newsletter_inline_signals" trigger="signals_bottom_line" className="mt-10" />
     </article>
 
     <nav aria-labelledby="edition-navigation-heading" className="mx-auto mt-12 w-full py-10">
@@ -235,16 +240,10 @@ export default async function SignalEditionPage({ params }: { params: Promise<{ 
   </PublicPageShell>;
 }
 
-function EditorialHero({ image }: { image: NonNullable<SignalEdition["heroImage"]> }) {
-  return <figure className="min-w-0 bg-[var(--atlas-ink)] lg:flex lg:min-h-[400px] lg:flex-col">
-    <div className="relative aspect-[16/9] min-h-0 overflow-hidden lg:flex-1 lg:aspect-auto">
-      <Image src={image.url} alt={image.alt} fill priority sizes="(max-width: 1023px) 100vw, 45vw" className="object-cover" />
-    </div>
-    <figcaption className="flex flex-wrap items-start justify-between gap-2 bg-[var(--atlas-ink)] px-4 py-3 text-xs leading-5 text-white/75">
-      <span>{image.attribution}</span>
-      <a href={image.sourceUrl} target="_blank" rel="noreferrer" className="inline-flex min-h-6 items-center gap-1 font-semibold text-white underline decoration-2 underline-offset-4 hover:text-[var(--atlas-signal)]">Image source <ExternalLink className="size-3.5" aria-hidden="true" /><span className="sr-only"> (opens in a new tab)</span></a>
-    </figcaption>
-  </figure>;
+function SignalTitle({ title }: { title: string }) {
+  const words = title.trim().split(/\s+/);
+  const split = Math.max(1, words.length - 2);
+  return <>{words.slice(0, split).join(" ")} <span className="text-[var(--atlas-signal)]">{words.slice(split).join(" ")}</span></>;
 }
 
 function SignalBlock({ title, text, icon: Icon, tone }: { title: string; text: string; icon: typeof FileCheck2; tone: "fact" | "assessment" | "gap" | "next" }) {
@@ -254,7 +253,7 @@ function SignalBlock({ title, text, icon: Icon, tone }: { title: string; text: s
     gap: "bg-[var(--atlas-surface-muted)] text-[var(--atlas-muted)]",
     next: "bg-[var(--atlas-ink)] text-white"
   } as const;
-  return <div className={`min-w-0 rounded-2xl p-5 md:min-h-48 ${tones[tone]}`}>
+  return <div className={`min-w-0 border-t border-[var(--atlas-border)] py-5 ${tones[tone]}`}>
     <Icon className="size-5" aria-hidden="true" />
     <h3 className={`mt-4 font-heading text-sm font-extrabold uppercase tracking-[0.1em] ${tone === "next" ? "text-white" : "text-[var(--atlas-ink)]"}`}>{title}</h3>
     <p className={`mt-3 text-[15px] leading-7 ${tone === "next" ? "text-white/78" : "text-[var(--atlas-ink-soft)]"}`}>{text}</p>
@@ -262,7 +261,7 @@ function SignalBlock({ title, text, icon: Icon, tone }: { title: string; text: s
 }
 
 function EditionLink({ edition, label }: { edition: SignalEdition; label: string }) {
-  return <Link href={`/signals/${edition.slug}`} data-internal-link-role="contextual" data-internal-link-module="signal_related" className="flex min-h-32 flex-col justify-between rounded-2xl bg-white p-5 text-[var(--atlas-ink)] no-underline transition-colors hover:bg-[var(--atlas-blue-soft)] hover:text-[var(--atlas-primary)] hover:no-underline">
+  return <Link href={`/signals/${edition.slug}`} data-internal-link-role="contextual" data-internal-link-module="signal_related" className="flex min-h-32 flex-col justify-between border-t border-[var(--atlas-border)] py-5 text-[var(--atlas-ink)] no-underline transition-colors hover:bg-[var(--atlas-blue-soft)] hover:text-[var(--atlas-primary)] hover:no-underline">
     <span className="text-xs font-extrabold uppercase tracking-[0.12em] text-[var(--atlas-muted)]">{label} · {dateFormatter.format(new Date(`${edition.editionDate}T12:00:00Z`))}</span>
     <span className="mt-4 flex items-end justify-between gap-4 font-heading text-xl font-extrabold leading-tight"><span>{edition.title}</span><ArrowRight className="size-5 shrink-0" aria-hidden="true" /></span>
   </Link>;

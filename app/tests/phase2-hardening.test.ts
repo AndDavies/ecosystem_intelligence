@@ -208,9 +208,9 @@ describe("phase 2 launch hardening", () => {
     expect(page).not.toContain("getAtlasDiscoverySnapshot");
     expect(page).toContain("<LandingProductPreview />");
     expect(mapPage).toContain("getAtlasDiscoverySnapshot()");
-    expect(explorer).toContain('className="atlas-frame pb-8 pt-3 sm:pt-4"');
-    expect(explorer).toContain("lg:grid-cols-[minmax(0,1fr)_380px]");
-    expect(explorer).toContain("lg:h-[max(560px,calc(100dvh-250px))]");
+    expect(explorer).toContain('className="atlas-frame atlas-map-frame pb-8 pt-3 sm:pt-4"');
+    expect(explorer).toContain("lg:grid-cols-[minmax(0,1fr)_360px]");
+    expect(explorer).toContain("lg:h-[max(480px,calc(100dvh-310px))]");
     expect(mapPage).toContain("MapFallback");
   });
 

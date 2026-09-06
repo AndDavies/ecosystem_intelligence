@@ -1,3 +1,4 @@
+import { buildOrganizationTypeOptions, matchesOrganizationType, organizationTypeFilterLabel } from "@/lib/atlas/organization-type-filters";
 import "server-only";
 
 import { cache } from "react";
@@ -557,7 +558,7 @@ function buildAppliedFilters(snapshot: AtlasQueryableSnapshot, query: AtlasQuery
   add("query", "Search", query.query);
   add("region", "Region", snapshot.regions.find((item) => item.slug === query.region)?.name ?? query.region);
   add("metro", "Metro area", getAtlasMetroArea(query.metro)?.name ?? query.metro);
-  add("type", "Organization type", query.type ? titleCase(query.type) : undefined);
+  add("type", "Organization type", query.type ? (normalize(query.type) === "innovation support" ? organizationTypeFilterLabel(query.type) : titleCase(query.type)) : undefined);
   add("capability", "Technology or service", query.capability);
   add("domain", "Technology area", snapshot.technicalDomains.find((item) => item.slug === query.domain)?.name ?? query.domain);
   add("mission", "Mission area", snapshot.missionAreas.find((item) => item.slug === query.mission)?.name ?? query.mission);
@@ -589,12 +590,7 @@ export function matchingAtlasOrganizations(snapshot: AtlasQueryableSnapshot, que
         normalize(organization.primaryLocation?.provinceTerritory ?? "") === normalize(query.region)
     )
     .filter((organization) => !query.metro || organizationMatchesMetro(organization, query.metro))
-    .filter(
-      (organization) =>
-        !query.type ||
-        normalize(organization.entityKind) === normalize(query.type) ||
-        organization.categories.some((category) => normalize(category) === normalize(query.type ?? ""))
-    )
+    .filter((organization) => matchesOrganizationType(organization, query.type))
     .filter(
       (organization) =>
         !query.capability ||
@@ -664,7 +660,7 @@ function buildAtlasQueryResult(
   const regionValues = snapshot.organizations
     .map((organization) => organization.primaryLocation?.regionSlug)
     .filter((value): value is string => Boolean(value));
-  const typeValues = snapshot.organizations.flatMap((organization) => [organization.entityKind, ...organization.categories]);
+  const typeValues = snapshot.organizations.flatMap((organization) => [...new Set([organization.entityKind, ...organization.categories])]);
   const domainValues = snapshot.organizations.flatMap((organization) =>
     organization.capabilities.flatMap((capability) => capability.technicalDomains.map((domain) => domain.slug))
   );
@@ -688,7 +684,10 @@ function buildAtlasQueryResult(
         regionValues,
         (value) => snapshot.regions.find((region) => region.slug === value)?.name ?? titleCase(value)
       ),
-      organizationTypes: countFacet(typeValues, titleCase),
+      organizationTypes: [
+        ...countFacet(typeValues, organizationTypeFilterLabel),
+        ...buildOrganizationTypeOptions(snapshot.organizations, query.type).filter((option) => !typeValues.includes(option.value))
+      ],
       technicalDomains: countFacet(
         domainValues,
         (value) => snapshot.technicalDomains.find((domain) => domain.slug === value)?.name ?? titleCase(value)

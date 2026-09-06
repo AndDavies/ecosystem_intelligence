@@ -31,7 +31,7 @@ export function SignalArticleNavigation({ items, label, compact = false }: { ite
       {items.map((item) => {
         const active = item.id === activeId;
         return <li key={item.id}>
-          <a href={`#${item.id}`} aria-current={active ? "location" : undefined} onClick={() => focusSection(item.id)} className={`flex min-h-11 items-start gap-3 rounded-xl py-2 pl-3 pr-2 text-sm leading-5 no-underline transition-colors hover:no-underline ${active ? "bg-white font-bold text-[var(--atlas-ink)]" : "text-[var(--atlas-muted)] hover:bg-white/70 hover:text-[var(--atlas-primary)]"}`}>
+          <a href={`#${item.id}`} aria-current={active ? "location" : undefined} onClick={() => focusSection(item.id)} className={`atlas-signal-contents-link flex min-h-11 items-start gap-3 border-l-2 border-transparent py-2 pl-3 pr-2 text-sm leading-6 underline underline-offset-4 transition-colors ${active ? "!border-[var(--atlas-signal)] font-bold !text-[var(--atlas-ink)]" : "text-[var(--atlas-link)] hover:text-[var(--atlas-ink)]"}`}>
             <span className="shrink-0 font-heading font-extrabold text-[var(--atlas-primary)]">{String(item.position).padStart(2, "0")}</span>
             <span>{item.label}</span>
           </a>

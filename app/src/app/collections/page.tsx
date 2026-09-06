@@ -29,6 +29,7 @@ export default async function CollectionsPage({
     .order("updated_at", { ascending: false });
   return (
     <PublicPageShell
+      variant="workspace"
       eyebrow="Private workspace"
       title="Shortlists"
       description="Save organizations, capabilities and evidence for the conversation ahead. Your private notes and lists never change the public record."

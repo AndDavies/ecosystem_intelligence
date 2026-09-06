@@ -11,10 +11,10 @@ export function PublicAtlasFooter({ generatedLabel, variant = "compact" }: { gen
   const currentYear = new Date().getFullYear();
   if (variant === "landing") {
     return (
-      <footer className="border-t border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] py-14 text-sm text-[var(--atlas-muted)]">
+      <footer className="atlas-footer border-t border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] py-14 text-sm text-[var(--atlas-muted)]">
         <div className="atlas-frame grid gap-12 lg:grid-cols-[1.25fr_0.75fr_0.75fr_0.75fr]">
           <div>
-            <BrandLogo />
+            <BrandLogo inverse />
             <p className="mt-6 text-lg font-extrabold text-[var(--atlas-ink)]">Make Canadian capability visible.</p>
             <p className="mt-2 max-w-sm leading-6">{generatedLabel ?? "Independent project by Andrew Davies."}</p>
           </div>
@@ -37,8 +37,8 @@ export function PublicAtlasFooter({ generatedLabel, variant = "compact" }: { gen
   }
 
   return (
-    <footer className="mt-10 rounded-[18px] bg-[var(--atlas-ink)] px-5 py-7 text-xs text-white/60 sm:px-7">
-      <div className="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1.4fr)] lg:items-start">
+    <footer className="atlas-footer mt-10 bg-[var(--atlas-ink)] py-10 text-xs text-white/60">
+      <div className="atlas-frame grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1.4fr)] lg:items-start">
         <div className="max-w-xl">
           <BrandLogo inverse />
           <p className="mt-5 text-base font-extrabold text-white">Make Canadian capability visible.</p>
@@ -50,7 +50,7 @@ export function PublicAtlasFooter({ generatedLabel, variant = "compact" }: { gen
           <CompactFooterColumn title="Trust & About" links={[["Methodology", "/methodology"], ["About", "/about"], ["Contact", "/contact"], ["Privacy", "/privacy"], ["Terms", "/terms"]]} />
         </nav>
       </div>
-      <div className="mt-7 flex flex-wrap items-center gap-x-4 gap-y-3 border-t border-white/15 pt-6">
+      <div className="atlas-frame mt-7 flex flex-wrap items-center gap-x-4 gap-y-3 border-t border-white/15 pt-6">
           <button type="button" onClick={openBetaFeedback} className="inline-flex min-h-11 items-center gap-1.5 font-semibold text-white hover:text-[var(--atlas-signal)] hover:underline"><MessageSquareText className="size-3.5" aria-hidden="true" />Give feedback</button>
           <button type="button" onClick={() => openBetaUpdates("newsletter_footer")} className="inline-flex min-h-11 items-center gap-1.5 font-semibold text-white hover:text-[var(--atlas-signal)] hover:underline"><Bell className="size-3.5" aria-hidden="true" />Free weekly briefing</button>
           <a href={officialSocialLinks.linkedIn} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-full bg-white/10 px-3.5 font-semibold text-white no-underline hover:bg-white/15 hover:text-[var(--atlas-signal)]"><Linkedin className="size-4" aria-hidden="true" />Follow us on LinkedIn<span className="sr-only"> (opens in a new tab)</span></a>

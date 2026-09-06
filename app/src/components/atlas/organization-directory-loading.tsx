@@ -1,20 +1,10 @@
 export function OrganizationDirectoryLoading() {
-  return (
-    <div className="mt-5" aria-live="polite" aria-busy="true">
-      <p className="text-xs font-semibold text-[var(--atlas-muted)]">Loading published organizations…</p>
-      <div aria-hidden="true" className="mt-3 animate-pulse">
-        <div className="grid h-16 grid-cols-3 overflow-hidden rounded-[18px] bg-white">
-          <div className="bg-[var(--atlas-blue-soft)]" />
-          <div className="bg-[var(--atlas-evidence-soft)]" />
-          <div className="bg-[var(--atlas-signal-soft)]" />
-        </div>
-        <div className="mt-6 flex items-center justify-between gap-4">
-          <div className="h-7 w-48 rounded bg-[var(--atlas-border)]" />
-          <div className="h-10 w-36 rounded-[12px] bg-[var(--atlas-primary-soft)]" />
-        </div>
-        <div className="mt-4 h-10 rounded-[14px] bg-white" />
-        <div className="mt-3 h-10 rounded-[14px] bg-white" />
-      </div>
+  return <div className="mt-6" aria-live="polite" aria-busy="true">
+    <p className="text-sm font-semibold text-[var(--atlas-muted)]">Loading published organizations…</p>
+    <div aria-hidden="true" className="mt-4 animate-pulse">
+      <div className="h-14 max-w-3xl rounded-[4px] bg-white" />
+      <div className="my-5 h-8 max-w-xl bg-[var(--atlas-surface-muted)]" />
+      <div className="atlas-directory-grid"><div className="h-80 border-t border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)]" /><div className="grid gap-6 sm:grid-cols-2">{[0, 1].map((key) => <div key={key} className="h-64 border-t border-[var(--atlas-border)] bg-white" />)}</div></div>
     </div>
-  );
+  </div>;
 }

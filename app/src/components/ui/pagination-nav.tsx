@@ -33,7 +33,7 @@ export function PaginationNav({
   };
 
   return (
-    <nav className="mt-7 flex flex-col gap-3 rounded-[18px] border border-[var(--atlas-border)] bg-white px-4 py-4 sm:flex-row sm:items-center sm:justify-between" aria-label={`${itemLabel} pages`}>
+    <nav className="mt-7 flex flex-col gap-3 border-t border-[var(--atlas-border)] py-4 sm:flex-row sm:items-center sm:justify-between" aria-label={`${itemLabel} pages`}>
       <p className="text-xs text-[var(--atlas-muted)]">Showing {start}–{end} of {total} {itemLabel}</p>
       <div className="flex items-center gap-2">
         {page > 1 ? (

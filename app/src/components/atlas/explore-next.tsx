@@ -23,7 +23,7 @@ export function ExploreNext({
 
   return (
     <section
-      className="atlas-explore-next mt-8 rounded-[18px] bg-[var(--atlas-blue-soft)] px-5 py-7 sm:px-8 sm:py-8"
+      className="atlas-explore-next mt-8 rounded-none bg-[var(--atlas-blue-soft)] px-5 py-7 sm:px-8 sm:py-8"
       aria-labelledby={`${module}-explore-next-heading`}
       data-internal-link-module={module}
     >

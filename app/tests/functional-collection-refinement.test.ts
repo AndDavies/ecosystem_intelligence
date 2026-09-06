@@ -29,8 +29,8 @@ describe("functional discovery collections", () => {
     expect(demand).toContain("What defence need was released?");
     expect(demand).toContain('actions={<Link href="/map?start=need#ask-true-north"');
     expect(demand).toContain("reviewed technology");
-    expect(demand).toContain("How connections are assessed");
-    expect(organizations).toContain('grid grid-cols-3 overflow-hidden rounded-[18px]');
+    expect(demand).not.toContain("How connections are assessed");
+    expect(organizations).toContain('atlas-directory-stats');
     expect(organizations).toContain('className="mt-6"');
     expect(organizations).not.toContain("getAtlasCoverageSummary");
   });
@@ -48,7 +48,7 @@ describe("functional discovery collections", () => {
     expect(organizationCard).toContain('href={`/capabilities/${offering.slug}`}');
     expect(organizationCard).toContain('data-internal-link-module="organization_card_profile"');
     expect(organizationCard).toContain('data-internal-link-module="organization_card_capability"');
-    expect(organizationCard).toContain("focus-within:shadow");
+    expect(organizationCard).not.toContain("focus-visible:outline-none");
     expect(regions).toContain("after:absolute after:inset-0");
     expect(missions).toContain("after:absolute after:inset-0");
     expect(demand).toContain("after:absolute after:inset-0");

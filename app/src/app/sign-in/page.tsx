@@ -53,7 +53,7 @@ export default async function SignInPage({
           <Link href={returnTo} className="mt-7 inline-flex text-xs font-semibold text-[var(--atlas-primary)] no-underline hover:underline">Continue without signing in</Link>
         </section>
 
-        <section className="rounded-xl border border-[var(--atlas-border)] bg-white p-6 shadow-[0_12px_34px_rgba(16,24,40,0.08)] sm:p-8">
+        <section className="border-l border-[var(--atlas-border)] bg-white p-6 sm:p-8">
           <div className="flex size-10 items-center justify-center rounded-md bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)]" aria-hidden="true">
             <LockKeyhole className="size-5" />
           </div>

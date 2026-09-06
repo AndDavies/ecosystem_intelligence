@@ -45,6 +45,7 @@ export default async function DefenceBriefsPage() {
 
   return (
     <PublicPageShell
+      variant="collection"
       eyebrow="Defence Briefs"
       title="Understand what may shape what Canada builds next."
       description="Source-linked explainers connecting policy, released defence needs and Canadian capability. Go deeper on how a system, technology or decision works, then continue into the records behind it."
@@ -90,7 +91,7 @@ export default async function DefenceBriefsPage() {
       </div>
 
       {featured ? (
-        <section className="mt-8 overflow-hidden rounded-[var(--atlas-radius-card)] bg-white shadow-[var(--atlas-shadow-soft)]">
+        <section className="mt-8 overflow-hidden bg-white border-t border-[var(--atlas-border)]">
           <div className="grid min-w-0 lg:grid-cols-[minmax(0,1.06fr)_minmax(360px,0.94fr)]">
             <BriefHero presentation={getBriefPresentation(featured)} title={featured.title} priority compact className="order-2 h-[280px] min-w-0 rounded-none sm:h-[320px] lg:order-1 lg:aspect-auto lg:h-full lg:min-h-[430px]" />
             <div className="relative z-10 order-1 flex min-w-0 flex-col justify-center bg-white p-6 sm:p-9 lg:order-2 lg:p-11">
@@ -105,7 +106,7 @@ export default async function DefenceBriefsPage() {
           </div>
         </section>
       ) : (
-        <section className="mt-8 rounded-[18px] bg-[var(--atlas-surface-muted)] p-10 text-center">
+        <section className="mt-8 rounded-none bg-[var(--atlas-surface-muted)] p-10 text-center">
           <BookOpenText className="mx-auto size-7 text-[var(--atlas-primary)]" />
           <h2 className="mt-4 text-xl font-extrabold text-[var(--atlas-ink)]">The next reviewed brief is being prepared.</h2>
           <p className="mx-auto mt-2 max-w-xl text-sm leading-6 text-[var(--atlas-muted)]">Public pages appear only after their evidence and interpretation have been reviewed.</p>
@@ -125,7 +126,7 @@ export default async function DefenceBriefsPage() {
             {latest.map((brief) => {
               const presentation = getBriefPresentation(brief);
               return (
-                <article key={brief.id} className="group overflow-hidden rounded-[var(--atlas-radius-card)] bg-white shadow-[var(--atlas-shadow-soft)] transition-shadow hover:shadow-[0_22px_52px_rgba(36,40,39,0.1)]">
+                <article key={brief.id} className="group overflow-hidden bg-white border-t border-[var(--atlas-border)] transition-colors">
                   <BriefHero presentation={presentation} title={brief.title} compact />
                   <div className="flex min-h-[300px] flex-col p-6">
                     <BriefMeta brief={brief} />
@@ -140,15 +141,15 @@ export default async function DefenceBriefsPage() {
         </section>
       ) : null}
 
-      <section className="mt-16 grid gap-8 rounded-[18px] bg-[var(--atlas-ink)] px-6 py-9 text-white sm:mt-20 sm:px-9 sm:py-11 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14 lg:px-12">
+      <section className="mt-16 grid gap-8 rounded-none bg-[var(--atlas-ink)] px-6 py-9 text-white sm:mt-20 sm:px-9 sm:py-11 lg:grid-cols-[0.8fr_1.2fr] lg:gap-8 lg:px-12">
         <div>
           <Compass className="size-6 text-[var(--atlas-signal)]" />
-          <p className="mt-6 text-[10px] font-extrabold uppercase tracking-[0.16em] text-[var(--atlas-signal)]">What you can explore</p>
+          <p className="mt-6 text-xs font-extrabold uppercase tracking-[0.16em] text-[var(--atlas-signal)]">What you can explore</p>
           <h2 className="mt-3 text-3xl font-extrabold leading-tight tracking-[-0.04em]">From the public signal to the people who can act on it.</h2>
         </div>
         <div className="grid gap-4 sm:grid-cols-2">
-          {topics.map((topic) => <div key={topic} className="rounded-2xl border border-white/15 bg-white/[0.06] px-5 py-4 text-sm font-bold text-white/85">{topic}</div>)}
-          <div className="rounded-2xl border border-[var(--atlas-signal)]/45 bg-[var(--atlas-signal)]/10 px-5 py-4 text-sm font-bold text-[var(--atlas-signal)]">More reviewed topics in development</div>
+          {topics.map((topic) => <div key={topic} className="border-t border-white/25 px-5 py-4 text-sm font-bold text-white/85">{topic}</div>)}
+          <div className="border-t border-white/25 px-5 py-4 text-sm font-bold text-[var(--atlas-signal)]">More reviewed topics in development</div>
         </div>
       </section>
 
@@ -166,7 +167,7 @@ export default async function DefenceBriefsPage() {
 function BriefMeta({ brief, featured = false }: { brief: Awaited<ReturnType<typeof getPublishedDefenceBriefs>>[number]; featured?: boolean }) {
   const presentation = getBriefPresentation(brief);
   return (
-    <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-[10px] font-extrabold uppercase tracking-[0.12em]">
+    <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs font-extrabold uppercase tracking-[0.12em]">
       {featured ? <span className="rounded-full bg-[var(--atlas-signal)] px-3 py-1.5 text-[var(--atlas-ink)]">Featured</span> : null}
       <span className="text-[var(--atlas-primary)]">{presentation.format}</span>
       <span aria-hidden="true" className="size-1 rounded-full bg-[var(--atlas-border-strong)]" />
@@ -180,5 +181,5 @@ function BriefMeta({ brief, featured = false }: { brief: Awaited<ReturnType<type
 }
 
 function Value({ icon: Icon, title, text }: { icon: typeof SearchCheck; title: string; text: string }) {
-  return <div className="flex gap-4"><div className="flex size-11 shrink-0 items-center justify-center rounded-2xl bg-[var(--atlas-signal-soft)] text-[var(--atlas-primary)]"><Icon className="size-5" /></div><div><h2 className="text-sm font-extrabold text-[var(--atlas-ink)]">{title}</h2><p className="mt-1 text-xs leading-5 text-[var(--atlas-muted)]">{text}</p></div></div>;
+  return <div className="flex gap-4"><div className="flex size-11 shrink-0 items-center justify-center rounded-none bg-[var(--atlas-signal-soft)] text-[var(--atlas-primary)]"><Icon className="size-5" /></div><div><h2 className="text-sm font-extrabold text-[var(--atlas-ink)]">{title}</h2><p className="mt-1 text-xs leading-5 text-[var(--atlas-muted)]">{text}</p></div></div>;
 }

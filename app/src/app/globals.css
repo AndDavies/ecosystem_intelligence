@@ -3,7 +3,7 @@
 @utility form-control {
   height: 2.75rem;
   width: 100%;
-  border-radius: 0.75rem;
+  border-radius: var(--atlas-radius-control);
   border: 1px solid var(--atlas-border-strong);
   background: white;
   padding-inline: 0.75rem;
@@ -56,8 +56,11 @@
   --atlas-tonal-ink: #242827;
   --atlas-shadow-soft: 0 10px 30px rgba(36, 40, 39, 0.055);
   --atlas-shadow-float: 0 20px 52px rgba(36, 40, 39, 0.12);
-  --atlas-radius-card: 18px;
+  --atlas-radius-card: 8px;
+  --atlas-radius-feature: 18px;
   --atlas-radius-control: 12px;
+  --atlas-link: #245b78;
+  --atlas-radius-action: 999px;
   --background: #f7f7f3;
   --foreground: #242827;
   --card: rgba(255, 255, 255, 0.94);
@@ -81,7 +84,7 @@
   --input: rgba(36, 40, 39, 0.14);
   --link: #242827;
   --link-hover: #464945;
-  --ring: rgba(245, 233, 0, 0.55);
+  --ring: #242827;
   --chart-1: #242827;
   --chart-2: #f5e900;
   --chart-3: #126147;
@@ -89,7 +92,7 @@
   --chart-5: #d9dad4;
   --shadow-soft: 0 18px 48px rgba(36, 40, 39, 0.1);
   --shadow-strong: 0 28px 80px rgba(36, 40, 39, 0.16);
-  --radius: 0.875rem;
+  --radius: 0.5rem;
   --sidebar: #ffffff;
   --sidebar-foreground: #242827;
   --sidebar-primary: #124a5c;
@@ -136,19 +139,19 @@ body {
   --accent-foreground: var(--atlas-primary);
   --link: var(--atlas-primary);
   --link-hover: var(--atlas-primary-hover);
-  --ring: rgba(245, 233, 0, 0.62);
-  --radius: 0.875rem;
+  --ring: #242827;
+  --radius: 0.5rem;
   font-family: var(--font-inter), Inter, ui-sans-serif, system-ui, sans-serif;
   font-size: 16px;
   line-height: 1.5;
   background: var(--atlas-canvas);
 }
 
-.tnm-landing h1,
-.tnm-landing h2,
-.tnm-landing h3,
-.tnm-landing h4,
-.tnm-landing .atlas-eyebrow {
+.atlas-display,
+.atlas-page h1,
+.atlas-page h2,
+.atlas-page h3,
+.atlas-page h4 {
   font-family: var(--font-barlow), Barlow, Arial, sans-serif;
 }
 
@@ -203,12 +206,13 @@ body {
 }
 
 .atlas-page :focus-visible {
-  outline: 3px solid var(--atlas-signal);
-  outline-offset: 2px;
+  outline: 3px solid var(--atlas-ink);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px white;
 }
 
 .atlas-page .atlas-prose-link {
-  color: var(--atlas-ink);
+  color: var(--atlas-link);
   text-decoration-line: underline;
   text-decoration-color: currentColor;
   text-decoration-thickness: 2px;
@@ -229,7 +233,7 @@ body {
 .atlas-page .atlas-prose-link:focus-visible {
   border-radius: 3px;
   background: var(--atlas-signal-soft);
-  outline: 3px solid var(--atlas-signal);
+  outline: 3px solid var(--atlas-ink);
   outline-offset: 3px;
 }
 
@@ -297,9 +301,13 @@ body {
   box-shadow: var(--atlas-shadow-soft);
 }
 
-.atlas-page:not(.atlas-admin-shell) .atlas-surface,
-.atlas-page:not(.atlas-admin-shell) .atlas-surface-elevated {
+.atlas-page:not(.atlas-admin-shell) .atlas-surface {
+  padding-inline: 0;
   border: 0;
+  border-top: 1px solid var(--atlas-border);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 /* Public editorial surfaces use adjacent colour fields instead of decorative
@@ -307,7 +315,7 @@ body {
    their functional boundaries. */
 .atlas-tonal-surface {
   border: 0;
-  border-radius: var(--atlas-radius-card);
+  border-radius: 0;
 }
 
 .atlas-tonal-paper {
@@ -386,13 +394,7 @@ body {
   border: 1px solid var(--atlas-border-strong);
 }
 
-.atlas-page .rounded-md {
-  border-radius: 0.75rem;
-}
 
-.atlas-page .rounded-lg {
-  border-radius: 1rem;
-}
 
 .atlas-eyebrow {
   color: var(--atlas-ink);
@@ -407,7 +409,7 @@ body {
 .atlas-secondary-button,
 .atlas-tertiary-button {
   align-items: center;
-  border-radius: var(--atlas-radius-control);
+  border-radius: var(--atlas-radius-action);
   display: inline-flex;
   font-weight: 650;
   justify-content: center;
@@ -427,13 +429,13 @@ body {
 
 .atlas-primary-button:hover {
   background: var(--atlas-primary-hover);
-  box-shadow: 0 10px 24px rgba(36, 40, 39, 0.18);
+  box-shadow: none;
   text-decoration: none;
 }
 
 .atlas-secondary-button {
-  border: 0;
-  background: var(--atlas-primary-soft);
+  border: 1px solid var(--atlas-border-strong);
+  background: transparent;
   color: var(--atlas-ink-soft);
 }
 
@@ -456,7 +458,7 @@ body {
 .atlas-signal-button {
   align-items: center;
   border: 0;
-  border-radius: var(--atlas-radius-control);
+  border-radius: var(--atlas-radius-action);
   background: var(--atlas-signal);
   color: var(--atlas-signal-ink);
   display: inline-flex;
@@ -558,13 +560,7 @@ body {
   background: var(--admin-canvas);
 }
 
-.atlas-admin-shell .rounded-md {
-  border-radius: 0.75rem;
-}
 
-.atlas-admin-shell .rounded-lg {
-  border-radius: 1rem;
-}
 
 @media (prefers-reduced-motion: reduce) {
   .atlas-page *,
@@ -713,4 +709,78 @@ textarea {
   html {
     @apply font-sans;
   }
+}
+
+/* Desktop-led editorial structure. These are presentation roles, never global
+   overrides of Tailwind's geometry utilities. */
+.atlas-page-title { font-family: var(--font-barlow), Barlow, Arial, sans-serif; font-size: clamp(2rem, 3.1vw, 2.75rem); font-weight: 800; line-height: 1.06; letter-spacing: -.035em; }
+.atlas-page-heading { margin-top: 24px; padding-bottom: 24px; }
+.atlas-shell-content { padding-block: 24px; }
+.atlas-public-shell-editorial .atlas-page-heading { max-width: 1120px; }
+.atlas-public-shell-form .atlas-shell-content { max-width: 1040px; }
+.atlas-public-shell-form .atlas-page-heading { max-width: 768px; margin-inline: auto; }
+.atlas-public-shell-form .atlas-page-body { padding-top: 24px; }
+.atlas-record { border-top: 1px solid var(--atlas-border-strong); padding-block: 24px; }
+.atlas-record h3 { font-size: 24px; letter-spacing: -.025em; }
+.atlas-record-offering { border-left: 2px solid var(--atlas-border-strong); padding-left: 16px; }
+.atlas-record-footer { border-top: 1px solid var(--atlas-border); padding-top: 12px; }
+.atlas-open-section { border-top: 1px solid var(--atlas-border); padding-block: 24px; }
+/* The image is decorative; all discovery controls remain native page content. */
+.atlas-hero { position: relative; isolation: isolate; background: var(--atlas-ink); color: white; }
+.atlas-hero-copy { position: relative; z-index: 1; padding: 32px 24px; }
+.atlas-hero-media { position: relative; height: 240px; overflow: hidden; }
+.atlas-hero-media img { object-fit: cover; object-position: 76% center; }
+.atlas-hero-title { font-size: clamp(2.35rem, 4.1vw, 4rem); line-height: 1.02; letter-spacing: -.035em; font-weight: 800; }
+.atlas-hero .atlas-search-form label { color: white; }
+.atlas-hero .atlas-search-form input { color: var(--atlas-ink); }
+.atlas-hero-copy a { color: white; }
+.atlas-search-form { display: grid; gap: 12px; }
+.atlas-search-input { min-width: 0; }
+.atlas-search-form button[type="submit"] { margin-top: 0; }
+.atlas-directory-stats { display: flex; flex-wrap: wrap; gap: 16px 32px; padding-block: 20px; border-bottom: 1px solid var(--atlas-border); }
+.atlas-directory-stat { display: flex; align-items: baseline; gap: 8px; }
+.atlas-directory-stat dt { font-size: 12px; color: var(--atlas-muted); }
+.atlas-directory-stat dd { font-size: 22px; font-weight: 800; font-family: var(--font-barlow), sans-serif; }
+.atlas-directory-grid { display: grid; gap: 24px; margin-top: 24px; }
+.atlas-directory-filters { display: grid; align-content: start; gap: 24px; }
+.atlas-directory-filters nav { display: block; }
+.atlas-directory-filters nav > p { margin-bottom: 12px; width: auto; font-size: 12px; }
+.atlas-profile-header { border-top: 1px solid var(--atlas-border-strong); border-bottom: 1px solid var(--atlas-border); background: transparent; }
+@media (min-width: 640px) {
+ .atlas-search-form:has(button[type="submit"]) { grid-template-columns: minmax(0, 1fr) auto; align-items: stretch; }
+ .atlas-shell-content { padding-block: 32px; }
+}
+@media (min-width: 1024px) {
+ .atlas-hero { min-height: 620px; display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; }
+ .atlas-hero-copy { padding: 48px 32px 40px max(32px, calc((100vw - 1480px) / 2)); background: var(--atlas-ink); }
+ .atlas-hero-media { height: auto; min-width: 0; }
+ .atlas-hero-media img { object-position: 68% center; }
+ .atlas-hero-title { font-size: clamp(3rem, 4.1vw, 4rem); }
+}
+@media (min-width: 1280px) {
+ .atlas-directory-grid { grid-template-columns: 240px minmax(0, 1fr); gap: 32px; }
+ .atlas-directory-filters ul { display: grid; gap: 4px; }
+ .atlas-directory-filters li a { display: flex; justify-content: space-between; width: 100%; border-radius: 4px; min-height: 44px; background: transparent; box-shadow: none; }
+ .atlas-directory-filters li a[aria-current="true"] { background: var(--atlas-ink); color: white; }
+ .atlas-directory-records { min-width: 0; }
+}
+
+@media (min-width: 1024px) {
+ .atlas-public-shell-dossier .atlas-page-heading { display: grid; grid-template-columns: minmax(0, 1fr) 320px; align-items: start; gap: 48px; }
+ .atlas-public-shell-dossier .atlas-page-heading > div:last-child:not(:first-child) { display: grid; border-left: 2px solid var(--atlas-border-strong); padding-left: 24px; }
+}
+
+.atlas-directory-heading { padding-bottom: 12px; }
+.atlas-directory-heading > div:first-child { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 16px; }
+.atlas-directory-heading h2 { margin-top: 0; font-size: 24px; }
+.atlas-directory-stats { padding-block: 16px; }
+.atlas-directory-grid { margin-top: 16px; }
+/* Map toolbar layout lives with the desktop presentation roles. */
+
+@media (min-width: 1024px) {
+ .atlas-map-frame { padding-top: 0; }
+ .atlas-map-toolbar { padding-block: 8px; }
+ .atlas-map-title { margin-bottom: 0; }
+ .atlas-map-title h1 { font-size: 22px; }
+ .atlas-map-toolbar button.h-9, .atlas-map-toolbar button.min-h-9 { min-height: 44px; }
 }

@@ -32,7 +32,7 @@ export function NorthSignalThisWeekCard({
         data-north-signal-proof-loading
         aria-busy="true"
         aria-label="Loading recent published reporting"
-        className={cn("min-h-[138px] rounded-[18px] bg-[var(--atlas-blue-soft)] px-4 py-4 text-[var(--atlas-ink)] sm:px-5", className)}
+        className={cn("min-h-[138px] border-y border-[var(--atlas-border)] py-4 text-[var(--atlas-ink)] sm:px-0", className)}
       >
         <span aria-hidden="true" className="mb-3 block h-1 w-10 rounded-full bg-[var(--atlas-signal)]" />
         <span className="block text-[10px] font-extrabold uppercase tracking-[0.16em] text-[var(--atlas-muted)]">RECENT REPORTING</span>
@@ -58,7 +58,7 @@ export function NorthSignalThisWeekCard({
           });
         }}
         className={cn(
-          "inline-flex min-h-11 items-center rounded-[18px] bg-[var(--atlas-blue-soft)] px-4 text-sm font-extrabold text-[var(--atlas-primary)] underline decoration-2 underline-offset-4 transition-colors hover:bg-[var(--atlas-blue-soft-hover)]",
+          "inline-flex min-h-11 items-center rounded-[4px] bg-[var(--atlas-blue-soft)] px-4 text-sm font-extrabold text-[var(--atlas-primary)] underline decoration-2 underline-offset-4 transition-colors hover:bg-[var(--atlas-blue-soft-hover)]",
           className
         )}
       >
@@ -83,7 +83,7 @@ export function NorthSignalThisWeekCard({
         });
       }}
       className={cn(
-        "group block min-h-[138px] rounded-[18px] bg-[var(--atlas-blue-soft)] px-4 py-4 text-[var(--atlas-ink)] no-underline transition-colors hover:bg-[var(--atlas-blue-soft-hover)] hover:no-underline focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--atlas-signal-soft)] sm:px-5",
+        "group block min-h-[138px] border-y border-[var(--atlas-border)] py-4 text-[var(--atlas-ink)] no-underline transition-colors hover:bg-[var(--atlas-blue-soft-hover)] hover:no-underline focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--atlas-signal-soft)] sm:px-0",
         className
       )}
     >

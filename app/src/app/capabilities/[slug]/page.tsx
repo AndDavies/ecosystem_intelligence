@@ -183,19 +183,21 @@ function PublicCapabilityPage({
       ]}
       actions={
         <>
-          <Link href={`/collections?addType=capability&addId=${capability.id}&returnTo=${encodeURIComponent(capabilityPath)}`} className="atlas-primary-button h-10 gap-2 px-4 text-xs">
+          <Link href={`/collections?addType=capability&addId=${capability.id}&returnTo=${encodeURIComponent(capabilityPath)}`} className="atlas-signal-button h-12 gap-2 px-4 text-sm">
             <BookmarkPlus className="size-4" /> Add to shortlist
           </Link>
-          <Link href={`/connect/${organization.slug}`} className="atlas-secondary-button h-10 w-full gap-2 px-4 text-xs sm:w-auto">
+          <Link href={`/connect/${organization.slug}`} className="atlas-secondary-button h-12 w-full gap-2 px-4 text-sm">
             <Handshake className="size-4" /> Request an introduction
           </Link>
-          <Link href={`/api/export?type=capability-dossier&slug=${capability.slug}`} className="atlas-secondary-button h-10 gap-2 px-4 text-xs">
+          <div className="atlas-dossier-secondary-actions flex flex-wrap gap-x-4 gap-y-1 border-t border-[var(--atlas-border)] pt-3">
+          <Link href={`/api/export?type=capability-dossier&slug=${capability.slug}`} className="atlas-prose-link inline-flex min-h-11 items-center gap-2 text-sm font-semibold">
             <Download className="size-4" /> Download profile
           </Link>
-          <PublicShare title={capability.name} description={capability.summary} path={`/capabilities/${capability.slug}`} />
-          <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(mapReturnTo)}`} prefetch={false} className="atlas-secondary-button h-10 gap-2 px-4 text-xs">
+          <PublicShare title={capability.name} description={capability.summary} path={`/capabilities/${capability.slug}`} className="!border-0 !bg-transparent !px-0 !text-sm !text-[var(--atlas-link)] underline underline-offset-4" />
+          <Link href={`/organizations/${organization.slug}?returnTo=${encodeURIComponent(mapReturnTo)}`} prefetch={false} className="atlas-prose-link inline-flex min-h-11 items-center gap-2 text-sm font-semibold">
             Explore {organization.name} <ArrowRight className="size-4" />
           </Link>
+          </div>
         </>
       }
     >
@@ -203,15 +205,15 @@ function PublicCapabilityPage({
         { "@context": "https://schema.org", "@type": "Product", name: capability.name, description: capability.summary, brand: { "@type": "Organization", name: organization.name, url: absoluteUrl(`/organizations/${organization.slug}`) }, url: absoluteUrl(`/capabilities/${capability.slug}`) },
         { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Ecosystem Map", item: absoluteUrl("/map") }, { "@type": "ListItem", position: 2, name: "Directory", item: absoluteUrl("/organizations") }, { "@type": "ListItem", position: 3, name: organization.name, item: absoluteUrl(`/organizations/${organization.slug}`) }, { "@type": "ListItem", position: 4, name: capability.name, item: absoluteUrl(`/capabilities/${capability.slug}`) }] }
       ]} />
-      <div className="grid gap-5 lg:grid-cols-[320px_minmax(0,1fr)]">
-        <div className="space-y-5 lg:order-2">
+      <div className="mt-6 grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px]">
+        <div className="space-y-5">
           <PublicCard title="What it enables" eyebrow={capability.capabilityType ?? "Reviewed technology"} className="atlas-tonal-surface atlas-tonal-paper">
             <div className="grid gap-5 sm:grid-cols-2">
               <CapabilityList label="Core features" values={capability.coreFeatures} />
               <CapabilityList label="Defence and security uses" values={capability.defenceApplications} />
               <CapabilityList label="What sets it apart" values={capability.novelty} empty="No source-supported differentiators are published yet." />
               <div>
-                <h3 className="text-[10px] font-bold uppercase tracking-[0.1em] text-[var(--atlas-muted)]">Evidence of maturity</h3>
+                <h3 className="text-xs font-bold uppercase tracking-[0.1em] text-[var(--atlas-muted)]">Evidence of maturity</h3>
                 <dl className="mt-2 space-y-2 text-xs text-[var(--atlas-muted)]">
                   {capability.technologyReadinessLevel !== null ? <div><dt className="inline font-semibold">TRL: </dt><dd className="inline">{capability.technologyReadinessLevel}</dd></div> : null}
                   {capability.maturity ? <div><dt className="inline font-semibold">Stage: </dt><dd className="inline">{capability.maturity}</dd></div> : null}
@@ -222,7 +224,7 @@ function PublicCapabilityPage({
             </div>
             {capability.technicalTags.length ? (
               <div className="mt-5 flex flex-wrap gap-1.5 border-t border-[var(--atlas-border)] pt-4">
-                {capability.technicalTags.map((tag) => <span key={tag} className="rounded-[6px] bg-[var(--atlas-surface-muted)] px-2 py-1 text-[10px] font-medium text-[var(--atlas-muted)]">{toTitleCase(tag)}</span>)}
+                {capability.technicalTags.map((tag) => <span key={tag} className="rounded-[6px] bg-[var(--atlas-surface-muted)] px-2 py-1 text-xs font-medium text-[var(--atlas-muted)]">{toTitleCase(tag)}</span>)}
               </div>
             ) : null}
           </PublicCard>
@@ -268,7 +270,7 @@ function PublicCapabilityPage({
         <aside className="space-y-5 self-start lg:order-1 lg:sticky lg:top-24">
           <PublicCard title={organization.name} eyebrow="Who is building it" className="atlas-tonal-surface atlas-tonal-paper">
             <div className="flex items-center gap-3">
-              <span className="relative flex h-12 w-20 shrink-0 items-center justify-center overflow-hidden rounded-[12px] bg-[var(--atlas-blue-soft)] p-1.5 text-[var(--atlas-primary)]">
+              <span className="relative flex h-12 w-20 shrink-0 items-center justify-center overflow-hidden bg-transparent p-1.5 text-[var(--atlas-primary)]">
                 {organization.logo ? (
                   <Image
                     src={organization.logo.publicUrl}
@@ -337,7 +339,7 @@ function PublicCapabilityPage({
 function CapabilityList({ label, values, empty }: { label: string; values: string[]; empty?: string }) {
   return (
     <div>
-      <h3 className="text-[10px] font-bold uppercase tracking-[0.1em] text-[var(--atlas-muted)]">{label}</h3>
+      <h3 className="text-xs font-bold uppercase tracking-[0.1em] text-[var(--atlas-muted)]">{label}</h3>
       {values.length ? (
         <ul className="mt-2 space-y-1.5 text-xs leading-5 text-[var(--atlas-muted)]">
           {values.map((value) => <li key={value} className="flex gap-2"><span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--atlas-primary)]" />{value}</li>)}

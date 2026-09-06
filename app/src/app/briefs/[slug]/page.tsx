@@ -108,7 +108,7 @@ export default async function DefenceBriefPage({ params }: { params: Promise<{ s
       description={brief.standfirst}
       breadcrumbs={[{ label: "Map", href: "/map" }, { label: "Defence Briefs", href: "/briefs" }, { label: brief.title }]}
       pageHeader={(
-        <header className="mt-6 overflow-hidden rounded-[var(--atlas-radius-card)] bg-white shadow-[var(--atlas-shadow-soft)]">
+        <header className="mt-6 overflow-hidden bg-white border-t border-[var(--atlas-border)]">
           <div className="grid min-w-0 lg:grid-cols-[minmax(0,0.96fr)_minmax(0,1.04fr)]">
             <div className="flex min-w-0 flex-col justify-center p-6 sm:p-9 lg:min-h-[420px] lg:p-11">
               <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-[10px] font-extrabold uppercase tracking-[0.12em]">
@@ -133,9 +133,9 @@ export default async function DefenceBriefPage({ params }: { params: Promise<{ s
     >
       <JsonLd data={[articleSchema, breadcrumbSchema]} />
 
-      <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,1fr)_300px] lg:items-start lg:gap-14">
+      <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,1fr)_300px] lg:items-start lg:gap-8">
         <article className="min-w-0">
-          <section aria-labelledby="bottom-line" className="rounded-[var(--atlas-radius-card)] bg-[var(--atlas-signal-soft)] p-6 sm:p-8">
+          <section aria-labelledby="bottom-line" className="border-y border-[var(--atlas-border)] bg-[var(--atlas-signal-soft)] p-6 sm:p-8">
             <p className="atlas-eyebrow">At a glance</p>
             <h2 id="bottom-line" className="mt-3 text-2xl font-extrabold leading-tight tracking-[-0.035em] text-[var(--atlas-ink)] sm:text-3xl">{brief.thesis}</h2>
             <p className="mt-5 text-base leading-8 text-[var(--atlas-ink-soft)] sm:text-lg sm:leading-9">{brief.bottomLine}</p>
@@ -160,7 +160,7 @@ export default async function DefenceBriefPage({ params }: { params: Promise<{ s
                   <div className="mt-5 space-y-5 text-base leading-8 text-[var(--atlas-ink-soft)]">
                     {section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
                   </div>
-                  {section.points.length ? <ul className="mt-6 space-y-3 rounded-2xl bg-[var(--atlas-surface-muted)] p-5 text-sm leading-7 text-[var(--atlas-ink-soft)] sm:p-6">{section.points.map((point) => <li key={point} className="flex gap-3"><span className="mt-3 size-1.5 shrink-0 rounded-full bg-[var(--atlas-signal)]" />{point}</li>)}</ul> : null}
+                  {section.points.length ? <ul className="mt-6 space-y-3 border-l-2 border-[var(--atlas-border)] p-5 text-sm leading-7 text-[var(--atlas-ink-soft)] sm:p-6">{section.points.map((point) => <li key={point} className="flex gap-3"><span className="mt-3 size-1.5 shrink-0 rounded-full bg-[var(--atlas-signal)]" />{point}</li>)}</ul> : null}
                 </section>
               );
             })}
@@ -169,7 +169,7 @@ export default async function DefenceBriefPage({ params }: { params: Promise<{ s
           {brief.implications ? (
             <section id="implications" className="scroll-mt-28 rounded-[var(--atlas-radius-card)] bg-[var(--atlas-primary-soft)] p-6 sm:p-8">
               <div className="flex gap-4">
-                <div className="flex size-10 shrink-0 items-center justify-center rounded-2xl bg-white text-[var(--atlas-primary)]"><Lightbulb className="size-5" /></div>
+                <div className="flex size-10 shrink-0 items-center justify-center rounded-none bg-white text-[var(--atlas-primary)]"><Lightbulb className="size-5" /></div>
                 <div>
                   <p className="text-[10px] font-extrabold uppercase tracking-[0.14em] text-[var(--atlas-primary)]">Analysis</p>
                   <h2 className="mt-2 text-xl font-extrabold tracking-[-0.025em] text-[var(--atlas-ink)]">What this means</h2>
@@ -183,7 +183,7 @@ export default async function DefenceBriefPage({ params }: { params: Promise<{ s
           {brief.recommendedAction ? (
             <section id="next-step" className="mt-8 scroll-mt-28 rounded-[1.6rem] bg-[var(--atlas-ink)] p-6 text-white sm:p-8">
               <div className="flex gap-4">
-                <div className="flex size-10 shrink-0 items-center justify-center rounded-2xl bg-[var(--atlas-signal)] text-[var(--atlas-ink)]"><Target className="size-5" /></div>
+                <div className="flex size-10 shrink-0 items-center justify-center rounded-none bg-[var(--atlas-signal)] text-[var(--atlas-ink)]"><Target className="size-5" /></div>
                 <div><p className="text-[10px] font-extrabold uppercase tracking-[0.14em] text-[var(--atlas-signal)]">Recommended next step</p><h2 className="mt-2 text-xl font-extrabold tracking-[-0.025em]">Turn the insight into a specific decision</h2><p className="mt-4 text-sm leading-7 text-white/75">{brief.recommendedAction}</p></div>
               </div>
             </section>
@@ -200,7 +200,7 @@ export default async function DefenceBriefPage({ params }: { params: Promise<{ s
             <p className="atlas-eyebrow">Follow the evidence</p>
             <h2 className="mt-3 text-2xl font-extrabold tracking-[-0.035em] text-[var(--atlas-ink)]">Public sources</h2>
             <ol className="mt-6 space-y-4">
-              {brief.sources.map((source, index) => <li key={source.id} className="grid gap-3 rounded-[var(--atlas-radius-card)] bg-white p-5 shadow-[var(--atlas-shadow-soft)] sm:grid-cols-[34px_1fr]"><span className="flex size-8 items-center justify-center rounded-xl bg-[var(--atlas-blue-soft)] text-xs font-extrabold text-[var(--atlas-primary)]">{index + 1}</span><div><ExternalSourceLink href={source.url} className="text-sm font-bold leading-6">{source.title}</ExternalSourceLink><p className="mt-1 text-xs font-semibold text-[var(--atlas-muted)]">{source.publisher}{source.publishedAt ? ` · ${dateFormatter.format(new Date(source.publishedAt))}` : ""}</p><p className="mt-2 text-xs leading-6 text-[var(--atlas-muted)]">{source.note}</p></div></li>)}
+              {brief.sources.map((source, index) => <li key={source.id} className="grid gap-3 border-t border-[var(--atlas-border)] bg-white py-5 sm:grid-cols-[34px_1fr]"><span className="flex size-8 items-center justify-center rounded-xl bg-[var(--atlas-blue-soft)] text-xs font-extrabold text-[var(--atlas-primary)]">{index + 1}</span><div><ExternalSourceLink href={source.url} className="text-sm font-bold leading-6">{source.title}</ExternalSourceLink><p className="mt-1 text-xs font-semibold text-[var(--atlas-muted)]">{source.publisher}{source.publishedAt ? ` · ${dateFormatter.format(new Date(source.publishedAt))}` : ""}</p><p className="mt-2 text-xs leading-6 text-[var(--atlas-muted)]">{source.note}</p></div></li>)}
             </ol>
           </section>
 
@@ -215,7 +215,7 @@ export default async function DefenceBriefPage({ params }: { params: Promise<{ s
               <h2 id="related-analysis-heading" className="mt-3 text-2xl font-extrabold tracking-[-0.035em] text-[var(--atlas-ink)]">Related Defence Briefs</h2>
               <div className="mt-6 grid gap-4 sm:grid-cols-2">
                 {relatedBriefs.map((relatedBrief) => (
-                  <Link key={relatedBrief.id} href={`/briefs/${relatedBrief.slug}`} className="group rounded-[var(--atlas-radius-card)] bg-white p-5 no-underline shadow-[var(--atlas-shadow-soft)] transition-shadow hover:shadow-[0_18px_40px_rgba(36,40,39,0.1)] hover:no-underline">
+                  <Link key={relatedBrief.id} href={`/briefs/${relatedBrief.slug}`} className="group rounded-[var(--atlas-radius-card)] bg-white p-5 no-underline transition-colors hover:no-underline">
                     <span className="text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--atlas-muted)]">{getBriefPresentation(relatedBrief).topic}</span>
                     <span className="mt-2 block text-base font-extrabold leading-6 text-[var(--atlas-ink)]">{relatedBrief.title}</span>
                     <span className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-[var(--atlas-primary)] group-hover:underline">Read related Brief<span className="sr-only">: {relatedBrief.title}</span> <ArrowRight className="size-3.5" aria-hidden="true" /></span>
@@ -241,13 +241,13 @@ export default async function DefenceBriefPage({ params }: { params: Promise<{ s
             </nav>
           </section>
 
-          <section className="rounded-[var(--atlas-radius-card)] bg-white p-5 shadow-[var(--atlas-shadow-soft)]">
+          <section className="border-t border-[var(--atlas-border)] bg-white py-5">
             <div className="flex gap-3"><ShieldCheck className="mt-0.5 size-5 shrink-0 text-[var(--atlas-primary)]" /><div><h2 className="text-sm font-extrabold text-[var(--atlas-ink)]">Reviewed before publication</h2><p className="mt-2 text-xs leading-5 text-[var(--atlas-muted)]">Every article is checked against durable public evidence. Newsletter and social material remain research leads until a source can support the public record.</p></div></div>
             <dl className="mt-5 grid gap-3 border-t border-[var(--atlas-border)] pt-4 text-xs"><div><dt className="text-[var(--atlas-muted)]">Primary reader</dt><dd className="mt-1 font-semibold text-[var(--atlas-ink-soft)]">{brief.audience}</dd></div><div><dt className="text-[var(--atlas-muted)]">Last reviewed</dt><dd className="mt-1 font-semibold text-[var(--atlas-ink-soft)]">{dateFormatter.format(new Date(brief.reviewedAt))}</dd></div><div><dt className="text-[var(--atlas-muted)]">Evidence</dt><dd className="mt-1 font-semibold text-[var(--atlas-ink-soft)]">{brief.sources.length} approved public {brief.sources.length === 1 ? "source" : "sources"}</dd></div></dl>
           </section>
 
           {missionConnections.length ? (
-            <section className="rounded-[var(--atlas-radius-card)] bg-[var(--atlas-signal-soft)] p-5">
+            <section className="border-y border-[var(--atlas-border)] bg-[var(--atlas-signal-soft)] p-5">
               <p className="atlas-eyebrow">Mission lens</p>
               <h2 className="mt-2 text-base font-extrabold text-[var(--atlas-ink)]">Explore related use cases</h2>
               <p className="mt-2 text-xs leading-5 text-[var(--atlas-muted)]">These are reviewed True North Map groupings connected through the records in this article.</p>

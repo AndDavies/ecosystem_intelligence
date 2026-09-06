@@ -94,6 +94,7 @@ to the permanent identity.
 | Signal Yellow | `#F5E900` | Primary actions, active states, short highlights, evidence paths |
 | Signal Wash | `#FFFBD2` | Low-intensity signal background |
 | Evidence Green | `#126147` | Public evidence and verified-source states |
+| Link Blue | `#245B78` | Underlined editorial and source links on light surfaces |
 | Editorial Blue | `#E8F1F4` | Editorial structure, summaries, source panels, navigation and environment tags |
 | Quiet Grey | `#666965` | Supporting copy and secondary metadata |
 | Warning Gold | `#735100` | Review and caution states |
@@ -109,20 +110,11 @@ from Signal Yellow actions and Evidence Green facts. Its interactive shade is
 
 ### Link affordance
 
-- North Ink remains the normal inline-link colour. Colour alone must never be
-  the only indication that text is actionable.
-- Inline prose, methodology, citation and source-ledger links use a persistent
-  current-colour underline approximately two pixels thick with visible offset.
-  Hover may add Editorial Blue emphasis, but hover is not the first link cue.
-- Keyboard focus uses the established Signal Yellow ring treatment. Visited
-  editorial links may move to Quiet Grey while retaining the underline.
-- External links that open a new tab include the external-link symbol and
-  accessible **opens in a new tab** text.
-- Navigation, cards, pills and buttons remain un-underlined when shape,
-  placement and descriptive action copy already establish affordance.
-- Use destination-specific labels such as **Explore Kraken Robotics' organization
-  profile** or **View organizations connected to Arctic surveillance**. Do not
-  use **Click here**, **Here**, **Read more** or another context-free anchor.
+- Use Link Blue `#245B78` for inline prose, sources and contextual navigation on light surfaces, with persistent underlines. Editorial Blue remains a pale organizing surface, not a text colour. Visited prose links may use `#59476B`; keep the underline.
+- On North Ink, use white links with visible underlines and Signal Yellow for selective emphasis. Never place dark blue source links on ink.
+- Links, buttons and other action controls use a three-pixel North Ink keyboard outline with a white separating halo; inverse surfaces use a white outline with an ink halo. Text fields and selects retain their existing one-pixel border, changing from grey to North Ink on focus with no extra ring or halo. Yellow may supplement focus, never supply the only indicator on white.
+- External links that open a new tab retain the external-link symbol and accessible **opens in a new tab** text.
+- Action pills and navigation have distinct shape, placement and descriptive copy. Use destination-specific labels and retain source, assessment and limitation distinctions.
 
 ## Brand regression checks
 
@@ -139,50 +131,20 @@ from Signal Yellow actions and Evidence Green facts. Its interactive shade is
 
 ## Typography and geometry
 
-- Barlow: deliberate brand-display moments such as hero headlines, major
-  editorial statements, and selected metrics.
-- Inter: navigation, body copy, interface labels, forms, tables, evidence, and
-  long-form reading.
-- The shared public header owns its Inter typography explicitly. Route-level
-  wrappers must not change the navigation face or weight through inheritance.
-- Rounded geometry remains part of the identity. Use 18 pixels for primary
-  editorial and feature cards, 12 to 16 pixels for supporting content panels
-  and controls, and a full pill radius only for compact labels, tags, filters,
-  social actions, and directional links. Do not mix sharp cards into a rounded
-  page family or make every surface a pill.
-- Pills are used for filters, status labels, selected concepts, social actions,
-  and compact directional calls to action. Major editorial actions remain
-  rectangular so Signal Yellow and the primary journey retain hierarchy.
-- Public surfaces remain predominantly borderless. Keyword and taxonomy pills,
-  plus pill-shaped links, use one quiet one-pixel neutral edge so adjacent
-  colours remain legible and actions stay identifiable.
-- Prefer aligned sections, fine rules, and restrained shadows over stacked
-  floating cards.
-- Keep public cards and buttons spatially stable on hover. Use a subtle tonal
-  shift, shadow refinement, underline or CTA colour change instead of lifting
-  the component or moving its arrow.
+The approved September 5 desktop mockups supersede the earlier rounded-card default. The logo, product wording, Barlow and Inter remain unchanged.
 
-### Tonal surface and edge system
+- Barlow 800 for brand/display headlines; 700 for section headings. Inter for navigation, body, forms, tables and reading. The header owns its Inter face explicitly.
+- Desktop heroes use 56–64px type; collections 40–44px; section headings 28–32px; record headings 20–24px. Use deliberate heading styles and display tracking near -0.035em.
+- Use the shared 1480px maximum frame, aligned gutters, open columns and dividing rules. The map remains fluid. Signals use a 1160px reading-plus-contents frame with a 32px grid gap; prose occupies its full column rather than leaving a phantom image column.
+- Content sections and record rows are square and open. Fields use 12px radius. Real panels and dialogs use 8px. Primary/secondary actions use pills; compact status and filter pills retain their semantics. About's approved jet hero keeps its soft geometry as a deliberate feature exception.
+- Use the spacing scale 4, 8, 12, 16, 24, 32, 48, 64 and 96px. Interaction targets default to 44px. Shadows are for overlays and layering, not routine article or record cards. Hover does not move the layout.
 
-- Field is the page canvas; Paper is the primary reading surface; Signal Wash
-  marks the most important editorial conclusion; Editorial Blue organizes
-  context, summaries, sources and navigation; quiet greys carry secondary
-  structure. Evidence Green remains reserved for evidence and verified-source
-  meaning rather than general decoration.
-- Use colour-on-colour separation, whitespace and restrained shadow before
-  drawing a container edge. Feature cards, article entries, newsletter bands
-  and explanatory panels normally have no visible border.
-- Borders are a semantic exception: use one quiet neutral pixel around keyword
-  or taxonomy pills when adjacent tones need separation, and around pill-shaped
-  links when the control must read immediately as an action. Do not use Signal
-  Yellow as a decorative card outline.
-- Article and archive cards stay on their assigned surface colour when hovered.
-  A small shadow or tonal change may reinforce interactivity, but only the
-  actual link or link pill receives the stronger colour response.
-- Signals use the shared tonal vocabulary consistently: environment tags use
-  Editorial Blue, activity and decision tags use Signal Yellow, and technology
-  tags use a soft Evidence Green treatment. These meanings should be reused on
-  other public routes rather than introducing route-specific tag colours.
+### Colour fields and edges
+
+- North Ink `#242827` is the dark brand surface; it is not pure black. Use it for the shared header/footer, homepage and Signals mastheads and newsletter bands.
+- Paper supports reports and collection reading; Field supplies alternating homepage sections. Use fine neutral rules to group open content.
+- Signal Yellow identifies primary actions and short headline highlights. Evidence Green, Warning Gold, Alert Red and the established Signal taxonomy colours retain their meanings; design does not strengthen evidence or imply endorsement.
+- Company logos sit directly on the reading surface with clearspace and a fixed layout slot. Do not add a gray rounded tile behind a supplied logo. Missing marks use a deterministic neutral monogram.
 
 ### Collection and dossier reconciliation
 
@@ -203,7 +165,7 @@ from Signal Yellow actions and Evidence Green facts. Its interactive shade is
   Signal Wash plus a Signal Yellow rule and clear focus state; colour never
   changes its rank, confidence, or publication meaning.
 - Versioned organization dossiers read as one continuous editorial report on
-  Field with Paper reading surfaces. The opening uses dark editorial type, a
+  Paper with open reading sections. The opening uses dark editorial type, a
   compact approved-logo/monogram/neutral identity slot and a controlled action
   panel rather than a mandatory image or dark database hero. Major chapters
   use aligned open layouts, fine rules and conditional content; Signal Wash is
@@ -268,9 +230,9 @@ from Signal Yellow actions and Evidence Green facts. Its interactive shade is
 
 ### Homepage and discovery journey
 
-The September 5 discovery implementation supersedes the earlier maritime hero and long landing example. Use this fixed order: practical search hero; compact current Kraken/KATFISH profile proof with the slogan; North Signal; three discovery paths; one current Defence Signals edition; founder, FAQ and footer.
+The September 5 desktop visual implementation restores the original maritime image within the approved discovery journey. Use this fixed order: practical search hero; compact current Kraken/KATFISH profile proof with the slogan; North Signal; three discovery paths; one current Defence Signals edition; founder, FAQ and footer.
 
-The hero says what the service is and helps the visitor do something immediately. Its support copy is: “Search a free directory of defence and dual-use companies, research centres and industry organizations. See what they do, check the sources and build a shortlist for your next conversation.” The primary action is **Search the directory**, with **Explore the map** and **How it works** supporting it. State **Free to browse. No account needed.** Use Paper, North Ink and Editorial Blue; Signal Yellow identifies the primary action. Keep the directional N, Barlow display and Inter interface fonts. No decorative ship or second interactive map is needed to explain the product.
+The hero says what the service is and helps the visitor do something immediately. Its support copy is: “Search a free directory of defence and dual-use companies, research centres and industry organizations. See what they do, check the sources and build a shortlist for your next conversation.” The primary action is **Search the directory**, with **Explore the map** and **How it works** supporting it. State **Free to browse. No account needed.** Use Paper, North Ink and Editorial Blue; Signal Yellow identifies the primary action. Keep the directional N, Barlow display and Inter interface fonts. Use the original `home-maritime-evidence.webp` on the right of the open North Ink hero; copy and deterministic search occupy the left. Keep the entire headline in plain white lettering with no marker highlight or letter outline. The image is brand atmosphere, not evidence or a functioning map. The 50/50 desktop split may use a subtle uneven harbour-mist transition on the image edge. Motion settles within five seconds and is disabled for reduced-motion preferences; copy remains on solid North Ink. On small screens, copy/search precede a compact image. Keep search visible at 1366px desktop width without a decorative overlay card.
 
 The product specimen uses current published Kraken/KATFISH facts, assessment, evidence strength, review date and limits. It must fail honestly when unavailable and must not imply endorsement or procurement eligibility. Do not hardcode a corpus count.
 
@@ -442,3 +404,35 @@ activate an automation or authorize a campaign or alert send.
   controls and provider footer functional. No fabricated subscriber proof,
   endorsement, MailerLite branding panel, extra consent request or `/briefs`
   acquisition link is permitted.
+
+## September 5 desktop implementation and editorial imagery
+
+The homepage, directory, company dossier and Signals mockups define the shared presentation. Directory filters occupy a left desktop rail; open rows preserve every record and pagination. Profiles retain all source-backed facts, assessments, dates, limitations, sources, downloads, sharing, introductions and Shortlist paths. Supporting collections, forms, guides, legal pages and private workspaces inherit the same type, control and divider system. About's original jet composition remains intact.
+
+Every Signals edition has an intentional visual cover: its published source image, a specifically reviewed presentation asset, a published linked-organization logo, or the Directional N editorial cover. Article headings can use a relevant published logo without reserving empty space beside the subsequent prose. The Allen-Vanguard edition uses its official EQUINOX NG product image and company mark, with source credit and an explicit product-context caption. These display assets do not change article claims, immutable source records, metadata evidence, publisher requirements or publication state. Source photographs remain optional under the executable Signals contract. Do not invent documentary imagery to fill a missing source photo.
+
+Signals have one desktop contents rail and a collapsed mobile contents control. The complete introduction and every story remain available; no editorial text is shortened to match a mockup excerpt. Newsletter consent, validation, optional alerts, automatic-trigger suppression, dismissal and success/error behaviour remain unchanged. Public/member/admin controls keep their existing permissions and workflows.
+
+This implementation is local pending Andrew's browser review and a separately authorized production release. No database migration, research/Signals publication, provider write or campaign belongs to the visual change. Use local automated checks and a bounded set of representative browser states; do not run `launch:audit` or a production route crawl.
+
+### September 5 browser-review refinements
+
+Inline newsletter copy and signup use a centred 1216px maximum composition with a 48px desktop column gap. Dark newsletter links use yellow for the offer and white for privacy. Enabled buttons and links use a pointer cursor; disabled controls remain visually and behaviourally distinct.
+
+Map lookup is the primary control beside a bounded title column. Ask True North and Browse retain fixed trigger positions and expand into full-width panels below both triggers. Expansion must never change a trigger's column or force its neighbour onto another line. Decorative scope pills are omitted; published-result counts and functional geographic-scope controls remain.
+
+Paired mission statistics/dividers and defence-need actions share baselines without truncating summaries. Defence-need icons reflect broad title topics, using ink marks inside yellow circles; these are navigation decoration, not evidence or eligibility classifications.
+
+The Signals archive shows four earlier editions per page, retains search/topic filtering across page changes and resets to page one when a filter changes. Group topic controls by operating environment, development and technology, using pill-shaped controls with a light one-pixel grey border and a yellow selected state. Selection changes colour only: no check icon, width change, font-weight change or movement of neighbouring tags. Article tags are compact text with yellow separators. Other semantic evidence/status colours remain unchanged. Teasers use the edition's existing published lead image, explicit attribution and an ink editorial composition; the established branded cover handles editions without images. The newsletter stays after pagination. No image is presented as support for an unrelated claim.
+
+The homepage product specimen separates its source-backed offering from the highlighted assessment. Use a yellow left rule on North Ink for “Our assessment · Where this could help”; retain the complete existing unknowns under “What still needs checking”. Do not invent additional technology claims for visual emphasis.
+
+September 5 follow-up: map search uses a uniform grey outline on white, with the same rounded input geometry as other forms; do not use the yellow left-rule treatment on inputs. Public footer backgrounds span the viewport, with inner content aligned to the shared frame. The Defence needs index omits the redundant “How connections are assessed” disclosure; methodology and record-level evidence/limitations remain available.
+
+### Discovery-control refinements (September 5 local review)
+
+- Organization-type browsing offers Companies, Innovation & business support, Research and test centres, and Investors and funders. The support group includes accelerators, incubators, ecosystem organizations and government innovation offices; it is a discovery convenience, not a new canonical classification. Existing exact type/category links remain supported and visibly selected.
+- Mission and Defence need discovery cards, including reciprocal related-record bridges, share a 48px Signal Yellow circle with a North Ink topic icon. Choose a meaningful subject cue (patrol radar, Arctic snowflake, underwater waves, edge processor); do not reuse a generic document icon for every topic. Keep status and evidence icons semantically separate.
+- The desktop results table has fixed column proportions and reserved selection borders. Expanding or hydrating a record must not reflow its column widths. Long text wraps within its column; narrower layouts use the existing mobile result cards or contained table scrolling.
+
+- About presents the founder’s military and civilian career in ordinary narrative paragraphs; omit the uppercase career-credit tagline from the jet feature.

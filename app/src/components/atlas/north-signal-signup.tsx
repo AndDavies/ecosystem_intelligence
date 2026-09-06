@@ -218,7 +218,7 @@ export function NorthSignalSignupForm({
     <form onSubmit={submit} data-clarity-mask="true" className="space-y-3">
       {error ? <div role="alert" className="border border-[var(--atlas-danger)] bg-[var(--atlas-danger-soft)] px-3 py-2 text-xs text-[var(--atlas-danger)]">{error}</div> : null}
       <label className={cn("block text-xs font-bold", tone === "dark" ? "text-white" : "text-[var(--atlas-ink)]")} htmlFor={emailId}>Email address</label>
-      <div className={cn("grid gap-2", variant === "inline" && "sm:grid-cols-[minmax(0,1fr)_auto]") }>
+      <div className={cn("grid gap-2", variant === "inline" && "atlas-newsletter-form-fields") }>
         <input
           id={emailId}
           name="email"
@@ -229,7 +229,7 @@ export function NorthSignalSignupForm({
           placeholder="you@organization.ca"
           onFocus={markStarted}
           onChange={markStarted}
-          className="h-11 min-w-0 rounded-[8px] border border-[var(--atlas-border-strong)] bg-white px-3 text-sm text-[var(--atlas-ink)] outline-none focus:border-[var(--atlas-ink)] focus:ring-4 focus:ring-[var(--atlas-signal-soft)]"
+          className="h-11 min-w-0 rounded-[12px] border border-[var(--atlas-border-strong)] bg-white px-3 text-sm text-[var(--atlas-ink)] outline-none focus:border-[var(--atlas-ink)] focus:ring-4 focus:ring-[var(--atlas-signal-soft)]"
         />
         <button
           type="submit"
@@ -241,7 +241,7 @@ export function NorthSignalSignupForm({
           {northSignalOffer.cta}
         </button>
       </div>
-      {signalAlertsAvailable ? <label className={cn("flex min-h-11 items-start gap-3 rounded-[10px] bg-[var(--atlas-blue-soft)] px-3 py-2.5 text-xs leading-5", tone === "dark" && "bg-white/10 text-white")}>
+      {signalAlertsAvailable ? <label className={cn("flex min-h-11 items-start gap-3 py-2.5 text-sm leading-6", tone === "dark" && "text-white")}>
         <input name="signalAlerts" type="checkbox" className="mt-0.5 size-4 shrink-0 accent-[var(--atlas-ink)]" />
         <span><strong className="block">Also email me when a new Defence Signal is published.</strong><span className={cn("block", tone === "dark" ? "text-white/65" : "text-[var(--atlas-muted)]")}>Optional. Alerts send only when a validated edition is published.</span></span>
       </label> : null}
@@ -251,7 +251,7 @@ export function NorthSignalSignupForm({
         <p className={cn("text-xs font-semibold", tone === "dark" ? "text-white/70" : "text-[var(--atlas-muted)]")}>{northSignalOffer.riskReversal}</p>
         {showPreviewLink ? <Link href={previewHref} onClick={trackPreview} className={cn("inline-flex min-h-11 items-center text-xs font-extrabold underline decoration-2 underline-offset-4", tone === "dark" ? "text-[var(--atlas-signal)]" : "text-[var(--atlas-primary)]")}>{northSignalOffer.previewLabel}</Link> : null}
       </> : null}
-      <p className={cn("text-[11px] leading-5", tone === "dark" ? "text-white/65" : "text-[var(--atlas-muted)]")}>
+      <p className={cn("text-xs leading-5", tone === "dark" ? "text-white/65" : "text-[var(--atlas-muted)]")}>
         {northSignalConsentText} <Link href="/privacy" className={cn("font-semibold underline", tone === "dark" ? "text-white" : "text-[var(--atlas-primary)]")}>Privacy details.</Link>
       </p>
     </form>
@@ -262,7 +262,7 @@ export function NorthSignalInline({
   placement,
   trigger = "contextual_inline",
   revealOnEngagement = false,
-  tone = "light",
+  tone = "dark",
   className
 }: {
   placement: Extract<NorthSignalSignupSource, "newsletter_inline_home" | "newsletter_inline_map" | "newsletter_inline_brief" | "newsletter_inline_profile" | "newsletter_page" | "newsletter_inline_signals" | "newsletter_inline_mission" | "newsletter_inline_demand">;
@@ -325,8 +325,8 @@ export function NorthSignalInline({
   if (!revealed) return null;
 
   return (
-    <section ref={containerRef} aria-labelledby={`north-signal-title-${placement}`} className={cn("overflow-hidden rounded-[18px] px-5 py-6 sm:px-7", tone === "light" && "bg-[var(--atlas-signal-soft)]", tone === "dark" && "text-white", className)}>
-      <div className="grid gap-5 lg:grid-cols-[minmax(0,0.9fr)_minmax(360px,1.1fr)] lg:items-center">
+    <section ref={containerRef} data-tone={tone} aria-labelledby={`north-signal-title-${placement}`} className={cn("atlas-newsletter-section px-5 py-8 sm:px-8", tone === "light" && "border-y border-[var(--atlas-border)] bg-white", tone === "dark" && "bg-[var(--atlas-ink)] text-white", className)}>
+      <div className="atlas-newsletter-composition grid gap-6 lg:items-center">
         <div>
           <p className={cn("atlas-eyebrow", tone === "dark" && "!text-[var(--atlas-signal)]")}>North Signal</p>
           <h2 id={`north-signal-title-${placement}`} className={cn("mt-2 font-extrabold tracking-[-0.035em]", placement === "newsletter_inline_profile" ? "text-2xl" : "text-3xl sm:text-4xl", tone === "dark" ? "text-white" : "text-[var(--atlas-ink)]")}>{brandCopy.northSignal}</h2>

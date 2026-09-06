@@ -236,8 +236,8 @@ export function AtlasRecordLookup({
   let optionIndex = 0;
   return (
     <div ref={rootRef} className="relative" data-clarity-mask="true">
-      <form onSubmit={submit} role="search" aria-label="Search published True North Map records" aria-busy={busy || lookupLoading}>
-        <div className="relative">
+      <form className="atlas-search-form" onSubmit={submit} role="search" aria-label="Search published True North Map records" aria-busy={busy || lookupLoading}>
+        <div className="atlas-search-input relative">
           <Search className="pointer-events-none absolute left-4 top-1/2 size-5 -translate-y-1/2 text-[var(--atlas-muted)]" aria-hidden="true" />
           <label htmlFor="atlas-record-search" className="sr-only">Search companies, technologies and areas</label>
           <input

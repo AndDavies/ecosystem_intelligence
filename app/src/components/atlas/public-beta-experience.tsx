@@ -396,7 +396,7 @@ export function PublicBetaExperience() {
               }
               updatesOpenerRef.current = null;
             }}
-            className="fixed inset-x-0 bottom-0 z-[1250] max-h-[92vh] overflow-y-auto rounded-t-[18px] bg-white shadow-[var(--atlas-shadow-float)] outline-none sm:bottom-auto sm:left-1/2 sm:top-1/2 sm:w-[calc(100%-2rem)] sm:max-w-[470px] sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-[18px]"
+            className="fixed inset-x-0 bottom-0 z-[1250] max-h-[92vh] overflow-y-auto rounded-t-[8px] bg-white shadow-[var(--atlas-shadow-float)] outline-none sm:bottom-auto sm:left-1/2 sm:top-1/2 sm:w-[calc(100%-2rem)] sm:max-w-[470px] sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-[8px]"
           >
             <div className="p-5 sm:p-6">
               <div className="flex items-center gap-3">
@@ -444,7 +444,7 @@ export function PublicBetaExperience() {
                 feedbackGoalRef.current.focus();
               }
             }}
-            className="fixed bottom-0 left-1/2 z-[1301] max-h-[92vh] w-full -translate-x-1/2 overflow-y-auto rounded-t-2xl border border-[var(--atlas-border)] bg-white p-5 shadow-[var(--atlas-shadow-float)] outline-none sm:bottom-auto sm:top-1/2 sm:max-w-xl sm:-translate-y-1/2 sm:rounded-2xl sm:p-6"
+            className="fixed bottom-0 left-1/2 z-[1301] max-h-[92vh] w-full -translate-x-1/2 overflow-y-auto rounded-t-[8px] border border-[var(--atlas-border)] bg-white p-5 shadow-[var(--atlas-shadow-float)] outline-none sm:bottom-auto sm:top-1/2 sm:max-w-xl sm:-translate-y-1/2 sm:rounded-[8px] sm:p-6"
           >
             <div className="flex items-start gap-3">
               <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)]"><MessageSquareText aria-hidden="true" className="size-5" /></span>

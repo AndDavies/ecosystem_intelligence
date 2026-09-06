@@ -50,7 +50,7 @@ export default async function RegionPage({
         { label: region.name }
       ]}
       pageHeader={(
-        <header className="mt-6 overflow-hidden rounded-[18px] bg-white shadow-[var(--atlas-shadow-soft)]">
+        <header className="mt-6 overflow-hidden bg-white border-y border-[var(--atlas-border)]">
           <div className="grid min-w-0 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)]">
             <div className="order-2 flex min-w-0 flex-col justify-center p-6 sm:p-9 lg:order-1">
               <p className="atlas-eyebrow">Regional ecosystem</p>
@@ -253,7 +253,7 @@ function RegionDirectoryFallback() {
         <div className="mt-12 h-7 w-52 rounded bg-[var(--atlas-border)]" />
         <div className="mt-7 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {Array.from({ length: 6 }, (_, index) => (
-            <div key={index} className="h-64 rounded-2xl border border-[var(--atlas-border)] bg-white" />
+            <div key={index} className="h-64 border border-[var(--atlas-border)] bg-white" />
           ))}
         </div>
       </div>

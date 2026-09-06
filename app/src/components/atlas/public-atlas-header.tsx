@@ -73,7 +73,7 @@ export function PublicAtlasHeader({ privateWorkspace = false }: { privateWorkspa
     <header className="atlas-header border-b-2 border-[var(--atlas-signal)] font-[family-name:var(--font-inter)]">
       <div className="atlas-frame flex h-[70px] items-center justify-between gap-4 lg:h-[76px]">
         <Link href="/" prefetch={!privateWorkspace} data-internal-link-role="global" data-internal-link-module="site_header" className="flex min-w-0 items-center no-underline" aria-label="True North Map home">
-          <BrandLogo />
+          <BrandLogo inverse />
         </Link>
 
          <nav className="hidden h-full items-center gap-1 2xl:gap-2 xl:flex" aria-label="Public ecosystem map navigation">
@@ -87,13 +87,13 @@ export function PublicAtlasHeader({ privateWorkspace = false }: { privateWorkspa
                 data-internal-link-role="global"
                 data-internal-link-module="site_header"
                 className={cn(
-                  "relative flex h-10 items-center rounded-[8px] px-2.5 text-[12px] font-semibold text-[var(--atlas-muted)] no-underline hover:bg-[var(--atlas-surface-muted)] hover:text-[var(--atlas-ink)] hover:no-underline 2xl:px-3.5 2xl:text-[13px]",
-                  active && "text-[var(--atlas-ink)] hover:text-[var(--atlas-ink)]"
+                  "relative flex h-10 items-center rounded-[4px] px-2 text-[14px] font-semibold text-white/80 no-underline hover:bg-white/10 hover:text-white hover:no-underline 2xl:px-3",
+                  active && "text-white hover:text-white"
                 )}
                 aria-current={active ? "page" : undefined}
               >
                 {item.label}
-                {active ? <span className="absolute inset-x-4 -bottom-[17px] h-[3px] rounded-full bg-[var(--atlas-signal)]" /> : null}
+                {active ? <span className="absolute inset-x-4 -bottom-[17px] h-[3px] bg-[var(--atlas-signal)]" /> : null}
               </Link>
             );
           })}
@@ -103,7 +103,7 @@ export function PublicAtlasHeader({ privateWorkspace = false }: { privateWorkspa
           {!privateWorkspace ? <button
             type="button"
             onClick={() => pathname.startsWith("/sign-in") ? window.location.assign("/north-signal") : openBetaUpdates("newsletter_header")}
-            className="atlas-secondary-button !hidden h-11 items-center gap-2 px-4 text-sm sm:!inline-flex"
+            className="atlas-header-action !hidden h-11 items-center gap-2 px-4 text-sm sm:!inline-flex"
           >
             <Bell className="size-4" aria-hidden="true" />
             Free weekly briefing
@@ -111,20 +111,20 @@ export function PublicAtlasHeader({ privateWorkspace = false }: { privateWorkspa
           {!privateWorkspace ? <button
             type="button"
             onClick={openBetaFeedback}
-            className="atlas-secondary-button !hidden size-11 items-center justify-center sm:!inline-flex"
+            className="atlas-header-action !hidden size-11 items-center justify-center sm:!inline-flex"
             aria-label="Give feedback"
           >
             <MessageSquareText className="size-4" aria-hidden="true" />
           </button> : null}
           {authState === "checking" ? (
-            <span className="hidden h-11 w-[94px] items-center justify-center rounded-xl border border-[var(--atlas-border)] bg-white/70 text-[var(--atlas-muted)] sm:inline-flex" aria-label="Checking account status"><UserRound className="size-4" aria-hidden="true" /></span>
+            <span className="hidden h-11 w-[94px] items-center justify-center rounded-xl border border-[var(--atlas-border)] bg-white/10 text-[var(--atlas-muted)] sm:inline-flex" aria-label="Checking account status"><UserRound className="size-4" aria-hidden="true" /></span>
           ) : (
             <Link
               href={authState === "signed-in" ? "/account" : "/sign-in"}
               prefetch={!privateWorkspace}
               data-internal-link-role="action"
               data-internal-link-module="site_header"
-              className="atlas-secondary-button !hidden h-11 items-center justify-center gap-2 px-4 text-sm sm:!inline-flex"
+              className="atlas-header-action !hidden h-11 items-center justify-center gap-2 px-4 text-sm sm:!inline-flex"
             >
               {authState === "signed-in" ? <UserRound className="size-4" aria-hidden="true" /> : null}
               {authState === "signed-in" ? "Account" : "Sign in"}
@@ -134,7 +134,7 @@ export function PublicAtlasHeader({ privateWorkspace = false }: { privateWorkspa
             ref={menuButtonRef}
             type="button"
             data-north-signal-mobile-return-focus
-            className="flex size-11 items-center justify-center rounded-[9px] border border-[var(--atlas-border)] bg-white text-[var(--atlas-ink)] xl:hidden"
+            className="flex size-11 items-center justify-center rounded-[4px] border border-[var(--atlas-border)] bg-white text-[var(--atlas-ink)] xl:hidden"
             aria-label={open ? "Close navigation" : "Open navigation"}
             aria-expanded={open}
             aria-controls={mobileNavigationId}

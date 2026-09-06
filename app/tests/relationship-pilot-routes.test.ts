@@ -148,7 +148,7 @@ describe("relationship presentation pilot routes", () => {
     expect(demand).not.toContain("This broader connection warrants scrutiny");
     expect(demand).toContain("selectDemandMissionLenses(relatedMissions)");
     expect(demand).toContain("presentedMissions.map");
-    expect(demand).toContain('mt-4 rounded-2xl border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] p-4');
+    expect(demand).toContain('mt-4 border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] p-4');
     expect(demand).toContain('"@type": "WebPage"');
     expect(demand).toContain('"@type": "ItemList"');
     expect(demand).not.toContain("GovernmentService");

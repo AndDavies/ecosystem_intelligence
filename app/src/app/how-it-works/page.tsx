@@ -85,7 +85,7 @@ export default function HowItWorksPage() {
         { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: frequentlyAskedQuestions.map((item) => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } })) }
       ]} />
 
-      <ol className="mt-7 overflow-hidden rounded-[18px] bg-white shadow-[0_10px_30px_rgba(36,40,39,0.055)]" aria-label="How True North Map works">
+      <ol className="mt-7 overflow-hidden rounded-none bg-white " aria-label="How True North Map works">
         {steps.map((step, index) => (
           <li key={step.number} className={`group relative grid gap-4 border-b border-[var(--atlas-border)] p-4 last:border-b-0 focus-within:z-10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-[var(--atlas-ink)] sm:grid-cols-[52px_minmax(0,1fr)_auto] sm:items-center sm:px-5 ${index === 0 ? "bg-[var(--atlas-blue-soft)] py-5" : "bg-white"}`}>
             <div className="flex items-center gap-3 sm:block">
@@ -104,7 +104,7 @@ export default function HowItWorksPage() {
         ))}
       </ol>
 
-      <section className="mt-6 rounded-[14px] bg-[var(--atlas-ink)] px-6 py-7 text-white sm:px-8">
+      <section className="mt-6 rounded-[8px] bg-[var(--atlas-ink)] px-6 py-7 text-white sm:px-8">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-center">
           <span className="flex size-11 shrink-0 items-center justify-center rounded-2xl bg-white/10 text-[var(--atlas-signal)]"><CheckCircle2 className="size-5" /></span>
           <div>
@@ -114,7 +114,7 @@ export default function HowItWorksPage() {
         </div>
       </section>
 
-      <section className="mt-10 rounded-[18px] bg-[var(--atlas-ink)] p-6 text-white sm:p-8" aria-labelledby="guided-example-heading">
+      <section className="mt-10 rounded-none bg-[var(--atlas-ink)] p-6 text-white sm:p-8" aria-labelledby="guided-example-heading">
         <p className="text-xs font-bold uppercase tracking-widest text-[var(--atlas-signal)]">Try a guided example</p>
         <h2 id="guided-example-heading" className="mt-3 text-2xl font-extrabold">Who in Canada could help build a modular naval mission system?</h2>
         <p className="mt-4 max-w-3xl text-sm leading-6 text-white/80">Choose the areas you want to investigate, then open the matching published records. This example uses ordinary search. If you need help turning your own question into a search, Ask True North is an optional AI tool on the map.</p>
@@ -129,7 +129,7 @@ export default function HowItWorksPage() {
           <p className="mt-4 text-sm leading-6 text-[var(--atlas-muted)]">Follow the tour through actual page views: search, open a profile, check its sources and save a shortlist. Then try it with your own question.</p>
           <Link href="/map" className="atlas-primary-button mt-6 h-11 gap-2 px-5 text-sm">Explore the map <ArrowRight className="size-4" /></Link>
         </div>
-        <div className="overflow-hidden rounded-[14px] border border-[var(--atlas-border-strong)] bg-[var(--atlas-ink)] shadow-[var(--atlas-shadow-soft)]">
+        <div className="overflow-hidden rounded-[8px] border border-[var(--atlas-border-strong)] bg-[var(--atlas-ink)] shadow-[var(--atlas-shadow-soft)]">
           <video
             controls
             playsInline

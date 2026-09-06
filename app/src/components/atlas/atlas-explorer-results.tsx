@@ -183,7 +183,7 @@ export function MobileResultsSheet({
     <section
       id="mobile-results-sheet"
       className={cn(
-        "absolute inset-x-2 bottom-2 z-[1002] flex min-h-16 flex-col overflow-hidden rounded-[16px] border border-white/85 bg-[var(--atlas-ink)] text-white shadow-[var(--atlas-shadow-float)] transition-[height] duration-200 lg:hidden",
+        "absolute inset-x-2 bottom-2 z-[1002] flex min-h-16 flex-col overflow-hidden rounded-[8px] border border-white/85 bg-[var(--atlas-ink)] text-white shadow-[var(--atlas-shadow-float)] transition-[height] duration-200 lg:hidden",
         state === "collapsed" && "h-16",
         state === "preview" && "h-[44%]",
         state === "expanded" && "h-[calc(100%_-_1rem)]"
@@ -199,9 +199,9 @@ export function MobileResultsSheet({
           <p className="mt-0.5 text-[10px] text-white/58">Select a result to inspect it on the map.</p>
         </div>
         <div className="flex shrink-0 rounded-full border border-white/20 bg-white/[0.08] p-0.5" aria-label="Results sheet size">
-          <button type="button" onClick={() => onStateChange("collapsed")} className={cn("inline-flex size-9 items-center justify-center rounded-full text-white/70", state === "collapsed" && "bg-white text-[var(--atlas-ink)]")} aria-label="Collapse results" aria-pressed={state === "collapsed"}><ChevronDown className="size-4" /></button>
-          <button type="button" onClick={() => onStateChange("preview")} className={cn("inline-flex size-9 items-center justify-center rounded-full text-white/70", state === "preview" && "bg-white text-[var(--atlas-ink)]")} aria-label="Preview results" aria-pressed={state === "preview"}><Minus className="size-4" /></button>
-          <button type="button" onClick={() => onStateChange("expanded")} className={cn("inline-flex size-9 items-center justify-center rounded-full text-white/70", state === "expanded" && "bg-white text-[var(--atlas-ink)]")} aria-label="Expand results" aria-pressed={state === "expanded"}><ChevronUp className="size-4" /></button>
+          <button type="button" onClick={() => onStateChange("collapsed")} className={cn("inline-flex size-11 items-center justify-center rounded-full text-white/70", state === "collapsed" && "bg-white text-[var(--atlas-ink)]")} aria-label="Collapse results" aria-pressed={state === "collapsed"}><ChevronDown className="size-4" /></button>
+          <button type="button" onClick={() => onStateChange("preview")} className={cn("inline-flex size-11 items-center justify-center rounded-full text-white/70", state === "preview" && "bg-white text-[var(--atlas-ink)]")} aria-label="Preview results" aria-pressed={state === "preview"}><Minus className="size-4" /></button>
+          <button type="button" onClick={() => onStateChange("expanded")} className={cn("inline-flex size-11 items-center justify-center rounded-full text-white/70", state === "expanded" && "bg-white text-[var(--atlas-ink)]")} aria-label="Expand results" aria-pressed={state === "expanded"}><ChevronUp className="size-4" /></button>
         </div>
       </div>
       {state !== "collapsed" ? (
@@ -260,7 +260,7 @@ function MobileSelectedPreview({
   const confidence = alignment?.confidence ?? capability?.sourceConfidence ?? organization.sourceConfidence;
   return (
     <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-3">
-      <div className="rounded-[12px] bg-white p-4 text-[var(--atlas-ink)]">
+      <div className="rounded-[8px] bg-white p-4 text-[var(--atlas-ink)]">
         <div className="flex items-start gap-3">
           <OrganizationIdentityMark name={organization.name} logoUrl={organizationLogoSource(organization)} size="sm" />
           <div className="min-w-0 flex-1">
@@ -290,7 +290,7 @@ function MobileSelectedPreview({
 export function PublicEvidenceLedger({ citations }: { citations: ReturnType<typeof rowEvidence> }) {
   if (!citations.length) return null;
   return (
-    <section className="mt-4 grid overflow-hidden rounded-[18px] bg-white shadow-[var(--atlas-shadow-soft)] lg:grid-cols-[170px_minmax(0,1fr)]" aria-labelledby="public-evidence-title">
+    <section className="mt-4 grid overflow-hidden border-y border-[var(--atlas-border)] bg-white lg:grid-cols-[170px_minmax(0,1fr)]" aria-labelledby="public-evidence-title">
       <div className="flex min-h-24 items-center bg-[var(--atlas-ink)] px-5 py-5 text-white">
         <div>
           <p id="public-evidence-title" className="text-[15px] font-extrabold uppercase leading-5 tracking-[0.04em]">Public<br />evidence</p>
@@ -339,7 +339,7 @@ export function LookbookPeek({
 
   return (
     <aside
-      className="absolute inset-x-3 bottom-3 z-[1001] max-h-[276px] overflow-y-auto rounded-2xl border border-white/90 bg-white p-4 shadow-[var(--atlas-shadow-float)] sm:inset-x-auto sm:right-4 sm:top-4 sm:bottom-auto sm:max-h-[378px] sm:w-[350px]"
+      className="absolute inset-x-3 bottom-3 z-[1001] max-h-[276px] overflow-y-auto rounded-[8px] border border-white/90 bg-white p-4 shadow-[var(--atlas-shadow-float)] sm:inset-x-auto sm:right-4 sm:top-4 sm:bottom-auto sm:max-h-[378px] sm:w-[350px]"
       aria-label={`Selected organization: ${organization.name}`}
       aria-live="polite"
     >
@@ -354,7 +354,7 @@ export function LookbookPeek({
         <button
           type="button"
           onClick={onClose}
-          className="flex size-8 shrink-0 items-center justify-center rounded-lg text-[var(--atlas-muted)] hover:bg-[var(--atlas-surface-muted)] hover:text-[var(--atlas-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-primary)]"
+          className="flex size-11 shrink-0 items-center justify-center rounded-lg text-[var(--atlas-muted)] hover:bg-[var(--atlas-surface-muted)] hover:text-[var(--atlas-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-primary)]"
           aria-label={`Close ${organization.name} preview`}
         >
           <X className="size-4" />

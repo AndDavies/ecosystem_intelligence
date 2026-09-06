@@ -263,7 +263,7 @@ describe("rendered internal-link audit graph", () => {
     expect(alignment).toContain('className="atlas-prose-link inline-flex items-center gap-1 font-semibold"');
     expect(signalDetail).toContain('href="/methodology" className="atlas-prose-link font-semibold"');
     expect(signalDetail).toContain('href="/contact" className="atlas-prose-link font-semibold"');
-    expect(signalDetail).toContain('text-white underline decoration-2 underline-offset-4');
+    expect(signalDetail).toContain('<ExternalSourceLink href={source.url}');
     expect(briefCollection).toContain('<span className="sr-only">: {featured.title}</span>');
     expect(briefCollection).toContain('<span className="sr-only">: {brief.title}</span>');
     expect(briefDetail).toContain('<span className="sr-only">: {relatedBrief.title}</span>');

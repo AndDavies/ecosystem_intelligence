@@ -9,7 +9,8 @@ describe("landing, trust, and supporting journeys", () => {
     const about = await read("src/app/about/page.tsx");
 
     expect(about).toContain("title={brandCopy.founderThesis}");
-    expect(about).toContain("Created by Andrew Davies, a veteran and former Combat Systems Engineering Officer.");
+    expect(about).toContain("I am a veteran and former Combat Systems Engineering Officer");
+    expect(about).not.toContain("Created by Andrew Davies, a veteran");
     expect(about).toContain("independent project created to make Canada’s defence and dual-use capability easier to find");
   });
 
@@ -22,7 +23,7 @@ describe("landing, trust, and supporting journeys", () => {
     expect(howItWorks).toContain('href="/map?start=need#ask-true-north"');
     expect(howItWorks).toContain('href: "/collections"');
     expect(howItWorks).toContain("AI helps people explore, but it does not publish facts or make procurement decisions.");
-    expect(howItWorks).toContain("overflow-hidden rounded-[18px] bg-white");
+    expect(howItWorks).toContain("overflow-hidden rounded-none bg-white");
     expect(howItWorks).toContain('index === 0 ? "bg-[var(--atlas-blue-soft)] py-5"');
     expect(howItWorks).not.toContain("ArrowDown");
     expect(howItWorks).not.toContain("min-h-60");

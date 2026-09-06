@@ -48,11 +48,11 @@ describe("system states and supporting-page metadata", () => {
     }
   });
 
-  it("uses a borderless tonal empty state without changing its interface", async () => {
+  it("uses a rule-separated empty state without changing its interface", async () => {
     const shell = await read("src/components/atlas/public-page-shell.tsx");
 
     expect(shell).toContain("export function EmptyCoverage");
-    expect(shell).toContain('rounded-2xl bg-[var(--atlas-surface-muted)]');
+    expect(shell).toContain('border-y border-[var(--atlas-border)]');
     expect(shell).not.toContain("border-dashed");
   });
 });

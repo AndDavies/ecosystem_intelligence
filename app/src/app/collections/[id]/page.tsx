@@ -39,6 +39,7 @@ export default async function CollectionPage({ params }: { params: Promise<{ id:
 
   return (
     <PublicPageShell
+      variant="workspace"
       eyebrow="Private Shortlist"
       title={collection.name}
       description={collection.description || "Organizations, capabilities and evidence saved for the conversation ahead."}

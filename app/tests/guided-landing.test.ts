@@ -36,11 +36,12 @@ describe("discovery entry and shared map state", () => {
     const [home, data, preview, bridge] = await Promise.all([read("src/app/page.tsx"), read("src/app/api/landing/route.ts"), read("src/components/atlas/guided-landing-dynamic.tsx"), read("src/components/atlas/landing-entry-link.tsx")]);
     expect(home).toContain("export const revalidate = 300");
     expect(home).not.toContain("searchParams");
-    expect(home).not.toContain("home-maritime-evidence.webp");
+    expect(home).toContain("home-maritime-evidence.webp");
     expect(data).toContain('getAtlasOrganizationBySlug("kraken-robotics")');
     expect(data).toContain('getAtlasCapabilityBySlug("kraken-katfish-sas")');
     expect(preview).toContain("publicLanguage.assessment");
-    expect(preview).toContain("publicLanguage.coverageGap");
+    expect(preview).toContain("What still needs checking:");
+    expect(preview).toContain("{capability.gap}");
     expect(bridge).toContain('window.location.hash !== "#ask-true-north"');
   });
 });

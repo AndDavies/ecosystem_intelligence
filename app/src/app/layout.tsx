@@ -7,6 +7,7 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { brandCopy } from "@/lib/brand-copy";
 import { officialSocialLinks, siteDescription, siteName, siteUrl } from "@/lib/site";
 import "./globals.css";
+import "./desktop-design.css";
 
 const barlow = Barlow({
   subsets: ["latin"],

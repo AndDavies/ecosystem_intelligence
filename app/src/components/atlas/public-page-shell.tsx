@@ -4,7 +4,7 @@ import { PublicAtlasHeader } from "@/components/atlas/public-atlas-header";
 import { PublicAtlasFooter } from "@/components/atlas/public-atlas-footer";
 import { InternalLinkTelemetry } from "@/components/atlas/internal-link-telemetry";
 
-type PublicPageVariant = "public" | "editorial" | "regional" | "dossier" | "admin";
+type PublicPageVariant = "public" | "editorial" | "regional" | "dossier" | "collection" | "form" | "workspace" | "admin";
 
 export function PublicPageShell({
   eyebrow,
@@ -41,7 +41,7 @@ export function PublicPageShell({
     <main className={`atlas-page min-h-screen bg-[var(--atlas-canvas)] text-[var(--atlas-ink)] ${variant === "admin" ? "atlas-admin-shell" : `atlas-public-shell atlas-public-shell-${variant}`}`}>
       {isPublicVariant ? <InternalLinkTelemetry /> : null}
       <PublicAtlasHeader privateWorkspace={variant === "admin"} />
-      <div className="atlas-frame py-8 sm:py-12">
+      <div className="atlas-frame atlas-shell-content">
         {isPublicVariant ? (
           <nav aria-label="Breadcrumb">
             <ol className="flex flex-wrap items-center gap-1.5 text-xs font-semibold">
@@ -77,18 +77,18 @@ export function PublicPageShell({
           </Link>
         )}
         {pageHeader ?? (
-          <header className="atlas-page-heading mt-7 flex flex-col gap-7 border-b border-[var(--atlas-border)] pb-8 xl:flex-row xl:items-end xl:justify-between">
+          <header className="atlas-page-heading flex flex-col gap-5 border-b border-[var(--atlas-border)] xl:flex-row xl:items-end xl:justify-between">
             <div className="max-w-4xl">
               <p className="atlas-eyebrow">{eyebrow}</p>
-              <h1 className="mt-3 font-[family-name:var(--font-barlow)] text-3xl font-extrabold leading-[1.04] tracking-[-0.052em] text-[var(--atlas-ink)] sm:text-[46px] lg:text-[52px]">{title}</h1>
+              <h1 className="atlas-page-title mt-3 text-[var(--atlas-ink)]">{title}</h1>
               {description ? <p className="mt-4 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)] sm:text-base sm:leading-7">{description}</p> : null}
             </div>
             {actions ? <div className="flex min-w-0 flex-wrap gap-2">{actions}</div> : null}
           </header>
         )}
-        <div>{children}</div>
-        {variant === "admin" ? null : <PublicAtlasFooter />}
+        <div className="atlas-page-body">{children}</div>
       </div>
+      {variant === "admin" ? null : <PublicAtlasFooter />}
     </main>
   );
 }
@@ -104,9 +104,11 @@ export function PublicCard({
   title,
   eyebrow,
   children,
-  className = ""
+  className = "",
+  contentClassName = ""
 }: {
   id?: string;
+  contentClassName?: string;
   title?: string;
   eyebrow?: string;
   children: React.ReactNode;
@@ -116,14 +118,14 @@ export function PublicCard({
     <section id={id} className={`atlas-surface min-w-0 p-5 sm:p-7 ${className}`}>
       {eyebrow ? <p className="atlas-eyebrow">{eyebrow}</p> : null}
       {title ? <h2 className="mt-2 text-xl font-extrabold tracking-[-0.035em] text-[var(--atlas-ink)]">{title}</h2> : null}
-      <div className={title || eyebrow ? "mt-5" : ""}>{children}</div>
+      <div className={`${title || eyebrow ? "mt-5" : ""} ${contentClassName}`}>{children}</div>
     </section>
   );
 }
 
 export function EmptyCoverage({ title, detail }: { title: string; detail: string }) {
   return (
-    <div className="rounded-2xl bg-[var(--atlas-surface-muted)] px-5 py-8 text-center">
+    <div className="border-y border-[var(--atlas-border)] px-5 py-8 text-center">
       <p className="text-sm font-semibold text-[var(--atlas-ink-soft)]">{title}</p>
       <p className="mx-auto mt-1 max-w-xl text-xs leading-5 text-[var(--atlas-muted)]">{detail}</p>
     </div>
@@ -142,7 +144,7 @@ export function CollectionContinuation({
   links: Array<{ label: string; href: string }>;
 }) {
   return (
-    <section className="mt-12 rounded-[18px] bg-[var(--atlas-blue-soft)] px-5 py-6 sm:px-7 sm:py-7" aria-labelledby="collection-continuation-title">
+    <section className="mt-12 border-y border-[var(--atlas-border)] py-6 sm:py-8" aria-labelledby="collection-continuation-title">
       <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
         <div>
           <p className="atlas-eyebrow">{eyebrow}</p>

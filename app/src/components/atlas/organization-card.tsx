@@ -25,12 +25,14 @@ export function OrganizationCard({
   organization,
   eyebrow,
   headingLevel = "h3",
-  showLogo = false
+  showLogo = false,
+  layout = "grid"
 }: {
   organization: AtlasOrganization;
   eyebrow?: string;
   headingLevel?: "h2" | "h3";
   showLogo?: boolean;
+  layout?: "grid" | "row";
 }) {
   const offering = organization.capabilities[0];
   const capabilityCount = organization.capabilities.length;
@@ -44,10 +46,10 @@ export function OrganizationCard({
     organization.entityKind !== "company" && capabilityCount === 0 && demandMatchCount === 0;
 
   return (
-    <article className="group relative flex h-full flex-col rounded-[18px] bg-white p-5 shadow-[0_14px_36px_rgba(36,40,39,0.055)] transition-shadow duration-200 focus-within:shadow-[0_18px_44px_rgba(36,40,39,0.1)] hover:shadow-[0_18px_44px_rgba(36,40,39,0.09)]">
-      {eyebrow ? <p className="text-[10px] font-extrabold uppercase tracking-[0.12em] text-[var(--atlas-primary)]">{eyebrow}</p> : null}
+    <article className={`atlas-record group relative flex h-full flex-col ${layout === "row" ? "atlas-record-row" : ""}`}>
+      {eyebrow ? <p className="text-xs font-extrabold uppercase tracking-[0.12em] text-[var(--atlas-primary)]">{eyebrow}</p> : null}
 
-      <div className={showLogo ? "flex items-start gap-3.5" : ""}>
+      <div className={showLogo ? "atlas-record-identity flex items-start gap-3.5" : "atlas-record-identity"}>
         {showLogo ? (
           <OrganizationIdentityMark
             name={organization.name}
@@ -68,11 +70,11 @@ export function OrganizationCard({
         </div>
       </div>
 
-      <p className="mt-3 line-clamp-2 text-sm leading-6 text-[var(--atlas-muted)]">{organization.description}</p>
+      <p className="atlas-record-description mt-3 line-clamp-2 text-sm leading-6 text-[var(--atlas-muted)]">{organization.description}</p>
 
       {offering ? (
-        <div className="mt-4 rounded-[14px] bg-[var(--atlas-blue-soft)] px-3.5 py-3">
-          <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--atlas-muted)]">What they offer</p>
+        <div className="atlas-record-offering mt-4 py-1">
+          <p className="text-xs font-bold uppercase tracking-[0.12em] text-[var(--atlas-muted)]">What they offer</p>
           <Link
             href={`/capabilities/${offering.slug}`}
             prefetch={false}
@@ -86,11 +88,11 @@ export function OrganizationCard({
       ) : null}
 
       {domains.length ? (
-        <div className="mt-3 flex flex-wrap gap-2">
+        <div className="atlas-record-domains mt-3 flex flex-wrap gap-2">
           {domains.map((domain) => (
             <span
               key={domain.id}
-              className="atlas-pill atlas-pill-tag atlas-pill-evidence min-h-7 px-2.5 py-1 text-[10px] font-semibold"
+              className="atlas-pill atlas-pill-tag atlas-pill-evidence min-h-7 px-2.5 py-1 text-xs font-semibold"
             >
               {domain.name}
             </span>
@@ -98,8 +100,8 @@ export function OrganizationCard({
         </div>
       ) : null}
 
-      <div className="mt-auto pt-4">
-        <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[11px] font-bold text-[var(--atlas-ink-soft)]">
+      <div className="atlas-record-meta mt-auto pt-4">
+        <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-sm font-bold text-[var(--atlas-ink-soft)]">
           {ecosystemRoleWithoutRecords ? (
             <>
               <span>{organizationKindLabel(organization.entityKind)}</span>
@@ -118,8 +120,8 @@ export function OrganizationCard({
             </>
           )}
         </div>
-        <div className="mt-3 flex items-center justify-between gap-3 rounded-[14px] bg-[var(--atlas-surface-muted)] px-3 py-2.5">
-          <span className="text-[11px] text-[var(--atlas-muted)]">Reviewed {formatDate(organization.lastReviewedAt)}</span>
+        <div className="atlas-record-footer mt-3 flex flex-wrap items-center justify-between gap-3">
+          <span className="text-sm text-[var(--atlas-muted)]">Reviewed {formatDate(organization.lastReviewedAt)}</span>
           <Link
             href={`/organizations/${organization.slug}`}
             prefetch={false}

@@ -150,7 +150,7 @@ export function ExecutiveOrganizationDossier({
 
       <article className="mt-6 space-y-7 sm:mt-8 sm:space-y-8 lg:mt-9 lg:space-y-10" data-public-dossier="true">
           {hasCurrentActivity && organization.editorialProfile.currentActivity && organization.editorialProfile.currentActivityAsOf && currentActivitySource ? (
-            <section id="why-now" tabIndex={-1} className="atlas-tonal-surface atlas-tonal-signal w-full scroll-mt-28 px-5 py-8 outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-signal)] focus-visible:ring-offset-4 sm:px-8 sm:py-10 lg:px-10 lg:py-12" aria-labelledby="why-now-heading">
+            <section id="why-now" tabIndex={-1} className="atlas-tonal-surface atlas-tonal-signal w-full scroll-mt-28 px-5 py-8 outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-signal)] focus-visible:ring-offset-4 sm:py-8 lg:py-10" aria-labelledby="why-now-heading">
                 <p className="text-[12px] font-extrabold uppercase tracking-[0.1em] text-[var(--atlas-ink)]">Recent activity</p>
                 <div className="mt-3 grid gap-5 lg:grid-cols-12 lg:gap-8">
                   <div className="lg:col-span-5">
@@ -166,7 +166,7 @@ export function ExecutiveOrganizationDossier({
           ) : null}
 
           {hasConnections ? (
-            <section id="connections" tabIndex={-1} className="atlas-tonal-surface atlas-tonal-paper w-full scroll-mt-28 px-5 py-8 outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-signal)] focus-visible:ring-offset-4 sm:px-8 sm:py-10 lg:px-10 lg:py-12" aria-labelledby="connections-heading">
+            <section id="connections" tabIndex={-1} className="atlas-open-section w-full scroll-mt-28 py-8 outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-signal)] focus-visible:ring-offset-4 sm:py-8 lg:py-10" aria-labelledby="connections-heading">
               <div>
                 <p className="atlas-eyebrow">Reviewed assessment</p>
                 <h2 id="connections-heading" className="mt-3 max-w-[19ch] font-[family-name:var(--font-barlow)] text-3xl font-extrabold leading-[1.04] tracking-[-0.045em] text-[var(--atlas-ink)] sm:text-4xl">Where this organization could contribute.</h2>
@@ -226,7 +226,7 @@ export function ExecutiveOrganizationDossier({
           ) : null}
 
           {organization.capabilities.length ? (
-            <section id="capabilities" tabIndex={-1} className="atlas-tonal-surface atlas-tonal-paper w-full scroll-mt-28 px-5 py-8 outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-signal)] focus-visible:ring-offset-4 sm:px-8 sm:py-10 lg:px-10 lg:py-12" aria-labelledby="capabilities-heading">
+            <section id="capabilities" tabIndex={-1} className="atlas-open-section w-full scroll-mt-28 py-8 outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-signal)] focus-visible:ring-offset-4 sm:py-8 lg:py-10" aria-labelledby="capabilities-heading">
               <div className="grid gap-5 lg:grid-cols-12 lg:gap-10">
                 <div className="lg:col-span-4">
                   <h2 id="capabilities-heading" className="max-w-[18ch] font-[family-name:var(--font-barlow)] text-3xl font-extrabold leading-[1.04] tracking-[-0.045em] text-[var(--atlas-ink)] sm:text-4xl">Technologies and services</h2>
@@ -242,7 +242,7 @@ export function ExecutiveOrganizationDossier({
           ) : null}
 
           {hasPublicRecord ? (
-            <section id="public-record" tabIndex={-1} className="atlas-tonal-surface atlas-tonal-paper w-full scroll-mt-28 px-5 py-8 outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-signal)] focus-visible:ring-offset-4 sm:px-8 sm:py-10 lg:px-10 lg:py-12" aria-labelledby="public-record-heading">
+            <section id="public-record" tabIndex={-1} className="atlas-open-section w-full scroll-mt-28 py-8 outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-signal)] focus-visible:ring-offset-4 sm:py-8 lg:py-10" aria-labelledby="public-record-heading">
               <div className="grid gap-5 lg:grid-cols-12 lg:gap-10">
                 <div className="lg:col-span-4">
                   <p className="atlas-eyebrow">Public record</p>
@@ -267,7 +267,7 @@ export function ExecutiveOrganizationDossier({
           ) : null}
 
           {organization.editorialProfile.reviewedQuestions.length ? (
-            <section id="questions" tabIndex={-1} className="atlas-tonal-surface atlas-tonal-paper w-full scroll-mt-28 px-5 py-8 outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-signal)] focus-visible:ring-offset-4 sm:px-8 sm:py-10 lg:px-10 lg:py-12" aria-labelledby="conversation-questions-heading">
+            <section id="questions" tabIndex={-1} className="atlas-open-section w-full scroll-mt-28 py-8 outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-signal)] focus-visible:ring-offset-4 sm:py-8 lg:py-10" aria-labelledby="conversation-questions-heading">
               <p className="atlas-eyebrow">Prepare the conversation</p>
               <h2 id="conversation-questions-heading" className="mt-3 font-[family-name:var(--font-barlow)] text-2xl font-extrabold tracking-[-0.035em] text-[var(--atlas-ink)] sm:text-3xl">Questions for a first conversation</h2>
               <ol className="mt-6 divide-y divide-[var(--atlas-border)]">
@@ -319,7 +319,7 @@ export function ExecutiveOrganizationDossier({
           ) : null}
 
           {sourceCount ? (
-            <section id="sources" tabIndex={-1} className="atlas-tonal-surface atlas-tonal-paper w-full scroll-mt-28 px-5 py-8 outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-signal)] focus-visible:ring-offset-4 sm:px-8 sm:py-10 lg:px-10 lg:py-12" aria-labelledby="sources-heading">
+            <section id="sources" tabIndex={-1} className="atlas-open-section w-full scroll-mt-28 py-8 outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-signal)] focus-visible:ring-offset-4 sm:py-8 lg:py-10" aria-labelledby="sources-heading">
               <div className="grid gap-6 lg:grid-cols-12 lg:gap-10">
                 <div className="lg:col-span-7">
                   <p className="atlas-eyebrow">Source library</p>
@@ -345,7 +345,7 @@ export function ExecutiveOrganizationDossier({
             </section>
           ) : null}
 
-          <section id="contact" tabIndex={-1} className="scroll-mt-28 rounded-[18px] bg-[var(--atlas-ink)] px-5 py-8 text-white shadow-[var(--atlas-shadow-soft)] outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-signal)] focus-visible:ring-offset-4 sm:px-8 sm:py-10 lg:px-10 lg:py-12" aria-labelledby="contact-heading">
+          <section id="contact" tabIndex={-1} className="scroll-mt-28 bg-[var(--atlas-ink)] px-5 py-8 text-white outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-signal)] focus-visible:ring-offset-4 sm:py-8 lg:py-10" aria-labelledby="contact-heading">
             <div className={`grid gap-8 lg:items-end lg:gap-10 ${hasPublicContactPaths ? "lg:grid-cols-12" : ""}`}>
               <div className={hasPublicContactPaths ? "lg:col-span-7" : "max-w-4xl"}>
                 <p className="text-[12px] font-bold uppercase tracking-[0.1em] text-[var(--atlas-signal)]">Move into a better-informed conversation</p>
@@ -353,7 +353,7 @@ export function ExecutiveOrganizationDossier({
                 <p className="mt-4 max-w-[68ch] text-base leading-8 text-white/75 sm:text-[17px]">Save the organization and its public record in a private Shortlist, then request a human-routed introduction when the fit is specific enough to discuss.</p>
                 <div className="mt-6 flex flex-wrap gap-2">
                   <Link href={`/collections?addType=organization&addId=${organization.id}&returnTo=${encodeURIComponent(profilePath)}`} className="atlas-signal-button h-12 gap-2 px-5 text-sm"><BookmarkPlus className="size-4" aria-hidden="true" />Add to shortlist</Link>
-                  <Link href={`/connect/${organization.slug}`} className="inline-flex h-12 items-center gap-2 rounded-[12px] border border-white/30 px-4 text-sm font-bold text-white no-underline hover:bg-white/10 hover:no-underline"><Handshake className="size-4" aria-hidden="true" />Request an introduction</Link>
+                  <Link href={`/connect/${organization.slug}`} className="inline-flex h-12 items-center gap-2 rounded-full border border-white/30 px-4 text-sm font-bold text-white no-underline hover:bg-white/10 hover:no-underline"><Handshake className="size-4" aria-hidden="true" />Request an introduction</Link>
                 </div>
                 {!hasPublicContactPaths ? <p className="mt-5 text-[13px] leading-6 text-white/65">Only official, source-supported contact paths are shown. True North Map does not expose private contact information or imply endorsement.</p> : null}
               </div>
@@ -368,7 +368,7 @@ export function ExecutiveOrganizationDossier({
             </div>
           </section>
 
-          <section id="related" tabIndex={-1} className="atlas-tonal-surface atlas-tonal-paper w-full scroll-mt-28 px-5 py-8 outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-signal)] focus-visible:ring-offset-4 sm:px-8 sm:py-10 lg:px-10 lg:py-12" aria-labelledby="related-heading">
+          <section id="related" tabIndex={-1} className="atlas-open-section w-full scroll-mt-28 py-8 outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-signal)] focus-visible:ring-offset-4 sm:py-8 lg:py-10" aria-labelledby="related-heading">
             <div className="grid gap-5 lg:grid-cols-12 lg:gap-10">
               <div className="lg:col-span-4">
                 <p className="atlas-eyebrow">Continue exploring</p>
@@ -411,7 +411,7 @@ function DossierExecutiveSummary({ organization }: { organization: AtlasOrganiza
     <section id="profile" tabIndex={-1} className="mt-6 scroll-mt-28 outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-signal)] focus-visible:ring-offset-4 sm:mt-8 lg:mt-9" aria-labelledby={narrativeBlocks.length ? "profile-heading" : "snapshot-heading"}>
       <div className={narrativeBlocks.length ? "grid gap-6 lg:grid-cols-12 lg:items-stretch lg:gap-8" : ""}>
         {narrativeBlocks.length ? (
-          <div className="atlas-tonal-surface atlas-tonal-paper px-5 py-8 sm:px-8 sm:py-9 lg:col-span-7 lg:h-full lg:px-10 lg:py-10 xl:col-span-8">
+          <div className="atlas-open-section py-8 sm:py-8 lg:col-span-7 lg:h-full lg:py-8 xl:col-span-8">
             <p className="atlas-eyebrow">Organization context</p>
             <h2 id="profile-heading" className="mt-3 font-[family-name:var(--font-barlow)] text-3xl font-extrabold leading-[1.04] tracking-[-0.045em] text-[var(--atlas-ink)] sm:text-4xl">What the organization does</h2>
             <div className="mt-6 divide-y divide-[var(--atlas-border)]">
@@ -425,7 +425,7 @@ function DossierExecutiveSummary({ organization }: { organization: AtlasOrganiza
           </div>
         ) : null}
 
-        <aside className={`${narrativeBlocks.length ? "lg:col-span-5 xl:col-span-4" : "w-full"} atlas-tonal-surface atlas-tonal-paper px-5 py-8 sm:px-8 sm:py-9 lg:h-full lg:px-8 lg:py-10`} aria-labelledby="snapshot-heading">
+        <aside className={`${narrativeBlocks.length ? "lg:col-span-5 xl:col-span-4" : "w-full"} atlas-open-section py-8 sm:py-8 lg:h-full lg:px-8 lg:py-10`} aria-labelledby="snapshot-heading">
           <p className="atlas-eyebrow">Profile facts</p>
           <h2 id="snapshot-heading" className="mt-3 font-[family-name:var(--font-barlow)] text-2xl font-extrabold tracking-[-0.035em] text-[var(--atlas-ink)] sm:text-3xl">At a glance</h2>
           <dl className="mt-6 grid gap-x-7 sm:grid-cols-2">
@@ -451,7 +451,7 @@ function DecisionSnapshot({
   const summary = organization.editorialProfile.executiveRelevanceSummary;
   if (!summary) return null;
   return (
-    <section className="mt-6 rounded-[18px] bg-[var(--atlas-blue-soft)] px-5 py-7 sm:mt-8 sm:px-8 sm:py-9 lg:mt-9 lg:px-10" aria-labelledby="decision-snapshot-heading">
+    <section className="mt-6 border-y border-[var(--atlas-border)] bg-[var(--atlas-blue-soft)] px-5 py-7 sm:mt-8 sm:py-8 lg:mt-9 lg:px-10" aria-labelledby="decision-snapshot-heading">
       <p className="atlas-eyebrow">Decision snapshot</p>
       <div className="mt-3 grid gap-7 lg:grid-cols-12 lg:gap-10">
         <div className={missionConnection || demandConnection ? "lg:col-span-7" : "lg:col-span-12"}>
@@ -483,9 +483,9 @@ function DecisionConnectionPreview({ label, title, summary, href }: { label: str
 function OrganizationIdentityMark({ organization }: { organization: AtlasOrganization }) {
   const initials = organizationInitials(organization.name);
   return (
-    <span className="relative flex size-16 shrink-0 items-center justify-center overflow-hidden rounded-[14px] bg-[var(--atlas-blue-soft)] text-[var(--atlas-ink)] sm:size-[88px]">
+    <span className="atlas-dossier-logo relative flex shrink-0 items-center justify-center text-[var(--atlas-ink)]">
       {organization.logo ? (
-        <Image src={organization.logo.publicUrl} alt={`${organization.name} logo`} fill sizes="(min-width: 640px) 88px, 64px" priority className="object-contain p-2.5 sm:p-3" />
+        <Image src={organization.logo.publicUrl} alt={`${organization.name} logo`} fill sizes="(min-width: 1024px) 180px, 96px" priority className="object-contain" />
       ) : initials ? (
         <span aria-hidden="true" className="font-[family-name:var(--font-barlow)] text-xl font-extrabold tracking-[-0.04em] sm:text-2xl">{initials}</span>
       ) : (
@@ -502,21 +502,21 @@ function EditorialHeader({ organization, profilePath }: { organization: AtlasOrg
     : null;
 
   return (
-    <header className="mt-7 border-y border-[var(--atlas-border)] bg-white">
-      <div className="grid gap-9 px-5 py-10 sm:px-8 lg:grid-cols-12 lg:gap-12 lg:px-10 lg:py-12 xl:px-12">
+    <header className="atlas-profile-header mt-7">
+      <div className="grid gap-8 py-8 lg:grid-cols-12 lg:gap-12 lg:py-10">
         <div className="min-w-0 lg:col-span-8">
-          <div className="grid grid-cols-[64px_minmax(0,1fr)] items-start gap-4 sm:grid-cols-[88px_minmax(0,1fr)] sm:gap-6">
+          <div className="atlas-dossier-identity">
             <OrganizationIdentityMark organization={organization} />
             <div className="min-w-0">
               <span className="block h-1 w-12 bg-[var(--atlas-signal)]" aria-hidden="true" />
               <p className="mt-4 text-[12px] font-extrabold uppercase tracking-[0.12em] text-[var(--atlas-ink)]">{organizationKindLabel(organization.entityKind)}</p>
-              <h1 className="mt-3 max-w-[18ch] break-words font-[family-name:var(--font-barlow)] text-[42px] font-extrabold leading-[0.98] tracking-[-0.055em] text-[var(--atlas-ink)] [overflow-wrap:anywhere] sm:text-[52px] xl:text-[60px]">{organization.name}</h1>
+              <h1 className="mt-3 max-w-[18ch] break-words font-[family-name:var(--font-barlow)] text-[42px] font-extrabold leading-[0.98] tracking-[-0.035em] text-[var(--atlas-ink)] [overflow-wrap:anywhere] sm:text-[52px] xl:text-[60px]">{organization.name}</h1>
               {organization.primaryLocation ? <p className="mt-4 flex items-center gap-2 text-[14px] font-semibold text-[var(--atlas-muted)]"><MapPin className="size-4 shrink-0" aria-hidden="true" /><span>{organization.primaryLocation.name}</span></p> : null}
-            </div>
-          </div>
           {documentedCapability ? <p className="mt-5 max-w-[64ch] border-l-2 border-[var(--atlas-signal)] pl-4 text-[15px] font-semibold leading-7 text-[var(--atlas-ink)]"><span className="text-[var(--atlas-muted)]">What they offer:</span> {documentedCapability}</p> : null}
           <p className="mt-5 max-w-[72ch] text-base leading-8 text-[var(--atlas-ink-soft)] sm:text-[17px]">{organization.description}</p>
           {organization.lastReviewedAt ? <p className="mt-5 border-t border-[var(--atlas-border)] pt-4 text-[13px] font-semibold leading-6 text-[var(--atlas-muted)]">Last reviewed {formatDate(organization.lastReviewedAt)}</p> : null}
+            </div>
+          </div>
           {heroMedia ? <DossierActions organization={organization} profilePath={profilePath} mode="inline" /> : null}
         </div>
 
@@ -530,15 +530,15 @@ function EditorialHeader({ organization, profilePath }: { organization: AtlasOrg
 
 function DossierActions({ organization, profilePath, mode }: { organization: AtlasOrganization; profilePath: string; mode: "panel" | "inline" }) {
   return (
-    <div className={mode === "panel" ? "rounded-[18px] bg-[var(--atlas-canvas)] p-5 sm:p-7" : "mt-7 border-t border-[var(--atlas-border)] pt-5"}>
+    <div className={mode === "panel" ? "atlas-dossier-actions border-l-2 border-[var(--atlas-border-strong)] pl-5 sm:pl-7" : "atlas-dossier-actions mt-7 border-t border-[var(--atlas-border)] pt-5"}>
       <p className="text-[12px] font-extrabold uppercase tracking-[0.1em] text-[var(--atlas-ink)]">Next actions</p>
       <div className={`${mode === "inline" ? "sm:grid-cols-2 lg:max-w-2xl" : ""} mt-4 grid gap-2`}>
         <Link href={`/collections?addType=organization&addId=${organization.id}&returnTo=${encodeURIComponent(profilePath)}`} className="atlas-signal-button h-12 gap-2 px-5 text-sm"><BookmarkPlus className="size-4" aria-hidden="true" />Add to shortlist</Link>
-        <Link href={`/connect/${organization.slug}`} className="inline-flex h-12 items-center justify-center gap-2 rounded-[12px] border border-[var(--atlas-ink)] bg-white px-4 text-sm font-bold text-[var(--atlas-ink)] no-underline hover:bg-[var(--atlas-primary-soft)] hover:no-underline"><Handshake className="size-4" aria-hidden="true" />Request an introduction</Link>
+        <Link href={`/connect/${organization.slug}`} className="atlas-secondary-button h-12 gap-2 px-4 text-sm"><Handshake className="size-4" aria-hidden="true" />Request an introduction</Link>
       </div>
       <div className="mt-4 flex flex-wrap items-center gap-x-1 gap-y-1 border-t border-[var(--atlas-border)] pt-3">
         <Link href={`/api/export?type=organization-dossier&slug=${organization.slug}`} className="inline-flex min-h-11 items-center gap-1.5 rounded-[12px] px-2.5 text-[13px] font-semibold text-[var(--atlas-muted)] no-underline hover:bg-white hover:text-[var(--atlas-ink)] hover:no-underline">Download profile <Download className="size-3.5" aria-hidden="true" /></Link>
-        <PublicShare title={organization.name} description={organization.description} path={`/organizations/${organization.slug}`} className="!h-11 !min-h-11 !rounded-[12px] !bg-transparent !px-2.5 !text-[13px] !font-semibold !text-[var(--atlas-muted)] hover:!bg-white hover:!text-[var(--atlas-ink)]" />
+        <PublicShare title={organization.name} description={organization.description} path={`/organizations/${organization.slug}`} className="!h-11 !min-h-11 !rounded-full !border-0 !bg-transparent !px-2.5 !text-[13px] !font-semibold !text-[var(--atlas-link)] hover:!bg-white hover:!text-[var(--atlas-ink)]" />
         {organization.websiteUrl ? <ExternalSourceLink href={organization.websiteUrl} variant="plain" className="min-h-11 items-center rounded-[12px] px-2.5 text-[13px] font-semibold text-[var(--atlas-muted)] no-underline hover:bg-white hover:text-[var(--atlas-ink)] hover:no-underline">Visit website</ExternalSourceLink> : null}
         <Link href="/collections" className="inline-flex min-h-11 items-center rounded-[12px] px-2.5 text-[13px] font-semibold text-[var(--atlas-muted)] no-underline hover:bg-white hover:text-[var(--atlas-ink)] hover:no-underline">My shortlists</Link>
       </div>
@@ -826,7 +826,7 @@ function DecisionList({ label, values }: { label: string; values: string[] }) {
 }
 
 function ContactLink({ href, label, icon, external = false }: { href: string; label: string; icon: React.ReactNode; external?: boolean }) {
-  return <a href={href} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined} className="flex min-h-11 items-center justify-between gap-3 rounded-[12px] border border-white/15 px-3.5 py-2.5 text-[14px] font-semibold text-white no-underline hover:bg-white/10 hover:no-underline"><span className="min-w-0 truncate">{label}{external ? <span className="sr-only"> (opens in a new tab)</span> : null}</span><span className="shrink-0 text-[var(--atlas-signal)]" aria-hidden="true">{icon}</span></a>;
+  return <a href={href} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined} className="flex min-h-11 items-center justify-between gap-3 rounded-full border border-white/15 px-3.5 py-2.5 text-[14px] font-semibold text-white no-underline hover:bg-white/10 hover:no-underline"><span className="min-w-0 truncate">{label}{external ? <span className="sr-only"> (opens in a new tab)</span> : null}</span><span className="shrink-0 text-[var(--atlas-signal)]" aria-hidden="true">{icon}</span></a>;
 }
 
 function buildSourceGroups(organization: AtlasOrganization) {

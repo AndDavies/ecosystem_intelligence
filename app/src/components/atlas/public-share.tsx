@@ -87,11 +87,11 @@ export function PublicShare({
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 z-[1350] bg-[var(--atlas-ink)]/45 backdrop-blur-[2px]" />
-        <Dialog.Content aria-describedby="share-description" className="fixed bottom-0 left-1/2 z-[1351] w-full -translate-x-1/2 rounded-t-[18px] bg-white p-5 shadow-[var(--atlas-shadow-float)] outline-none sm:bottom-auto sm:top-1/2 sm:max-w-md sm:-translate-y-1/2 sm:rounded-[18px] sm:p-6">
+        <Dialog.Content aria-describedby="share-description" className="fixed bottom-0 left-1/2 z-[1351] w-full -translate-x-1/2 rounded-t-[8px] bg-white p-5 shadow-[var(--atlas-shadow-float)] outline-none sm:bottom-auto sm:top-1/2 sm:max-w-md sm:-translate-y-1/2 sm:rounded-[8px] sm:p-6">
           <div className="flex items-start gap-3">
             <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)]"><Share2 className="size-5" aria-hidden="true" /></span>
             <div className="min-w-0 flex-1"><p className="atlas-eyebrow">Share this page</p><Dialog.Title className="mt-1 text-xl font-extrabold tracking-[-0.03em] text-[var(--atlas-ink)]">Help someone find the evidence.</Dialog.Title></div>
-            <Dialog.Close asChild><button type="button" aria-label="Close share options" className="flex size-9 items-center justify-center rounded-xl text-[var(--atlas-muted)] hover:bg-[var(--atlas-surface-muted)]"><X className="size-4" /></button></Dialog.Close>
+            <Dialog.Close asChild><button type="button" aria-label="Close share options" className="flex size-11 items-center justify-center rounded-[4px] text-[var(--atlas-muted)] hover:bg-[var(--atlas-surface-muted)]"><X className="size-4" /></button></Dialog.Close>
           </div>
           <Dialog.Description id="share-description" className="mt-3 text-sm leading-6 text-[var(--atlas-muted)]">Share the current page and its public sources with your network.</Dialog.Description>
           <div className="mt-5 grid gap-2 sm:grid-cols-2">

@@ -7,9 +7,9 @@ import { BrandLogo } from "@/components/atlas/brand-logo";
 export default function ErrorPage({ reset }: { error: Error & { digest?: string }; reset: () => void }) {
   return (
     <main className="atlas-page flex min-h-screen items-center bg-[var(--atlas-canvas)] px-5 py-16 text-[var(--atlas-ink)]">
-      <section className="mx-auto w-full max-w-2xl rounded-2xl border border-[var(--atlas-border)] bg-white p-7 shadow-[var(--atlas-shadow-soft)] sm:p-10">
+      <section className="mx-auto w-full max-w-2xl border-t-2 border-[var(--atlas-ink)] p-7 sm:p-10">
         <BrandLogo />
-        <span className="flex size-11 items-center justify-center rounded-xl bg-[var(--atlas-danger-soft)] text-[var(--atlas-danger)]">
+        <span className="flex size-11 items-center justify-center mt-6 rounded-[4px] bg-[var(--atlas-danger-soft)] text-[var(--atlas-danger)]">
           <AlertTriangle aria-hidden="true" className="size-5" />
         </span>
         <p className="atlas-eyebrow mt-6">Something interrupted this page</p>

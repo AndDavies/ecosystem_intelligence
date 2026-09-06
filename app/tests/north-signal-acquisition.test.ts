@@ -36,7 +36,7 @@ describe("North Signal acquisition architecture", () => {
     expect(offerComponent).toContain("data-north-signal-proof-card");
     expect(offerComponent).toContain("data-north-signal-proof-loading");
     expect(offerComponent).toContain("data-north-signal-proof-fallback");
-    expect(offerComponent).toContain("rounded-[18px] bg-[var(--atlas-blue-soft)] px-4");
+    expect(offerComponent).toContain("border-y border-[var(--atlas-border)]");
     expect(offerComponent).toContain("device_class: deviceClass()");
     expect(layout).toContain("<PublicBetaExperience />");
     expect(layout).not.toContain("Suspense");

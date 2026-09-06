@@ -8,10 +8,9 @@ import { OrganizationCard } from "@/components/atlas/organization-card";
 import { CollectionContinuation, EmptyCoverage, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { PaginationNav } from "@/components/ui/pagination-nav";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { organizationKindLabel } from "@/lib/atlas/presentation";
+import { buildOrganizationTypeOptions, organizationTypeFilterLabel } from "@/lib/atlas/organization-type-filters";
 import { getAtlasDiscoverySnapshot, getAtlasOrganizationLogos, matchingAtlasOrganizations } from "@/lib/atlas/repository";
 import { normalizedPage, paginate } from "@/lib/pagination";
-import type { AtlasEntityKind, AtlasOrganization } from "@/types/atlas";
 import { socialMetadata } from "@/lib/seo/social";
 
 // The directory shell refreshes more often than the bounded discovery pages.
@@ -34,10 +33,11 @@ const firstParameter = (value: string | string[] | undefined) => Array.isArray(v
 export default function OrganizationsPage({ searchParams }: { searchParams: OrganizationSearchParams }) {
   return (
     <PublicPageShell
+      variant="collection"
       eyebrow="Canadian defence and dual-use directory"
       title="Find the people and technology your project needs."
       description="Search companies, research centres and industry organizations. Open a profile to see what they offer and where they may fit."
-      actions={<Link href="/map?view=map" className="atlas-primary-button min-h-11 px-5 text-sm">Explore the map</Link>}
+      actions={<Link href="/map?view=map" className="atlas-prose-link inline-flex min-h-11 items-center text-sm font-bold">Explore the map</Link>}
     >
       <Suspense fallback={<OrganizationDirectoryLoading />}>
         <OrganizationsDirectoryData searchParams={searchParams} />
@@ -64,7 +64,7 @@ async function OrganizationsDirectoryData({ searchParams }: { searchParams: Orga
   );
   const directoryLogos = await getAtlasOrganizationLogos(directory.items.map((organization) => organization.id));
 
-  const typeFacets = buildTypeFacets(snapshot.organizations);
+  const typeFacets = buildOrganizationTypeOptions(snapshot.organizations, activeType);
   const regionFacets = snapshot.regions.filter((region) => region.slug !== "canada" && region.organizationCount > 0);
   const coveredRegions = regionFacets.length;
   const publishedOrganizationCount = snapshot.organizations.length;
@@ -87,7 +87,7 @@ async function OrganizationsDirectoryData({ searchParams }: { searchParams: Orga
   return (
     <>
       <div className="mt-6 max-w-3xl"><PublicRecordSearch query={activeQuery} type={activeType} region={activeRegion} /></div>
-      <dl className="mt-5 grid grid-cols-3 overflow-hidden rounded-[18px]">
+      <dl className="atlas-directory-stats">
         <DirectoryStat icon={Building2} label="Published organizations" value={publishedOrganizationCount} tone="blue" />
         <DirectoryStat icon={Layers3} label="Technologies and services" value={publishedCapabilityCount} tone="evidence" />
         <DirectoryStat icon={MapPin} label="Covered regions" value={coveredRegions} href="/regions" tone="signal" />
@@ -95,6 +95,7 @@ async function OrganizationsDirectoryData({ searchParams }: { searchParams: Orga
 
       <section className="mt-6">
         <SectionHeading
+          className="atlas-directory-heading"
           eyebrow="Full directory"
           title="Browse the directory"
           actions={
@@ -104,7 +105,8 @@ async function OrganizationsDirectoryData({ searchParams }: { searchParams: Orga
           }
         />
 
-        <div className="mt-4 space-y-3">
+        <div className="atlas-directory-grid">
+        <aside className="atlas-directory-filters">
           <BrowseRow
             label="Organization type"
             allLabel="All types"
@@ -112,7 +114,7 @@ async function OrganizationsDirectoryData({ searchParams }: { searchParams: Orga
             allActive={!activeType}
             options={typeFacets.map((facet) => ({
               key: facet.value,
-              label: organizationKindLabel(facet.value, true),
+              label: facet.label,
               count: facet.count,
               href: browseHref({ type: facet.value }),
               active: activeType === facet.value
@@ -131,13 +133,14 @@ async function OrganizationsDirectoryData({ searchParams }: { searchParams: Orga
               active: activeRegion === region.slug
             }))}
           />
-        </div>
+        </aside>
 
+        <div className="atlas-directory-records">
         {hasFilters ? (
-          <div className="mt-5 flex flex-wrap items-center gap-2 rounded-xl border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] px-4 py-3">
+          <div className="mt-5 flex flex-wrap items-center gap-2 border-y border-[var(--atlas-border)] py-3">
             <span className="text-[11px] font-bold uppercase tracking-[0.1em] text-[var(--atlas-muted)]">Showing</span>
             {activeQuery ? <span className="text-sm font-semibold">Search: {activeQuery}</span> : null}
-            {activeType ? <FilterPill label={organizationKindLabel(activeType, true)} removeHref={browseHref({ type: undefined })} /> : null}
+            {activeType ? <FilterPill label={organizationTypeFilterLabel(activeType)} removeHref={browseHref({ type: undefined })} /> : null}
             {activeRegion ? <FilterPill label={activeRegionName ?? activeRegion} removeHref={browseHref({ region: undefined })} /> : null}
             <Link href="/organizations" className="ml-auto text-xs font-bold text-[var(--atlas-primary)] underline-offset-4 hover:underline">
               Clear all
@@ -145,15 +148,16 @@ async function OrganizationsDirectoryData({ searchParams }: { searchParams: Orga
           </div>
         ) : null}
 
-        <p className="mt-5 text-sm font-semibold" role="status">{directory.total.toLocaleString("en-CA")} {directory.total === 1 ? "organization" : "organizations"} found{hasFilters ? " with these filters" : " across Canada"}.</p>
+        <p className="text-sm font-semibold" role="status">{directory.total.toLocaleString("en-CA")} {directory.total === 1 ? "organization" : "organizations"} found{hasFilters ? " with these filters" : " across Canada"}.</p>
         {directory.items.length ? (
           <>
-            <div className="mt-6 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            <div className="atlas-directory-list mt-4">
               {directory.items.map((organization) => (
                 <OrganizationCard
                   key={organization.id}
                   organization={{ ...organization, logo: directoryLogos[organization.id] ?? null }}
                   showLogo
+                  layout="row"
                 />
               ))}
             </div>
@@ -190,9 +194,11 @@ async function OrganizationsDirectoryData({ searchParams }: { searchParams: Orga
             ) : null}
           </div>
         )}
+        </div>
+        </div>
       </section>
 
-      <section className="mt-14 rounded-[18px] bg-[var(--atlas-ink)] px-6 py-8 text-white sm:px-9 sm:py-10">
+      <section className="atlas-region-continuation mt-12 border-y border-[var(--atlas-border)] py-8">
         <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12">
           <div>
             <Compass className="size-6 text-[var(--atlas-signal)]" aria-hidden="true" />
@@ -212,10 +218,10 @@ async function OrganizationsDirectoryData({ searchParams }: { searchParams: Orga
               <li key={region.slug}>
                 <Link
                   href={`/regions/${region.slug}`}
-                  className="flex h-full items-center justify-between gap-3 rounded-md border border-white/15 bg-white/[0.06] px-4 py-3 no-underline transition-colors duration-150 hover:border-white/40 hover:bg-white/[0.1] hover:no-underline"
+                  className="flex h-full items-center justify-between gap-3 border-b border-[var(--atlas-border)] py-3 no-underline transition-colors duration-150 hover:border-white/40 hover:bg-white/[0.1] hover:no-underline"
                 >
-                  <span className="text-sm font-bold text-white/90">{region.name}</span>
-                  <span className="shrink-0 text-xs font-bold text-[var(--atlas-signal)]">{region.organizationCount}</span>
+                  <span className="text-sm font-bold text-[var(--atlas-ink)]">{region.name}</span>
+                  <span className="shrink-0 text-sm font-bold text-[var(--atlas-link)]">{region.organizationCount}</span>
                 </Link>
               </li>
             ))}
@@ -233,58 +239,8 @@ async function OrganizationsDirectoryData({ searchParams }: { searchParams: Orga
   );
 }
 
-const directoryStatTone = {
-  blue: "bg-[var(--atlas-blue-soft)]",
-  evidence: "bg-[var(--atlas-evidence-soft)]",
-  signal: "bg-[var(--atlas-signal-soft)]"
-} as const;
-
-const directoryStatIconTone = {
-  blue: "text-[var(--atlas-ink)]",
-  evidence: "text-[var(--atlas-evidence)]",
-  signal: "text-[var(--atlas-ink)]"
-} as const;
-
-function DirectoryStat({
-  icon: Icon,
-  label,
-  value,
-  href,
-  tone
-}: {
-  icon: LucideIcon;
-  label: string;
-  value: number;
-  href?: string;
-  tone: keyof typeof directoryStatTone;
-}) {
-  return (
-    <div className={`px-3 py-2.5 sm:px-4 ${directoryStatTone[tone]}`}>
-      <div className="flex items-center gap-2.5">
-        <Icon className={`size-4 shrink-0 ${directoryStatIconTone[tone]}`} aria-hidden="true" />
-        <div className="flex min-w-0 flex-col">
-          <dt className="order-2 mt-1.5 text-[10px] font-bold leading-4 text-[var(--atlas-muted)] sm:text-[11px]">{label}</dt>
-          <dd className="order-1 font-[family-name:var(--font-barlow)] text-xl font-extrabold leading-none tracking-[-0.04em] text-[var(--atlas-ink)] sm:text-2xl">
-            {href ? (
-              <Link href={href} className="underline-offset-4 hover:underline" aria-label={`${value} ${label.toLowerCase()}; browse regions`}>
-                {value}
-              </Link>
-            ) : value}
-          </dd>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function buildTypeFacets(organizations: AtlasOrganization[]) {
-  const counts = new Map<AtlasEntityKind, number>();
-  organizations.forEach((organization) => {
-    counts.set(organization.entityKind, (counts.get(organization.entityKind) ?? 0) + 1);
-  });
-  return Array.from(counts.entries())
-    .map(([value, count]) => ({ value, count }))
-    .sort((left, right) => right.count - left.count || left.value.localeCompare(right.value));
+function DirectoryStat({ label, value, href }: { icon: LucideIcon; label: string; value: number; href?: string; tone: "blue" | "evidence" | "signal" }) {
+  return <div className="atlas-directory-stat"><dd>{href ? <Link href={href} className="underline underline-offset-4" aria-label={`${value} ${label.toLowerCase()}; browse regions`}>{value}</Link> : value}</dd><dt>{label}</dt></div>;
 }
 
 function BrowseRow({

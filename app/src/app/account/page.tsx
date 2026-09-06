@@ -58,6 +58,7 @@ export default async function AccountPage({
 
   return (
     <PublicPageShell
+      variant="workspace"
       eyebrow="Private workspace"
       title="Your account"
       description="Manage your identity, Shortlists, connection requests, contributions, and private data."

@@ -1,7 +1,8 @@
+import { TopicIcon } from "@/components/atlas/topic-icon";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, FileText, ShieldAlert } from "lucide-react";
+import { ArrowRight, ShieldAlert } from "lucide-react";
 import { EvidenceList } from "@/components/atlas/evidence-list";
 import { ExploreNext } from "@/components/atlas/explore-next";
 import { ExternalSourceLink } from "@/components/atlas/internal-link";
@@ -62,7 +63,7 @@ function PublicNeedSource({ demand, treatment = false }: { demand: AtlasDemandRe
         <p className="mt-4 text-xs leading-5 text-[var(--atlas-muted)]">{demand.source.summary}</p>
         <div className={treatment
           ? "mt-4 rounded-[14px] bg-[var(--atlas-surface-muted)] p-4"
-          : "mt-4 rounded-2xl border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] p-4"}
+          : "mt-4 border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] p-4"}
         >
           <p className="text-[10px] font-bold uppercase tracking-[0.1em] text-[var(--atlas-muted)]">Relevant passage{demand.source.sourceLocator ? ` · ${demand.source.sourceLocator}` : ""}</p>
           <blockquote className="mt-2 text-xs leading-5 text-[var(--atlas-ink-soft)]">{demand.source.sourceExcerpt}</blockquote>
@@ -216,7 +217,7 @@ function TreatmentDemandContent({
         <aside className="space-y-5"><PublicNeedSource demand={demand} treatment /></aside>
       </div>
 
-      <section className="mt-7 rounded-[18px] bg-[var(--atlas-blue-soft)] px-5 py-6 sm:px-7" aria-labelledby="public-need-contribution-heading">
+      <section className="mt-7 border-y border-[var(--atlas-border)] bg-[var(--atlas-blue-soft)] px-5 py-6 sm:px-7" aria-labelledby="public-need-contribution-heading">
         <p className="atlas-eyebrow">{publicLanguage.assessment}</p>
         <h2 id="public-need-contribution-heading" className="mt-2 font-[family-name:var(--font-barlow)] text-2xl font-extrabold tracking-[-0.04em] text-[var(--atlas-ink)]">How Canadian capability may contribute</h2>
         <p className="mt-3 max-w-4xl text-sm leading-6 text-[var(--atlas-ink-soft)]">{treatment.contributionSummary}</p>
@@ -235,7 +236,7 @@ function TreatmentDemandContent({
           <p className="atlas-eyebrow">{remainingMatches.length} additional reviewed {remainingMatches.length === 1 ? "assessment" : "assessments"}</p>
           <h2 id="public-need-complete-heading" className="mt-2 text-2xl font-extrabold tracking-[-0.04em] text-[var(--atlas-ink)]">Remaining published connections</h2>
           <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)]">The rest of the published set remains available once, with supporting evidence collapsed until it is useful.</p>
-          <div className="mt-6 divide-y divide-[var(--atlas-border)] rounded-[18px] bg-white px-5 py-1 sm:px-7">{remainingMatches.map((entry) => <TreatmentResult key={entry.match.id} entry={entry} treatment={treatment} positionIndex={positionByMatchId.get(entry.match.id) ?? 0} placement="complete" />)}</div>
+          <div className="mt-6 divide-y divide-[var(--atlas-border)] bg-white px-5 py-1 sm:px-7">{remainingMatches.map((entry) => <TreatmentResult key={entry.match.id} entry={entry} treatment={treatment} positionIndex={positionByMatchId.get(entry.match.id) ?? 0} placement="complete" />)}</div>
         </section>
       ) : null}
 
@@ -247,7 +248,7 @@ function TreatmentDemandContent({
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             {presentedMissions.map(({ missionArea, capabilityCount, connectingCapabilities }) => (
               <PublicCard key={missionArea.id} className="flex h-full flex-col">
-                <span className="flex size-9 items-center justify-center rounded-lg bg-[var(--atlas-blue-soft)] text-[var(--atlas-ink)]"><FileText className="size-4" aria-hidden="true" /></span>
+                <TopicIcon title={missionArea.name} />
                 <h3 className="mt-4 text-base font-extrabold tracking-[-0.02em] text-[var(--atlas-ink)]">{missionArea.name}</h3>
                 <p className="mt-2 text-xs leading-5 text-[var(--atlas-muted)]">{capabilityCount} {capabilityCount === 1 ? "technology connects" : "technologies connect"} this lens to the released need through separate reviewed records.</p>
                 {connectingCapabilities.length ? (
@@ -368,7 +369,7 @@ export default async function DemandPage({ params }: { params: Promise<{ slug: s
   ];
 
   return (
-    <PublicPageShell
+    <PublicPageShell variant="dossier"
       eyebrow={`Public demand signal · ${demand.source.publisher}`}
       title={demand.title}
       description={demand.source.summary}
