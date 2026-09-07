@@ -1,10 +1,10 @@
 "use server";
 
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
-import { atlasOrganizationGlobalCacheTag } from "@/lib/atlas/cache-tags";
+import { revalidatePublishedAtlas } from "@/lib/atlas/public-cache-invalidation";
 import { createClient } from "@/lib/supabase/server";
 
 const demandRequirementEditSchema = z.object({
@@ -61,10 +61,11 @@ export async function upsertPublishedDemandSignal(formData: FormData) {
   });
   if (error || typeof demandSourceId !== "string") redirect("/admin/demand-signals?error=update-failed");
 
-  revalidateTag("atlas-public");
-  revalidateTag(atlasOrganizationGlobalCacheTag);
-  revalidatePath("/");
-  revalidatePath("/demand");
+  revalidatePublishedAtlas({
+    discoveryChanged: true,
+    demandChanged: true,
+    organizationDossiersChanged: true
+  });
   revalidatePath("/demand/[slug]", "page");
   revalidatePath("/capabilities/[slug]", "page");
   revalidatePath("/admin");

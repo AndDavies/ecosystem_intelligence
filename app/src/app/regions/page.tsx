@@ -12,9 +12,9 @@ import { absoluteUrl } from "@/lib/site";
 import type { AtlasRegion } from "@/types/atlas";
 import { socialMetadata } from "@/lib/seo/social";
 
-// Publication invalidates the shared atlas data cache, but this index must also
-// render per request so a previously generated route cannot hide new coverage.
-export const dynamic = "force-dynamic";
+// Published regional discovery is refreshed by the successful Publish action.
+// The daily expiry is only a recovery backstop for out-of-band data repairs.
+export const revalidate = 86400;
 
 const title = "Canadian Defence Ecosystem by Region";
 const description =

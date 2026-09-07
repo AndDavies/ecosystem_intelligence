@@ -7,7 +7,7 @@ const read = (file: string) => readFile(path.resolve(file), "utf8");
 describe("functional discovery collections", () => {
   it("uses outcome-led collection headings and scoped continuation paths", async () => {
     const [organizations, regions, missions, demand] = await Promise.all([
-      read("src/app/organizations/page.tsx"),
+      read("src/components/atlas/organizations-route.tsx"),
       read("src/app/regions/page.tsx"),
       read("src/app/missions/page.tsx"),
       read("src/app/demand/page.tsx")

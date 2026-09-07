@@ -1,10 +1,10 @@
 "use server";
 
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
-import { atlasDiscoveryCacheTag, atlasOrganizationCacheTag, atlasOrganizationGlobalCacheTag } from "@/lib/atlas/cache-tags";
+import { revalidatePublishedAtlas } from "@/lib/atlas/public-cache-invalidation";
 import { parseAtlasOrganizationCandidate, parseDemandMatchCandidate, parseDemandRefreshCandidate, parseDemandSignalCandidate, parseOrganizationBundleV2, parseOrganizationBundleV3, parseOrganizationCanonicalRepairCandidate, parseOrganizationRefreshCandidate, parseReviewableOrganizationCandidate, splitCandidateList } from "@/lib/atlas/candidate-schema";
 import { findMissingDemandIssuerDependencies } from "@/lib/atlas/demand-issuer-dependencies";
 import type { DemandRefreshBundleV1, DemandSignalBundleV1, OrganizationBundleV2, OrganizationBundleV3, OrganizationRefreshBundleV1, OrganizationRefreshBundleV2 } from "@/lib/research/pipeline-schema";
@@ -273,14 +273,14 @@ export async function publishDemandMatchCandidate(formData: FormData) {
   });
   if (error) redirect("/admin/review?error=demand-match-publication-failed");
 
-  revalidateTag("atlas-public");
-  revalidateTag(atlasOrganizationCacheTag(demandMatch.data.organizationSlug));
+  revalidatePublishedAtlas({
+    discoveryChanged: true,
+    demandChanged: true,
+    organizationSlugs: [demandMatch.data.organizationSlug],
+    capabilitySlugs: [demandMatch.data.capabilitySlug],
+    demandSlugs: [demandMatch.data.demandSlug]
+  });
   revalidateReviewPaths();
-  revalidatePath("/");
-  revalidatePath(`/organizations/${demandMatch.data.organizationSlug}`);
-  revalidatePath(`/capabilities/${demandMatch.data.capabilitySlug}`);
-  revalidatePath("/demand");
-  revalidatePath(`/demand/${demandMatch.data.demandSlug}`);
   revalidatePath("/admin/demand-matches");
   redirect("/admin/review?success=demand-match-published");
 }
@@ -821,15 +821,14 @@ export async function publishApprovedCandidates(formData: FormData) {
     console.error("Research publication transaction failed", { code: error.code, message: error.message });
     redirect(researchPublicationErrorRedirect(error, uniqueCandidateIds.length === 1 ? uniqueCandidateIds[0] : null));
   }
-  revalidateTag("atlas-public");
-  if (invalidatesOrganizationDossiers) revalidateTag(atlasOrganizationGlobalCacheTag);
-  organizationSlugs.forEach((slug) => revalidateTag(atlasOrganizationCacheTag(slug)));
+  revalidatePublishedAtlas({
+    discoveryChanged: organizationSlugs.length > 0 || demandSlugs.length > 0,
+    demandChanged: demandSlugs.length > 0,
+    organizationDossiersChanged: invalidatesOrganizationDossiers,
+    organizationSlugs,
+    demandSlugs
+  });
   revalidateReviewPaths();
-  revalidatePath("/");
-  organizationSlugs.forEach((slug) => revalidatePath(`/organizations/${slug}`));
-  revalidatePath("/demand");
-  demandSlugs.forEach((slug) => revalidatePath(`/demand/${slug}`));
-  revalidatePath("/sitemap.xml");
   redirect(`/admin/publish?success=${uniqueCandidateIds.length}`);
 }
 
@@ -884,18 +883,12 @@ export async function publishApprovedCanonicalRepair(formData: FormData) {
     redirect(`/admin/publish?error=${errorCode}&candidate=${encodeURIComponent(parsed.data.candidateId)}`);
   }
 
-  revalidateTag("atlas-public");
-  revalidateTag(atlasDiscoveryCacheTag);
-  revalidateTag(atlasOrganizationGlobalCacheTag);
-  revalidateTag(atlasOrganizationCacheTag(repair.data.targetMatch.slug));
-  if (successorSlug) revalidateTag(atlasOrganizationCacheTag(successorSlug));
+  revalidatePublishedAtlas({
+    discoveryChanged: true,
+    organizationDossiersChanged: true,
+    organizationSlugs: [repair.data.targetMatch.slug, ...(successorSlug ? [successorSlug] : [])],
+    capabilitySlugs: affectedCapabilitySlugs
+  });
   revalidateReviewPaths();
-  revalidatePath("/");
-  revalidatePath("/map");
-  revalidatePath("/organizations");
-  revalidatePath(`/organizations/${repair.data.targetMatch.slug}`);
-  if (successorSlug) revalidatePath(`/organizations/${successorSlug}`);
-  affectedCapabilitySlugs.forEach((slug) => revalidatePath(`/capabilities/${slug}`));
-  revalidatePath("/sitemap.xml");
   redirect(`/admin/publish?success=1&canonicalRepair=${encodeURIComponent(parsed.data.candidateId)}`);
 }

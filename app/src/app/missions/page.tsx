@@ -8,7 +8,9 @@ import { getAtlasMissionIndex } from "@/lib/atlas/repository";
 import { socialMetadata } from "@/lib/seo/social";
 import { absoluteUrl } from "@/lib/site";
 
-export const dynamic = "force-dynamic";
+// Published mission discovery is refreshed by the successful Publish action.
+// The daily expiry is only a recovery backstop for out-of-band data repairs.
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: "Mission areas and Use Cases",

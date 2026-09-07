@@ -42,7 +42,7 @@ import type {
 } from "@/types/atlas";
 import { ATLAS_EXPLORER_MAX_PAGE_SIZE, mergeExplorerLogoUrls, projectAtlasExplorerResult } from "@/lib/atlas/explorer-projection";
 import { createPublicReadFallback, withPublicReadRetry } from "@/lib/supabase/public-read";
-import { atlasDiscoveryCacheTag, atlasOrganizationCacheTag, atlasOrganizationGlobalCacheTag } from "@/lib/atlas/cache-tags";
+import { atlasCapabilityCacheTag, atlasDiscoveryCacheTag, atlasOrganizationCacheTag, atlasOrganizationGlobalCacheTag } from "@/lib/atlas/cache-tags";
 
 const regionDefinitions: Array<Omit<AtlasRegion, "organizationCount" | "capabilityCount" | "clusterCount">> = [
   {
@@ -147,11 +147,12 @@ function buildRegions(snapshot: Pick<AtlasQueryableSnapshot, "organizations" | "
   });
 }
 
-// Record caches are invalidated by their exact slug after reviewed edits.
-// National discovery pages retain a stable five-minute snapshot so a batch
-// publication cannot trigger a full-corpus rewarm and overload public reads.
-const publicRecordCacheSeconds = 5 * 60;
-const publicDiscoveryCacheSeconds = 5 * 60;
+// Successful Publish and reviewed public edits invalidate these caches by tag.
+// The daily expiry is a recovery backstop if an out-of-band repair ever misses
+// that application-owned invalidation event; it is not the freshness contract.
+const publicContentFallbackSeconds = 24 * 60 * 60;
+const publicRecordCacheSeconds = publicContentFallbackSeconds;
+const publicDiscoveryCacheSeconds = publicContentFallbackSeconds;
 
 const getCachedAtlasDiscoveryTablePage = unstable_cache(
   (table: Parameters<typeof loadAtlasDiscoveryTablePageFromSupabase>[0], from: number, to: number) =>
@@ -205,11 +206,13 @@ const getCachedPublishedOrganizationLogos = unstable_cache(
   { revalidate: publicDiscoveryCacheSeconds, tags: ["atlas-public"] }
 );
 
-const getCachedAtlasCapabilityBySlug = unstable_cache(
-  (slug: string) => withPublicReadRetry(() => loadAtlasCapabilityBySlugFromSupabase(slug)),
-  ["ecosystem-intelligence-capability-detail-v1"],
-  { revalidate: publicRecordCacheSeconds, tags: ["atlas-public"] }
-);
+function getCachedAtlasCapabilityBySlug(slug: string) {
+  return unstable_cache(
+    () => withPublicReadRetry(() => loadAtlasCapabilityBySlugFromSupabase(slug)),
+    ["ecosystem-intelligence-capability-detail-v2", slug],
+    { revalidate: publicRecordCacheSeconds, tags: [atlasCapabilityCacheTag(slug), "atlas-public"] }
+  )();
+}
 
 const getCachedAtlasDemandBySlug = unstable_cache(
   (slug: string) => withPublicReadRetry(() => loadAtlasDemandBySlugFromSupabase(slug)),

@@ -1,12 +1,12 @@
 "use server";
 
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidatePath } from "next/cache";
 import { createHash } from "node:crypto";
 import { redirect } from "next/navigation";
 import sharp from "sharp";
 import { z } from "zod";
 import { requireAtlasStaff } from "@/lib/atlas/auth";
-import { atlasOrganizationCacheTag } from "@/lib/atlas/cache-tags";
+import { revalidatePublishedAtlas } from "@/lib/atlas/public-cache-invalidation";
 import { splitCandidateList } from "@/lib/atlas/candidate-schema";
 import { organizationLogoBucket } from "@/lib/atlas/organization-logos";
 import { createClient } from "@/lib/supabase/server";
@@ -141,18 +141,12 @@ function logoReturnPath(organizationId: string) {
 }
 
 async function revalidateOrganizationLogoPaths(organizationId: string, organizationSlug: string) {
-  revalidateTag("atlas-public");
-  revalidateTag(atlasOrganizationCacheTag(organizationSlug));
-  revalidatePath("/");
-  revalidatePath(`/organizations/${organizationSlug}`);
+  revalidatePublishedAtlas({ discoveryChanged: true, organizationSlugs: [organizationSlug] });
   revalidatePath(`/admin/organizations/${organizationId}/edit`);
 }
 
 async function revalidateOrganizationDossierPaths(organizationId: string, organizationSlug: string) {
-  revalidateTag("atlas-public");
-  revalidateTag(atlasOrganizationCacheTag(organizationSlug));
-  revalidatePath("/");
-  revalidatePath(`/organizations/${organizationSlug}`);
+  revalidatePublishedAtlas({ discoveryChanged: true, organizationSlugs: [organizationSlug] });
   revalidatePath("/admin");
   revalidatePath("/admin/organizations");
   revalidatePath("/admin/coverage");
@@ -283,10 +277,7 @@ export async function editPublishedOrganizationContact(formData: FormData) {
   });
   if (error || typeof organizationSlug !== "string") redirect(`${returnPath}?error=contact-update-failed`);
 
-  revalidateTag("atlas-public");
-  revalidateTag(atlasOrganizationCacheTag(organizationSlug));
-  revalidatePath("/");
-  revalidatePath(`/organizations/${organizationSlug}`);
+  revalidatePublishedAtlas({ discoveryChanged: true, organizationSlugs: [organizationSlug] });
   revalidatePath(returnPath);
   redirect(`${returnPath}?success=contact-updated`);
 }
@@ -543,10 +534,7 @@ export async function editPublishedOrganization(formData: FormData) {
   });
   if (error || typeof organizationSlug !== "string") redirect(`${returnPath}?error=update-failed`);
 
-  revalidateTag("atlas-public");
-  revalidateTag(atlasOrganizationCacheTag(organizationSlug));
-  revalidatePath("/");
-  revalidatePath(`/organizations/${organizationSlug}`);
+  revalidatePublishedAtlas({ discoveryChanged: true, organizationSlugs: [organizationSlug] });
   revalidatePath("/admin");
   revalidatePath("/admin/organizations");
   revalidatePath(returnPath);

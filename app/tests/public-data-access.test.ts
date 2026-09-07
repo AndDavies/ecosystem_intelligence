@@ -84,7 +84,7 @@ describe("public data access", () => {
     const profile = await source("src/components/atlas/executive-organization-dossier.tsx");
     const capabilityProfile = await source("src/app/capabilities/[slug]/page.tsx");
     const directory = await source("src/components/atlas/organization-card.tsx");
-    const directoryPage = await source("src/app/organizations/page.tsx");
+    const directoryPage = await source("src/components/atlas/organizations-route.tsx");
     const pdf = await source("src/lib/export/atlas-pdf.tsx");
 
     expect(profile).toContain("organization.logo?.publicUrl");
@@ -111,7 +111,7 @@ describe("public data access", () => {
     expect(editPage).toContain("replacePublishedOrganizationLogo");
     expect(editPage).toContain("removePublishedOrganizationLogo");
     expect(actions).toContain('requireAtlasStaff("editor")');
-    expect(actions).toContain('revalidatePath(`/organizations/${organizationSlug}`)');
+    expect(actions).toContain("revalidatePublishedAtlas({ discoveryChanged: true, organizationSlugs: [organizationSlug] })");
     expect(actions).toContain("replace_published_organization_logo");
     expect(actions).toContain("remove_published_organization_logo");
   });
@@ -144,7 +144,8 @@ describe("public data access", () => {
       source("src/app/organizations/[slug]/page.tsx"),
       source("src/app/capabilities/[slug]/page.tsx"),
       source("src/app/map/page.tsx"),
-      source("src/app/demand/page.tsx")
+      source("src/app/demand/page.tsx"),
+      source("src/app/organizations/filter/page.tsx")
     ]);
 
     stablePages.forEach((page) => expect(page).toContain("export const revalidate = 300"));
@@ -152,9 +153,18 @@ describe("public data access", () => {
     expect(stablePages[2]).toContain("generateStaticParams");
     expect(stablePages[2]).toContain("return []");
     liveRoutes.forEach((page) => expect(page).toContain('export const dynamic = "force-dynamic"'));
-    const organizations = await source("src/app/organizations/page.tsx");
-    expect(organizations).toContain("export const revalidate = 60");
+    const [organizations, missions, regions] = await Promise.all([
+      source("src/app/organizations/page.tsx"),
+      source("src/app/missions/page.tsx"),
+      source("src/app/regions/page.tsx")
+    ]);
+    expect(organizations).toContain("export const revalidate = 86400");
     expect(organizations).not.toContain('export const dynamic = "force-dynamic"');
+    expect(organizations).not.toContain("function OrganizationsPage({ searchParams }");
+    [missions, regions].forEach((page) => {
+      expect(page).toContain("export const revalidate = 86400");
+      expect(page).not.toContain('export const dynamic = "force-dynamic"');
+    });
     const landing = await source("src/app/page.tsx");
     expect(landing).toContain("export const revalidate = 300");
     expect(landing).not.toContain('export const dynamic = "force-dynamic"');
@@ -204,16 +214,17 @@ describe("public data access", () => {
     expect(computedSurfaces[3]).toContain("<InternalLink");
   });
 
-  it("reserves full discovery and dossier cache purges for explicit administrator maintenance", async () => {
+  it("uses successful public writes and explicit maintenance to invalidate published caches", async () => {
     const manualFlush = await source("src/app/api/admin/revalidate-atlas/route.ts");
     const demandMaintenance = await source("src/lib/actions/atlas-demand-signals.ts");
     const organizationMaintenance = await source("src/lib/actions/atlas-organizations.ts");
+    const invalidation = await source("src/lib/atlas/public-cache-invalidation.ts");
 
-    expect(manualFlush).toContain("revalidateTag(atlasDiscoveryCacheTag)");
-    expect(manualFlush).toContain("revalidateTag(atlasOrganizationGlobalCacheTag)");
-    expect(demandMaintenance).toContain("revalidateTag(atlasOrganizationGlobalCacheTag)");
-    expect(organizationMaintenance).not.toContain('revalidatePath("/organizations")');
-    expect(organizationMaintenance).toContain("revalidateTag(atlasOrganizationCacheTag(organizationSlug))");
+    expect(manualFlush).toContain("revalidatePublishedAtlas({");
+    expect(demandMaintenance).toContain("organizationDossiersChanged: true");
+    expect(organizationMaintenance).toContain("discoveryChanged: true");
+    expect(invalidation).toContain("tags.add(atlasDiscoveryCacheTag)");
+    expect(invalidation).toContain('"/organizations", "/missions", "/regions", "/sitemap.xml"');
   });
 
   it("resolves brief and Working List links without the national snapshot", async () => {

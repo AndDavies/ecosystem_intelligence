@@ -152,7 +152,8 @@ describe("phase 2 launch hardening", () => {
   });
 
   it("streams collection-page shells while loading only their compact public projections", async () => {
-    const [organizations, missions, regions, regionDetail, demand, repository, supabaseRepository] = await Promise.all([
+    const [organizations, organizationsPage, missions, regions, regionDetail, demand, repository, supabaseRepository] = await Promise.all([
+      readFile(path.resolve("src/components/atlas/organizations-route.tsx"), "utf8"),
       readFile(path.resolve("src/app/organizations/page.tsx"), "utf8"),
       readFile(path.resolve("src/app/missions/page.tsx"), "utf8"),
       readFile(path.resolve("src/app/regions/page.tsx"), "utf8"),
@@ -164,7 +165,7 @@ describe("phase 2 launch hardening", () => {
 
     expect(organizations).toContain("getAtlasDiscoverySnapshot()");
     expect(organizations).not.toContain("getAtlasCoverageSummary()");
-    expect(organizations).toContain("export const revalidate = 60");
+    expect(organizationsPage).toContain("export const revalidate = 86400");
     expect(organizations).toContain("<Suspense fallback={<OrganizationDirectoryLoading />}");
     expect(organizations).not.toContain("getAtlasSnapshot");
 

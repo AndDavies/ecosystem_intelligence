@@ -29,6 +29,21 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(destination, 308);
   }
 
+  if (pathname === "/organizations" && ["page", "type", "region", "q"].some((key) => request.nextUrl.searchParams.has(key))) {
+    const destination = request.nextUrl.clone();
+    const requestHeaders = new Headers(request.headers);
+    destination.pathname = "/organizations/filter";
+    requestHeaders.set("x-tnm-directory-filter", "1");
+    return NextResponse.rewrite(destination, { request: { headers: requestHeaders } });
+  }
+
+  if (pathname === "/organizations/filter" && request.headers.get("x-tnm-directory-filter") !== "1") {
+    const destination = request.nextUrl.clone();
+    destination.pathname = "/organizations";
+    destination.search = "";
+    return NextResponse.redirect(destination, 308);
+  }
+
   const isProtectedRoute = protectedRoutes.some((route) => pathname.startsWith(route));
 
   if (!isProtectedRoute) {
@@ -46,5 +61,5 @@ export const config = {
   // Middleware executes before cache. Keep the compatibility redirect at the
   // service entrance and session refresh only on private workflows so public
   // catalogue and record requests can be served directly from the CDN.
-  matcher: ["/", "/:indexnowKey.txt", "/account/:path*", "/admin/:path*", "/collections/:path*", "/connect/:path*", "/submit/:path*"]
+  matcher: ["/", "/:indexnowKey.txt", "/organizations", "/organizations/filter", "/account/:path*", "/admin/:path*", "/collections/:path*", "/connect/:path*", "/submit/:path*"]
 };

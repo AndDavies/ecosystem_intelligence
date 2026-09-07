@@ -2,9 +2,13 @@
 
 Status: production and review-first data operation
 Owner: Andrew Davies
-Last reviewed: 2026-09-06
+Last reviewed: 2026-09-07
 Canonical production: Supabase project `facoactpdckkhciamflk`
 Public brand: [True North Map](https://truenorthmap.ca)
+
+## September 7 authorized public-cache release
+
+The owner-authorized release makes successful Publish the freshness event for public atlas content. The canonical `/organizations`, `/missions` and `/regions` pages are prerendered and invalidated after relevant publication; a one-day expiry is only a recovery backstop. Organization-directory query URLs keep their public URL and existing interface through an isolated dynamic renderer. Published discovery and dossier data use tag invalidation instead of five-minute polling. `/map`, organization dossiers and capability dossiers remain dynamically rendered because they still carry request-specific interaction, return-path or release-probe state. No firewall, crawler-access, database or canonical publication change is included. Andrew authorized commit and production push after verification; exact deployment readiness and bounded post-push checks establish live release state.
 
 ## September 6 dossier layout guidance
 

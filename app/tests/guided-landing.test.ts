@@ -23,7 +23,7 @@ describe("discovery entry and shared map state", () => {
     expect(atlasQueryToSearchParams({ ...state, bounds: undefined }).get("q")).toBe("sonar");
   });
   it("keeps direct lookup and the guided example independent of AI", async () => {
-    const [lookup, directory, guide, map, focus] = await Promise.all([read("src/components/atlas/public-record-search.tsx"), read("src/app/organizations/page.tsx"), read("src/app/how-it-works/page.tsx"), read("src/app/map/page.tsx"), read("src/components/atlas/guided-search-focus.tsx")]);
+    const [lookup, directory, guide, map, focus] = await Promise.all([read("src/components/atlas/public-record-search.tsx"), read("src/components/atlas/organizations-route.tsx"), read("src/app/how-it-works/page.tsx"), read("src/app/map/page.tsx"), read("src/components/atlas/guided-search-focus.tsx")]);
     expect(directory).toContain("matchingAtlasOrganizations");
     expect(directory).toContain("<PublicRecordSearch");
     expect(lookup).not.toContain("/api/discover");
