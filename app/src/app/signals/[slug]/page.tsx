@@ -1,3 +1,4 @@
+import { signalPlainText } from "@/lib/signals/formatting";
 import type { Metadata } from "next";
 import { SignalVisual } from "@/components/atlas/signal-visual";
 import { signalLeadVisual, signalSocialImage, signalStoryVisual, type SignalVisual as SignalVisualData } from "@/lib/signals/visuals";
@@ -129,7 +130,7 @@ export default async function SignalEditionPage({ params }: { params: Promise<{ 
         author: { "@type": "Organization", name: edition.authorName, url: absoluteUrl("/about") },
         publisher: { "@type": "Organization", name: siteName, url: absoluteUrl("/") },
         citation: edition.items.flatMap((item) => item.sources.map((source) => source.url)),
-        hasPart: edition.items.map((item) => ({ "@type": "WebPageElement", name: item.title, description: item.bottomLine, url: `${absoluteUrl(url)}#${item.slug}` }))
+        hasPart: edition.items.map((item) => ({ "@type": "WebPageElement", name: item.title, description: signalPlainText(item.bottomLine), url: `${absoluteUrl(url)}#${item.slug}` }))
       },
       {
         "@context": "https://schema.org",
@@ -182,7 +183,7 @@ export default async function SignalEditionPage({ params }: { params: Promise<{ 
               <span className="font-heading text-xs font-extrabold uppercase tracking-[0.14em] text-[var(--atlas-primary)]">{signalLaneLabels[item.lane]}</span>
             </div>
             <div className="atlas-signal-story-heading"><h2 id={`${item.slug}-heading`} className="mt-4 font-heading text-3xl font-bold leading-tight tracking-[-0.035em]">{item.title}</h2>{storyVisuals[index] ? <SignalVisual visual={storyVisuals[index]} compact /> : null}</div>
-            <p className="mt-5 text-lg font-semibold leading-8 text-[var(--atlas-ink-soft)]">{item.bottomLine}</p>
+            <SignalNarrative text={item.bottomLine} className="mt-5 text-lg font-semibold leading-8 text-[var(--atlas-ink-soft)]" />
             <SignalNarrative text={item.executiveSummary} className="mt-5 text-lg leading-8 text-[var(--atlas-ink-soft)]" />
 
             {edition.packetSchemaVersion === "daily_signals_packet_v3" ? <SignalEditorialDetails item={item} /> : <div className="mt-8 grid gap-3 md:grid-cols-2">
@@ -235,7 +236,7 @@ export default async function SignalEditionPage({ params }: { params: Promise<{ 
 
     <aside aria-labelledby="editorial-note-heading" className="atlas-tonal-surface atlas-tonal-muted mx-auto mt-10 w-full p-5 text-xs leading-6 text-[var(--atlas-muted)] sm:p-6">
       <h2 id="editorial-note-heading" className="font-heading text-xs font-extrabold uppercase tracking-[0.14em] text-[var(--atlas-ink)]">Editorial note</h2>
-      {boundary ? <p className="mt-3">{boundary}</p> : null}
+      {boundary ? <SignalNarrative text={boundary} className="mt-3" /> : null}
       <p className="mt-3">{edition.disclosure}{edition.packetSchemaVersion !== "daily_signals_packet_v3" ? " Signals keep source-backed facts separate from True North Map assessments, identify uncertainty, and link to the public record. They are not procurement recommendations, eligibility findings, endorsements, or substitutes for due diligence." : null}</p>
       <p className="mt-3">Read the <Link href="/methodology" className="atlas-prose-link font-semibold">True North Map methodology</Link> or <Link href="/contact" className="atlas-prose-link font-semibold">contact True North Map with a correction</Link>.</p>
     </aside>
@@ -252,7 +253,7 @@ function SignalBlock({ title, text, icon: Icon, tone }: { title: string; text: s
   return <div className={`min-w-0 border-t border-[var(--atlas-border)] py-5 ${tones[tone]}`}>
     <Icon className="size-5" aria-hidden="true" />
     <h3 className={`mt-4 font-heading text-sm font-extrabold uppercase tracking-[0.1em] ${tone === "next" ? "text-white" : "text-[var(--atlas-ink)]"}`}>{title}</h3>
-    <p className={`mt-3 text-[15px] leading-7 ${tone === "next" ? "text-white/78" : "text-[var(--atlas-ink-soft)]"}`}>{text}</p>
+    <SignalNarrative text={text} className={`mt-3 text-[15px] leading-7 ${tone === "next" ? "text-white/78" : "text-[var(--atlas-ink-soft)]"}`} />
   </div>;
 }
 
@@ -264,7 +265,7 @@ function EditionLink({ edition, label }: { edition: SignalEdition; label: string
 }
 
 function metadataDescription(text: string) {
-  const normalized = text.replace(/\s+/g, " ").trim();
+  const normalized = signalPlainText(text).replace(/\s+/g, " ").trim();
   if (normalized.length <= 158) return normalized;
   const clipped = normalized.slice(0, 155);
   return `${clipped.slice(0, Math.max(clipped.lastIndexOf(" "), 120)).trim()}…`;

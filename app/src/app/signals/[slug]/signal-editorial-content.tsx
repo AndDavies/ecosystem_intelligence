@@ -1,9 +1,9 @@
 import React from "react";
 import type { SignalItem } from "@/lib/atlas/signals";
-import { signalSummaryParagraphs } from "@/lib/signals/presentation";
+import { SignalFormattedText } from "@/components/atlas/signal-formatted-text";
 
 export function SignalNarrative({ text, className }: { text: string; className: string }) {
-  return <div className={`${className} space-y-4`}>{signalSummaryParagraphs(text).map((paragraph, index) => <p key={index}>{paragraph}</p>)}</div>;
+  return <SignalFormattedText text={text} className={className} />;
 }
 
 export function SignalEditorialDetails({ item }: { item: SignalItem }) {

@@ -1,4 +1,5 @@
 "use client";
+import { signalPlainText } from "@/lib/signals/formatting";
 
 import Link from "next/link";
 import { ArrowRight, ChevronLeft, ChevronRight, Search, X } from "lucide-react";
@@ -54,7 +55,7 @@ export function SignalArchiveBrowser({ editions, featuredId }: { editions: Signa
         <div className="atlas-signal-teaser-copy">
           <time dateTime={edition.editionDate} className="text-xs font-bold text-white/70">{dateFormatter.format(new Date(`${edition.editionDate}T12:00:00Z`))}</time>
           <h3 className="mt-3 text-2xl font-extrabold leading-tight tracking-[-0.035em]"><Link href={`/signals/${edition.slug}`} className="text-white no-underline hover:underline">{edition.title}</Link></h3>
-          <p className="mt-3 line-clamp-2 text-sm leading-6 text-white/75">{edition.summarySections ? signalEditionExcerpt(edition) : edition.items[0]?.bottomLine || edition.executiveSummary}</p>
+          <p className="mt-3 line-clamp-2 text-sm leading-6 text-white/75">{edition.summarySections ? signalEditionExcerpt(edition) : signalPlainText(edition.items[0]?.bottomLine || edition.executiveSummary)}</p>
           <div className="mt-auto flex flex-wrap items-end justify-between gap-4 pt-6">
             <div className="flex min-w-0 flex-wrap gap-x-3 gap-y-1">{tags.map((tag) => <span key={tag} className="atlas-archive-tag">{getSignalTagLabel(tag)}</span>)}</div>
             <Link href={`/signals/${edition.slug}`} data-internal-link-role="contextual" data-internal-link-module="signals_archive" className="atlas-signal-button min-h-11 shrink-0 gap-2 px-4 py-2 text-sm font-extrabold no-underline hover:no-underline">Read the signal <ArrowRight className="size-4" /></Link>

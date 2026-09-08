@@ -4,6 +4,13 @@ Status: chronological implementation record
 Owner: Andrew Davies
 Last reviewed: 2026-09-05
 
+## 2026-09-08 — Signals text formatting and editorial links
+
+Added a compact formatting toolbar and unsaved preview to Signals narrative fields in the existing admin editor. Shared safe rendering supports bold, italic, links, lists and paragraph/line breaks in current and historical public narratives. Inline links use the existing Signals prose-link class; original-source evidence and publication controls remain unchanged. Excerpts strip formatting syntax for feeds and metadata. No dependency, database migration, live content edit or provider configuration change.
+
+Validation: local editor fixture verified selected-text link insertion, matching preview styling and submitted FormData, plus no overflow at 390/768/1024/1440px. The temporary fixture was removed. Focused rendering tests cover formatting, unsafe URLs, escaped HTML and clean excerpts. Existing unrelated governance edits and research artifacts were preserved. Andrew authorized commit and production push. The Node 24 release gate passed with 851 tests, lint, typecheck, dependency audit, scale validation and production build after removing a stale temporary-fixture type artifact and correcting two lint findings. Exact deployment and bounded live verification establish release closure. No live editorial save or database migration is part of this release.
+
+
 ## 2026-09-06 — Authorized Signals reading release
 
 Andrew authorized commit and deployment of the Signals reading fixes. Node 24 release validation passed, including 843 tests, lint, typecheck, dependency audit, scale gate and production build. Reused the unchanged local responsive and keyboard checks. The push also includes the previously committed reported-TRL research contract; ignored private skills remain local. Separate research run tnm-manual-20260906201714 artifacts are preserved outside this release commit.

@@ -1,3 +1,4 @@
+import { signalPlainText } from "./formatting";
 import type { SignalEdition } from "@/lib/atlas/signals";
 
 export const signalSupportLabels = {
@@ -31,5 +32,5 @@ export function signalEditionPresentation(edition: Pick<SignalEdition, "executiv
 }
 
 export function signalEditionExcerpt(edition: Pick<SignalEdition, "executiveSummary" | "summarySections">) {
-  return edition.summarySections?.takeaway ?? edition.executiveSummary;
+  return signalPlainText(edition.summarySections?.takeaway ?? edition.executiveSummary);
 }
