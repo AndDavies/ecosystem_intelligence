@@ -4,6 +4,12 @@ Status: chronological implementation record
 Owner: Andrew Davies
 Last reviewed: 2026-09-05
 
+## 2026-09-08 — Signals link tab choice
+
+Signals link insertion now offers New tab (default) and Same tab, persisted in existing narrative text and honoured by the shared preview/public renderer. New-tab links use noopener noreferrer; existing links retain same-tab navigation. Excerpts omit the target marker. No schema, live editorial record, evidence or publication-boundary changes.
+
+Validation: Node 24 release validation passed (852 tests, lint, typecheck, audit, scale and build). Local editor fixture checked both target choices, form data, keyboard access and no overflow at 390/768/1024/1440px, then was removed. Andrew authorized commit and production push; exact deployment and bounded launch verification establish release closure.
+
 ## 2026-09-08 — Signals text formatting and editorial links
 
 Added a compact formatting toolbar and unsaved preview to Signals narrative fields in the existing admin editor. Shared safe rendering supports bold, italic, links, lists and paragraph/line breaks in current and historical public narratives. Inline links use the existing Signals prose-link class; original-source evidence and publication controls remain unchanged. Excerpts strip formatting syntax for feeds and metadata. No dependency, database migration, live content edit or provider configuration change.

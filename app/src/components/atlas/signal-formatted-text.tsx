@@ -3,7 +3,7 @@ import { signalInlineTokens } from "@/lib/signals/formatting";
 
 function Inline({ text }: { text: string }) {
   return signalInlineTokens(text).map((token, index) => token.kind === "link"
-    ? <a key={index} href={token.href} className="atlas-prose-link [overflow-wrap:anywhere]">{token.text}</a>
+    ? <a key={index} href={token.href} target={token.newTab ? "_blank" : undefined} rel={token.newTab ? "noopener noreferrer" : undefined} className="atlas-prose-link [overflow-wrap:anywhere]">{token.text}</a>
     : token.kind === "bold" ? <strong key={index}>{token.text}</strong>
     : token.kind === "italic" ? <em key={index}>{token.text}</em>
     : <Fragment key={index}>{token.text}</Fragment>);

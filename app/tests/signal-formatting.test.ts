@@ -20,6 +20,14 @@ describe("Signals editorial formatting", () => {
     expect(html).toContain('href="/missions"');
     expect(html).toContain('Bad');
   });
+  it("preserves per-link tab choices and strips target markers from excerpts", () => {
+    const text = '[External](https://example.com){target=_blank} [Internal](/missions)';
+    const html = renderToStaticMarkup(React.createElement(SignalFormattedText, { text }));
+    expect(html).toContain('target="_blank" rel="noopener noreferrer"');
+    expect(html.match(/target=/g)).toHaveLength(1);
+    expect(html).not.toContain('{target=');
+    expect(signalPlainText(text)).toBe('External Internal');
+  });
   it("keeps snippets readable without markup or destination URLs", () => {
     expect(signalPlainText('**Ready** [report](https://example.com)\n- Item')).toBe('Ready report\nItem');
   });

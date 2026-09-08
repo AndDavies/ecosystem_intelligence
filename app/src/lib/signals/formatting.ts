@@ -9,13 +9,13 @@ export function signalLinkHref(value: string): string | null {
 
 // Deliberately small editorial vocabulary: links, bold and italic; no raw HTML.
 export function signalInlineTokens(text: string) {
-  const pattern = /\[([^\]\n]+)\]\(((?:[^\s()]|\([^\s()]*\))+)\)|\*\*([^*\n]+)\*\*|\*([^*\n]+)\*/g;
-  const tokens: { text: string; kind: "text" | "link" | "bold" | "italic"; href?: string }[] = [];
+  const pattern = /\[([^\]\n]+)\]\(((?:[^\s()]|\([^\s()]*\))+)\)(\{target=_blank\})?|\*\*([^*\n]+)\*\*|\*([^*\n]+)\*/g;
+  const tokens: { text: string; kind: "text" | "link" | "bold" | "italic"; href?: string; newTab?: boolean }[] = [];
   let end = 0;
   for (const match of text.matchAll(pattern)) {
     if (match.index > end) tokens.push({ kind: "text", text: text.slice(end, match.index) });
     const href = match[2] ? signalLinkHref(match[2]) : null;
-    tokens.push(match[1] ? { kind: href ? "link" : "text", text: match[1], ...(href ? { href } : {}) } : { kind: match[3] ? "bold" : "italic", text: match[3] ?? match[4] });
+    tokens.push(match[1] ? { kind: href ? "link" : "text", text: match[1], ...(href ? { href, newTab: Boolean(match[3]) } : {}) } : { kind: match[4] ? "bold" : "italic", text: match[4] ?? match[5] });
     end = match.index + match[0].length;
   }
   if (end < text.length) tokens.push({ kind: "text", text: text.slice(end) });
