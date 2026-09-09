@@ -3,7 +3,8 @@
 import "maplibre-gl/dist/maplibre-gl.css";
 import "leaflet/dist/leaflet.css";
 
-import maplibregl, { type GeoJSONSource, type Map as MapLibreMap } from "maplibre-gl";
+import * as maplibregl from "maplibre-gl";
+import { type GeoJSONSource, type Map as MapLibreMap } from "maplibre-gl";
 import { useEffect, useRef, useState } from "react";
 import { groupProjectedPointsByGrid } from "@/lib/atlas/map-clustering";
 import {
@@ -13,6 +14,9 @@ import {
 } from "@/lib/atlas/map-provider";
 import { isUsableAtlasBounds, organizationIdsInBounds } from "@/lib/atlas/viewport";
 import type { AtlasBounds, AtlasMapOrganization } from "@/types/atlas";
+
+// Bundle the module worker with the application instead of resolving it from the page URL.
+maplibregl.setWorkerUrl(new URL("maplibre-gl/dist/maplibre-gl-worker.mjs", import.meta.url).toString());
 
 const sourceId = "published-organizations";
 const mapColors = {

@@ -1,4 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
+import React from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+import { SignalFormattedText } from "../src/components/atlas/signal-formatted-text";
 
 const state = vi.hoisted(() => ({
   version: "daily_signals_packet_v3" as string | null,
@@ -54,6 +57,25 @@ beforeEach(() => {
 });
 
 describe("versioned Signals admin actions", () => {
+  it("preserves link choices through edition and item saves into the public renderer", async () => {
+    const text = '[Default](https://example.com/default) [New](https://example.com/new){target=_blank} [Same](https://example.com/same){target=_self}';
+    const edition = editionForm();
+    edition.set("opening", text);
+    await expect(updateSignalEdition(edition)).rejects.toThrow("success=edition-saved");
+    const summary = state.writes.find(write => write.table === "signal_editions")!.values.summary_sections as { opening: string };
+    expect(summary.opening).toBe(text);
+    const item = itemForm();
+    item.set("executiveSummary", text);
+    await expect(updateSignalItem(item)).rejects.toThrow("success=item-saved");
+    const narrative = state.writes.find(write => write.table === "signal_items")!.values.executive_summary;
+    expect(narrative).toBe(text);
+    for (const saved of [summary.opening, narrative]) {
+      const html = renderToStaticMarkup(React.createElement(SignalFormattedText, { text: JSON.parse(JSON.stringify(saved)) }));
+      expect(html.match(/target="_blank"/g)).toHaveLength(2);
+      expect(html).not.toContain("{target=");
+    }
+    expect(state.revalidatePath).toHaveBeenCalledWith("/signals/a-stable-published-edition-slug");
+  });
   it("archives the existing v3 edition with matching summary projection and an audit event", async () => {
     await expect(updateSignalEdition(editionForm())).rejects.toThrow("success=edition-saved");
     expect(state.requireStaff).toHaveBeenCalledWith("admin");

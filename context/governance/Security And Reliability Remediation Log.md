@@ -8,6 +8,12 @@ Last reviewed: 2026-09-05
 
 This register records security, privacy, resilience, dependency, and operational findings that require either a verified repair or an explicit disposition. It complements the release runbook and access matrix. It must not contain credentials, private evidence, raw provider payloads, personal data, or exploit details that would increase public risk.
 
+## September 9 release dependency findings
+
+The Signals release audit found three critical and two high dependency advisories. Updated Next.js and ESLint configuration to resolved 15.5.25, the Next ESLint plugin to 15.5.24, Sharp and its override to 0.35.4, js-yaml override to 4.3.2, and MapLibre to 6.4.1. MapLibre v6 requires namespace imports and an explicit bundled worker URL; a scoped esbuild loader bundles its shared import into the worker asset. The existing Leaflet fallback remains available. Release validation and an affected map browser smoke are required before deployment.
+
+Remaining moderate findings are development-only: Vitest/@vitest/mocker redirect-mock path traversal (GHSA-82fw-gwwq-j7x9) and three Hono findings in development tooling (GHSA-gqvv-2mrq-wpjv, GHSA-g6gw-c38x-mqfc, GHSA-crvj-82cr-hjcx). No test/dev server is publicly deployed. Revisit at the next development-tool update or before exposing such a server; this release does not suppress audit findings.
+
 ## September 5 audit disposition
 
 The full repository/security/skill audit was reconciled with the concurrent Signals, Research and Visibility work. Seven demonstrated boundaries are repaired in the local baseline candidate: pre-provider reservation integrity, request-identity stability, member submission state, quota timestamps, auth return validation, spreadsheet serialization and outbound source-image transport. Direct route/database tests and one independent patch-review cycle cover malicious and legitimate behavior. Working List text bounds, complete reads/exports, bounded transient fallback, explicit type checking and dependency updates accompany the repair. The two additive migrations were applied on September 5 through the linked CLI. Andrew authorized the application push without further testing. The prior direct-role/route evidence remains the validation checkpoint; release completion uses exact deployment status, and post-deployment functional checks were explicitly waived.

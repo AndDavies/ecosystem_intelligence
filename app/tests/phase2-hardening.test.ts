@@ -296,13 +296,13 @@ describe("phase 2 launch hardening", () => {
 
     expect(workspacePackage.scripts["security:validate"]).toContain("audit --audit-level high");
     expect(workspacePackage.scripts["release:validate"]).toContain("pnpm security:validate");
-    expect(appPackage.dependencies.next).toBe("^15.5.22");
-    expect(appPackage.dependencies.sharp).toBe("0.35.3");
+    expect(appPackage.dependencies.next).toBe("^15.5.24");
+    expect(appPackage.dependencies.sharp).toBe("0.35.4");
     expect(appPackage.dependencies).not.toHaveProperty("shadcn");
     expect(appPackage.devDependencies).toHaveProperty("shadcn");
     expect(pnpmWorkspace).toContain('"postcss": "8.5.23"');
     expect(pnpmWorkspace).toContain('"hono": "4.12.34"');
-    expect(pnpmWorkspace).toContain('"sharp": "0.35.3"');
+    expect(pnpmWorkspace).toContain('"sharp": "0.35.4"');
     expect(pnpmWorkspace).toContain('"ws": "8.21.0"');
   });
 

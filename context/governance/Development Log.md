@@ -4,6 +4,14 @@ Status: chronological implementation record
 Owner: Andrew Davies
 Last reviewed: 2026-09-05
 
+## 2026-09-09 — Signals published link navigation correction
+
+Reviewed the Signals admin list/edit routes and edition/item save actions. HTTP(S) narrative links now default to a new tab, including pasted and historical unmarked links. Explicit Same tab stores `{target=_self}`; New tab retains `{target=_blank}`. Shared preview/public rendering honours either choice and strips both markers from excerpt, RSS and metadata text. Admin help documents the default. Existing admin authorization, item ownership checks, amendment/audit handling and public-cache refresh remain in place. No schema, evidence, core-corpus, consent or provider changes.
+
+The release audit additionally required dependency repairs: Next.js/ESLint resolved to 15.5.25 (plugin minimum 15.5.24), Sharp to 0.35.4, js-yaml to 4.3.2, and MapLibre to 6.4.1. MapLibre uses the v6 namespace import and a bundled module-worker URL. A small esbuild loader includes the worker’s shared module in its emitted asset; the production browser check caught the otherwise missing sibling. Map loading joins the affected-route verification; five moderate development-tool advisories remain recorded in the Remediation Log.
+
+Validation: focused action-to-public-render tests cover saved opening and article links, default navigation and explicit overrides. Local browser checks exercise actual new-tab popups, same-tab keyboard navigation and the editor/preview at 390/768/1024/1440px. The temporary fixture was removed. Node 24 release validation passed 854 tests, typecheck, lint, audit, scale and build. The production-build map displayed points and clusters with a working worker asset. Andrew authorized production push and a handoff to the existing development thread; exact deployment and bounded launch verification establish release closure. Unrelated governance edits and private research lineage are preserved.
+
 ## 2026-09-08 — Signals link tab choice
 
 Signals link insertion now offers New tab (default) and Same tab, persisted in existing narrative text and honoured by the shared preview/public renderer. New-tab links use noopener noreferrer; existing links retain same-tab navigation. Excerpts omit the target marker. No schema, live editorial record, evidence or publication-boundary changes.

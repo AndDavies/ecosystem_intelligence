@@ -3,6 +3,14 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  webpack(config) {
+    config.module.rules.push({
+      test: /maplibre-gl-worker\.mjs$/,
+      type: "asset/resource",
+      use: [{ loader: path.resolve(__dirname, "build/maplibre-worker-loader.mjs") }]
+    });
+    return config;
+  },
   outputFileTracingRoot: path.resolve(__dirname),
   images: {
     remotePatterns: [{

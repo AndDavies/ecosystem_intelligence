@@ -31,4 +31,12 @@ describe("Signals editorial formatting", () => {
   it("keeps snippets readable without markup or destination URLs", () => {
     expect(signalPlainText('**Ready** [report](https://example.com)\n- Item')).toBe('Ready report\nItem');
   });
+  it("defaults pasted and historical HTTP links to a new tab while honouring both explicit overrides", () => {
+    const text = '[Report](https://example.com) [Archive](http://example.com/archive) [Same](https://example.com){target=_self} [Internal](/signals) [Separate](/signals){target=_blank}';
+    const html = renderToStaticMarkup(React.createElement(SignalFormattedText, { text }));
+    expect(html.match(/target="_blank"/g)).toHaveLength(3);
+    expect(html.match(/rel="noopener noreferrer"/g)).toHaveLength(3);
+    expect(html).not.toContain('{target=');
+    expect(signalPlainText(text)).toBe('Report Archive Same Internal Separate');
+  });
 });

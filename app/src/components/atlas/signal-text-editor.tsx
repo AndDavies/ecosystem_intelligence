@@ -18,7 +18,7 @@ export function SignalTextEditor({ name, label, defaultValue, rows = 5, required
   function insert(kind: "bold" | "italic" | "bullet" | "number" | "link") {
     const { start, end } = kind === "link" ? selection.current : { start: field.current?.selectionStart ?? 0, end: field.current?.selectionEnd ?? 0 };
     const selected = value.slice(start, end);
-    const replacement = kind === "link" ? `[${labelText}](${url})${newTab ? "{target=_blank}" : ""}` : kind === "bold" ? `**${selected || "bold text"}**` : kind === "italic" ? `*${selected || "italic text"}*` : `${start && value[start - 1] !== "\n" ? "\n" : ""}${(selected || "List item").split("\n").map((line, i) => `${kind === "bullet" ? "-" : `${i + 1}.`} ${line}`).join("\n")}${end < value.length && value[end] !== "\n" ? "\n" : ""}`;
+    const replacement = kind === "link" ? `[${labelText}](${url})${newTab ? "{target=_blank}" : "{target=_self}"}` : kind === "bold" ? `**${selected || "bold text"}**` : kind === "italic" ? `*${selected || "italic text"}*` : `${start && value[start - 1] !== "\n" ? "\n" : ""}${(selected || "List item").split("\n").map((line, i) => `${kind === "bullet" ? "-" : `${i + 1}.`} ${line}`).join("\n")}${end < value.length && value[end] !== "\n" ? "\n" : ""}`;
     setValue(value.slice(0, start) + replacement + value.slice(end));
     setPreview(false);
     requestAnimationFrame(() => { field.current?.focus(); field.current?.setSelectionRange(start, start + replacement.length); });
@@ -45,6 +45,6 @@ export function SignalTextEditor({ name, label, defaultValue, rows = 5, required
       <textarea ref={field} id={id} name={name} value={value} onChange={e => setValue(e.target.value)} required={required} rows={rows} aria-describedby={`${id}-help`} className="w-full rounded-lg px-2 py-2 text-sm leading-6" />
       {preview ? <div className="border-t p-3"><p className="mb-2 text-xs font-bold">Preview</p><SignalFormattedText text={value} className="text-sm leading-6" /></div> : null}
     </div>
-    <p id={`${id}-help`} className="mt-1 text-xs text-[var(--atlas-muted)]">Select text and choose formatting, or use **bold**, *italic*, [link text](https://example.com), and list lines. Preview does not save changes.</p>
+    <p id={`${id}-help`} className="mt-1 text-xs text-[var(--atlas-muted)]">Select text and choose formatting, or use **bold**, *italic*, [link text](https://example.com), and list lines. HTTP(S) links open in a new tab unless you choose Same tab. Preview does not save changes.</p>
   </div>;
 }
