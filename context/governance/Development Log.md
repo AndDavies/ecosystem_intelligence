@@ -4,6 +4,13 @@ Status: chronological implementation record
 Owner: Andrew Davies
 Last reviewed: 2026-09-05
 
+## 2026-09-11 — Signals source-image framing
+
+Corrected the shared Signals visual so editorial photographs fill their frames instead of letterboxing inside a white 16:10 box. Edition photographs now use 16:9; compact and homepage teaser photos use cover fitting without image padding. Logos retain contain fitting and deliberate clear space. The correction applies to existing editions, archive and homepage rendering without rewriting their stored assets. Aligned the Brand System with required new-edition imagery. No schema, core-corpus, consent, campaign or provider changes.
+
+Validation: Node 24 release validation passed repository/governance checks, dependency audit (no high/critical findings), typecheck, 854 tests, lint, scale validation and production build. Local review checked the edition at 390/768/1024/1440px, the 16:9 crop without white bars, keyboard evidence disclosure, and shared archive/homepage/historical rendering. Existing moderate development-tool advisories and a governance review-age warning remain unchanged. Main-only deployment and bounded exact-deployment verification complete the release; private operational evidence remains under the ignored Signals run directory.
+
+
 ## 2026-09-09 — Signals published link navigation correction
 
 Reviewed the Signals admin list/edit routes and edition/item save actions. HTTP(S) narrative links now default to a new tab, including pasted and historical unmarked links. Explicit Same tab stores `{target=_self}`; New tab retains `{target=_blank}`. Shared preview/public rendering honours either choice and strips both markers from excerpt, RSS and metadata text. Admin help documents the default. Existing admin authorization, item ownership checks, amendment/audit handling and public-cache refresh remain in place. No schema, evidence, core-corpus, consent or provider changes.

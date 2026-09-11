@@ -232,7 +232,7 @@ Adapted from the grid and hierarchy guidance in [Michael Schwaibold's post](http
 
 - Let significance determine editorial length and unequal item depth. Lead with a substantial orientation, then explain the developments and connections that earned attention. A shared thesis is optional.
 - V3 shows the narrative once, with accessible evidence/assessment details and source links nearby. Show a limitation or next step when it adds a specific conclusion; avoid repeating four mandatory evidence boxes or adding confidence badges. Historical editions retain their existing presentation.
-- A relevant cited source image is welcome; an intentional text-led edition is complete without one. Do not replace a missing event image with a generic logo, unrelated stock or generated event photograph. No new brand artwork is required.
+- Every new Defence Signals edition requires a relevant, attributed source photograph or clearly labelled rendering under the private image contract. Historical text-led editions remain supported. Use a 16:9 heading frame with cover fitting, without white letterboxing; compact and teaser photographs also fill their frames. Preserve contain fitting and intentional clear space for organization logos. Review the actual crop at mobile and desktop sizes. Do not substitute a generic logo, unrelated stock or generated event photograph.
 - Keep the existing Paper-on-Field typography, spacing, readable measure, tonal hierarchy and keyboard focus. Reader-facing content should explain the intelligence rather than the private research mechanics.
 
 ### System states and recovery
