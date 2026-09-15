@@ -74,6 +74,20 @@ function services(): SignalsPublisherServices {
 }
 
 describe('Signals publisher adapter', () => {
+  it('repairs a hero from independently licensed image provenance without changing article evidence', async () => {
+    const db = new FakeDatabase(); const packet = signalsV3Fixture(); const api = services();
+    await publishSignalsV3(packet, db.client(), api);
+    const evidence = structuredClone(db.rows('signal_item_sources'));
+    db.rows('signal_editions')[0].published_at = "2026-09-15T11:28:14.874438+00:00";
+    const before = structuredClone(db.rows('signal_editions')[0]);
+    packet.heroImage = { imageUrl: 'https://images.example.ca/photo.jpg', sourcePageUrl: 'https://images.example.ca/photo', alt: 'Canadian industrial infrastructure in Toronto', attribution: 'Photographer / Open licence', provenance: { licenseUrl: 'https://images.example.ca/license', licenseName: 'Open licence', creator: 'Photographer', capturedAt: '2026-09-15T12:00:00.000Z', imageSha256: 'a'.repeat(64), editorialContext: 'Contextual illustration of Canadian investment, not the summit itself.' } };
+    expect(await publishSignalsV3(packet, db.client(), api, true)).toMatchObject({ mode: 'hero-replaced' });
+    expect(db.rows('signal_item_sources')).toEqual(evidence);
+    expect(db.rows('signal_editions')[0]).toMatchObject({ id: before.id, slug: before.slug, published_at: before.published_at, hero_image_source_url: packet.heroImage.sourcePageUrl });
+    expect(db.rows('signal_runs')[0].report).toHaveProperty('hero_provenance.provenance.imageSha256', 'a'.repeat(64));
+    delete packet.heroImage.provenance;
+    await expect(publishSignalsV3(packet, db.client(), api, true)).rejects.toThrow(/not anchored/);
+  });
   it('reuses canonical source IDs once per packet and preserves item-specific immutable support', async () => {
     const db = new FakeDatabase(); const packet = signalsV3Fixture(9);
     const result = await publishSignalsV3(packet,db.client(),services());

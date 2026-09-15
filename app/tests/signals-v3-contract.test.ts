@@ -77,3 +77,12 @@ describe("Signals v3 editorial contract", () => {
     await expect(verifySignalsRuntime("https://truenorthmap.ca", async () => new Response('', { status: 503 }))).rejects.toThrow(/503/);
   });
 });
+
+it("requires complete provenance for a v3 hero outside article evidence", () => {
+  const packet = signalsV3Fixture();
+  const image = { imageUrl: "https://images.example.ca/photo.jpg", sourcePageUrl: "https://images.example.ca/photo", alt: "Canadian industrial infrastructure in Toronto", attribution: "Photographer / Open licence" };
+  expect(dailySignalsPacketSchema.safeParse({ ...packet, heroImage: image }).success).toBe(false);
+  const provenance = { licenseUrl: "https://images.example.ca/license", licenseName: "Open licence", creator: "Photographer", capturedAt: "2026-09-15T12:00:00.000Z", imageSha256: "a".repeat(64), editorialContext: "Contextual illustration of Canadian investment, not the summit itself." };
+  expect(dailySignalsPacketSchema.safeParse({ ...packet, heroImage: { ...image, provenance } }).success).toBe(true);
+  expect(dailySignalsPacketSchema.safeParse({ ...packet, heroImage: { ...image, provenance: { ...provenance, imageSha256: "invalid" } } }).success).toBe(false);
+});

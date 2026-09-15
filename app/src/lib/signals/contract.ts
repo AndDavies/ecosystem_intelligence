@@ -111,7 +111,16 @@ const dailySignalsPacketV3Schema = z.object({
   disclosure: dailySignalsPacketBaseShape.disclosure,
   inspectedCount: dailySignalsPacketBaseShape.inspectedCount,
   sourceFamilyCount: z.number().int().nonnegative().optional(),
-  heroImage: heroImage.nullable().default(null),
+  heroImage: heroImage.extend({
+    provenance: z.object({
+      licenseUrl: z.string().url().startsWith("https://"),
+      licenseName: z.string().trim().min(3).max(160),
+      creator: z.string().trim().min(2).max(160),
+      capturedAt: z.string().datetime(),
+      imageSha256: z.string().regex(/^[a-f0-9]{64}$/),
+      editorialContext: z.string().trim().min(20).max(600)
+    }).strict().optional()
+  }).nullable().default(null),
   socialDrafts: z.array(socialDraft).default([]),
   items: z.array(signalV3ItemSchema).min(1)
 });
@@ -163,7 +172,7 @@ export const dailySignalsPacketSchema = z.discriminatedUnion("schemaVersion", [
       ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["sourceFamilyCount"], message: `sourceFamilyCount must equal the ${computedSourceFamilyCount} source families present in the packet.` });
     }
   }
-  if (packet.heroImage && !packet.items.some((entry) => entry.sources.some((entrySource) => entrySource.canonicalUrl === packet.heroImage?.sourcePageUrl))) {
+  if (packet.heroImage && !(packet.schemaVersion === "daily_signals_packet_v3" && packet.heroImage.provenance) && !packet.items.some((entry) => entry.sources.some((entrySource) => entrySource.canonicalUrl === packet.heroImage?.sourcePageUrl))) {
     ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["heroImage", "sourcePageUrl"], message: "The hero image must resolve to one of the edition's durable source pages." });
   }
   for (const platform of packet.schemaVersion === "daily_signals_packet_v3" ? [] : ["linkedin", "x"] as const) {

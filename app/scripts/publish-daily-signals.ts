@@ -30,6 +30,9 @@ async function storeHeroImage(image: NonNullable<ReturnType<typeof dailySignalsP
     maxBytes: 10_485_760,
     allowedTypes: ["image/jpeg", "image/png", "image/webp"]
   });
+  if ("provenance" in image && image.provenance && createHash("sha256").update(sourceBytes).digest("hex") !== image.provenance.imageSha256) {
+    throw new Error("Hero image bytes differ from the reviewed provenance snapshot.");
+  }
   const normalized = await sharp(sourceBytes).rotate().resize(1600, 900, { fit: "cover", position: "attention" }).webp({ quality: 84 }).toBuffer();
   const checksum = createHash("sha256").update(normalized).digest("hex");
   const storagePath = `signals/${slug}/${checksum}.webp`;

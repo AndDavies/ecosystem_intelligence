@@ -56,6 +56,7 @@ export async function recordSignalsOutcome(record: DailySignalsRunOutcome, clien
 export function signalsRunStartValues(packet: DailySignalsPacketV3, existingRun: Row | null) {
   const payloadHash = signalsPublicationHash(packet);
   const report: Row = { schema_version: packet.schemaVersion, payload_hash: payloadHash, edition_date: packet.editionDate, edition_slug: packet.slug, assembly_edition_id: randomUUID(), planned_source_ids: Object.fromEntries([...new Set(packet.items.flatMap((item) => item.sources.map((source) => source.canonicalUrl)))].map((url) => [url, randomUUID()])), material_updates: packet.items.filter((item) => item.materialUpdate).map((item) => ({ event_fingerprint: item.eventFingerprint, reason: item.materialUpdateReason })) };
+  if (packet.heroImage?.provenance) report.hero_provenance = packet.heroImage;
   if (existingRun) {
     const previous = existingRun.report && typeof existingRun.report === "object" ? existingRun.report as Row : {};
     if (existingRun.status !== "blocked" || existingRun.edition_id || previous.schema_version !== "daily_signals_run_outcome_v2" || previous.edition_date !== packet.editionDate || previous.resumable !== true) {
@@ -98,8 +99,13 @@ export async function publishSignalsV3(packet: DailySignalsPacketV3, client: Sup
       if (!packet.heroImage) throw new Error("Hero repair requires a cited image.");
       const { data: links, error: linksError } = await client.from("signal_item_sources").select("evidence_snapshot").in("item_id", [...itemIds.values()]);
       if (linksError) throw linksError;
-      if (!(links ?? []).some((link) => (link.evidence_snapshot as Row | null)?.canonicalUrl === packet.heroImage?.sourcePageUrl)) throw new Error("Replacement hero is not anchored to existing edition evidence.");
+      if (!packet.heroImage.provenance && !(links ?? []).some((link) => (link.evidence_snapshot as Row | null)?.canonicalUrl === packet.heroImage?.sourcePageUrl)) throw new Error("Replacement hero is not anchored to existing edition evidence.");
       const hero = await services.storeHero(packet.heroImage, packet.slug, client);
+      // Persist image-only provenance before changing the public hero. It does
+      // not manufacture article evidence or mutate historical source snapshots.
+      if (packet.heroImage.provenance) await mergeSignalsRunReport(client, packet.runId, {
+        hero_provenance: { ...packet.heroImage, storedUrl: hero.publicUrl }
+      });
       const { error: updateError } = await client.from("signal_editions").update({ hero_image_path: hero.publicUrl, hero_image_source_url: packet.heroImage.sourcePageUrl, hero_image_alt: packet.heroImage.alt, hero_image_attribution: packet.heroImage.attribution, amended_at: new Date().toISOString(), updated_at: new Date().toISOString() }).eq("id", existing.id);
       if (updateError) throw updateError;
     }
