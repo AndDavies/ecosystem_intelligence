@@ -57,6 +57,7 @@
             "selectionMethod": { "type": "string", "minLength": 2, "maxLength": 240 },
             "sourceChecksum": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
             "normalizedChecksum": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+            "storagePath": { "type": "string", "pattern": "^candidate-logos/[a-f0-9]{64}\\.webp$" },
             "packetPath": { "type": "string", "minLength": 5, "maxLength": 1000 },
             "note": { "type": "string", "minLength": 10, "maxLength": 1000 }
           }
@@ -67,6 +68,17 @@
           "required": ["status", "checkedAt", "note"],
           "properties": {
             "status": { "const": "not_found" },
+            "checkedAt": { "type": "string", "format": "date-time" },
+            "note": { "type": "string", "minLength": 1, "maxLength": 1000 }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "mediaAssetId", "checkedAt", "note"],
+          "properties": {
+            "status": { "const": "existing_published" },
+            "mediaAssetId": { "type": "string", "format": "uuid" },
             "checkedAt": { "type": "string", "format": "date-time" },
             "note": { "type": "string", "minLength": 1, "maxLength": 1000 }
           }
@@ -321,7 +333,7 @@
       "properties": { "operationId": { "$ref": "#/$defs/slug" }, "operation": { "enum": ["set_field", "add_child", "update_child"] }, "entityType": { "enum": ["organization", "capability", "program", "relationship", "demand_source", "demand_requirement"] }, "evidenceIds": { "type": "array", "minItems": 1 }, "reviewerExplanation": { "type": "string", "minLength": 30 } }
     },
     "organizationRefreshBundle": {
-      "allOf": [{ "$ref": "#/$defs/candidateCommon" }, { "type": "object", "required": ["schemaVersion", "candidateKind", "targetMatch", "beforeRecord", "operations", "sourceChannels", "signalIds", "corroboration"], "properties": { "schemaVersion": { "const": "organization_refresh_bundle_v1" }, "candidateKind": { "const": "organization_refresh_bundle" }, "targetMatch": { "$ref": "#/$defs/targetMatch" }, "beforeRecord": { "type": "object" }, "operations": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/refreshOperation" } }, "sourceChannels": { "type": "array", "minItems": 1 }, "signalIds": { "type": "array", "minItems": 1 }, "corroboration": { "type": "array" } } }]
+      "allOf": [{ "$ref": "#/$defs/candidateCommon" }, { "type": "object", "required": ["schemaVersion", "candidateKind", "targetMatch", "beforeRecord", "operations", "sourceChannels", "signalIds", "corroboration"], "properties": { "schemaVersion": { "const": "organization_refresh_bundle_v1" }, "candidateKind": { "const": "organization_refresh_bundle" }, "targetMatch": { "$ref": "#/$defs/targetMatch" }, "candidateLogo": { "$ref": "#/$defs/candidateLogo" }, "beforeRecord": { "type": "object" }, "operations": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/refreshOperation" } }, "sourceChannels": { "type": "array", "minItems": 1 }, "signalIds": { "type": "array", "minItems": 1 }, "corroboration": { "type": "array" } } }]
     },
     "refreshOperationV2": {
       "type": "object",
@@ -352,7 +364,7 @@
     "organizationRefreshBundleV2": {
       "type": "object",
       "unevaluatedProperties": false,
-      "allOf": [{ "$ref": "#/$defs/candidateCommon" }, { "type": "object", "required": ["schemaVersion", "candidateKind", "targetMatch", "beforeRecord", "operations", "sourceChannels", "signalIds", "corroboration"], "properties": { "schemaVersion": { "const": "organization_refresh_bundle_v2" }, "candidateKind": { "const": "organization_refresh_bundle" }, "targetMatch": { "allOf": [{ "$ref": "#/$defs/targetMatch" }, { "type": "object", "properties": { "entityType": { "const": "organization" } } }] }, "beforeRecord": { "type": "object" }, "operations": { "type": "array", "minItems": 1, "maxItems": 30, "items": { "$ref": "#/$defs/refreshOperationV2" } }, "sourceChannels": { "type": "array", "minItems": 1, "items": { "enum": ["official_company", "government_procurement", "source_book", "ecosystem_program", "industry_publication", "gmail_newsletter", "linkedin_chrome", "other_discovery"] } }, "signalIds": { "type": "array", "maxItems": 50, "items": { "$ref": "#/$defs/slug" } }, "corroboration": { "type": "array", "maxItems": 20, "items": { "type": "object", "additionalProperties": false, "required": ["claim", "sourceIds"], "properties": { "claim": { "type": "string", "minLength": 20, "maxLength": 1000 }, "sourceIds": { "type": "array", "minItems": 1, "maxItems": 10, "items": { "$ref": "#/$defs/slug" } } } } }, "executiveRelevanceSummary": { "type": ["string", "null"], "minLength": 80, "maxLength": 1200 } } }]
+      "allOf": [{ "$ref": "#/$defs/candidateCommon" }, { "type": "object", "required": ["schemaVersion", "candidateKind", "targetMatch", "beforeRecord", "operations", "sourceChannels", "signalIds", "corroboration"], "properties": { "schemaVersion": { "const": "organization_refresh_bundle_v2" }, "candidateKind": { "const": "organization_refresh_bundle" }, "targetMatch": { "allOf": [{ "$ref": "#/$defs/targetMatch" }, { "type": "object", "properties": { "entityType": { "const": "organization" } } }] }, "candidateLogo": { "$ref": "#/$defs/candidateLogo" }, "beforeRecord": { "type": "object" }, "operations": { "type": "array", "minItems": 1, "maxItems": 30, "items": { "$ref": "#/$defs/refreshOperationV2" } }, "sourceChannels": { "type": "array", "minItems": 1, "items": { "enum": ["official_company", "government_procurement", "source_book", "ecosystem_program", "industry_publication", "gmail_newsletter", "linkedin_chrome", "other_discovery"] } }, "signalIds": { "type": "array", "maxItems": 50, "items": { "$ref": "#/$defs/slug" } }, "corroboration": { "type": "array", "maxItems": 20, "items": { "type": "object", "additionalProperties": false, "required": ["claim", "sourceIds"], "properties": { "claim": { "type": "string", "minLength": 20, "maxLength": 1000 }, "sourceIds": { "type": "array", "minItems": 1, "maxItems": 10, "items": { "$ref": "#/$defs/slug" } } } } }, "executiveRelevanceSummary": { "type": ["string", "null"], "minLength": 80, "maxLength": 1200 } } }]
     },
     "canonicalTargetMatch": {
       "type": "object",

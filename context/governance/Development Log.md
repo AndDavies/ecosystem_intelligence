@@ -2547,3 +2547,7 @@ Focused cache, publication, filtering and Supabase-522 recovery tests pass. The 
 ## 2026-09-15 — Licensed Signals hero replacement
 
 Signals v3 now accepts independently licensed contextual hero photographs with private creator, licence, source, capture time, reviewed byte hash and editorial rationale. Publication verifies the reviewed image bytes before upload and records image provenance without manufacturing article evidence; legacy packet and repair rules remain intact. Replaced the September 15 investment edition hero with a credited Toronto financial-district photograph and removed its superseded Wyvern hero description. Public hero and social metadata share the same cropped asset. Node 24 release validation passed (864 tests), including focused provenance and historical repair coverage.
+
+## 2026-09-15 — Logos included in dossier Review and Publish
+
+Andrew approved all prepared logos from the Bing-priority refresh run. The ten recovered marks were associated with their exact published organizations through the existing provenance-backed import; five existing logos were preserved and two unavailable marks remain missing. Research now prepares new-organization and missing-logo refresh candidates identically, stages their images privately, and includes the logo in normal Review and transactional dossier Publish. Removed the separate post-publication logo approval/import instruction. Research retains the calling Codex model and ends at private Review.

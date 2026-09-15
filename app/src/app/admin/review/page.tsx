@@ -1,3 +1,4 @@
+import { CandidateLogoReview } from "@/components/atlas/candidate-logo-review";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { CheckCircle2, Layers3, TriangleAlert } from "lucide-react";
@@ -382,6 +383,7 @@ function TypedOrganizationCandidateCard({
 
   return (
     <PublicCard title={record.organization.name} eyebrow={`Organization candidate · ${candidate.confidence} evidence confidence · ${roleLabel}`}>
+      <CandidateLogoReview candidateId={candidate.id} record={record} />
       <div className="grid gap-4 md:grid-cols-3">
         <ReviewFact label="Organization type" value={roleLabel} />
         <ReviewFact label="Location" value={locationLabel || "Canada · location not yet resolved"} />
@@ -525,6 +527,7 @@ function RefreshCandidateCard({ candidate, record }: { candidate: CandidateRow; 
     : 0;
   return (
     <PublicCard title={`Refresh ${record.targetMatch.slug.replaceAll("-", " ")}`} eyebrow={`${record.candidateKind === "organization_refresh_bundle" ? "Organization" : "Demand"} refresh · ${record.confidence} confidence`}>
+      <CandidateLogoReview candidateId={candidate.id} record={record} />
       <div className="flex flex-wrap items-center gap-2">
         <span className="rounded-full bg-[var(--admin-evidence-soft)] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.08em] text-[var(--admin-evidence)]">Refresh existing record</span>
         <Link href={targetAdminHref} className="text-xs font-semibold text-[var(--admin-action)]">Open target record</Link>

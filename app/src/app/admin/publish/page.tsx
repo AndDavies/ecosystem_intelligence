@@ -1,3 +1,4 @@
+import { CandidateLogoReview } from "@/components/atlas/candidate-logo-review";
 import Link from "next/link";
 import { AlertTriangle, CheckCircle2, ExternalLink } from "lucide-react";
 import { AdminNav } from "@/components/atlas/admin-nav";
@@ -318,6 +319,7 @@ export default async function AdminPublishPage({ searchParams }: { searchParams:
                   <div>
                     <Badge className="mb-2" tone={kind === "demand" ? "evidence" : "signal"}>{display.typeLabel}</Badge>
                     <span className="block text-sm font-bold text-[var(--admin-ink)]">{display.name}</span>
+                    <CandidateLogoReview candidateId={candidate.id} record={candidate.proposed_record} />
                     <span className="mt-1 block text-xs leading-5 text-[var(--admin-muted)]">{display.detail}</span>
                     <span className="mt-2 block text-xs leading-5 text-[var(--admin-muted-strong)]">{display.description}</span>
                     {display.sourceUrl ? <a href={display.sourceUrl} target="_blank" rel="noreferrer" className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-[var(--admin-action)]">Review source <ExternalLink className="size-3" /></a> : null}

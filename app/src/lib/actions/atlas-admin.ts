@@ -1,5 +1,7 @@
 "use server";
 
+import { prepareCandidateLogosForPublication } from "@/lib/research/candidate-logo-storage";
+
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
@@ -811,6 +813,13 @@ export async function publishApprovedCandidates(formData: FormData) {
     if (missingDependencies.length) {
       redirect(`/admin/publish?error=missing-demand-issuer&issuer=${encodeURIComponent(missingDependencies[0].parentIssuerSlug)}`);
     }
+  }
+
+  try {
+    await prepareCandidateLogosForPublication(supabase, selectedCandidates);
+  } catch (error) {
+    console.error("Research logo preparation failed", error instanceof Error ? error.message : "Unknown error");
+    redirect("/admin/publish?error=publication-failed");
   }
 
   const { error } = await supabase.rpc("publish_reviewed_research_candidates", {

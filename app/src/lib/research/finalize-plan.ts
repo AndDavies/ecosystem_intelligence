@@ -40,7 +40,7 @@ export function buildResearchFinalizePlan(options: {
 
   const steps: ResearchFinalizeStep[] = [];
   const missingLogoCount = batch.candidates.filter((candidate) =>
-    candidate.candidateKind === "organization_bundle" && !candidate.candidateLogo
+    (candidate.candidateKind === "organization_bundle" || candidate.candidateKind === "organization_refresh_bundle") && !candidate.candidateLogo
   ).length;
   if (missingLogoCount > 0 && mode !== "check-only") {
     steps.push({

@@ -197,3 +197,7 @@ The production Supabase project remains the sole source of truth. Local fixtures
 Candidate publication also validates organization aliases after the database's normalization rule is applied. Case and punctuation variants are rejected during candidate parsing, while the publication function defensively keeps one deterministic alias per normalized value so an older approved candidate cannot abort an otherwise valid atomic batch.
 
 Demand issuer hierarchy is canonical taxonomy. A demand-signal candidate may add an issuing body, but any `parentIssuerSlug` must resolve to an already published parent issuer before it can enter the Publication checkpoint. The checkpoint displays missing parents and disables publication before the transaction begins; the database retains the same rejection as a final safety guard. The National Research Council Canada is established beneath the Government of Canada so NRC IRAP signals can retain their accurate parent relationship.
+
+## Candidate logos
+
+Find an official logo for each new organization and each dossier refresh missing a published logo. The candidate carries its logo and provenance through private intake, Review and Publish. Acceptance includes the logo; Publish associates it in the same database transaction as the dossier. Existing logos remain in place, and a missing logo does not block research. Prepared images use the existing private intake bucket until Publish. The deployed research contract advertises `candidateLogoPublication: candidate_logo_v1` when this path is available.

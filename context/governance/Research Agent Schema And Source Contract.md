@@ -423,3 +423,7 @@ An accepted candidate is not a published record. Promotion must be a distinct re
 6. recalculates coverage and freshness
 
 Agents do not own this step.
+
+## Candidate logos
+
+Find an official logo for each new organization and each dossier refresh missing a published logo. The candidate carries its logo and provenance through private intake, Review and Publish. Acceptance includes the logo; Publish associates it in the same database transaction as the dossier. Existing logos remain in place, and a missing logo does not block research. Prepared images use the existing private intake bucket until Publish. The deployed research contract advertises `candidateLogoPublication: candidate_logo_v1` when this path is available.

@@ -44,7 +44,8 @@ export async function createAtlasTestDatabase() {
     create table storage.objects (
       id uuid primary key,
       bucket_id text not null references storage.buckets(id) on delete cascade,
-      owner_id text
+      owner_id text,
+      name text
     );
     alter table storage.objects enable row level security;
     grant usage on schema storage to anon, authenticated, service_role;

@@ -1,3 +1,4 @@
+import { stageCandidateLogos } from "./stage-candidate-logos";
 import { pathToFileURL } from "node:url";
 import { isDeepStrictEqual } from "node:util";
 import { completeResearchRunIssues } from "../src/lib/research/run-validation";
@@ -2015,6 +2016,7 @@ async function importStagingUnlocked(stagingPath: string) {
       throw new Error(`Review intake stopped because target ${collision.target_entity_id} gained a separate ${collision.status} candidate after preparation. Re-read Review state and rebuild the overlapping target.`);
     }
   }
+  await stageCandidateLogos(client, workspaceRoot, candidateChanges);
   const { data, error } = await client.rpc("stage_research_candidates_for_review", {
     p_run: researchRun,
     p_candidates: candidateChanges

@@ -5,9 +5,12 @@ import os from "node:os";
 import path from "node:path";
 import { promisify } from "node:util";
 import sharp from "sharp";
-import { researchCandidateBatchV2Schema, type OrganizationBundleV2, type OrganizationBundleV3 } from "../src/lib/research/pipeline-schema";
+import { normalizeOfficialLogo } from "../src/lib/research/normalize-logo";
+import { createClient } from "@supabase/supabase-js";
+import { loadScriptEnv } from "./load-env";
+import { researchCandidateBatchV2Schema, type ResearchCandidateBatchV2 } from "../src/lib/research/pipeline-schema";
 import { boundedMapByKey } from "../src/lib/research/bounded-map";
-import { mergeLogoResults, needsLogoRecovery, officialLogoSourcePages } from "../src/lib/research/logo-recovery";
+import { mergeLogoResults, needsLogoRecovery, officialLogoSourcePages, organizationLogoIdentity } from "../src/lib/research/logo-recovery";
 
 const executeFile = promisify(execFile);
 const downloader = process.env.COMPANY_LOGO_DOWNLOADER_SCRIPT
@@ -16,7 +19,8 @@ const workspaceRoot = path.resolve(process.cwd(), "..");
 const localPacketRoot = path.join(workspaceRoot, "research/ingestion/local/candidate-logos");
 const packetRoot = path.join(workspaceRoot, "research/ingestion/local/candidate-logo-packets-v1");
 
-type OrganizationLogoCandidate = OrganizationBundleV2 | OrganizationBundleV3;
+type LogoCandidate = Extract<ResearchCandidateBatchV2["candidates"][number], { candidateKind: "organization_bundle" | "organization_refresh_bundle" }>;
+type OrganizationLogoCandidate = Pick<LogoCandidate, "candidateId" | "sources" | "candidateKind" | "candidateLogo"> & { organization: { name: string; slug: string; websiteUrl: string }; targetId?: string };
 type CandidateLogo = NonNullable<OrganizationLogoCandidate["candidateLogo"]>;
 type LogoResult = { candidateId: string; organizationName: string; logo: CandidateLogo };
 const defaultLogoConcurrency = 4;
@@ -33,17 +37,13 @@ function relative(value: string) {
 }
 
 async function normalizeLogo(inputPath: string, outputPath: string) {
-  const output = await sharp(inputPath)
-    .rotate()
-    .resize({ width: 1024, height: 512, fit: "inside", withoutEnlargement: true })
-    .webp({ quality: 92, alphaQuality: 100 })
-    .toBuffer();
+  const { bytes: output, darkBackground } = await normalizeOfficialLogo(inputPath);
   const metadata = await sharp(output).metadata();
   if (metadata.format !== "webp" || !metadata.width || !metadata.height || metadata.width > 1024 || metadata.height > 512) {
     throw new Error("Normalized logo is not a valid bounded WebP.");
   }
   await writeFile(outputPath, output);
-  return { checksum: createHash("sha256").update(output).digest("hex"), width: metadata.width, height: metadata.height };
+  return { checksum: createHash("sha256").update(output).digest("hex"), width: metadata.width, height: metadata.height, darkBackground };
 }
 
 function brandTokens(candidate: OrganizationLogoCandidate) {
@@ -120,8 +120,9 @@ async function prepareLogo(candidate: OrganizationLogoCandidate, runId: string, 
           selectionMethod: result.selection_method,
           sourceChecksum: result.sha256,
           normalizedChecksum: normalized.checksum,
+          storagePath: `candidate-logos/${normalized.checksum}.webp`,
           packetPath: relative(result.manifest_path),
-          note: `${normalized.width}x${normalized.height} normalized WebP retained in the private candidate packet.`
+          note: `${normalized.width}x${normalized.height} normalized WebP retained in the private candidate packet.${normalized.darkBackground ? " Dark backing preserves white-lettering legibility." : ""}`
         } as CandidateLogo
       };
     } catch (error) {
@@ -168,18 +169,37 @@ async function prepareBatch() {
     throw new Error("--source-pages must map known candidate IDs to arrays of observed official page URLs.");
   }
   const logoCandidates = parsed.candidates
-    .filter((candidate): candidate is OrganizationLogoCandidate => candidate.candidateKind === "organization_bundle" && needsLogoRecovery(candidate.candidateLogo?.status, process.argv.includes("--retry-missing")));
+    .filter((candidate): candidate is LogoCandidate => (candidate.candidateKind === "organization_bundle" || candidate.candidateKind === "organization_refresh_bundle") && needsLogoRecovery(candidate.candidateLogo?.status, process.argv.includes("--retry-missing")))
+    .map((candidate) => ({ ...candidate, organization: organizationLogoIdentity(candidate)!, targetId: candidate.candidateKind === "organization_refresh_bundle" ? candidate.targetMatch.entityId : undefined }));
+  const refreshIds = logoCandidates.flatMap((candidate) => candidate.targetId ? [candidate.targetId] : []);
+  const existingLogos = new Map<string, string>();
+  if (refreshIds.length) {
+    loadScriptEnv();
+    const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const key = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+    if (!url || !key) throw new Error("Published logo lookup requires the public database configuration.");
+    const client = createClient(url, key, { auth: { persistSession: false, autoRefreshToken: false } });
+    const { data, error } = await client.from("media_assets").select("id, organization_id").in("organization_id", refreshIds)
+      .eq("asset_type", "logo").eq("approval_status", "approved").eq("publication_status", "published");
+    if (error) throw new Error(`Published logo lookup failed: ${error.message}`);
+    for (const logo of data ?? []) existingLogos.set(logo.organization_id, logo.id);
+  }
   const results = await boundedMapByKey(
     logoCandidates,
     requestedConcurrency,
     candidateHost,
-    (candidate) => prepareLogo(candidate, runId, sourcePages[candidate.candidateId])
+    (candidate): Promise<LogoResult> => {
+      const mediaAssetId = candidate.targetId ? existingLogos.get(candidate.targetId) : undefined;
+      return mediaAssetId ? Promise.resolve({ candidateId: candidate.candidateId, organizationName: candidate.organization.name,
+        logo: { status: "existing_published", mediaAssetId, checkedAt: new Date().toISOString(), note: "Keep the existing published logo." } })
+        : prepareLogo(candidate, runId, sourcePages[candidate.candidateId]);
+    }
   );
   const updated = {
     ...parsed,
     candidates: parsed.candidates.map((candidate) => {
       const result = results.find((item) => item.candidateId === candidate.candidateId);
-      return result && candidate.candidateKind === "organization_bundle" ? { ...candidate, candidateLogo: result.logo } : candidate;
+      return result && (candidate.candidateKind === "organization_bundle" || candidate.candidateKind === "organization_refresh_bundle") ? { ...candidate, candidateLogo: result.logo } : candidate;
     })
   };
   researchCandidateBatchV2Schema.parse(updated);
@@ -213,7 +233,7 @@ async function prepareBatch() {
     await atomicJson(packetPath, packet);
     if (process.argv.includes("--apply")) await atomicJson(resolvedCandidatePath, updated);
   }
-  const counts = Object.fromEntries(["ready", "review_required", "not_found"].map((status) => [status, results.filter((item) => item.logo.status === status).length]));
+  const counts = Object.fromEntries(["ready", "review_required", "not_found", "existing_published"].map((status) => [status, results.filter((item) => item.logo.status === status).length]));
   console.log(JSON.stringify({ candidateBatch: relative(resolvedCandidatePath), candidateLogoPacket: results.length > 0 ? relative(packetPath) : null, applied: process.argv.includes("--apply") && results.length > 0, skippedExisting: logoCandidates.length === 0, ...counts }, null, 2));
 }
 

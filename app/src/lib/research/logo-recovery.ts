@@ -30,3 +30,15 @@ export function mergeLogoResults<T extends { candidateId: string }>(previous: T[
   for (const result of current) merged.set(result.candidateId, result);
   return [...merged.values()];
 }
+import type { ResearchCandidateBatchV2 } from "./pipeline-schema";
+
+/** Refreshes use the exact canonical identity captured by the research snapshot. */
+export function organizationLogoIdentity(candidate: ResearchCandidateBatchV2["candidates"][number]) {
+  if (candidate.candidateKind === "organization_bundle") return candidate.organization;
+  if (candidate.candidateKind !== "organization_refresh_bundle") return null;
+  const organization = candidate.beforeRecord.organization as Record<string, unknown> | undefined;
+  if (!organization || typeof organization.name !== "string" || typeof organization.website_url !== "string") {
+    throw new Error(`Logo preparation requires the canonical organization baseline for ${candidate.candidateId}.`);
+  }
+  return { name: organization.name, slug: candidate.targetMatch.slug, websiteUrl: organization.website_url };
+}

@@ -15,17 +15,20 @@ export type SupportedResearchCandidateKind = keyof typeof supportedResearchCandi
 export type ResearchCandidateContractInput = {
   candidate_kind?: unknown;
   schema_version?: unknown;
+  proposed_record?: unknown;
 };
 
 export type ResearchReviewContract = {
   contractVersion: typeof researchReviewContractVersion;
   pipelineVersion: string;
+  candidateLogoPublication?: "candidate_logo_v1";
   candidateSchemas: Record<SupportedResearchCandidateKind, readonly string[]>;
 };
 
 export const researchReviewContract: ResearchReviewContract = {
   contractVersion: researchReviewContractVersion,
   pipelineVersion: currentResearchPipelineVersion,
+  candidateLogoPublication: "candidate_logo_v1",
   candidateSchemas: supportedResearchCandidateSchemas
 };
 
@@ -49,10 +52,17 @@ export function isSupportedResearchCandidateKind(value: string): value is Suppor
 
 export function researchCandidateContractIssues(
   candidates: ResearchCandidateContractInput[],
-  contract: Pick<ResearchReviewContract, "contractVersion" | "pipelineVersion" | "candidateSchemas"> = researchReviewContract,
+  contract: Pick<ResearchReviewContract, "contractVersion" | "pipelineVersion" | "candidateSchemas" | "candidateLogoPublication"> = researchReviewContract,
   requiredPipelineVersion: string = currentResearchPipelineVersion
 ) {
   const issues: string[] = [];
+  if (candidates.some(candidate => {
+    const payload = candidate.proposed_record as { candidateLogo?: { storagePath?: unknown } } | undefined;
+    return Boolean(payload?.candidateLogo?.storagePath);
+  }) && contract.candidateLogoPublication !== "candidate_logo_v1") {
+    issues.push("Candidate logos require deployed Review and Publish logo support.");
+  }
+
   if (contract.contractVersion !== researchReviewContractVersion) {
     issues.push(`deployed review contract '${contract.contractVersion}' does not match required '${researchReviewContractVersion}'`);
   }

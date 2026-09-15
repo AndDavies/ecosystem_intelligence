@@ -603,7 +603,7 @@ const relationshipSchema = z.object({
   publicSummary: z.string().trim().min(40).max(4000)
 });
 
-const candidateLogoSchema = z.discriminatedUnion("status", [
+export const candidateLogoSchema = z.discriminatedUnion("status", [
   z.object({
     status: z.enum(["ready", "review_required"]),
     confidence: z.enum(["high", "medium"]),
@@ -612,11 +612,18 @@ const candidateLogoSchema = z.discriminatedUnion("status", [
     selectionMethod: z.string().trim().min(2).max(240),
     sourceChecksum: z.string().regex(/^[a-f0-9]{64}$/),
     normalizedChecksum: z.string().regex(/^[a-f0-9]{64}$/),
+    storagePath: z.string().regex(/^candidate-logos\/[a-f0-9]{64}\.webp$/).optional(),
     packetPath: z.string().trim().min(5).max(1000),
     note: z.string().trim().min(10).max(1000)
   }),
   z.object({
     status: z.literal("not_found"),
+    checkedAt: z.string().datetime(),
+    note: z.string().trim().min(1).max(1000)
+  }),
+  z.object({
+    status: z.literal("existing_published"),
+    mediaAssetId: z.string().uuid(),
     checkedAt: z.string().datetime(),
     note: z.string().trim().min(1).max(1000)
   })
@@ -1078,6 +1085,7 @@ export const organizationRefreshBundleV1Schema = z.object({
   schemaVersion: z.literal("organization_refresh_bundle_v1"),
   candidateKind: z.literal("organization_refresh_bundle"),
   ...refreshCandidateCommon,
+  candidateLogo: candidateLogoSchema.optional(),
   targetMatch: targetMatchSchema.extend({ entityType: z.literal("organization") })
 }).superRefine((candidate, context) => {
   candidate.operations.forEach((operation, index) => {
@@ -1200,6 +1208,7 @@ export const organizationRefreshBundleV2Schema = z.object({
   ...candidateCommon,
   fieldEvidence: z.array(fieldEvidenceSchema).min(1).max(300),
   targetMatch: targetMatchSchema.extend({ entityType: z.literal("organization") }),
+  candidateLogo: candidateLogoSchema.optional(),
   beforeRecord: z.record(z.string(), z.unknown()),
   operations: z.array(organizationRefreshOperationV2Schema).min(1).max(30),
   sourceChannels: z.array(signalSourceChannelSchema).min(1),
