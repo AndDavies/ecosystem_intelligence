@@ -26,6 +26,8 @@ import type {
 } from "@/types/atlas";
 
 export const dynamic = "force-dynamic";
+// Owner baselines may scan the complete catalogue; Vercel still imposes a host ceiling.
+export const maxDuration = 300;
 
 type ParsedDiscoveryInput = ReturnType<typeof betaDiscoveryRequestSchema.parse>;
 

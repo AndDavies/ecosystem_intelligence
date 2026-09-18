@@ -17,6 +17,7 @@ type Payload = { model: string; state: unknown; questions: Record<string, Questi
 export type JevFallback = "disabled" | "not_owner" | "missing_key" | "budget" | "context" | "timeout" | "authentication" | "rate_limit" | "provider" | "invalid_output" | "invalid_catalogue";
 
 export interface JevMetrics {
+  limitPolicy?: "standard" | "owner_baseline";
   model: string;
   rubric: string;
   catalogueCount: number;
@@ -182,18 +183,22 @@ export function rankJevCandidates(judgments: JevJudgment[], baseline: AtlasOrgan
 export async function selectWithJev(input: {
   snapshot: AtlasSnapshot; query: string; priorTurns: AtlasAssistantPriorTurn[]; baseline: AtlasOrganization[];
   disabledReason?: JevFallback | null;
+  // Set only from the server-authenticated owner check, never request JSON.
+  isOwner?: boolean;
 }, dependencies: { fetch?: typeof fetch; deadlineMs?: number; budgetUsd?: number } = {}) {
   const started = Date.now();
+  const ownerBaseline = input.isOwner === true && process.env.ASK_JEV_MODE === "owner-pilot";
   const metrics: JevMetrics = { model: JEV_MODEL, rubric: JEV_RUBRIC, catalogueCount: input.snapshot.organizations.length, scoredOrganizations: 0, recordCount: 0, batchCount: 0, latencyMs: 0, inputTokens: 0, estimatedCostUsd: 0, reservedCostUsd: 0, usageComplete: true, fallbackReason: input.disabledReason ?? null };
+  metrics.limitPolicy = ownerBaseline ? "owner_baseline" : "standard";
   const fallback = () => ({ organizations: input.baseline.slice(0, LIMIT), metrics, judgments: [] as JevJudgment[] });
   if (input.disabledReason) return fallback();
   const controller = new AbortController();
-  const deadline = Math.min(dependencies.deadlineMs ?? JEV_DEADLINE_MS, JEV_DEADLINE_MS);
-  const budget = Math.min(dependencies.budgetUsd ?? JEV_BUDGET_USD, JEV_BUDGET_USD);
+  const deadline = ownerBaseline ? null : Math.min(dependencies.deadlineMs ?? JEV_DEADLINE_MS, JEV_DEADLINE_MS);
+  const budget = ownerBaseline ? Infinity : Math.min(dependencies.budgetUsd ?? JEV_BUDGET_USD, JEV_BUDGET_USD);
   let completed = 0;
-  let timer: ReturnType<typeof setTimeout>;
-  const timeout = new Promise<never>((_, reject) => { timer = setTimeout(() => { controller.abort(); reject(new SelectionFailure("timeout")); }, deadline); });
-  const check = () => { if (controller.signal.aborted || Date.now() - started >= deadline) fail("timeout"); };
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const timeout = deadline === null ? null : new Promise<never>((_, reject) => { timer = setTimeout(() => { controller.abort(); reject(new SelectionFailure("timeout")); }, deadline); });
+  const check = () => { if (controller.signal.aborted || (deadline !== null && Date.now() - started >= deadline)) fail("timeout"); };
   const run = async () => {
     const records = buildJevRecords(input.snapshot);
     metrics.recordCount = records.length;
@@ -221,7 +226,7 @@ export async function selectWithJev(input: {
           metrics.inputTokens += data.usage.input_tokens;
           metrics.estimatedCostUsd = metrics.inputTokens * INPUT_PRICE;
           completed++;
-          if (data.usage.input_tokens > jevInputUpperBound(payload)) fail("budget");
+          if (!ownerBaseline && data.usage.input_tokens > jevInputUpperBound(payload)) fail("budget");
           if (Object.keys(data.answers).length !== Object.keys(payload.questions).length || Object.entries(payload.questions).some(([id, q]) => data.answers[id]?.type !== q.type)) fail("invalid_output");
           for (const answer of Object.values(data.answers)) {
             if (answer.type === "score" && Math.abs(Object.values(answer.probabilities).reduce((sum, p, level) => sum + p * level, 0) - answer.score) > 0.03) fail("invalid_output");
@@ -256,7 +261,7 @@ export async function selectWithJev(input: {
     const organizations = rankJevCandidates(top.map((w) => w.judgment), input.baseline, input.query, input.priorTurns);
     return { organizations, metrics, judgments };
   };
-  try { return await Promise.race([run(), timeout]); }
+  try { return await (timeout ? Promise.race([run(), timeout]) : run()); }
   catch (error) { metrics.fallbackReason = error instanceof SelectionFailure ? error.reason : "provider"; return fallback(); }
-  finally { clearTimeout(timer!); controller.abort(); metrics.latencyMs = Date.now() - started; metrics.usageComplete = completed === metrics.batchCount; }
+  finally { clearTimeout(timer); controller.abort(); metrics.latencyMs = Date.now() - started; metrics.usageComplete = completed === metrics.batchCount; }
 }

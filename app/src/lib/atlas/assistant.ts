@@ -469,7 +469,8 @@ export async function runAtlasAssistant(input: {
   const selection = await selectWithJev({
     snapshot: input.snapshot, query: input.query, priorTurns: input.priorTurns,
     baseline: access ? candidates : selectAssistantOrganizations(input.snapshot, input.query, input.priorTurns, input.snapshot.organizations.length),
-    disabledReason: access
+    disabledReason: access,
+    isOwner: input.isOwner === true
   });
   candidates = selection.organizations;
   const selectionMetrics = { selection: selection.metrics, candidateCount: candidates.length };

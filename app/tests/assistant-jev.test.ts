@@ -4,7 +4,7 @@ import { buildJevRecords, jevAccess, JEV_MODEL, rankJevCandidates, selectWithJev
 import { selectAssistantOrganizations } from "@/lib/atlas/assistant";
 import { atlasTestSnapshot } from "./fixtures/atlas-snapshot";
 
-afterEach(() => vi.unstubAllEnvs());
+afterEach(() => { vi.unstubAllEnvs(); vi.useRealTimers(); });
 function corpus(count = 40) {
   const snapshot = structuredClone(atlasTestSnapshot);
   snapshot.organizations = Array.from({ length: count }, (_, i) => {
@@ -82,6 +82,42 @@ describe("Jev bounded candidate selection", () => {
   it("reserves concurrent input cost before sending and stops before an insufficient budget", async () => {
     const fetch = provider(); const result = await selectWithJev(input(), { fetch, budgetUsd: 0.000001 });
     expect(result.metrics.fallbackReason).toBe("budget"); expect(fetch).not.toHaveBeenCalled();
+  });
+  it("completes an owner baseline whose full catalogue exceeds the standard reservation, retaining usage", async () => {
+    vi.stubEnv("ASK_JEV_MODE", "owner-pilot");
+    const snapshot = corpus(595);
+    snapshot.organizations.forEach((org) => { org.description += " Published operating qualifications for remote maintenance.".repeat(65); });
+    const data = input(snapshot);
+    const blockedFetch = provider();
+    expect((await selectWithJev(data, { fetch: blockedFetch })).metrics.fallbackReason).toBe("budget");
+    expect(blockedFetch).not.toHaveBeenCalled();
+    const fetch = provider();
+    const result = await selectWithJev({ ...data, isOwner: true }, { fetch });
+    expect(result.metrics).toMatchObject({ limitPolicy: "owner_baseline", scoredOrganizations: 595, fallbackReason: null, usageComplete: true });
+    expect(result.metrics.reservedCostUsd).toBeGreaterThan(0.05);
+    expect(result.metrics.inputTokens).toBe(fetch.mock.calls.length * 100);
+    expect(result.metrics.estimatedCostUsd).toBeCloseTo(result.metrics.inputTokens * 0.042 / 1_000_000, 10);
+  });
+  it("lets an authenticated owner-pilot complete beyond five seconds", async () => {
+    vi.stubEnv("ASK_JEV_MODE", "owner-pilot");
+    vi.useFakeTimers();
+    const good = provider(); let delayed = false;
+    const fetch = vi.fn<typeof globalThis.fetch>(async (...args) => {
+      if (!delayed) { delayed = true; await new Promise((resolve) => setTimeout(resolve, 6_000)); }
+      return good(...args);
+    });
+    const pending = selectWithJev({ ...input(corpus(1)), isOwner: true }, { fetch });
+    await vi.advanceTimersByTimeAsync(6_001);
+    const result = await pending;
+    expect(result.metrics).toMatchObject({ fallbackReason: null, scoredOrganizations: 1, usageComplete: true });
+    expect(result.metrics.latencyMs).toBeGreaterThanOrEqual(6_000);
+  });
+  it.each([[false, "owner-pilot"], [true, "enabled"], [true, "disabled"]])("retains the standard budget outside authenticated owner-pilot (%s, %s)", async (isOwner, mode) => {
+    vi.stubEnv("ASK_JEV_MODE", mode);
+    const fetch = provider();
+    const result = await selectWithJev({ ...input(), isOwner }, { fetch, budgetUsd: 0.000001 });
+    expect(result.metrics).toMatchObject({ fallbackReason: "budget", limitPolicy: "standard" });
+    expect(fetch).not.toHaveBeenCalled();
   });
   it("refuses oversize indivisible material rather than dropping its qualifications", async () => {
     const snapshot = corpus(1); snapshot.organizations[0].capabilities[0].summary = "Qualified only for laboratory use. ".repeat(2000);
