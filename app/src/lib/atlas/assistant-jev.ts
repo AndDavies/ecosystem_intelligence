@@ -1,5 +1,6 @@
 import "server-only";
 
+import { createHash, createHmac } from "node:crypto";
 import { z } from "zod";
 import type { AtlasAssistantPriorTurn, AtlasOrganization, AtlasSnapshot } from "@/types/atlas";
 
@@ -16,7 +17,24 @@ type Question = { type: "score" | "choice"; instructions: string; criteria: stri
 type Payload = { model: string; state: unknown; questions: Record<string, Question> };
 export type JevFallback = "disabled" | "not_owner" | "missing_key" | "budget" | "context" | "timeout" | "authentication" | "rate_limit" | "provider" | "invalid_output" | "invalid_catalogue";
 
+type JevFailureDetail = {
+  check: string; phase?: "relevance" | "constraints"; batch?: number;
+  requestId?: string | null; status?: number;
+  issues?: Array<{ code: string; path: string; numericValue?: number }>;
+  score?: number; probabilityMean?: number; tolerance?: number;
+};
 export interface JevMetrics {
+  diagnosticsVersion?: number;
+  queryContextFingerprint?: string | null;
+  catalogueFingerprint?: string;
+  selectedCatalogueFingerprint?: string;
+  selectedOrganizationIds?: string[];
+  selectedCapabilityIds?: string[];
+  priorTurnCount?: number;
+  completedBatchCount?: number;
+  scoredRecordCount?: number;
+  providerRequestIds?: string[];
+  failureDetail?: JevFailureDetail | null;
   limitPolicy?: "standard" | "owner_baseline";
   model: string;
   rubric: string;
@@ -82,14 +100,28 @@ const answerSchema = z.discriminatedUnion("type", [
   z.object({ type: z.literal("score"), score: z.number().finite().min(0).max(3), confidence: probability, probabilities: z.object({ "0": probability, "1": probability, "2": probability, "3": probability }).strict() }),
   z.object({ type: z.literal("choice"), choice: z.enum(CHOICES), confidence: probability, probabilities: z.object({ supported: probability, contradicted: probability, not_established: probability, not_requested: probability }).strict() })
 ]);
+const usageSchema = z.object({ input_tokens: z.number().int().nonnegative(), output_tokens: z.number().int().nonnegative() });
 const responseSchema = z.object({
   model: z.literal(JEV_MODEL), answers: z.record(z.string(), answerSchema),
-  usage: z.object({ input_tokens: z.number().int().nonnegative(), output_tokens: z.number().int().nonnegative() })
+  usage: usageSchema
 });
 class SelectionFailure extends Error {
-  constructor(readonly reason: JevFallback) { super(reason); }
+  constructor(readonly reason: JevFallback, readonly detail?: JevFailureDetail) { super(reason); }
 }
-const fail = (reason: JevFallback): never => { throw new SelectionFailure(reason); };
+const fail = (reason: JevFallback, detail?: JevFailureDetail): never => { throw new SelectionFailure(reason, detail); };
+export const jevFingerprint = (value: unknown) => createHash("sha256").update(JSON.stringify(value)).digest("hex");
+function providerRequestId(response: Response) {
+  const value = response.headers.get("x-request-id") ?? response.headers.get("request-id") ?? response.headers.get("x-typesafe-request-id") ?? response.headers.get("cf-ray");
+  return value && /^[a-zA-Z0-9_:.-]{1,128}$/.test(value) ? value : null;
+}
+function schemaIssues(error: z.ZodError, raw: unknown): NonNullable<JevFailureDetail["issues"]> {
+  const known = new Set(["model", "answers", "type", "score", "confidence", "probabilities", "usage", "input_tokens", "output_tokens", ...CHOICES]);
+  return error.issues.slice(0, 6).map((issue) => {
+    const parts = issue.path.map(String);
+    const value = parts.reduce<unknown>((v, key) => v && typeof v === "object" && Object.hasOwn(v, key) ? (v as Record<string, unknown>)[key] : undefined, raw);
+    return { code: issue.code, path: parts.map((p) => known.has(p) || /^r\d+(d\d+)?$|^[0-3]$/.test(p) ? p : "[unexpected]").join("."), ...(typeof value === "number" && Number.isFinite(value) ? { numericValue: value } : {}) };
+  });
+}
 const bytes = (value: unknown) => Buffer.byteLength(JSON.stringify(value), "utf8");
 
 // UTF-8 bytes plus generous framing overhead, not the optimistic chars/4 heuristic.
@@ -148,7 +180,7 @@ function batches(cards: RecordCard[], make: (cards: RecordCard[]) => Payload) {
 }
 
 async function boundedResponse(response: Response) {
-  if (!response.body) return fail("invalid_output");
+  if (!response.body) return fail("invalid_output", { check: "missing_body" });
   const reader = response.body.getReader();
   let size = 0;
   const chunks: Uint8Array[] = [];
@@ -156,11 +188,11 @@ async function boundedResponse(response: Response) {
     const { done, value } = await reader.read();
     if (done) break;
     size += value.byteLength;
-    if (size > 256_000) { await reader.cancel(); return fail("invalid_output"); }
+    if (size > 256_000) { await reader.cancel(); return fail("invalid_output", { check: "response_size" }); }
     chunks.push(value);
   }
   try { return JSON.parse(Buffer.concat(chunks).toString("utf8")) as unknown; }
-  catch { return fail("invalid_output"); }
+  catch { return fail("invalid_output", { check: "invalid_json" }); }
 }
 
 function normalize(value: string) { return value.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim(); }
@@ -190,6 +222,14 @@ export async function selectWithJev(input: {
   const ownerBaseline = input.isOwner === true && process.env.ASK_JEV_MODE === "owner-pilot";
   const metrics: JevMetrics = { model: JEV_MODEL, rubric: JEV_RUBRIC, catalogueCount: input.snapshot.organizations.length, scoredOrganizations: 0, recordCount: 0, batchCount: 0, latencyMs: 0, inputTokens: 0, estimatedCostUsd: 0, reservedCostUsd: 0, usageComplete: true, fallbackReason: input.disabledReason ?? null };
   metrics.limitPolicy = ownerBaseline ? "owner_baseline" : "standard";
+  metrics.diagnosticsVersion = 1;
+  metrics.priorTurnCount = input.priorTurns.length;
+  const fingerprintKey = process.env.TYPESAFE_API_KEY?.trim();
+  metrics.queryContextFingerprint = fingerprintKey ? createHmac("sha256", fingerprintKey).update(JSON.stringify({ query: input.query, priorTurns: input.priorTurns })).digest("hex") : null;
+  metrics.providerRequestIds = [];
+  metrics.completedBatchCount = 0;
+  metrics.scoredRecordCount = 0;
+  metrics.failureDetail = null;
   const fallback = () => ({ organizations: input.baseline.slice(0, LIMIT), metrics, judgments: [] as JevJudgment[] });
   if (input.disabledReason) return fallback();
   const controller = new AbortController();
@@ -202,57 +242,86 @@ export async function selectWithJev(input: {
   const run = async () => {
     const records = buildJevRecords(input.snapshot);
     metrics.recordCount = records.length;
+    metrics.catalogueFingerprint = jevFingerprint(records);
     if (new Set(input.snapshot.organizations.map((o) => o.id)).size !== input.snapshot.organizations.length || input.snapshot.organizations.some((o) => new Set(o.capabilities.map((c) => c.id)).size !== o.capabilities.length || o.capabilities.some((c) => c.organizationId !== o.id))) fail("invalid_catalogue");
     const winners = new Map<string, { card: RecordCard; judgment: JevJudgment }>();
     const execute = async (groups: ReturnType<typeof batches>, constraints: boolean) => {
       const reserved = groups.reduce((sum, g) => sum + jevInputUpperBound(g.payload) * INPUT_PRICE, 0);
       if (metrics.reservedCostUsd + reserved > budget) fail("budget");
       let cursor = 0;
-      await Promise.all(Array.from({ length: Math.min(4, groups.length) }, async () => {
+      let phaseFailure: SelectionFailure | null = null;
+      await Promise.allSettled(Array.from({ length: Math.min(4, groups.length) }, async () => {
         while (cursor < groups.length) {
           check();
-          const { cards, payload } = groups[cursor++];
-          metrics.reservedCostUsd += jevInputUpperBound(payload) * INPUT_PRICE;
-          metrics.batchCount++;
-          const response = await (dependencies.fetch ?? fetch)("https://api.typesafe.ai/v1/systemone", {
-            method: "POST", headers: { Authorization: `Bearer ${process.env.TYPESAFE_API_KEY?.trim() ?? ""}`, "Content-Type": "application/json" },
-            body: JSON.stringify(payload), signal: controller.signal, cache: "no-store", redirect: "error"
-          });
-          if (!response.ok) fail(response.status === 401 || response.status === 403 ? "authentication" : response.status === 429 ? "rate_limit" : "provider");
-          const parsed = responseSchema.safeParse(await boundedResponse(response));
-          check();
-          if (!parsed.success) return fail("invalid_output");
-          const data = parsed.data;
-          metrics.inputTokens += data.usage.input_tokens;
-          metrics.estimatedCostUsd = metrics.inputTokens * INPUT_PRICE;
-          completed++;
-          if (!ownerBaseline && data.usage.input_tokens > jevInputUpperBound(payload)) fail("budget");
-          if (Object.keys(data.answers).length !== Object.keys(payload.questions).length || Object.entries(payload.questions).some(([id, q]) => data.answers[id]?.type !== q.type)) fail("invalid_output");
-          for (const answer of Object.values(data.answers)) {
-            if (answer.type === "score" && Math.abs(Object.values(answer.probabilities).reduce((sum, p, level) => sum + p * level, 0) - answer.score) > 0.03) fail("invalid_output");
-            const probs = Object.values(answer.probabilities);
-            if (Math.abs(probs.reduce((a, b) => a + b, 0) - 1) > 0.02) fail("invalid_output");
-          }
-          cards.forEach((card, i) => {
-            if (constraints) {
-              winners.get(card.organizationId)!.judgment.constraints = DIMENSIONS.map((_, d) => {
-                const answer = data.answers[`r${i}d${d}`];
-                if (answer.type !== "choice") return fail("invalid_output");
-                return answer.choice;
-              });
-            } else {
-              const answer = data.answers[`r${i}`];
-              if (answer.type !== "score") return fail("invalid_output");
-              const existing = winners.get(card.organizationId);
-              if (!existing || answer.score > existing.judgment.score || (answer.score === existing.judgment.score && card.recordId < existing.card.recordId)) winners.set(card.organizationId, { card, judgment: { organizationId: card.organizationId, capabilityId: card.capability?.id ?? null, score: answer.score, constraints: [] } });
+          const batch = cursor++;
+          const { cards, payload } = groups[batch];
+          const context: JevFailureDetail = { check: "transport", phase: constraints ? "constraints" : "relevance", batch, requestId: null };
+          try {
+            metrics.reservedCostUsd += jevInputUpperBound(payload) * INPUT_PRICE;
+            metrics.batchCount++;
+            const response = await (dependencies.fetch ?? fetch)("https://api.typesafe.ai/v1/systemone", {
+              method: "POST", headers: { Authorization: `Bearer ${process.env.TYPESAFE_API_KEY?.trim() ?? ""}`, "Content-Type": "application/json" },
+              body: JSON.stringify(payload), signal: controller.signal, cache: "no-store", redirect: "error"
+            });
+            context.requestId = providerRequestId(response);
+            context.status = response.status;
+            if (context.requestId && metrics.providerRequestIds!.length < 16) metrics.providerRequestIds!.push(context.requestId);
+            if (!response.ok) fail(response.status === 401 || response.status === 403 ? "authentication" : response.status === 429 ? "rate_limit" : "provider", { check: "http_status" });
+            const raw = await boundedResponse(response);
+            // Count billable usage even when the corresponding answers are rejected.
+            const usage = usageSchema.safeParse(raw && typeof raw === "object" ? (raw as Record<string, unknown>).usage : undefined);
+            if (usage.success) { metrics.inputTokens += usage.data.input_tokens; completed++; }
+            metrics.estimatedCostUsd = metrics.inputTokens * INPUT_PRICE;
+            check();
+            const parsed = responseSchema.safeParse(raw);
+            if (!parsed.success) return fail("invalid_output", { check: "response_schema", issues: schemaIssues(parsed.error, raw) });
+            const data = parsed.data;
+            if (!ownerBaseline && data.usage.input_tokens > jevInputUpperBound(payload)) fail("budget");
+            if (Object.keys(data.answers).length !== Object.keys(payload.questions).length || Object.keys(payload.questions).some((id) => !Object.hasOwn(data.answers, id))) fail("invalid_output", { check: "answer_keys" });
+            if (Object.entries(payload.questions).some(([id, q]) => data.answers[id]?.type !== q.type)) fail("invalid_output", { check: "answer_type" });
+            for (const answer of Object.values(data.answers)) {
+              if (answer.type === "score") {
+                const probabilityMean = Object.values(answer.probabilities).reduce((sum, p, level) => sum + p * level, 0);
+                // Live responses round scores and probabilities independently to two decimals.
+                // Their maximum combined rounding error is .005 * (1 + 0 + 1 + 2 + 3).
+                const tolerance = 0.035;
+                if (Math.abs(probabilityMean - answer.score) > tolerance + 1e-9) fail("invalid_output", { check: "score_probability_mismatch", score: answer.score, probabilityMean, tolerance });
+              }
+              const probs = Object.values(answer.probabilities);
+              if (Math.abs(probs.reduce((a, b) => a + b, 0) - 1) > 0.02 + 1e-9) fail("invalid_output", { check: "probability_sum" });
             }
-          });
+            cards.forEach((card, i) => {
+              if (constraints) {
+                winners.get(card.organizationId)!.judgment.constraints = DIMENSIONS.map((_, d) => {
+                  const answer = data.answers[`r${i}d${d}`];
+                  if (answer.type !== "choice") return fail("invalid_output");
+                  return answer.choice;
+                });
+              } else {
+                const answer = data.answers[`r${i}`];
+                if (answer.type !== "score") return fail("invalid_output");
+                const existing = winners.get(card.organizationId);
+                if (!existing || answer.score > existing.judgment.score || (answer.score === existing.judgment.score && card.recordId < existing.card.recordId)) winners.set(card.organizationId, { card, judgment: { organizationId: card.organizationId, capabilityId: card.capability?.id ?? null, score: answer.score, constraints: [] } });
+              }
+            });
+            metrics.completedBatchCount!++;
+            if (!constraints) { metrics.scoredRecordCount! += cards.length; metrics.scoredOrganizations = winners.size; }
+          } catch (error) {
+            if (!phaseFailure) {
+              const failure = error instanceof SelectionFailure ? error : new SelectionFailure("provider", { check: "transport" });
+              phaseFailure = new SelectionFailure(failure.reason, { ...context, ...failure.detail });
+              controller.abort();
+            }
+            return;
+          }
         }
       }));
+      if (phaseFailure) throw phaseFailure;
+      check();
     };
     await execute(batches(records, (cards) => payloadFor(cards, input.query, input.priorTurns, false, input.snapshot)), false);
     metrics.scoredOrganizations = winners.size;
-    if (winners.size !== input.snapshot.organizations.length) fail("invalid_output");
+    if (winners.size !== input.snapshot.organizations.length) fail("invalid_output", { check: "incomplete_coverage" });
     const order = new Map(input.baseline.map((o, i) => [o.id, i]));
     const top = [...winners.values()].sort((a, b) => b.judgment.score - a.judgment.score || order.get(a.card.organizationId)! - order.get(b.card.organizationId)!).slice(0, 32);
     await execute(batches(top.map((w) => w.card), (cards) => payloadFor(cards, input.query, input.priorTurns, true, input.snapshot)), true);
@@ -262,6 +331,6 @@ export async function selectWithJev(input: {
     return { organizations, metrics, judgments };
   };
   try { return await (timeout ? Promise.race([run(), timeout]) : run()); }
-  catch (error) { metrics.fallbackReason = error instanceof SelectionFailure ? error.reason : "provider"; return fallback(); }
+  catch (error) { metrics.fallbackReason = error instanceof SelectionFailure ? error.reason : "provider"; metrics.failureDetail = error instanceof SelectionFailure ? error.detail ?? { check: error.reason } : { check: "transport" }; return fallback(); }
   finally { clearTimeout(timer); controller.abort(); metrics.latencyMs = Date.now() - started; metrics.usageComplete = completed === metrics.batchCount; }
 }

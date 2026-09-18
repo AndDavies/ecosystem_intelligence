@@ -163,6 +163,12 @@ function assistantDiscovery(
 
 export async function POST(request: Request) {
   const requestStartedAt = performance.now();
+  const stages: Record<string, number> = {};
+  async function timed<T>(name: string, work: () => Promise<T>): Promise<T> {
+    const start = performance.now();
+    try { return await work(); }
+    finally { stages[name] = Math.round(performance.now() - start); }
+  }
   const parsed = betaDiscoveryRequestSchema.safeParse(await request.json().catch(() => null));
   if (!parsed.success) {
     return privateJson(
@@ -172,12 +178,14 @@ export async function POST(request: Request) {
   }
 
   const [snapshot, user] = await Promise.all([
-    getAtlasSnapshot(),
-    getAtlasUser().catch(() => null)
+    timed("snapshotMs", () => getAtlasSnapshot()),
+    timed("authMs", () => getAtlasUser().catch(() => null))
   ]);
+  const fallbackStartedAt = performance.now();
   const fallback = discoverAtlasSnapshot(snapshot, parsed.data.query);
+  stages.deterministicSearchMs = Math.round(performance.now() - fallbackStartedAt);
   const requestHash = assistantSubjectFingerprint(request, user?.id);
-  const reservation = hasOpenAiEnv() ? await reserveAssistantRequest(requestHash, Boolean(user)) : null;
+  const reservation = hasOpenAiEnv() ? await timed("quotaMs", () => reserveAssistantRequest(requestHash, Boolean(user))) : null;
   const currentQuota = reservation === null ? null : atlasAssistantQuota(Boolean(user), reservation.used);
 
   if (reservation && !reservation.allowed) {
@@ -217,18 +225,19 @@ export async function POST(request: Request) {
   const discovery = run.answer
     ? assistantDiscovery(snapshot, parsed.data.query, run.answer)
     : fallback;
-  const searchId = await recordSearch({
+  const searchId = await timed("telemetryMs", () => recordSearch({
     requestHash,
     parsed: parsed.data,
     discovery,
     answer: run.answer,
     fallbackReason: run.fallbackReason,
     metrics: run.metrics
-  }).catch(() => null);
+  })).catch(() => null);
 
   // Operational diagnostics only: never log the question, answer, account or source text.
   console.info(JSON.stringify({
     event: "ask_true_north_completed",
+    stages,
     searchId,
     requestLatencyMs: Math.round(performance.now() - requestStartedAt),
     assistantLatencyMs: run.metrics.latencyMs,

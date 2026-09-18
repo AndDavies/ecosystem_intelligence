@@ -70,6 +70,7 @@ it("logs comparison metrics without the private question or account", async () =
   const logged = JSON.parse(message);
   expect(logged).toMatchObject({ event: "ask_true_north_completed", model: "test", assistantLatencyMs: 1, organizationIds: [] });
   expect(logged.requestLatencyMs).toBeGreaterThanOrEqual(0);
+  expect(logged.stages).toMatchObject({ snapshotMs: expect.any(Number), authMs: expect.any(Number), deterministicSearchMs: expect.any(Number), quotaMs: expect.any(Number), telemetryMs: expect.any(Number) });
   expect(message).not.toContain("private-question-text");
   expect(message).not.toContain("private-member-id");
 });

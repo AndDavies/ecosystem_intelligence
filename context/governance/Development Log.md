@@ -4,6 +4,14 @@ Status: chronological implementation record
 Owner: Andrew Davies
 Last reviewed: 2026-09-05
 
+## 2026-09-18 — Jev rounding correction and owner-test diagnostics
+
+A targeted provider check reproduced the fifth owner question's score/probability validation fallback. Independently rounded two-decimal scores/distributions now use a mathematically bounded 0.035 tolerance plus floating-point epsilon; genuine mismatches, invalid identities/answers and incomplete coverage still fail to the lexical baseline. Added bounded provider request IDs, specific safe validation details, actual usage on rejected responses, completed/partial coverage, keyed query-context and catalogue fingerprints, selected IDs and route-stage timings. No raw query/answer/provider text or secrets are added to logs.
+
+The corrected saved-snapshot selection check completed 595 organizations / 739 records in 67 provider requests, 5.426 seconds, 813,079 input tokens (estimated US$0.034149318), without fallback or an OpenAI answer/Ask-quota reservation. This confirms one complete selection pass, not answer quality or repeatability. The existing owner-pilot cost/deadline exception and Luna low reasoning remain; production configuration is aligned to the tested key. TypeSafe dashboard accounting remains unexplained despite successful metered responses. Release scope excludes unrelated local editorial, governance and research work; no migration or content publication.
+
+Local release gate passed under Node 24: 119 test files, 890 passing tests and one pre-existing skip, plus typecheck, lint, governance/repository checks, 5,000-marker scale and production build. Dependency audit reports five existing moderate findings and no high/critical finding.
+
 ## 2026-09-11 — Signals source-image framing
 
 Corrected the shared Signals visual so editorial photographs fill their frames instead of letterboxing inside a white 16:10 box. Edition photographs now use 16:9; compact and homepage teaser photos use cover fitting without image padding. Logos retain contain fitting and deliberate clear space. The correction applies to existing editions, archive and homepage rendering without rewriting their stored assets. Aligned the Brand System with required new-edition imagery. No schema, core-corpus, consent, campaign or provider changes.

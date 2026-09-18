@@ -68,6 +68,36 @@ describe("Jev bounded candidate selection", () => {
     expect(result.organizations).toEqual(data.baseline.slice(0, 16)); expect(result.metrics.fallbackReason).toBe(reason);
     expect(fetch.mock.calls.length).toBeLessThanOrEqual(4);
   });
+  it("accepts independently rounded scores but rejects genuine inconsistencies with billable diagnostics", async () => {
+    const good = provider();
+    const responseWithScore = (score: number) => vi.fn<typeof globalThis.fetch>(async (...args) => {
+      const body = await (await good(...args)).json();
+      for (const answer of Object.values(body.answers) as Array<Record<string, unknown>>) {
+        if (answer.type === "score") Object.assign(answer, { score, probabilities: { "0": 0.1, "1": 0.2, "2": 0.3, "3": 0.4 } });
+      }
+      return Response.json(body, { headers: { "request-id": "req_rounding_test" } });
+    });
+    // Weighted mean 2; old > .03 comparison rejects 2.03 due to floating precision.
+    const accepted = await selectWithJev(input(corpus(1)), { fetch: responseWithScore(2.03) });
+    expect(accepted.metrics).toMatchObject({ fallbackReason: null, scoredOrganizations: 1, completedBatchCount: 2, scoredRecordCount: 1 });
+    const data = input(corpus(1));
+    const rejected = await selectWithJev(data, { fetch: responseWithScore(2.1) });
+    expect(rejected.metrics).toMatchObject({ fallbackReason: "invalid_output", inputTokens: 100, usageComplete: true, failureDetail: { check: "score_probability_mismatch", requestId: "req_rounding_test", status: 200, phase: "relevance", batch: 0, score: 2.1, probabilityMean: 2, tolerance: 0.035 } });
+    expect(rejected.organizations).toEqual(data.baseline.slice(0, 16));
+  });
+  it("records safe schema paths and request IDs without provider text or raw query context", async () => {
+    vi.stubEnv("TYPESAFE_API_KEY", "test-only-secret");
+    const data = input(corpus(1)); data.query = "PRIVATE_QUERY_CANARY";
+    const fetch = vi.fn<typeof globalThis.fetch>(async () => Response.json({ model: "UNTRUSTED_MODEL_CANARY", answers: {}, usage: { input_tokens: 123, output_tokens: 0 } }, { headers: { "x-request-id": "req_schema_test" } }));
+    const first = await selectWithJev(data, { fetch });
+    expect(first.metrics).toMatchObject({ inputTokens: 123, failureDetail: { check: "response_schema", issues: [{ path: "model" }], requestId: "req_schema_test" } });
+    expect(JSON.stringify(first.metrics)).not.toMatch(/PRIVATE_QUERY_CANARY|UNTRUSTED_MODEL_CANARY|test-only-secret/);
+    const same = await selectWithJev(data, { fetch });
+    const changed = await selectWithJev({ ...data, priorTurns: [{ query: "Previous question", organizationIds: ["org-0"] }] }, { fetch });
+    expect(same.metrics.queryContextFingerprint).toBe(first.metrics.queryContextFingerprint);
+    expect(changed.metrics.queryContextFingerprint).not.toBe(first.metrics.queryContextFingerprint);
+    expect(changed.metrics.catalogueFingerprint).toBe(first.metrics.catalogueFingerprint);
+  });
   it("does not let a partial pass bias results", async () => {
     const data = input(); const good = provider(); let n = 0;
     const fetch = vi.fn<typeof globalThis.fetch>(async (...args) => ++n === 2 ? Response.json({ model: JEV_MODEL, answers: {}, usage: { input_tokens: 0, output_tokens: 0 } }) : good(...args));
