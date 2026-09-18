@@ -2551,3 +2551,19 @@ Signals v3 now accepts independently licensed contextual hero photographs with p
 ## 2026-09-15 — Logos included in dossier Review and Publish
 
 Andrew approved all prepared logos from the Bing-priority refresh run. The ten recovered marks were associated with their exact published organizations through the existing provenance-backed import; five existing logos were preserved and two unavailable marks remain missing. Research now prepares new-organization and missing-logo refresh candidates identically, stages their images privately, and includes the logo in normal Review and transactional dossier Publish. Removed the separate post-publication logo approval/import instruction. Research retains the calling Codex model and ends at private Review.
+
+
+## 2026-09-18 — Ask True North Jev selection (local, disabled)
+
+Implemented optional server-only Jev relevance selection across the published snapshot before the 16-organization answer limit, with separate constraint checks, quota-first owner-pilot gating, bounded context/concurrency, a five-second deadline and US$0.05 reserved input-cost ceiling. Whole-stage failure uses the existing lexical selector. Final answer validation now uses the exact supplied organization/capability catalogue. No answering model, map-search behaviour, schema, research workflow or production setting changed.
+
+Added offline-by-default selection evaluation using 56 saved public baseline projections and 40 development/held-out questions; source provenance is retained and relevance labels explicitly await human review. Counterfactual arms reuse broad-pass scores without claiming independent model trials. Paid saved-corpus evaluation and the legacy production-read answer smoke require distinct explicit flags. Updated the PRD, provider privacy disclosure and [integration/activation instructions](../../app/docs/ask-jev.md).
+
+Local validation: 121 test files / 893 tests passed; typecheck passed; lint passed after removing one unused test import. Offline evaluation completed all 40 cases without loading credentials or contacting a provider. Privacy disclosure rendered at 390/768/1024/1440 pixels with no horizontal overflow or page errors and an accessible source link; browser API and external requests were intercepted. These are local implementation checks, not Jev quality, latency, cost or publication evidence. Key storage was confirmed by the owner, but no paid provider evaluation, commit, push, deployment, migration, live corpus query or public activation has been performed. Existing unrelated changes were preserved.
+
+Release authorized September 18 for authenticated owner testing. Ship with Jev disabled for the baseline; activation and measured provider quality remain separate. No schema or unrelated editorial changes included.
+
+
+### September 18 Ask release validation
+
+Isolated the Ask/Jev release from unrelated local editorial/schema/governance work. Node 24 release gate passed: repository/governance checks, typecheck, 119 test files (882 passed, one skipped), lint, 5,000-marker scale and production build. Added privacy-safe Vercel comparison logs; all 14 affected route tests and affected lint passed, followed by a successful production rebuild/typecheck. No paid model requests were run. Vercel answering model set to owner-selected `gpt-5.6-luna`; Jev remains disabled. Five moderate dependency advisories reviewed (Vitest/mocker and Hono); no high/critical findings. Existing database advisors remain outside this non-schema release; restricted repair RPC warnings and informational indexes/RLS notices were reviewed. Deployment readiness and post-release checks are recorded in the release handoff.

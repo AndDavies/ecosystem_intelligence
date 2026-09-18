@@ -4,6 +4,8 @@ import {
   ATLAS_ASSISTANT_MODEL,
   type AtlasAssistantFailureClass
 } from "@/lib/atlas/assistant";
+import { isAtlasAdminOwner } from "@/lib/atlas/admin-owner";
+import type { JevMetrics } from "@/lib/atlas/assistant-jev";
 import { getAtlasUser } from "@/lib/atlas/auth";
 import { discoverAtlasSnapshot, getAtlasSnapshot } from "@/lib/atlas/repository";
 import {
@@ -36,6 +38,7 @@ interface SearchMetrics {
   candidateCount: number;
   failureClass: AtlasAssistantFailureClass | null;
   errorCode: string | null;
+  selection?: JevMetrics;
 }
 
 async function reserveAssistantRequest(requestHash: string, signedIn: boolean) {
@@ -88,7 +91,8 @@ async function recordSearch(input: {
       candidateCount: input.metrics.candidateCount,
       failureClass: input.metrics.failureClass,
       errorCode: input.metrics.errorCode,
-      gapCount: input.answer?.gaps.length ?? 0
+      gapCount: input.answer?.gaps.length ?? 0,
+      selection: input.metrics.selection ?? null
     }
   };
 
@@ -156,6 +160,7 @@ function assistantDiscovery(
 }
 
 export async function POST(request: Request) {
+  const requestStartedAt = performance.now();
   const parsed = betaDiscoveryRequestSchema.safeParse(await request.json().catch(() => null));
   if (!parsed.success) {
     return privateJson(
@@ -189,7 +194,8 @@ export async function POST(request: Request) {
         snapshot,
         query: parsed.data.query,
         priorTurns: parsed.data.priorTurns,
-        safetyIdentifier: requestHash
+        safetyIdentifier: requestHash,
+        isOwner: isAtlasAdminOwner(user)
       })
     : {
         answer: null,
@@ -217,6 +223,24 @@ export async function POST(request: Request) {
     fallbackReason: run.fallbackReason,
     metrics: run.metrics
   }).catch(() => null);
+
+  // Operational diagnostics only: never log the question, answer, account or source text.
+  console.info(JSON.stringify({
+    event: "ask_true_north_completed",
+    searchId,
+    requestLatencyMs: Math.round(performance.now() - requestStartedAt),
+    assistantLatencyMs: run.metrics.latencyMs,
+    model: run.metrics.model,
+    inputTokens: run.metrics.inputTokens,
+    outputTokens: run.metrics.outputTokens,
+    cachedInputTokens: run.metrics.cachedInputTokens,
+    outcome: run.answer?.outcome ?? null,
+    fallbackReason: run.fallbackReason ?? null,
+    failureClass: run.metrics.failureClass,
+    selection: "selection" in run.metrics ? run.metrics.selection : null,
+    organizationIds: discovery.organizationIds,
+    capabilityIds: discovery.capabilityIds
+  }));
 
   return privateJson({
     ...discovery,

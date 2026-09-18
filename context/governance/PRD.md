@@ -636,3 +636,8 @@ corpus targets are not release gates.
 - outbound sequencing or sales-pipeline management
 - continuous autonomous publication
 - classified, restricted, or inferred government demand
+
+
+## Ask True North semantic selection
+
+Optional Jev selection evaluates the published catalogue before the 16-organization answering limit, with a five-second and US$0.05 input-cost ceiling and complete deterministic fallback. Judgments are internal selection hints, not evidence or eligibility. Default disabled; owner pilot and public activation follow the evaluation and provider-disclosure checks in [Ask Jev integration](../../app/docs/ask-jev.md). Deterministic map search is unchanged.

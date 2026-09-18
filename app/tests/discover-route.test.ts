@@ -17,6 +17,7 @@ const makeRequest = (body:object={query:"Find Canadian maritime sensors"}) => ne
   method:"POST", headers:{"content-type":"application/json","x-forwarded-for":"8.8.8.8"},body:JSON.stringify(body)
 });
 beforeEach(() => {
+  vi.spyOn(console, "info").mockImplementation(() => {});
   state.openAi=true;state.database=true;state.user=null;
   state.rpc.mockReset().mockResolvedValue({data:[{allowed:true,used:3}],error:null});
   state.model.mockReset().mockResolvedValue({answer:null,fallbackReason:"unavailable",metrics:{model:"test",latencyMs:1}});
@@ -55,4 +56,20 @@ describe("Ask True North paid-call boundary", () => {
   it.each([{query:"sensors\u0000"},{query:"sensors",cohort:"\u0000"},{query:"sensors",contextPath:"/\u0000"},{query:"sensors",priorTurns:[{query:"x\u0000",organizationIds:[]}]}])("rejects database-incompatible input before reserving or calling the provider: %j",async (body)=>{
     expect((await POST(makeRequest(body))).status).toBe(400);expect(state.rpc).not.toHaveBeenCalled();expect(state.model).not.toHaveBeenCalled();
   });
+});
+
+it("does not accept client-supplied owner or Jev activation flags", async () => {
+  await POST(makeRequest({ query: "sensors", isOwner: true, jevMode: "enabled" }));
+  expect(state.model).toHaveBeenCalledWith(expect.objectContaining({ isOwner: false }));
+});
+
+it("logs comparison metrics without the private question or account", async () => {
+  state.user = { id: "private-member-id" };
+  await POST(makeRequest({ query: "private-question-text" }));
+  const message = vi.mocked(console.info).mock.calls.at(-1)?.[0];
+  const logged = JSON.parse(message);
+  expect(logged).toMatchObject({ event: "ask_true_north_completed", model: "test", assistantLatencyMs: 1, organizationIds: [] });
+  expect(logged.requestLatencyMs).toBeGreaterThanOrEqual(0);
+  expect(message).not.toContain("private-question-text");
+  expect(message).not.toContain("private-member-id");
 });

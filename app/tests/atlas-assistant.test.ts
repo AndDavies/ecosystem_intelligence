@@ -6,7 +6,7 @@ import {
   atlasAssistantQuota,
   buildAssistantCatalog,
   classifyAssistantFailure,
-  finalizeAssistantAnswer,
+  finalizeAssistantAnswer as finalizeSuppliedAnswer,
   selectAssistantOrganizations,
   type RawAssistantAnswer
 } from "@/lib/atlas/assistant";
@@ -34,6 +34,10 @@ const capabilityCitation: AtlasCitation = {
   excerpt: "The system provides underwater sensing for awareness missions.",
   publishedAt: "2026-07-19"
 };
+
+function finalizeAssistantAnswer(snapshot: AtlasSnapshot, raw: RawAssistantAnswer) {
+  return finalizeSuppliedAnswer(snapshot, raw, snapshot.organizations);
+}
 
 function citedSnapshot(): AtlasSnapshot {
   const snapshot = structuredClone(atlasTestSnapshot);
@@ -128,6 +132,12 @@ describe("Ask True North output guardrails", () => {
     const finalized = finalizeAssistantAnswer(snapshot, raw);
     expect(finalized.outcome).toBe("coverage_gap");
     expect(finalized.matches).toEqual([]);
+  });
+
+  it("rejects published organizations and capabilities not supplied to the answering model", () => {
+    const snapshot = citedSnapshot();
+    expect(finalizeSuppliedAnswer(snapshot, answer(), snapshot.organizations.slice(1)).matches).toEqual([]);
+    expect(finalizeSuppliedAnswer(snapshot, answer(), [{ ...snapshot.organizations[0], capabilities: [] }]).matches).toEqual([]);
   });
 
   it("builds the model catalogue from the published snapshot contract without a second index", () => {

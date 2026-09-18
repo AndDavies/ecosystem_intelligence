@@ -1,0 +1,427 @@
+{
+  "version": "tnm-ask-eval-v1",
+  "judgmentStatus": "draft_requires_human_review",
+  "notes": [
+    "Seed relevant slugs identify plausible offerings, not verified satisfaction of every constraint.",
+    "Review relevance grades for the complete frozen corpus before treating metrics as acceptance evidence.",
+    "Held-out questions must not be used for prompt tuning. Synthetic attack/transport cases live separately in assistant-jev.test.ts."
+  ],
+  "cases": [
+    {
+      "id": "q01",
+      "split": "development",
+      "category": "semantic",
+      "query": "Who could help maintain equipment at a remote site with intermittent connectivity?",
+      "seedRelevantSlugs": [
+        "gastops",
+        "kognitiv-spark",
+        "nortac-defence"
+      ],
+      "expectedCaveat": false
+    },
+    {
+      "id": "q02",
+      "split": "development",
+      "category": "semantic",
+      "query": "Can a specialist guide a technician without travelling to the job?",
+      "seedRelevantSlugs": [
+        "kognitiv-spark"
+      ],
+      "expectedCaveat": false
+    },
+    {
+      "id": "q03",
+      "split": "development",
+      "category": "semantic",
+      "query": "Who can identify wear inside a machine before a breakdown?",
+      "seedRelevantSlugs": [
+        "gastops"
+      ],
+      "expectedCaveat": false
+    },
+    {
+      "id": "q04",
+      "split": "development",
+      "category": "semantic",
+      "query": "Who can keep track of teams beyond cellular coverage?",
+      "seedRelevantSlugs": [
+        "nortac-defence"
+      ],
+      "expectedCaveat": false
+    },
+    {
+      "id": "q05",
+      "split": "development",
+      "category": "semantic",
+      "query": "Who can help practise intelligence scenarios before an operation?",
+      "seedRelevantSlugs": [
+        "h2-analytics"
+      ],
+      "expectedCaveat": false
+    },
+    {
+      "id": "q06",
+      "split": "development",
+      "category": "semantic",
+      "query": "Who could help bring an ocean prototype to a waterfront trial?",
+      "seedRelevantSlugs": [
+        "cove"
+      ],
+      "expectedCaveat": false
+    },
+    {
+      "id": "q07",
+      "split": "development",
+      "category": "semantic",
+      "query": "Who could help a new hardware venture build its first prototype?",
+      "seedRelevantSlugs": [
+        "north-forge"
+      ],
+      "expectedCaveat": false
+    },
+    {
+      "id": "q08",
+      "split": "development",
+      "category": "semantic",
+      "query": "Who could map the seabed using a sensor towed behind a vessel?",
+      "seedRelevantSlugs": [
+        "kraken-robotics"
+      ],
+      "expectedCaveat": false
+    },
+    {
+      "id": "q09",
+      "split": "development",
+      "category": "semantic",
+      "query": "Who builds a wheeled robotic platform for a research team?",
+      "seedRelevantSlugs": [
+        "clearpath-robotics"
+      ],
+      "expectedCaveat": false
+    },
+    {
+      "id": "q10",
+      "split": "development",
+      "category": "semantic",
+      "query": "Who can help deploy and recover equipment below the sea surface?",
+      "seedRelevantSlugs": [
+        "oceanworks-international"
+      ],
+      "expectedCaveat": false
+    },
+    {
+      "id": "q11",
+      "split": "development",
+      "category": "exact",
+      "query": "Tell me about H2 Analytics.",
+      "seedRelevantSlugs": [
+        "h2-analytics"
+      ],
+      "expectedCaveat": false
+    },
+    {
+      "id": "q12",
+      "split": "development",
+      "category": "exact",
+      "query": "Find COVE.",
+      "seedRelevantSlugs": [
+        "cove"
+      ],
+      "expectedCaveat": false
+    },
+    {
+      "id": "q13",
+      "split": "development",
+      "category": "role",
+      "query": "Find a startup incubator rather than a defence equipment supplier.",
+      "seedRelevantSlugs": [
+        "north-forge"
+      ],
+      "expectedCaveat": false
+    },
+    {
+      "id": "q14",
+      "split": "development",
+      "category": "geography",
+      "query": "Who could support ocean technology trials in Nova Scotia?",
+      "seedRelevantSlugs": [
+        "cove"
+      ],
+      "expectedCaveat": false
+    },
+    {
+      "id": "q15",
+      "split": "development",
+      "category": "constraint",
+      "query": "Who supplies underwater sensing with publicly documented procurement eligibility?",
+      "seedRelevantSlugs": [
+        "kraken-robotics"
+      ],
+      "expectedCaveat": true
+    },
+    {
+      "id": "q16",
+      "split": "development",
+      "category": "sparse",
+      "query": "Does Kognitiv Spark report the precise bandwidth required for its remote support?",
+      "seedRelevantSlugs": [
+        "kognitiv-spark"
+      ],
+      "expectedCaveat": true
+    },
+    {
+      "id": "q17",
+      "split": "development",
+      "category": "followup",
+      "query": "Which of those could help a technician get hands-free advice?",
+      "seedRelevantSlugs": [
+        "kognitiv-spark"
+      ],
+      "expectedCaveat": false,
+      "priorTurns": [
+        {
+          "query": "Find organizations for field equipment support",
+          "organizationSlugs": [
+            "gastops",
+            "kognitiv-spark",
+            "nortac-defence"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q18",
+      "split": "development",
+      "category": "unsupported",
+      "query": "Find a supplier of operational quantum teleportation systems.",
+      "seedRelevantSlugs": [],
+      "expectedCaveat": true
+    },
+    {
+      "id": "q19",
+      "split": "development",
+      "category": "constraint",
+      "query": "Can an aircraft engine condition monitor be assumed to support every naval engine?",
+      "seedRelevantSlugs": [
+        "gastops"
+      ],
+      "expectedCaveat": true
+    },
+    {
+      "id": "q20",
+      "split": "development",
+      "category": "role",
+      "query": "Who offers shared facilities rather than selling a proprietary ocean sensor?",
+      "seedRelevantSlugs": [
+        "cove"
+      ],
+      "expectedCaveat": false
+    },
+    {
+      "id": "q21",
+      "split": "held-out",
+      "category": "semantic",
+      "query": "Who can help an off-site expert see what a field worker sees?",
+      "seedRelevantSlugs": [
+        "kognitiv-spark"
+      ],
+      "expectedCaveat": false
+    },
+    {
+      "id": "q22",
+      "split": "held-out",
+      "category": "semantic",
+      "query": "Who could provide early warning of deterioration in rotating equipment?",
+      "seedRelevantSlugs": [
+        "gastops"
+      ],
+      "expectedCaveat": false
+    },
+    {
+      "id": "q23",
+      "split": "held-out",
+      "category": "semantic",
+      "query": "Who might connect scattered field personnel into a common operational picture?",
+      "seedRelevantSlugs": [
+        "nortac-defence"
+      ],
+      "expectedCaveat": false
+    },
+    {
+      "id": "q24",
+      "split": "held-out",
+      "category": "semantic",
+      "query": "Who could inject simulated reports into a command-post exercise?",
+      "seedRelevantSlugs": [
+        "h2-analytics"
+      ],
+      "expectedCaveat": false
+    },
+    {
+      "id": "q25",
+      "split": "held-out",
+      "category": "semantic",
+      "query": "Where could a marine startup access shared test infrastructure?",
+      "seedRelevantSlugs": [
+        "cove"
+      ],
+      "expectedCaveat": false
+    },
+    {
+      "id": "q26",
+      "split": "held-out",
+      "category": "semantic",
+      "query": "Who could help turn a Canadian hardware idea into a manufacturable prototype?",
+      "seedRelevantSlugs": [
+        "north-forge"
+      ],
+      "expectedCaveat": false
+    },
+    {
+      "id": "q27",
+      "split": "held-out",
+      "category": "semantic",
+      "query": "Who can generate high-resolution pictures of the ocean floor?",
+      "seedRelevantSlugs": [
+        "kraken-robotics"
+      ],
+      "expectedCaveat": false
+    },
+    {
+      "id": "q28",
+      "split": "held-out",
+      "category": "semantic",
+      "query": "Who sells a ground robotics base that researchers could build on?",
+      "seedRelevantSlugs": [
+        "clearpath-robotics"
+      ],
+      "expectedCaveat": false
+    },
+    {
+      "id": "q29",
+      "split": "held-out",
+      "category": "semantic",
+      "query": "Who engineers the handling arrangement for subsea work systems?",
+      "seedRelevantSlugs": [
+        "oceanworks-international"
+      ],
+      "expectedCaveat": false
+    },
+    {
+      "id": "q30",
+      "split": "held-out",
+      "category": "semantic",
+      "query": "Who makes satellite-connected instruments for monitoring at sea?",
+      "seedRelevantSlugs": [
+        "metocean-telematics"
+      ],
+      "expectedCaveat": false
+    },
+    {
+      "id": "q31",
+      "split": "held-out",
+      "category": "exact",
+      "query": "Find OceanWorks International.",
+      "seedRelevantSlugs": [
+        "oceanworks-international"
+      ],
+      "expectedCaveat": false
+    },
+    {
+      "id": "q32",
+      "split": "held-out",
+      "category": "exact",
+      "query": "What does Gastops offer?",
+      "seedRelevantSlugs": [
+        "gastops"
+      ],
+      "expectedCaveat": false
+    },
+    {
+      "id": "q33",
+      "split": "held-out",
+      "category": "role",
+      "query": "Which organization could help an ocean startup find mentors and facilities?",
+      "seedRelevantSlugs": [
+        "cove"
+      ],
+      "expectedCaveat": false
+    },
+    {
+      "id": "q34",
+      "split": "held-out",
+      "category": "geography",
+      "query": "Find a Canadian remote-support developer in Fredericton.",
+      "seedRelevantSlugs": [
+        "kognitiv-spark"
+      ],
+      "expectedCaveat": false
+    },
+    {
+      "id": "q35",
+      "split": "held-out",
+      "category": "constraint",
+      "query": "Who can guarantee reliable equipment support with no communications at all?",
+      "seedRelevantSlugs": [],
+      "expectedCaveat": true
+    },
+    {
+      "id": "q36",
+      "split": "held-out",
+      "category": "sparse",
+      "query": "Does the saved profile establish a service-level agreement for Kognitiv Spark?",
+      "seedRelevantSlugs": [
+        "kognitiv-spark"
+      ],
+      "expectedCaveat": true
+    },
+    {
+      "id": "q37",
+      "split": "held-out",
+      "category": "followup",
+      "query": "Which of those offer condition monitoring?",
+      "seedRelevantSlugs": [
+        "gastops"
+      ],
+      "expectedCaveat": false,
+      "priorTurns": [
+        {
+          "query": "Find organizations for field equipment support",
+          "organizationSlugs": [
+            "gastops",
+            "kognitiv-spark",
+            "nortac-defence"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q38",
+      "split": "held-out",
+      "category": "unsupported",
+      "query": "Who sells a fielded device that can teleport a vehicle?",
+      "seedRelevantSlugs": [],
+      "expectedCaveat": true
+    },
+    {
+      "id": "q39",
+      "split": "held-out",
+      "category": "constraint",
+      "query": "Find a commercially available autonomous wildfire aircraft with confirmed military acceptance.",
+      "seedRelevantSlugs": [
+        "fireswarm-solutions"
+      ],
+      "expectedCaveat": true
+    },
+    {
+      "id": "q40",
+      "split": "held-out",
+      "category": "role",
+      "query": "Find an organization that helps startups progress through incubation.",
+      "seedRelevantSlugs": [
+        "north-forge"
+      ],
+      "expectedCaveat": false
+    }
+  ]
+}

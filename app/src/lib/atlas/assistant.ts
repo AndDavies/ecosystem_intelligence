@@ -1,6 +1,7 @@
 import "server-only";
 
 import OpenAI from "openai";
+import { jevAccess, selectWithJev, type JevMetrics } from "@/lib/atlas/assistant-jev";
 import { zodTextFormat } from "openai/helpers/zod";
 import { z } from "zod";
 import type {
@@ -77,6 +78,7 @@ export interface AtlasAssistantRunResult {
     candidateCount: number;
     failureClass: AtlasAssistantFailureClass | null;
     errorCode: string | null;
+    selection?: JevMetrics;
   };
 }
 
@@ -294,9 +296,11 @@ function cleanText(value: string) {
 
 export function finalizeAssistantAnswer(
   snapshot: AtlasSnapshot,
-  raw: RawAssistantAnswer
+  raw: RawAssistantAnswer,
+  suppliedOrganizations: AtlasOrganization[]
 ): AtlasAssistantAnswer {
-  const organizations = new Map(snapshot.organizations.map((organization) => [organization.id, organization]));
+  const publishedIds = new Set(snapshot.organizations.map((organization) => organization.id));
+  const organizations = new Map(suppliedOrganizations.filter((organization) => publishedIds.has(organization.id)).map((organization) => [organization.id, organization]));
   const seenOrganizations = new Set<string>();
 
   const matches = raw.matches.flatMap((candidate) => {
@@ -438,9 +442,10 @@ export async function runAtlasAssistant(input: {
   query: string;
   priorTurns: AtlasAssistantPriorTurn[];
   safetyIdentifier: string;
+  isOwner?: boolean;
 }): Promise<AtlasAssistantRunResult> {
   const startedAt = Date.now();
-  const candidates = selectAssistantOrganizations(input.snapshot, input.query, input.priorTurns);
+  let candidates = selectAssistantOrganizations(input.snapshot, input.query, input.priorTurns);
   const emptyMetrics = {
     model: ATLAS_ASSISTANT_MODEL,
     latencyMs: 0,
@@ -460,6 +465,15 @@ export async function runAtlasAssistant(input: {
     };
   }
 
+  const access = jevAccess(input.isOwner === true);
+  const selection = await selectWithJev({
+    snapshot: input.snapshot, query: input.query, priorTurns: input.priorTurns,
+    baseline: access ? candidates : selectAssistantOrganizations(input.snapshot, input.query, input.priorTurns, input.snapshot.organizations.length),
+    disabledReason: access
+  });
+  candidates = selection.organizations;
+  const selectionMetrics = { selection: selection.metrics, candidateCount: candidates.length };
+
   const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY, timeout: 20_000, maxRetries: 1 });
   try {
     const response = await client.responses.parse({
@@ -478,6 +492,7 @@ export async function runAtlasAssistant(input: {
     }, { signal: AbortSignal.timeout(20_000) });
 
     const metrics = {
+      ...selectionMetrics,
       model: response.model ?? ATLAS_ASSISTANT_MODEL,
       latencyMs: Date.now() - startedAt,
       inputTokens: response.usage?.input_tokens ?? null,
@@ -501,7 +516,7 @@ export async function runAtlasAssistant(input: {
       };
     }
 
-    const answer = finalizeAssistantAnswer(input.snapshot, response.output_parsed);
+    const answer = finalizeAssistantAnswer(input.snapshot, response.output_parsed, candidates);
     return {
       answer: answer.matches.length || answer.outcome === "coverage_gap" ? answer : null,
       fallbackReason: answer.matches.length || answer.outcome === "coverage_gap" ? undefined : "invalid_output",
@@ -522,6 +537,7 @@ export async function runAtlasAssistant(input: {
       fallbackReason: failure.fallbackReason,
       metrics: {
         ...emptyMetrics,
+        ...selectionMetrics,
         latencyMs: Date.now() - startedAt,
         failureClass: failure.failureClass,
         errorCode: failure.errorCode
