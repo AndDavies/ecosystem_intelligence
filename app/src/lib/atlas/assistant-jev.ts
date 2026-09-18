@@ -5,7 +5,7 @@ import { z } from "zod";
 import type { AtlasAssistantPriorTurn, AtlasOrganization, AtlasSnapshot } from "@/types/atlas";
 
 export const JEV_MODEL = "jev-1.13.0";
-export const JEV_RUBRIC = "tnm-relevance-v1";
+export const JEV_RUBRIC = "tnm-relevance-v2";
 export const JEV_DEADLINE_MS = 5_000;
 export const JEV_BUDGET_USD = 0.05;
 const INPUT_PRICE = 0.042 / 1_000_000;
@@ -24,6 +24,14 @@ type JevFailureDetail = {
   score?: number; probabilityMean?: number; tolerance?: number;
 };
 export interface JevMetrics {
+  cacheStatus?: "hit" | "miss" | "coalesced" | "bypass";
+  budgetPeakUsd?: number;
+  relevanceMs?: number;
+  constraintMs?: number;
+  evidenceMs?: number;
+  payloadFingerprint?: string;
+  cutoffMargin?: number | null;
+  ranking?: JevJudgment[];
   diagnosticsVersion?: number;
   queryContextFingerprint?: string | null;
   catalogueFingerprint?: string;
@@ -71,7 +79,7 @@ function location(value: AtlasOrganization["primaryLocation"]) {
 
 // Explicit public-field projection: never spread a dossier, profileData or a user object.
 export function buildJevRecords(snapshot: AtlasSnapshot) {
-  return snapshot.organizations.flatMap((org) => {
+  return [...snapshot.organizations].sort((a,b) => a.id.localeCompare(b.id)).flatMap((org) => {
     const identity = {
       organizationId: org.id, name: org.name, legalName: org.legalName,
       role: org.entityKind, categories: org.categories, description: org.description,
@@ -79,7 +87,7 @@ export function buildJevRecords(snapshot: AtlasSnapshot) {
       defencePosture: org.defencePosture, dualUsePosture: org.dualUsePosture,
       programs: org.programs.map((p) => ({ name: p.programName, type: p.programType, participation: p.participationType }))
     };
-    const capabilities = org.capabilities.map((cap) => ({
+    const capabilities = [...org.capabilities].sort((a,b) => a.id.localeCompare(b.id)).map((cap) => ({
       id: cap.id, name: cap.name, summary: cap.summary, type: cap.capabilityType,
       features: cap.coreFeatures, applications: cap.defenceApplications, novelty: cap.novelty,
       tags: cap.technicalTags, domains: cap.technicalDomains.map((d) => ({ name: d.name, summary: d.summary })),
@@ -88,8 +96,8 @@ export function buildJevRecords(snapshot: AtlasSnapshot) {
       maturity: cap.maturity, availability: cap.commercialAvailability, reviewedAt: cap.lastReviewedAt
     }));
     // Keep variants separate and complete, including qualifications; an oversize single record falls back.
-    return (capabilities.length ? capabilities : [null]).map((capability, index) => ({
-      ...identity, recordId: `${org.id}:${index}`, capability
+    return (capabilities.length ? capabilities : [null]).map((capability) => ({
+      ...identity, recordId: `${org.id}:${capability?.id ?? "organization"}`, capability
     }));
   });
 }
@@ -159,7 +167,14 @@ function payloadFor(cards: RecordCard[], query: string, priorTurns: AtlasAssista
     const org = snapshot.organizations.find((o) => o.id === card.organizationId)!;
     const cap = org.capabilities.find((c) => c.id === card.capability?.id);
     const citations = [...org.citations.filter((c) => ["description", "defence_posture", "dual_use_posture", "primary_location"].includes(c.fieldName)), ...(cap?.citations ?? [])];
-    return { ...card, evidence: citations.map((c) => ({ field: c.fieldName, title: c.sourceTitle, excerpt: c.excerpt, date: c.publishedAt })) };
+    const evidence = new Map<string, { fields: string[]; title: string; excerpt: string; date: string | null }>();
+    for (const c of [...citations].sort((a,b) => a.id.localeCompare(b.id))) {
+      const key = JSON.stringify([c.sourceUrl,c.sourceTitle,c.excerpt,c.publishedAt]);
+      const existing = evidence.get(key);
+      if (existing) { if (!existing.fields.includes(c.fieldName)) existing.fields.push(c.fieldName); }
+      else evidence.set(key, { fields: [c.fieldName], title: c.sourceTitle, excerpt: c.excerpt, date: c.publishedAt });
+    }
+    return { ...card, evidence: [...evidence.values()] };
   });
   return { model: JEV_MODEL, state: { query, priorTurns: priorTurns.map((t) => ({ query: t.query, organizationIds: t.organizationIds })), records }, questions };
 }
@@ -217,7 +232,8 @@ export async function selectWithJev(input: {
   disabledReason?: JevFallback | null;
   // Set only from the server-authenticated owner check, never request JSON.
   isOwner?: boolean;
-}, dependencies: { fetch?: typeof fetch; deadlineMs?: number; budgetUsd?: number } = {}) {
+  relevanceOnly?: boolean;
+}, dependencies: { fetch?: typeof fetch; deadlineMs?: number; budgetUsd?: number; hydrate?: (organizations: AtlasOrganization[]) => Promise<AtlasOrganization[]> } = {}) {
   const started = Date.now();
   const ownerBaseline = input.isOwner === true && process.env.ASK_JEV_MODE === "owner-pilot";
   const metrics: JevMetrics = { model: JEV_MODEL, rubric: JEV_RUBRIC, catalogueCount: input.snapshot.organizations.length, scoredOrganizations: 0, recordCount: 0, batchCount: 0, latencyMs: 0, inputTokens: 0, estimatedCostUsd: 0, reservedCostUsd: 0, usageComplete: true, fallbackReason: input.disabledReason ?? null };
@@ -230,12 +246,14 @@ export async function selectWithJev(input: {
   metrics.completedBatchCount = 0;
   metrics.scoredRecordCount = 0;
   metrics.failureDetail = null;
-  const fallback = () => ({ organizations: input.baseline.slice(0, LIMIT), metrics, judgments: [] as JevJudgment[] });
+  const fallback = () => ({ organizations: input.baseline.slice(0, LIMIT), metrics, judgments: [] as JevJudgment[], offeringScores: {} as Record<string, number> });
   if (input.disabledReason) return fallback();
   const controller = new AbortController();
   const deadline = ownerBaseline ? null : Math.min(dependencies.deadlineMs ?? JEV_DEADLINE_MS, JEV_DEADLINE_MS);
   const budget = ownerBaseline ? Infinity : Math.min(dependencies.budgetUsd ?? JEV_BUDGET_USD, JEV_BUDGET_USD);
   let completed = 0;
+  let committedCost = 0;
+  const payloadHashes: string[] = [];
   let timer: ReturnType<typeof setTimeout> | undefined;
   const timeout = deadline === null ? null : new Promise<never>((_, reject) => { timer = setTimeout(() => { controller.abort(); reject(new SelectionFailure("timeout")); }, deadline); });
   const check = () => { if (controller.signal.aborted || (deadline !== null && Date.now() - started >= deadline)) fail("timeout"); };
@@ -244,17 +262,26 @@ export async function selectWithJev(input: {
     metrics.recordCount = records.length;
     metrics.catalogueFingerprint = jevFingerprint(records);
     if (new Set(input.snapshot.organizations.map((o) => o.id)).size !== input.snapshot.organizations.length || input.snapshot.organizations.some((o) => new Set(o.capabilities.map((c) => c.id)).size !== o.capabilities.length || o.capabilities.some((c) => c.organizationId !== o.id))) fail("invalid_catalogue");
+    const offeringScores: Record<string, number> = {};
     const winners = new Map<string, { card: RecordCard; judgment: JevJudgment }>();
+    let constraintSnapshot = input.snapshot;
     const execute = async (groups: ReturnType<typeof batches>, constraints: boolean) => {
-      const reserved = groups.reduce((sum, g) => sum + jevInputUpperBound(g.payload) * INPUT_PRICE, 0);
-      if (metrics.reservedCostUsd + reserved > budget) fail("budget");
+      // Reserve only concurrent work. A completed response with known usage releases
+      // its excess allowance; failed/cancelled requests retain their reservation.
+      // This bounds actual + uncertain + in-flight spend without reserving the whole corpus.
+      const phaseStarted = Date.now();
       let cursor = 0;
       let phaseFailure: SelectionFailure | null = null;
       await Promise.allSettled(Array.from({ length: Math.min(4, groups.length) }, async () => {
         while (cursor < groups.length) {
           check();
+          const allowance = jevInputUpperBound(groups[cursor].payload) * INPUT_PRICE;
+          if (committedCost + allowance > budget) return;
+          committedCost += allowance;
+          metrics.budgetPeakUsd = Math.max(metrics.budgetPeakUsd ?? 0, committedCost);
           const batch = cursor++;
           const { cards, payload } = groups[batch];
+          payloadHashes.push(jevFingerprint({ phase: constraints ? "constraints" : "relevance", batch, payload }));
           const context: JevFailureDetail = { check: "transport", phase: constraints ? "constraints" : "relevance", batch, requestId: null };
           try {
             metrics.reservedCostUsd += jevInputUpperBound(payload) * INPUT_PRICE;
@@ -270,7 +297,7 @@ export async function selectWithJev(input: {
             const raw = await boundedResponse(response);
             // Count billable usage even when the corresponding answers are rejected.
             const usage = usageSchema.safeParse(raw && typeof raw === "object" ? (raw as Record<string, unknown>).usage : undefined);
-            if (usage.success) { metrics.inputTokens += usage.data.input_tokens; completed++; }
+            if (usage.success) { metrics.inputTokens += usage.data.input_tokens; completed++; committedCost += usage.data.input_tokens * INPUT_PRICE - allowance; }
             metrics.estimatedCostUsd = metrics.inputTokens * INPUT_PRICE;
             check();
             const parsed = responseSchema.safeParse(raw);
@@ -300,6 +327,7 @@ export async function selectWithJev(input: {
               } else {
                 const answer = data.answers[`r${i}`];
                 if (answer.type !== "score") return fail("invalid_output");
+                if (card.capability) offeringScores[card.capability.id] = answer.score;
                 const existing = winners.get(card.organizationId);
                 if (!existing || answer.score > existing.judgment.score || (answer.score === existing.judgment.score && card.recordId < existing.card.recordId)) winners.set(card.organizationId, { card, judgment: { organizationId: card.organizationId, capabilityId: card.capability?.id ?? null, score: answer.score, constraints: [] } });
               }
@@ -316,7 +344,10 @@ export async function selectWithJev(input: {
           }
         }
       }));
+      if (constraints) metrics.constraintMs = Date.now() - phaseStarted;
+      else metrics.relevanceMs = Date.now() - phaseStarted;
       if (phaseFailure) throw phaseFailure;
+      if (cursor !== groups.length) fail("budget");
       check();
     };
     await execute(batches(records, (cards) => payloadFor(cards, input.query, input.priorTurns, false, input.snapshot)), false);
@@ -324,11 +355,23 @@ export async function selectWithJev(input: {
     if (winners.size !== input.snapshot.organizations.length) fail("invalid_output", { check: "incomplete_coverage" });
     const order = new Map(input.baseline.map((o, i) => [o.id, i]));
     const top = [...winners.values()].sort((a, b) => b.judgment.score - a.judgment.score || order.get(a.card.organizationId)! - order.get(b.card.organizationId)!).slice(0, 32);
-    await execute(batches(top.map((w) => w.card), (cards) => payloadFor(cards, input.query, input.priorTurns, true, input.snapshot)), true);
+    if (!input.relevanceOnly) {
+      if (dependencies.hydrate) {
+        const hydrationStarted = Date.now();
+        const admitted = await dependencies.hydrate(top.map(w => input.snapshot.organizations.find(o => o.id === w.card.organizationId)!));
+        if (admitted.length !== top.length || top.some(w => w.card.capability && !admitted.find(o => o.id === w.card.organizationId)?.capabilities.some(c => c.id === w.card.capability!.id))) fail("invalid_catalogue", { check: "publication_changed" });
+        constraintSnapshot = { ...input.snapshot, organizations: admitted };
+        metrics.evidenceMs = Date.now() - hydrationStarted;
+      }
+      await execute(batches(top.map((w) => w.card), (cards) => payloadFor(cards, input.query, input.priorTurns, true, constraintSnapshot)), true);
+    }
     check();
-    const judgments = [...winners.values()].map((w) => w.judgment);
+    const judgments = [...winners.values()].map((w) => w.judgment).sort((a,b) => a.organizationId.localeCompare(b.organizationId));
+    metrics.ranking = top.map(w => w.judgment);
+    metrics.cutoffMargin = top.length > LIMIT ? top[LIMIT-1].judgment.score - top[LIMIT].judgment.score : null;
+    metrics.payloadFingerprint = jevFingerprint(payloadHashes.sort());
     const organizations = rankJevCandidates(top.map((w) => w.judgment), input.baseline, input.query, input.priorTurns);
-    return { organizations, metrics, judgments };
+    return { organizations, metrics, judgments, offeringScores };
   };
   try { return await (timeout ? Promise.race([run(), timeout]) : run()); }
   catch (error) { metrics.fallbackReason = error instanceof SelectionFailure ? error.reason : "provider"; metrics.failureDetail = error instanceof SelectionFailure ? error.detail ?? { check: error.reason } : { check: "transport" }; return fallback(); }

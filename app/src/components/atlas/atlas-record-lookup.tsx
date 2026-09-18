@@ -1,5 +1,7 @@
 "use client";
 
+import { AtlasSemanticSuggestions } from "@/components/atlas/atlas-semantic-suggestions";
+import { atlasQueryToSearchParams } from "@/lib/atlas/query-params";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
@@ -17,7 +19,7 @@ import {
 import { FormEvent, KeyboardEvent, useEffect, useMemo, useRef, useState } from "react";
 import { OrganizationIdentityMark } from "@/components/atlas/organization-identity";
 import { cn } from "@/lib/utils";
-import type { AtlasLookupKind, AtlasLookupResponse, AtlasLookupSuggestion } from "@/types/atlas";
+import type { AtlasQuery, AtlasLookupKind, AtlasLookupResponse, AtlasLookupSuggestion } from "@/types/atlas";
 
 const lookupKindLabels: Record<AtlasLookupKind, string> = {
   organization: "Organization",
@@ -59,6 +61,7 @@ function SuggestionIcon({ suggestion }: { suggestion: AtlasLookupSuggestion }) {
 
 interface AtlasRecordLookupProps {
   committedQuery: string;
+  filters?: AtlasQuery;
   busy: boolean;
   hideSuggestions?: boolean;
   submitLabel?: string;
@@ -71,6 +74,7 @@ interface AtlasRecordLookupProps {
 
 export function AtlasRecordLookup({
   committedQuery,
+  filters = {},
   busy,
   hideSuggestions = false,
   submitLabel,
@@ -148,6 +152,7 @@ export function AtlasRecordLookup({
         if (!lookupResponse.ok || !body) {
           throw new Error(body?.error ?? "Published records could not be searched. Try again.");
         }
+        if (controller.signal.aborted) return;
         setResponse(body);
         setCompletedQuery(trimmedQuery);
         setActiveIndex(-1);
@@ -233,6 +238,7 @@ export function AtlasRecordLookup({
         ? `${suggestions.length} suggestions available${response.totalOrganizationMatches ? ` and ${response.totalOrganizationMatches} matching ${response.totalOrganizationMatches === 1 ? "organization" : "organizations"}` : ""}.`
         : "";
 
+  const semanticSuggestions = <AtlasSemanticSuggestions query={trimmedQuery} filters={atlasQueryToSearchParams({ ...filters, query: undefined, selected: undefined }).toString()} onSelect={(suggestion) => { setOpen(false); onSelectSuggestion(suggestion); }} />;
   let optionIndex = 0;
   return (
     <div ref={rootRef} className="relative" data-clarity-mask="true">
@@ -292,6 +298,7 @@ export function AtlasRecordLookup({
 
       {open && trimmedQuery.length >= 2 ? (
         <div className="absolute inset-x-0 top-[calc(100%+0.5rem)] z-[1200] max-h-[min(420px,55dvh)] overflow-y-auto overscroll-contain rounded-[14px] bg-white p-2 shadow-[0_18px_48px_rgba(36,40,39,0.2)] ring-1 ring-[var(--atlas-border)]">
+          {!suggestions.length && !hasSeeAll ? semanticSuggestions : null}
           {(lookupLoading || completedQuery !== trimmedQuery) && !suggestions.length ? (
             <div className="flex min-h-16 items-center gap-3 px-3 py-3 text-sm font-semibold text-[var(--atlas-muted)]" role="status">
               <LoaderCircle className="size-4 animate-spin" aria-hidden="true" />
@@ -394,7 +401,7 @@ export function AtlasRecordLookup({
               <div className="flex items-start gap-3">
                 <Building2 className="mt-0.5 size-4 shrink-0 text-[var(--atlas-primary)]" aria-hidden="true" />
                 <div>
-                  <p className="text-sm font-bold text-[var(--atlas-ink)]">No published record matches this search.</p>
+                  <p className="text-sm font-bold text-[var(--atlas-ink)]">No direct name or keyword matches.</p>
                   <div className="mt-2 flex flex-wrap gap-x-4 gap-y-2">
                     <button type="button" className="min-h-11 text-xs font-bold text-[var(--atlas-primary)] underline decoration-2 underline-offset-4" onClick={() => { setQuery(""); setResponse(null); setOpen(false); if (committedQuery) onClear(); }}>Clear search</button>
                     <button type="button" className="min-h-11 text-xs font-bold text-[var(--atlas-primary)] underline decoration-2 underline-offset-4" onClick={() => { setOpen(false); onOpenAsk(); }}>Ask about a need instead</button>
@@ -403,6 +410,7 @@ export function AtlasRecordLookup({
               </div>
             </div>
           )}
+          {suggestions.length || hasSeeAll ? semanticSuggestions : null}
         </div>
       ) : null}
     </div>

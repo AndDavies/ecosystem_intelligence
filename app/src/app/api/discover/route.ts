@@ -4,10 +4,12 @@ import {
   ATLAS_ASSISTANT_MODEL,
   type AtlasAssistantFailureClass
 } from "@/lib/atlas/assistant";
+import { getAssistantCatalogue, hydrateAssistantOrganizations } from "@/lib/atlas/assistant-catalogue";
+import { selectCachedWithJev } from "@/lib/atlas/assistant-selection-cache";
 import { isAtlasAdminOwner } from "@/lib/atlas/admin-owner";
 import type { JevMetrics } from "@/lib/atlas/assistant-jev";
 import { getAtlasUser } from "@/lib/atlas/auth";
-import { discoverAtlasSnapshot, getAtlasSnapshot } from "@/lib/atlas/repository";
+import { discoverAtlasSnapshot } from "@/lib/atlas/repository";
 import {
   assistantSubjectFingerprint,
   normalizeBetaSearchQuery,
@@ -41,6 +43,8 @@ interface SearchMetrics {
   failureClass: AtlasAssistantFailureClass | null;
   errorCode: string | null;
   selection?: JevMetrics;
+  answeringEvidenceMs?: number;
+  catalogueBytes?: number;
 }
 
 async function reserveAssistantRequest(requestHash: string, signedIn: boolean) {
@@ -94,6 +98,8 @@ async function recordSearch(input: {
       failureClass: input.metrics.failureClass,
       errorCode: input.metrics.errorCode,
       gapCount: input.answer?.gaps.length ?? 0,
+      answeringEvidenceMs: input.metrics.answeringEvidenceMs ?? null,
+      catalogueBytes: input.metrics.catalogueBytes ?? null,
       selection: input.metrics.selection ?? null
     }
   };
@@ -177,10 +183,11 @@ export async function POST(request: Request) {
     );
   }
 
-  const [snapshot, user] = await Promise.all([
-    timed("snapshotMs", () => getAtlasSnapshot()),
+  const [catalogue, user] = await Promise.all([
+    timed("snapshotMs", () => getAssistantCatalogue()),
     timed("authMs", () => getAtlasUser().catch(() => null))
   ]);
+  const { snapshot } = catalogue;
   const fallbackStartedAt = performance.now();
   const fallback = discoverAtlasSnapshot(snapshot, parsed.data.query);
   stages.deterministicSearchMs = Math.round(performance.now() - fallbackStartedAt);
@@ -205,7 +212,9 @@ export async function POST(request: Request) {
         query: parsed.data.query,
         priorTurns: parsed.data.priorTurns,
         safetyIdentifier: requestHash,
-        isOwner: isAtlasAdminOwner(user)
+        isOwner: isAtlasAdminOwner(user),
+        hydrateOrganizations: hydrateAssistantOrganizations,
+        select: selectCachedWithJev
       })
     : {
         answer: null,
@@ -217,13 +226,15 @@ export async function POST(request: Request) {
           outputTokens: null,
           cachedInputTokens: null,
           candidateCount: 0,
+          answeringEvidenceMs: 0,
+          catalogueBytes: 0,
           failureClass: hasOpenAiEnv() ? "dependency_unavailable" as const : process.env.OPENAI_API_KEY?.trim() ? "missing_model" as const : "missing_key" as const,
           errorCode: null
         }
       };
 
   const discovery = run.answer
-    ? assistantDiscovery(snapshot, parsed.data.query, run.answer)
+    ? assistantDiscovery({ ...snapshot, organizations: "organizations" in run ? run.organizations ?? [] : [] }, parsed.data.query, run.answer)
     : fallback;
   const searchId = await timed("telemetryMs", () => recordSearch({
     requestHash,
@@ -239,6 +250,9 @@ export async function POST(request: Request) {
     event: "ask_true_north_completed",
     stages,
     searchId,
+    catalogueRevision: catalogue.revision,
+    answeringEvidenceMs: run.metrics.answeringEvidenceMs ?? null,
+    catalogueBytes: run.metrics.catalogueBytes ?? null,
     requestLatencyMs: Math.round(performance.now() - requestStartedAt),
     assistantLatencyMs: run.metrics.latencyMs,
     model: run.metrics.model,

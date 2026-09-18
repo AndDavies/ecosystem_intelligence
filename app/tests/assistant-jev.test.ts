@@ -119,8 +119,11 @@ describe("Jev bounded candidate selection", () => {
     snapshot.organizations.forEach((org) => { org.description += " Published operating qualifications for remote maintenance.".repeat(65); });
     const data = input(snapshot);
     const blockedFetch = provider();
-    expect((await selectWithJev(data, { fetch: blockedFetch })).metrics.fallbackReason).toBe("budget");
-    expect(blockedFetch).not.toHaveBeenCalled();
+    const standard = await selectWithJev(data, { fetch: blockedFetch });
+    expect(standard.metrics.fallbackReason).toBeNull();
+    expect(standard.metrics.reservedCostUsd).toBeGreaterThan(0.05);
+    expect(standard.metrics.budgetPeakUsd).toBeLessThanOrEqual(0.05);
+    expect(standard.metrics.estimatedCostUsd).toBeLessThan(0.05);
     const fetch = provider();
     const result = await selectWithJev({ ...data, isOwner: true }, { fetch });
     expect(result.metrics).toMatchObject({ limitPolicy: "owner_baseline", scoredOrganizations: 595, fallbackReason: null, usageComplete: true });

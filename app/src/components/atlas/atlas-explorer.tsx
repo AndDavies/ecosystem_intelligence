@@ -657,6 +657,7 @@ export function AtlasExplorer({
 
           <div className="atlas-map-lookup">
           <AtlasRecordLookup
+            filters={filters}
             committedQuery={discovery ? "" : filters.query ?? ""}
             busy={loading}
             hideSuggestions={askOpen}

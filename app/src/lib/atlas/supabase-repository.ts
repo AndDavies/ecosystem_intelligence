@@ -821,7 +821,7 @@ function chunks(values: string[], size = publicCitationBatchSize) {
   );
 }
 
-async function loadPublicCitationGraph(
+export async function loadPublicCitationGraph(
   targets: Array<{ entityType: string; ids: string[] }>,
   demandSourceRows: Row[]
 ) {

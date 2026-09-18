@@ -3,6 +3,7 @@ const state = vi.hoisted(() => ({ rpc: vi.fn(), model: vi.fn(), insert: vi.fn(),
 vi.mock("server-only", () => ({}));
 vi.mock("@/lib/atlas/auth", () => ({ getAtlasUser: async () => state.user }));
 vi.mock("@/lib/atlas/assistant", async (original) => ({ ...await original<object>(), runAtlasAssistant: state.model }));
+vi.mock("@/lib/atlas/assistant-catalogue", () => ({ getAssistantCatalogue: async () => ({ snapshot: { organizations: [] }, revision: "fixture", latencyMs: 0 }), hydrateAssistantOrganizations: async (orgs: unknown[]) => orgs }));
 vi.mock("@/lib/atlas/repository", () => ({
   getAtlasSnapshot: async () => ({organizations:[]}),
   discoverAtlasSnapshot: () => ({organizationIds:[],capabilityIds:[],filters:{},interpretation:"no_match",summary:"No supported match"})

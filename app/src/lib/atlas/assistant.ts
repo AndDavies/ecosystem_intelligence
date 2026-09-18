@@ -68,6 +68,7 @@ export type RawAssistantAnswer = z.infer<typeof rawAssistantAnswerSchema>;
 
 export interface AtlasAssistantRunResult {
   answer: AtlasAssistantAnswer | null;
+  organizations?: AtlasOrganization[];
   fallbackReason?: AtlasAssistantFallbackReason;
   metrics: {
     model: string;
@@ -79,6 +80,8 @@ export interface AtlasAssistantRunResult {
     failureClass: AtlasAssistantFailureClass | null;
     errorCode: string | null;
     selection?: JevMetrics;
+    answeringEvidenceMs?: number;
+    catalogueBytes?: number;
   };
 }
 
@@ -86,15 +89,6 @@ function unique<T>(values: T[]) {
   return Array.from(new Set(values));
 }
 
-function compactCitation(citation: AtlasCitation) {
-  return {
-    id: citation.id,
-    field: citation.fieldName,
-    title: citation.sourceTitle,
-    publisher: citation.publisher,
-    excerpt: citation.excerpt
-  };
-}
 
 function allCapabilityCitations(organization: AtlasOrganization, capabilityId: string | null) {
   const capability = capabilityId
@@ -220,7 +214,16 @@ export function selectAssistantOrganizations(
 }
 
 export function buildAssistantCatalog(snapshot: AtlasSnapshot, organizations = snapshot.organizations) {
-  return {
+  const passages: Array<{ id: string; title: string; publisher: string; excerpt: string; publishedAt: string | null }> = [];
+  const passageIds = new Map<string, string>();
+  const citationRef = (citation: AtlasCitation) => {
+    const key = JSON.stringify([citation.sourceUrl, citation.sourceTitle, citation.publisher, citation.excerpt, citation.publishedAt]);
+    let id = passageIds.get(key);
+    if (!id) { id = `p${passages.length + 1}`; passageIds.set(key,id); passages.push({ id, title: citation.sourceTitle, publisher: citation.publisher, excerpt: citation.excerpt, publishedAt: citation.publishedAt }); }
+    return { id: citation.id, field: citation.fieldName, passageId: id };
+  };
+  const relevantNeeds = new Set(organizations.flatMap(org => org.capabilities.flatMap(cap => cap.demandMatches.map(match => match.demandRequirementId))));
+  const catalogue = {
     organizations: organizations.map((organization) => ({
       id: organization.id,
       slug: organization.slug,
@@ -236,7 +239,7 @@ export function buildAssistantCatalog(snapshot: AtlasSnapshot, organizations = s
           }
         : null,
       sourceConfidence: organization.sourceConfidence,
-      citations: organization.citations.map(compactCitation),
+      citations: organization.citations.map(citationRef),
       capabilities: organization.capabilities.map((capability) => ({
         id: capability.id,
         slug: capability.slug,
@@ -251,24 +254,24 @@ export function buildAssistantCatalog(snapshot: AtlasSnapshot, organizations = s
         maturity: capability.maturity,
         commercialAvailability: capability.commercialAvailability,
         sourceConfidence: capability.sourceConfidence,
-        citations: capability.citations.map(compactCitation),
+        citations: capability.citations.map(citationRef),
         missionAreas: capability.missionMatches.map((match) => ({
           name: match.missionArea.name,
           alignment: match.alignmentSummary,
           matchType: match.matchType,
           confidence: match.confidence,
-          citations: match.citations.map(compactCitation)
+          citations: match.citations.map(citationRef)
         })),
         publicDemand: capability.demandMatches.map((match) => ({
           title: match.demandTitle,
           alignment: match.alignmentSummary,
           matchType: match.matchType,
           confidence: match.confidence,
-          citations: match.citations.map(compactCitation)
+          citations: match.citations.map(citationRef)
         }))
       }))
     })),
-    publicNeeds: snapshot.demandRequirements.map((requirement) => ({
+    publicNeeds: snapshot.demandRequirements.filter(requirement => relevantNeeds.has(requirement.id)).map((requirement) => ({
       id: requirement.id,
       slug: requirement.slug,
       title: requirement.title,
@@ -279,9 +282,10 @@ export function buildAssistantCatalog(snapshot: AtlasSnapshot, organizations = s
         publisher: requirement.source.publisher,
         title: requirement.source.title
       },
-      citations: requirement.citations.map(compactCitation)
+      citations: requirement.citations.map(citationRef)
     }))
   };
+  return { ...catalogue, passages };
 }
 
 function evidenceLevel(confidence: AtlasConfidence): AtlasAssistantEvidenceLevel {
@@ -373,7 +377,7 @@ Your task is to interpret a user's business or capability need and rank up to fi
 
 Rules:
 1. Use only organization, capability, and citation IDs that appear in the catalogue.
-2. Every support point must cite at least one public citation ID belonging to that organization, its selected capability, or that capability's reviewed mission or demand connection.
+2. Citation entries bind an ID and field to a passageId in the shared passages table. Preserve each binding to its organization and capability; a shared passage never transfers a claim between entities. Every support point must cite at least one public citation ID belonging to that organization, its selected capability, or that capability's reviewed mission or demand connection.
 3. Separate fit from evidence. Fit means how well the published offering appears to address the need. Evidence means the source confidence already stored on the selected capability, or on the organization if no capability is selected.
 4. Strong fit requires at least two distinct citation-backed support points and no material missing requirement. Plausible means partial support or an unverified requirement. Adjacent means an enabling component, partner, integrator, funder, program, or other indirect role.
 5. Set hasMaterialGap true when a must-have requirement is absent, unknown, or unsupported.
@@ -443,6 +447,12 @@ export async function runAtlasAssistant(input: {
   priorTurns: AtlasAssistantPriorTurn[];
   safetyIdentifier: string;
   isOwner?: boolean;
+  hydrateOrganizations?: (organizations: AtlasOrganization[]) => Promise<AtlasOrganization[]>;
+  select?: typeof selectWithJev;
+  selectionDisabled?: boolean;
+  fixedOrganizationIds?: string[];
+  fixedCapabilityIds?: string[];
+  expectedCatalogueFingerprint?: string;
 }): Promise<AtlasAssistantRunResult> {
   const startedAt = Date.now();
   let candidates = selectAssistantOrganizations(input.snapshot, input.query, input.priorTurns);
@@ -465,19 +475,35 @@ export async function runAtlasAssistant(input: {
     };
   }
 
-  const access = jevAccess(input.isOwner === true);
-  const selection = await selectWithJev({
+  const access = input.selectionDisabled || input.fixedOrganizationIds ? "disabled" : jevAccess(input.isOwner === true);
+  const selection = await (input.select ?? selectWithJev)({
     snapshot: input.snapshot, query: input.query, priorTurns: input.priorTurns,
     baseline: access ? candidates : selectAssistantOrganizations(input.snapshot, input.query, input.priorTurns, input.snapshot.organizations.length),
     disabledReason: access,
     isOwner: input.isOwner === true
+  }, { hydrate: input.hydrateOrganizations });
+  candidates = input.fixedOrganizationIds
+    ? input.fixedOrganizationIds.map(id => input.snapshot.organizations.find(org => org.id === id)).filter((org): org is AtlasOrganization => Boolean(org))
+    : selection.organizations;
+  const hydrationStarted = Date.now();
+  if (input.hydrateOrganizations) candidates = await input.hydrateOrganizations(candidates);
+  const answeringEvidenceMs = Date.now() - hydrationStarted;
+  candidates = candidates.map(org => {
+    const winner = selection.judgments.find(j => j.organizationId === org.id);
+    if (!winner || input.fixedOrganizationIds || !selection.offeringScores) return org;
+    return { ...org, capabilities: org.capabilities.filter(cap => cap.id === winner.capabilityId ||
+      ((selection.offeringScores[cap.id] ?? 0) >= 2 && (selection.offeringScores[cap.id] ?? 0) >= winner.score - 0.25)) };
   });
-  candidates = selection.organizations;
+  if (input.fixedCapabilityIds) {
+    const ids = new Set(input.fixedCapabilityIds);
+    candidates = candidates.map(org => ({ ...org, capabilities: org.capabilities.filter(cap => ids.has(cap.id)) }));
+  }
   const catalogue = buildAssistantCatalog(input.snapshot, candidates);
+  if (input.expectedCatalogueFingerprint && jevFingerprint(catalogue) !== input.expectedCatalogueFingerprint) throw new Error("Replay evidence changed; capture a new baseline.");
   selection.metrics.selectedCatalogueFingerprint = jevFingerprint(catalogue);
   selection.metrics.selectedOrganizationIds = candidates.map((org) => org.id);
   selection.metrics.selectedCapabilityIds = candidates.flatMap((org) => org.capabilities.map((cap) => cap.id));
-  const selectionMetrics = { selection: selection.metrics, candidateCount: candidates.length };
+  const selectionMetrics = { selection: selection.metrics, candidateCount: candidates.length, answeringEvidenceMs, catalogueBytes: Buffer.byteLength(JSON.stringify(catalogue)) };
 
   const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY, timeout: 20_000, maxRetries: 1 });
   try {
@@ -523,6 +549,7 @@ export async function runAtlasAssistant(input: {
 
     const answer = finalizeAssistantAnswer(input.snapshot, response.output_parsed, candidates);
     return {
+      organizations: candidates,
       answer: answer.matches.length || answer.outcome === "coverage_gap" ? answer : null,
       fallbackReason: answer.matches.length || answer.outcome === "coverage_gap" ? undefined : "invalid_output",
       metrics

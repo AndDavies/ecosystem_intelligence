@@ -39,6 +39,7 @@ export default async function AdminOverviewPage() {
         <AdminLink title="Find potential demand matches" detail="Compare reviewed technologies with public problem statements, then publish only the connections you can defend." href="/admin/demand-matches" />
         <AdminLink title="Manage defence briefs" detail="Create answer-first, source-backed pages and publish only after explicit editorial review." href="/admin/briefs" />
         <AdminLink title="Review update subscribers" detail="See who asked to hear from True North Map and export the consent-backed list." href="/admin/subscribers" />
+        <AdminLink title="Compare Ask True North" detail="Run owner-only retrieval and answer tests with timing, cost and evidence diagnostics." href="/admin/ask-tests" />
         <AdminLink title="Inspect coverage gaps" detail="Measure published coverage by region, domain, mission, and demand statement." href="/admin/coverage" />
       </div>
       <PublicCard title="Publication boundary" eyebrow="Human approval required" className="mt-5">

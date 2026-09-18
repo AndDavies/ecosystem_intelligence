@@ -4,6 +4,12 @@ Status: chronological implementation record
 Owner: Andrew Davies
 Last reviewed: 2026-09-05
 
+## 2026-09-18 — Ask catalogue efficiency, repeatability and directory pilot
+
+Implemented cached public search projections and scoped approved-evidence hydration; deduplicated model passages with field/entity bindings retained; added successful selection caching, deterministic ordering, payload/ranking diagnostics and incremental in-flight spend reservations. Ask remains full-catalogue by default. An explicit owner-pilot “Find by meaning” directory action evaluates a filtered hybrid pool without changing ordinary search or invoking the answering model. The owner-only `/admin/ask-tests` page supports the five fixed questions, uncached/cached and 50/100-pool comparisons, signed unchanged-evidence answer replay and downloadable timing/cost results. Ordinary visitor quotas and public activation gates are unchanged. No migration, content publication, new paid evaluation or answering-model change. Implementation and the next manual test sequence are maintained in `app/docs/ask-jev.md`.
+
+Local release checks: 903 tests passed across 124 files with one existing skip (the changed privacy-copy assertion was updated and its affected checks rerun), typecheck, lint, 5,000-marker scale validation and production build. Dependency audit: five existing moderate findings, no high/critical findings. Shared components were inspected with synthetic responses at 390/768/1024/1440 pixels, including keyboard activation, explicit filter selection and diagnostic disclosure; no horizontal overflow or browser errors. Production inference and retrieval-quality gains remain for the owner’s next test round.
+
 ## 2026-09-18 — Jev rounding correction and owner-test diagnostics
 
 A targeted provider check reproduced the fifth owner question's score/probability validation fallback. Independently rounded two-decimal scores/distributions now use a mathematically bounded 0.035 tolerance plus floating-point epsilon; genuine mismatches, invalid identities/answers and incomplete coverage still fail to the lexical baseline. Added bounded provider request IDs, specific safe validation details, actual usage on rejected responses, completed/partial coverage, keyed query-context and catalogue fingerprints, selected IDs and route-stage timings. No raw query/answer/provider text or secrets are added to logs.
