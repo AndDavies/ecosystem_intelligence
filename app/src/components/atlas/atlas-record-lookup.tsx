@@ -1,7 +1,5 @@
 "use client";
 
-import { AtlasSemanticSuggestions } from "@/components/atlas/atlas-semantic-suggestions";
-import { atlasQueryToSearchParams } from "@/lib/atlas/query-params";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
@@ -238,7 +236,6 @@ export function AtlasRecordLookup({
         ? `${suggestions.length} suggestions available${response.totalOrganizationMatches ? ` and ${response.totalOrganizationMatches} matching ${response.totalOrganizationMatches === 1 ? "organization" : "organizations"}` : ""}.`
         : "";
 
-  const semanticSuggestions = <AtlasSemanticSuggestions query={trimmedQuery} filters={atlasQueryToSearchParams({ ...filters, query: undefined, selected: undefined }).toString()} onSelect={(suggestion) => { setOpen(false); onSelectSuggestion(suggestion); }} />;
   let optionIndex = 0;
   return (
     <div ref={rootRef} className="relative" data-clarity-mask="true">
@@ -298,7 +295,6 @@ export function AtlasRecordLookup({
 
       {open && trimmedQuery.length >= 2 ? (
         <div className="absolute inset-x-0 top-[calc(100%+0.5rem)] z-[1200] max-h-[min(420px,55dvh)] overflow-y-auto overscroll-contain rounded-[14px] bg-white p-2 shadow-[0_18px_48px_rgba(36,40,39,0.2)] ring-1 ring-[var(--atlas-border)]">
-          {!suggestions.length && !hasSeeAll ? semanticSuggestions : null}
           {(lookupLoading || completedQuery !== trimmedQuery) && !suggestions.length ? (
             <div className="flex min-h-16 items-center gap-3 px-3 py-3 text-sm font-semibold text-[var(--atlas-muted)]" role="status">
               <LoaderCircle className="size-4 animate-spin" aria-hidden="true" />
@@ -410,7 +406,6 @@ export function AtlasRecordLookup({
               </div>
             </div>
           )}
-          {suggestions.length || hasSeeAll ? semanticSuggestions : null}
         </div>
       ) : null}
     </div>

@@ -61,7 +61,9 @@ describe("Ask True North paid-call boundary", () => {
 
 it("does not accept client-supplied owner or Jev activation flags", async () => {
   await POST(makeRequest({ query: "sensors", isOwner: true, jevMode: "enabled" }));
-  expect(state.model).toHaveBeenCalledWith(expect.objectContaining({ isOwner: false }));
+  expect(state.model).toHaveBeenCalledOnce();
+  expect(state.model.mock.calls[0][0]).not.toHaveProperty("isOwner");
+  expect(state.model.mock.calls[0][0]).not.toHaveProperty("jevMode");
 });
 
 it("logs comparison metrics without the private question or account", async () => {

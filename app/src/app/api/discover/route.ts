@@ -5,9 +5,6 @@ import {
   type AtlasAssistantFailureClass
 } from "@/lib/atlas/assistant";
 import { getAssistantCatalogue, hydrateAssistantOrganizations } from "@/lib/atlas/assistant-catalogue";
-import { selectCachedWithJev } from "@/lib/atlas/assistant-selection-cache";
-import { isAtlasAdminOwner } from "@/lib/atlas/admin-owner";
-import type { JevMetrics } from "@/lib/atlas/assistant-jev";
 import { getAtlasUser } from "@/lib/atlas/auth";
 import { discoverAtlasSnapshot } from "@/lib/atlas/repository";
 import {
@@ -28,8 +25,7 @@ import type {
 } from "@/types/atlas";
 
 export const dynamic = "force-dynamic";
-// Owner baselines may scan the complete catalogue; Vercel still imposes a host ceiling.
-export const maxDuration = 300;
+export const maxDuration = 60;
 
 type ParsedDiscoveryInput = ReturnType<typeof betaDiscoveryRequestSchema.parse>;
 
@@ -46,7 +42,6 @@ interface SearchMetrics {
   candidateCount: number;
   failureClass: AtlasAssistantFailureClass | null;
   errorCode: string | null;
-  selection?: JevMetrics;
   answeringEvidenceMs?: number;
   catalogueBytes?: number;
 }
@@ -108,7 +103,6 @@ async function recordSearch(input: {
       gapCount: input.answer?.gaps.length ?? 0,
       answeringEvidenceMs: input.metrics.answeringEvidenceMs ?? null,
       catalogueBytes: input.metrics.catalogueBytes ?? null,
-      selection: input.metrics.selection ?? null
     }
   };
 
@@ -220,9 +214,7 @@ export async function POST(request: Request) {
         query: parsed.data.query,
         priorTurns: parsed.data.priorTurns,
         safetyIdentifier: requestHash,
-        isOwner: isAtlasAdminOwner(user),
         hydrateOrganizations: hydrateAssistantOrganizations,
-        select: selectCachedWithJev
       })
     : {
         answer: null,
@@ -274,7 +266,6 @@ export async function POST(request: Request) {
     outcome: run.answer?.outcome ?? null,
     fallbackReason: run.fallbackReason ?? null,
     failureClass: run.metrics.failureClass,
-    selection: "selection" in run.metrics ? run.metrics.selection : null,
     organizationIds: discovery.organizationIds,
     capabilityIds: discovery.capabilityIds
   }));

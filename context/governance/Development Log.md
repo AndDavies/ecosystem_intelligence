@@ -4,6 +4,14 @@ Status: chronological implementation record
 Owner: Andrew Davies
 Last reviewed: 2026-09-05
 
+## 2026-09-19 — Freeze Ask on lexical selection and retire Jev
+
+Release checks passed locally: 878 tests plus one existing skip, typecheck, lint, security (no high/critical production dependency finding), 5,000-marker scale and production build. Search-control keyboard/layout checks covered 390/768/1024/1440 widths without inference. No paid comparison calls were made. The release response records exact production deployment and the bounded post-deploy check.
+
+Andrew selected the lexical production baseline after the ten-run comparison. Removed the TypeSafe adapter, paid selection cache, semantic directory action and owner comparison UI/API; retired provider activation variables and paid evaluator flags. Preserved shared catalogue/evidence performance work, publication/identity/citation protections, the configured Luna model and low effort, and existing quotas. Historical exports and telemetry remain intact; no migration or record publication.
+
+Replaced generated database UUIDs with request-scoped, schema-bounded references mapped exactly to admitted records. Cross-entity or invalid references reject the answer; no fuzzy identity repair or silent loss of the leading match. Scoped negative claims to supplied evidence and removed repeated gap prefixes from otherwise consistent summaries. Production is frozen for ordinary use; no further paid comparison campaign is queued. See `app/docs/ask-jev.md`.
+
 ## 2026-09-19 — Ask audit corrections and quality-first comparison
 
 Local release evidence: repository hygiene, security, typecheck, lint, 5,000-marker scale check and production build passed. Full-suite evidence was 913 passing and one skipped test plus one obsolete cache-key expectation; that expectation was corrected and its 15-test file passed. The final UI build passed again after the failed-state display correction. Browser checks covered 390/768/1024/1440 widths, keyboard controls and exported failed-run/human-note retention with mocked responses. A bounded read-only two-organization database check returned both admitted offerings and 17 citations in 670 ms; no paid model tests were run. Production deployment verification is recorded with the release response.

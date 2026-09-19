@@ -118,7 +118,7 @@ describe("Ask True North output guardrails", () => {
     const finalized = finalizeAssistantAnswer(citedSnapshot(), raw);
     expect(finalized.outcome).toBe("closest_supported");
     expect(finalized.matches[0].fitLevel).toBe("plausible");
-    expect(finalized.summary).toContain("closest supported fits");
+    expect(finalized.summary).toContain("Among the records reviewed");
   });
 
   it("drops unknown organizations, cross-organization capabilities, and unsupported citations", () => {
@@ -203,7 +203,8 @@ it("preserves a decisive unsupported guarantee when adjacent suggestions remain"
   const raw = answer(); raw.outcome = "closest_supported"; raw.matches[0].fitLevel = "adjacent";
   raw.summary = "An enabling component may help."; raw.gaps = ["No record establishes guaranteed maintenance with no communications."];
   const result = finalizeAssistantAnswer(citedSnapshot(), raw);
-  expect(result.summary).toMatch(/^No record establishes guaranteed maintenance/);
+  expect(result.gaps).toEqual(raw.gaps);
+  expect(result.summary).toBe(raw.summary);
   expect(result.matches).toHaveLength(1);
 });
 it("separates functional fit from stored evidence confidence without upgrading evidence", () => {

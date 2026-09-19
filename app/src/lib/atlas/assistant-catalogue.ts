@@ -5,7 +5,7 @@ import { createPublicClient } from "@/lib/supabase/public";
 import { getAtlasDiscoverySnapshot } from "@/lib/atlas/repository";
 import { dossierCitationRows, loadPublicCitationGraph } from "@/lib/atlas/supabase-repository";
 import { collectPagedRows, collectPagedRowsByIds } from "@/lib/supabase/pagination";
-import { jevFingerprint } from "@/lib/atlas/assistant-jev";
+import { createHash } from "node:crypto";
 import type { AtlasCitation, AtlasOrganization, AtlasSnapshot } from "@/types/atlas";
 
 type Row = Record<string, unknown>;
@@ -55,7 +55,7 @@ export async function getAssistantCatalogue() {
   }).sort((a,b) => a.id.localeCompare(b.id));
   // Need relationships stay on each capability; unrelated full need dossiers do not enter Ask.
   const snapshot: AtlasSnapshot = { ...discovery, organizations, demandRequirements: [] };
-  const revision = jevFingerprint({ organizations, missions: snapshot.missionAreas, domains: snapshot.technicalDomains });
+  const revision = createHash("sha256").update(JSON.stringify({ organizations, missions: snapshot.missionAreas, domains: snapshot.technicalDomains })).digest("hex");
   return { snapshot, revision, latencyMs: Math.round(performance.now() - started) };
 }
 

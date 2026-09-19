@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 vi.mock("server-only", () => ({}));
 import { catalogue, questions, relevanceMetrics, savedAssistantSnapshot } from "../scripts/lib/assistant-evaluation";
-import { buildJevRecords } from "@/lib/atlas/assistant-jev";
+import { buildAssistantCatalog } from "@/lib/atlas/assistant";
 
 describe("frozen offline Ask evaluation", () => {
   it("has forty separate development/held-out questions backed by saved public records", () => {
@@ -21,7 +21,7 @@ describe("frozen offline Ask evaluation", () => {
     const snapshot = savedAssistantSnapshot();
     expect(snapshot.organizations.length).toBeGreaterThan(32);
     expect(snapshot.organizations.every((o) => !o.primaryLocation && !o.citations.length && o.sourceConfidence === "needs_review")).toBe(true);
-    const payload = JSON.stringify(buildJevRecords(snapshot));
+    const payload = JSON.stringify(buildAssistantCatalog(snapshot, snapshot.organizations));
     expect(payload).not.toMatch(/reviewerRationale|fieldEvidence|beforeRecord|savedPacket|packetSha256/);
   });
   it("separates retrieval-pool coverage, recall16 and ranking quality", () => {
