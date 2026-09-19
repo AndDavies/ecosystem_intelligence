@@ -29,3 +29,12 @@ it("rejects invented replay receipts and unknown override fields before paid wor
   expect((await POST(request({caseIndex:0,mode:"lexical",query:"injected"}))).status).toBe(400);
   expect(state.run).not.toHaveBeenCalled();
 });
+
+it("exports a failed dependency attempt with a safe run identity, without the raw error", async () => {
+  state.catalogue.mockRejectedValue(new Error("DATABASE_SECRET_CANARY"));
+  const response = await POST(request()); const body = await response.json();
+  expect(response.status).toBe(409);
+  expect(body.diagnostics).toMatchObject({ mode: "lexical", caseIndex: 0, phase: "catalogue", errorCode: "dependency_failed" });
+  expect(body.diagnostics.runId).toBeTruthy(); expect(body.diagnostics.startedAt).toBeTruthy();
+  expect(JSON.stringify(body)).not.toContain("DATABASE_SECRET_CANARY");
+});

@@ -157,11 +157,15 @@ const publicDiscoveryCacheSeconds = publicContentFallbackSeconds;
 const getCachedAtlasDiscoveryTablePage = unstable_cache(
   async (table: Parameters<typeof loadAtlasDiscoveryTablePageFromSupabase>[0], from: number, to: number) => {
     const started = performance.now();
-    const result = await withPublicReadRetry(() => Promise.resolve(loadAtlasDiscoveryTablePageFromSupabase(table, from, to)));
+    const result = await withPublicReadRetry(async () => {
+      const page = await loadAtlasDiscoveryTablePageFromSupabase(table, from, to);
+      if (page.error) throw new Error(`Discovery page unavailable: ${page.error.message ?? "database error"}`);
+      return page;
+    });
     console.info(JSON.stringify({ event: "discovery_cache_fill", table, from, rows: Array.isArray(result.data) ? result.data.length : 0, ms: Math.round(performance.now()-started), failed: Boolean(result.error) }));
     return result;
   },
-  ["ecosystem-intelligence-atlas-discovery-table-page-v1"],
+  ["ecosystem-intelligence-atlas-discovery-table-page-v2"],
   { revalidate: publicDiscoveryCacheSeconds, tags: [atlasDiscoveryCacheTag] }
 ) as typeof loadAtlasDiscoveryTablePageFromSupabase;
 

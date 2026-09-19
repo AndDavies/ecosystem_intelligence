@@ -104,7 +104,7 @@ describe("Ask True North output guardrails", () => {
     } finally { vi.unstubAllEnvs(); }
   });
 
-  it("keeps a strong fit only when it has strong evidence, two support points, and no material gap", () => {
+  it("keeps a strong fit with two support points and no material gap, and reports evidence separately", () => {
     const finalized = finalizeAssistantAnswer(citedSnapshot(), answer());
     expect(finalized.outcome).toBe("exact_match");
     expect(finalized.matches[0]).toMatchObject({ fitLevel: "strong", evidenceLevel: "strong" });
@@ -197,4 +197,21 @@ describe("Ask True North output guardrails", () => {
     expect(atlasAssistantQuota(false, 99)).toEqual({ signedIn: false, limit: 3, used: 3, remaining: 0 });
     expect(atlasAssistantQuota(true, 4)).toEqual({ signedIn: true, limit: 20, used: 4, remaining: 16 });
   });
+});
+
+it("preserves a decisive unsupported guarantee when adjacent suggestions remain", () => {
+  const raw = answer(); raw.outcome = "closest_supported"; raw.matches[0].fitLevel = "adjacent";
+  raw.summary = "An enabling component may help."; raw.gaps = ["No record establishes guaranteed maintenance with no communications."];
+  const result = finalizeAssistantAnswer(citedSnapshot(), raw);
+  expect(result.summary).toMatch(/^No record establishes guaranteed maintenance/);
+  expect(result.matches).toHaveLength(1);
+});
+it("separates functional fit from stored evidence confidence without upgrading evidence", () => {
+  const snapshot = citedSnapshot(); snapshot.organizations[0].capabilities[0].sourceConfidence = "moderate";
+  expect(finalizeAssistantAnswer(snapshot, answer()).matches[0]).toMatchObject({ fitLevel: "strong", evidenceLevel: "moderate" });
+});
+it("does not count identical support statements twice", () => {
+  const raw = answer(); raw.matches[0].supportPoints = [raw.matches[0].supportPoints[0], raw.matches[0].supportPoints[0]];
+  const result = finalizeAssistantAnswer(citedSnapshot(), raw);
+  expect(result.matches[0].supportPoints).toHaveLength(1); expect(result.matches[0].fitLevel).toBe("plausible");
 });

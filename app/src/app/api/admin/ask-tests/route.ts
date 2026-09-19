@@ -1,4 +1,4 @@
-import { createHmac, timingSafeEqual } from "node:crypto";
+import { createHmac, timingSafeEqual, randomUUID } from "node:crypto";
 import { z } from "zod";
 import { getAtlasUser } from "@/lib/atlas/auth";
 import { isAtlasAdminOwner } from "@/lib/atlas/admin-owner";
@@ -17,14 +17,23 @@ const replaySchema = z.object({ caseIndex: z.number().int(), expires: z.number()
 function sign(payload: string) { return createHmac("sha256", process.env.TYPESAFE_API_KEY!).update(payload).digest("hex"); }
 
 export async function POST(request: Request) {
+  const handlerStarted = performance.now();
+  const runId = randomUUID();
+  const startedAt = new Date().toISOString();
   const user = await getAtlasUser().catch(() => null);
   if (!isAtlasAdminOwner(user)) return privateJson({ error: "Owner access required." }, { status: 403 });
   if (request.headers.get("origin") !== new URL(request.url).origin) return privateJson({ error: "Same-origin requests required." }, { status: 403 });
   const parsed = schema.safeParse(await request.json().catch(() => null));
   if (!parsed.success) return privateJson({ error: "Choose a listed test case and mode." }, { status: 400 });
-  if (process.env.ASK_JEV_MODE !== "owner-pilot" || jevAccess(true)) return privateJson({ error: "These uncapped owner tests require ASK_JEV_MODE=owner-pilot and a TypeSafe key." }, { status: 409 });
   const { caseIndex, mode } = parsed.data;
   const query = assistantTestCases[caseIndex];
+  const identity = { runId, startedAt, mode, caseIndex, deploymentSha: process.env.VERCEL_GIT_COMMIT_SHA ?? "local", deploymentId: process.env.VERCEL_DEPLOYMENT_ID ?? "local", diagnosticVersion: 2 };
+  const failed = (phase: string, code: string, message: string) => {
+    const diagnostics = { ...identity, phase, errorCode: code, status: 409, handlerMs: Math.round(performance.now()-handlerStarted) };
+    console.warn(JSON.stringify({ event: "owner_ask_test_failed", ...diagnostics }));
+    return privateJson({ query, diagnostics, error: message, answer: null, sources: [], organizations: [] }, { status: 409 });
+  };
+  if (process.env.ASK_JEV_MODE !== "owner-pilot" || jevAccess(true)) return failed("configuration", "pilot_unavailable", "These owner tests require owner-pilot mode and a TypeSafe key.");
   let replay: z.infer<typeof replaySchema> | undefined;
   if (mode === "answer-replay") {
     try {
@@ -34,21 +43,23 @@ export async function POST(request: Request) {
       if (actual.length !== expected.length || !timingSafeEqual(actual, expected)) throw new Error();
       replay = replaySchema.parse(JSON.parse(Buffer.from(payload, "base64url").toString()));
       if (replay.caseIndex !== caseIndex || replay.expires < Date.now()) throw new Error();
-    } catch { return privateJson({ error: "Capture a fresh result for this question before replaying its answer." }, { status: 409 }); }
+    } catch { return failed("replay", "invalid_receipt", "Capture a fresh result for this question before replaying its answer."); }
   }
   const started = performance.now();
+  let phase = "catalogue";
   try {
     const catalogue = await getAssistantCatalogue();
     const poolSize = mode === "hybrid-50" ? 50 : mode === "hybrid-100" ? 100 : null;
     const snapshot = poolSize ? { ...catalogue.snapshot, organizations: retrieveAssistantPool(catalogue.snapshot, query, [], poolSize) } : catalogue.snapshot;
-    const run = await runAtlasAssistant({ snapshot, query, priorTurns: [], isOwner: true,
+    phase = "assistant";
+    const run = await runAtlasAssistant({ snapshot, query, priorTurns: [], isOwner: true, includeAudit: true,
       safetyIdentifier: assistantSubjectFingerprint(request, user!.id),
       selectionDisabled: mode === "lexical", hydrateOrganizations: hydrateAssistantOrganizations,
       select: (input, dependencies) => selectCachedWithJev(input, dependencies, mode !== "full-cached"),
       fixedOrganizationIds: replay?.organizationIds, fixedCapabilityIds: replay?.capabilityIds, expectedCatalogueFingerprint: replay?.fingerprint });
     const selection = run.metrics.selection;
     const evidenceMs = (selection?.evidenceMs ?? 0) + (run.metrics.answeringEvidenceMs ?? 0);
-    const diagnostics = { mode, caseIndex, catalogueRevision: catalogue.revision, catalogueCount: catalogue.snapshot.organizations.length,
+    const diagnostics = { ...identity, status: 200, handlerMs: Math.round(performance.now()-handlerStarted), authAndValidationMs: Math.round(started-handlerStarted), catalogueRevision: catalogue.revision, catalogueCount: catalogue.snapshot.organizations.length,
       poolCount: snapshot.organizations.length, snapshotMs: catalogue.latencyMs,
       requestLatencyMs: Math.round(performance.now()-started), evidenceMs,
       answerMs: Math.max(0, run.metrics.latencyMs - (selection?.latencyMs ?? 0) - (run.metrics.answeringEvidenceMs ?? 0)),
@@ -59,10 +70,11 @@ export async function POST(request: Request) {
     const citedIds = new Set(run.answer?.matches.flatMap(m => m.supportPoints.flatMap(p => p.citationIds)) ?? []);
     const citations = (run.organizations ?? []).flatMap(org => [...org.citations, ...org.capabilities.flatMap(cap => [...cap.citations, ...cap.missionMatches.flatMap(m=>m.citations), ...cap.demandMatches.flatMap(m=>m.citations)])]).filter(c => citedIds.has(c.id));
     const sources = [...new Map(citations.map(c => [c.sourceUrl, { title:c.sourceTitle, url:c.sourceUrl }])).values()];
-    return privateJson({ query, diagnostics, answer: run.answer, sources,
+    return privateJson({ query, diagnostics, answer: run.answer, sources, audit: run.audit,
       organizations: (run.organizations ?? []).map(org => ({ id: org.id, name: org.name, slug: org.slug })),
       receipt: payload ? `${payload}.${sign(payload)}` : null });
   } catch (error) {
-    return privateJson({ error: error instanceof Error && error.message.startsWith("Replay evidence changed") ? error.message : "Test could not complete. Inspect the server logs before retrying." }, { status: 409 });
+    const replayChanged = error instanceof Error && error.message.startsWith("Replay evidence changed");
+    return failed(phase, replayChanged ? "evidence_changed" : error instanceof Error && /publication changed/i.test(error.message) ? "publication_changed" : "dependency_failed", replayChanged ? "Replay evidence changed; capture a fresh result." : "Test could not complete. The failed attempt has been recorded; inspect its run ID before retrying.");
   }
 }

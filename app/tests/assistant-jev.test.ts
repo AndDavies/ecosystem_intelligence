@@ -25,8 +25,13 @@ function provider(score: (id: string) => number = (id) => id === "org-39" ? 3 : 
     const body = JSON.parse(init!.body as string);
     const answers = Object.fromEntries(Object.entries(body.questions).map(([id, q]) => {
       const question = q as { type: string; instructions: string };
-      const index = Number(question.instructions.match(/records\[(\d+)\]/)![1]);
+      if (question.type === "choice" && !body.state.records) {
+        const requested = /intermittent/.test(body.state.query) && /d[23]$/.test(id);
+        const choice = requested ? "supported" : "not_requested";
+        return [id, { type: "choice", choice, confidence: 1, probabilities: { supported: Number(requested), contradicted: 0, not_established: 0, not_requested: Number(!requested) } }];
+      }
       if (question.type === "choice") return [id, { type: "choice", choice: "not_established", confidence: 0.5, probabilities: { supported: 0.1, contradicted: 0.1, not_established: 0.7, not_requested: 0.1 } }];
+      const index = Number(question.instructions.match(/records\[(\d+)\]/)![1]);
       const value = score(body.state.records[index].organizationId);
       return [id, { type: "score", score: value, confidence: 0.9, probabilities: Object.fromEntries([0, 1, 2, 3].map((n) => [String(n), Number(n === value)])) }];
     }).reverse());
@@ -79,7 +84,7 @@ describe("Jev bounded candidate selection", () => {
     });
     // Weighted mean 2; old > .03 comparison rejects 2.03 due to floating precision.
     const accepted = await selectWithJev(input(corpus(1)), { fetch: responseWithScore(2.03) });
-    expect(accepted.metrics).toMatchObject({ fallbackReason: null, scoredOrganizations: 1, completedBatchCount: 2, scoredRecordCount: 1 });
+    expect(accepted.metrics).toMatchObject({ fallbackReason: null, scoredOrganizations: 1, completedBatchCount: 3, scoredRecordCount: 1 });
     const data = input(corpus(1));
     const rejected = await selectWithJev(data, { fetch: responseWithScore(2.1) });
     expect(rejected.metrics).toMatchObject({ fallbackReason: "invalid_output", inputTokens: 100, usageComplete: true, failureDetail: { check: "score_probability_mismatch", requestId: "req_rounding_test", status: 200, phase: "relevance", batch: 0, score: 2.1, probabilityMean: 2, tolerance: 0.035 } });
@@ -162,7 +167,7 @@ describe("Jev bounded candidate selection", () => {
     org.capabilities.push({ ...org.capabilities[0], id: "other-variant", summary: "Requires continuous connectivity" });
     const fetch = provider(() => 2); const result = await selectWithJev(input(snapshot), { fetch });
     expect(result.metrics.recordCount).toBe(2); expect(result.judgments[0].capabilityId).toBe("org-0-cap");
-    const constraint = fetch.mock.calls.map(([, i]) => JSON.parse(i!.body as string)).find((b) => b.questions.r0d0);
+    const constraint = fetch.mock.calls.map(([, i]) => JSON.parse(i!.body as string)).find((b) => b.state.records && b.questions.r0d2);
     expect(constraint.state.records[0].capability.id).toBe("org-0-cap");
     expect(JSON.stringify(constraint)).not.toContain("other-variant");
   });
@@ -186,4 +191,34 @@ describe("Jev bounded candidate selection", () => {
     expect(payload.questions.r0.instructions).toContain("untrusted data");
     expect(payload.state.query).toContain("INJECTION");
   });
+});
+
+// Regressions from the September 19 owner comparison, with no provider calls.
+it("does not let an irrelevant-condition bonus outrank a substantially better offering", () => {
+  const { baseline } = input(corpus(3));
+  const ranked = rankJevCandidates([
+    { organizationId: "org-0", capabilityId: null, score: 2.01, constraints: ["supported"] },
+    { organizationId: "org-1", capabilityId: null, score: 2.99, constraints: ["not_requested"] },
+    { organizationId: "org-2", capabilityId: null, score: 2.84, constraints: ["not_requested"] }
+  ], baseline, "Deterioration inside rotating machinery", []);
+  expect(ranked.map(o => o.id)).toEqual(["org-1", "org-2", "org-0"]);
+});
+it("asks query applicability once and skips all unrequested candidate constraints", async () => {
+  const data = input(corpus(3)); data.query = "Who detects deterioration inside rotating machinery?";
+  const fetch = provider(() => 3);
+  const result = await selectWithJev(data, { fetch });
+  expect(result.metrics).toMatchObject({ fallbackReason: null, requestedDimensions: [], constraintQuestionCount: 0 });
+  const payloads = fetch.mock.calls.map(([,init]) => JSON.parse(String(init?.body)));
+  expect(payloads.filter(p => !p.state.records)).toHaveLength(1);
+  expect(payloads.filter(p => p.state.records && p.questions.r0d0)).toHaveLength(0);
+});
+it("does not feed an oversized raw citation graph into selection or discard offering qualifiers", async () => {
+  const data = input(corpus(1));
+  data.snapshot.organizations[0].capabilities[0].citations = [{ id: "huge", fieldName: "summary", excerpt: "Unrelated history. ".repeat(10000) } as never];
+  data.snapshot.organizations[0].capabilities[0].maturity = "Prototype; no deployment established";
+  const hydrate = vi.fn(); const fetch = provider(() => 3);
+  const result = await selectWithJev(data, { fetch, hydrate });
+  expect(result.metrics.fallbackReason).toBeNull(); expect(hydrate).not.toHaveBeenCalled();
+  const payloads = fetch.mock.calls.map(([,init]) => String(init?.body)).join(" ");
+  expect(payloads).not.toContain("Unrelated history"); expect(payloads).toContain("Prototype; no deployment established");
 });

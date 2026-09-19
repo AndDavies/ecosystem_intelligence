@@ -823,7 +823,8 @@ function chunks(values: string[], size = publicCitationBatchSize) {
 
 export async function loadPublicCitationGraph(
   targets: Array<{ entityType: string; ids: string[] }>,
-  demandSourceRows: Row[]
+  demandSourceRows: Row[],
+  options: { signal?: AbortSignal; fieldsByEntity?: Record<string, string[]> } = {}
 ) {
   // Every target ID comes from a row already admitted by the published-record
   // queries above. Hydrate only that evidence with the server-only client so
@@ -835,12 +836,17 @@ export async function loadPublicCitationGraph(
     chunks(Array.from(new Set(ids.filter(Boolean)))).map(batch=>({entityType,batch}))
   );
   const citationResults=await boundedMap(citationBatches,3,({entityType,batch}) =>
-    collectPagedPublicRows((from,to) => evidenceClient
+    collectPagedPublicRows((from,to) => {
+      options.signal?.throwIfAborted();
+      let query = evidenceClient
       .from("field_citations")
       .select(atlasColumns.citations)
       .eq("entity_type", entityType)
       .in("entity_id", batch)
-      .order("id").range(from,to),"scoped public citations")
+      .order("id").range(from,to);
+      if (options.fieldsByEntity?.[entityType]) query = query.in("field_name", options.fieldsByEntity[entityType]);
+      return options.signal ? query.abortSignal(options.signal) : query;
+    },"scoped public citations")
   );
   citationResults.forEach((result) => assertQuery(result, "scoped public citations"));
   const citationRows = citationResults.flatMap((result) => asRows(result.data));
@@ -849,10 +855,12 @@ export async function loadPublicCitationGraph(
     ...uniqueIds(citationRows, "evidence_snippet_id"),
     ...uniqueIds(demandSourceRows, "source_evidence_snippet_id")
   ]));
-  const evidenceResults=await boundedMap(chunks(evidenceIds),3,async batch =>
-    evidenceClient.from("evidence_snippets").select(atlasColumns.evidence)
-      .in("id", batch).eq("visibility", "public").eq("public_approved", true)
-  );
+  const evidenceResults=await boundedMap(chunks(evidenceIds),3,async batch => {
+    options.signal?.throwIfAborted();
+    const query = evidenceClient.from("evidence_snippets").select(atlasColumns.evidence)
+      .in("id", batch).eq("visibility", "public").eq("public_approved", true);
+    return options.signal ? query.abortSignal(options.signal) : query;
+  });
   evidenceResults.forEach((result) => assertQuery(result, "scoped public evidence"));
   const evidenceRows = evidenceResults.flatMap((result) => asRows(result.data));
 
@@ -860,10 +868,12 @@ export async function loadPublicCitationGraph(
     ...uniqueIds(evidenceRows, "source_id"),
     ...uniqueIds(demandSourceRows, "source_id")
   ]));
-  const sourceResults=await boundedMap(chunks(sourceIds),3,async batch =>
-    evidenceClient.from("sources").select(atlasColumns.sources)
-      .in("id", batch).eq("visibility", "public").eq("public_approved", true)
-  );
+  const sourceResults=await boundedMap(chunks(sourceIds),3,async batch => {
+    options.signal?.throwIfAborted();
+    const query = evidenceClient.from("sources").select(atlasColumns.sources)
+      .in("id", batch).eq("visibility", "public").eq("public_approved", true);
+    return options.signal ? query.abortSignal(options.signal) : query;
+  });
   sourceResults.forEach((result) => assertQuery(result, "scoped public sources"));
 
   return {

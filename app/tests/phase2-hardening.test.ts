@@ -136,7 +136,7 @@ describe("phase 2 launch hardening", () => {
     expect(mapPage).toContain("<Suspense fallback={<MapFallback />}");
     expect(repository).toContain("loadWarmAtlasDiscoverySnapshot");
     expect(repository).toContain("getCachedAtlasDiscoveryTablePage");
-    expect(repository).toContain("ecosystem-intelligence-atlas-discovery-table-page-v1");
+    expect(repository).toContain("ecosystem-intelligence-atlas-discovery-table-page-v2");
     expect(repository).not.toContain("ecosystem-intelligence-atlas-discovery-v3");
     expect(repository).toContain('tags: ["atlas-public"]');
     expect(repository).toContain("queryAtlasExplorerSnapshot(await getAtlasDiscoverySnapshot(), query)");

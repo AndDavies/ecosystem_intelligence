@@ -5,7 +5,6 @@ import { createPublicClient } from "@/lib/supabase/public";
 import { getAtlasDiscoverySnapshot } from "@/lib/atlas/repository";
 import { dossierCitationRows, loadPublicCitationGraph } from "@/lib/atlas/supabase-repository";
 import { collectPagedRows, collectPagedRowsByIds } from "@/lib/supabase/pagination";
-import { boundedMap } from "@/lib/research/bounded-map";
 import { jevFingerprint } from "@/lib/atlas/assistant-jev";
 import type { AtlasCitation, AtlasOrganization, AtlasSnapshot } from "@/types/atlas";
 
@@ -22,7 +21,7 @@ const qualificationPage = unstable_cache(async (table: keyof typeof fields, from
   const { data, error } = await createPublicClient().from(table).select(fields[table])
     .eq("publication_status", "published").order("id").range(from, to);
   if (error) throw new Error(`Assistant ${table} qualifications unavailable`);
-  console.info(JSON.stringify({ event: "assistant_catalogue_read", table, rows: data?.length ?? 0, ms: Math.round(performance.now() - started) }));
+  console.info(JSON.stringify({ event: "assistant_catalogue_read", table, from, to, startedAt: new Date(Date.now() - (performance.now() - started)).toISOString(), cacheLoader: true, rows: data?.length ?? 0, ms: Math.round(performance.now() - started) }));
   return data as unknown as Row[];
 }, ["assistant-qualifications-v1"], { tags, revalidate: 86400 });
 
@@ -38,6 +37,9 @@ export async function getAssistantCatalogue() {
   const orgs = new Map(orgRows.map(row => [row.id, row]));
   const caps = new Map(capRows.map(row => [row.id, row]));
   if (discovery.organizations.some(org => !orgs.has(org.id) || org.capabilities.some(cap => caps.get(cap.id)?.organization_id !== org.id))) {
+    throw new Error("Assistant catalogue publication changed; retry after cache refresh");
+  }
+  if (orgs.size !== orgRows.length || caps.size !== capRows.length || orgs.size !== discovery.organizations.length || caps.size !== discovery.organizations.flatMap(o => o.capabilities).length) {
     throw new Error("Assistant catalogue publication changed; retry after cache refresh");
   }
   const organizations = discovery.organizations.map(org => {
@@ -57,51 +59,44 @@ export async function getAssistantCatalogue() {
   return { snapshot, revision, latencyMs: Math.round(performance.now() - started) };
 }
 
-// Re-admit IDs with the public client before privileged citation hydration. Cache
-// only approved public evidence; publication/source changes invalidate atlas-public.
-const evidenceForOrganization = unstable_cache(async (organizationId: string) => {
+// Batch only the final selected organizations and offerings. Public admission
+// precedes privileged evidence hydration; no unreviewed targets enter the graph.
+export async function hydrateAssistantOrganizations(organizations: AtlasOrganization[]) {
+  if (!organizations.length) return [];
   const started = performance.now();
   const client = createPublicClient();
-  const [{ data: org, error: orgError }, caps] = await Promise.all([
-    client.from("organizations").select("id").eq("id", organizationId).eq("publication_status", "published").maybeSingle(),
-    collectPagedRows(async (from,to) => await client.from("capabilities").select("id").eq("organization_id", organizationId).eq("publication_status", "published").order("id").range(from,to), "assistant admitted capabilities")
-  ]);
-  if (orgError) throw new Error("Assistant evidence admission failed");
-  if (!org) return null;
-  const ids = (caps ?? []).map(cap => cap.id as string);
-  const matchRows = async (table: string) => collectPagedRowsByIds(ids, async (batch,from,to) => {
-    const result = await client.from(table).select("id,capability_id").in("capability_id", batch)
-      .eq("review_status", "approved").eq("publication_status", "published").order("id").range(from,to);
-    return { data: result.data ?? [], error: result.error };
-  }, table);
-  const [missions, needs] = await Promise.all([matchRows("capability_mission_matches"), matchRows("capability_demand_matches")]);
+  const signal = AbortSignal.timeout(12_000);
+  const orgIds = organizations.map(o => o.id);
+  const capIds = organizations.flatMap(o => o.capabilities.map(c => c.id));
+  const read = (table: string, ids: string[], columns: string) => collectPagedRowsByIds(ids, (batch, from, to) => client.from(table)
+    .select(columns).in("id", batch).eq("publication_status", "published").order("id").range(from, to).abortSignal(signal), `assistant admitted ${table}`);
+  const [orgRows, capRows] = await Promise.all([read("organizations", orgIds, "id"), read("capabilities", capIds, "id,organization_id")]);
+  const admittedOrgs = new Set(orgRows.map(row => String((row as unknown as Row).id)));
+  const owners = new Map(capRows.map(row => { const r = row as unknown as Row; return [String(r.id), String(r.organization_id)]; }));
+  const admitted = organizations.filter(o => admittedOrgs.has(o.id)).map(o => ({ ...o, capabilities: o.capabilities.filter(c => owners.get(c.id) === o.id) }));
   const graph = await loadPublicCitationGraph([
-    { entityType: "organization", ids: [organizationId] }, { entityType: "capability", ids },
-    { entityType: "capability_mission_match", ids: missions.map(row => String(row.id)) },
-    { entityType: "capability_demand_match", ids: needs.map(row => String(row.id)) }
-  ], []);
-  const citations: Record<string, AtlasCitation[]> = {};
+    { entityType: "organization", ids: admitted.map(o => o.id) },
+    { entityType: "capability", ids: admitted.flatMap(o => o.capabilities.map(c => c.id)) }
+  ], [], { signal, fieldsByEntity: {
+    organization: ["name", "legal_name", "entity_kind", "description", "operating_context", "canadian_footprint", "defence_posture", "dual_use_posture", "commercial_status", "primary_location", "primary_location.city", "primary_location.provinceterritory", "primary_location.countrycode", "profileData.mandate", "profileData.operatingModel", "profileData.qualityCertification", "profileData.securityPosture"],
+    capability: ["name", "summary", "core_features", "defence_applications", "maturity", "commercial_availability", "technology_readiness_level", "update_child", "add_child"]
+  } });
+  const citations = new Map<string, AtlasCitation[]>();
   for (const { citation, evidence, source } of dossierCitationRows(graph).sort((a,b) => String(a.citation.id).localeCompare(String(b.citation.id)))) {
     if (typeof source.canonical_url !== "string") continue;
     const key = `${citation.entity_type}:${citation.entity_id}`;
-    (citations[key] ??= []).push({ id: String(citation.id), fieldName: String(citation.field_name),
-      sourceTitle: String(source.title), sourceUrl: source.canonical_url, publisher: String(source.publisher),
-      sourceType: String(source.source_type), excerpt: String(evidence.excerpt), publishedAt: nullable(source.published_at) });
+    const items = citations.get(key) ?? [];
+    items.push({ id: String(citation.id), fieldName: String(citation.field_name), sourceTitle: String(source.title),
+      sourceUrl: source.canonical_url, publisher: String(source.publisher), sourceType: String(source.source_type),
+      excerpt: String(evidence.excerpt), publishedAt: nullable(source.published_at) });
+    citations.set(key, items);
   }
-  console.info(JSON.stringify({ event: "assistant_evidence_read", organizationId, capabilities: ids.length, citations: graph.citations.length, ms: Math.round(performance.now() - started) }));
-  return { ids, missionIds: missions.map(row => String(row.id)), needIds: needs.map(row => String(row.id)), citations };
-}, ["assistant-public-evidence-v1"], { tags, revalidate: 86400 });
-
-export async function hydrateAssistantOrganizations(organizations: AtlasOrganization[]) {
-  const hydrated = await boundedMap(organizations, 4, async org => {
-    const graph = await evidenceForOrganization(org.id);
-    if (!graph) return null;
-    const get = (kind: string, id: string) => graph.citations[`${kind}:${id}`] ?? [];
-    return { ...org, citations: get("organization", org.id), capabilities: org.capabilities.filter(cap => graph.ids.includes(cap.id)).map(cap => ({
-      ...cap, citations: get("capability", cap.id),
-      missionMatches: cap.missionMatches.filter(match => graph.missionIds.includes(match.id)).map(match => ({ ...match, citations: get("capability_mission_match", match.id) })),
-      demandMatches: cap.demandMatches.filter(match => graph.needIds.includes(match.id)).map(match => ({ ...match, citations: get("capability_demand_match", match.id) }))
-    })) };
-  });
-  return hydrated.filter((org): org is AtlasOrganization => org !== null);
+  console.info(JSON.stringify({ event: "assistant_evidence_read", scope: "final_offerings", organizations: admitted.length,
+    capabilities: owners.size, citations: graph.citations.length, ms: Math.round(performance.now() - started) }));
+  return admitted.map(o => ({ ...o, citations: citations.get(`organization:${o.id}`) ?? [], capabilities: o.capabilities.map(c => ({ ...c,
+    citations: citations.get(`capability:${c.id}`) ?? [],
+    // Reviewed alignments can guide discovery but are not proof of supplier functionality.
+    missionMatches: c.missionMatches.map(m => ({ ...m, citations: [] })),
+    demandMatches: c.demandMatches.map(m => ({ ...m, citations: [] }))
+  })) }));
 }

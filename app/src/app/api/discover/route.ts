@@ -39,6 +39,10 @@ interface SearchMetrics {
   inputTokens: number | null;
   outputTokens: number | null;
   cachedInputTokens: number | null;
+  cacheWriteInputTokens?: number | null;
+  answerProviderMs?: number;
+  answerFinalizationMs?: number;
+  promptVersion?: string;
   candidateCount: number;
   failureClass: AtlasAssistantFailureClass | null;
   errorCode: string | null;
@@ -94,6 +98,10 @@ async function recordSearch(input: {
       inputTokens: input.metrics.inputTokens,
       outputTokens: input.metrics.outputTokens,
       cachedInputTokens: input.metrics.cachedInputTokens,
+      cacheWriteInputTokens: input.metrics.cacheWriteInputTokens ?? null,
+      answerProviderMs: input.metrics.answerProviderMs ?? null,
+      answerFinalizationMs: input.metrics.answerFinalizationMs ?? null,
+      promptVersion: input.metrics.promptVersion ?? null,
       candidateCount: input.metrics.candidateCount,
       failureClass: input.metrics.failureClass,
       errorCode: input.metrics.errorCode,
@@ -259,6 +267,10 @@ export async function POST(request: Request) {
     inputTokens: run.metrics.inputTokens,
     outputTokens: run.metrics.outputTokens,
     cachedInputTokens: run.metrics.cachedInputTokens,
+    cacheWriteInputTokens: run.metrics.cacheWriteInputTokens ?? null,
+    answerProviderMs: run.metrics.answerProviderMs ?? null,
+    answerFinalizationMs: run.metrics.answerFinalizationMs ?? null,
+    promptVersion: run.metrics.promptVersion ?? null,
     outcome: run.answer?.outcome ?? null,
     fallbackReason: run.fallbackReason ?? null,
     failureClass: run.metrics.failureClass,
