@@ -72,7 +72,8 @@ export async function createAtlasTestDatabase() {
     "20260827100251_north_signal_delivery_preferences_and_measurement.sql",
     "20260827100553_north_signal_post_deploy_preference_reconciliation.sql",
     "20260905120323_visibility_product_daily_aggregates.sql",
-    "20260905175008_newsletter_provider_observation.sql"
+    "20260905175008_newsletter_provider_observation.sql",
+    "20260920234749_replace_reviewed_capability_relations.sql"
   ]);
   const foundationMigrations = migrationFiles.filter((fileName) =>
     !fileName.includes("promote_")

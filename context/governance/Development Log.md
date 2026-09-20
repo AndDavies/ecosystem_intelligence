@@ -4,6 +4,12 @@ Status: chronological implementation record
 Owner: Andrew Davies
 Last reviewed: 2026-09-05
 
+## 2026-09-20 — Preserve reviewed capability relation removals at publication
+
+The September 20 campaign contained 124 accepted refreshes across three runs and three research holds. The 48-record run hit the authenticated database role's eight-second statement timeout; smaller Publish selections completed the approved records without changing their payloads or review decisions. Reconciliation checked every acceptance, publication audit, organization field, new evidence citation and expected logo. It also found that HENSOLDT's published capability retained two domains and a mission match that its accepted refresh had removed.
+
+The refresh publisher now treats the reviewed capability relation arrays as the complete public set: omitted links are archived with their identities and evidence retained, and retained domains receive the reviewed primary flag. The migration patches only the existing capability-update branch, preserving authentication, locks, stale-snapshot validation and transactional publication. Database regression tests cover omitted/empty relation sets, primary changes, archived-link restoration, unrelated records, failure rollback and stale-child rejection. All 881 tests passed with one existing skip; repository/governance, security, typecheck, lint and scale checks passed. The production build passed after providing the isolated checkout with the existing ignored environment configuration. The security audit retained five moderate findings and no high/critical finding; no dependencies changed.
+
 ## 2026-09-19 — Freeze Ask on lexical selection and retire Jev
 
 Release checks passed locally: 878 tests plus one existing skip, typecheck, lint, security (no high/critical production dependency finding), 5,000-marker scale and production build. Search-control keyboard/layout checks covered 390/768/1024/1440 widths without inference. No paid comparison calls were made. The release response records exact production deployment and the bounded post-deploy check.
