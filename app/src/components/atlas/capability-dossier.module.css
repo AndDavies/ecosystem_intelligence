@@ -1,0 +1,129 @@
+.header { display: grid; gap: 32px; margin-top: 24px; padding-bottom: 32px; border-bottom: 1px solid var(--atlas-border); }
+.introduction { min-width: 0; }
+.signalRule { display: block; width: 40px; height: 2px; margin-bottom: 20px; background: var(--atlas-signal); }
+.header h1 { margin-top: 16px; max-width: 23ch; font-size: clamp(36px, 4.3vw, 56px); line-height: 1.04; font-weight: 800; letter-spacing: -.035em; overflow-wrap: anywhere; }
+.summary { max-width: 72ch; margin-top: 24px; font-size: 18px; line-height: 1.75; color: var(--atlas-ink-soft); }
+.actions { display: grid; align-content: start; gap: 8px; min-width: 0; }
+.actionLabel { display: none; margin-bottom: 8px; }
+.secondaryActions { display: flex; flex-wrap: wrap; gap: 0 20px; margin-top: 8px; }
+.dossier { min-width: 0; }
+.dossier :global(.atlas-newsletter-composition) > * { min-width: 0; }
+.dossier h2 { font-size: 32px; font-weight: 700; letter-spacing: -.035em; line-height: 1.12; }
+.dossier :is(section[id], aside[id], ol[id]) { scroll-margin-top: 112px; }
+.overview { display: grid; gap: 32px; padding-block: 40px; }
+.overview > *, .relatedGroups > * { min-width: 0; }
+.reading { color: var(--atlas-ink-soft); font-size: 18px; line-height: 1.8; }
+.reading h2 { margin-top: 8px; color: var(--atlas-ink); }
+.readingGroup { margin-top: 28px; }
+.reading :is(h3), .related h3 { font-family: var(--font-inter), Inter, sans-serif; font-size: 12px; font-weight: 700; line-height: 1.5; letter-spacing: .08em; text-transform: uppercase; color: var(--atlas-muted); }
+.readingGroup ul { margin-top: 12px; padding-left: 20px; list-style: disc; }
+.readingGroup li + li { margin-top: 8px; }
+.readingGroup li { padding-left: 4px; overflow-wrap: anywhere; }
+.maturity { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--atlas-border); }
+.maturity p { margin-top: 8px; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.tags li { padding: 4px 8px; border: 1px solid var(--atlas-border); border-radius: 4px; background: var(--atlas-surface-muted); font-size: 12px; line-height: 1.5; }
+.facts { align-self: start; padding: 24px; background: var(--atlas-surface-muted); border-radius: var(--atlas-radius-card); overflow-wrap: anywhere; }
+.facts h2 { font-family: var(--font-inter), Inter, sans-serif; font-size: 12px; line-height: 1.5; letter-spacing: .1em; font-weight: 700; }
+.identity { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 12px; align-items: center; margin-block: 24px; }
+.logo { position: relative; width: 48px; height: 48px; display: grid; place-items: center; font-family: var(--font-barlow), Barlow, sans-serif; font-size: 28px; font-weight: 800; }
+.factLabel { font-size: 10px; line-height: 1.5; letter-spacing: .08em; text-transform: uppercase; font-weight: 700; color: var(--atlas-muted); }
+.organizationName { display: flex; align-items: center; gap: 12px; margin-block: 4px; font-family: var(--font-barlow), Barlow, sans-serif; font-size: 24px; font-weight: 700; line-height: 1.15; text-decoration: none; }
+.organizationName:hover { text-decoration: underline; }
+.location { font-size: 13px; line-height: 1.6; color: var(--atlas-muted); }
+.factGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 16px; font-size: 14px; line-height: 1.6; }
+.factGrid dt { color: var(--atlas-muted); font-size: 12px; }
+.factGrid dd { margin-top: 4px; font-weight: 600; }
+.fullFact { grid-column: 1 / -1; }
+.domains { padding-top: 20px; border-top: 1px solid var(--atlas-border); }
+.domains dt { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; font-weight: 700; }
+.domains dd { display: flex; flex-direction: column; align-items: start; gap: 8px; margin-top: 12px; }
+.reviewDate { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: 8px 16px; border-top: 1px solid var(--atlas-border-strong); padding-top: 16px; }
+.reviewDate dd { margin-top: 0; font-size: 12px; }
+.section { border-top: 1px solid var(--atlas-border); padding-block: 32px; }
+.section h2, .limits h2, .next h2 { margin-top: 8px; }
+.sectionHeading { display: flex; justify-content: space-between; align-items: end; gap: 24px; }
+.sectionHeading > a { flex-shrink: 0; }
+.sources { margin-top: 24px; border-bottom: 1px solid var(--atlas-border); }
+.sourceRow { display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 8px 16px; padding-block: 24px; border-top: 1px solid var(--atlas-border); }
+.sourceNumber { padding-top: 3px; font-size: 14px; font-weight: 600; color: var(--atlas-muted); }
+.sourceTitle { min-width: 0; }
+.sourceTitle h3 { font-size: 24px; font-weight: 700; line-height: 1.25; letter-spacing: -.02em; overflow-wrap: anywhere; }
+.sourceTitle p { margin-top: 8px; font-size: 14px; line-height: 1.6; color: var(--atlas-muted); }
+.sourceLink { grid-column: 2; grid-row: 4; align-self: start; min-height: 44px; padding-block: 12px; font-size: 14px; font-weight: 600; }
+.sourceDetails { grid-column: 2; min-width: 0; font-size: 14px; line-height: 1.7; color: var(--atlas-ink-soft); }
+.sourceDetails summary { display: flex; align-items: center; gap: 8px; min-height: 44px; width: fit-content; cursor: pointer; list-style: none; font-weight: 600; color: var(--atlas-link); }
+.sourceDetails summary::-webkit-details-marker { display: none; }
+.sourceDetails[open] summary svg { transform: rotate(180deg); }
+.sourcePassages { margin-block: 8px; max-width: 85ch; border-left: 2px solid var(--atlas-evidence); padding-left: 16px; overflow-wrap: anywhere; }
+.sourcePassage { margin-top: 20px; }
+.sourcePassage p + p, .sourcePassage blockquote { margin-top: 8px; }
+.trust { margin-top: 16px; font-size: 12px; line-height: 1.7; color: var(--atlas-muted); }
+.empty { margin-top: 20px; font-size: 16px; line-height: 1.7; color: var(--atlas-muted); }
+.connection { padding-block: 24px; }
+.connection + .connection { border-top: 1px solid var(--atlas-border); }
+.connectionLabel { display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 12px; color: var(--atlas-muted); }
+.connectionLabel > :first-child { font-weight: 700; }
+.connection h3 { margin-top: 12px; font-size: 24px; font-weight: 700; }
+.connection > p { max-width: 80ch; margin-top: 12px; font-size: 18px; line-height: 1.8; color: var(--atlas-ink-soft); }
+.connectionSources { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 24px; margin-top: 16px; font-size: 14px; }
+.connectionSources > span { font-size: 12px; color: var(--atlas-muted); }
+.limits { padding: 24px; margin-top: 8px; background: var(--atlas-blue-soft); border-radius: var(--atlas-radius-card); }
+.limits dl { display: grid; gap: 24px; margin-top: 24px; }
+.limits dl > div { border-top: 1px solid var(--atlas-border-strong); padding-top: 12px; }
+.limits dt { font-size: 13px; font-weight: 700; }
+.limits dd { margin-top: 8px; font-size: 16px; line-height: 1.8; color: var(--atlas-ink-soft); }
+.next { display: grid; gap: 24px; margin-block: 32px; padding: 32px; background: var(--atlas-ink); color: white; }
+.next > div > :global(.atlas-eyebrow) { color: var(--atlas-signal); }
+.next h2 { max-width: 30ch; color: white; }
+.nextCopy { max-width: 70ch; margin-top: 16px; font-size: 16px; line-height: 1.8; color: #ffffffbf; }
+.nextActions { display: grid; gap: 8px; align-content: start; }
+.nextActions :global(.atlas-secondary-button) { background: transparent; color: white; border-color: #ffffff66; }
+.nextActions :global(.atlas-secondary-button):hover { background: #ffffff12; }
+.next :focus-visible { outline-color: white; box-shadow: 0 0 0 3px var(--atlas-ink); }
+.correction { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; margin-top: 4px; font-size: 13px; font-weight: 600; color: white; text-decoration: underline; text-underline-offset: 4px; }
+.relatedGroups { display: grid; gap: 32px 48px; margin-top: 24px; }
+.related h3 { color: var(--atlas-ink); }
+.related ul { margin-top: 8px; border-bottom: 1px solid var(--atlas-border); }
+.related li { border-top: 1px solid var(--atlas-border); }
+.relatedLink { display: flex; justify-content: space-between; align-items: start; gap: 16px; min-height: 44px; padding-block: 12px; font-size: 14px; line-height: 1.6; font-weight: 600; text-decoration: none; overflow-wrap: anywhere; }
+.relatedLink:hover { text-decoration: underline; }
+.relatedLink svg { margin-top: 3px; }
+.relatedDetail { display: block; margin-top: 4px; font-size: 12px; font-weight: 400; color: var(--atlas-muted); }
+.caveat { margin-top: 16px; max-width: 85ch; font-size: 12px; line-height: 1.8; color: var(--atlas-muted); }
+@media (min-width: 768px) {
+  .relatedGroups { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .limits dl { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sourceRow { grid-template-columns: 44px minmax(0, 1fr) auto; }
+  .sourceLink { grid-column: 3; grid-row: 1 / 3; }
+  .sourceDetails { grid-column: 2 / -1; }
+}
+@media (min-width: 1024px) {
+  .header { grid-template-columns: minmax(0, 1fr) 296px; gap: 64px; margin-top: 32px; }
+  .actions { border-left: 1px solid var(--atlas-border-strong); padding-left: 24px; }
+  .actionLabel { display: block; }
+  .secondaryActions { border-top: 1px solid var(--atlas-border); padding-top: 12px; }
+  .secondaryActions > :last-child { flex-basis: 100%; }
+  .overview { grid-template-columns: minmax(0, 1fr) 368px; gap: 64px; }
+  .limits { padding: 32px; }
+  .limits dl { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .next { grid-template-columns: minmax(0, 1fr) 280px; gap: 64px; }
+}
+@media (max-width: 639px) {
+  .header { gap: 24px; padding-bottom: 16px; }
+  .header h1 { font-size: 36px; }
+  .summary { margin-top: 20px; font-size: 16px; line-height: 1.8; }
+  .dossier h2 { font-size: 28px; }
+  .overview { gap: 24px; padding-block: 32px; }
+  .reading { font-size: 16px; }
+  .readingGroup { margin-top: 24px; }
+  .facts, .limits { padding: 24px; }
+  .facts h2 { font-size: 12px; }
+  .section { padding-block: 32px; }
+  .sectionHeading { align-items: start; gap: 12px; }
+  .sectionHeading > a { font-size: 12px; }
+  .sourceRow { grid-template-columns: 20px minmax(0, 1fr); gap: 4px 12px; }
+  .sourceTitle h3 { font-size: 22px; }
+  .limits dd, .connection > p { font-size: 16px; }
+  .next { padding: 24px; }
+}

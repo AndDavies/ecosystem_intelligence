@@ -12,13 +12,16 @@ import {
 import type { AtlasOrganization } from "@/types/atlas";
 
 async function source(file: string) {
-  return readFile(path.resolve(file), "utf8");
+  const text = await readFile(path.resolve(file), "utf8");
+  return file === "src/app/capabilities/[slug]/page.tsx"
+    ? `${text}\n${await readFile(path.resolve("src/components/atlas/capability-dossier.tsx"), "utf8")}`
+    : text;
 }
 
-function citation(entityType: string, entityId: string, fieldName: string, id: string) {
+function citation(entityType: string, entityId: string, fieldName: string, id: string, locator = "Annex B, table 4") {
   return {
     citation: { id, entity_type: entityType, entity_id: entityId, field_name: fieldName },
-    evidence: { excerpt: `Public evidence for ${fieldName}.` },
+    evidence: { excerpt: `Public evidence for ${fieldName}.`, source_locator: locator },
     source: {
       title: "Official dossier source",
       canonical_url: "https://sample.ca/evidence",
@@ -143,7 +146,7 @@ describe("public organization dossier contract", () => {
       relationships: [{ id: relationshipId, relationship_type: "programme_operator", public_summary: "The public operator runs the programme in which Sample Organization participates.", related_organization_id: null, related_organization_name: "Public Operator", related_organization: null }],
       media_assets: [{ id: "logo-one", organization_id: organizationId, capability_id: null, asset_type: "logo", storage_path: "organizations/sample/logo.svg", source_url: "https://sample.ca/brand", source_visibility: "public", attribution_text: "Sample Organization official logo", approval_status: "approved", publication_status: "published", created_at: "2026-08-09T00:00:00.000Z", alt_text: "Sample Organization logo", display_role: "profile_identity" }],
       citations: [
-        citation("organization", organizationId, "description", "citation-organization"),
+        citation("organization", organizationId, "description", "citation-organization", "operations.op-private.value.description"),
         citation("capability", capabilityId, "summary", "citation-capability"),
         citation("program_participation", participationId, "public_summary", "citation-participation"),
         citation("program", programId, "summary", "citation-program"),
@@ -172,6 +175,8 @@ describe("public organization dossier contract", () => {
       lifecycleStage: "testing",
       externalIdentifiers: [{ kind: "project", value: "SAMPLE-2026" }]
     });
+    expect(mapped.capabilities[0].citations[0].sourceLocator).toBe("Annex B, table 4");
+    expect(mapped.citations[0].sourceLocator).toBeNull();
     expect(mapped.programs[0].citations).toHaveLength(1);
     expect(mapped.programs[0].programCitations).toHaveLength(1);
     expect(mapped.relationships[0].citations).toHaveLength(1);
@@ -532,7 +537,7 @@ describe("public organization dossier contract", () => {
     expect(dossier).toContain('media.assetType !== "logo"');
     expect(dossier).toContain("media.altText?.trim()");
     expect(`${dossier}\n${capability}`).not.toContain("What remains unknown");
-    expect(capability).toContain('title="What it enables"');
+    expect(capability).toContain('id="overview-heading">What it enables');
     expect(capability).toContain("Evidence of maturity");
     expect(capability).not.toContain('title="Public programs and contracts"');
     expect(capability).toContain("Organization-level program participation is not attributed to this capability.");

@@ -73,7 +73,7 @@ describe("customer-facing product language", () => {
   it("uses one clear profile and assessment vocabulary", async () => {
     const organization = await readFile(path.resolve("src/app/organizations/[slug]/page.tsx"), "utf8");
     const organizationDossier = await readFile(path.resolve("src/components/atlas/executive-organization-dossier.tsx"), "utf8");
-    const technology = await readFile(path.resolve("src/app/capabilities/[slug]/page.tsx"), "utf8");
+    const technology = await readFile(path.resolve("src/components/atlas/capability-dossier.tsx"), "utf8");
     const demand = await readFile(path.resolve("src/app/demand/[slug]/page.tsx"), "utf8");
     const combined = `${organization}\n${organizationDossier}\n${technology}\n${demand}`;
     expect(combined).toContain("What supports this assessment");

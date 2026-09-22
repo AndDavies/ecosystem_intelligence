@@ -6,7 +6,7 @@ import { createAdminClient } from "@/lib/supabase/admin";
 import { hasSupabaseAdminEnv } from "@/lib/supabase/env";
 import { createPublicClient } from "@/lib/supabase/public";
 import { organizationLogoUrl, selectPublishedOrganizationLogo } from "@/lib/atlas/organization-logos";
-import { publicProfileData } from "@/lib/atlas/public-profile-data";
+import { publicCitationSourceLocator, publicProfileData } from "@/lib/atlas/public-profile-data";
 import type {
   AtlasCapability,
   AtlasCitation,
@@ -1043,6 +1043,7 @@ export async function loadAtlasSnapshotFromSupabase(scope?: AtlasSnapshotScope):
           publisher: asString(source.publisher),
           sourceType: asString(source.source_type),
           excerpt: asString(evidence.excerpt),
+          sourceLocator: publicCitationSourceLocator(evidence.source_locator),
           publishedAt: asNullableString(source.published_at)
         };
       })
@@ -1378,6 +1379,7 @@ function dossierCitationGetter(value: unknown) {
       publisher: asString(source.publisher),
       sourceType: asString(source.source_type),
       excerpt: asString(evidence.excerpt),
+      sourceLocator: publicCitationSourceLocator(evidence.source_locator),
       publishedAt: asNullableString(source.published_at)
     });
     byEntity.set(key, current);

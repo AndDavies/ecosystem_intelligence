@@ -22,7 +22,7 @@ describe("Canadian Defence Briefs", () => {
   it("loads bounded published Brief continuations for capability and Public Need routes", async () => {
     const [repository, capability, demand] = await Promise.all([
       readFile(path.resolve("src/lib/atlas/briefs.ts"), "utf8"),
-      readFile(path.resolve("src/app/capabilities/[slug]/page.tsx"), "utf8"),
+      Promise.all([readFile(path.resolve("src/app/capabilities/[slug]/page.tsx"), "utf8"), readFile(path.resolve("src/components/atlas/capability-dossier.tsx"), "utf8")]).then((parts) => parts.join("\n")),
       readFile(path.resolve("src/app/demand/[slug]/page.tsx"), "utf8")
     ]);
     expect(repository).toContain('.eq("record_type", type)');

@@ -3,7 +3,10 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 
 async function source(file: string) {
-  return readFile(path.resolve(file), "utf8");
+  const text = await readFile(path.resolve(file), "utf8");
+  return file === "src/app/capabilities/[slug]/page.tsx"
+    ? `${text}\n${await readFile(path.resolve("src/components/atlas/capability-dossier.tsx"), "utf8")}`
+    : text;
 }
 
 describe("public data access", () => {

@@ -3,7 +3,10 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 
 async function source(file: string) {
-  return readFile(path.resolve(file), "utf8");
+  const text = await readFile(path.resolve(file), "utf8");
+  return file === "src/app/capabilities/[slug]/page.tsx"
+    ? `${text}\n${await readFile(path.resolve("src/components/atlas/capability-dossier.tsx"), "utf8")}`
+    : text;
 }
 
 describe("profile and decision handoffs", () => {
@@ -18,8 +21,8 @@ describe("profile and decision handoffs", () => {
 
     expect(organization).toContain("Sources behind this profile");
     expect(organization).not.toContain('title="What remains unknown"');
-    expect(capability).toContain('title="What it enables"');
-    expect(capability).toContain('title="What supports this profile"');
+    expect(capability).toContain('id="overview-heading">What it enables');
+    expect(capability).toContain('id="sources-heading">What supports this profile');
     expect(capability).toContain("Evidence limits");
     expect(demand).toContain('title="What supports this defence need"');
     expect(demand).toContain('title="Evidence limits"');

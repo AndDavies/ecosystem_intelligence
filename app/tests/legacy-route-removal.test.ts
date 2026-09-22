@@ -28,7 +28,7 @@ describe("legacy workspace retirement", () => {
 
   it("keeps the canonical public capability dossier without the authenticated fallback", async () => {
     const capabilityPage = await readFile(path.resolve("src/app/capabilities/[slug]/page.tsx"), "utf8");
-    expect(capabilityPage).toContain("PublicCapabilityPage");
+    expect(capabilityPage).toContain("CapabilityDossier");
     expect(capabilityPage).toContain("notFound()");
     expect(capabilityPage).not.toContain("LegacyCapabilityPage");
     expect(capabilityPage).not.toContain("AppShell");

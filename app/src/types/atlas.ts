@@ -19,6 +19,7 @@ export interface AtlasCitation {
   publisher: string;
   sourceType: string;
   excerpt: string;
+  sourceLocator?: string | null;
   publishedAt: string | null;
 }
 

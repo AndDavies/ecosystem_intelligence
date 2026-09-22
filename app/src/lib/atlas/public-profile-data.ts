@@ -1,6 +1,12 @@
 import { publicContactFromProfileData } from "@/lib/atlas/presentation";
 import type { AtlasEntityKind } from "@/types/atlas";
 
+export function publicCitationSourceLocator(value: unknown) {
+  const locator = typeof value === "string" ? value.trim() : "";
+  // Older intake records stored an operation-field path here, not a location in the source.
+  return locator && !/^operations(?:\.|\[|$)/.test(locator) ? locator : null;
+}
+
 export const organizationProfileFieldAllowlist = {
   company: [
     "portfolioScope", "portfolioSummary", "manufacturingModel", "intellectualProperty",
