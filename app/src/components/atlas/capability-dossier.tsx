@@ -1,3 +1,4 @@
+import { DownloadLink } from "@/components/atlas/download-link";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, BookmarkPlus, Building2, ChevronDown, Download } from "lucide-react";
@@ -143,7 +144,7 @@ export function CapabilityDossier({ organization, capability, mapReturnTo, relat
         <p className={`atlas-eyebrow ${styles.actionLabel}`}>Next actions</p>
         {primaryActions}
         <div className={styles.secondaryActions}>
-          <Link href={`/api/export?type=capability-dossier&slug=${capability.slug}`} prefetch={false} className="atlas-prose-link inline-flex min-h-11 items-center gap-2 text-sm font-semibold">Download profile <Download className="size-4" aria-hidden="true" /></Link>
+          <DownloadLink href={`/api/export?type=capability-dossier&slug=${capability.slug}`} className="atlas-prose-link inline-flex min-h-11 items-center gap-2 text-sm font-semibold">Download profile <Download className="size-4" aria-hidden="true" /></DownloadLink>
           <PublicShare title={capability.name} description={capability.summary} path={`/capabilities/${capability.slug}`} className="!border-0 !bg-transparent !px-0 !text-sm !text-[var(--atlas-link)] underline underline-offset-4" />
           <Link href="/collections" prefetch={false} className="atlas-prose-link inline-flex min-h-11 items-center text-sm font-semibold">My shortlists</Link>
         </div>

@@ -20,6 +20,12 @@ Last reviewed: 2026-09-04
 | Defence Brief editing and media library | No access | No access | No access | Protected editor only | Authenticated RPC repeats the exact staff and user-ID check |
 | Administrator routes and data | No access | No access | No access | Exact administrator identity and controlled app metadata required | No public client access |
 
+### Authenticated downloads
+
+Every `/api/export` format requires a verified, non-anonymous account before data retrieval or document rendering. Members, non-admin staff and administrators share an atomic allowance of 10 attempts per rolling 10 minutes and 100 per rolling 24 hours. Shortlist exports additionally enforce ownership. Anonymous browser navigation returns to sign-in with the exact local download intent; API requests receive 401. Quota rejection returns 429 and Retry-After; unavailable authorization or quota fails closed. All export responses are private/no-store.
+
+The private service-only reservation ledger stores a namespaced account hash and reservation timestamps and is removed by the existing daily telemetry-retention job after 24 hours of inactivity. Runtime operational logs record export type, generated/rejected outcome, HTTP status and duration without account IDs, IPs, selection IDs or query contents. Generated means the server produced a response, not proof of a completed browser download. Firewall-denied traffic remains in Vercel firewall reporting. Account creation does not grant newsletter consent.
+
 ## Retention and collection boundary
 
 - Raw search text is retained for at most 90 days.

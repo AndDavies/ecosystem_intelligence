@@ -1,9 +1,9 @@
+import { reserveExportRequest, recordExportOutcome } from "@/lib/export/access";
 import { collectPagedRows } from "@/lib/supabase/pagination";
 import { NextResponse } from "next/server";
 import { atlasQueryFromSearchParams } from "@/lib/atlas/query-params";
 import { getAtlasCapabilityBySlug, getAtlasOrganizationBySlug, getAtlasRegionBySlug, getAtlasOrganizationsForExport, getAtlasOrganizationsForCollection } from "@/lib/atlas/repository";
 import { getAtlasUser } from "@/lib/atlas/auth";
-import { renderCapabilityDossierPdf, renderCollectionLookbookPdf, renderOrganizationDossierPdf, renderRegionReportPdf } from "@/lib/export/atlas-pdf";
 import { createClient } from "@/lib/supabase/server";
 import { atlasResultsCapabilityExportScope, buildCsv } from "@/lib/export/csv";
 
@@ -19,7 +19,7 @@ function pdfResponse(buffer: Buffer, filename: string) {
   });
 }
 
-export async function GET(request: Request) {
+async function generateExport(request: Request, user: { id: string }) {
   const { searchParams } = new URL(request.url);
   const type = searchParams.get("export") ?? searchParams.get("type");
 
@@ -96,6 +96,8 @@ export async function GET(request: Request) {
     });
   }
 
+  const { renderCapabilityDossierPdf, renderCollectionLookbookPdf, renderOrganizationDossierPdf, renderRegionReportPdf } = await import("@/lib/export/atlas-pdf");
+
   if (type === "organization-dossier") {
     const slug = searchParams.get("slug");
     const organization = slug ? await getAtlasOrganizationBySlug(slug) : null;
@@ -120,8 +122,6 @@ export async function GET(request: Request) {
   }
 
   if (type === "collection-lookbook") {
-    const user = await getAtlasUser();
-    if (!user) return NextResponse.json({ error: "Authentication required." }, { status: 401 });
     const id = searchParams.get("id");
     if (!id) return NextResponse.json({ error: "Collection id is required." }, { status: 400 });
     const supabase = await createClient();
@@ -144,4 +144,35 @@ export async function GET(request: Request) {
   }
 
   return NextResponse.json({ error: "Invalid export request." }, { status: 400 });
+}
+
+
+export async function GET(request: Request) {
+  const startedAt = Date.now();
+  const url = new URL(request.url);
+  const requestedType = url.searchParams.get("export") ?? url.searchParams.get("type");
+  const type = ["atlas-results", "organization-dossier", "capability-dossier", "region-report", "collection-lookbook"].includes(requestedType ?? "") ? requestedType! : "invalid";
+  const finish = (response: NextResponse, outcome: string) => {
+    response.headers.set("Cache-Control", "private, no-store");
+    response.headers.set("X-Robots-Tag", "noindex, nofollow");
+    recordExportOutcome(type, outcome, response.status, startedAt);
+    return response;
+  };
+  if (type === "invalid") return finish(NextResponse.json({ error: "Invalid export request." }, { status: 400 }), "invalid_request");
+  try {
+    const user = await getAtlasUser();
+    if (!user) {
+      const signIn = `/sign-in?next=${encodeURIComponent(url.pathname + url.search)}`;
+      if (request.headers.get("accept")?.includes("text/html")) {
+        return finish(NextResponse.redirect(new URL(signIn, url), 303), "authentication_required");
+      }
+      return finish(NextResponse.json({ error: "Sign in to download.", signIn }, { status: 401 }), "authentication_required");
+    }
+    const allowance = await reserveExportRequest(user.id);
+    if (!allowance.allowed) return finish(NextResponse.json({ error: "Download limit reached. Please try again later." }, { status: 429, headers: { "Retry-After": String(allowance.retryAfter) } }), "rate_limited");
+    const response = await generateExport(request, user);
+    return finish(response, response.ok ? "generated" : "rejected");
+  } catch {
+    return finish(NextResponse.json({ error: "Downloads are temporarily unavailable. Please try again shortly." }, { status: 503, headers: { "Retry-After": "60" } }), "unavailable");
+  }
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import { DownloadLink } from "@/components/atlas/download-link";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -789,7 +790,7 @@ export function AtlasExplorer({
             </div>
             <div className="hidden shrink-0 items-center gap-3 sm:flex">
               <span className="text-xs font-extrabold text-[var(--atlas-evidence)]">{result.total.toLocaleString("en-CA")} published {result.total === 1 ? "result" : "results"}</span>
-              <Link href={exportHref} className="inline-flex min-h-9 items-center gap-2 text-xs font-bold text-[var(--atlas-primary)] no-underline hover:underline"><Download className="size-4" />Export</Link>
+              <DownloadLink href={exportHref} className="inline-flex min-h-9 items-center gap-2 text-xs font-bold text-[var(--atlas-primary)] no-underline hover:underline"><Download className="size-4" />Export</DownloadLink>
               <PublicShare title="True North Map: Canada’s defence and dual-use ecosystem" description="Explore reviewed Canadian organizations, technologies, Defence needs, and the evidence behind them." useCurrentUrl className="h-9 px-3" />
             </div>
           </div>
@@ -896,10 +897,10 @@ export function AtlasExplorer({
             </div>
             <div className="flex flex-wrap items-center gap-3">
               {filters.bounds || viewport ? <button type="button" className="inline-flex min-h-11 items-center text-xs font-bold underline underline-offset-4" onClick={() => { setViewMode("table"); void load({ ...pendingFiltersRef.current, bounds: undefined, view: "table" }); }}>Search all Canada</button> : null}
-              <Link href={exportHref} className="inline-flex items-center gap-2 text-xs font-semibold text-[var(--atlas-primary)] no-underline hover:underline">
+              <DownloadLink href={exportHref} className="inline-flex items-center gap-2 text-xs font-semibold text-[var(--atlas-primary)] no-underline hover:underline">
                 <Download className="size-4" />
                 Export visible results
-              </Link>
+              </DownloadLink>
               <button
                 type="button"
                 className="inline-flex h-9 items-center gap-2 rounded-md border border-[var(--atlas-border)] bg-white px-3 text-xs font-semibold text-[var(--atlas-ink-soft)] shadow-sm hover:bg-[var(--atlas-surface-muted)] lg:hidden"
@@ -1022,7 +1023,7 @@ export function AtlasExplorer({
           <p className="text-[10px] font-extrabold uppercase tracking-[0.1em] text-[var(--atlas-muted)]">Map utilities</p>
           <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-2">
             <EvidenceLegendDisclosure className="[&>summary]:min-h-11" />
-            <Link href={exportHref} className="inline-flex min-h-11 items-center gap-2 px-1 text-xs font-bold text-[var(--atlas-primary)] no-underline hover:underline"><Download className="size-4" />Export</Link>
+            <DownloadLink href={exportHref} className="inline-flex min-h-11 items-center gap-2 px-1 text-xs font-bold text-[var(--atlas-primary)] no-underline hover:underline"><Download className="size-4" />Export</DownloadLink>
             <PublicShare title="True North Map: Canada’s defence and dual-use ecosystem" description="Explore reviewed Canadian organizations, technologies, Defence needs, and the evidence behind them." useCurrentUrl className="h-11 px-3" />
           </div>
           <p className="mt-2 flex items-start gap-2 text-[11px] leading-5 text-[var(--atlas-muted)]"><Info className="mt-0.5 size-3.5 shrink-0 text-[var(--atlas-evidence)]" aria-hidden="true" /><span>{caveat}</span></p>

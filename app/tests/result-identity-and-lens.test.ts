@@ -170,7 +170,7 @@ describe("guided lens band", () => {
     expect(explorer).toContain('aria-label="Map utilities"');
     const utilityArea = explorer.slice(explorer.indexOf("data-mobile-map-utilities"));
     expect(utilityArea).toContain("<EvidenceLegendDisclosure");
-    expect(utilityArea).toContain(">Export</Link>");
+    expect(utilityArea).toContain(">Export</DownloadLink>");
     expect(utilityArea).toContain("<PublicShare");
     expect(utilityArea).toContain("{caveat}");
     // Lens trigger labels stay at 12px minimum on every breakpoint.

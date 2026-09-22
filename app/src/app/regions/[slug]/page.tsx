@@ -1,3 +1,4 @@
+import { DownloadLink } from "@/components/atlas/download-link";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -103,13 +104,13 @@ async function RegionExportAction({ slug }: { slug: string }) {
   const result = await getAtlasRegionDirectoryBySlug(slug);
   if (!result?.organizations.length) return null;
   return (
-    <Link
+    <DownloadLink
       href={`/api/export?type=region-report&slug=${slug}`}
       className="atlas-secondary-button h-11 gap-2 px-5 text-sm"
     >
       <Download className="size-4" aria-hidden="true" />
       Export report
-    </Link>
+    </DownloadLink>
   );
 }
 

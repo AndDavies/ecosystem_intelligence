@@ -25,6 +25,7 @@ export default async function SignInPage({
   const user = await getAtlasUser();
   if (user) redirect(next);
   const nextUrl = new URL(next, "https://truenorthmap.ca");
+  const downloading = nextUrl.pathname === "/api/export";
   const returnTo = safeAuthNextPath(nextUrl.searchParams.get("returnTo") ?? undefined, "/organizations");
   const returnPath = new URL(returnTo, "https://truenorthmap.ca").pathname;
   const organizationSlug = returnPath.match(/^\/organizations\/([a-z0-9-]+)$/)?.[1];
@@ -42,11 +43,11 @@ export default async function SignInPage({
         <section className="p-3 sm:p-8">
           <span className="flex size-11 items-center justify-center rounded-lg bg-[var(--atlas-primary-soft)] text-[var(--atlas-primary)]"><LockKeyhole className="size-5" /></span>
           <p className="mt-6 text-[11px] font-bold uppercase tracking-[0.13em] text-[var(--atlas-primary)]">Optional account</p>
-          <h1 className="mt-2 text-3xl font-bold tracking-[-0.035em] sm:text-4xl">Keep your shortlist for the next conversation.</h1>
+          <h1 className="mt-2 text-3xl font-bold tracking-[-0.035em] sm:text-4xl">{downloading ? "Sign in to download." : "Keep your shortlist for the next conversation."}</h1>
           {selectedName ? <p className="mt-4 rounded-[12px] bg-[var(--atlas-blue-soft)] p-4 text-sm">Ready to save: <strong>{selectedName}</strong>. Sign in to choose a private shortlist.</p> : null}
-          <p className="mt-4 max-w-md text-sm leading-6 text-[var(--atlas-muted)]">The map, organization profiles, evidence and exports remain public. Sign in only when you want to save or contribute.</p>
+          <p className="mt-4 max-w-md text-sm leading-6 text-[var(--atlas-muted)]">The map, organization profiles and evidence remain public. Sign in to download files, save a shortlist or contribute. Creating an account does not subscribe you to emails.</p>
           <ul className="mt-6 space-y-3 text-sm text-[var(--atlas-muted)]">
-            {["Save private shortlists", "Claim or correct an organization", "Request a human-vetted introduction"].map((item) => (
+            {["Download profiles and directory results", "Save private shortlists", "Claim or correct an organization", "Request a human-vetted introduction"].map((item) => (
               <li key={item} className="flex items-center gap-2"><CheckCircle2 className="size-4 text-[var(--atlas-primary)]" />{item}</li>
             ))}
           </ul>

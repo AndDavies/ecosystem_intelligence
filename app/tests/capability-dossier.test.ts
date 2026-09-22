@@ -73,6 +73,8 @@ describe("editorial capability dossier", () => {
       expect(query.get("returnTo")).toBe(`/capabilities/${capability.slug}?returnTo=%2Fmap`);
     }
     expect(doc.querySelector("a[href^='/submit?']")?.getAttribute("href")).toContain(`targetType=capability&targetId=${capability.id}`);
-    expect(doc.querySelector("a[href^='/api/export?']")?.getAttribute("href")).toBe(`/api/export?type=capability-dossier&slug=${capability.slug}`);
+    const download = doc.querySelector("a[data-export-download]")!;
+    expect(download.textContent).toBe("Sign in to download");
+    expect(new URL(download.getAttribute("href")!, "https://truenorthmap.ca").searchParams.get("next")).toBe(`/api/export?type=capability-dossier&slug=${capability.slug}`);
   });
 });

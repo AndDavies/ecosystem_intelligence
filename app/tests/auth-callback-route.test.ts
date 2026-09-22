@@ -25,6 +25,12 @@ describe("authentication callback return boundary", () => {
     expect(state.exchange).not.toHaveBeenCalled();
   });
 
+  it("returns to the exact export selection after authentication", async () => {
+    const next = "/api/export?export=atlas-results&type=company&organizationIds=a%2Cb";
+    const response = await GET(request(next, { code: "valid-code" }));
+    expect(response.headers.get("location")).toBe(origin + next);
+  });
+
   it("preserves a legitimate map return including query and fragment after sign-in", async () => {
     const next = "/map?domain=maritime&selected=record#results";
     const response = await GET(request(next, { code: "valid-code" }));

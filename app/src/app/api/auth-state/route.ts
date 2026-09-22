@@ -17,7 +17,7 @@ export async function GET() {
     const { data: { user }, error } = await supabase.auth.getUser();
     if (!error) {
       return NextResponse.json(
-        { signedIn: Boolean(user) },
+        { signedIn: Boolean(user && !user.is_anonymous) },
         { headers: { "Cache-Control": "private, no-store" } }
       );
     }

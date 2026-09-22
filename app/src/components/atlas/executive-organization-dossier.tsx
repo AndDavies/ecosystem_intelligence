@@ -1,3 +1,4 @@
+import { DownloadLink } from "@/components/atlas/download-link";
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
@@ -537,7 +538,7 @@ function DossierActions({ organization, profilePath, mode }: { organization: Atl
         <Link href={`/connect/${organization.slug}`} className="atlas-secondary-button h-12 gap-2 px-4 text-sm"><Handshake className="size-4" aria-hidden="true" />Request an introduction</Link>
       </div>
       <div className="mt-4 flex flex-wrap items-center gap-x-1 gap-y-1 border-t border-[var(--atlas-border)] pt-3">
-        <Link href={`/api/export?type=organization-dossier&slug=${organization.slug}`} className="inline-flex min-h-11 items-center gap-1.5 rounded-[12px] px-2.5 text-[13px] font-semibold text-[var(--atlas-muted)] no-underline hover:bg-white hover:text-[var(--atlas-ink)] hover:no-underline">Download profile <Download className="size-3.5" aria-hidden="true" /></Link>
+        <DownloadLink href={`/api/export?type=organization-dossier&slug=${organization.slug}`} className="inline-flex min-h-11 items-center gap-1.5 rounded-[12px] px-2.5 text-[13px] font-semibold text-[var(--atlas-muted)] no-underline hover:bg-white hover:text-[var(--atlas-ink)] hover:no-underline">Download profile <Download className="size-3.5" aria-hidden="true" /></DownloadLink>
         <PublicShare title={organization.name} description={organization.description} path={`/organizations/${organization.slug}`} className="!h-11 !min-h-11 !rounded-full !border-0 !bg-transparent !px-2.5 !text-[13px] !font-semibold !text-[var(--atlas-link)] hover:!bg-white hover:!text-[var(--atlas-ink)]" />
         {organization.websiteUrl ? <ExternalSourceLink href={organization.websiteUrl} variant="plain" className="min-h-11 items-center rounded-[12px] px-2.5 text-[13px] font-semibold text-[var(--atlas-muted)] no-underline hover:bg-white hover:text-[var(--atlas-ink)] hover:no-underline">Visit website</ExternalSourceLink> : null}
         <Link href="/collections" className="inline-flex min-h-11 items-center rounded-[12px] px-2.5 text-[13px] font-semibold text-[var(--atlas-muted)] no-underline hover:bg-white hover:text-[var(--atlas-ink)] hover:no-underline">My shortlists</Link>

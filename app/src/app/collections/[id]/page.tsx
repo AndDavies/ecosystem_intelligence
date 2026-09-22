@@ -1,3 +1,4 @@
+import { DownloadLink } from "@/components/atlas/download-link";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Download, ExternalLink, Trash2 } from "lucide-react";
@@ -45,7 +46,7 @@ export default async function CollectionPage({ params }: { params: Promise<{ id:
       description={collection.description || "Organizations, capabilities and evidence saved for the conversation ahead."}
       backHref="/collections"
       backLabel="All Shortlists"
-      actions={<Link href={`/api/export?type=collection-lookbook&id=${collection.id}`} className="inline-flex h-10 items-center gap-2 rounded-md border border-[var(--atlas-border)] bg-white px-4 text-xs font-semibold text-[var(--atlas-ink-soft)] no-underline hover:bg-[var(--atlas-surface-muted)] hover:no-underline"><Download className="size-4" />Export lookbook</Link>}
+      actions={<DownloadLink href={`/api/export?type=collection-lookbook&id=${collection.id}`} className="inline-flex h-10 items-center gap-2 rounded-md border border-[var(--atlas-border)] bg-white px-4 text-xs font-semibold text-[var(--atlas-ink-soft)] no-underline hover:bg-[var(--atlas-surface-muted)] hover:no-underline"><Download className="size-4" />Export lookbook</DownloadLink>}
     >
       <PublicCard title="Saved records" eyebrow={`${resolved.length} ${resolved.length === 1 ? "item" : "items"}`}>
         {resolved.length ? (

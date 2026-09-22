@@ -13,7 +13,7 @@ export const getAtlasUser = cache(async function getAtlasUser() {
   if (!hasSupabasePublicEnv()) return null;
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
-  if (!user) return null;
+  if (!user || user.is_anonymous) return null;
 
   const rawRole = user.app_metadata?.role;
   const role: AtlasRole = ["editor", "reviewer", "admin"].includes(rawRole) ? rawRole : "member";
