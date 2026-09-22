@@ -782,6 +782,7 @@ function RelatedIntelligence({ organization, related }: {
     ...editorialLinks
   ];
   return (
+    <>
     <ExploreNext
       links={links}
       module="organization_dossier"
@@ -789,6 +790,8 @@ function RelatedIntelligence({ organization, related }: {
       title="Follow the strongest connections"
       description="Continue through related organizations, reviewed mission and Defence need connections, programme pathways, and explicitly linked intelligence. Similarity results describe shared areas of work, not partnerships or endorsements."
     />
+    {related.unavailable?.length ? <p className="mt-4 text-sm text-[var(--atlas-muted)]">Some related content is temporarily unavailable: {related.unavailable.join(", ")}.</p> : null}
+    </>
   );
 }
 

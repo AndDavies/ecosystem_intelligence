@@ -16,7 +16,7 @@ import { socialMetadata } from "@/lib/seo/social";
 import { toTitleCase } from "@/lib/utils";
 
 // Safe map-return context is query-string state. Render the route dynamically
-// while the bounded dossier loader retains its five-minute server cache.
+// while the bounded dossier loader retains publication-driven invalidation and a 24-hour recovery expiry.
 export const dynamic = "force-dynamic";
 
 type OrganizationRouteSearch = { returnTo?: string; cold_dossier_gate?: string };

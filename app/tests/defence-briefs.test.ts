@@ -30,7 +30,7 @@ describe("Canadian Defence Briefs", () => {
     expect(repository).toContain('.eq("publication_status", "published")');
     expect(repository).toContain('.limit(relatedBriefCandidateLimit)');
     expect(repository).toContain("defenceBriefHasExactRecordLink(brief, type, normalizedId)");
-    expect(capability).toContain('getPublishedDefenceBriefsForRecord("capability", publicCapability.capability.id, 3)');
+    expect(await readFile(path.resolve("src/lib/atlas/dossier-related.ts"), "utf8")).toContain("getRelatedBriefSummaries(targets)");
     expect(capability).toContain('detail: "Explicit Brief record link"');
     expect(demand).toContain('getPublishedDefenceBriefsForRecord("demand_requirement", demand.id, 3)');
     expect(demand).toContain('detail: "Explicit Brief record link"');

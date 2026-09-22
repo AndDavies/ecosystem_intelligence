@@ -217,7 +217,7 @@ const getCachedPublishedOrganizationLogos = unstable_cache(
 function getCachedAtlasCapabilityBySlug(slug: string) {
   return unstable_cache(
     () => withPublicReadRetry(() => loadAtlasCapabilityBySlugFromSupabase(slug)),
-    ["ecosystem-intelligence-capability-detail-v2", slug],
+    ["ecosystem-intelligence-capability-detail-v3", slug],
     { revalidate: publicRecordCacheSeconds, tags: [atlasCapabilityCacheTag(slug), "atlas-public"] }
   )();
 }

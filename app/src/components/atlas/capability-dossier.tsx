@@ -23,13 +23,14 @@ import { buildExploreNextGroups, capabilityRelatedOrganizationEdge, type Interna
 import type { AtlasCapability, AtlasCitation, AtlasConfidence, AtlasAlignmentType, AtlasOrganization } from "@/types/atlas";
 import styles from "./capability-dossier.module.css";
 
-export function CapabilityDossier({ organization, capability, mapReturnTo, relatedSignals, relatedBriefs, relatedOrganizations }: {
+export function CapabilityDossier({ organization, capability, mapReturnTo, relatedContent, relatedSignals = [], relatedBriefs = [], relatedOrganizations = [] }: {
   organization: AtlasOrganization;
   capability: AtlasCapability;
   mapReturnTo: string;
-  relatedSignals: SignalEdition[];
-  relatedBriefs: DefenceBrief[];
-  relatedOrganizations: DossierRelatedIntelligence["organizations"];
+  relatedContent?: React.ReactNode;
+  relatedSignals?: Pick<SignalEdition, "id" | "slug" | "title" | "editionDate">[];
+  relatedBriefs?: Pick<DefenceBrief, "id" | "slug" | "title" | "publishedAt">[];
+  relatedOrganizations?: DossierRelatedIntelligence["organizations"];
 }) {
   const sources = capabilitySources(capability);
   const capabilityPath = `/capabilities/${capability.slug}?returnTo=${encodeURIComponent(mapReturnTo)}`;
@@ -45,78 +46,6 @@ export function CapabilityDossier({ organization, capability, mapReturnTo, relat
     { id: "evidence-limits", label: "Evidence limits" },
     { id: "next-steps", label: "Next steps" }
   ];
-  const editorialExploreLinks: InternalLinkEdge[] = [
-    ...relatedSignals.map((signal) => ({
-      href: `/signals/${signal.slug}`,
-      label: signal.title,
-      detail: `Explicit Signal record link · ${formatDate(signal.editionDate)}`,
-      targetType: "signal" as const,
-      targetSlug: signal.slug,
-      relationshipKind: "editorial_record" as const,
-      provenance: "editorial" as const,
-      sortDate: signal.editionDate
-    })),
-    ...relatedBriefs.map((brief) => ({
-      href: `/briefs/${brief.slug}`,
-      label: brief.title,
-      detail: "Explicit Brief record link",
-      targetType: "brief" as const,
-      targetSlug: brief.slug,
-      relationshipKind: "editorial_record" as const,
-      provenance: "editorial" as const,
-      sortDate: brief.publishedAt
-    }))
-  ].sort((left, right) => right.sortDate.localeCompare(left.sortDate)).map(({ sortDate: _sortDate, ...link }) => link);
-  const exploreLinks: InternalLinkEdge[] = [
-    {
-      href: `/organizations/${organization.slug}`,
-      label: organization.name,
-      targetType: "organization",
-      targetSlug: organization.slug,
-      relationshipKind: "ownership",
-      provenance: "direct"
-    },
-    ...relatedOrganizations.map((item) => ({ ...capabilityRelatedOrganizationEdge(item), label: item.name, detail: item.reason })),
-    ...capability.missionMatches.map((match) => ({
-      href: `/missions/${match.missionArea.slug}`,
-      label: `Explore Mission area: ${match.missionArea.name}`,
-      detail: `Reviewed connection through ${capability.name}.`,
-      targetType: "mission_area" as const,
-      targetSlug: match.missionArea.slug,
-      relationshipKind: "reviewed_mission" as const,
-      provenance: "direct" as const
-    })),
-    ...organization.capabilities.filter((item) => item.id !== capability.id).slice(0, 2).map((item) => ({
-      href: `/capabilities/${item.slug}`,
-      label: `Review ${item.name}`,
-      detail: `Another published capability from ${organization.name}.`,
-      targetType: "capability" as const,
-      targetSlug: item.slug,
-      relationshipKind: "ownership" as const,
-      provenance: "direct" as const
-    })),
-    ...capability.demandMatches.map((match) => ({
-      href: `/demand/${match.demandSlug}`,
-      label: `Review Defence need: ${match.demandTitle}`,
-      detail: `Reviewed public-source alignment through ${capability.name}.`,
-      targetType: "public_need" as const,
-      targetSlug: match.demandSlug,
-      relationshipKind: "reviewed_public_need" as const,
-      provenance: "direct" as const
-    })),
-    ...capability.technicalDomains.map((domain) => ({
-      href: `/map?domain=${domain.slug}`,
-      label: domain.name,
-      targetType: "technical_domain" as const,
-      targetSlug: domain.slug,
-      relationshipKind: "shared_domain" as const,
-      provenance: "discovery" as const
-    })),
-    ...editorialExploreLinks
-  ];
-
-  const groups = buildExploreNextGroups(exploreLinks, { currentHref: `/capabilities/${capability.slug}` });
-  let relatedPosition = 0;
   const primaryActions = <>
     <Link href={saveHref} prefetch={false} className="atlas-signal-button min-h-12 gap-2 px-4 py-3 text-sm"><BookmarkPlus className="size-4" aria-hidden="true" />Add to shortlist</Link>
     <Link href={introductionHref} prefetch={false} className="atlas-secondary-button min-h-12 px-4 py-3 text-sm">Request an introduction</Link>
@@ -218,7 +147,97 @@ export function CapabilityDossier({ organization, capability, mapReturnTo, relat
         <div><p className="atlas-eyebrow">Next useful conversation</p><h2 id="next-heading">Take this capability into<br className="hidden sm:block" /> the next conversation.</h2><p className={styles.nextCopy}>Save the capability and its sources, then verify operating performance, maturity and integration constraints directly with the organization.</p></div>
         <div className={styles.nextActions}>{primaryActions}<Link href={`/submit?submissionType=correction&targetType=capability&targetId=${capability.id}&returnTo=${encodeURIComponent(capabilityPath)}`} prefetch={false} className={styles.correction}>Suggest a correction <ArrowRight className="size-4" aria-hidden="true" /></Link></div>
       </section>
-      {groups.length ? <section className={`${styles.section} ${styles.related}`} aria-labelledby="capability-related-heading" data-internal-link-module="capability_profile">
+      {relatedContent ?? <CapabilityRelatedRecords organization={organization} capability={capability} relatedSignals={relatedSignals} relatedBriefs={relatedBriefs} relatedOrganizations={relatedOrganizations} />}
+
+      {showsContextualNorthSignalSignup("capability", capability.slug) ? <NorthSignalInline placement="newsletter_inline_profile" trigger="technology_after_evidence" className="mt-8" /> : null}
+    </div>
+  </PublicPageShell>;
+}
+
+export function CapabilityRelatedRecords({ organization, capability, relatedSignals, relatedBriefs, relatedOrganizations,
+  siblings = organization.capabilities.filter((item) => item.id !== capability.id).slice(0, 2), unavailable = []
+}: {
+  organization: AtlasOrganization;
+  capability: AtlasCapability;
+  relatedSignals: Pick<SignalEdition, "id" | "slug" | "title" | "editionDate">[];
+  relatedBriefs: Pick<DefenceBrief, "id" | "slug" | "title" | "publishedAt">[];
+  relatedOrganizations: DossierRelatedIntelligence["organizations"];
+  siblings?: Array<{ id: string; slug: string; name: string }>;
+  unavailable?: string[];
+}) {
+  const editorialExploreLinks: InternalLinkEdge[] = [
+    ...relatedSignals.map((signal) => ({
+      href: `/signals/${signal.slug}`,
+      label: signal.title,
+      detail: `Explicit Signal record link · ${formatDate(signal.editionDate)}`,
+      targetType: "signal" as const,
+      targetSlug: signal.slug,
+      relationshipKind: "editorial_record" as const,
+      provenance: "editorial" as const,
+      sortDate: signal.editionDate
+    })),
+    ...relatedBriefs.map((brief) => ({
+      href: `/briefs/${brief.slug}`,
+      label: brief.title,
+      detail: "Explicit Brief record link",
+      targetType: "brief" as const,
+      targetSlug: brief.slug,
+      relationshipKind: "editorial_record" as const,
+      provenance: "editorial" as const,
+      sortDate: brief.publishedAt
+    }))
+  ].sort((left, right) => right.sortDate.localeCompare(left.sortDate)).map(({ sortDate: _sortDate, ...link }) => link);
+  const exploreLinks: InternalLinkEdge[] = [
+    {
+      href: `/organizations/${organization.slug}`,
+      label: organization.name,
+      targetType: "organization",
+      targetSlug: organization.slug,
+      relationshipKind: "ownership",
+      provenance: "direct"
+    },
+    ...relatedOrganizations.map((item) => ({ ...capabilityRelatedOrganizationEdge(item), label: item.name, detail: item.reason })),
+    ...capability.missionMatches.map((match) => ({
+      href: `/missions/${match.missionArea.slug}`,
+      label: `Explore Mission area: ${match.missionArea.name}`,
+      detail: `Reviewed connection through ${capability.name}.`,
+      targetType: "mission_area" as const,
+      targetSlug: match.missionArea.slug,
+      relationshipKind: "reviewed_mission" as const,
+      provenance: "direct" as const
+    })),
+    ...siblings.map((item) => ({
+      href: `/capabilities/${item.slug}`,
+      label: `Review ${item.name}`,
+      detail: `Another published capability from ${organization.name}.`,
+      targetType: "capability" as const,
+      targetSlug: item.slug,
+      relationshipKind: "ownership" as const,
+      provenance: "direct" as const
+    })),
+    ...capability.demandMatches.map((match) => ({
+      href: `/demand/${match.demandSlug}`,
+      label: `Review Defence need: ${match.demandTitle}`,
+      detail: `Reviewed public-source alignment through ${capability.name}.`,
+      targetType: "public_need" as const,
+      targetSlug: match.demandSlug,
+      relationshipKind: "reviewed_public_need" as const,
+      provenance: "direct" as const
+    })),
+    ...capability.technicalDomains.map((domain) => ({
+      href: `/map?domain=${domain.slug}`,
+      label: domain.name,
+      targetType: "technical_domain" as const,
+      targetSlug: domain.slug,
+      relationshipKind: "shared_domain" as const,
+      provenance: "discovery" as const
+    })),
+    ...editorialExploreLinks
+  ];
+
+  const groups = buildExploreNextGroups(exploreLinks, { currentHref: `/capabilities/${capability.slug}` });
+  let relatedPosition = 0;
+  return groups.length || unavailable.length ? <section className={`${styles.section} ${styles.related}`} aria-labelledby="capability-related-heading" data-internal-link-module="capability_profile">
         <p className="atlas-eyebrow">Continue exploring</p><h2 id="capability-related-heading">Related records</h2>
         <div className={styles.relatedGroups}>{groups.map((group) => <section key={group.key} aria-labelledby={`related-${group.key}`}>
           <h3 id={`related-${group.key}`}>{group.key === "context" && group.links.every((link) => link.targetType === "technical_domain") ? "Explore technology areas" : group.title}</h3>
@@ -226,10 +245,8 @@ export function CapabilityDossier({ organization, capability, mapReturnTo, relat
           {group.key === "organizations" ? <p className={styles.caveat}>Similar areas of work are discovery paths, not partnerships or endorsements.</p> : null}
           {group.key === "context" ? <p className={styles.caveat}>Organization-level program participation is not attributed to this capability.</p> : null}
         </section>)}</div>
-      </section> : null}
-      {showsContextualNorthSignalSignup("capability", capability.slug) ? <NorthSignalInline placement="newsletter_inline_profile" trigger="technology_after_evidence" className="mt-8" /> : null}
-    </div>
-  </PublicPageShell>;
+        {unavailable.length ? <p className={styles.caveat}>Some related content is temporarily unavailable: {unavailable.join(", ")}.</p> : null}
+      </section> : null;
 }
 
 function CapabilityList({ label, values }: { label: string; values: string[] }) {

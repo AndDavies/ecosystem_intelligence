@@ -2,6 +2,7 @@ import "server-only";
 
 import { cache } from "react";
 import { unstable_cache } from "next/cache";
+import { collectPagedRowsByIds } from "@/lib/supabase/pagination";
 import { createPublicClient } from "@/lib/supabase/public";
 
 const briefColumns = "id, slug, title, primary_question, summary_answer, dek, sections, derived_read, key_takeaways, limitations, recommended_action, content_format, topic, audience, hero_image_path, hero_image_alt, seo_title, meta_description, author_name, published_at, reviewed_at, updated_at";
@@ -220,6 +221,27 @@ export const getPublishedDefenceBriefsForRecord = cache(async (
 ) => process.env.NODE_ENV === "development"
   ? loadPublishedDefenceBriefsForRecord(type, id, limit)
   : getCachedPublishedDefenceBriefsForRecord(type, id, limit));
+
+export type EditorialRecordTarget = { type: "organization" | "capability"; id: string };
+export type RelatedBriefSummary = Pick<DefenceBrief, "id" | "slug" | "title" | "publishedAt"> & { summary: string };
+
+/** Complete explicit link coverage, without hydrating article bodies or sources. */
+export async function loadRelatedBriefSummaries(targets: EditorialRecordTarget[]): Promise<RelatedBriefSummary[]> {
+  const supabase = createPublicClient();
+  const links = (await Promise.all((["organization", "capability"] as const).map((type) =>
+    collectPagedRowsByIds(targets.filter((target) => target.type === type).map((target) => target.id),
+      (ids, from, to) => supabase.from("wiki_page_record_links").select("id, page_id")
+        .eq("record_type", type).in("record_id", ids).order("id").range(from, to), "related Brief links")
+  ))).flat();
+  const pages = await collectPagedRowsByIds(links.map((row) => String(row.page_id)),
+    (ids, from, to) => supabase.from("wiki_pages").select("id, slug, title, dek, published_at")
+      .in("id", ids).eq("publication_status", "published").order("published_at", { ascending: false }).order("id").range(from, to), "related Brief summaries");
+  return pages.sort((a, b) => String(b.published_at).localeCompare(String(a.published_at)) || String(a.id).localeCompare(String(b.id)))
+    .slice(0, 3).map((row) => ({ id: String(row.id), slug: String(row.slug), title: String(row.title), summary: String(row.dek ?? ""), publishedAt: String(row.published_at) }));
+}
+
+export const getRelatedBriefSummaries = unstable_cache(loadRelatedBriefSummaries,
+  ["dossier-brief-summaries-v1"], { revalidate: 300, tags: ["briefs-public", "atlas-public"] });
 
 export function relatedDefenceBriefs(current: DefenceBrief, briefs: DefenceBrief[], limit = 3) {
   const currentLinks = new Set(current.links.map((link) => `${link.type}:${link.id}`));

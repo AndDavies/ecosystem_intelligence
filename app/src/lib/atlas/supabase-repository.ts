@@ -97,6 +97,8 @@ export type AtlasSnapshotScope = {
   capabilityIds?: string[];
   demandRequirementIds?: string[];
   includeOrganizationLogos?: boolean;
+  /** Capability pages need parent identity, not the parent's unrelated dossier. */
+  capabilityDetail?: boolean;
 };
 
 function asRows(value: unknown): Row[] {
@@ -960,30 +962,38 @@ export async function loadAtlasSnapshotFromSupabase(scope?: AtlasSnapshotScope):
   // selected organizations only. This avoids hydrating unrelated evidence.
   const capabilityIds=scope?.capabilityIds ?? (scope?.organizationIds ? uniqueIds(capabilitiesResult.data):undefined);
   const approvedMatches: Array<[string,unknown]>=[["review_status","approved"],["publication_status","published"]];
+  const emptyRows = { data: [] as Row[], error: null };
+  const scoped = Boolean(scope?.organizationIds || scope?.capabilityIds);
+  const detail = scope?.capabilityDetail === true;
   const [
-    organizationsResult, locationsResult, technicalDomainsResult, capabilityDomainsResult,
-    missionAreasResult, missionMatchesResult, clustersResult, capabilityClustersResult,
-    demandSourcesResult, demandRequirementsResult, demandMatchesResult, programsResult,
-    participationsResult, fundingEventsResult, mediaAssetsResult
+    organizationsResult, locationsResult, capabilityDomainsResult, missionMatchesResult,
+    capabilityClustersResult, demandMatchesResult, participationsResult, fundingEventsResult, mediaAssetsResult
   ] = await Promise.all([
-    readRows("organizations",atlasColumns.organizations,scope?.organizationIds),
-    readRows("locations",atlasColumns.locations,scope?.organizationIds ? uniqueIds(organizationLocationsResult.data,"location_id"):undefined,"id",["id"],[]),
-    readRows("technical_domains",atlasColumns.technicalDomains),
-    readRows("capability_domains",atlasColumns.capabilityDomains,capabilityIds,"capability_id",["capability_id","technical_domain_id"]),
-    readRows("mission_areas",atlasColumns.missionAreas),
-    readRows("capability_mission_matches",atlasColumns.missionMatches,capabilityIds,"capability_id",["id"],approvedMatches),
-    readRows("ecosystem_clusters",atlasColumns.clusters),
-    readRows("capability_clusters",atlasColumns.capabilityClusters,capabilityIds,"capability_id",["ecosystem_cluster_id","capability_id"]),
-    readRows("demand_sources",atlasColumns.demandSources),
-    readRows("demand_requirements",atlasColumns.demandRequirements,scope?.demandRequirementIds),
-    readRows("capability_demand_matches",atlasColumns.demandMatches,capabilityIds ?? scope?.demandRequirementIds,capabilityIds ? "capability_id":"demand_requirement_id",["id"],approvedMatches),
-    readRows("programs",atlasColumns.programs),
-    readRows("program_participations",atlasColumns.participations,scope?.organizationIds,"organization_id"),
-    readRows("funding_events",atlasColumns.fundingEvents,scope?.organizationIds,"organization_id"),
+    readRows("organizations", atlasColumns.organizations, scope?.organizationIds),
+    readRows("locations", atlasColumns.locations, scope?.organizationIds ? uniqueIds(organizationLocationsResult.data, "location_id") : undefined, "id", ["id"], []),
+    readRows("capability_domains", atlasColumns.capabilityDomains, capabilityIds, "capability_id", ["capability_id", "technical_domain_id"]),
+    readRows("capability_mission_matches", atlasColumns.missionMatches, capabilityIds, "capability_id", ["id"], approvedMatches),
+    detail ? emptyRows : readRows("capability_clusters", atlasColumns.capabilityClusters, capabilityIds, "capability_id", ["ecosystem_cluster_id", "capability_id"]),
+    readRows("capability_demand_matches", atlasColumns.demandMatches, capabilityIds ?? scope?.demandRequirementIds, capabilityIds ? "capability_id" : "demand_requirement_id", ["id"], approvedMatches),
+    detail ? emptyRows : readRows("program_participations", atlasColumns.participations, scope?.organizationIds, "organization_id"),
+    detail ? emptyRows : readRows("funding_events", atlasColumns.fundingEvents, scope?.organizationIds, "organization_id"),
     scope?.includeOrganizationLogos
-      ? readRows("media_assets",atlasColumns.mediaAssets,scope.organizationIds,"organization_id",["id"],[["asset_type","logo"],["approval_status","approved"],["publication_status","published"]])
-      : Promise.resolve({data:[],error:null})
+      ? readRows("media_assets", atlasColumns.mediaAssets, scope.organizationIds, "organization_id", ["id"], [["asset_type", "logo"], ["approval_status", "approved"], ["publication_status", "published"]])
+      : emptyRows
   ]);
+  // Follow admitted relations before fetching supporting records. An empty ID
+  // set means no read, never an unfiltered table or a display-sized corpus cap.
+  const [technicalDomainsResult, missionAreasResult, clustersResult, demandRequirementsResult, programsResult] = await Promise.all([
+    readRows("technical_domains", atlasColumns.technicalDomains, scoped ? uniqueIds(capabilityDomainsResult.data, "technical_domain_id") : undefined),
+    readRows("mission_areas", atlasColumns.missionAreas, scoped ? uniqueIds(missionMatchesResult.data, "mission_area_id") : undefined),
+    detail ? emptyRows : readRows("ecosystem_clusters", atlasColumns.clusters, scoped ? uniqueIds(capabilityClustersResult.data, "ecosystem_cluster_id") : undefined),
+    readRows("demand_requirements", atlasColumns.demandRequirements, scope?.demandRequirementIds ?? (scoped ? uniqueIds(demandMatchesResult.data, "demand_requirement_id") : undefined)),
+    detail ? emptyRows : readRows("programs", atlasColumns.programs, scoped ? uniqueIds(participationsResult.data, "program_id") : undefined)
+  ]);
+  const demandSourcesResult = detail ? emptyRows : await readRows(
+    "demand_sources", atlasColumns.demandSources,
+    scoped || scope?.demandRequirementIds ? uniqueIds(demandRequirementsResult.data, "demand_source_id") : undefined
+  );
 
   const organizationRows = asRows(organizationsResult.data);
   const locationById = byId(asRows(locationsResult.data));
@@ -1002,12 +1012,12 @@ export async function loadAtlasSnapshotFromSupabase(scope?: AtlasSnapshotScope):
   const fundingEventRows = asRows(fundingEventsResult.data);
   const citationGraph = await loadPublicCitationGraph(
     [
-      { entityType: "organization", ids: uniqueIds(organizationRows) },
+      { entityType: "organization", ids: detail ? [] : uniqueIds(organizationRows) },
       { entityType: "capability", ids: uniqueIds(capabilityRows) },
       { entityType: "capability_mission_match", ids: uniqueIds(asRows(missionMatchesResult.data)) },
       { entityType: "capability_demand_match", ids: uniqueIds(demandMatchRows) },
       { entityType: "funding_event", ids: uniqueIds(fundingEventRows) },
-      { entityType: "demand_requirement", ids: uniqueIds(demandRequirementRows) }
+      { entityType: "demand_requirement", ids: detail ? [] : uniqueIds(demandRequirementRows) }
     ],
     demandSourceRows
   );
@@ -1707,7 +1717,8 @@ export async function loadAtlasCapabilityBySlugFromSupabase(slug: string) {
   const snapshot = await loadAtlasSnapshotFromSupabase({
     organizationIds: [organizationId],
     capabilityIds: [capabilityId],
-    includeOrganizationLogos: true
+    includeOrganizationLogos: true,
+    capabilityDetail: true
   });
   const organization = snapshot.organizations.find((item) => item.id === organizationId);
   const capability = organization?.capabilities.find((item) => item.id === capabilityId);

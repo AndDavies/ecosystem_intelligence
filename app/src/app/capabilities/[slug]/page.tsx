@@ -1,15 +1,14 @@
+import { Suspense } from "react";
+import { CapabilityRelatedContent } from "@/components/atlas/capability-related-content";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CapabilityDossier } from "@/components/atlas/capability-dossier";
-import { getPublishedDefenceBriefsForRecord } from "@/lib/atlas/briefs";
-import { getCapabilityRelatedOrganizations } from "@/lib/atlas/dossier-related";
 import { getAtlasCapabilityBySlug } from "@/lib/atlas/repository";
 import { safeAtlasReturn } from "@/lib/atlas/return-path";
 import { socialMetadata } from "@/lib/seo/social";
-import { getPublishedSignalsForRecord } from "@/lib/atlas/signals";
 
 // Safe map-return context is query-string state. Render the route dynamically
-// while the bounded dossier loader retains its five-minute server cache.
+// while the bounded dossier loader retains publication-driven invalidation and a 24-hour recovery expiry.
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -42,11 +41,9 @@ export default async function CapabilityPage({
   const query = await searchParams;
   const publicCapability = await getAtlasCapabilityBySlug(slug);
   if (!publicCapability) notFound();
-  const [relatedSignals, relatedBriefs, relatedOrganizations] = await Promise.all([
-    getPublishedSignalsForRecord("capability", publicCapability.capability.id, 3),
-    getPublishedDefenceBriefsForRecord("capability", publicCapability.capability.id, 3),
-    getCapabilityRelatedOrganizations(publicCapability.organization, publicCapability.capability.id)
-  ]);
-
-  return <CapabilityDossier organization={publicCapability.organization} capability={publicCapability.capability} mapReturnTo={safeAtlasReturn(query.returnTo)} relatedSignals={relatedSignals} relatedBriefs={relatedBriefs} relatedOrganizations={relatedOrganizations} />;
+  return <CapabilityDossier organization={publicCapability.organization} capability={publicCapability.capability} mapReturnTo={safeAtlasReturn(query.returnTo)} relatedContent={
+    <Suspense fallback={<p className="py-6 text-sm text-[var(--atlas-muted)]" role="status">Loading related records…</p>}>
+      <CapabilityRelatedContent organization={publicCapability.organization} capability={publicCapability.capability} />
+    </Suspense>
+  } />;
 }

@@ -557,9 +557,10 @@ describe("public organization dossier contract", () => {
       repository.indexOf("export async function loadAtlasOrganizationBySlugFromSupabase"),
       repository.indexOf("export async function loadAtlasCapabilityBySlugFromSupabase")
     );
-    expect(related).toContain("getPublishedDefenceBriefs()");
-    expect(related).toContain("getAllPublishedSignals()");
-    expect(related).toContain(".slice(0, 3)");
+    expect(related).toContain("getRelatedBriefSummaries(targets)");
+    expect(related).toContain("getRelatedSignalSummaries(targets)");
+    expect(await source("src/lib/atlas/briefs.ts")).toContain(".slice(0, 3)");
+    expect(await source("src/lib/atlas/signals.ts")).toContain(".slice(0, 3)");
     expect(related).toContain(".slice(0, 4)");
     expect(related).toContain('.eq("publication_status", "published")');
     expect(organizationLoader).toContain('.from("organizations")\n    .select("id, editorial_profile_version")');

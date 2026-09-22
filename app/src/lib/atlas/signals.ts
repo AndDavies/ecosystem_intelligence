@@ -1,5 +1,6 @@
 import "server-only";
 
+import type { EditorialRecordTarget } from "@/lib/atlas/briefs";
 import { cache } from "react";
 import { unstable_cache } from "next/cache";
 import { collectPagedRows, collectPagedRowsByIds } from "@/lib/supabase/pagination";
@@ -396,6 +397,43 @@ export const getAllPublishedSignals = cache(async () => process.env.NODE_ENV ===
 export const getPublishedSignalBySlug = cache(async (slug: string) => process.env.NODE_ENV === "development" ? loadPublishedSignalBySlug(slug) : cachedSignalBySlug(slug));
 export const getLatestPublishedSignalProof = cache(async () => process.env.NODE_ENV === "development" ? loadLatestPublishedSignalProof() : cachedLatestSignalProof());
 export const getPublishedSignalsForRecord = cache(async (type: SignalRecordLink["type"], id: string, limit = 4) => process.env.NODE_ENV === "development" ? loadPublishedSignalsForRecord(type, id, limit) : cachedSignalsForRecord(type, id, limit));
+
+export type RelatedSignalSummary = Pick<SignalEdition, "id" | "slug" | "title" | "editionDate"> & { summary: string; matchedItemTitle: string };
+
+export async function loadRelatedSignalSummaries(targets: EditorialRecordTarget[]): Promise<RelatedSignalSummary[]> {
+  const preview = await configuredSignalPreview();
+  if (preview) {
+    const edition = preview.edition;
+    const item = edition?.items.find((item) => item.links.some((link) => targets.some((target) => target.type === link.type && target.id === link.id)));
+    return edition && item ? [{ id: edition.id, slug: edition.slug, title: edition.title, editionDate: edition.editionDate, summary: edition.executiveSummary, matchedItemTitle: item.title }] : [];
+  }
+  const supabase = createPublicClient();
+  const links = (await Promise.all((["organization", "capability"] as const).map((type) =>
+    collectPagedRowsByIds(targets.filter((target) => target.type === type).map((target) => target.id),
+      (ids, from, to) => supabase.from("signal_record_links")
+        .select("id, item_id, record_type, record_id, relationship_label, public_href")
+        .eq("record_type", type).in("record_id", ids).order("id").range(from, to), "related Signal links")
+  ))).flat();
+  if (!links.length) return [];
+  const routes = await canonicalPublishedSignalRecordRoutes(links);
+  if (!routes) throw new Error("Related Signal record routes are unavailable");
+  const itemIds = links.filter((link) => validatedPublishedSignalRecordLink(link, routes)).map((link) => String(link.item_id));
+  const items = await collectPagedRowsByIds(itemIds, (ids, from, to) => supabase.from("signal_items")
+    .select("id, edition_id, title, position").in("id", ids).eq("publication_status", "published").order("position").order("id").range(from, to), "related Signal items");
+  const editions = await collectPagedRowsByIds(items.map((item) => String(item.edition_id)), (ids, from, to) => supabase.from("signal_editions")
+    .select("id, slug, title, edition_date, executive_summary")
+    .in("id", ids).eq("publication_status", "published").order("edition_date", { ascending: false }).order("id").range(from, to), "related Signal summaries");
+  const firstItem = new Map<string, string>();
+  items.sort((a, b) => Number(a.position) - Number(b.position) || String(a.id).localeCompare(String(b.id))).forEach((item) => {
+    if (!firstItem.has(String(item.edition_id))) firstItem.set(String(item.edition_id), String(item.title));
+  });
+  return editions.sort((a, b) => String(b.edition_date).localeCompare(String(a.edition_date)) || String(a.id).localeCompare(String(b.id)))
+    .slice(0, 3).map((row) => ({ id: String(row.id), slug: String(row.slug), title: String(row.title), editionDate: String(row.edition_date), summary: String(row.executive_summary ?? ""), matchedItemTitle: firstItem.get(String(row.id))! }));
+}
+const cachedRelatedSignalSummaries = unstable_cache(loadRelatedSignalSummaries,
+  ["dossier-signal-summaries-v1"], { revalidate: 300, tags: ["signals-public", "atlas-public"] });
+export const getRelatedSignalSummaries = (targets: EditorialRecordTarget[]) => process.env.NODE_ENV === "development"
+  ? loadRelatedSignalSummaries(targets) : cachedRelatedSignalSummaries(targets);
 
 export const signalLaneLabels: Record<SignalItem["lane"], string> = {
   public_need_procurement: "Public need and procurement",

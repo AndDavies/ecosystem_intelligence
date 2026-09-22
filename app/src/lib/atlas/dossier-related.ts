@@ -2,15 +2,16 @@ import "server-only";
 
 import { unstable_cache } from "next/cache";
 import { cache } from "react";
-import { getPublishedDefenceBriefs } from "@/lib/atlas/briefs";
+import { getRelatedBriefSummaries, type EditorialRecordTarget } from "@/lib/atlas/briefs";
 import { atlasDiscoveryCacheTag } from "@/lib/atlas/cache-tags";
-import { getAllPublishedSignals } from "@/lib/atlas/signals";
+import { getRelatedSignalSummaries } from "@/lib/atlas/signals";
 import { createPublicClient } from "@/lib/supabase/public";
 import type { AtlasOrganization } from "@/types/atlas";
 
 type Row = Record<string, unknown>;
 
 export type DossierRelatedIntelligence = {
+  unavailable?: string[];
   briefs: Array<{ id: string; slug: string; title: string; summary: string; publishedAt: string }>;
   signals: Array<{ id: string; slug: string; title: string; summary: string; editionDate: string; matchedItemTitle: string }>;
   organizations: Array<{ id: string; slug: string; name: string; description: string; reason: string }>;
@@ -74,7 +75,7 @@ async function loadPublishedRelationshipIndex(): Promise<PublishedRelationshipIn
       .order("id")
       .range(from, to))
   ]);
-  if (missionResult.error || domainResult.error || capabilityResult.error || organizationResult.error) return null;
+  if (missionResult.error || domainResult.error || capabilityResult.error || organizationResult.error) throw new Error("Related organization index is unavailable");
   return {
     missionMatches: missionResult.rows,
     domainMatches: domainResult.rows,
@@ -85,7 +86,7 @@ async function loadPublishedRelationshipIndex(): Promise<PublishedRelationshipIn
 
 const getPublishedRelationshipIndex = unstable_cache(
   loadPublishedRelationshipIndex,
-  ["dossier-related-published-index-v1"],
+  ["dossier-related-published-index-v2"],
   { revalidate: 300, tags: [atlasDiscoveryCacheTag] }
 );
 
@@ -155,31 +156,45 @@ export const getCapabilityRelatedOrganizations = cache(async (
   return relatedOrganizations({ ...organization, capabilities: [capability] });
 });
 
-export const getDossierRelatedIntelligence = cache(async (organization: AtlasOrganization): Promise<DossierRelatedIntelligence> => {
-  // Editorial continuations on an organization dossier must be explicit links
-  // to that organization or one of its owned capabilities. A Signal or Brief
-  // that merely shares a Mission Area or Defence need is a derived similarity,
-  // not an explicit editorial record link.
-  const targetKeys = dossierDirectEditorialTargetKeys(organization);
-  const [briefs, signalEditions, organizations] = await Promise.all([
-    getPublishedDefenceBriefs(),
-    getAllPublishedSignals(),
-    relatedOrganizations(organization)
+/** Fail optional branches independently, outside persistent success caches. */
+export async function readRelatedIntelligence(organization: AtlasOrganization, targets: EditorialRecordTarget[]): Promise<DossierRelatedIntelligence> {
+  const results = await Promise.allSettled([
+    getRelatedBriefSummaries(targets), getRelatedSignalSummaries(targets), relatedOrganizations(organization)
   ]);
-  const relatedBriefs = briefs
-    .filter((brief) => brief.links.some((link) => targetKeys.has(`${link.type}:${link.id}`)))
-    .slice(0, 3)
-    .map((brief) => ({ id: brief.id, slug: brief.slug, title: brief.title, summary: brief.standfirst, publishedAt: brief.publishedAt }));
-  const relatedSignals = signalEditions.flatMap((edition) => {
-    const item = edition.items.find((candidate) => candidate.links.some((link) => targetKeys.has(`${link.type}:${link.id}`)));
-    return item ? [{
-      id: edition.id,
-      slug: edition.slug,
-      title: edition.title,
-      summary: edition.executiveSummary,
-      editionDate: edition.editionDate,
-      matchedItemTitle: item.title
-    }] : [];
-  }).slice(0, 3);
-  return { briefs: relatedBriefs, signals: relatedSignals, organizations };
-});
+  const labels = ["Briefs", "Signals", "similar organizations"];
+  const unavailable = results.flatMap((result, index) => {
+    if (result.status === "fulfilled") return [];
+    console.warn("Dossier supporting content unavailable", { section: labels[index] });
+    return [labels[index]];
+  });
+  return {
+    briefs: results[0].status === "fulfilled" ? results[0].value : [],
+    signals: results[1].status === "fulfilled" ? results[1].value : [],
+    organizations: results[2].status === "fulfilled" ? results[2].value : [],
+    unavailable
+  };
+}
+
+export const getDossierRelatedIntelligence = cache(async (organization: AtlasOrganization): Promise<DossierRelatedIntelligence> =>
+  readRelatedIntelligence(organization, [
+    { type: "organization", id: organization.id },
+    ...organization.capabilities.map((capability) => ({ type: "capability" as const, id: capability.id }))
+  ])
+);
+
+export const getCapabilityRelatedIntelligence = cache(async (organization: AtlasOrganization, capabilityId: string) =>
+  readRelatedIntelligence({ ...organization, capabilities: organization.capabilities.filter((capability) => capability.id === capabilityId) },
+    [{ type: "capability", id: capabilityId }])
+);
+
+const cachedSiblingCapabilities = unstable_cache(async (organizationId: string, capabilityId: string) => {
+  const { data, error } = await createPublicClient().from("capabilities").select("id, slug, name")
+    .eq("organization_id", organizationId).eq("publication_status", "published").neq("id", capabilityId).order("name").order("id").limit(2);
+  if (error) throw new Error("Sibling capability summaries unavailable");
+  return (data ?? []) as Array<{ id: string; slug: string; name: string }>;
+}, ["dossier-sibling-capabilities-v1"], { revalidate: 300, tags: ["atlas-public"] });
+
+export async function getCapabilitySiblingSummaries(organizationId: string, capabilityId: string) {
+  try { return await cachedSiblingCapabilities(organizationId, capabilityId); }
+  catch { console.warn("Dossier supporting content unavailable", { section: "sibling capabilities" }); return null; }
+}
