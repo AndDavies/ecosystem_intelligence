@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { notFound } from "next/navigation";
 import { ArrowRight, Check, Lightbulb, ShieldCheck, Target } from "lucide-react";
 import { BriefHero } from "@/components/atlas/brief-hero";

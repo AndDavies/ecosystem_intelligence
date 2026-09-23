@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { SignalVisual } from "@/components/atlas/signal-visual";
 import { signalLeadVisual, signalSocialImage, signalStoryVisual, type SignalVisual as SignalVisualData } from "@/lib/signals/visuals";
 import { getAtlasOrganizationLogos } from "@/lib/atlas/repository";
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { notFound } from "next/navigation";
 import {
   ArrowLeft,

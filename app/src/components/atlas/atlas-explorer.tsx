@@ -1,7 +1,7 @@
 "use client";
 
 import { DownloadLink } from "@/components/atlas/download-link";
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import {
   ArrowRight,
   ChevronDown,
@@ -40,7 +40,7 @@ import { NorthSignalInline } from "@/components/atlas/north-signal-signup";
 import { PublicShare } from "@/components/atlas/public-share";
 import { EvidenceLegendDisclosure } from "@/components/atlas/evidence-legend";
 import { getAtlasEmptyState } from "@/lib/atlas/empty-state";
-import { guidedSearchFocusForId, guidedSearchFromQuery, guidedSearchQuestion } from "@/lib/atlas/guided-search";
+import { guidedSearchExampleFromSearchParams, guidedSearchFocusForId, guidedSearchFromQuery, guidedSearchQuestion } from "@/lib/atlas/guided-search";
 import { publicOrganizationTypes } from "@/lib/atlas/lens-options";
 import {
   ATLAS_EXPLORER_PAGE_SIZE,
@@ -48,7 +48,7 @@ import {
   selectedExplorerCapabilityIds,
   projectAtlasMapOrganization
 } from "@/lib/atlas/explorer-projection";
-import { atlasQueryToSearchParams, initialAtlasView } from "@/lib/atlas/query-params";
+import { atlasQueryFromSearchParams, atlasQueryToSearchParams, initialAtlasView } from "@/lib/atlas/query-params";
 import {
   currentPilotCohort,
   currentPilotSessionId,
@@ -94,7 +94,7 @@ type ViewMode = "map" | "table";
 
 function mapPathForQuery(query: AtlasQuery) {
   const params = atlasQueryToSearchParams(query);
-  return params.size ? `/map?${params.toString()}` : "/map";
+  return params.size ? `/map#?${params.toString()}` : "/map";
 }
 
 interface AtlasExplorerProps {
@@ -177,7 +177,7 @@ export function AtlasExplorer({
   useEffect(() => {
     if (canonicalizeExample) {
       const params = atlasQueryToSearchParams(initialFilters);
-      window.history.replaceState(null, "", params.size ? `/map?${params.toString()}` : "/map");
+      window.history.replaceState(null, "", params.size ? `/map#?${params.toString()}` : "/map");
     }
     if (focusNeedOnMount) {
       window.requestAnimationFrame(() => {
@@ -199,10 +199,32 @@ export function AtlasExplorer({
     setFilters((current) => ({ ...current, view }));
   }, [initialFilters]);
 
+  useEffect(() => {
+    const restoreFragment = () => {
+      if (!window.location.hash.startsWith("#?")) return;
+      const params = new URLSearchParams(window.location.hash.slice(2));
+      const example = guidedSearchExampleFromSearchParams(params);
+      if (example) { params.delete("example"); params.set("focus", example.focus.join(",")); }
+      if (params.get("start") === "need") {
+        setAskOpen(true);
+        window.requestAnimationFrame(() => document.getElementById("atlas-question")?.focus());
+      }
+      const next = atlasQueryFromSearchParams(params);
+      next.view = initialAtlasView(next, window.matchMedia("(min-width: 1024px)").matches);
+      setViewMode(next.view);
+      void load(next, { preserveSelection: true, restoreHistory: true });
+    };
+    restoreFragment();
+    window.addEventListener("hashchange", restoreFragment);
+    return () => window.removeEventListener("hashchange", restoreFragment);
+    // Fragment restoration runs at entry and explicit hash navigation, not on result updates.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   function writeMapState(nextFilters: AtlasQuery, mode: "push" | "replace" = "push") {
     pendingFiltersRef.current = nextFilters;
     const path = mapPathForQuery(nextFilters);
-    window.history[mode === "push" ? "pushState" : "replaceState"](null, "", path);
+    window.history[mode === "push" ? "pushState" : "replaceState"](window.history.state, "", path);
   }
 
   async function changeViewMode(nextView: ViewMode) {
@@ -302,7 +324,7 @@ export function AtlasExplorer({
     submittedQuery: discovery?.query ?? filters.query
   });
 
-  async function load(nextFilters: AtlasQuery, options: { preserveDiscovery?: boolean; preserveSelection?: boolean } = {}) {
+  async function load(nextFilters: AtlasQuery, options: { preserveDiscovery?: boolean; preserveSelection?: boolean; restoreHistory?: boolean } = {}) {
     nextFilters = { ...nextFilters, view: nextFilters.view ?? viewMode };
     const controller = beginResultRequest();
     pendingFiltersRef.current = nextFilters;
@@ -331,7 +353,7 @@ export function AtlasExplorer({
       setExpandedId(null);
       setOrganizationDetails({});
       setDetailErrors({});
-      writeMapState(refreshedFilters);
+      writeMapState(refreshedFilters, options.restoreHistory ? "replace" : "push");
       return nextResult;
     } catch (loadError) {
       if (controller.signal.aborted) return;

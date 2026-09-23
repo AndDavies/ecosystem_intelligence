@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { ArrowRight, CheckCircle2, ChevronDown, FileSearch, Handshake, Map, PlayCircle } from "lucide-react";
 import { GuidedSearchFocus } from "@/components/atlas/guided-search-focus";
 import { JsonLd } from "@/components/seo/json-ld";

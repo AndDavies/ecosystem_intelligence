@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import type { ComponentProps } from "react";
 import { useEffect } from "react";
 
@@ -29,7 +29,7 @@ export function LandingHashBridge() {
     if (window.location.hash !== "#ask-true-north") return;
     const params = new URLSearchParams(window.location.search);
     params.set("start", "need");
-    window.location.replace(`/map?${params.toString()}#ask-true-north`);
+    window.location.replace(`/map#?${params.toString()}`);
   }, []);
   return null;
 }

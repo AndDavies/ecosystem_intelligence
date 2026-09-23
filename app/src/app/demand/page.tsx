@@ -1,5 +1,7 @@
+import { paginationMetadata } from "@/lib/seo/pagination";
+import { permanentRedirect } from "next/navigation";
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { Suspense } from "react";
 import { ArrowRight, CircleDashed } from "lucide-react";
 import { TopicIcon } from "@/components/atlas/topic-icon";
@@ -14,7 +16,7 @@ import { socialMetadata } from "@/lib/seo/social";
 // render per request so a previously generated route cannot hide a new signal.
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: "Defence needs",
   description: "Start with a released Canadian or allied need, then inspect the Canadian technologies that may be relevant and the limits of that assessment.",
   alternates: { canonical: "/demand" },
@@ -22,6 +24,10 @@ export const metadata: Metadata = {
 };
 
 type DemandSearchParams = Promise<{ page?: string }>;
+
+export async function generateMetadata({ searchParams }: { searchParams: DemandSearchParams }) {
+  return paginationMetadata(metadata, "/demand", normalizedPage((await searchParams).page));
+}
 
 export default function DemandIndexPage({ searchParams }: { searchParams: DemandSearchParams }) {
   return (
@@ -47,6 +53,7 @@ export default function DemandIndexPage({ searchParams }: { searchParams: Demand
 async function DemandDirectoryData({ searchParams }: { searchParams: DemandSearchParams }) {
   const [snapshot, params] = await Promise.all([getAtlasDemandIndex(), searchParams]);
   const directory = paginate(snapshot.demands, normalizedPage(params.page), 12);
+  if (normalizedPage(params.page) !== directory.page) permanentRedirect(`/demand${directory.page > 1 ? `?page=${directory.page}` : ""}`);
 
   return (
     <>

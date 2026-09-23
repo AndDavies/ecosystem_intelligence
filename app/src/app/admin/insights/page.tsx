@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { TriangleAlert } from "lucide-react";
 import { NewsletterProviderHealth } from "@/components/atlas/newsletter-provider-health";
 import { AdminNav } from "@/components/atlas/admin-nav";

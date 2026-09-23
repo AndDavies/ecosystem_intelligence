@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { Suspense } from "react";
 import { ArrowRight, MapPin } from "lucide-react";
 import { AtlasHeroArt } from "@/components/atlas/atlas-hero-art";

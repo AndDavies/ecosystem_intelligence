@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { notFound } from "next/navigation";
 import { PublicPageShell } from "@/components/atlas/public-page-shell";
 import { getApprovedNorthSignalSample } from "@/lib/north-signal/public-sample";

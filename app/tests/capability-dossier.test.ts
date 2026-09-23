@@ -70,7 +70,7 @@ describe("editorial capability dossier", () => {
       const query = new URL(save.getAttribute("href")!, "https://truenorthmap.ca").searchParams;
       expect(query.get("addType")).toBe("capability");
       expect(query.get("addId")).toBe(capability.id);
-      expect(query.get("returnTo")).toBe(`/capabilities/${capability.slug}?returnTo=%2Fmap`);
+      expect(query.get("returnTo")).toBe(`/capabilities/${capability.slug}`);
     }
     expect(doc.querySelector("a[href^='/submit?']")?.getAttribute("href")).toContain(`targetType=capability&targetId=${capability.id}`);
     const download = doc.querySelector("a[data-export-download]")!;

@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { usePathname } from "next/navigation";
 import { Bell, Menu, MessageSquareText, UserRound, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";

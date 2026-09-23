@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { ArrowRight } from "lucide-react";
 import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { socialMetadata } from "@/lib/seo/social";

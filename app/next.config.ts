@@ -3,6 +3,9 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  // Deterministic canonical/robots delivery for every crawler and response variant.
+  // Page content can still stream after metadata resolves.
+  htmlLimitedBots: /.*/,
   webpack(config) {
     config.module.rules.push({
       test: /maplibre-gl-worker\.mjs$/,

@@ -4,6 +4,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { Check, Copy, Linkedin, Share2, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { trackBetaEvent } from "@/lib/product-insights/client";
+import { publicNavigationHref, isProfilePath } from "@/lib/seo/navigation-urls";
 import { siteUrl } from "@/lib/site";
 
 type ShareMethod = "native" | "linkedin" | "x" | "copy";
@@ -30,8 +31,10 @@ export function PublicShare({
   }, []);
 
   const shareUrl = () => {
-    if (useCurrentUrl && typeof window !== "undefined") return window.location.href;
-    return new URL(path ?? "/", siteUrl).toString();
+    const url = new URL(useCurrentUrl && typeof window !== "undefined" ? window.location.href : (path ?? "/"), siteUrl);
+    const clean = new URL(publicNavigationHref(`${url.pathname}${url.search}${url.hash}`), siteUrl);
+    if (isProfilePath(clean.pathname)) clean.hash = "";
+    return clean.toString();
   };
 
   const record = (method: ShareMethod) => trackBetaEvent("share", { method, content_title: title.slice(0, 120) });

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { ExternalLink, FileCheck2, SearchCheck } from "lucide-react";
 import { alignmentTypeLabel, evidenceStrengthLabel, publicLanguage } from "@/lib/atlas/presentation";
 import { cn } from "@/lib/utils";

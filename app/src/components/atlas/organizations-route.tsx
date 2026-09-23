@@ -1,5 +1,6 @@
+import { permanentRedirect } from "next/navigation";
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { Suspense } from "react";
 import { ArrowRight, Building2, Compass, Layers3, MapPin, X, type LucideIcon } from "lucide-react";
 import { OrganizationDirectoryLoading } from "@/components/atlas/organization-directory-loading";
@@ -24,6 +25,21 @@ export const organizationsMetadata: Metadata = {
 
 export type OrganizationSearchParams = Promise<{ page?: string | string[]; type?: string | string[]; region?: string | string[]; q?: string | string[] }>;
 const firstParameter = (value: string | string[] | undefined) => Array.isArray(value) ? value[0] : value;
+
+export async function organizationDirectoryMetadata(searchParams: OrganizationSearchParams): Promise<Metadata> {
+  const params = await searchParams;
+  const query = new URLSearchParams();
+  for (const key of ["type", "region", "q"] as const) {
+    const value = firstParameter(params[key])?.trim();
+    if (value) query.set(key, value);
+  }
+  const page = normalizedPage(firstParameter(params.page));
+  if (page > 1) query.set("page", String(page));
+  const canonical = `/organizations${query.size ? `?${query}` : ""}`;
+  // Keep deliberate single-facet landing pages; combinations and free-text search are utilities.
+  const utility = query.has("q") || (query.has("type") && query.has("region"));
+  return { ...organizationsMetadata, alternates: { canonical }, openGraph: { ...organizationsMetadata.openGraph, url: canonical }, robots: { index: !utility, follow: true } };
+}
 
 export function OrganizationsRoute({ searchParams }: { searchParams: OrganizationSearchParams }) {
   return (
@@ -57,6 +73,14 @@ async function OrganizationsDirectoryData({ searchParams }: { searchParams: Orga
     normalizedPage(firstParameter(params.page)),
     PER_PAGE
   );
+  if (normalizedPage(firstParameter(params.page)) !== directory.page) {
+    const query = new URLSearchParams();
+    if (activeType) query.set("type", activeType);
+    if (activeRegion) query.set("region", activeRegion);
+    if (activeQuery) query.set("q", activeQuery);
+    if (directory.page > 1) query.set("page", String(directory.page));
+    permanentRedirect(`/organizations${query.size ? `?${query}` : ""}`);
+  }
   const directoryLogos = await getAtlasOrganizationLogos(directory.items.map((organization) => organization.id));
 
   const typeFacets = buildOrganizationTypeOptions(snapshot.organizations, activeType);

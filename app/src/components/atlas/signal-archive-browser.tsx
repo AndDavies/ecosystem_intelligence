@@ -1,7 +1,7 @@
 "use client";
 import { signalPlainText } from "@/lib/signals/formatting";
 
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { ArrowRight, ChevronLeft, ChevronRight, Search, X } from "lucide-react";
 import { useMemo, useRef, useState } from "react";
 import { SignalVisual } from "@/components/atlas/signal-visual";

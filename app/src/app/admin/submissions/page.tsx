@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { ExternalLink, FileCheck2, ShieldCheck } from "lucide-react";
 import { AdminNav } from "@/components/atlas/admin-nav";
 import { EmptyCoverage, PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";

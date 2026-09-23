@@ -1,6 +1,6 @@
 import { SignalTextEditor } from "@/components/atlas/signal-text-editor";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { ExternalLink } from "lucide-react";
 import { notFound } from "next/navigation";
 import { SignalSocialExample } from "@/components/admin/signal-social-example";

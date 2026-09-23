@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { BarChart3, BookOpenText, Building2, ClipboardCheck, FileInput, Inbox, LayoutDashboard, MailCheck, MessagesSquare, RadioTower, Rss, Send, Waves } from "lucide-react";
 
 const items = [

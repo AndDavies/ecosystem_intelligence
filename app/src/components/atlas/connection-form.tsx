@@ -1,7 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { CheckCircle2, LoaderCircle, Send } from "lucide-react";
 import { trackBetaEvent } from "@/lib/product-insights/client";
 

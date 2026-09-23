@@ -34,5 +34,5 @@ export function PublicRecordSearch({ query = "", type, region, placement = "dire
       placement, measurement_version: "discovery_v2"
     }, { searchId: null });
   }
-  return <AtlasRecordLookup committedQuery={query} busy={false} onCommit={submit} onClear={() => submit("")} onOpenAsk={() => router.push("/map?start=need#ask-true-north")} onSearchFocus={() => undefined} onSelectSuggestion={select} submitLabel="Search the directory" />;
+  return <AtlasRecordLookup committedQuery={query} busy={false} onCommit={submit} onClear={() => submit("")} onOpenAsk={() => router.push("/map#?start=need")} onSearchFocus={() => undefined} onSelectSuggestion={select} submitLabel="Search the directory" />;
 }

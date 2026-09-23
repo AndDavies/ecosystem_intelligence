@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
 import { AdminNav } from "@/components/atlas/admin-nav";
 import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";

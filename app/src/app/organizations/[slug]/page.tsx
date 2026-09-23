@@ -97,7 +97,7 @@ export default async function OrganizationDossierPage({
     notFound();
   }
   const mapReturnTo = safeAtlasReturn(query.returnTo);
-  const profilePath = `/organizations/${organization.slug}?returnTo=${encodeURIComponent(mapReturnTo)}`;
+  const profilePath = `/organizations/${organization.slug}`;
   return <ExecutiveOrganizationDossier organization={organization} mapReturnTo={mapReturnTo} profilePath={profilePath} />;
 }
 

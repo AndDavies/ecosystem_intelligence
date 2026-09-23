@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import Image from "next/image";
 import { ArrowRight, Search, Radar, FileSearch2 } from "lucide-react";
 import { LandingProductPreview } from "@/components/atlas/guided-landing-dynamic";

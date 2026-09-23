@@ -1,6 +1,6 @@
 import { TopicIcon } from "@/components/atlas/topic-icon";
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { ArrowRight, Compass, Layers3, SearchCheck, type LucideIcon } from "lucide-react";
 import { CollectionContinuation, PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { JsonLd } from "@/components/seo/json-ld";

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { ArrowLeft, ArrowRight, ChevronRight } from "lucide-react";
 import { PublicAtlasHeader } from "@/components/atlas/public-atlas-header";
 import { PublicAtlasFooter } from "@/components/atlas/public-atlas-footer";

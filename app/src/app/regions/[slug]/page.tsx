@@ -1,6 +1,8 @@
+import { paginationMetadata } from "@/lib/seo/pagination";
+import { permanentRedirect } from "next/navigation";
 import { DownloadLink } from "@/components/atlas/download-link";
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { ArrowRight, Building2, Download, Layers3, MapPin } from "lucide-react";
@@ -19,13 +21,13 @@ import { socialMetadata } from "@/lib/seo/social";
 
 const ORGANIZATIONS_PER_PAGE = 12;
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+export async function generateMetadata({ params, searchParams }: { params: Promise<{ slug: string }>; searchParams: Promise<{ page?: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const region = getAtlasRegionDefinitionBySlug(slug);
   if (!region) return { title: "Region not found", robots: { index: false, follow: false } };
   const title = `${region.name} Defence and Dual-Use Ecosystem`;
   const path = `/regions/${region.slug}`;
-  return { title: `${region.name} Ecosystem`, description: region.description, alternates: { canonical: path }, ...socialMetadata({ title, description: region.description, path, eyebrow: "Regional capability discovery", detail: "Find organizations and technologies worth examining in this region" }) };
+  return paginationMetadata({ title: `${region.name} Ecosystem`, description: region.description, alternates: { canonical: path }, ...socialMetadata({ title, description: region.description, path, eyebrow: "Regional capability discovery", detail: "Find organizations and technologies worth examining in this region" }) }, path, normalizedPage((await searchParams).page));
 }
 
 export default async function RegionPage({
@@ -125,6 +127,7 @@ async function RegionDirectoryData({
   if (!result) notFound();
   const { region, organizations, clusters } = result;
   const directory = paginate(organizations, normalizedPage(search.page), ORGANIZATIONS_PER_PAGE);
+  if (normalizedPage(search.page) !== directory.page) permanentRedirect(`/regions/${region.slug}${directory.page > 1 ? `?page=${directory.page}` : ""}`);
   const organizationsHref = region.slug === "canada" ? "/organizations" : `/organizations?region=${region.slug}`;
 
   return (

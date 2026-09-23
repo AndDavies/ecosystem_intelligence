@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { redirect } from "next/navigation";
 import { CheckCircle2, LockKeyhole } from "lucide-react";
 import { AuthSubmitButton } from "@/components/auth/auth-submit-button";

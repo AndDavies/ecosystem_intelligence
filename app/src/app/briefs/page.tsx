@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { ArrowRight, BookOpenText, CheckCircle2, Compass, SearchCheck, ShieldCheck } from "lucide-react";
 import { BriefHero } from "@/components/atlas/brief-hero";
 import { PublicPageShell } from "@/components/atlas/public-page-shell";

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import Image from "next/image";
 import { NorthSignalLandingTelemetry, NorthSignalSampleCardLink } from "@/components/atlas/north-signal-landing-telemetry";
 import { NorthSignalPageSignupAction, NorthSignalThisWeekCard, NorthSignalValueLines } from "@/components/atlas/north-signal-offer";

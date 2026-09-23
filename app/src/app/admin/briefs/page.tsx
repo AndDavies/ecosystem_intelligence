@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { ArrowRight, ExternalLink, Plus } from "lucide-react";
 import { AdminNav } from "@/components/atlas/admin-nav";
 import { DefenceBriefEditor, type BriefDraft, type BriefImageOption, type BriefRecordOption, type BriefSourceOption } from "@/components/atlas/defence-brief-editor";

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { AlertTriangle, Building2, CircleHelp, ExternalLink, Trash2, Upload } from "lucide-react";
 import { notFound } from "next/navigation";
 import { AdminNav } from "@/components/atlas/admin-nav";

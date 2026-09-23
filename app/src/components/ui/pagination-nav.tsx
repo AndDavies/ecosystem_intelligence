@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export function PaginationNav({

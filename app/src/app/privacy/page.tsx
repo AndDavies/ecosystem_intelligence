@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { BarChart3, Bot, Database, Eye, MailCheck, ShieldCheck } from "lucide-react";
 import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { AnalyticsPreferencesButton } from "@/components/atlas/public-beta-insights";

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { ArrowRight, CircleUserRound, FolderLock, LogOut, ShieldCheck, Trash2 } from "lucide-react";
 import { AuthSubmitButton } from "@/components/auth/auth-submit-button";
 import { EmptyCoverage, PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";

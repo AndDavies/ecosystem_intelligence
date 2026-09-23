@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { ExternalLink } from "lucide-react";
 import { internalLinkMetadata, type InternalLinkEdge } from "@/lib/atlas/internal-link-graph";
 

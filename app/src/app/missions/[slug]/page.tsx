@@ -1,6 +1,8 @@
+import { paginationMetadata } from "@/lib/seo/pagination";
+import { permanentRedirect } from "next/navigation";
 import { TopicIcon } from "@/components/atlas/topic-icon";
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { notFound } from "next/navigation";
 import { ArrowRight, Compass, FileText, Layers3, SearchCheck, ShieldAlert } from "lucide-react";
 import { MissionOrganizationCard } from "@/components/atlas/mission-organization-card";
@@ -24,7 +26,7 @@ import { editorialIntelligenceRelationship, type InternalLinkEdge } from "@/lib/
 
 const ORGANIZATIONS_PER_PAGE = 18;
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+export async function generateMetadata({ params, searchParams }: { params: Promise<{ slug: string }>; searchParams: Promise<{ page?: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const result = await getAtlasMissionBySlug(slug);
   if (!result) return { title: "Mission area not found", robots: { index: false, follow: false } };
@@ -32,12 +34,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const path = `/missions/${result.missionArea.slug}`;
   const { pageTitle, socialTitle } = missionRelationshipMetadataTitles(result.missionArea.name, treatment);
   const description = treatment?.metadataDescription ?? result.missionArea.summary;
-  return {
+  return paginationMetadata({
     title: pageTitle,
     description,
     alternates: { canonical: path },
     ...socialMetadata({ title: socialTitle, description, path, eyebrow: "Mission area and Use Case", detail: "Canadian organizations and technologies that may be worth examining" })
-  };
+  }, path, normalizedPage((await searchParams).page));
 }
 
 export default async function MissionDetailPage({
@@ -70,6 +72,7 @@ export default async function MissionDetailPage({
     ? Math.max(1, ORGANIZATIONS_PER_PAGE - featuredConnections.length)
     : ORGANIZATIONS_PER_PAGE;
   const directory = paginate(directoryConnections, requestedPage, directoryPageSize);
+  if (requestedPage !== directory.page) permanentRedirect(`/missions/${result.missionArea.slug}${directory.page > 1 ? `?page=${directory.page}` : ""}`);
   const showTreatmentIntro = shouldShowRelationshipTreatmentIntro(Boolean(treatment), directory.page);
   const presentationSequence = treatment ? [...featuredConnections, ...directoryConnections] : organizations;
   const presentedPublicNeeds = treatment && showTreatmentIntro

@@ -1,3 +1,4 @@
+import { searchUrlHealth } from "./url-health";
 import { rankOpportunity, type VisibilityIntelligence } from "./intelligence";
 export const visibilitySnapshotVersion = "visibility_snapshot_v1" as const;
 export const visibilityReportVersion = "visibility_report_v1" as const;
@@ -25,6 +26,8 @@ export type SearchQueryMetric = {
 };
 
 export type SearchPageMetric = {
+  /** Private provider evidence; omitted from hosted projections. */
+  sourceUrl?: string;
   path: string;
   clicks: number;
   impressions: number;
@@ -569,6 +572,7 @@ export function compareSnapshots(current: VisibilitySnapshotV1, prior: Visibilit
 }
 
 function pageOpportunities(snapshot: VisibilitySnapshotV1): DashboardPageOpportunity[] {
+  const health = searchUrlHealth(snapshot.searchConsole.pages);
   return aggregateSearchPages(snapshot).map((page) => {
     let kind: DashboardPageOpportunity["kind"] = "monitor";
     let observation = "Early visibility signal; keep collecting comparable data before changing the page.";
@@ -582,6 +586,8 @@ function pageOpportunities(snapshot: VisibilitySnapshotV1): DashboardPageOpportu
       kind = "emerging";
       observation = "Emerging public-page relevance; monitor and improve only where the page already answers the intent.";
     }
+    const variants = health?.affected.get(page.path);
+    if (variants) observation = `${variants.variants} query variants: ${variants.impressions} page impressions, ${variants.clicks} clicks. Check canonical consolidation; keep genuine pagination separate. Exact URLs are in the private provider artifact.`;
     return { ...page, kind, observation };
   }).sort((a, b) => {
     const kindWeight = { ctr: 0, position: 1, emerging: 2, monitor: 3 } as const;
@@ -895,6 +901,10 @@ export function createDashboardSummary(snapshot: VisibilitySnapshotV1, prior: Vi
   };
 
   const insights: DashboardInsight[] = [];
+  const urlHealth = searchUrlHealth(snapshot.searchConsole.pages);
+  insights.push({ id: stableId(["insight", "search-url-health", snapshot.collectedAt]), type: "risk", state: urlHealth?.navigationUrls ? "attention" : "monitor", title: "Search URL health", confidence: urlHealth ? "confirmed" : "inferred",
+    whyItMatters: urlHealth ? `${urlHealth.queryUrls} of ${urlHealth.urls} reported URLs contain queries; ${urlHealth.navigationUrls} carry profile-return or map state. Queries account for ${urlHealth.impressionShare === null ? "an unknown share" : `${(urlHealth.impressionShare * 100).toFixed(1)}%`} of page-level impressions across ${urlHealth.affected.size} paths. Window: ${snapshot.searchConsole.period?.startDate ?? "unknown"} to ${snapshot.searchConsole.period?.endDate ?? "unknown"}.` : "URL-level evidence is unavailable in this older snapshot; missing detail is not a clean bill of health.",
+    nextAction: "See page opportunities for variant counts; exact URLs stay in private provider evidence. Compare after recrawling. Google-selected canonicals and inspection dates require separate URL inspections. Keep genuine pagination separate." });
   if (comparison?.comparable && comparison.impressionsDelta !== null && comparison.impressionsDelta !== 0) insights.push({ id: stableId(["insight", "impressions", snapshot.collectedAt]), type: "change", state: comparison.impressionsDelta > 0 ? "positive" : "attention", title: comparison.impressionsDelta > 0 ? "Search exposure increased" : "Search exposure declined", whyItMatters: `Organic impressions changed by ${comparison.impressionsDelta > 0 ? "+" : ""}${comparison.impressionsDelta} versus the prior comparable snapshot.`, nextAction: "Confirm provider coverage is comparable, then inspect the page-level opportunity table before changing content.", confidence: "confirmed" });
   if (pages[0]) insights.push({ id: stableId(["insight", "page", pages[0].path]), type: "opportunity", state: pages[0].kind === "monitor" ? "monitor" : "positive", title: "A public page is earning early search visibility", whyItMatters: `${pages[0].path} has ${pages[0].impressions} aggregate impressions at position ${pages[0].position ?? "unknown"}.`, nextAction: pages[0].observation, confidence: "confirmed", targetPath: pages[0].path });
   if (totals.technicalIssues) insights.push({ id: stableId(["insight", "technical", String(totals.technicalIssues)]), type: "risk", state: "attention", title: "Technical defects should be cleared first", whyItMatters: `${totals.technicalIssues} issues were observed across ${snapshot.technical.pages.length} inspected public routes.`, nextAction: "Resolve confirmed indexability defects before commissioning speculative content.", confidence: "confirmed" });

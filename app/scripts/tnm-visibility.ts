@@ -386,7 +386,7 @@ async function refreshSearchConsole(rangeDays: number, localDir: string, dryRun:
     pages: (pageRaw.rows ?? []).flatMap((row) => {
       const page = row.keys?.[0];
       if (!page || !isPublicTnmUrl(page, siteUrl)) return [];
-      return [{ path: new URL(page).pathname, clicks: row.clicks ?? 0, impressions: row.impressions ?? 0, ctr: row.ctr ?? 0, position: typeof row.position === "number" ? row.position : null }];
+      return [{ sourceUrl: page, path: new URL(page).pathname, clicks: row.clicks ?? 0, impressions: row.impressions ?? 0, ctr: row.ctr ?? 0, position: typeof row.position === "number" ? row.position : null }];
     }),
     totals: { clicks: totalRow?.clicks ?? 0, impressions: totalRow?.impressions ?? 0, ctr: totalRow?.ctr ?? 0, position: typeof totalRow?.position === "number" ? totalRow.position : null },
     period: { startDate, endDate },

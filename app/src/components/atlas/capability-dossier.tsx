@@ -1,6 +1,6 @@
 import { DownloadLink } from "@/components/atlas/download-link";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { ArrowRight, BookmarkPlus, Building2, ChevronDown, Download } from "lucide-react";
 import { DossierSectionNavigator } from "@/components/atlas/dossier-section-navigator";
 import { ExternalSourceLink, InternalLink } from "@/components/atlas/internal-link";
@@ -33,9 +33,9 @@ export function CapabilityDossier({ organization, capability, mapReturnTo, relat
   relatedOrganizations?: DossierRelatedIntelligence["organizations"];
 }) {
   const sources = capabilitySources(capability);
-  const capabilityPath = `/capabilities/${capability.slug}?returnTo=${encodeURIComponent(mapReturnTo)}`;
+  const capabilityPath = `/capabilities/${capability.slug}`;
   const saveHref = `/collections?addType=capability&addId=${capability.id}&returnTo=${encodeURIComponent(capabilityPath)}`;
-  const organizationHref = `/organizations/${organization.slug}?returnTo=${encodeURIComponent(mapReturnTo)}`;
+  const organizationHref = `/organizations/${organization.slug}`;
   const introductionHref = `/connect/${organization.slug}`;
   const evidenceLimits = capabilityEvidenceLimits(capability);
   const sections = [

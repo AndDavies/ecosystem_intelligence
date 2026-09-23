@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { FolderLock, Plus, Save } from "lucide-react";
 import { PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { addSavedCollectionItem, createSavedCollection } from "@/lib/actions/collections";

@@ -1,6 +1,6 @@
 import { TopicIcon } from "@/components/atlas/topic-icon";
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { notFound } from "next/navigation";
 import { ArrowRight, ShieldAlert } from "lucide-react";
 import { EvidenceList } from "@/components/atlas/evidence-list";

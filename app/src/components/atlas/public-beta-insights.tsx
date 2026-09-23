@@ -1,7 +1,7 @@
 "use client";
 
 import * as Dialog from "@radix-ui/react-dialog";
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import Script from "next/script";
 import { usePathname } from "next/navigation";
 import { BarChart3, Check, MousePointer2, Settings2, ShieldCheck, X } from "lucide-react";

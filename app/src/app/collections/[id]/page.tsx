@@ -1,5 +1,5 @@
 import { DownloadLink } from "@/components/atlas/download-link";
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { notFound } from "next/navigation";
 import { Download, ExternalLink, Trash2 } from "lucide-react";
 import { EmptyCoverage, PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";

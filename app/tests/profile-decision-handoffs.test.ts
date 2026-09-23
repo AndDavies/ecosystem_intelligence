@@ -44,7 +44,7 @@ describe("profile and decision handoffs", () => {
     expect(organization).toContain("safeAtlasReturn");
     expect(organization).toContain("returnTo=${encodeURIComponent(profilePath)}");
     expect(capability).toContain("returnTo=${encodeURIComponent(capabilityPath)}");
-    expect(capability).toContain("returnTo=${encodeURIComponent(mapReturnTo)}");
+    expect(capability).not.toContain("?returnTo=${encodeURIComponent(mapReturnTo)}");
     expect(mission).toContain("/map?mission=${result.missionArea.slug}");
     expect(region).toContain("/map?region=${region.slug}");
     expect(demand).toContain("/map?demand=${demand.slug}");

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { ArrowRight, MapPin } from "lucide-react";
 import { OrganizationIdentityMark } from "@/components/atlas/organization-identity";
 import { organizationKindLabel } from "@/lib/atlas/presentation";

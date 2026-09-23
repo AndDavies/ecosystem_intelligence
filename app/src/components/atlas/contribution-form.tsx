@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { CheckCircle2, LoaderCircle } from "lucide-react";
 import { FormEvent, useState } from "react";
 

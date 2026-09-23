@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { useEffect, useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import { trackBetaEvent } from "@/lib/product-insights/client";

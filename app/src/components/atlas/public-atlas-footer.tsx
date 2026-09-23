@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { Bell, Linkedin, MessageSquareText, Share2 } from "lucide-react";
 import { openBetaFeedback, openBetaUpdates, trackNorthSignalCtaClick } from "@/lib/product-insights/client";
 import { AnalyticsPreferencesButton } from "@/components/atlas/public-beta-insights";

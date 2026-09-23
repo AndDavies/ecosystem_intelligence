@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { AlertTriangle, RotateCcw } from "lucide-react";
 import { BrandLogo } from "@/components/atlas/brand-logo";
 

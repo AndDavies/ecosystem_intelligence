@@ -1,6 +1,6 @@
 import { DownloadLink } from "@/components/atlas/download-link";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { Suspense } from "react";
 import {
   ArrowRight,
@@ -581,7 +581,7 @@ function ConnectionCard({ href, title, capabilityName, summary, confidence, revi
   );
 }
 
-function CapabilityRow({ capability, mapReturnTo, organizationId }: { capability: AtlasCapability; mapReturnTo: string; organizationId: string }) {
+function CapabilityRow({ capability, mapReturnTo: _mapReturnTo, organizationId }: { capability: AtlasCapability; mapReturnTo: string; organizationId: string }) {
   const visibleFeatures = capability.coreFeatures.slice(0, 3);
   const additionalFeatures = capability.coreFeatures.slice(3);
   const hasTechnicalDetail = capability.defenceApplications.length > 0 || additionalFeatures.length > 0;
@@ -601,7 +601,7 @@ function CapabilityRow({ capability, mapReturnTo, organizationId }: { capability
           <p className="text-[12px] font-extrabold uppercase tracking-[0.08em] text-[var(--atlas-muted)]">What it enables</p>
           <p className="mt-2 max-w-[72ch] text-base leading-8 text-[var(--atlas-ink-soft)] sm:text-[17px]">{capability.summary}</p>
         </div>
-        <Link href={`/capabilities/${capability.slug}?returnTo=${encodeURIComponent(mapReturnTo)}`} data-internal-link-role="contextual" data-internal-link-module="organization_owned_capability" className="mt-4 inline-flex min-h-11 items-center gap-2 text-[14px] font-bold text-[var(--atlas-primary)] underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4 hover:decoration-[var(--atlas-ink)]">Explore {capability.name} <ArrowRight className="size-4" aria-hidden="true" /></Link>
+        <Link href={`/capabilities/${capability.slug}`} data-internal-link-role="contextual" data-internal-link-module="organization_owned_capability" className="mt-4 inline-flex min-h-11 items-center gap-2 text-[14px] font-bold text-[var(--atlas-primary)] underline decoration-[var(--atlas-signal)] decoration-2 underline-offset-4 hover:decoration-[var(--atlas-ink)]">Explore {capability.name} <ArrowRight className="size-4" aria-hidden="true" /></Link>
         {capability.technicalDomains.length ? (
           <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-[13px] font-semibold">
             <span className="text-[var(--atlas-muted)]">Domains</span>

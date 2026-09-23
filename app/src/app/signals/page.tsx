@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { ArrowRight, RadioTower, Rss } from "lucide-react";
 import { NorthSignalInline } from "@/components/atlas/north-signal-signup";
 import { PublicPageShell } from "@/components/atlas/public-page-shell";

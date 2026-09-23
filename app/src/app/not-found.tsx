@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { SearchX } from "lucide-react";
 import { PublicAtlasHeader } from "@/components/atlas/public-atlas-header";
 

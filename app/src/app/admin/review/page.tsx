@@ -1,5 +1,5 @@
 import { CandidateLogoReview } from "@/components/atlas/candidate-logo-review";
-import Link from "next/link";
+import Link from "@/components/atlas/navigation-link";
 import { redirect } from "next/navigation";
 import { CheckCircle2, Layers3, TriangleAlert } from "lucide-react";
 import { AdminNav } from "@/components/atlas/admin-nav";
