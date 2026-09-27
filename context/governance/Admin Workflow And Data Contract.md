@@ -178,7 +178,7 @@ The executable refresh contract also rejects incomplete child records, organizat
 
 The canonical-repair UI presents one exact organization, its immutable snapshot, public identity/lifecycle evidence, protected dependencies, successor state and only the six supported operations: set organization identity, set one profile field, add or archive an alias, archive one capability, or archive the organization. It permits no hard deletion, reparenting or transfer. A successor must already be published and may create only one immutable one-hop redirect.
 
-Canonical candidates never appear in Accept All, run-batch review or selected-subset batch publication. Andrew reviews one candidate at a time. Acceptance writes only the private decision and audit state. A later, separate single-record Publish action locks and rechecks the target, aliases, capabilities, dependencies and successor before one atomic transaction. Saved items, active connection requests or submissions, incoming relationships or redirects, Signal links and wiki links block archival. Snapshot drift returns the candidate to research. Defer and reject remain private.
+Canonical candidates never appear in Accept All, run-batch review or selected-subset batch publication. Andrew reviews one candidate at a time. Acceptance writes only the private decision and audit state. A later, separate single-record Publish action locks and rechecks the target, aliases, capabilities, dependencies and successor before one atomic transaction. Saved items, active connection requests or submissions, incoming relationships or redirects, Signal links and public Briefs links (stored in legacy `wiki_*` tables) block archival. Snapshot drift returns the candidate to research. Defer and reject remain private.
 
 Published successor redirects are audit continuity and immutable. If a redirect is later found wrong, stop intake and prepare a new governed repair against current state; never update or delete the historical redirect in place.
 
@@ -197,6 +197,10 @@ The production Supabase project remains the sole source of truth. Local fixtures
 Candidate publication also validates organization aliases after the database's normalization rule is applied. Case and punctuation variants are rejected during candidate parsing, while the publication function defensively keeps one deterministic alias per normalized value so an older approved candidate cannot abort an otherwise valid atomic batch.
 
 Demand issuer hierarchy is canonical taxonomy. A demand-signal candidate may add an issuing body, but any `parentIssuerSlug` must resolve to an already published parent issuer before it can enter the Publication checkpoint. The checkpoint displays missing parents and disables publication before the transaction begins; the database retains the same rejection as a final safety guard. The National Research Council Canada is established beneath the Government of Canada so NRC IRAP signals can retain their accurate parent relationship.
+
+## Local snapshot candidate
+
+The September 12 local candidate exposes structured snapshot observations in organization Review and ordinary refresh before/after values. It preserves each period, entity scope, basis, qualification and source. `20260912160000_company_snapshot_observations.sql` is unapplied: it extends existing guarded publishers and checks mapped evidence again at Publish. This paragraph grants no intake or publication authority. Historical candidates and existing independent acceptance/Publish boundaries remain unchanged.
 
 ## Candidate logos
 

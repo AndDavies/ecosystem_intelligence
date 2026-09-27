@@ -1,5 +1,6 @@
 # Visibility and Command Centre implementation
 
+Status: Implementation/deployment receipts recorded; owner-authentication follow-ups unverified
 Owner: Andrew Davies. Authorized September 5, 2026: implement the complete SEO/AEO review recommendations, connect collection, and simplify the Command Centre while retaining accessible evidence.
 
 ## Scope and completion gates
@@ -32,3 +33,7 @@ Google Calendar list-calendars still fails with ACCESS_TOKEN_SCOPE_INSUFFICIENT.
 - Product aggregate migration 20260905120323 and daily job active before raw-data expiry; service-only boundary verified.
 - Weekly visibility automation active Monday 08:00 Halifax. Signals remains manual-only.
 - Logistik metadata experiment saved live with October 3 review date; no outcome attributed yet.
+
+## September 12 document reconciliation (no live verification)
+
+The dated receipts below record implementation, deployment and September 5 scheduler reactivation. Calendar authorization, MailerLite reporting and external search processing require narrow verification when this outcome is resumed; their old error text is not a fresh observation. No schedule, provider or product change was made or authorized by this reconciliation. Historical approvals and commands below are records of that work, not a request to execute it.

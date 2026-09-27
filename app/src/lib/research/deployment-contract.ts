@@ -22,6 +22,7 @@ export type ResearchReviewContract = {
   contractVersion: typeof researchReviewContractVersion;
   pipelineVersion: string;
   candidateLogoPublication?: "candidate_logo_v1";
+  candidateSnapshotPublication?: "company_snapshot_observations_v1";
   candidateSchemas: Record<SupportedResearchCandidateKind, readonly string[]>;
 };
 
@@ -29,6 +30,7 @@ export const researchReviewContract: ResearchReviewContract = {
   contractVersion: researchReviewContractVersion,
   pipelineVersion: currentResearchPipelineVersion,
   candidateLogoPublication: "candidate_logo_v1",
+  candidateSnapshotPublication: "company_snapshot_observations_v1",
   candidateSchemas: supportedResearchCandidateSchemas
 };
 
@@ -52,7 +54,7 @@ export function isSupportedResearchCandidateKind(value: string): value is Suppor
 
 export function researchCandidateContractIssues(
   candidates: ResearchCandidateContractInput[],
-  contract: Pick<ResearchReviewContract, "contractVersion" | "pipelineVersion" | "candidateSchemas" | "candidateLogoPublication"> = researchReviewContract,
+  contract: Pick<ResearchReviewContract, "contractVersion" | "pipelineVersion" | "candidateSchemas" | "candidateLogoPublication" | "candidateSnapshotPublication"> = researchReviewContract,
   requiredPipelineVersion: string = currentResearchPipelineVersion
 ) {
   const issues: string[] = [];
@@ -61,6 +63,24 @@ export function researchCandidateContractIssues(
     return Boolean(payload?.candidateLogo?.storagePath);
   }) && contract.candidateLogoPublication !== "candidate_logo_v1") {
     issues.push("Candidate logos require deployed Review and Publish logo support.");
+  }
+
+  const modern = candidates.some(candidate => {
+    const payload = candidate.proposed_record as { editorialStandard?: unknown } | undefined;
+    return payload?.editorialStandard === "reader_usefulness_v1";
+  });
+  if (modern && !pipelineVersionAtLeast(contract.pipelineVersion, "tnm-research-pipeline/1.9.0")) issues.push("Reader-usefulness output requires deployed pipeline 1.9.0 support.");
+
+  const snapshotWrite = candidates.some(candidate => {
+    const payload = candidate.proposed_record as {
+      organization?: { snapshotObservations?: unknown };
+      operations?: Array<{ field?: unknown }>;
+    } | undefined;
+    return payload?.organization?.snapshotObservations !== undefined
+      || (Array.isArray(payload?.operations) && payload.operations.some(operation => operation.field === "snapshot_observations"));
+  });
+  if (snapshotWrite && contract.candidateSnapshotPublication !== "company_snapshot_observations_v1") {
+    issues.push("Snapshot observations require separately verified deployed migration and publication support.");
   }
 
   if (contract.contractVersion !== researchReviewContractVersion) {

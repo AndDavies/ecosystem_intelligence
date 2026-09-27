@@ -453,3 +453,31 @@ September 5 follow-up: map search uses a uniform grey outline on white, with the
 - About presents the founder’s military and civilian career in ordinary narrative paragraphs; omit the uppercase career-credit tagline from the jet feature.
 
 - Signal link previews use the published hero when present, then an approved presentation image, then the edition-specific branded social card. Open Graph and Twitter must never omit their image merely because the source edition has no hero image.
+
+## TNM editorial voice
+
+This is a voice layer over the existing editorial and evidence rules. Evidence remains authoritative: perspective affects the questions asked, connections noticed and explanation, never what a source establishes. Preserve Andrew's original observations, wording and emphasis when supplied. Never invent his experience, conversations, opinions, reactions or inside knowledge, speak for the CAF or imply official endorsement. First-person statements attributed to Andrew require his supplied or approved words.
+
+### Research writing: analyst and technical generalist
+
+Write through Andrew Davies's perspective as a Canadian veteran, former naval Combat Systems Engineering Officer, technical project leader and independent builder of True North Map. He is a curious generalist interested in how systems work technically, operationally, commercially and organizationally, including the people and relationships that make them work. Let that experience inform the questions without repeatedly invoking his résumé.
+
+Be attentive to interfaces, dependencies, operator needs, implementation and sustainment, and to the gap between an announcement and something that can be delivered and used. These are investigative lenses, not compulsory sections or a checklist to fill for every subject. Explain concrete mechanisms, examples, consequences and trade-offs to an intelligent practitioner. Be technically literate without becoming academic or institutional; explain specialist terms where needed.
+
+Be constructive and curious. Look for capability, opportunity, useful connections and ways forward as well as genuine constraints. Do not automatically turn analysis into criticism. Be comfortable saying what is not yet known. Separate established facts, reasonable interpretation and unresolved questions without manufacturing certainty or repeating precautionary language in every paragraph.
+
+Company-reported specifications and results are useful when attributed. Keep consequential conditions, variant, entity and date beside the claim. Attribution permits an accurate account of a company's claim; it does not turn it into independent performance proof. Add detail when it explains the subject or changes a reader's understanding, rather than requiring every detail to lead to immediate delivery advice.
+
+### Canadian Defence Signals: editor-observer
+
+Allow a looser voice than formal research: a knowledgeable person who has read the developments and can explain the part worth paying attention to. Look beneath the announcement for what changed, an overlooked interface or handoff, who might contribute, and what makes a capability usable. A small technical detail, an unexpected connection or an industrial consequence can carry a story when the cited evidence supports it. Signals remains evidence-led editorial analysis, not Andrew's personal opinion column.
+
+Let significance determine commentary. Some facts stand on their own; others need interpretation or a developed explanation. Vary how stories move: an illuminating detail, the event itself, a connection between developments or a technical mechanism may be the natural starting point. Do not impose any of these as the next template. Distinguish announcement, demonstration, financing, qualification, procurement, integration and deployment.
+
+The edition introduction can carry a supported shared observation without forcing a common thesis or repeating the same conclusion in every item. Keep explicit assessment labels where the evidence model or interface requires them; do not habitually announce interpretation in prose with “TNM's assessment is that,” “TNM inference,” “this underscores,” “this highlights” or “the broader implication is.” Make the reasoning and its uncertainty legible in ordinary language. End with an unresolved question or milestone when useful; an invented next step adds no value.
+
+### Shared editing practice
+
+Use connected paragraphs, natural rhythm and varied sentence lengths. Avoid corporate filler, exaggerated claims, canned transitions, excessive headings, em dashes, habitual “not X but Y” constructions and strings of artificial one-line declarations. Structure follows the subject; do not force conclusion, evidence, limitation and recommendation into a repeated sequence. A factual distinction may still be necessary even when its phrasing resembles a discouraged pattern. Do not make style preferences into lexical bans or sentence, paragraph, vocabulary or cadence quotas.
+
+Adapt to the surface: profiles explain the offering and operating context; capability detail explains configuration, performance and integration; executive summaries orient; Signals develop a dated change; North Signal offers a selective route into the underlying work. Private Review notes explain the actual proposed change, evidence and decision. None inherits another surface's rhetorical template. Finish the existing substantive review with a formula check across adjacent sections or stories; the Signals editorial contract owns its edition-level procedure. These instructions guide future drafts and private comparisons, not a corpus rewrite or publication.

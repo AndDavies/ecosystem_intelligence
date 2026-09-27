@@ -192,8 +192,9 @@ export async function validateProjectSkills(workspaceRoot: string) {
         const resolved = path.resolve(path.dirname(markdownFile), target);
         if (!(await exists(resolved))) add("error", skill, markdownFile, `Broken local Markdown link '${target}'.`);
       }
-      for (const match of markdown.matchAll(/(?:^|`)(?:python3|node)\s+(?:--test\s+)?([^\s`"'|;&]+)/gm)) {
-        const target = match[1];
+      for (const match of markdown.matchAll(/(?:^|`)(python3|node)\s+(?:--test\s+)?([^\s`"'|;&]+)/gm)) {
+        const target = match[2];
+        if (match[1] === "python3" && target === "-m") continue; // Module execution has no script path.
         if (!target || /[<$*]/.test(target) || path.isAbsolute(target)) continue;
         const rootPath = path.resolve(workspaceRoot, target);
         if (await exists(rootPath)) continue;

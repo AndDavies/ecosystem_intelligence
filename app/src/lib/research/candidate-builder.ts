@@ -90,12 +90,16 @@ export function appendRefreshChange(
       if (!candidate.sources.some(s => s.id === claim.source.sourceId)) throw new Error('Register the inspected source in the candidate before binding evidence.');
       if (executive && support.claimClass !== 'derived') throw new Error('Executive relevance must remain an assessment.');
       const fieldPath = evidenceLeafPath(operationId, leaf, executive);
-      const id = stableResearchId('evidence', [candidate.candidateId, fieldPath, claim.source.sourceId]);
+      const identity = [candidate.candidateId, fieldPath, claim.source.sourceId];
+      // Legacy IDs remain stable. Modern narratives may cite several atomic
+      // assertions from the same document without merging their claim lineage.
+      if (candidate.editorialStandard === 'reader_usefulness_v1') identity.push(support.claimClass, claim.value.trim());
+      const id = stableResearchId('evidence', identity);
       if (ids.includes(id) || candidate.fieldEvidence.some(e => e.id === id)) throw new Error('Duplicate source/leaf evidence binding.');
       ids.push(id);
       candidate.fieldEvidence.push({id, sourceId: claim.source.sourceId, fieldPath, claimClass: support.claimClass, excerpt: claim.value, confidence: 'moderate'});
       if (support.claimClass === 'source_backed') {
-        const bound: Claim = {...structuredClone(claim), claimId: stableResearchId('claim', [id,claim.claimId]), disposition: 'candidate_field', candidateTargets: [{candidateId: candidate.candidateId, fieldPath, operationId}], analystNote: `${claim.analystNote} Bound to ${fieldPath}.`.slice(0,2000)};
+        const bound: Claim = {...structuredClone(claim), claimId: stableResearchId('claim', [id,claim.claimId]), disposition: 'candidate_field', candidateTargets: [{candidateId: candidate.candidateId, fieldPath, operationId}], analystNote: claim.analystNote};
         ledger.claims.push(bound);
         const coverage = subject.coverage.filter(c => c.claimIds.includes(claim.claimId));
         if (!coverage.length) throw new Error('Associate the original claim with an assessed coverage dimension first.');
@@ -109,7 +113,7 @@ export function appendRefreshChange(
   operation.evidenceIds = [...new Set(mappings.flatMap(m => m.evidenceIds))];
   const parsed = organizationRefreshOperationV2Schema.parse(operation);
   const explanationIssues = refreshOperationExplanationIssues(candidate.candidateId, String(organization.name), parsed);
-  if (explanationIssues.length) throw new Error(explanationIssues.join('\n'));
+  if (candidate.editorialStandard !== "reader_usefulness_v1" && explanationIssues.length) throw new Error(explanationIssues.join('\n'));
   candidate.operations.push(parsed);
   if (executive) candidate.executiveRelevanceSummary = change.after as string | null;
   candidate.sourceChannels = [...new Set(candidate.sources.map(source => ledger.claims.find(c => c.source.sourceId === source.id)?.source.sourceChannel).filter((c): c is OrganizationRefreshBundleV2['sourceChannels'][number] => Boolean(c)))];
@@ -119,7 +123,7 @@ export function appendRefreshChange(
 export function createRefreshDraft(
   snapshot: import('./operator-snapshot').OperatorSnapshot,
   slug: string,
-  metadata: Pick<OrganizationRefreshBundleV2, 'reviewerRationale' | 'reviewTier' | 'inclusionScore' | 'completenessScore' | 'reviewWarnings' | 'sources' | 'confidence'>
+  metadata: Pick<OrganizationRefreshBundleV2, 'reviewerRationale' | 'reviewTier' | 'inclusionScore' | 'completenessScore' | 'reviewWarnings' | 'sources' | 'confidence' | 'editorialStandard'>
 ): OrganizationRefreshBundleV2 {
   const organization = snapshot.tables.organizations.find(o => o.slug === slug);
   if (!organization || typeof organization.updated_at !== 'string') throw new Error('Exact published target and raw timestamp required.');

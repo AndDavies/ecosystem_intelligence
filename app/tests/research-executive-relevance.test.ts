@@ -16,7 +16,7 @@ const summary = "This organization demonstrates a supported Canadian sensing-int
 
 describe("pipeline 1.7.3 executive relevance contract", () => {
   it("retains the 1.7.3 additive threshold as the current pipeline advances", () => {
-    expect(currentResearchPipelineVersion).toBe("tnm-research-pipeline/1.8.0");
+    expect(currentResearchPipelineVersion).toBe("tnm-research-pipeline/1.9.0");
     expect(requiresExecutiveRelevanceContract("tnm-research-pipeline/1.7.2")).toBe(false);
     expect(requiresExecutiveRelevanceContract("tnm-research-pipeline/1.7.3")).toBe(true);
     expect(requiresExecutiveRelevanceContract("tnm-research-pipeline/1.8.0")).toBe(true);

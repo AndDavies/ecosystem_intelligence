@@ -1,3 +1,4 @@
+import { formatSnapshotDate, formatSnapshotValue, snapshotLabels } from "@/lib/atlas/company-snapshot";
 import React from "react";
 import { Document, Link, Page, StyleSheet, Text, View, renderToBuffer } from "@react-pdf/renderer";
 import { evidenceStrengthLabel, locationAccuracyLabel, organizationOfferingGap, organizationOfferingTitle, organizationSnapshotTitle } from "@/lib/atlas/presentation";
@@ -81,8 +82,8 @@ function Sources({ organization, capability }: { organization: AtlasOrganization
   const unique = Array.from(new Map(citations.map((citation) => [citation.sourceUrl, citation])).values());
 
   return (
-    <View style={styles.section} wrap={false}>
-      <Text style={styles.eyebrow}>Sources</Text>
+    <View style={styles.section}>
+      <Text style={styles.eyebrow} minPresenceAhead={54}>Sources</Text>
       <Text style={styles.sectionTitle}>{unique.length} public {unique.length === 1 ? "source" : "sources"}</Text>
       {unique.map((citation) => (
         <View key={citation.id} style={{ marginBottom: 7 }} wrap={false}>
@@ -168,7 +169,9 @@ function ExecutiveOrganizationPdf({ organization }: { organization: AtlasOrganiz
         <Text style={styles.brand}>True North Map / Executive Organization Dossier</Text>
         <Text style={styles.title}>{organization.name}</Text>
         <Text style={styles.description}>{organization.description}</Text>
+        <Text style={styles.meta}>{[organization.entityKind.replaceAll("_", " "), ...organization.categories.map(category => category.replaceAll("_", " ")), organization.primaryLocation?.name, organization.primaryLocation ? locationAccuracyLabel(organization.primaryLocation.geographicConfidence) : null, organization.foundedYear ? `Founded ${organization.foundedYear}` : null, organization.companyStage, organization.employeeRange ? `${organization.employeeRange} employees` : null, `Evidence: ${evidenceStrengthLabel(organization.sourceConfidence)}`].filter(Boolean).join(" · ")}</Text>
         <View style={styles.divider} />
+        {(organization.editorialProfile.snapshotObservations ?? []).map(item => <View key={item.id} style={styles.section}><Text style={styles.label}>{snapshotLabels[item.metric]}{item.basis === "forecast" ? " · forecast" : item.basis === "conditional" ? " · conditional" : ""}</Text><Text>{formatSnapshotValue(item, "readable")} · {item.period}</Text><Text>{item.subjectName} · {item.reportingScope}</Text><Text>{item.qualification}</Text><Text style={styles.sourceMeta}>{item.sourceLocator} · observation dated {formatSnapshotDate(item.asOf)}: {item.sourceUrl}</Text></View>)}
         {organization.editorialProfile.currentActivity ? (
           <View style={styles.derivedCard} wrap={false}>
             <Text style={styles.eyebrow}>Why this organization matters now</Text>
@@ -176,9 +179,11 @@ function ExecutiveOrganizationPdf({ organization }: { organization: AtlasOrganiz
             <Text style={styles.sourceMeta}>Current activity assessed through {organization.editorialProfile.currentActivityAsOf}</Text>
           </View>
         ) : null}
-        <View style={styles.grid}>
-          <View style={styles.main}>
-            {organization.editorialProfile.operatingContext ? <View style={styles.section}><Text style={styles.eyebrow}>Organization profile</Text><Text style={styles.sectionTitle}>Operating context</Text><Text style={styles.body}>{organization.editorialProfile.operatingContext}</Text>{organization.editorialProfile.canadianFootprint ? <><Text style={styles.label}>Canadian footprint</Text><Text style={styles.body}>{organization.editorialProfile.canadianFootprint}</Text></> : null}</View> : null}
+        <View>
+          <View>
+            {organization.disclosedFinancingSummary ? <View style={styles.section}><Text style={styles.sectionTitle}>Commercial and industrial context</Text><Text style={styles.body}>{organization.disclosedFinancingSummary}</Text></View> : null}
+            {typeof organization.profileData.portfolioSummary === "string" ? <View style={styles.section}><Text style={styles.sectionTitle}>Systems and integration</Text><Text style={styles.body}>{organization.profileData.portfolioSummary}</Text></View> : null}
+            {organization.editorialProfile.operatingContext ? <View style={styles.section}><Text style={styles.eyebrow}>Organization profile</Text><Text style={styles.sectionTitle}>Operating context</Text><Text style={styles.body}>{organization.editorialProfile.operatingContext}</Text>{organization.editorialProfile.canadianFootprint ? <><Text style={styles.label} minPresenceAhead={48}>Canadian footprint</Text><Text style={styles.body}>{organization.editorialProfile.canadianFootprint}</Text></> : null}</View> : null}
             {(missionConnections.length || demandConnections.length) ? <View style={styles.section}>
               <Text style={styles.eyebrow}>Reviewed assessments</Text>
               <Text style={styles.sectionTitle}>Where this organization could contribute</Text>
@@ -189,25 +194,8 @@ function ExecutiveOrganizationPdf({ organization }: { organization: AtlasOrganiz
               <Text style={styles.caveat}>Reviewed public-source assessments are not procurement eligibility, endorsement, customer interest, or classified demand.</Text>
             </View> : null}
           </View>
-          <View style={styles.rail}>
-            <View style={styles.paleCard}>
-              <Text style={styles.eyebrow}>{organizationSnapshotTitle(organization.entityKind)}</Text>
-              <ProfileRow label="Primary location" value={organization.primaryLocation?.name} />
-              <ProfileRow label="Location accuracy" value={organization.primaryLocation ? locationAccuracyLabel(organization.primaryLocation.geographicConfidence) : null} />
-              <ProfileRow label="Organization type" value={organization.entityKind.replaceAll("_", " ")} />
-              <ProfileRow label="Categories" value={organization.categories.map((item) => item.replaceAll("_", " ")).join(", ")} />
-              <ProfileRow label="Founded" value={organization.foundedYear} />
-              <ProfileRow label="Company stage" value={organization.companyStage} />
-              <ProfileRow label="Employee range" value={organization.employeeRange} />
-              <ProfileRow label="Public evidence" value={evidenceStrengthLabel(organization.sourceConfidence)} />
-            </View>
-            {organization.websiteUrl ? <Link src={organization.websiteUrl} style={styles.sourceLink}>Official website</Link> : null}
-          </View>
         </View>
-        <Footer />
-      </Page>
-
-      <Page size="LETTER" style={styles.page}>
+        <View style={styles.divider} />
         <Text style={styles.brand}>True North Map / {organization.name}</Text>
         <Text style={styles.title}>Capabilities and public record</Text>
         <View style={styles.divider} />

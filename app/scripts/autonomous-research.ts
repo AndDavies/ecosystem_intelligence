@@ -1180,7 +1180,7 @@ async function prepareRun(args: string[]) {
       ? "8. Build one organization_canonical_repair_bundle_v1 candidate, explicit research_required disposition, or explicit no_material_change disposition for every named target. Never infer a merge, successor, closure, Canadian nexus or entity kind from absence alone."
       : organizationDossierMode
       ? "8. Build one consolidated organization_refresh_bundle_v2 candidate or an explicit disposition for every named target. Record ready_for_editorial_v1, research_required, or no_material_change and never replace whole profile JSON."
-      : "8. Build enriched typed candidates in green or amber review tiers. Every rationale uses Coverage value, Evidence, Mission/Public Need read, Unknowns, and Reviewer action; amber candidates keep non-blocking gaps and claim conflicts as explicit reviewer warnings.",
+      : "8. Build enriched typed candidates in green or amber review tiers. Follow the applicable quality-contract version for private rationale; public writing explains the offering and consequence without inheriting reviewer labels. Amber candidates keep material gaps and claim conflicts as explicit reviewer warnings.",
     workflowMode.typedDispositionMayReplaceCandidate
       ? "9. Do not manufacture a candidate to meet a count. A target with no supportable change ends in the appropriate typed disposition with its evidence and unresolved questions preserved."
       : "9. If the batch remains below its minimum, record a specific underTargetReason and exhaustionEvidence before completion.",
@@ -1761,7 +1761,7 @@ function formatCandidateReview(batch: ResearchCandidateBatchV2, coverage: Resear
     "- [ ] Confirm organization type and controlled categories.",
     "- [ ] Confirm each public claim against its field evidence and canonical source.",
     "- [ ] Keep derived mission or demand alignment separate from source-backed facts.",
-    "- [ ] Confirm the rationale makes Coverage value, Evidence, Mission/Public Need read, Unknowns, and Reviewer action explicit.",
+    "- [ ] Confirm the private note explains the actual change, evidence, material qualification and decision; review public prose separately for usefulness and attribution.",
     "- [ ] Confirm any Public Need hypothesis identifies the exact published need and does not imply eligibility, endorsement, customer interest, or a published match.",
     "- [ ] Edit, merge, defer, reject, or accept with substantive rationale.",
     "- [ ] Use a separate explicit publication action after acceptance.",

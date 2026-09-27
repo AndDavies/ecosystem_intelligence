@@ -1,6 +1,6 @@
 # Organization Dossier Production Corpus Refresh
 
-Status: active production rollout; pipeline 1.7.3 deployed; next corpus segment begins from a fresh live coverage and queue read
+Status: Open corpus campaign; current remaining scope not verified
 Owner: Andrew Davies
 Started: 2026-08-10
 
@@ -53,3 +53,7 @@ set of up to 50 eligible null-version organizations, complete its full research
 and validation contract, and stop in private Admin Review. Earlier completed
 segments remain historical evidence; they are not a live queue or a reason to
 reuse old targets.
+
+## September 12 document reconciliation (no live verification)
+
+The plan defines a continuing corpus outcome, not evidence that a new segment is authorized now. Current remaining targets, overlaps and dispositions require the normal live scope check only when Andrew requests a genuine run. Preserve the ordinary dossier contract; do not restart research from this document. Historical approvals and commands below are records of that work, not a request to execute it.

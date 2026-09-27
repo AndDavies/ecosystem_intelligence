@@ -170,4 +170,26 @@ describe("reviewed capability relation replacement", () => {
     await expect(publish("candidate-relations-failure")).rejects.toThrow(/stale child baseline/i);
     expect(await relations()).toEqual(previous);
   });
+  it("publishes separate assertions from one document without losing either field citation", async () => {
+    const rows = await db.query<{record: Record<string, unknown>; updated_at: string}>(
+      "select row_to_json(o) as record, updated_at::text from public.organizations o where id = $1::uuid", [organizationId]);
+    const candidate = buildMinimalOrganizationRefreshV2Candidate({organizationId, baselineUpdatedAt: rows.rows[0].updated_at, candidateId: "atomic-narrative-fixture"});
+    const record = {...candidate, editorialStandard: "reader_usefulness_v1"};
+    Object.assign(record.beforeRecord.organization, rows.rows[0].record, {updated_at: rows.rows[0].updated_at});
+    record.operations[0].before = rows.rows[0].record.operating_context as null;
+    record.fieldEvidence[0].excerpt = "The inspected synthetic technical document describes the operating configuration.";
+    record.fieldEvidence.push({...record.fieldEvidence[0], id: "second-atomic-assertion", excerpt: "The same synthetic document separately states the integration qualification."});
+    record.operations[0].evidenceIds = record.fieldEvidence.map(e => e.id);
+    record.operations[0].leafEvidence[0].evidenceIds = record.fieldEvidence.map(e => e.id);
+    await stageAndAccept(buildStagingCandidate(record), "tnm-atomic-narrative-fixture");
+    await publish(record.candidateId);
+    const citations = await db.query<{excerpt: string; source_id: string}>(`
+      select e.excerpt, e.source_id::text from public.field_citations c
+      join public.evidence_snippets e on e.id = c.evidence_snippet_id
+      where c.entity_id = $1::uuid and c.field_name = 'operating_context'
+      and e.excerpt = any($2::text[])`, [organizationId, record.fieldEvidence.map(e => e.excerpt)]);
+    expect(citations.rows.map(r => r.excerpt).sort()).toEqual(record.fieldEvidence.map(e => e.excerpt).sort());
+    expect(new Set(citations.rows.map(r => r.source_id)).size).toBe(1);
+  });
+
 });

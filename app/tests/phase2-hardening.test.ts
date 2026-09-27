@@ -320,7 +320,8 @@ describe("phase 2 launch hardening", () => {
     expect(rollback.indexOf("cron.unschedule")).toBeGreaterThanOrEqual(0);
     expect(rollback.indexOf("drop function if exists private.purge_expired_product_telemetry")).toBeGreaterThan(rollback.indexOf("cron.unschedule"));
     expect(runbook).toContain("versioned rollback script");
-    expect(agentContract).toContain("release owner is not expected to remember internal scheduler dependencies");
+    expect(agentContract).toContain("Release Runbook");
+    expect(runbook).toContain("removes the scheduler entry first");
   });
 
   it("publishes the launch walkthrough and evidence-aware FAQ with field-guide geometry", async () => {

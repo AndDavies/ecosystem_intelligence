@@ -1,4 +1,5 @@
 import { DownloadLink } from "@/components/atlas/download-link";
+import { CompanySnapshot } from "@/components/atlas/company-snapshot";
 import Image from "next/image";
 import Link from "@/components/atlas/navigation-link";
 import { Suspense } from "react";
@@ -7,12 +8,8 @@ import {
   BookmarkPlus,
   Building2,
   Download,
-  ExternalLink,
   Handshake,
-  Linkedin,
-  Mail,
   MapPin,
-  Phone,
   Route
 } from "lucide-react";
 import { DossierEngagement } from "@/components/atlas/dossier-engagement";
@@ -59,13 +56,6 @@ export function ExecutiveOrganizationDossier({
   trackEngagement?: boolean;
 }) {
   const publicContact = publicContactFromProfileData(organization.profileData);
-  const hasPublicContactPaths = Boolean(
-    organization.websiteUrl
-    || publicContact.contactPageUrl
-    || publicContact.publicEmail
-    || publicContact.publicPhone
-    || publicContact.linkedInUrl
-  );
   const missionConnections = organization.capabilities.flatMap((capability) => capability.missionMatches.map((match) => ({ capability, match })));
   const demandConnections = organization.capabilities.flatMap((capability) => capability.demandMatches.map((match) => ({ capability, match })));
   const hasConnections = missionConnections.length > 0 || demandConnections.length > 0;
@@ -150,6 +140,12 @@ export function ExecutiveOrganizationDossier({
       <DossierExecutiveSummary organization={organization} />
 
       <article className="mt-6 space-y-7 sm:mt-8 sm:space-y-8 lg:mt-9 lg:space-y-10" data-public-dossier="true">
+          {organization.disclosedFinancingSummary || organization.commercialStatus ? <section id="commercial-context" className="atlas-open-section py-8" aria-labelledby="commercial-heading">
+            <h2 id="commercial-heading" className="text-2xl font-bold">Commercial and industrial context</h2>
+            {organization.commercialStatus ? <p className="mt-4 max-w-[78ch] leading-8">{organization.commercialStatus}</p> : null}
+            {organization.disclosedFinancingSummary ? <p className="mt-4 max-w-[78ch] leading-8">{organization.disclosedFinancingSummary}</p> : null}
+            <a href="#sources" className="atlas-prose-link mt-3 inline-flex min-h-11 items-center text-sm">Inspect the supporting records</a>
+          </section> : null}
           {hasCurrentActivity && organization.editorialProfile.currentActivity && organization.editorialProfile.currentActivityAsOf && currentActivitySource ? (
             <section id="why-now" tabIndex={-1} className="atlas-tonal-surface atlas-tonal-signal w-full scroll-mt-28 px-5 py-8 outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-signal)] focus-visible:ring-offset-4 sm:py-8 lg:py-10" aria-labelledby="why-now-heading">
                 <p className="text-[12px] font-extrabold uppercase tracking-[0.1em] text-[var(--atlas-ink)]">Recent activity</p>
@@ -321,19 +317,9 @@ export function ExecutiveOrganizationDossier({
 
           {sourceCount ? (
             <section id="sources" tabIndex={-1} className="atlas-open-section w-full scroll-mt-28 py-8 outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-signal)] focus-visible:ring-offset-4 sm:py-8 lg:py-10" aria-labelledby="sources-heading">
-              <div className="grid gap-6 lg:grid-cols-12 lg:gap-10">
-                <div className="lg:col-span-7">
-                  <p className="atlas-eyebrow">Source library</p>
-                  <h2 id="sources-heading" className="mt-3 font-[family-name:var(--font-barlow)] text-3xl font-extrabold leading-[1.04] tracking-[-0.045em] text-[var(--atlas-ink)] sm:text-4xl">Sources behind this profile</h2>
-                  <p className="mt-4 max-w-[66ch] text-base leading-7 text-[var(--atlas-muted)]">Open the original record, then expand the source details to see which parts of the dossier it informs.</p>
-                  <p className="mt-4 text-[13px] font-semibold text-[var(--atlas-muted)]">{brandCopy.trustCompact}</p>
-                </div>
-                <div className="grid content-start gap-4 border-t border-[var(--atlas-border-strong)] pt-5 text-sm sm:grid-cols-2 lg:col-span-5 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
-                  <ProfileFact label="Public sources" value={sourceCount} />
-                  <ProfileFact label="Last reviewed" value={organization.lastReviewedAt ? formatDate(organization.lastReviewedAt) : null} />
-                </div>
-              </div>
-              <div className="mt-8 space-y-7">
+              <h2 id="sources-heading" className="font-[family-name:var(--font-barlow)] text-2xl font-bold">Sources behind this profile</h2>
+              <details className="mt-2"><summary className="min-h-11 cursor-pointer py-3 text-sm font-semibold text-[var(--atlas-link)]">Browse {sourceCount} supporting sources</summary><div className="mt-4 space-y-7">
+                <p className="max-w-[72ch] text-sm leading-6 text-[var(--atlas-muted)]">Open an original record or expand its details to see the supported parts of this dossier. {brandCopy.trustCompact}</p>
                 {sourceGroups.map((group) => (
                   <section key={group.name}>
                     <h3 className="text-[13px] font-extrabold uppercase tracking-[0.08em] text-[var(--atlas-ink)]">{group.name}</h3>
@@ -342,45 +328,22 @@ export function ExecutiveOrganizationDossier({
                     </ul>
                   </section>
                 ))}
-              </div>
+              </div></details>
             </section>
           ) : null}
 
-          <section id="contact" tabIndex={-1} className="scroll-mt-28 bg-[var(--atlas-ink)] px-5 py-8 text-white outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-signal)] focus-visible:ring-offset-4 sm:py-8 lg:py-10" aria-labelledby="contact-heading">
-            <div className={`grid gap-8 lg:items-end lg:gap-10 ${hasPublicContactPaths ? "lg:grid-cols-12" : ""}`}>
-              <div className={hasPublicContactPaths ? "lg:col-span-7" : "max-w-4xl"}>
-                <p className="text-[12px] font-bold uppercase tracking-[0.1em] text-[var(--atlas-signal)]">Move into a better-informed conversation</p>
-                <h2 id="contact-heading" className="mt-3 max-w-[18ch] font-[family-name:var(--font-barlow)] text-3xl font-extrabold leading-[1.04] tracking-[-0.045em] text-white sm:text-4xl">Take this dossier into the next conversation.</h2>
-                <p className="mt-4 max-w-[68ch] text-base leading-8 text-white/75 sm:text-[17px]">Save the organization and its public record in a private Shortlist, then request a human-routed introduction when the fit is specific enough to discuss.</p>
-                <div className="mt-6 flex flex-wrap gap-2">
-                  <Link href={`/collections?addType=organization&addId=${organization.id}&returnTo=${encodeURIComponent(profilePath)}`} className="atlas-signal-button h-12 gap-2 px-5 text-sm"><BookmarkPlus className="size-4" aria-hidden="true" />Add to shortlist</Link>
-                  <Link href={`/connect/${organization.slug}`} className="inline-flex h-12 items-center gap-2 rounded-full border border-white/30 px-4 text-sm font-bold text-white no-underline hover:bg-white/10 hover:no-underline"><Handshake className="size-4" aria-hidden="true" />Request an introduction</Link>
-                </div>
-                {!hasPublicContactPaths ? <p className="mt-5 text-[13px] leading-6 text-white/65">Only official, source-supported contact paths are shown. True North Map does not expose private contact information or imply endorsement.</p> : null}
-              </div>
-              {hasPublicContactPaths ? <div className="space-y-2 text-sm lg:col-span-5">
-                {organization.websiteUrl ? <ContactLink href={organization.websiteUrl} label="Official website" icon={<ExternalLink className="size-4" />} external /> : null}
-                {publicContact.contactPageUrl ? <ContactLink href={publicContact.contactPageUrl} label="Official contact page" icon={<ArrowRight className="size-4" />} external /> : null}
-                {publicContact.publicEmail ? <ContactLink href={`mailto:${publicContact.publicEmail}`} label={publicContact.publicEmail} icon={<Mail className="size-4" />} /> : null}
-                {publicContact.publicPhone ? <ContactLink href={`tel:${publicContact.publicPhone}`} label={publicContact.publicPhone} icon={<Phone className="size-4" />} /> : null}
-                {publicContact.linkedInUrl ? <ContactLink href={publicContact.linkedInUrl} label="Official LinkedIn" icon={<Linkedin className="size-4" />} external /> : null}
-                <p className="pt-2 text-[13px] leading-6 text-white/65">Only official, source-supported contact paths are shown. True North Map does not expose private contact information or imply endorsement.</p>
-              </div> : null}
+          <section id="contact" tabIndex={-1} className="atlas-open-section scroll-mt-28 py-6" aria-labelledby="contact-heading">
+            <h2 id="contact-heading" className="text-xl font-bold">Contact and next conversation</h2>
+            <div className="mt-3 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+              {publicContact.contactPageUrl ? <ExternalSourceLink href={publicContact.contactPageUrl} className="min-h-11 !items-center">Official contact page</ExternalSourceLink> : organization.websiteUrl ? <ExternalSourceLink href={organization.websiteUrl} className="min-h-11 !items-center">Official website</ExternalSourceLink> : null}
+              {publicContact.publicEmail ? <a className="atlas-prose-link inline-flex min-h-11 items-center" href={`mailto:${publicContact.publicEmail}`}>{publicContact.publicEmail}</a> : null}
+              {publicContact.publicPhone ? <a className="atlas-prose-link inline-flex min-h-11 items-center" href={`tel:${publicContact.publicPhone}`}>{publicContact.publicPhone}</a> : null}
+              {publicContact.linkedInUrl ? <ExternalSourceLink href={publicContact.linkedInUrl} className="min-h-11 !items-center">Official LinkedIn</ExternalSourceLink> : null}
             </div>
+            <p className="mt-2 text-sm text-[var(--atlas-muted)]">Use the shortlist and introduction controls above when the fit is specific enough to discuss. Only public, source-supported contact paths are shown.</p>
           </section>
 
-          <section id="related" tabIndex={-1} className="atlas-open-section w-full scroll-mt-28 py-8 outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-signal)] focus-visible:ring-offset-4 sm:py-8 lg:py-10" aria-labelledby="related-heading">
-            <div className="grid gap-5 lg:grid-cols-12 lg:gap-10">
-              <div className="lg:col-span-4">
-                <p className="atlas-eyebrow">Continue exploring</p>
-                <h2 id="related-heading" className="mt-3 max-w-[18ch] font-[family-name:var(--font-barlow)] text-3xl font-extrabold leading-[1.04] tracking-[-0.045em] text-[var(--atlas-ink)] sm:text-4xl">Related intelligence</h2>
-              </div>
-              <p className="max-w-[68ch] text-[17px] leading-8 text-[var(--atlas-muted)] lg:col-span-8 lg:pt-7">Follow the most useful map and editorial pathways connected to this profile.</p>
-            </div>
-            <Suspense fallback={null}>
-              <RelatedIntelligenceLoader organization={organization} relatedIntelligence={relatedIntelligence} />
-            </Suspense>
-          </section>
+          <Suspense fallback={null}><RelatedIntelligenceLoader organization={organization} relatedIntelligence={relatedIntelligence} /></Suspense>
 
           {showsContextualNorthSignalSignup("organization", organization.slug) ? <NorthSignalInline placement="newsletter_inline_profile" trigger="profile_after_evidence" className="w-full" /> : null}
       </article>
@@ -394,25 +357,25 @@ function DossierExecutiveSummary({ organization }: { organization: AtlasOrganiza
       label: "Operating context",
       text: organization.editorialProfile.operatingContext
     } : null,
+    typeof organization.profileData.portfolioSummary === "string" ? {label: "Systems and integration", text: organization.profileData.portfolioSummary} : null,
     organization.editorialProfile.canadianFootprint ? {
       label: "Canadian footprint",
       text: organization.editorialProfile.canadianFootprint
     } : null
   ].filter((item): item is { label: string; text: string } => Boolean(item));
   const snapshotFacts = [
-    { label: "Organization type", value: organizationKindLabel(organization.entityKind) },
-    { label: "Primary location", value: organization.primaryLocation?.name },
     { label: "Canadian footprint", value: compactCanadianFootprint(organization) },
-    { label: "Founded", value: organization.foundedYear },
     { label: "Ownership", value: organization.ownership },
     { label: "Last reviewed", value: organization.lastReviewedAt ? formatDate(organization.lastReviewedAt) : null, fullWidth: true }
   ].filter((fact) => fact.value !== null && fact.value !== undefined && fact.value !== "");
 
+  if (!narrativeBlocks.length && !snapshotFacts.length) return null;
+  const hasFacts = snapshotFacts.some(fact => fact.label !== "Last reviewed");
   return (
     <section id="profile" tabIndex={-1} className="mt-6 scroll-mt-28 outline-none focus-visible:ring-2 focus-visible:ring-[var(--atlas-signal)] focus-visible:ring-offset-4 sm:mt-8 lg:mt-9" aria-labelledby={narrativeBlocks.length ? "profile-heading" : "snapshot-heading"}>
       <div className={narrativeBlocks.length ? "grid gap-6 lg:grid-cols-12 lg:items-stretch lg:gap-8" : ""}>
         {narrativeBlocks.length ? (
-          <div className="atlas-open-section py-8 sm:py-8 lg:col-span-7 lg:h-full lg:py-8 xl:col-span-8">
+          <div className={`atlas-open-section py-8 sm:py-8 lg:h-full lg:py-8 ${hasFacts ? "lg:col-span-7 xl:col-span-8" : "lg:col-span-12"}`}>
             <p className="atlas-eyebrow">Organization context</p>
             <h2 id="profile-heading" className="mt-3 font-[family-name:var(--font-barlow)] text-3xl font-extrabold leading-[1.04] tracking-[-0.045em] text-[var(--atlas-ink)] sm:text-4xl">What the organization does</h2>
             <div className="mt-6 divide-y divide-[var(--atlas-border)]">
@@ -426,13 +389,13 @@ function DossierExecutiveSummary({ organization }: { organization: AtlasOrganiza
           </div>
         ) : null}
 
-        <aside className={`${narrativeBlocks.length ? "lg:col-span-5 xl:col-span-4" : "w-full"} atlas-open-section py-8 sm:py-8 lg:h-full lg:px-8 lg:py-10`} aria-labelledby="snapshot-heading">
+        {hasFacts ? <aside className={`${narrativeBlocks.length ? "lg:col-span-5 xl:col-span-4" : "w-full"} atlas-open-section py-8 sm:py-8 lg:h-full lg:px-8 lg:py-10`} aria-labelledby="snapshot-heading">
           <p className="atlas-eyebrow">Profile facts</p>
           <h2 id="snapshot-heading" className="mt-3 font-[family-name:var(--font-barlow)] text-2xl font-extrabold tracking-[-0.035em] text-[var(--atlas-ink)] sm:text-3xl">At a glance</h2>
           <dl className="mt-6 grid gap-x-7 sm:grid-cols-2">
             {snapshotFacts.slice(0, 6).map((fact) => <SnapshotFact key={fact.label} label={fact.label} value={fact.value} fullWidth={fact.fullWidth} />)}
           </dl>
-        </aside>
+        </aside> : null}
       </div>
     </section>
   );
@@ -486,7 +449,7 @@ function OrganizationIdentityMark({ organization }: { organization: AtlasOrganiz
   return (
     <span className="atlas-dossier-logo relative flex shrink-0 items-center justify-center text-[var(--atlas-ink)]">
       {organization.logo ? (
-        <Image src={organization.logo.publicUrl} alt={`${organization.name} logo`} fill sizes="(min-width: 1024px) 180px, 96px" priority className="object-contain" />
+        <Image src={organization.logo.publicUrl} alt={`${organization.name} logo`} fill sizes="(min-width: 1024px) 112px, 96px" priority className="object-contain" />
       ) : initials ? (
         <span aria-hidden="true" className="font-[family-name:var(--font-barlow)] text-xl font-extrabold tracking-[-0.04em] sm:text-2xl">{initials}</span>
       ) : (
@@ -498,14 +461,15 @@ function OrganizationIdentityMark({ organization }: { organization: AtlasOrganiz
 
 function EditorialHeader({ organization, profilePath }: { organization: AtlasOrganization; profilePath: string }) {
   const heroMedia = selectHeroMedia(organization.mediaAssets);
+  const hasSidebar = Boolean(heroMedia || organization.primaryLocation || organization.foundedYear || organization.editorialProfile.snapshotObservations?.length);
   const documentedCapability = organization.capabilities.length === 1
     ? organization.capabilities[0].capabilityType ?? organization.capabilities[0].name
     : null;
 
   return (
     <header className="atlas-profile-header mt-7">
-      <div className="grid gap-8 py-8 lg:grid-cols-12 lg:gap-12 lg:py-10">
-        <div className="min-w-0 lg:col-span-8">
+      <div className="grid gap-x-8 gap-y-6 py-8 lg:grid-cols-12 lg:gap-x-12 lg:gap-y-0 lg:pt-10 lg:pb-6">
+        <div className={`min-w-0 ${hasSidebar ? "lg:col-span-8" : "lg:col-span-12"}`}>
           <div className="atlas-dossier-identity">
             <OrganizationIdentityMark organization={organization} />
             <div className="min-w-0">
@@ -514,16 +478,18 @@ function EditorialHeader({ organization, profilePath }: { organization: AtlasOrg
               <h1 className="mt-3 max-w-[18ch] break-words font-[family-name:var(--font-barlow)] text-[42px] font-extrabold leading-[0.98] tracking-[-0.035em] text-[var(--atlas-ink)] [overflow-wrap:anywhere] sm:text-[52px] xl:text-[60px]">{organization.name}</h1>
               {organization.primaryLocation ? <p className="mt-4 flex items-center gap-2 text-[14px] font-semibold text-[var(--atlas-muted)]"><MapPin className="size-4 shrink-0" aria-hidden="true" /><span>{organization.primaryLocation.name}</span></p> : null}
           {documentedCapability ? <p className="mt-5 max-w-[64ch] border-l-2 border-[var(--atlas-signal)] pl-4 text-[15px] font-semibold leading-7 text-[var(--atlas-ink)]"><span className="text-[var(--atlas-muted)]">What they offer:</span> {documentedCapability}</p> : null}
-          <p className="mt-5 max-w-[72ch] text-base leading-8 text-[var(--atlas-ink-soft)] sm:text-[17px]">{organization.description}</p>
-          {organization.lastReviewedAt ? <p className="mt-5 border-t border-[var(--atlas-border)] pt-4 text-[13px] font-semibold leading-6 text-[var(--atlas-muted)]">Last reviewed {formatDate(organization.lastReviewedAt)}</p> : null}
             </div>
           </div>
-          {heroMedia ? <DossierActions organization={organization} profilePath={profilePath} mode="inline" /> : null}
+          <p className="mt-5 max-w-[72ch] text-base leading-8 text-[var(--atlas-ink-soft)] sm:text-[17px]">{organization.description}</p>
+          {organization.lastReviewedAt ? <p className="mt-4 text-[13px] font-semibold leading-6 text-[var(--atlas-muted)]">Last reviewed {formatDate(organization.lastReviewedAt)}</p> : null}
+
         </div>
 
-        <div className="min-w-0 lg:col-span-4">
-          {heroMedia ? <DossierHeroMedia media={heroMedia} organizationName={organization.name} /> : <DossierActions organization={organization} profilePath={profilePath} mode="panel" />}
-        </div>
+        {hasSidebar ? <div className="min-w-0 self-start lg:col-span-4 lg:row-span-2">
+          <CompanySnapshot organization={organization} />
+          {heroMedia ? <div className="mt-6"><DossierHeroMedia media={heroMedia} organizationName={organization.name} /></div> : null}
+        </div> : null}
+        <div className={hasSidebar ? "min-w-0 lg:col-span-8" : "min-w-0 lg:col-span-12"}><DossierActions organization={organization} profilePath={profilePath} mode="inline" /></div>
       </div>
     </header>
   );
@@ -532,12 +498,12 @@ function EditorialHeader({ organization, profilePath }: { organization: AtlasOrg
 function DossierActions({ organization, profilePath, mode }: { organization: AtlasOrganization; profilePath: string; mode: "panel" | "inline" }) {
   return (
     <div className={mode === "panel" ? "atlas-dossier-actions border-l-2 border-[var(--atlas-border-strong)] pl-5 sm:pl-7" : "atlas-dossier-actions mt-7 border-t border-[var(--atlas-border)] pt-5"}>
-      <p className="text-[12px] font-extrabold uppercase tracking-[0.1em] text-[var(--atlas-ink)]">Next actions</p>
-      <div className={`${mode === "inline" ? "sm:grid-cols-2 lg:max-w-2xl" : ""} mt-4 grid gap-2`}>
+
+      <div className="flex flex-wrap gap-2">
         <Link href={`/collections?addType=organization&addId=${organization.id}&returnTo=${encodeURIComponent(profilePath)}`} className="atlas-signal-button h-12 gap-2 px-5 text-sm"><BookmarkPlus className="size-4" aria-hidden="true" />Add to shortlist</Link>
         <Link href={`/connect/${organization.slug}`} className="atlas-secondary-button h-12 gap-2 px-4 text-sm"><Handshake className="size-4" aria-hidden="true" />Request an introduction</Link>
       </div>
-      <div className="mt-4 flex flex-wrap items-center gap-x-1 gap-y-1 border-t border-[var(--atlas-border)] pt-3">
+      <div className="mt-2 flex flex-wrap items-center gap-x-1 gap-y-1">
         <DownloadLink href={`/api/export?type=organization-dossier&slug=${organization.slug}`} className="inline-flex min-h-11 items-center gap-1.5 rounded-[12px] px-2.5 text-[13px] font-semibold text-[var(--atlas-muted)] no-underline hover:bg-white hover:text-[var(--atlas-ink)] hover:no-underline">Download profile <Download className="size-3.5" aria-hidden="true" /></DownloadLink>
         <PublicShare title={organization.name} description={organization.description} path={`/organizations/${organization.slug}`} className="!h-11 !min-h-11 !rounded-full !border-0 !bg-transparent !px-2.5 !text-[13px] !font-semibold !text-[var(--atlas-link)] hover:!bg-white hover:!text-[var(--atlas-ink)]" />
         {organization.websiteUrl ? <ExternalSourceLink href={organization.websiteUrl} variant="plain" className="min-h-11 items-center rounded-[12px] px-2.5 text-[13px] font-semibold text-[var(--atlas-muted)] no-underline hover:bg-white hover:text-[var(--atlas-ink)] hover:no-underline">Visit website</ExternalSourceLink> : null}
@@ -557,6 +523,7 @@ function DossierHeroMedia({ media, organizationName }: { media: HeroMediaAsset; 
       </div>
       {media.attributionText || media.sourceUrl ? (
         <figcaption className="mt-3 text-[12px] leading-5 text-[var(--atlas-muted)]">
+          {media.editorialContext ? <><span className="block">{media.editorialContext.caption}</span><span className="block">{media.editorialContext.subject} · {media.editorialContext.contextDate ?? "Date not specified"} · {media.editorialContext.context}</span></> : null}
           {media.attributionText ?? `${organizationName} profile image`}
           {media.sourceUrl ? <> · <ExternalSourceLink href={media.sourceUrl} className="min-h-11 items-center font-semibold">Image source</ExternalSourceLink></> : null}
         </figcaption>
@@ -699,7 +666,9 @@ async function RelatedIntelligenceLoader({
   relatedIntelligence?: DossierRelatedIntelligence;
 }) {
   const related = relatedIntelligence ?? await getDossierRelatedIntelligence(organization);
-  return <RelatedIntelligence organization={organization} related={related} />;
+  const hasRelated = related.signals.length || related.briefs.length || related.organizations.length || organization.relationships.length || organization.programs.length || organization.capabilities.some(capability => capability.missionMatches.length || capability.demandMatches.length);
+  if (!hasRelated) return null;
+  return <section id="related" tabIndex={-1} className="atlas-open-section w-full scroll-mt-28 py-6" aria-label="Related intelligence"><RelatedIntelligence organization={organization} related={related} /></section>;
 }
 
 function RelatedIntelligence({ organization, related }: {
@@ -829,10 +798,6 @@ function DecisionList({ label, values }: { label: string; values: string[] }) {
   return <div className="mt-4"><p className="text-[11px] font-bold uppercase tracking-[0.08em] text-[var(--atlas-muted)]">{label}</p><ul className="mt-2 space-y-1.5 text-[13px] leading-6 text-[var(--atlas-ink-soft)]">{values.slice(0, 3).map((value) => <li key={value} className="flex gap-2"><span className="mt-2.5 size-1 shrink-0 rounded-full bg-[var(--atlas-muted)]" />{value}</li>)}</ul></div>;
 }
 
-function ContactLink({ href, label, icon, external = false }: { href: string; label: string; icon: React.ReactNode; external?: boolean }) {
-  return <a href={href} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined} className="flex min-h-11 items-center justify-between gap-3 rounded-full border border-white/15 px-3.5 py-2.5 text-[14px] font-semibold text-white no-underline hover:bg-white/10 hover:no-underline"><span className="min-w-0 truncate">{label}{external ? <span className="sr-only"> (opens in a new tab)</span> : null}</span><span className="shrink-0 text-[var(--atlas-signal)]" aria-hidden="true">{icon}</span></a>;
-}
-
 function buildSourceGroups(organization: AtlasOrganization) {
   const order: SourceGroupName[] = ["Identity and profile", "Technologies and services", "Public record", "Mission and Defence need"];
   const sources = new Map<string, SourceEntry & { primaryGroup: SourceGroupName }>();
@@ -874,6 +839,7 @@ function selectHeroMedia(mediaAssets: AtlasDossierMediaAsset[]): HeroMediaAsset 
   const candidates = mediaAssets
     .filter((media): media is HeroMediaAsset => (
       media.assetType !== "logo"
+      && (!media.editorialContext || media.editorialContext.reuseBasis !== "unknown")
       && (media.displayRole === "profile_context" || media.displayRole === "profile_identity")
       && Boolean(media.publicUrl?.trim())
       && Boolean(media.altText?.trim())

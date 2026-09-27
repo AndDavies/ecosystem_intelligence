@@ -108,6 +108,7 @@ export interface AtlasReviewedQuestion {
 }
 
 export interface AtlasOrganizationEditorialProfile {
+  snapshotObservations?: import("@/lib/atlas/company-snapshot").SnapshotObservation[];
   version: AtlasOrganizationEditorialProfileVersion | null;
   executiveRelevanceSummary?: string | null;
   currentActivity: string | null;
@@ -189,6 +190,7 @@ export interface AtlasOrganizationRelationship {
 }
 
 export interface AtlasDossierMediaAsset {
+  editorialContext?: import("@/lib/atlas/editorial-media").EditorialMediaContext | null;
   id: string;
   organizationId: string | null;
   capabilityId: string | null;

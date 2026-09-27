@@ -1,3 +1,4 @@
+import { reportedRevenue } from "@/lib/atlas/editorial-specimens";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import type { PGlite } from "@electric-sql/pglite";
@@ -3063,6 +3064,11 @@ describe("public atlas database foundation", () => {
   it("validates, stages, and atomically publishes the v3 dossier and v2 refresh contracts", async () => {
     const administratorId = "b443c433-2a78-4ca7-8a19-a8f40b140049";
     const organizationCandidate = buildMinimalOrganizationV3Candidate();
+    const observation = {...reportedRevenue, subjectName: organizationCandidate.organization.name, sourceId: organizationCandidate.sources[0].id, sourceUrl: organizationCandidate.sources[0].url};
+    Object.assign(organizationCandidate, {editorialStandard: "reader_usefulness_v1"});
+    Object.assign(organizationCandidate.organization, {snapshotObservations: [observation]});
+    for (const [key,value] of Object.entries(observation)) if(value !== null) organizationCandidate.fieldEvidence.push({id: `snapshot-${key.toLowerCase()}`, sourceId: observation.sourceId, fieldPath: `organization.snapshotObservations.0.${key}`, claimClass: "source_backed", excerpt: `The synthetic financial fixture records ${key}: ${String(value)}.`, confidence: "high"});
+
     const initialExecutiveSummary = "This organization demonstrates a publicly documented Canadian sensing role that may help decision teams compare programme fit and identify a bounded technical-verification conversation.";
     Object.assign(organizationCandidate.organization, { executiveRelevanceSummary: initialExecutiveSummary });
     organizationCandidate.fieldEvidence.push({
@@ -3089,6 +3095,8 @@ describe("public atlas database foundation", () => {
     `);
     expect(publishedOrganization.rows[0]?.entity_slug).toBe("dossier-v3-fixture");
     const organizationId = publishedOrganization.rows[0]?.entity_id;
+    const snapshotResult=await db.query<{snapshot_observations:unknown}>("select snapshot_observations from public.organizations where id=$1",[organizationId]);
+    expect(snapshotResult.rows[0].snapshot_observations).toEqual([observation]);
     if (!organizationId) throw new Error("The v3 fixture did not publish an organization ID.");
 
     const conflictingSharedProgram = structuredClone(buildMinimalOrganizationV3Candidate());
@@ -3251,6 +3259,11 @@ describe("public atlas database foundation", () => {
     )).rejects.toThrow(/does not match the reviewed canonical program payload/i);
 
     const refreshCandidate = buildMinimalOrganizationRefreshV2Candidate({ organizationId, baselineUpdatedAt: originalBaseline });
+    const refreshedObservation={...observation,amount:28000000,sourceId:refreshCandidate.sources[0].id,sourceUrl:refreshCandidate.sources[0].url};
+    const observationEvidence=Object.entries(refreshedObservation).filter(([,value])=>value!==null).map(([key,value])=>({id:`refresh-snapshot-${key.toLowerCase()}`,sourceId:refreshedObservation.sourceId,fieldPath:`snapshotObservations.0.${key}`,claimClass:"source_backed" as const,excerpt:`Synthetic refreshed observation records ${key}: ${String(value)}.`,confidence:"high" as const}));
+    const snapshotOperation={operationId:"refresh-snapshot",operation:"set_field",entityType:"organization",targetId:organizationId,field:"snapshot_observations",before:[observation],after:[refreshedObservation],evidenceIds:observationEvidence.map(item=>item.id),leafEvidence:observationEvidence.map(item=>({fieldPath:item.fieldPath.replace("snapshotObservations.","after."),evidenceIds:[item.id]})),reviewerExplanation:"Update the synthetic reported amount while preserving reporting scope and qualifications."};
+    Object.assign(refreshCandidate,{editorialStandard:"reader_usefulness_v1",operations:[...refreshCandidate.operations,snapshotOperation],fieldEvidence:[...refreshCandidate.fieldEvidence,...observationEvidence]});
+
     const stagedRefresh = await db.query<{ staged_count: number; skipped_count: number }>(
       "select staged_count, skipped_count from public.stage_research_candidates_for_review($1::jsonb, $2::jsonb)",
       [JSON.stringify(dossierFixtureResearchRun), JSON.stringify([buildStagingCandidate(refreshCandidate)])]
@@ -3278,6 +3291,10 @@ describe("public atlas database foundation", () => {
       from public.organizations organization_record
       where organization_record.id = '${organizationId}'::uuid
     `);
+    const refreshedSnapshot=await db.query<{snapshot_observations:unknown}>("select snapshot_observations from public.organizations where id=$1",[organizationId]);
+    expect(refreshedSnapshot.rows[0].snapshot_observations).toEqual([refreshedObservation]);
+    const snapshotCitations=await db.query("select id from public.field_citations where entity_id=$1 and field_name='snapshot_observations.0.amount'",[organizationId]);
+    expect(snapshotCitations.rows.length).toBeGreaterThan(0);
     expect(afterRefresh.rows[0]).toMatchObject({
       operating_context: "The fixture company operates a bounded Canadian sensing-integration workflow for public migration testing.",
       citations: 1,

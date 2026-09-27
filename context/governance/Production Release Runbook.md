@@ -24,11 +24,11 @@ Use the [Cross-System testing policy](Cross-System%20Change%20And%20Regression%2
    build or runtime input.
 2. Run `pnpm release:validate` with production configuration. Its current contract includes the 5,000-marker scale gate; run `pnpm scale:validate` directly when diagnosing scale failures.
 3. Confirm the security step in the passing `pnpm release:validate` result reports no high or critical production dependency finding and review lower-severity output. Do not run it again separately without changed dependencies or a concrete failure.
-4. Run the browser matrix at 390, 768, 1024 and 1440 pixels.
-5. Verify the access matrix for anonymous, member, non-admin and administrator roles.
+4. For affected public layout or interaction, run the browser matrix at 390, 768, 1024 and 1440 pixels.
+5. For access, authentication, RLS or private-data changes, verify the anonymous, member, non-admin and administrator matrix.
 6. Inspect representative public organization API and page responses for internal review, research-schema and ingestion-lineage fields. Use local route tests and the browser matrix to validate the candidate before push; do not run a production crawler and call it candidate evidence. For a dossier projection or citation-hydration release, verify locally that the view no longer aggregates citations, that the application hydrates only the admitted public graph, and that the post-deployment cold-dossier gate is wired with a short-lived, nonce-bound exact-deployment signature but not misreported as local evidence. Invalid API probes return 403; invalid page probes use the ordinary cached public path and never become public 500 responses.
 7. Review current Vercel errors and Supabase security and performance advisors.
-8. Confirm pending publication and participation queues have been triaged.
+8. If the release changes queue or publication compatibility, reconcile affected pending/approved candidates. Unrelated queue triage is not a release prerequisite.
 9. Confirm the latest production deployment remains available for rollback.
 10. Before any database command, verify the selected project reference is exactly `facoactpdckkhciamflk`. A stale local Supabase link is a hard stop; prefer an explicitly project-pinned control-plane call when the CLI database login role is unavailable.
 11. For the canonical-repair v4/1.8.0 release, preserve the two-stage order: apply the additive migration while the old v3 application remains compatible; recheck ordinary new/refresh Review and Publish; deploy the compatible application; wait for the exact commit to be READY; then require the live contract endpoint to advertise v4, pipeline 1.8.0 and `organization_canonical_repair_bundle_v1`. Do not prepare or stage a repair run between those stages.

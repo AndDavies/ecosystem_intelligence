@@ -1,3 +1,4 @@
+import { snapshotObservationsSchema } from "@/lib/atlas/company-snapshot";
 import { z } from "zod";
 import { organizationProfileFieldAllowlist } from "@/lib/atlas/public-profile-data";
 import { normalizeOrganizationIdentity } from "@/lib/research/identity-normalization";
@@ -630,6 +631,7 @@ export const candidateLogoSchema = z.discriminatedUnion("status", [
 ]);
 
 const candidateCommon = {
+  editorialStandard: z.literal("reader_usefulness_v1").optional(),
   candidateId: slugSchema,
   sourceLeadIds: z.array(slugSchema).min(1),
   confidence: confidenceSchema,
@@ -873,6 +875,7 @@ export const organizationBundleV3Schema = z.object({
     currentActivityAsOf: z.string().date().nullable(),
     operatingContext: nullablePublicText(40, 2000),
     canadianFootprint: nullablePublicText(40, 2000),
+    snapshotObservations: snapshotObservationsSchema.optional(),
     executiveRelevanceSummary: nullablePublicText(80, 1200).optional(),
     reviewedQuestions: z.array(reviewedQuestionSchema).max(4),
     profileData: z.record(profileFieldValueSchema)
@@ -884,6 +887,13 @@ export const organizationBundleV3Schema = z.object({
   candidateLogo: candidateLogoSchema.optional()
 }).strict().superRefine((candidate, context) => {
   const organization = candidate.organization;
+  if (organization.snapshotObservations?.length && candidate.editorialStandard !== "reader_usefulness_v1") {
+    context.addIssue({ code: z.ZodIssueCode.custom, message: "Snapshot observations require the reader-usefulness compatibility contract.", path: ["editorialStandard"] });
+  }
+  for (const [index, observation] of (organization.snapshotObservations ?? []).entries()) {
+    if (observation.scopeRelation === "organization" && ![organization.name, organization.legalName].includes(observation.subjectName)) context.addIssue({code: z.ZodIssueCode.custom, message: "Observation subject must match the reviewed organization; parent reports must be explicitly labelled.", path: ["organization", "snapshotObservations", index, "subjectName"]});
+    if (!candidate.sources.some(source => source.id === observation.sourceId && source.url === observation.sourceUrl)) context.addIssue({code: z.ZodIssueCode.custom, message: "Observation source must resolve to the same candidate source URL.", path: ["organization", "snapshotObservations", index, "sourceId"]});
+  }
   const evidenceByPath = new Map<string, typeof candidate.fieldEvidence>();
   candidate.fieldEvidence.forEach((evidence) => {
     const current = evidenceByPath.get(evidence.fieldPath) ?? [];
@@ -1101,7 +1111,7 @@ export const organizationRefreshV2SafeFieldValues = [
   "founded_year", "employee_range", "company_stage", "ownership", "commercial_status",
   "disclosed_financing_summary", "defence_posture", "dual_use_posture", "public_contact",
   "current_activity", "current_activity_as_of", "operating_context", "canadian_footprint",
-  "executive_relevance_summary", "reviewed_questions", "editorial_profile_version"
+  "snapshot_observations", "executive_relevance_summary", "reviewed_questions", "editorial_profile_version"
 ] as const;
 
 const refreshLeafEvidenceSchema = z.object({
@@ -1178,6 +1188,7 @@ export function validateOrganizationRefreshV2Field(
     current_activity_as_of: z.string().date().nullable(),
     operating_context: nullablePublicText(40, 2000),
     canadian_footprint: nullablePublicText(40, 2000),
+    snapshot_observations: snapshotObservationsSchema,
     executive_relevance_summary: nullablePublicText(80, 1200),
     reviewed_questions: z.array(reviewedQuestionSchema).max(4),
     editorial_profile_version: z.literal(organizationEditorialProfileVersion).nullable()
@@ -1243,6 +1254,14 @@ export const organizationRefreshBundleV2Schema = z.object({
     if ((operation.operation === "add_child" || operation.operation === "update_child")
         && operation.parentId !== candidate.targetMatch.entityId) {
       context.addIssue({ code: z.ZodIssueCode.custom, message: "The child operation must belong to the matched organization.", path: [...path, "parentId"] });
+    }
+    if (operation.operation === "set_field" && operation.field === "snapshot_observations") {
+      if (candidate.editorialStandard !== "reader_usefulness_v1") context.addIssue({code: z.ZodIssueCode.custom, message: "Snapshot observations require the reader-usefulness contract.", path});
+      const parsed = snapshotObservationsSchema.safeParse(operation.after);
+      if (parsed.success) for (const observation of parsed.data) {
+        if (observation.scopeRelation === "organization" && ![beforeOrganizationRecord.name, beforeOrganizationRecord.legal_name].includes(observation.subjectName)) context.addIssue({code: z.ZodIssueCode.custom, message: "Observation subject differs from the exact target.", path});
+        if (!candidate.sources.some(source => source.id === observation.sourceId && source.url === observation.sourceUrl)) context.addIssue({code: z.ZodIssueCode.custom, message: "Observation source must resolve to the candidate source URL.", path});
+      }
     }
     if (operation.operation === "set_field" && !validateOrganizationRefreshV2Field(operation.field, operation.after)) {
       context.addIssue({ code: z.ZodIssueCode.custom, message: `Field '${operation.field}' does not satisfy its publication contract.`, path: [...path, "after"] });
@@ -1984,6 +2003,7 @@ export const researchCandidateBatchV2Schema = z.object({
 }).superRefine((batch, context) => {
   const candidateIds = new Set<string>();
   for (const [index, candidate] of batch.candidates.entries()) {
+    if (candidate.editorialStandard && !["organization_bundle_v3", "organization_refresh_bundle_v2"].includes(candidate.schemaVersion)) context.addIssue({code:z.ZodIssueCode.custom,message:"Reader-usefulness output is supported only by organization v3 and refresh v2.",path:["candidates",index,"editorialStandard"]});
     if (candidateIds.has(candidate.candidateId)) {
       context.addIssue({ code: z.ZodIssueCode.custom, message: `Candidate ID ${candidate.candidateId} is duplicated inside the batch.`, path: ["candidates", index, "candidateId"] });
     }
@@ -2099,7 +2119,7 @@ export type ResearchCandidateBatchV2 = z.infer<typeof researchCandidateBatchV2Sc
 export type ResearchRun = z.infer<typeof researchRunSchema>;
 export type ReviewCandidate = z.infer<typeof reviewCandidateSchema>;
 
-export const currentResearchPipelineVersion = "tnm-research-pipeline/1.8.0" as const;
+export const currentResearchPipelineVersion = "tnm-research-pipeline/1.9.0" as const;
 export const researchDecisionBriefLabels = [
   "Coverage value",
   "Evidence",
@@ -2160,6 +2180,7 @@ export function isSharedResearchBoundaryWarning(value: string) {
 
 export function researchCandidateQualityIssues(candidate: ReviewCandidate) {
   const errors: string[] = [];
+  if (candidate.editorialStandard !== "reader_usefulness_v1") {
   let previousIndex = -1;
   for (const label of researchDecisionBriefLabels) {
     const index = candidate.reviewerRationale.indexOf(`${label}:`);
@@ -2170,6 +2191,7 @@ export function researchCandidateQualityIssues(candidate: ReviewCandidate) {
   const rationaleWords = wordCount(candidate.reviewerRationale);
   if (rationaleWords < 90 || rationaleWords > 160) {
     errors.push(`Candidate ${candidate.candidateId} rationale has ${rationaleWords} words; pipeline 1.5 or later requires 90-160.`);
+  }
   }
   const warnings = candidate.reviewWarnings ?? [];
   const normalizedWarnings = warnings.map((warning) => warning.trim().toLowerCase());
@@ -2344,7 +2366,10 @@ export function researchReviewLineageIssues(options: {
       ? candidate.fieldEvidence
       : candidate.fieldEvidence.filter((item) => item.claimClass === "source_backed");
     for (const evidence of candidateEvidence) {
-      const evidenceKey = `${candidate.candidateId}\u0000${evidence.fieldPath}\u0000${evidence.sourceId}`;
+      const evidenceKey = JSON.stringify([
+        candidate.candidateId, evidence.fieldPath, evidence.sourceId,
+        ...(candidate.editorialStandard === "reader_usefulness_v1" ? [evidence.excerpt.trim()] : [])
+      ]);
       if (evidenceKeys.has(evidenceKey)) {
         const evidenceLabel = candidate.candidateKind === "organization_canonical_repair_bundle" ? "evidence" : "source-backed evidence";
         errors.push(`Candidate ${candidate.candidateId} has duplicate ${evidenceLabel} for ${evidence.fieldPath} from ${evidence.sourceId}.`);
@@ -2418,6 +2443,10 @@ function strongResearchAnchors(value: unknown) {
 
 function includesRecordSpecificValue(text: string, value: unknown, excludedValues: string[] = [], minimumTokens = 2) {
   const normalized = text.toLowerCase();
+  if (typeof value === "number" && Number.isFinite(value)) {
+    const literal = String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    return new RegExp(`(?<![\\w.])${literal}(?!\\w|\\.\\d)`).test(normalized);
+  }
   if (strongResearchAnchors(value).some((anchor) => normalized.includes(anchor))) return true;
   const excludedTokens = new Set(excludedValues.flatMap((excluded) => distinctiveResearchTokens(excluded)));
   const matches = distinctiveResearchTokens(scalarResearchValues(value).join(" "))
@@ -2493,7 +2522,7 @@ function relationshipChangeForCandidate(candidate: Extract<ReviewCandidate, { ca
     const afterSlugs = (after.missionMatches ?? []).map((match) => match.missionAreaSlug).filter((slug): slug is string => Boolean(slug));
     const beforeSlugs = (before?.missionMatches ?? []).map((match) => match.missionAreaSlug).filter((slug): slug is string => Boolean(slug));
     if (JSON.stringify([...afterSlugs].sort()) !== JSON.stringify([...beforeSlugs].sort())) {
-      return { slugs: afterSlugs, capability: [after.name, after.summary].filter(Boolean).join(" ") };
+      return { slugs: [...new Set([...beforeSlugs, ...afterSlugs])], capability: [after.name, after.summary].filter(Boolean).join(" ") };
     }
   }
   return null;
@@ -2502,6 +2531,7 @@ function relationshipChangeForCandidate(candidate: Extract<ReviewCandidate, { ca
 export function researchRecordSpecificityIssues({ run, plan, prospects, signals, leads, ledger, batch }: RecordSpecificityArtifacts) {
   if (!requiresRecordSpecificResearchContract(run.agentVersion)) return [];
   const errors: string[] = [];
+  if (batch.candidates.some(candidate => candidate.editorialStandard === "reader_usefulness_v1") && !/^tnm-research-pipeline\/(?:1\.(?:9|[1-9][0-9])\.|[2-9]\.)/.test(run.agentVersion)) errors.push("Reader-usefulness output requires pipeline 1.9 compatibility; do not downgrade or stage it under the active 1.8 contract.");
   const minimumSourceLanes = run.limits.minimumSourceLanes ?? 1;
   // Pipeline 1.8 introduced mode-specific recovery. Earlier contracts required
   // three recovery lanes independently of whole-run discovery breadth.
@@ -2828,6 +2858,8 @@ export function researchRecordSpecificityIssues({ run, plan, prospects, signals,
     const selected = prospects.prospects.filter((prospect) => prospect.disposition === "selected");
     for (const prospect of selected) {
       const candidate = refreshCandidates.find((item) => namesBySlug.get(item.targetMatch.slug) === prospect.name);
+      const editorialCandidate = candidate ?? batch.candidates.find((item) => item.schemaVersion === "organization_bundle_v3" && item.organization.name === prospect.name);
+      if (editorialCandidate?.editorialStandard === "reader_usefulness_v1") continue;
       const operatingContext = candidate?.operations.find((operation) => operation.operation === "set_field" && operation.field === "operating_context");
       if (/owner-approved published pilot selected to test the editorial dossier/i.test(prospect.fitSummary)) errors.push(`Prospect ${prospect.id} fitSummary describes pilot selection instead of a record-specific decision fit.`);
       if (!prospect.fitSummary.toLowerCase().includes(prospect.name.toLowerCase())) errors.push(`Prospect ${prospect.id} fitSummary does not name its target.`);
@@ -2846,6 +2878,7 @@ export function researchRecordSpecificityIssues({ run, plan, prospects, signals,
   const refreshLeads = leads.leads.filter((lead) => lead.leadType === "record_refresh_lead");
   for (const lead of refreshLeads) {
     const candidate = candidatesBySlug.get(lead.targetMatch.slug);
+    if (candidate?.editorialStandard === "reader_usefulness_v1") continue;
     if (/ready_for_editorial_v1 because durable sources support the proposed narrative and action fields/i.test(lead.refreshSummary)) errors.push(`Lead ${lead.id} refreshSummary is a generic readiness assertion.`);
     if (candidate) {
       const fields = candidate.operations.map((operation) => changedFieldWords(operationField(operation)));
@@ -2871,6 +2904,7 @@ export function researchRecordSpecificityIssues({ run, plan, prospects, signals,
         errors.push(`Signal ${signal.signalId} needs a record-specific changeSummary for a qualified refresh.`);
         continue;
       }
+      if (candidate?.editorialStandard === "reader_usefulness_v1") continue;
       if (/^consolidated source-backed editorial dossier enrichment/i.test(changeSummary)
           || (requiresProductionCorpusContract(run.agentVersion) && /record supports a dated current activity update/i.test(changeSummary))) {
         errors.push(`Signal ${signal.signalId} changeSummary does not state a record-specific decision delta.`);
@@ -2893,6 +2927,7 @@ export function researchRecordSpecificityIssues({ run, plan, prospects, signals,
 
   for (const candidate of refreshCandidates) {
     const targetName = namesBySlug.get(candidate.targetMatch.slug) ?? candidate.targetMatch.slug.replaceAll("-", " ");
+    if (candidate.editorialStandard !== "reader_usefulness_v1") {
     const sections = rationaleSections(candidate.reviewerRationale);
     const affectedFields = candidate.operations.map((operation) => changedFieldWords(operationField(operation)));
     const coverageSection = sections.get("Coverage value") ?? "";
@@ -2930,6 +2965,7 @@ export function researchRecordSpecificityIssues({ run, plan, prospects, signals,
       errors.push(`Candidate ${candidate.candidateId} Reviewer action rationale lacks a changed field and record-specific decision anchor.`);
     }
     for (const operation of candidate.operations) errors.push(...refreshOperationExplanationIssues(candidate.candidateId, targetName, operation));
+    }
     if (candidate.candidateKind === "organization_refresh_bundle") {
       for (const operation of candidate.operations) {
         if (operation.operation !== "set_field" || operation.field !== "current_activity_as_of" || operation.after === null) continue;
@@ -2978,10 +3014,11 @@ export function researchRecordSpecificityIssues({ run, plan, prospects, signals,
     }
     const target = claim.candidateTargets[0];
     const candidate = target ? candidatesById.get(target.candidateId) : null;
-    const evidence = candidate?.fieldEvidence.find((item) => item.fieldPath === target?.fieldPath && item.sourceId === claim.source.sourceId);
-    if (evidence && claim.value !== evidence.excerpt) errors.push(`Claim ${claim.claimId} value does not equal its mapped field-evidence excerpt.`);
+    const fieldEvidence = candidate?.fieldEvidence.filter((item) => item.fieldPath === target?.fieldPath && item.sourceId === claim.source.sourceId) ?? [];
+    const evidence = fieldEvidence.find((item) => item.excerpt === claim.value);
+    if (fieldEvidence.length && !evidence) errors.push(`Claim ${claim.claimId} value does not equal its mapped field-evidence excerpt.`);
     const subjectName = ledger.subjects.find((subject) => subject.subjectId === claim.subjectId)?.name ?? claim.subjectId;
-    if (claim.disposition === "candidate_field") {
+    if (claim.disposition === "candidate_field" && candidate?.editorialStandard !== "reader_usefulness_v1") {
       if (/retained as one atomic source-backed leaf/i.test(claim.analystNote)) errors.push(`Claim ${claim.claimId} uses a generic analyst note.`);
       const sourcePublisher = candidate?.sources.find((source) => source.id === claim.source.sourceId)?.publisher;
       if (!claim.analystNote.toLowerCase().includes(subjectName.toLowerCase()) || !sourcePublisher || !claim.analystNote.toLowerCase().includes(sourcePublisher.toLowerCase())) errors.push(`Claim ${claim.claimId} analyst note does not identify the subject and supporting source.`);

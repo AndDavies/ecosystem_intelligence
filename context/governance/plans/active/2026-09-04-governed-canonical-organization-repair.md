@@ -1,6 +1,6 @@
 # Governed canonical organization repair
 
-Status: release authorized; production migration, deployment verification and private repair staging in progress
+Status: Implementation and governed intake recorded; individual review/publication outcome unverified
 Owner: Andrew Davies
 Implementation owner: MAIN DEV
 Opened: 2026-09-04
@@ -51,7 +51,7 @@ unpublished successors; preserve source-slug continuity through a bounded
 successor mapping; and write publication plus audit history. Working Lists and
 incoming relationships must not be silently orphaned.
 
-## Initial evidence cohort
+## Initial evidence cohort — historical pre-release baseline
 
 The September 4 corpus-wide audit reviewed 21 published records requiring
 identity, successor, lifecycle, entity-kind or Canadian-nexus attention. It
@@ -79,7 +79,7 @@ redirected websites, and prior research `research_required` dispositions.
 6. Live canonical, redirect, relationship, Working List and audit state are
    reconciled after each publication.
 
-## Local verification result
+## Local verification result — historical pre-release checks
 
 - Scoped research validation for `tnm-manual-20260904101514` passed with zero
   errors. Repository-wide research validation continues to report 12 retained
@@ -97,3 +97,7 @@ redirected websites, and prior research `research_required` dispositions.
   production advertises Review v3 / pipeline 1.7.3 and does not accept the new
   repair candidate. The run-file count remained 146 before and after. This is
   the required fail-closed behavior, not a partial repair.
+
+## September 12 document reconciliation (no live verification)
+
+The September 4 Development Log records the additive repair migration and successful finalizer intake of 17 pending candidates; its September 5 entry records Review v4 / pipeline 1.8.0 at deployment c6e6116ed260add28af1fad34f6ac7df7946f20d. The v3 refusal below is historical pre-release evidence, not current incompatibility. Current individual Review/Publish outcomes were not checked; this plan remains open for reconciliation, not renewed migration, release or staging. Historical approvals and commands below are records of that work, not a request to execute it.

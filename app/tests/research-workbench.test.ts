@@ -74,6 +74,28 @@ describe('research workbench regressions',()=>{
     expect(publicLeaves([{question:'Why?',context:null}], 'after')).toEqual(['after.0.question','after.0.context']);
     expect(evidenceLeafPath('op','after',true)).toBe('executiveRelevanceSummary');
   });
+  it('binds distinct atomic assertions from one document to a modern narrative while rejecting duplicate assertions', async()=>{
+    const {candidate,ledger}=await historicalDraft();
+    candidate.editorialStandard='reader_usefulness_v1';
+    const first=ledger.claims[0];
+    const second={...structuredClone(first),claimId:'synthetic-second-assertion',value:'The same inspected document describes a separate integration interface for this test fixture.'};
+    ledger.claims.push(second);
+    const coverage=ledger.subjects.flatMap(s=>s.coverage).find(c=>c.claimIds.includes(first.claimId));
+    if(!coverage) throw new Error('Fixture coverage is missing.');
+    coverage.claimIds.push(second.claimId);
+    const change={operation:'set_field' as const,field:'operating_context' as const,after:`${first.value} ${second.value}`,reviewerExplanation:'Explain the operating configuration and its integration dependency together.'};
+    const supports=[first,second].map(c=>({leaf:'after',claimId:c.claimId,claimClass:'source_backed' as const}));
+    const result=appendRefreshChange(candidate,ledger,change,supports);
+    expect(result.candidate.fieldEvidence.map(e=>e.excerpt)).toEqual([first.value,second.value]);
+    expect(new Set(result.candidate.fieldEvidence.map(e=>e.id)).size).toBe(2);
+    expect(result.candidate.operations[0].evidenceIds).toHaveLength(2);
+    expect(result.ledger.claims.slice(-2).map(c=>c.analystNote)).toEqual([first.analystNote,second.analystNote]);
+    const duplicate={...structuredClone(first),claimId:'synthetic-duplicate-assertion'};
+    ledger.claims.push(duplicate);
+    expect(()=>appendRefreshChange(candidate,ledger,change,[...supports,{...supports[0],claimId:duplicate.claimId}])).toThrow('Duplicate source/leaf');
+    delete candidate.editorialStandard;
+    expect(()=>appendRefreshChange(candidate,ledger,change,supports)).toThrow('Duplicate source/leaf');
+  });
   it('rejects source claims for another subject',async()=>{
     const {candidate,ledger}=await historicalDraft();ledger.subjects.forEach(s=>s.candidateIds=[]);
     expect(()=>appendRefreshChange(candidate,ledger,{operation:'set_field',field:'operating_context',after:ledger.claims[0].value,reviewerExplanation:'A concrete description grounded in the current inspected document.'},[{leaf:'after',claimId:ledger.claims[0].claimId,claimClass:'source_backed'}])).toThrow('different subject');

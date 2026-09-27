@@ -1,4 +1,5 @@
 import { CandidateLogoReview } from "@/components/atlas/candidate-logo-review";
+import { SnapshotReview } from "@/components/atlas/snapshot-review";
 import Link from "@/components/atlas/navigation-link";
 import { redirect } from "next/navigation";
 import { CheckCircle2, Layers3, TriangleAlert } from "lucide-react";
@@ -390,6 +391,7 @@ function TypedOrganizationCandidateCard({
         <ReviewFact label="Duplicate check" value={duplicateCheck?.status === "clear" ? "No likely duplicate found" : "Resolution required"} tone={duplicateCheck?.status === "clear" ? "success" : "warning"} />
       </div>
       <p className="mt-4 text-sm leading-6 text-[var(--admin-muted-strong)]">{record.organization.description}</p>
+      {record.schemaVersion === "organization_bundle_v3" ? <SnapshotReview observations={record.organization.snapshotObservations ?? []} /> : null}
       {record.schemaVersion === "organization_bundle_v3" && record.organization.executiveRelevanceSummary ? (
         <ExecutiveRelevancePreview
           summary={record.organization.executiveRelevanceSummary}

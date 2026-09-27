@@ -1,6 +1,6 @@
 # North Signal unification, delivery preferences and conversion measurement
 
-Status: provider reconciled; production release and verification in progress
+Status: Implementation/provider receipts recorded; remaining acceptance follow-ups unverified
 Owner: Andrew Davies
 Implementation owner: MAIN DEV
 Opened: 2026-08-26
@@ -142,3 +142,7 @@ migrations are reconciled in dependency order, bounded production validation
 passes and Marketing receives the production handback. GA Enhanced Measurement
 remains a separately governed provider setting; no plan purchase or full audience
 send is part of this release.
+
+## September 12 document reconciliation (no live verification)
+
+Email Updates Operations and the September 5 newsletter operations entries in the System Registry record later operating receipts than this plan’s release-in-progress header. This does not prove every acceptance item here is closed. Reconcile remaining GA history-view, exact release and provider checks against those receipts when the owner next resumes this outcome; no campaign, migration or release is authorized by this status note. Historical approvals and commands below are records of that work, not a request to execute it.

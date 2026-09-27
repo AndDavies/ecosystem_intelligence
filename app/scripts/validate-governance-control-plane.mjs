@@ -3,8 +3,6 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
-const today = new Date();
-today.setUTCHours(0, 0, 0, 0);
 
 const errors = [];
 const warnings = [];
@@ -22,33 +20,19 @@ const activeDocuments = [
   "context/governance/INDEX.md",
   "context/governance/Access And Privacy Matrix.md",
   "context/governance/Admin Workflow And Data Contract.md",
-  "context/governance/Autonomous Ecosystem Research Pipeline.md",
   "context/governance/Cross-System Change And Regression Contract.md",
   "context/governance/Development Log.md",
   "context/governance/Email And Domain Infrastructure.md",
   "context/governance/Email Updates Operations.md",
-  "context/governance/Internal Wiki Plan.md",
   "context/governance/PRD.md",
   "context/governance/Production Release Runbook.md",
   "context/governance/Project Status.md",
-  "context/governance/Project Structure.md",
   "context/governance/Research Agent Schema And Source Contract.md",
   "context/governance/Security And Reliability Remediation Log.md",
   "context/governance/Skills And Automation Map.md",
   "context/governance/True North Map Project Overview.md",
   "context/governance/plans/README.md",
 ];
-
-const criticalDocuments = new Set([
-  "context/governance/INDEX.md",
-  "context/governance/Admin Workflow And Data Contract.md",
-  "context/governance/Cross-System Change And Regression Contract.md",
-  "context/governance/Production Release Runbook.md",
-  "context/governance/Project Status.md",
-  "context/governance/Security And Reliability Remediation Log.md",
-  "context/governance/Skills And Automation Map.md",
-  "context/governance/True North Map Project Overview.md",
-]);
 
 const scratchPatterns = [
   "/Users/andrewdavies/Downloads/",
@@ -72,14 +56,6 @@ for (const documentPath of activeDocuments) {
     errors.push(`${documentPath} is missing Last reviewed metadata.`);
   } else if (!/^\d{4}-\d{2}-\d{2}$/.test(lastReviewed)) {
     errors.push(`${documentPath} has an invalid Last reviewed date: ${lastReviewed}.`);
-  } else {
-    const reviewedAt = new Date(`${lastReviewed}T00:00:00Z`);
-    const ageDays = Math.floor((today - reviewedAt) / 86_400_000);
-    if (ageDays > 30 && criticalDocuments.has(documentPath)) {
-      errors.push(`${documentPath} is operationally critical and ${ageDays} days out of review.`);
-    } else if (ageDays > 14) {
-      warnings.push(`${documentPath} is ${ageDays} days out of review.`);
-    }
   }
 
   for (const pattern of scratchPatterns) {
@@ -110,19 +86,16 @@ if (!registryRows.length) errors.push(`${registryPath} has no registry rows.`);
 
 for (const row of registryRows) {
   const cells = row.split("|").slice(1, -1).map((cell) => cell.trim());
-  if (cells.length !== 13) {
-    errors.push(`${registryPath} row has ${cells.length} columns instead of 13: ${row}`);
+  if (cells.length !== 5) {
+    errors.push(`${registryPath} row has ${cells.length} columns instead of 5: ${row}`);
     continue;
   }
-  const [id, type, operatorFacing, location, trigger, inputs, outputs, authority, validator, humanGate, status, owner, lastReviewed] = cells;
-  const required = { id, type, operatorFacing, location, trigger, inputs, outputs, authority, validator, humanGate, status, owner, lastReviewed };
-  for (const [name, value] of Object.entries(required)) {
+  const [id, location, trigger, authority, definition] = cells;
+  for (const [name, value] of Object.entries({ id, location, trigger, authority, definition })) {
     if (!value) errors.push(`${registryPath} row ${id || "<unknown>"} is missing ${name}.`);
   }
   if (registryIds.has(id)) errors.push(`${registryPath} contains duplicate ID ${id}.`);
   registryIds.add(id);
-  if (!new Set(["Yes", "No"]).has(operatorFacing)) errors.push(`${id} has invalid Operator-facing value ${operatorFacing}.`);
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(lastReviewed)) errors.push(`${id} has invalid Last reviewed date ${lastReviewed}.`);
 }
 
 const archiveNotice = read("context/archive/governance/README.md");

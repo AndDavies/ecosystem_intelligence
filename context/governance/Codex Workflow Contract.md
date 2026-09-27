@@ -20,7 +20,7 @@ Research proceeds through qualified leads, candidate assembly, evidence mapping,
 
 ## Read and operate efficiently
 
-Start with the short Project Status and affected contract sections. Open the Overview for missing product context, and detailed references when the current phase needs them. Reuse instructions already read; archives explain historical decisions and are not mandatory startup input.
+Read affected contract sections when the task needs them. Open Project Status for current priorities or operational claims and the Overview for missing product context; neither is mandatory for an ordinary skill edit. Reuse instructions already read; archives explain historical decisions and are not mandatory startup input.
 
 Use supported workbench helpers, immutable captures, exact snapshots and resumable receipts. Reuse valid derived results instead of rebuilding them or refreshing providers for each presentation. Recheck live state when it can invalidate a decision or immediately precedes a guarded write; a cached snapshot is not current publication proof. Continue independent authorized work when one source fails, record the gap, and keep dependent work incomplete until its prerequisite is resolved.
 
@@ -35,3 +35,13 @@ Choose checks through the [Cross-System Contract](Cross-System%20Change%20And%20
 Production Vercel and Supabase requests are metered work. State the affected routes or records and the unresolved question before a live check. Reuse same-task results bound to the exact deployment and relevant data state; query only necessary columns and records, with complete paging only when the question requires a complete set. Prefer aggregate counts for count questions. Do not bypass caches, enumerate every profile, create load loops or expand a failed check into a broad scan. Recheck the failing route or query and inspect relevant logs first. Full production crawling and load testing require their own explicit authority.
 
 Lead with the result in concise plain prose. Distinguish source facts, TNM interpretation, evidence limits, local validation and live deployment. Report incomplete work and its resumption point accurately. Measure research recovery, corrections, useful findings, elapsed time and review effort separately when comparing models; do not claim speed, cost or quality improvements from model self-scoring or an instruction change alone.
+
+## Workspace and maintenance ownership
+
+Before editing, inspect `git status --short --branch` and `git worktree list`; identify affected systems and preserve unrelated work. `main` is the production/integration checkout. Credentialed operator work and final release validation use the main checkout. Explicitly concurrent writers use temporary local `codex/*` worktrees; do not push them or create previews without authorization. Do not copy private skills/credentials through `.worktreeinclude`. Stage explicit paths, never `git add .`.
+
+Update the authoritative definition and only genuinely affected interfaces, links or generated views. Ordinary skill wording edits do not require Overview, Status, registry and Development Log updates. Record material decisions or changed operating boundaries once in the Development Log; update Status only when its actual posture changes. Change generated material through its source and regeneration path. Use plans for multi-session coordination, not routine handoffs. Memory changes require Andrew's explicit request.
+
+A document review date records instruction review, not live verification. Historical approvals and completed experiments do not authorize new work or become enduring dependencies. Conflicts with executable enforcement require an identified behavioural follow-up; do not silently remove safeguards from prose while enforcement remains.
+
+Report the result, affected systems, checks performed, local versus deployed state, remaining limits and any still-required external authority concisely. No routine handoff document is required.

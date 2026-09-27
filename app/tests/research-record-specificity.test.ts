@@ -3,6 +3,7 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 import {
   researchCandidateBatchV2Schema,
+  researchCandidateQualityIssues,
   researchClaimLedgerV1Schema,
   researchCollectionPlanV1Schema,
   researchProspectInventoryV1Schema,
@@ -44,6 +45,26 @@ async function pilotArtifacts() {
 }
 
 describe("pipeline 1.7 record-specific research gate", () => {
+  it("allows an explained removal of the last mission mapping while rejecting an unexplained removal", async () => {
+    const artifacts = await pilotArtifacts();
+    const candidate = artifacts.batch.candidates[0] as OrganizationRefreshBundleV2;
+    candidate.operations.push({
+      operation: "update_child", operationId: "remove-obsolete-mission", entityType: "capability",
+      parentId: candidate.targetMatch.entityId, targetId: candidate.targetMatch.entityId,
+      before: { missionMatches: [{ missionAreaSlug: "autonomous-patrol-and-monitoring" }] },
+      after: { name: "Enterprise workflow orchestration", summary: "Private enterprise workflow orchestration with human approvals.", missionMatches: [] },
+      evidenceIds: ["source"], leafEvidence: [{ fieldPath: "after.summary", evidenceIds: ["source"] }],
+      reviewerExplanation: "Update capability to enterprise workflow orchestration with human approvals."
+    });
+    const message = `Candidate ${candidate.candidateId} Mission/Public Need rationale does not explain its proposed relationship change and capability premise.`;
+    const original = candidate.reviewerRationale;
+    candidate.reviewerRationale = original.replace(/Mission\/Public Need read:[\s\S]*?(?=Unknowns:)/,
+      "Mission/Public Need read: Change the autonomous patrol and monitoring mapping: private enterprise workflow orchestration does not establish patrol capability. ");
+    expect(researchRecordSpecificityIssues(artifacts)).not.toContain(message);
+    candidate.reviewerRationale = original.replace(/Mission\/Public Need read:[\s\S]*?(?=Unknowns:)/,
+      "Mission/Public Need read: No new mapping is proposed. ");
+    expect(researchRecordSpecificityIssues(artifacts)).toContain(message);
+  });
   it("applies the same complete-artifact gate during private review intake", async () => {
     const coordinator = await readFile(path.resolve("scripts/autonomous-research.ts"), "utf8");
     const importSlice = coordinator.slice(coordinator.indexOf("async function assertRecordSpecificStaging"), coordinator.indexOf("async function smoke"));
@@ -173,6 +194,46 @@ describe("pipeline 1.7 record-specific research gate", () => {
     if (!firstClaim || !secondClaim || !secondClaim.candidateTargets[0]) throw new Error("Pilot candidate-field claims are missing.");
     firstClaim.candidateTargets.push(structuredClone(secondClaim.candidateTargets[0]));
     expect(researchReviewLineageIssues(multiTarget)).toContain(`Claim ${firstClaim.claimId} must target exactly one candidate leaf field.`);
+  });
+
+  it("allows distinct atomic claims in a modern narrative without accepting duplicate or unbound evidence", async () => {
+    const artifacts = await pilotArtifacts();
+    const candidate = artifacts.batch.candidates[0];
+    candidate.editorialStandard = "reader_usefulness_v1";
+    const evidence = candidate.fieldEvidence.find(e => e.claimClass === "source_backed");
+    const claim = artifacts.ledger.claims.find(c => c.disposition === "candidate_field" && c.value === evidence?.excerpt && c.candidateTargets.some(t => t.candidateId === candidate.candidateId && t.fieldPath === evidence?.fieldPath));
+    if (!evidence || !claim) throw new Error("Fixture lineage is missing.");
+    const second = {...structuredClone(claim), claimId: "synthetic-second-claim", value: "A distinct, documented integration qualification from the same source in this synthetic case."};
+    artifacts.ledger.claims.push(second);
+    artifacts.run.counters.claimsCollected = artifacts.ledger.claims.length;
+    const coverage = artifacts.ledger.subjects.flatMap(s => s.coverage).find(c => c.claimIds.includes(claim.claimId));
+    if (!coverage) throw new Error("Fixture coverage is missing.");
+    coverage.claimIds.push(second.claimId);
+    candidate.fieldEvidence.push({...evidence, id: "synthetic-second-evidence", excerpt: second.value});
+    expect(researchReviewLineageIssues(artifacts)).toEqual([]);
+    expect(researchRecordSpecificityIssues(artifacts).filter(issue => issue.includes("mapped field-evidence excerpt"))).toEqual([]);
+    candidate.fieldEvidence.push({...evidence, id: "synthetic-duplicate-evidence"});
+    expect(researchReviewLineageIssues(artifacts)).toContain(`Candidate ${candidate.candidateId} has duplicate source-backed evidence for ${evidence.fieldPath} from ${evidence.sourceId}.`);
+    candidate.fieldEvidence.pop();
+    second.source.sourcePosture = "discovery_only";
+    expect(researchReviewLineageIssues(artifacts)).toContain(`Candidate ${candidate.candidateId} evidence synthetic-second-evidence must map to exactly one atomic claim-ledger leaf.`);
+  });
+
+  it("keeps natural private notes and mixed-batch prospect prose out of legacy lexical scoring", async () => {
+    const artifacts = await pilotArtifacts();
+    const candidate = artifacts.batch.candidates[0] as OrganizationRefreshBundleV2;
+    candidate.editorialStandard = "reader_usefulness_v1";
+    candidate.reviewerRationale = "The new account explains the integration dependency using the inspected technical record. The qualification remains beside the claim for the reviewer to consider.";
+    expect(researchCandidateQualityIssues(candidate)).toEqual([]);
+    const name = artifacts.plan.targetSubjects.find(s => s.canonicalIdentifiers.includes(candidate.targetMatch.slug))?.name;
+    const prospect = artifacts.prospects.prospects.find(p => p.name === name);
+    if (!prospect) throw new Error("Fixture prospect is missing.");
+    prospect.fitSummary = "The integration dependency is the useful lead here; the technical account supplies the operating conditions.";
+    expect(researchRecordSpecificityIssues(artifacts).filter(issue => issue.startsWith(`Prospect ${prospect.id} `))).toEqual([]);
+    expect(researchRecordSpecificityIssues(artifacts)).toContain("Reader-usefulness output requires pipeline 1.9 compatibility; do not downgrade or stage it under the active 1.8 contract.");
+    delete candidate.editorialStandard;
+    expect(researchCandidateQualityIssues(candidate).length).toBeGreaterThan(0);
+    expect(researchRecordSpecificityIssues(artifacts).some(issue => issue.startsWith(`Prospect ${prospect.id} `))).toBe(true);
   });
 
   it("binds every claim and candidate to exactly one real coverage subject", async () => {

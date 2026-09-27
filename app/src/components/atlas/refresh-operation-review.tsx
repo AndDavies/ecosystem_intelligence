@@ -135,6 +135,7 @@ function ReadableValue({ value, empty }: { value: unknown; empty: string }) {
       </dl>
     );
   }
+  if (typeof value === "string" && /^https:\/\//.test(value)) return <a className="atlas-prose-link break-all" href={value} target="_blank" rel="noopener noreferrer">{value}</a>;
   if (typeof value === "boolean") return <span>{value ? "Yes" : "No"}</span>;
   return <span className="whitespace-pre-wrap">{String(value)}</span>;
 }

@@ -1,3 +1,5 @@
+import { parseEditorialMediaContext } from "@/lib/atlas/editorial-media";
+import { parseSnapshotObservations } from "@/lib/atlas/company-snapshot";
 import { boundedMap } from "../research/bounded-map";
 import { collectPagedRows } from "../supabase/pagination";
 import "server-only";
@@ -90,7 +92,7 @@ const atlasDossierNestedColumns = [
 ].join(", ");
 
 const atlasDossierColumnsWithoutExecutiveRelevance = `${atlasColumns.organizations}, editorial_profile_version, current_activity, current_activity_as_of, operating_context, canadian_footprint, reviewed_questions, ${atlasDossierNestedColumns}`;
-const atlasDossierColumns = `${atlasColumns.organizations}, editorial_profile_version, current_activity, current_activity_as_of, operating_context, canadian_footprint, executive_relevance_summary, reviewed_questions, ${atlasDossierNestedColumns}`;
+const atlasDossierColumns = `${atlasColumns.organizations}, editorial_profile_version, current_activity, current_activity_as_of, operating_context, canadian_footprint, executive_relevance_summary, snapshot_observations, reviewed_questions, ${atlasDossierNestedColumns}`;
 
 export type AtlasSnapshotScope = {
   organizationIds?: string[];
@@ -172,6 +174,7 @@ function asEditorialProfile(row: Row): AtlasOrganizationEditorialProfile {
     operatingContext: asNullableString(row.operating_context),
     canadianFootprint: asNullableString(row.canadian_footprint),
     executiveRelevanceSummary: asNullableString(row.executive_relevance_summary),
+    snapshotObservations: parseSnapshotObservations(row.snapshot_observations),
     reviewedQuestions
   };
 }
@@ -1553,6 +1556,7 @@ export function mapAtlasOrganizationDossierRow(row: Row): AtlasOrganization {
   const mediaAssets = mediaRows.flatMap((media): AtlasDossierMediaAsset[] => {
     const assetType = asString(media.asset_type);
     if (!["logo", "product_image", "facility_image", "other"].includes(assetType)) return [];
+    if (media.editorial_context != null && !parseEditorialMediaContext(media.editorial_context)) return [];
     const storagePath = asNullableString(media.storage_path);
     const sourceUrl = asNullableString(media.source_url);
     const displayRole = asString(media.display_role);
@@ -1561,6 +1565,7 @@ export function mapAtlasOrganizationDossierRow(row: Row): AtlasOrganization {
       organizationId: asNullableString(media.organization_id),
       capabilityId: asNullableString(media.capability_id),
       assetType: assetType as AtlasDossierMediaAsset["assetType"],
+      editorialContext: parseEditorialMediaContext(media.editorial_context),
       publicUrl: storagePath ? organizationLogoUrl(storagePath) : sourceUrl,
       sourceUrl,
       attributionText: asNullableString(media.attribution_text),
@@ -1645,6 +1650,11 @@ export async function loadAtlasOrganizationBySlugFromSupabase(slug: string) {
     .eq("id", organizationId)
     .eq("editorial_profile_version", "organization_editorial_profile_v1")
     .maybeSingle();
+  if (dossierResult.error?.message?.includes("snapshot_observations")) {
+    dossierResult = await supabase.from("organization_dossiers")
+      .select(atlasDossierColumns.replace(", snapshot_observations", ""))
+      .eq("id", organizationId).eq("editorial_profile_version", "organization_editorial_profile_v1").maybeSingle();
+  }
   if (missingExecutiveRelevanceColumn(dossierResult.error)) {
     // The application is intentionally safe to deploy before the separately
     // approved executive-relevance migration. Remove this compatibility read

@@ -64,9 +64,9 @@
 .atlas-signal-visual-compact a { color: var(--atlas-link); }
 .atlas-signal-contents-link { color: var(--atlas-link); }
 @media (min-width: 1024px) {
- .atlas-dossier-logo { width: 180px; height: 112px; }
- .atlas-dossier-identity { grid-template-columns: 180px minmax(0, 1fr); gap: 32px; }
- .atlas-dossier-identity > div { border-left: 1px solid var(--atlas-border); padding-left: 32px; }
+ .atlas-dossier-logo { width: 112px; height: 80px; }
+ .atlas-dossier-identity { grid-template-columns: 112px minmax(0, 1fr); gap: 24px; }
+ .atlas-dossier-identity > div { padding-left: 0; }
  .atlas-signal-masthead { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
  .atlas-signal-heading { padding: 40px 32px; }
  .atlas-signal-masthead > figure { padding: 16px; }
@@ -106,14 +106,15 @@
 .atlas-page .atlas-signal-archive-feature figcaption a { color: white; text-decoration: underline; text-underline-offset: 4px; }
 .atlas-signal-masthead [aria-label="Share this signal"] > span { color: #ffffffbf; }
 :where(a, button, input, textarea, select, summary, [tabindex]):focus-visible { outline: 3px solid var(--atlas-ink); outline-offset: 3px; box-shadow: 0 0 0 3px white; }
-.atlas-page #contact :focus-visible { outline-color: white; box-shadow: 0 0 0 3px var(--atlas-ink); }
+
 
 .atlas-public-shell-form .atlas-surface { border-top: 0; padding-top: 0; }
 .atlas-page :is(input:not([type="checkbox"]):not([type="radio"]), select, textarea) { font-size: 16px; }
 
 @media (max-width: 1023px) {
- .atlas-dossier-identity { display: block; }
- .atlas-dossier-identity > div { margin-top: 24px; }
+ .atlas-dossier-identity { grid-template-columns: 80px minmax(0, 1fr); gap: 16px; }
+ .atlas-dossier-logo { width: 80px; height: 64px; }
+ .atlas-dossier-identity > div { margin-top: 0; }
 }
 .atlas-public-shell-dossier nav[aria-label="On this page"] { margin-top: 16px; padding-inline: 0; border-top: 0; }
 

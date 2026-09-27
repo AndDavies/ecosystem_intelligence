@@ -11,6 +11,20 @@ const organizationRefresh = {
 };
 
 describe("deployed research review contract", () => {
+  it("allows a prose-only editorial release without silently enabling snapshot writes", () => {
+    const editorialContract = {...researchReviewContract, pipelineVersion: "tnm-research-pipeline/1.9.0", candidateSnapshotPublication: undefined};
+    const prose = {...organizationRefresh, schema_version: "organization_refresh_bundle_v2", proposed_record: {editorialStandard: "reader_usefulness_v1", operations: []}};
+    expect(researchCandidateContractIssues([prose], editorialContract)).toEqual([]);
+    for (const proposed_record of [
+      {...prose.proposed_record, organization: {snapshotObservations: []}},
+      {...prose.proposed_record, operations: [{field: "snapshot_observations", after: null}]}
+    ]) {
+      const candidate = {...prose, proposed_record};
+      expect(researchCandidateContractIssues([candidate], editorialContract)).toContain("Snapshot observations require separately verified deployed migration and publication support.");
+      expect(researchCandidateContractIssues([candidate], {...editorialContract, candidateSnapshotPublication: "company_snapshot_observations_v1"})).toEqual([]);
+    }
+    expect(researchCandidateContractIssues([prose], {...researchReviewContract, pipelineVersion: "tnm-research-pipeline/1.8.0"})).toContain("Reader-usefulness output requires deployed pipeline 1.9.0 support.");
+  });
   it("accepts every candidate kind with a complete review and publication path", () => {
     const candidates = Object.entries(researchReviewContract.candidateSchemas).flatMap(([candidate_kind, versions]) =>
       versions.map((schema_version) => ({ candidate_kind, schema_version }))
