@@ -51,6 +51,7 @@ describe("optional reviewed presentation copy", () => {
 describe("Option A dossier content and handoffs", () => {
   it("keeps all eight capabilities and full paragraphs, with navigation only to rendered targets", () => {
     const { doc, organization } = render("long");
+    expect(doc.querySelector('article[data-editorial-dossier="organization"] #capabilities')).not.toBeNull();
     const rows = doc.querySelectorAll("#capabilities > article");
     expect(rows).toHaveLength(8);
     organization.capabilities.forEach((capability, i) => {

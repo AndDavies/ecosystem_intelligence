@@ -214,7 +214,7 @@ async function main() {
       const [target] = buildLaunchTargets([path], baseUrl, canonicalBaseUrl);
       inspectNextStreamState(page.body, page.response.url || target.fetchUrl).forEach((finding) => findings.push({ slug: sample.slug, issue: finding.issue }));
       inspectLaunchHtml(page.body, target).forEach((finding) => findings.push({ slug: sample.slug, issue: finding.issue }));
-      if (!page.body.includes('data-public-dossier="true"')) findings.push({ slug: sample.slug, issue: "Organization page omitted the public dossier marker" });
+      if (!page.body.includes('data-editorial-dossier="organization"')) findings.push({ slug: sample.slug, issue: "Organization page omitted the shared organization dossier" });
     }
     results.push({
       slug: sample.slug,
