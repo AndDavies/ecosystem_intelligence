@@ -50,7 +50,7 @@ describe("editorial capability dossier", () => {
     expect(doc.querySelector("#mission-areas")?.textContent).toContain("Our assessment");
     const missionOnly = render({ ...previewOrganization.capabilities[0], demandMatches: [] });
     expect(missionOnly.querySelector("#mission-areas")?.textContent).toContain("not procurement eligibility");
-    expect(doc.querySelector("#overview")?.textContent).toContain("Organization reviewed");
+    expect(doc.querySelector("aside[aria-label='Capability record']")?.textContent).toContain("Organization reviewed");
     expect(doc.querySelector("#defence-needs")?.textContent).toContain("eligibility");
     for (const anchor of doc.querySelectorAll("nav[aria-label='On this page'] a")) expect(doc.querySelector(anchor.getAttribute("href")!)).not.toBeNull();
     const sparse = render(previewOrganization.capabilities[1]);

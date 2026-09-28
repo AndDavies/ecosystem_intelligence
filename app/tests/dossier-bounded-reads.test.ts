@@ -23,7 +23,7 @@ vi.mock("@/lib/supabase/public", () => ({ createPublicClient: () => ({ from(tabl
       rows.sort((a, b) => { for (const [key, asc] of orders) { const diff = String(a[key]).localeCompare(String(b[key]), undefined, { numeric: true }); if (diff) return asc ? diff : -diff; } return 0; });
       rows = rows.slice(start, end);
       state.reads.push({ table, columns, rows: rows.length, filters: filters.map(([key]) => key) });
-      const data = rows.map((row) => Object.fromEntries(columns.split(",").map((key) => [key.trim(), row[key.trim()]])));
+      const data = rows.map((row) => columns === "*" ? {...row} : Object.fromEntries(columns.split(",").map((key) => [key.trim(), row[key.trim()]])));
       return Promise.resolve({ data: single ? data[0] ?? null : data, error: state.failed === table ? { message: "temporary failure" } : null }).then(resolve);
     }
   };

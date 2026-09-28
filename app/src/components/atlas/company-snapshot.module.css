@@ -1,0 +1,11 @@
+.commercial { margin-bottom: 24px; }
+.commercial > dl { margin-top: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 24px; }
+.commercial > dl > div { background: var(--atlas-canvas); border-radius: var(--atlas-radius-card); padding: 22px; }
+.commercial dt { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; }
+.commercial dd > p:first-child { font-family: var(--font-barlow), Barlow, sans-serif; font-size: 30px; font-weight: 700; }
+.commercial dd > p { font-size: 12px; line-height: 1.65; }
+.commercial dd :is(a, summary) { font-size: 11px; }
+.commercial details p { font-size: 12px; }
+
+.commercial dd > p:nth-child(2) { font-weight: 600; }
+.commercial dd > p:nth-child(3) { font-weight: 400; }

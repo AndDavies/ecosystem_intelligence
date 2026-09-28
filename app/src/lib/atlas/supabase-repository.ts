@@ -1,3 +1,4 @@
+import { dossierPresentationCopyAvailable } from "@/lib/atlas/presentation-copy-support";
 import { parseEditorialMediaContext } from "@/lib/atlas/editorial-media";
 import { parseSnapshotObservations } from "@/lib/atlas/company-snapshot";
 import { boundedMap } from "../research/bounded-map";
@@ -102,6 +103,13 @@ export type AtlasSnapshotScope = {
   /** Capability pages need parent identity, not the parent's unrelated dossier. */
   capabilityDetail?: boolean;
 };
+
+function organizationPresentation(row: Row) {
+  return "display_lead" in row || "role_descriptor" in row ? {displayLead: asNullableString(row.display_lead), roleDescriptor: asNullableString(row.role_descriptor)} : undefined;
+}
+function capabilityPresentation(row: Row) {
+  return "display_lead" in row || "catalogue_teaser" in row ? {displayLead: asNullableString(row.display_lead), catalogueTeaser: asNullableString(row.catalogue_teaser)} : undefined;
+}
 
 function asRows(value: unknown): Row[] {
   return Array.isArray(value) ? (value as Row[]) : [];
@@ -570,6 +578,7 @@ export async function loadAtlasDiscoverySnapshotFromSupabase(
       slug: asString(row.slug),
       name: asString(row.name),
       summary: asString(row.summary),
+      presentationCopy: capabilityPresentation(row),
       capabilityType: asNullableString(row.capability_type),
       coreFeatures: asStringArray(row.core_features),
       technologyReadinessLevel: null,
@@ -616,6 +625,7 @@ export async function loadAtlasDiscoverySnapshotFromSupabase(
       name: asString(row.name),
       legalName: null,
       description: asString(row.description),
+      presentationCopy: organizationPresentation(row),
       websiteUrl: null,
       entityKind: asEntityKind(row.entity_kind),
       categories: asStringArray(row.organization_categories),
@@ -958,7 +968,7 @@ export async function loadAtlasSnapshotFromSupabase(scope?: AtlasSnapshotScope):
 
   const readRows = publicTableReader(supabase);
   const [capabilitiesResult,organizationLocationsResult] = await Promise.all([
-    readRows("capabilities",atlasColumns.capabilities,scope?.capabilityIds ?? scope?.organizationIds,scope?.capabilityIds ? "id":"organization_id"),
+    readRows("capabilities",scope && await dossierPresentationCopyAvailable() ? `${atlasColumns.capabilities}, display_lead, catalogue_teaser` : atlasColumns.capabilities,scope?.capabilityIds ?? scope?.organizationIds,scope?.capabilityIds ? "id":"organization_id"),
     readRows("organization_locations",atlasColumns.organizationLocations,scope?.organizationIds,"organization_id",["organization_id","location_id"])
   ]);
   // Child links inherit the admitted capability scope even when the caller
@@ -972,7 +982,7 @@ export async function loadAtlasSnapshotFromSupabase(scope?: AtlasSnapshotScope):
     organizationsResult, locationsResult, capabilityDomainsResult, missionMatchesResult,
     capabilityClustersResult, demandMatchesResult, participationsResult, fundingEventsResult, mediaAssetsResult
   ] = await Promise.all([
-    readRows("organizations", atlasColumns.organizations, scope?.organizationIds),
+    readRows("organizations", scope && await dossierPresentationCopyAvailable() ? `${atlasColumns.organizations}, display_lead, role_descriptor` : atlasColumns.organizations, scope?.organizationIds),
     readRows("locations", atlasColumns.locations, scope?.organizationIds ? uniqueIds(organizationLocationsResult.data, "location_id") : undefined, "id", ["id"], []),
     readRows("capability_domains", atlasColumns.capabilityDomains, capabilityIds, "capability_id", ["capability_id", "technical_domain_id"]),
     readRows("capability_mission_matches", atlasColumns.missionMatches, capabilityIds, "capability_id", ["id"], approvedMatches),
@@ -1153,6 +1163,7 @@ export async function loadAtlasSnapshotFromSupabase(scope?: AtlasSnapshotScope):
       slug: asString(row.slug),
       name: asString(row.name),
       summary: asString(row.summary),
+      presentationCopy: capabilityPresentation(row),
       capabilityType: asNullableString(row.capability_type),
       coreFeatures: asStringArray(row.core_features),
       technologyReadinessLevel: asNumber(row.technology_readiness_level),
@@ -1203,6 +1214,7 @@ export async function loadAtlasSnapshotFromSupabase(scope?: AtlasSnapshotScope):
       name: asString(row.name),
       legalName: asNullableString(row.legal_name),
       description: asString(row.description),
+      presentationCopy: organizationPresentation(row),
       websiteUrl: asNullableString(row.website_url),
       entityKind: asEntityKind(row.entity_kind),
       categories: asStringArray(row.organization_categories),
@@ -1499,6 +1511,7 @@ export function mapAtlasOrganizationDossierRow(row: Row): AtlasOrganization {
       slug: asString(capabilityRow.slug),
       name: asString(capabilityRow.name),
       summary: asString(capabilityRow.summary),
+      presentationCopy: capabilityPresentation(capabilityRow),
       capabilityType: asNullableString(capabilityRow.capability_type),
       coreFeatures: asStringArray(capabilityRow.core_features),
       technologyReadinessLevel: asNumber(capabilityRow.technology_readiness_level),
@@ -1586,6 +1599,7 @@ export function mapAtlasOrganizationDossierRow(row: Row): AtlasOrganization {
     name: asString(row.name),
     legalName: asNullableString(row.legal_name),
     description: asString(row.description),
+    presentationCopy: organizationPresentation(row),
     websiteUrl: asNullableString(row.website_url),
     entityKind: asEntityKind(row.entity_kind),
     categories: asStringArray(row.organization_categories),
@@ -1646,7 +1660,7 @@ export async function loadAtlasOrganizationBySlugFromSupabase(slug: string) {
 
   let dossierResult = await supabase
     .from("organization_dossiers")
-    .select(atlasDossierColumns)
+    .select(await dossierPresentationCopyAvailable() ? `${atlasDossierColumns}, display_lead, role_descriptor` : atlasDossierColumns)
     .eq("id", organizationId)
     .eq("editorial_profile_version", "organization_editorial_profile_v1")
     .maybeSingle();

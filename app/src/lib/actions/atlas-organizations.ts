@@ -1,5 +1,7 @@
 "use server";
 
+import { organizationPresentationCopySchema, capabilityPresentationCopySchema } from "@/lib/atlas/dossier-presentation-copy";
+
 import { revalidatePath } from "next/cache";
 import { createHash } from "node:crypto";
 import { redirect } from "next/navigation";
@@ -539,4 +541,23 @@ export async function editPublishedOrganization(formData: FormData) {
   revalidatePath("/admin/organizations");
   revalidatePath(returnPath);
   redirect(`${returnPath}?success=updated&capability=${parsed.data.capabilityId}`);
+}
+
+/** Published maintenance uses the same owner gate and exact-entity public citations as other dossier edits. */
+export async function editPublishedPresentationCopy(form: FormData) {
+  const user = await requireAtlasStaff("editor");
+  const identity = z.object({organizationId:z.string().uuid(), capabilityId:z.string().uuid().nullable(), baseline:z.string().datetime({offset:true}), rationale:z.string().trim().min(3).max(2000), evidenceIds:z.array(z.string().uuid()), acknowledged:z.literal(true)}).parse({
+    organizationId:form.get("organizationId"), capabilityId:form.get("capabilityId") || null, baseline:form.get("baseline"), rationale:form.get("rationale"), evidenceIds:form.getAll("evidenceId"), acknowledged:form.get("reviewedTogether")==="on"
+  });
+  const keys = identity.capabilityId ? ["displayLead","catalogueTeaser"] : ["displayLead","roleDescriptor"];
+  const proposed = Object.fromEntries(keys.filter(key=>form.has(key)).map(key=>[key,String(form.get(key) ?? "").trim() || null]));
+  const copy = (identity.capabilityId ? capabilityPresentationCopySchema : organizationPresentationCopySchema).parse(proposed);
+  const supabase = await createClient({writeCookies:true});
+  const {data:slug,error} = await supabase.rpc("update_published_dossier_presentation_copy", {p_organization_id:identity.organizationId,p_capability_id:identity.capabilityId,p_reviewer_id:user.id,p_baseline:identity.baseline,p_copy:copy,p_evidence_ids:identity.evidenceIds,p_rationale:identity.rationale});
+  const returnPath = `/admin/organizations/${identity.organizationId}/edit`;
+  const capabilitySelection = identity.capabilityId ? `&capability=${identity.capabilityId}` : "";
+  if(error || typeof slug!=="string") redirect(`${returnPath}?error=presentation-copy-update-failed${capabilitySelection}`);
+  revalidatePublishedAtlas({discoveryChanged:false,organizationSlugs:[slug]});
+  revalidatePath(returnPath); revalidatePath("/admin/review");
+  redirect(`${returnPath}?success=presentation-copy-updated${capabilitySelection}`);
 }

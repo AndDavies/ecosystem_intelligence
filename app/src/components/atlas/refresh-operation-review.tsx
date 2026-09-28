@@ -1,4 +1,5 @@
 import React from "react";
+import { presentationCopyGuidance } from "@/lib/atlas/dossier-presentation-copy";
 import type { ReviewableRefreshCandidate } from "@/lib/atlas/candidate-schema";
 
 type RefreshOperation = ReviewableRefreshCandidate["operations"][number];
@@ -58,7 +59,7 @@ export function changesForOperation(operation: RefreshOperation): ReviewChange[]
   }
 
   if (operation.operation === "add_child") {
-    return visibleEntries(operation.value).map(([field, after]) => ({
+    return presentationEntries(operation.value).map(([field, after]) => ({
       field,
       before: undefined,
       after,
@@ -66,8 +67,8 @@ export function changesForOperation(operation: RefreshOperation): ReviewChange[]
     }));
   }
 
-  const before = asRecord(operation.before);
-  return visibleEntries(operation.after)
+  const before = Object.fromEntries(presentationEntries(operation.before));
+  return presentationEntries(operation.after)
     .filter(([field, after]) => !sameValue(before[field], after))
     .map(([field, after]) => ({
       field,
@@ -77,7 +78,16 @@ export function changesForOperation(operation: RefreshOperation): ReviewChange[]
     }));
 }
 
+function presentationEntries(value: unknown): [string, unknown][] {
+  return visibleEntries(value).flatMap(([field, after]) => field === "presentationCopy"
+    ? Object.entries(asRecord(after)).map(([key, text]): [string, unknown] => [`presentationCopy.${key}`, text])
+    : [[field, after] as [string, unknown]]);
+}
+
 function RefreshFieldChange({ field, before, after, isNew }: ReviewChange) {
+  const copyKey = ({display_lead:"displayLead",role_descriptor:"roleDescriptor"} as Record<string,string>)[field] ?? (field.startsWith("presentationCopy.") ? field.slice(17) : null);
+  const copyGuidance = copyKey && typeof after === "string" ? presentationCopyGuidance({[copyKey]:after}) : [];
+
   const listDiff = Array.isArray(before) && Array.isArray(after) ? diffLists(before, after) : null;
   const useListDiff = listDiff && (listDiff.removed.length > 0 || listDiff.added.length > 0);
 
@@ -94,9 +104,10 @@ function RefreshFieldChange({ field, before, after, isNew }: ReviewChange) {
       ) : (
         <div className="mt-2 grid gap-2 md:grid-cols-2">
           <ReviewValue label="Current" value={before} />
-          <ReviewValue label="Proposed" value={after} tone="added" />
+          <ReviewValue label="Proposed" value={after} tone="added" empty={copyKey && after === null ? "Clear published value" : "Not set"} />
         </div>
       )}
+      {copyGuidance.map(item=><p key={item.field} className="mt-2 text-xs text-[var(--admin-muted)]">{item.message}</p>)}
     </div>
   );
 }

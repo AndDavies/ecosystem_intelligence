@@ -93,8 +93,8 @@ describe("public data access", () => {
     expect(profile).toContain("organization.logo?.publicUrl");
     expect(profile).toContain('alt={`${organization.name} logo`}');
     expect(profile).not.toContain("EvidenceLegend");
-    expect(capabilityProfile).toContain("organization.logo");
-    expect(capabilityProfile).toContain('alt={`${organization.name} logo`}');
+    expect(capabilityProfile).toContain("Organization behind this capability");
+    expect(capabilityProfile).toContain("href={organizationHref}");
     expect(directory).toContain("organization.logo");
     expect(directory).toContain('alt={`${organization.name} logo`}');
     expect(directory).not.toContain("evidenceStrengthLabel");

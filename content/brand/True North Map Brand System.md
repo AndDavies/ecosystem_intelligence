@@ -179,16 +179,17 @@ Adapted from the grid and hierarchy guidance in [Michael Schwaibold's post](http
   fixed square so lazy imagery does not shift text. A selected map result uses
   Signal Wash plus a Signal Yellow rule and clear focus state; colour never
   changes its rank, confidence, or publication meaning.
-- Versioned organization dossiers read as one continuous editorial report on
-  Paper with open reading sections. The opening uses dark editorial type, a
-  compact approved-logo/monogram/neutral identity slot and a controlled action
-  panel rather than a mandatory image or dark database hero. Major chapters
-  use aligned open layouts, fine rules and conditional content; Signal Wash is
-  reserved for supported current activity. The desktop **On this page** index
-  is non-sticky, left-aligned and compact, using a 16-pixel gap at the 1024
-  breakpoint and 24 pixels on wider screens instead of stretching links across
-  the frame. Mobile uses one native disclosure. Taxonomy pills retain their
-  quiet neutral edge and enough wrapping space to remain legible.
+- Organization and capability dossiers use the approved Option A composition:
+  a light opening, compact record-facts panel, open numbered capability rows,
+  labelled assessment, aligned research sections and dark closing actions.
+  Editorial Blue supports assessment, dated activity and integration limits;
+  facts use Field on Paper. Reuse the shared header, footer, controls and assets.
+- Dossier-only navigation exception approved by Andrew on 2026-09-28: the
+  horizontal section bar sticks below the actual site header on desktop and
+  mobile, with horizontal scrolling when needed. Rendered sections alone
+  determine its links. Preserve fragment aliases, keyboard focus and source
+  disclosures reached by a fragment. Other routes retain their existing
+  navigation behaviour.
 - Mission Areas carry the distinction between reviewed discovery lenses and
   released requirements once in the collection introduction. Do not repeat the
   same boundary in stacked banners unless a later interaction creates a new
@@ -221,12 +222,25 @@ Adapted from the grid and hierarchy guidance in [Michael Schwaibold's post](http
   Signal** is the single free email newsletter, with a human-reviewed weekly
   briefing by default and optional separately consented edition alerts. Use the Directional N for the visual mark and
   never use `Public Beta` as permanent wordmark, footer or social-card branding.
-- Organization and capability details form one editorial dossier family. The
-  public sequence is the record and its role, supported decision relevance,
-  capabilities and reviewed connections, public programs or contracts with
-  caveats, sources, **Evidence limits**, and one next-conversation handoff.
-  Sparse records omit unsupported sections rather than falling into a separate
-  legacy visual template.
+- Organization dossiers put the complete capability index immediately after
+  the opening/index, with optional assessment beside it; activity, company,
+  operating, geographic and commercial context follow. Capability dossiers
+  put features/applications before the complete narrative, maturity,
+  availability and integration limits. Retain conditional reviewed connections,
+  programmes, relationships and evidence in both surfaces as applicable, then
+  sources and real next-conversation actions. Sparse records omit absent
+  optional sections without reserving space or using a separate renderer.
+- Optional reviewed presentation copy is distinct from full narrative and TNM
+  assessment. The Research application interface owns the additive field and
+  publication contract. Missing short copy is omitted, never derived by slicing
+  or summarizing the long narrative at render time. A full-overview/technical-summary
+  link remains visible beside the main actions. No separate refreshed template
+  or corpus backfill is needed.
+- Dossier supporting panels use content density to choose side-by-side or normal
+  reading flow. Short catalogues, missing teasers and long assessments place
+  supporting material beneath the catalogue; absent support removes its column.
+  This is a shared flow policy, never a company flag, item maximum or fixed-height
+  gap. Capability features and applications use the equivalent policy.
 
 ### Defence Signals editorial reading
 

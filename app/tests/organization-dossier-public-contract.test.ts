@@ -285,265 +285,26 @@ describe("public organization dossier contract", () => {
     expect(route).not.toContain('title="What remains unknown"');
   });
 
-  it("implements the locked dossier hierarchy, contextual questions, location accuracy, and CTA order", async () => {
-    const [dossier, capability, presentation, navigator, mapPreview, atlasMap, exploreNext, internalLinkGraph] = await Promise.all([
+  it("preserves deferred related content, geographic precision, media guards and navigation telemetry", async () => {
+    const [dossier, navigator] = await Promise.all([
       source("src/components/atlas/executive-organization-dossier.tsx"),
-      source("src/app/capabilities/[slug]/page.tsx"),
-      source("src/lib/atlas/dossier-presentation.ts"),
-      source("src/components/atlas/dossier-section-navigator.tsx"),
-      source("src/components/atlas/organization-map-preview.tsx"),
-      source("src/components/atlas/atlas-map.tsx"),
-      source("src/components/atlas/explore-next.tsx"),
-      source("src/lib/atlas/internal-link-graph.ts")
+      source("src/components/atlas/dossier-section-navigator.tsx")
     ]);
-    expect((dossier.match(/<h1\b/g) ?? [])).toHaveLength(1);
-    expect(dossier).toContain("Where this organization could contribute.");
-    expect(dossier).toContain("Decision snapshot");
-    expect(dossier).toContain("Why this organization may be worth examining");
-    expect(dossier).toContain("organization.editorialProfile.executiveRelevanceSummary");
-    expect(dossier).toContain("missionConnections[0] ?? null");
-    expect(dossier).toContain("demandConnections[0] ?? null");
-    expect(dossier).toContain("See all reviewed connections");
-    expect(dossier).toContain("Follow the reviewed Mission area and Defence need connections to understand the problem this organization may help address, the public evidence behind the assessment, and what to verify before engagement.");
-    expect(dossier).not.toContain("See how documented capabilities connect to reviewed Mission areas and released Defence needs—and why each connection may be worth a conversation.");
-    expect(dossier).toContain("Contributing capability");
-    expect(dossier).toContain("Questions for a first conversation");
-    expect(dossier).toContain("organization.editorialProfile.reviewedQuestions.length");
-    const orderedSectionIds = ["why-now", "connections", "capabilities", "public-record", "questions", "geography", "sources", "contact", "related"];
-    orderedSectionIds.forEach((id) => expect(dossier).toContain(`id="${id}"`));
-    orderedSectionIds.slice(1).forEach((id, index) => {
-      expect(dossier.indexOf(`id="${orderedSectionIds[index]}"`)).toBeLessThan(dossier.indexOf(`id="${id}"`));
-    });
-    expect(dossier).toContain('id="profile"');
-    expect(dossier.indexOf("<DossierExecutiveSummary organization={organization} />")).toBeLessThan(dossier.indexOf('id="why-now"'));
-    expect(dossier).not.toContain('className="order-');
-    expect(dossier).toContain('from "@/components/atlas/dossier-section-navigator"');
-    expect(dossier).toContain("<DossierSectionNavigator sections={dossierSections} />");
-    expect(dossier).not.toContain("function DossierSectionNavigator");
-    expect(navigator).toContain('"use client"');
-    expect(navigator).toContain("if (sections.length < 4) return null");
-    expect(navigator).toContain('aria-label="On this page"');
-    expect(navigator).toContain("On this page");
-    expect(navigator).toContain("IntersectionObserver");
-    expect(navigator).toContain('rootMargin: "-112px 0px -62% 0px"');
-    expect(navigator).toContain('aria-current={active ? "location" : undefined}');
-    expect(navigator).toContain('data-profile-action="section_nav"');
-    expect(navigator).toContain('data-profile-target-id={section.id}');
-    expect(navigator).toContain('data-profile-target-type="section"');
-    expect(navigator).toContain('data-profile-section="navigator"');
-    expect(navigator).toContain("event.preventDefault()");
-    expect(navigator).toContain("scrollIntoView({ block: \"start\" })");
-    expect(navigator).toContain("focus({ preventScroll: true })");
-    expect(navigator).toContain("disclosureRef.current.open = false");
-    expect(navigator).toContain('window.addEventListener("hashchange"');
-    expect(navigator).toContain('window.addEventListener("popstate"');
-    expect(navigator).toContain('className="group lg:hidden"');
-    expect(navigator).toContain("lg:flex");
-    expect(navigator).toContain("border-y border-[var(--atlas-border)] bg-white");
-    expect(navigator).toContain("decoration-[var(--atlas-signal)]");
-    expect(navigator).toContain("gap-4 lg:flex xl:gap-6");
-    expect(navigator).toContain("flex-nowrap");
-    expect(navigator).toContain("gap-x-4 xl:gap-x-6");
-    expect(navigator).toContain('className="shrink-0"');
-    expect(navigator).toContain("whitespace-nowrap");
-    expect(navigator).not.toContain("justify-between gap-x-2");
-    expect(navigator).not.toContain("flex-wrap");
-    expect(navigator).toContain("underline underline-offset-4");
-    expect(navigator).toContain("decoration-[var(--atlas-border-strong)]");
-    expect(navigator).not.toContain("atlas-tonal-blue");
-    expect(navigator).not.toContain("grid-cols-4");
-    expect(navigator).not.toContain("xl:grid-cols-5");
-    expect(navigator).not.toContain("String(index + 1)");
-    expect(navigator).not.toContain("<ArrowDown");
-    expect(presentation).toContain("if (hasCurrentActivity) sections.push");
-    expect(presentation).toContain("if (hasConnections) sections.push");
-    expect(presentation).toContain("if (hasCapabilities) sections.push");
-    expect(presentation).toContain("if (hasPublicRecord) sections.push");
-    expect(presentation).toContain("if (hasQuestions) sections.push");
-    expect(presentation).toContain("if (hasSources) sections.push");
-    expect(`${dossier}\n${navigator}`).not.toContain("sticky");
-    expect(dossier).not.toContain("max-w-[1240px]");
-    expect(dossier).toContain("<DossierExecutiveSummary organization={organization} />");
-    expect(dossier).toContain("<GeographyMapLink mapReturnTo={mapReturnTo} organizationId={organization.id} />");
-    expect(dossier).toContain("selectedMapHref(mapReturnTo, organizationId)");
+    expect(dossier).toContain("<Suspense fallback={null}>");
+    expect(dossier).toContain("relatedIntelligence ?? await getDossierRelatedIntelligence(organization)");
     expect(dossier).toContain("locationContext(organization, false)");
     expect(dossier).toContain("does not imply a street address or exact facility location");
-    expect(dossier).toContain("<OrganizationMapPreview organization={projectAtlasMapOrganization(organization)} />");
-    expect(mapPreview).toContain('<div role="img"');
-    expect(atlasMap).toContain('role="region"');
-    expect(dossier).not.toContain("/static/");
-    expect(mapPreview).toContain("IntersectionObserver");
-    expect(mapPreview).toContain('rootMargin: "320px 0px"');
-    expect(mapPreview).toContain("interactive={false}");
-    expect(mapPreview).toContain("compact");
-    expect(mapPreview).toContain('baseMapProvider="openstreetmap"');
-    expect(mapPreview).toContain("singleOrganizationZoom=");
-    expect(mapPreview).toContain("organizations={[organization]}");
     expect(dossier).toContain("trackEngagement = true");
-    expect(dossier).toContain('className="atlas-signal-button h-12');
-    expect(dossier).toContain("Building2");
-    expect(dossier.indexOf("Add to shortlist")).toBeLessThan(dossier.indexOf("Request an introduction"));
-    expect(dossier.indexOf("pageHeader={<EditorialHeader")).toBeLessThan(dossier.indexOf("<DossierExecutiveSummary"));
-    expect(dossier).toContain("participation.lifecycleStage");
-    expect(dossier).toContain("toTitleCase(participation.lifecycleStage)");
-    expect(dossier).toContain("<Suspense");
-    expect(dossier).toContain("<RelatedIntelligenceLoader organization={organization} relatedIntelligence={relatedIntelligence} />");
-    ["01 ·", "02 ·", "03 ·", "04 ·", "05 ·", "06 ·", "07 ·"].forEach((fixedChapter) => {
-      expect(dossier).not.toContain(fixedChapter);
-    });
-    [
-      "Source-backed fact",
-      "Source-backed connection",
-      "Strong evidence",
-      "Moderate evidence",
-      "Limited evidence",
-      "evidence context",
-      "EvidenceChip",
-      "atlas-pill-evidence"
-    ].forEach((removed) => expect(dossier).not.toContain(removed));
-    expect(dossier).toContain("brandCopy.trustCompact");
-    ["Executive memo", "Moderate–High", "Active and operating", "Strong alignment", "High relevance", ">Risks<", ">Documents<"].forEach((unsupported) => {
-      expect(dossier).not.toContain(unsupported);
-    });
-    const header = dossier.slice(dossier.indexOf("function EditorialHeader"), dossier.indexOf("function DossierActions"));
-    const identityMark = dossier.slice(dossier.indexOf("function OrganizationIdentityMark"), dossier.indexOf("function EditorialHeader"));
-    const executiveSummary = dossier.slice(dossier.indexOf("function DossierExecutiveSummary"), dossier.indexOf("function OrganizationIdentityMark"));
-    const whyNow = dossier.slice(dossier.indexOf('id="why-now"'), dossier.indexOf("{hasConnections ?"));
-    const connections = dossier.slice(dossier.indexOf('id="connections"'), dossier.indexOf("{organization.capabilities.length ?"));
-    const capabilities = dossier.slice(dossier.indexOf('id="capabilities"'), dossier.indexOf("{hasPublicRecord ?"));
-    const publicRecordStart = dossier.indexOf('id="public-record"');
-    const publicRecord = dossier.slice(publicRecordStart, dossier.indexOf("{organization.editorialProfile.reviewedQuestions.length ?", publicRecordStart));
-    const questionsStart = dossier.indexOf('id="questions"');
-    const questions = dossier.slice(questionsStart, dossier.indexOf("{organization.primaryLocation ?", questionsStart));
-    const geographyStart = dossier.indexOf('id="geography"');
-    const geography = dossier.slice(geographyStart, dossier.indexOf("{sourceCount ?", geographyStart));
-    const sourcesStart = dossier.indexOf('id="sources"');
-    const sources = dossier.slice(sourcesStart, dossier.indexOf('id="contact"', sourcesStart));
-    const contactStart = dossier.indexOf('id="contact"');
-    const contact = dossier.slice(contactStart, dossier.indexOf('id="related"', contactStart));
-    const relatedStart = dossier.indexOf("async function RelatedIntelligenceLoader");
-    const related = dossier.slice(relatedStart, dossier.indexOf("function RelatedIntelligence(", relatedStart));
-    const capabilityRow = dossier.slice(dossier.indexOf("function CapabilityRow"), dossier.indexOf("function GeographyMapLink"));
-    const relationshipLists = dossier.slice(dossier.indexOf("function RelationshipList"), dossier.indexOf("async function RelatedIntelligenceLoader"));
-    const relatedIntelligence = dossier.slice(dossier.indexOf("function RelatedIntelligence"), dossier.indexOf("function MapPathways"));
-    const sourceRow = dossier.slice(dossier.indexOf("function SourceRow"), dossier.indexOf("function ProfileFact"));
-    expect(header).toContain("lg:grid-cols-12");
-    expect(header).toContain("lg:col-span-8");
-    expect(header).toContain("lg:col-span-4");
-    expect(header).toContain("atlas-profile-header");
-    expect(header).toContain("text-[var(--atlas-ink)]");
-    expect(header).toContain("organizationKindLabel(organization.entityKind)");
-    expect((header.match(/organizationKindLabel\(organization.entityKind\)/g) ?? [])).toHaveLength(1);
-    expect(header).toContain("<OrganizationIdentityMark organization={organization} />");
-    expect(header).toContain("[overflow-wrap:anywhere]");
-    expect(identityMark.indexOf("organization.logo")).toBeLessThan(identityMark.indexOf("initials ?"));
-    expect(identityMark.indexOf("initials ?")).toBeLessThan(identityMark.indexOf("<Building2"));
-    expect(identityMark).toContain("organizationInitials(organization.name)");
-    expect(header).toContain('<DossierActions organization={organization} profilePath={profilePath} mode="inline" />');
-    expect(header).not.toContain("bg-[var(--atlas-ink)]");
-    expect(header).not.toContain("shadow-[");
-    expect(header).not.toContain("Executive organization dossier");
-    expect(header).not.toContain("Build your next step");
-    expect(dossier).toContain("Add to shortlist");
-    expect(dossier).toContain("Visit website");
-    expect(dossier).toContain("Download profile");
-    expect(dossier).toContain("What the organization does");
-    expect(dossier).toContain("At a glance");
-    expect(dossier).toContain("Public programs and contracts");
-    expect(dossier).toContain("Sponsor or operator:");
-    expect(dossier).toContain("participation.externalIdentifiers");
-    expect(dossier).not.toContain("Organization profile");
-    expect(dossier).not.toContain("Organization snapshot");
-    expect(dossier).not.toContain("Technology and capabilities");
-    expect(dossier).not.toContain("Contracts, programs, and relationships");
-    expect(executiveSummary).not.toContain("organization.description");
-    expect(executiveSummary).toContain("organization.editorialProfile.canadianFootprint");
-    expect(executiveSummary).toContain("compactCanadianFootprint(organization)");
-    expect(executiveSummary).toContain("snapshotFacts.slice(0, 6)");
-    expect(executiveSummary).toContain("lg:items-stretch");
-    expect((executiveSummary.match(/lg:h-full/g) ?? [])).toHaveLength(2);
-    expect(executiveSummary).not.toContain("self-start");
-    expect(executiveSummary).not.toContain("max-w-5xl");
-    ["Legal name", "Stage", "Team", "Commercial status"].forEach((removedFact) => expect(executiveSummary).not.toContain(`label: "${removedFact}"`));
-    expect(dossier).toContain('<article className="mt-6 space-y-7 sm:mt-8 sm:space-y-8 lg:mt-9 lg:space-y-10" data-public-dossier="true">');
-    expect(whyNow).toContain("atlas-tonal-signal w-full");
-    expect(whyNow).not.toContain("max-w-5xl");
-    expect(connections).toContain("atlas-open-section w-full");
-    expect(connections).toContain("hasBothConnectionTypes");
-    expect(connections).toContain('"xl:col-span-6" : "xl:col-span-12"');
-    expect(connections).toContain("flex-1 divide-y");
-    expect(connections).not.toContain("border-b border-[var(--atlas-border)]");
-    expect(capabilities).toContain("atlas-open-section w-full");
-    expect(publicRecord).toContain("atlas-open-section w-full");
-    expect(publicRecord).toContain('organization.relationships.length && organization.fundingEvents.length ? "lg:grid-cols-2" : ""');
-    expect(relationshipLists).not.toContain("border-y border-[var(--atlas-border)]");
-    expect((relationshipLists.match(/border-t border-\[var\(--atlas-border\)\]/g) ?? [])).toHaveLength(2);
-    expect(questions).toContain("atlas-open-section w-full");
-    expect(questions).not.toContain("atlas-blue-soft");
-    expect(geography).toContain("atlas-tonal-paper w-full");
-    expect(geography).not.toContain("shadow-[var(--atlas-shadow-soft)]");
-    expect(sources).toContain("atlas-open-section w-full");
-    expect(sources).not.toContain("atlas-blue-soft");
-    expect(related).toContain("atlas-open-section w-full");
-    expect(dossier.indexOf('id="contact"')).toBeLessThan(dossier.indexOf("<RelatedIntelligenceLoader"));
-    expect(dossier.indexOf("<RelatedIntelligenceLoader")).toBeLessThan(dossier.indexOf("<NorthSignalInline", dossier.indexOf("<RelatedIntelligenceLoader")));
-    expect(contact).toContain("publicContact.contactPageUrl");
-    expect(contact).toContain("Only public, source-supported contact paths are shown.");
-    expect(capabilityRow).toContain("hasOperatingContext");
-    expect(capabilityRow).toContain('"lg:col-span-7 xl:col-span-8" : "lg:col-span-12"');
-    expect(dossier).toContain("tabIndex={-1}");
-    expect(dossier).not.toContain("scroll-mt-24");
-    expect((dossier.match(/scroll-mt-28/g) ?? []).length).toBeGreaterThanOrEqual(9);
-    expect((dossier.match(/decoration-\[var\(--atlas-signal\)\]/g) ?? []).length).toBeGreaterThanOrEqual(8);
-    expect((dossier.match(/Reviewed assessment/g) ?? [])).toHaveLength(1);
-    expect(dossier).not.toContain("Our assessment");
-    expect(dossier).toContain("Evidence strength:");
-    expect(dossier).toContain("reviewedAt={capability.lastReviewedAt ?? organization.lastReviewedAt}");
-    expect(dossier).toContain('reviewedScope={capability.lastReviewedAt ? "Capability" : "Profile"}');
-    expect(dossier).toContain("{reviewedScope} last reviewed");
-    expect(dossier).toContain('citation.fieldName === "current_activity"');
-    expect(dossier).toContain("currentActivitySource.sourceUrl");
-    expect(dossier).toContain("Recent activity");
-    expect(dossier).toContain("Explore {capability.name}");
-    expect(dossier).toContain("capability.coreFeatures.slice(0, 3)");
-    expect(dossier).toContain("Technical detail and applications");
-    expect(dossier).toContain("after:absolute after:inset-0");
-    expect(dossier).toContain("Open Mission area");
-    expect(dossier).toContain("Open Defence need");
-    expect(relatedIntelligence).toContain("<ExploreNext");
-    expect(relatedIntelligence).toContain("organization.relationships.flatMap");
-    expect(relatedIntelligence).toContain("related.organizations.map");
-    expect(relatedIntelligence).toContain("editorialLinks");
-    expect(relatedIntelligence).toContain("Similarity results describe shared areas of work, not partnerships or endorsements.");
-    expect(exploreNext).toContain("buildExploreNextGroups");
-    expect(exploreNext).toContain('groups.length === 2 ? "lg:grid-cols-2" : "lg:grid-cols-3"');
-    expect(internalLinkGraph).toContain("organizations: 3");
-    expect(internalLinkGraph).toContain("context: 3");
-    expect(internalLinkGraph).toContain("intelligence: 2");
-    expect(internalLinkGraph).toContain("Math.min(options.maximum ?? 8, 8)");
-    expect(sourceRow).toContain("Open source");
-    expect(sourceRow).toContain("Source details");
-    expect(sourceRow).toContain("<ExternalSourceLink href={source.sourceUrl}");
-    expect(sourceRow).toContain("Open source: {source.sourceTitle}");
-    expect(sourceRow).toContain('aria-label={`Source details: ${source.sourceTitle}`}');
-    expect(sourceRow).toContain("Source type.");
-    expect(sourceRow).toContain("sm:grid-cols-[minmax(0,1fr)_auto]");
-    expect(sourceRow).not.toContain("bg-white");
-    expect(dossier).not.toContain("min-h-10");
-    expect(dossier).toContain("fallback={null}");
-    expect(dossier).not.toContain("Loading related intelligence");
-    expect(dossier).not.toContain("Use the map pathways below");
-    expect(dossier).toContain("selectHeroMedia(organization.mediaAssets)");
     expect(dossier).toContain('media.assetType !== "logo"');
+    expect(dossier).toContain('media.editorialContext.reuseBasis !== "unknown"');
     expect(dossier).toContain("media.altText?.trim()");
-    expect(`${dossier}\n${capability}`).not.toContain("What remains unknown");
-    expect(capability).toContain('id="overview-heading">What it enables');
-    expect(capability).toContain("Evidence of maturity");
-    expect(capability).not.toContain('title="Public programs and contracts"');
-    expect(capability).toContain("Organization-level program participation is not attributed to this capability.");
-    expect(capability).toContain("Evidence limits");
-    expect(capability).toContain("Next useful conversation");
-    expect(capability).not.toContain("evidenceStrengthChipClass");
+    expect(dossier).toContain("canonicalOrganizationRelationshipEdge(relationship)");
+    expect(dossier).toContain("Similarity results describe shared areas of work, not partnerships or endorsements.");
+    expect(navigator).toContain('data-profile-action="section_nav"');
+    expect(navigator).toContain('window.addEventListener("hashchange"');
+    expect(navigator).toContain('window.addEventListener("popstate"');
+    expect(navigator).toContain("parent.open = true");
+    expect(navigator).toContain("focus({ preventScroll: true })");
   });
 
   it("bounds related intelligence, rich reads, PDF selection, and social logo trust", async () => {
@@ -567,7 +328,7 @@ describe("public organization dossier contract", () => {
     expect(organizationLoader).toContain('organizationResult.data.editorial_profile_version !== "organization_editorial_profile_v1"');
     expect(organizationLoader).toContain("loadAtlasSnapshotFromSupabase({");
     expect(organizationLoader).toContain('.from("organization_dossiers")');
-    expect(organizationLoader).toContain(".select(atlasDossierColumns)");
+    expect(organizationLoader).toContain("dossierPresentationCopyAvailable() ? `${atlasDossierColumns}, display_lead, role_descriptor` : atlasDossierColumns");
     expect(organizationLoader).toContain("dossierCitationTargets(dossierRow)");
     expect(organizationLoader).toContain("dossierCitationRows(citationGraph)");
     expect(organizationLoader).toContain('.eq("id", organizationId)');

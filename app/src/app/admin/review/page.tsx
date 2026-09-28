@@ -1,3 +1,4 @@
+import { CurrentPresentationReview, PresentationCopyReview } from "@/components/atlas/presentation-copy-review";
 import { CandidateLogoReview } from "@/components/atlas/candidate-logo-review";
 import { SnapshotReview } from "@/components/atlas/snapshot-review";
 import Link from "@/components/atlas/navigation-link";
@@ -392,6 +393,7 @@ function TypedOrganizationCandidateCard({
       </div>
       <p className="mt-4 text-sm leading-6 text-[var(--admin-muted-strong)]">{record.organization.description}</p>
       {record.schemaVersion === "organization_bundle_v3" ? <SnapshotReview observations={record.organization.snapshotObservations ?? []} /> : null}
+      {record.schemaVersion === "organization_bundle_v3" ? <div className="my-4 grid gap-3 text-sm"><strong>Reviewed presentation copy (factual)</strong><p className="text-xs">Compare with the full narrative and TNM assessment below. Field evidence remains inspectable in the evidence section.</p><PresentationCopyReview name={record.organization.name} copy={record.organization.presentationCopy}/>{record.capabilities.map(item=><PresentationCopyReview key={item.slug} name={item.name} copy={item.presentationCopy}/>)}</div> : null}
       {record.schemaVersion === "organization_bundle_v3" && record.organization.executiveRelevanceSummary ? (
         <ExecutiveRelevancePreview
           summary={record.organization.executiveRelevanceSummary}
@@ -549,6 +551,8 @@ function RefreshCandidateCard({ candidate, record }: { candidate: CandidateRow; 
           connectionCount={executiveConnectionCount}
         />
       ) : null}
+      {record.candidateKind === "organization_refresh_bundle" ? <CurrentPresentationReview organizationId={record.targetMatch.entityId}/> : null}
+      <p className="mt-4 text-xs">Review narrative and presentation-copy changes together. An omitted displayLead, roleDescriptor or catalogueTeaser preserves the published value; null explicitly clears it.</p>
       <div className="mt-4 grid gap-3 sm:grid-cols-3">
         <ReviewFact label="Sources in packet" value={`${record.sources.length} source record${record.sources.length === 1 ? "" : "s"} available for review`} />
         <ReviewFact label="Declared source channels" value={`${new Set(record.sourceChannels).size} channel${new Set(record.sourceChannels).size === 1 ? "" : "s"}`} />

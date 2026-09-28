@@ -15,6 +15,7 @@ export function PublicPageShell({
   breadcrumbs,
   actions,
   pageHeader,
+  contentClassName = "",
   variant = "public",
   children
 }: {
@@ -26,6 +27,7 @@ export function PublicPageShell({
   breadcrumbs?: Array<{ label: string; href?: string }>;
   actions?: React.ReactNode;
   pageHeader?: React.ReactNode;
+  contentClassName?: string;
   variant?: PublicPageVariant;
   children: React.ReactNode;
 }) {
@@ -41,7 +43,7 @@ export function PublicPageShell({
     <main className={`atlas-page min-h-screen bg-[var(--atlas-canvas)] text-[var(--atlas-ink)] ${variant === "admin" ? "atlas-admin-shell" : `atlas-public-shell atlas-public-shell-${variant}`}`}>
       {isPublicVariant ? <InternalLinkTelemetry /> : null}
       <PublicAtlasHeader privateWorkspace={variant === "admin"} />
-      <div className="atlas-frame atlas-shell-content">
+      <div className={`atlas-frame atlas-shell-content ${contentClassName}`}>
         {isPublicVariant ? (
           <nav aria-label="Breadcrumb">
             <ol className="flex flex-wrap items-center gap-1.5 text-xs font-semibold">

@@ -95,6 +95,7 @@ export function normalizedChildBaseline(snapshot: OperatorSnapshot, kind: string
     : ['related_organization_name','relationship_type','public_summary'];
   const result: SnapshotRow = Object.fromEntries(fields.map(k => [k.replace(/_([a-z])/g, (_,c:string)=>c.toUpperCase()), row[k] ?? null]));
   if (kind === 'capability') {
+    if ('display_lead' in row || 'catalogue_teaser' in row) result.presentationCopy = {displayLead: row.display_lead ?? null, catalogueTeaser: row.catalogue_teaser ?? null};
     result.features = row.core_features ?? [];
     result.applications = row.defence_applications ?? [];
     result.technicalDomainSlugs = snapshot.tables.capability_domains.filter(d => d.capability_id === id).map(d => snapshot.tables.technical_domains.find(t => t.id === d.technical_domain_id)?.slug).filter(Boolean).sort();

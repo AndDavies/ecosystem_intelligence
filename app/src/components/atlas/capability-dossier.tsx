@@ -1,20 +1,16 @@
-import { DownloadLink } from "@/components/atlas/download-link";
-import Image from "next/image";
+import { featuresSupportAside } from "@/lib/atlas/dossier-layout";
 import Link from "@/components/atlas/navigation-link";
-import { ArrowRight, BookmarkPlus, Building2, ChevronDown, Download } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { DossierSectionNavigator } from "@/components/atlas/dossier-section-navigator";
+import { DossierActions, DossierParagraphs, DossierReadingSection, DossierSourceLibrary } from "@/components/atlas/dossier-reading";
 import { ExternalSourceLink, InternalLink } from "@/components/atlas/internal-link";
 import { JsonLd } from "@/components/seo/json-ld";
 import { PublicPageShell } from "@/components/atlas/public-page-shell";
-import { PublicShare } from "@/components/atlas/public-share";
 import { NorthSignalInline } from "@/components/atlas/north-signal-signup";
-import { alignmentTypeLabel, evidenceStrengthLabel, publicLanguage, publicSourceCountLabel } from "@/lib/atlas/presentation";
+import { alignmentTypeLabel, evidenceStrengthLabel, publicLanguage } from "@/lib/atlas/presentation";
 import type { DefenceBrief } from "@/lib/atlas/briefs";
 import type { DossierRelatedIntelligence } from "@/lib/atlas/dossier-related";
-import { capabilityEvidenceLimits, capabilitySources, type CapabilitySource } from "@/lib/atlas/capability-presentation";
-import { publicCitationSourceLocator } from "@/lib/atlas/public-profile-data";
-import { organizationInitials } from "@/lib/atlas/dossier-presentation";
-import { brandCopy } from "@/lib/brand-copy";
+import { capabilityEvidenceLimits, capabilitySources } from "@/lib/atlas/capability-presentation";
 import { absoluteUrl } from "@/lib/site";
 import type { SignalEdition } from "@/lib/atlas/signals";
 import { showsContextualNorthSignalSignup } from "@/lib/north-signal/contextual-placement";
@@ -22,135 +18,66 @@ import { formatDate, toTitleCase } from "@/lib/utils";
 import { buildExploreNextGroups, capabilityRelatedOrganizationEdge, type InternalLinkEdge } from "@/lib/atlas/internal-link-graph";
 import type { AtlasCapability, AtlasCitation, AtlasConfidence, AtlasAlignmentType, AtlasOrganization } from "@/types/atlas";
 import styles from "./capability-dossier.module.css";
+import d from "./editorial-dossier.module.css";
 
 export function CapabilityDossier({ organization, capability, mapReturnTo, relatedContent, relatedSignals = [], relatedBriefs = [], relatedOrganizations = [] }: {
-  organization: AtlasOrganization;
-  capability: AtlasCapability;
-  mapReturnTo: string;
-  relatedContent?: React.ReactNode;
+  organization: AtlasOrganization; capability: AtlasCapability; mapReturnTo: string; relatedContent?: React.ReactNode;
   relatedSignals?: Pick<SignalEdition, "id" | "slug" | "title" | "editionDate">[];
   relatedBriefs?: Pick<DefenceBrief, "id" | "slug" | "title" | "publishedAt">[];
   relatedOrganizations?: DossierRelatedIntelligence["organizations"];
 }) {
   const sources = capabilitySources(capability);
   const capabilityPath = `/capabilities/${capability.slug}`;
-  const saveHref = `/collections?addType=capability&addId=${capability.id}&returnTo=${encodeURIComponent(capabilityPath)}`;
   const organizationHref = `/organizations/${organization.slug}`;
-  const introductionHref = `/connect/${organization.slug}`;
   const evidenceLimits = capabilityEvidenceLimits(capability);
+  const hasTechnical = Boolean(capability.coreFeatures.length || capability.novelty.length || capability.technicalTags.length || capability.defenceApplications.length);
+  const hasMaturity = Boolean(capability.maturity || capability.technologyReadinessLevel !== null);
+  const actions = { type: "capability" as const, id: capability.id, slug: capability.slug, ownerSlug: organization.slug, title: capability.name, description: capability.summary, profilePath: capabilityPath };
   const sections = [
-    { id: "overview", label: "Overview" },
+    ...(hasTechnical ? [{ id: "technical-profile", label: "Technical profile" }] : []),
+    ...(capability.summary ? [{ id: "overview", label: "Overview" }] : []),
+    ...(hasMaturity ? [{ id: "maturity", label: "Maturity" }] : []),
+    { id: "evidence-limits", label: "Integration limits" },
     ...(capability.missionMatches.length ? [{ id: "mission-areas", label: "Mission areas" }] : []),
     ...(capability.demandMatches.length ? [{ id: "defence-needs", label: "Defence needs" }] : []),
-    { id: "evidence", label: "Sources" },
-    { id: "evidence-limits", label: "Evidence limits" },
-    { id: "next-steps", label: "Next steps" }
+    ...(sources.length ? [{ id: "evidence", label: "Sources" }] : [])
   ];
-  const primaryActions = <>
-    <Link href={saveHref} prefetch={false} className="atlas-signal-button min-h-12 gap-2 px-4 py-3 text-sm"><BookmarkPlus className="size-4" aria-hidden="true" />Add to shortlist</Link>
-    <Link href={introductionHref} prefetch={false} className="atlas-secondary-button min-h-12 px-4 py-3 text-sm">Request an introduction</Link>
-  </>;
-
-  return <PublicPageShell
-    variant="dossier"
-    eyebrow="Capability profile"
-    title={capability.name}
-    description={capability.summary}
-    breadcrumbs={[
-      { label: "Map", href: mapReturnTo },
-      { label: "Directory", href: "/organizations" },
-      { label: organization.name, href: organizationHref },
-      { label: capability.name }
-    ]}
-    pageHeader={<header className={styles.header}>
-      <div className={styles.introduction}>
-        <span className={styles.signalRule} aria-hidden="true" />
-        <p className="atlas-eyebrow">Capability profile</p>
-        <h1>{capability.name}</h1>
-        <p className={styles.summary}>{capability.summary}</p>
-      </div>
-      <div className={styles.actions} aria-label="Capability actions">
-        <p className={`atlas-eyebrow ${styles.actionLabel}`}>Next actions</p>
-        {primaryActions}
-        <div className={styles.secondaryActions}>
-          <DownloadLink href={`/api/export?type=capability-dossier&slug=${capability.slug}`} className="atlas-prose-link inline-flex min-h-11 items-center gap-2 text-sm font-semibold">Download profile <Download className="size-4" aria-hidden="true" /></DownloadLink>
-          <PublicShare title={capability.name} description={capability.summary} path={`/capabilities/${capability.slug}`} className="!border-0 !bg-transparent !px-0 !text-sm !text-[var(--atlas-link)] underline underline-offset-4" />
-          <Link href="/collections" prefetch={false} className="atlas-prose-link inline-flex min-h-11 items-center text-sm font-semibold">My shortlists</Link>
-        </div>
-      </div>
-    </header>}
-  >
+  return <PublicPageShell variant="dossier" contentClassName={d.frame} eyebrow="Capability profile" title={capability.name} description={capability.summary}
+    breadcrumbs={[{ label: "Map", href: mapReturnTo }, { label: "Directory", href: "/organizations" }, { label: organization.name, href: organizationHref }, { label: capability.name }]}
+    pageHeader={<header className={`${d.header} ${d.capabilityHeader}`}>
+      <div><Link href={organizationHref} className={`atlas-prose-link ${d.owner}`}><ArrowLeft className="size-3.5" aria-hidden="true" />{organization.name}</Link><p className={d.label}>Capability profile</p><h1>{capability.name}</h1><DossierParagraphs text={capability.presentationCopy?.displayLead} className={d.lead} />{!capability.presentationCopy?.displayLead && capability.summary ? <a href="#overview" className={`atlas-prose-link ${d.fullOverviewLink}`}>Read the full technical summary <ArrowRight className="size-3.5" aria-hidden="true" /></a> : null}<DossierActions {...actions} /></div>
+      <aside className={d.facts} aria-label="Capability record"><h2>Capability record</h2><dl className={d.factGrid}>
+        <div className={d.wideFact}><dt>Organization behind this capability</dt><dd><Link href={organizationHref} className="atlas-prose-link">{organization.name}</Link></dd></div>
+        {capability.capabilityType ? <div className={d.wideFact}><dt>Capability type</dt><dd>{capability.capabilityType}</dd></div> : null}
+        <div><dt>{publicLanguage.evidenceStrength}</dt><dd>{evidenceStrengthLabel(capability.sourceConfidence)}</dd></div>
+        {capability.lastReviewedAt ? <div><dt>Capability reviewed</dt><dd>{formatDate(capability.lastReviewedAt)}</dd></div> : null}
+        {organization.lastReviewedAt ? <div className={d.wideFact}><dt>Organization reviewed</dt><dd>{formatDate(organization.lastReviewedAt)}</dd></div> : null}
+        {capability.technicalDomains.length ? <div className={d.wideFact}><dt>Technology areas</dt><dd>{capability.technicalDomains.map((domain, index) => <InternalLink key={domain.id} link={{ href: `/map?domain=${domain.slug}`, label: domain.name, targetType: "technical_domain", targetSlug: domain.slug, relationshipKind: "shared_domain", provenance: "discovery" }} module="capability_domains" position={index + 1} className="block">{domain.name}</InternalLink>)}</dd></div> : null}
+      </dl>{sources.length ? <div className={d.factSource}><a href="#evidence" className="atlas-prose-link">{sources.length} linked source {sources.length === 1 ? "record" : "records"} <ArrowRight className="size-3.5" aria-hidden="true" /></a></div> : null}</aside>
+    </header>}>
     <JsonLd data={[
-      { "@context": "https://schema.org", "@type": "Product", name: capability.name, description: capability.summary, brand: { "@type": "Organization", name: organization.name, url: absoluteUrl(`/organizations/${organization.slug}`) }, url: absoluteUrl(`/capabilities/${capability.slug}`) },
-      { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Ecosystem Map", item: absoluteUrl("/map") }, { "@type": "ListItem", position: 2, name: "Directory", item: absoluteUrl("/organizations") }, { "@type": "ListItem", position: 3, name: organization.name, item: absoluteUrl(`/organizations/${organization.slug}`) }, { "@type": "ListItem", position: 4, name: capability.name, item: absoluteUrl(`/capabilities/${capability.slug}`) }] }
+      { "@context": "https://schema.org", "@type": "Product", name: capability.name, description: capability.summary, brand: { "@type": "Organization", name: organization.name, url: absoluteUrl(organizationHref) }, url: absoluteUrl(capabilityPath) },
+      { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Ecosystem Map", item: absoluteUrl("/map") }, { "@type": "ListItem", position: 2, name: "Directory", item: absoluteUrl("/organizations") }, { "@type": "ListItem", position: 3, name: organization.name, item: absoluteUrl(organizationHref) }, { "@type": "ListItem", position: 4, name: capability.name, item: absoluteUrl(capabilityPath) }] }
     ]} />
-    <div className={styles.dossier} data-capability-dossier>
-      <DossierSectionNavigator sections={sections} />
-      <section id="overview" tabIndex={-1} className={styles.overview} aria-labelledby="overview-heading">
-        <div className={styles.reading}>
-          <p className="atlas-eyebrow">{capability.capabilityType ?? "Reviewed technology"}</p>
-          <h2 id="overview-heading">What it enables</h2>
-          <CapabilityList label="Core features" values={capability.coreFeatures} />
-          <CapabilityList label="Defence and security uses" values={capability.defenceApplications} />
-          <CapabilityList label="What sets it apart" values={capability.novelty} />
-          {capability.technologyReadinessLevel !== null || capability.maturity || capability.commercialAvailability ? <div className={styles.maturity}>
-            <h3>Evidence of maturity</h3>
-            {capability.technologyReadinessLevel !== null ? <p><strong>Reported TRL:</strong> {capability.technologyReadinessLevel}</p> : null}
-            {capability.maturity ? <p>{capability.maturity}</p> : null}
-            {capability.commercialAvailability ? <p><strong>Commercial availability:</strong> {capability.commercialAvailability}</p> : null}
-          </div> : null}
-          {!capability.coreFeatures.length && !capability.defenceApplications.length && !capability.novelty.length && !capability.maturity && !capability.commercialAvailability && capability.technologyReadinessLevel === null ? <p className={styles.empty}>Further capability detail is not established in the reviewed public record.</p> : null}
-          {capability.technicalTags.length ? <ul className={styles.tags} aria-label="Technical tags">{capability.technicalTags.map((tag) => <li key={tag}>{toTitleCase(tag)}</li>)}</ul> : null}
-        </div>
-        <aside className={styles.facts} aria-labelledby="facts-heading">
-          <h2 id="facts-heading" className="atlas-eyebrow">At a glance</h2>
-          <div className={styles.identity}>
-            <span className={styles.logo}>
-              {organization.logo ? <Image src={organization.logo.publicUrl} alt={`${organization.name} logo`} fill sizes="56px" className="object-contain" /> : organizationInitials(organization.name) ? <span aria-hidden="true">{organizationInitials(organization.name)}</span> : <Building2 className="size-6" aria-hidden="true" />}
-            </span>
-            <div>
-              <p className={styles.factLabel}>Organization behind this capability</p>
-              <Link href={organizationHref} prefetch={false} className={styles.organizationName}>{organization.name}<ArrowRight className="size-4 shrink-0" aria-hidden="true" /></Link>
-              {organization.primaryLocation ? <p className={styles.location}>{organization.primaryLocation.name}</p> : null}
-            </div>
-          </div>
-          <dl className={styles.factGrid}>
-            {capability.capabilityType ? <div className={styles.fullFact}><dt>Capability type</dt><dd>{capability.capabilityType}</dd></div> : null}
-            <div><dt>{publicLanguage.evidenceStrength}</dt><dd>{evidenceStrengthLabel(capability.sourceConfidence)}</dd></div>
-            <div><dt>Public sources</dt><dd><a href="#evidence" className="atlas-prose-link">{sources.length} {sources.length === 1 ? "source" : "sources"}</a></dd></div>
-            <div className={`${styles.fullFact} ${styles.domains}`}><dt>Technology areas</dt><dd>{capability.technicalDomains.length ? capability.technicalDomains.map((domain, index) => <InternalLink key={domain.id} link={{ href: `/map?domain=${domain.slug}`, label: domain.name, targetType: "technical_domain", targetSlug: domain.slug, relationshipKind: "shared_domain", provenance: "discovery" }} module="capability_domains" position={index + 1}>{domain.name}</InternalLink>) : "Not yet mapped"}</dd></div>
-            <div className={styles.reviewDate}><dt>Capability reviewed</dt><dd>{formatDate(capability.lastReviewedAt)}</dd>{organization.lastReviewedAt ? <><dt>Organization reviewed</dt><dd>{formatDate(organization.lastReviewedAt)}</dd></> : null}</div>
-          </dl>
-        </aside>
-      </section>
-      {capability.missionMatches.length ? <section id="mission-areas" tabIndex={-1} className={styles.section} aria-labelledby="mission-heading">
-        <p className="atlas-eyebrow">Reviewed connections</p><h2 id="mission-heading">Mission areas</h2>
-        {capability.missionMatches.map((match) => <CapabilityConnection key={match.id} href={`/missions/${match.missionArea.slug}`} title={match.missionArea.name} summary={match.alignmentSummary} matchType={match.matchType} confidence={match.confidence} citations={match.citations} />)}
-        {!capability.demandMatches.length ? <p className={styles.caveat}>{publicLanguage.demandCaveat}</p> : null}
+    <DossierSectionNavigator sections={sections} />
+    <article className={d.body} data-capability-dossier>
+      {hasTechnical ? <section id="technical-profile" tabIndex={-1} className={featuresSupportAside([...capability.coreFeatures, ...capability.novelty], capability.defenceApplications) ? d.technicalTop : d.technicalFlow} aria-labelledby="technical-heading">
+        <div><h2 id="technical-heading">Technical profile</h2>{capability.coreFeatures.length ? <><p className={`${d.label} mt-5`}>Core features</p><ul className={d.features}>{capability.coreFeatures.map(feature => <li key={feature}>{feature}</li>)}</ul></> : null}{capability.novelty.length ? <><h3 className="mt-6">What sets it apart</h3><ul className={d.features}>{capability.novelty.map(item => <li key={item}>{item}</li>)}</ul></> : null}{capability.technicalTags.length ? <ul className={d.tags} aria-label="Technical tags">{capability.technicalTags.map(tag => <li key={tag}>{toTitleCase(tag)}</li>)}</ul> : null}</div>
+        {capability.defenceApplications.length ? <aside className={d.applications}><h2>Recorded applications</h2><ul>{capability.defenceApplications.map(value => <li key={value}>{value}</li>)}</ul><p className={d.caveat}>These describe the reviewed application scope, not confirmed deployments, released requirements or procurement eligibility.</p></aside> : null}
       </section> : null}
-      {capability.demandMatches.length ? <section id="defence-needs" tabIndex={-1} className={styles.section} aria-labelledby="demand-heading">
-        <p className="atlas-eyebrow">Released public requirements</p><h2 id="demand-heading">Defence needs</h2>
-        {capability.demandMatches.map((match) => <CapabilityConnection key={match.id} href={`/demand/${match.demandSlug}`} title={match.demandTitle} summary={match.alignmentSummary} matchType={match.matchType} confidence={match.confidence} citations={match.citations} />)}
-        <p className={styles.caveat}>{publicLanguage.demandCaveat}</p>
-      </section> : null}
-      <section id="evidence" tabIndex={-1} className={styles.section} aria-labelledby="sources-heading">
-        <div className={styles.sectionHeading}><div><p className="atlas-eyebrow">Source library</p><h2 id="sources-heading">What supports this profile</h2></div><a href="#source-library" className="atlas-prose-link inline-flex min-h-11 items-center gap-2 text-sm">{publicSourceCountLabel(sources.length)}<ChevronDown className="size-4" aria-hidden="true" /></a></div>
-        <ol id="source-library" className={styles.sources}>{sources.map((source, index) => <CapabilitySourceRow key={source.source.sourceUrl} entry={source} index={index} />)}</ol>
-        {!sources.length ? <p className={styles.empty}>No capability-specific or capability-connection public sources are currently published.</p> : null}
-        <p className={styles.trust}>{brandCopy.trustCompact}</p>
-      </section>
-      <section id="evidence-limits" tabIndex={-1} className={styles.limits} aria-labelledby="capability-evidence-limits-heading">
-        <p className="atlas-eyebrow">Evidence limits</p><h2 id="capability-evidence-limits-heading">What still needs verification</h2>
-        <dl>{evidenceLimits.map((limit) => <div key={limit.label}><dt>{limit.label}</dt><dd>{limit.text}</dd></div>)}</dl>
-      </section>
-      <section id="next-steps" tabIndex={-1} className={styles.next} aria-labelledby="next-heading">
-        <div><p className="atlas-eyebrow">Next useful conversation</p><h2 id="next-heading">Take this capability into<br className="hidden sm:block" /> the next conversation.</h2><p className={styles.nextCopy}>Save the capability and its sources, then verify operating performance, maturity and integration constraints directly with the organization.</p></div>
-        <div className={styles.nextActions}>{primaryActions}<Link href={`/submit?submissionType=correction&targetType=capability&targetId=${capability.id}&returnTo=${encodeURIComponent(capabilityPath)}`} prefetch={false} className={styles.correction}>Suggest a correction <ArrowRight className="size-4" aria-hidden="true" /></Link></div>
-      </section>
+      <div className={d.research}>
+        {capability.summary ? <DossierReadingSection id="overview" title="How it works" note="Full capability description."><DossierParagraphs text={capability.summary} /></DossierReadingSection> : null}
+        {hasMaturity ? <DossierReadingSection id="maturity" title="Evidence of maturity" note="What is reported, and what is not yet established.">{capability.technologyReadinessLevel !== null ? <p><strong>Reported TRL:</strong> {capability.technologyReadinessLevel}</p> : null}<DossierParagraphs text={capability.maturity} /></DossierReadingSection> : null}
+        {capability.commercialAvailability ? <DossierReadingSection id="availability" title="Commercial availability" note="A scoped offer is not a general assurance of delivery."><DossierParagraphs text={capability.commercialAvailability} /></DossierReadingSection> : null}
+      </div>
+      <section id="evidence-limits" tabIndex={-1} className={d.limits} aria-labelledby="capability-evidence-limits-heading"><p className={d.label}>Verification before integration</p><h2 id="capability-evidence-limits-heading">Keep the configuration and its evidence together.</h2><dl>{evidenceLimits.map(limit => <div key={limit.label}><dt>{limit.label}</dt><dd><DossierParagraphs text={limit.text} /></dd></div>)}</dl></section>
+      {capability.missionMatches.length ? <DossierReadingSection id="mission-areas" title="Mission areas" note="Reviewed connections.">{capability.missionMatches.map(match => <CapabilityConnection key={match.id} href={`/missions/${match.missionArea.slug}`} title={match.missionArea.name} summary={match.alignmentSummary} matchType={match.matchType} confidence={match.confidence} citations={match.citations} />)}{!capability.demandMatches.length ? <p className={d.caveat}>{publicLanguage.demandCaveat}</p> : null}</DossierReadingSection> : null}
+      {capability.demandMatches.length ? <DossierReadingSection id="defence-needs" title="Defence needs" note="Released public requirements.">{capability.demandMatches.map(match => <CapabilityConnection key={match.id} href={`/demand/${match.demandSlug}`} title={match.demandTitle} summary={match.alignmentSummary} matchType={match.matchType} confidence={match.confidence} citations={match.citations} />)}<p className={d.caveat}>{publicLanguage.demandCaveat}</p></DossierReadingSection> : null}
+      <span id="sources" /><DossierSourceLibrary sources={sources} id="evidence" scope="These records support this capability and its published Mission area and Defence need connections." />
+      <section id="next-steps" tabIndex={-1} className={d.next} aria-labelledby="next-heading"><div><h2 id="next-heading">Take the next conversation further.</h2><p>Save this capability, keep the supporting sources, and resolve the questions that matter to your project.</p></div><DossierActions {...actions} closing /></section>
       {relatedContent ?? <CapabilityRelatedRecords organization={organization} capability={capability} relatedSignals={relatedSignals} relatedBriefs={relatedBriefs} relatedOrganizations={relatedOrganizations} />}
-
       {showsContextualNorthSignalSignup("capability", capability.slug) ? <NorthSignalInline placement="newsletter_inline_profile" trigger="technology_after_evidence" className="mt-8" /> : null}
-    </div>
+    </article>
   </PublicPageShell>;
 }
 
@@ -249,36 +176,11 @@ export function CapabilityRelatedRecords({ organization, capability, relatedSign
       </section> : null;
 }
 
-function CapabilityList({ label, values }: { label: string; values: string[] }) {
-  if (!values.length) return null;
-  return <div className={styles.readingGroup}><h3>{label}</h3><ul>{values.map((value) => <li key={value}>{value}</li>)}</ul></div>;
-}
-
 function CapabilityConnection({ href, title, summary, matchType, confidence, citations }: { href: string; title: string; summary: string; matchType: AtlasAlignmentType; confidence: AtlasConfidence; citations: AtlasCitation[] }) {
-  return <article className={styles.connection}>
-    <div className={styles.connectionLabel}><span>{matchType === "public_source_alignment" ? alignmentTypeLabel(matchType) : publicLanguage.assessment}</span><span>{evidenceStrengthLabel(confidence)} public evidence</span></div>
+  return <article className={d.connection}>
+    <div className={d.connectionLabel}><span>{matchType === "public_source_alignment" ? alignmentTypeLabel(matchType) : publicLanguage.assessment}</span><span>{evidenceStrengthLabel(confidence)} public evidence</span></div>
     <h3><Link href={href} data-internal-link-role="contextual" data-internal-link-module="alignment_match_card" className="atlas-prose-link">{title}</Link></h3>
-    <p>{summary}</p>
-    {citations.length ? <div className={styles.connectionSources}><span>Supporting sources</span>{[...new Map(citations.map((citation) => [citation.sourceUrl, citation])).values()].map((citation) => <ExternalSourceLink key={citation.id} href={citation.sourceUrl}>{citation.sourceTitle}</ExternalSourceLink>)}</div> : null}
+    <DossierParagraphs text={summary} />
+    {citations.length ? <div className={d.connectionSources}><span>Supporting sources</span>{[...new Map(citations.map((citation) => [citation.sourceUrl, citation])).values()].map((citation) => <ExternalSourceLink key={citation.id} href={citation.sourceUrl}>{citation.sourceTitle}</ExternalSourceLink>)}</div> : null}
   </article>;
-}
-
-function CapabilitySourceRow({ entry, index }: { entry: CapabilitySource; index: number }) {
-  const source = entry.source;
-  return <li className={styles.sourceRow}>
-    <span className={styles.sourceNumber} aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
-    <div className={styles.sourceTitle}><h3>{source.sourceTitle}</h3><p>{source.publisher}{source.publishedAt ? ` · ${formatDate(source.publishedAt)}` : ""}</p></div>
-    <details className={styles.sourceDetails}>
-      <summary aria-label={`Source details: ${source.sourceTitle}`}>Source details<ChevronDown className="size-3.5" aria-hidden="true" /></summary>
-      <div className={styles.sourcePassages}>
-        <p><strong>Source type:</strong> {source.sourceType.replaceAll("_", " ")}</p>
-        {entry.evidence.map(({ citation, associations }) => <div key={citation.id} id={`citation-${citation.id}`} className={styles.sourcePassage}>
-          <p><strong>Supports:</strong> {associations.join(" · ")}</p>
-          {publicCitationSourceLocator(citation.sourceLocator) ? <p><strong>Source location:</strong> {publicCitationSourceLocator(citation.sourceLocator)}</p> : null}
-          <blockquote>{citation.excerpt}</blockquote>
-        </div>)}
-      </div>
-    </details>
-    <ExternalSourceLink href={source.sourceUrl} className={styles.sourceLink}>Open original source<span className="sr-only">: {source.sourceTitle}</span></ExternalSourceLink>
-  </li>;
 }

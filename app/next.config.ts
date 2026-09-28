@@ -1,6 +1,13 @@
 import path from "node:path";
 import type { NextConfig } from "next";
 
+// Support an explicitly configured local Supabase/test stack without widening
+// the deployed image allowlist. Public storage paths remain the only paths.
+const configuredStorage = new URL(process.env.NEXT_PUBLIC_SUPABASE_URL || "https://facoactpdckkhciamflk.supabase.co");
+const localStoragePatterns = configuredStorage.protocol === "http:" && ["127.0.0.1", "localhost"].includes(configuredStorage.hostname)
+  ? [{protocol:"http" as const,hostname:configuredStorage.hostname,port:configuredStorage.port,pathname:"/storage/v1/object/public/atlas-public-media/**"}]
+  : [];
+
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   // Deterministic canonical/robots delivery for every crawler and response variant.
@@ -16,7 +23,7 @@ const nextConfig: NextConfig = {
   },
   outputFileTracingRoot: path.resolve(__dirname),
   images: {
-    remotePatterns: [{
+    remotePatterns: [...localStoragePatterns, {
       protocol: "https",
       hostname: "facoactpdckkhciamflk.supabase.co",
       pathname: "/storage/v1/object/public/brief-images/**"

@@ -4,9 +4,9 @@ import { describe, expect, it } from "vitest";
 
 async function source(file: string) {
   const text = await readFile(path.resolve(file), "utf8");
-  return file === "src/app/capabilities/[slug]/page.tsx"
-    ? `${text}\n${await readFile(path.resolve("src/components/atlas/capability-dossier.tsx"), "utf8")}`
-    : text;
+  const shared = await readFile(path.resolve("src/components/atlas/dossier-reading.tsx"), "utf8");
+  if (file === "src/app/capabilities/[slug]/page.tsx") return `${text}\n${await readFile(path.resolve("src/components/atlas/capability-dossier.tsx"), "utf8")}\n${shared}`;
+  return file === "src/components/atlas/executive-organization-dossier.tsx" ? `${text}\n${shared}` : text;
 }
 
 describe("reviewed alignment presentation", () => {
@@ -17,7 +17,7 @@ describe("reviewed alignment presentation", () => {
       source("src/app/capabilities/[slug]/page.tsx")
     ]);
 
-    expect(organization).toContain("ConnectionCard");
+    expect(organization).toContain("alignmentTypeLabel(match.matchType)");
     expect(capability).toContain("CapabilityConnection");
     expect(card).toContain("publicLanguage.assessment");
     expect(card).toContain("alignmentTypeLabel(matchType)");
@@ -27,8 +27,8 @@ describe("reviewed alignment presentation", () => {
     expect(capability).toContain("matchType={match.matchType}");
     expect(capability).toContain("publicLanguage.demandCaveat");
     expect(organization).toContain("They do not indicate procurement direction, eligibility, endorsement or customer interest.");
-    expect(organization).toContain('href={`/missions/${match.missionArea.slug}`}');
-    expect(organization).toContain('href={`/demand/${match.demandSlug}`}');
+    expect(organization).toContain("/missions/${match.missionArea.slug}");
+    expect(organization).toContain("/demand/${match.demandSlug}");
   });
 
   it("keeps alignment visual confidence at or below source support", async () => {
@@ -51,11 +51,11 @@ describe("reviewed alignment presentation", () => {
     expect(capability).toContain("Request an introduction");
     expect(capability.indexOf("Add to shortlist")).toBeLessThan(capability.indexOf("Request an introduction"));
     expect(capability).toContain("Capability profile");
-    expect(capability).toContain('id="overview-heading">What it enables');
+    expect(capability).toContain('id="overview" title="How it works"');
     expect(capability).toContain('eyebrow: "Canadian capability profile"');
     expect(capability).toContain("Capability reviewed");
     expect(capability).toContain("Organization behind this capability");
-    expect(capability).toContain('id="sources-heading">What supports this profile');
+    expect(capability).toContain("Original sources");
     expect(capability).not.toContain('title="What remains unknown"');
     // The onward organization link is internal, so it must not carry the
     // external-link affordance.

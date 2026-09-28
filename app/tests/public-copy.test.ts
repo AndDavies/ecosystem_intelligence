@@ -75,9 +75,10 @@ describe("customer-facing product language", () => {
     const organizationDossier = await readFile(path.resolve("src/components/atlas/executive-organization-dossier.tsx"), "utf8");
     const technology = await readFile(path.resolve("src/components/atlas/capability-dossier.tsx"), "utf8");
     const demand = await readFile(path.resolve("src/app/demand/[slug]/page.tsx"), "utf8");
-    const combined = `${organization}\n${organizationDossier}\n${technology}\n${demand}`;
+    const reading = await readFile(path.resolve("src/components/atlas/dossier-reading.tsx"), "utf8");
+    const combined = `${organization}\n${organizationDossier}\n${technology}\n${demand}\n${reading}`;
     expect(combined).toContain("What supports this assessment");
-    expect(combined).toContain("What supports this profile");
+    expect(reading).toContain("Original sources");
     expect(demand).toContain("What supports this defence need");
     expect(combined).not.toContain("Mission relevance");
     expect(combined).not.toContain("Demand relevance");
@@ -86,8 +87,8 @@ describe("customer-facing product language", () => {
     expect(combined).not.toContain("reviewed analyst assessments");
     expect(combined).not.toContain("No reviewed mission or public-demand match");
     expect(organization).toContain("ExecutiveOrganizationDossier");
-    expect(organizationDossier).toContain("Sources behind this profile");
-    expect(organizationDossier).toContain("brandCopy.trustCompact");
+    expect(organizationDossier).toContain("DossierSourceLibrary");
+    expect(reading).toContain("Facts and assessments kept separate");
     expect(organizationDossier).toContain("They do not indicate procurement direction, eligibility, endorsement or customer interest.");
     expect(organizationDossier).toContain("/missions/${match.missionArea.slug}");
     expect(technology).toContain("/missions/${match.missionArea.slug}");

@@ -1,19 +1,20 @@
 import { ExternalSourceLink } from "@/components/atlas/internal-link";
+import styles from "./company-snapshot.module.css";
 import { ChevronDown } from "lucide-react";
 import { formatSnapshotDate, formatSnapshotValue, snapshotLabels } from "@/lib/atlas/company-snapshot";
 import type { AtlasOrganization } from "@/types/atlas";
 
-export function CompanySnapshot({ organization }: { organization: AtlasOrganization }) {
+export function CompanySnapshot({ organization, presentation = "snapshot" }: { organization: AtlasOrganization; presentation?: "snapshot" | "commercial" }) {
   const observations = organization.editorialProfile.snapshotObservations ?? [];
   const company = organization.entityKind === "company";
   const location = organization.primaryLocation;
-  const identityFacts = [
+  const identityFacts = presentation === "commercial" ? [] : [
     location ? {label: "Operating base", value: [location.city, location.provinceTerritory].filter(Boolean).join(", ") || location.name} : null,
     organization.foundedYear ? {label: "Founded", value: organization.foundedYear} : null
   ].filter(fact => fact !== null);
   if (!observations.length && !identityFacts.length) return null;
-  return <section aria-label={company ? "Company snapshot" : "Organization snapshot"} className="rounded-lg border-t-4 border-[var(--atlas-ink)] bg-[var(--atlas-surface-muted)] p-6">
-    <h2 className="font-[family-name:var(--font-barlow)] text-xl font-bold">{company ? "Company snapshot" : "Organization snapshot"}</h2>
+  return <section aria-label={company ? "Company snapshot" : "Organization snapshot"} className={presentation === "commercial" ? styles.commercial : "rounded-lg border-t-4 border-[var(--atlas-ink)] bg-[var(--atlas-surface-muted)] p-6"}>
+    {presentation !== "commercial" ? <h2 className="font-[family-name:var(--font-barlow)] text-xl font-bold">{company ? "Company snapshot" : "Organization snapshot"}</h2> : null}
     {identityFacts.length ? <dl className="mt-5 grid grid-cols-[repeat(auto-fit,minmax(min(100%,9rem),1fr))] gap-4">
       {identityFacts.map(fact => <div key={fact.label} className="min-w-0"><dt className="text-xs font-semibold text-[var(--atlas-muted)]">{fact.label}</dt><dd className="mt-1 text-sm font-semibold">{fact.value}</dd></div>)}
     </dl> : null}

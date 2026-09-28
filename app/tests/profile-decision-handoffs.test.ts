@@ -4,9 +4,9 @@ import { describe, expect, it } from "vitest";
 
 async function source(file: string) {
   const text = await readFile(path.resolve(file), "utf8");
-  return file === "src/app/capabilities/[slug]/page.tsx"
-    ? `${text}\n${await readFile(path.resolve("src/components/atlas/capability-dossier.tsx"), "utf8")}`
-    : text;
+  const shared = await readFile(path.resolve("src/components/atlas/dossier-reading.tsx"), "utf8");
+  if (file === "src/app/capabilities/[slug]/page.tsx") return `${text}\n${await readFile(path.resolve("src/components/atlas/capability-dossier.tsx"), "utf8")}\n${shared}`;
+  return file === "src/components/atlas/executive-organization-dossier.tsx" ? `${text}\n${shared}` : text;
 }
 
 describe("profile and decision handoffs", () => {
@@ -19,11 +19,11 @@ describe("profile and decision handoffs", () => {
     ]);
     const organization = `${organizationRoute}\n${organizationDossier}`;
 
-    expect(organization).toContain("Sources behind this profile");
+    expect(organization).toContain("Original sources");
     expect(organization).not.toContain('title="What remains unknown"');
-    expect(capability).toContain('id="overview-heading">What it enables');
-    expect(capability).toContain('id="sources-heading">What supports this profile');
-    expect(capability).toContain("Evidence limits");
+    expect(capability).toContain('id="overview" title="How it works"');
+    expect(capability).toContain("Original sources");
+    expect(capability).toContain("capabilityEvidenceLimits(capability)");
     expect(demand).toContain('title="What supports this defence need"');
     expect(demand).toContain('title="Evidence limits"');
     expect(capability).not.toContain("EvidenceLegend");
@@ -43,7 +43,7 @@ describe("profile and decision handoffs", () => {
 
     expect(organization).toContain("safeAtlasReturn");
     expect(organization).toContain("returnTo=${encodeURIComponent(profilePath)}");
-    expect(capability).toContain("returnTo=${encodeURIComponent(capabilityPath)}");
+    expect(capability).toContain("returnTo=${encodeURIComponent(profilePath)}");
     expect(capability).not.toContain("?returnTo=${encodeURIComponent(mapReturnTo)}");
     expect(mission).toContain("/map?mission=${result.missionArea.slug}");
     expect(region).toContain("/map?region=${region.slug}");

@@ -22,6 +22,7 @@ export type ResearchReviewContract = {
   contractVersion: typeof researchReviewContractVersion;
   pipelineVersion: string;
   candidateLogoPublication?: "candidate_logo_v1";
+  candidatePresentationCopyPublication?: "dossier_presentation_copy_v1";
   candidateSnapshotPublication?: "company_snapshot_observations_v1";
   candidateSchemas: Record<SupportedResearchCandidateKind, readonly string[]>;
 };
@@ -30,6 +31,7 @@ export const researchReviewContract: ResearchReviewContract = {
   contractVersion: researchReviewContractVersion,
   pipelineVersion: currentResearchPipelineVersion,
   candidateLogoPublication: "candidate_logo_v1",
+  candidatePresentationCopyPublication: "dossier_presentation_copy_v1",
   candidateSnapshotPublication: "company_snapshot_observations_v1",
   candidateSchemas: supportedResearchCandidateSchemas
 };
@@ -54,7 +56,7 @@ export function isSupportedResearchCandidateKind(value: string): value is Suppor
 
 export function researchCandidateContractIssues(
   candidates: ResearchCandidateContractInput[],
-  contract: Pick<ResearchReviewContract, "contractVersion" | "pipelineVersion" | "candidateSchemas" | "candidateLogoPublication" | "candidateSnapshotPublication"> = researchReviewContract,
+  contract: Pick<ResearchReviewContract, "contractVersion" | "pipelineVersion" | "candidateSchemas" | "candidateLogoPublication" | "candidateSnapshotPublication" | "candidatePresentationCopyPublication"> = researchReviewContract,
   requiredPipelineVersion: string = currentResearchPipelineVersion
 ) {
   const issues: string[] = [];
@@ -70,6 +72,13 @@ export function researchCandidateContractIssues(
     return payload?.editorialStandard === "reader_usefulness_v1";
   });
   if (modern && !pipelineVersionAtLeast(contract.pipelineVersion, "tnm-research-pipeline/1.9.0")) issues.push("Reader-usefulness output requires deployed pipeline 1.9.0 support.");
+
+  const copyWrite = candidates.some(candidate => {
+    const payload = candidate.proposed_record as { organization?: { presentationCopy?: unknown }; capabilities?: Array<{presentationCopy?: unknown}>; operations?: Array<{field?: string; after?: {presentationCopy?: unknown}; value?: {presentationCopy?: unknown}}> } | undefined;
+    return payload?.organization?.presentationCopy !== undefined || payload?.capabilities?.some(item => item.presentationCopy !== undefined)
+      || payload?.operations?.some(item => ["display_lead", "role_descriptor"].includes(item.field ?? "") || item.after?.presentationCopy !== undefined || item.value?.presentationCopy !== undefined);
+  });
+  if (copyWrite && contract.candidatePresentationCopyPublication !== "dossier_presentation_copy_v1") issues.push("Presentation copy requires deployed migration, Review and Publish support.");
 
   const snapshotWrite = candidates.some(candidate => {
     const payload = candidate.proposed_record as {

@@ -1,3 +1,4 @@
+import { organizationPresentationCopySchema, capabilityPresentationCopySchema, presentationTextSchema } from "@/lib/atlas/dossier-presentation-copy";
 import { snapshotObservationsSchema } from "@/lib/atlas/company-snapshot";
 import { z } from "zod";
 import { organizationProfileFieldAllowlist } from "@/lib/atlas/public-profile-data";
@@ -785,6 +786,7 @@ const organizationProgramParticipationV3Schema = z.object({
   }
 });
 const capabilityV3Schema = capabilitySchema.extend({
+  presentationCopy: capabilityPresentationCopySchema.optional(),
   technologyReadinessLevel: z.number().int().min(1).max(9).nullable(),
   maturity: nullablePublicText(2, 500),
   commercialAvailability: nullablePublicText(2, 500)
@@ -875,6 +877,7 @@ export const organizationBundleV3Schema = z.object({
     currentActivityAsOf: z.string().date().nullable(),
     operatingContext: nullablePublicText(40, 2000),
     canadianFootprint: nullablePublicText(40, 2000),
+    presentationCopy: organizationPresentationCopySchema.optional(),
     snapshotObservations: snapshotObservationsSchema.optional(),
     executiveRelevanceSummary: nullablePublicText(80, 1200).optional(),
     reviewedQuestions: z.array(reviewedQuestionSchema).max(4),
@@ -893,6 +896,9 @@ export const organizationBundleV3Schema = z.object({
   for (const [index, observation] of (organization.snapshotObservations ?? []).entries()) {
     if (observation.scopeRelation === "organization" && ![organization.name, organization.legalName].includes(observation.subjectName)) context.addIssue({code: z.ZodIssueCode.custom, message: "Observation subject must match the reviewed organization; parent reports must be explicitly labelled.", path: ["organization", "snapshotObservations", index, "subjectName"]});
     if (!candidate.sources.some(source => source.id === observation.sourceId && source.url === observation.sourceUrl)) context.addIssue({code: z.ZodIssueCode.custom, message: "Observation source must resolve to the same candidate source URL.", path: ["organization", "snapshotObservations", index, "sourceId"]});
+  }
+  for (const [prefix, copy] of [["organization.presentationCopy", candidate.organization.presentationCopy], ...candidate.capabilities.map((item,index)=>[`capabilities.${index}.presentationCopy`,item.presentationCopy] as const)] as const) {
+    for (const [key,value] of Object.entries(copy ?? {})) if (value && !candidate.fieldEvidence.some(e=>e.fieldPath===`${prefix}.${key}`&&e.claimClass==="source_backed")) context.addIssue({code:z.ZodIssueCode.custom,message:"Presentation copy requires factual field evidence, separate from TNM assessment.",path:["fieldEvidence"]});
   }
   const evidenceByPath = new Map<string, typeof candidate.fieldEvidence>();
   candidate.fieldEvidence.forEach((evidence) => {
@@ -1111,7 +1117,7 @@ export const organizationRefreshV2SafeFieldValues = [
   "founded_year", "employee_range", "company_stage", "ownership", "commercial_status",
   "disclosed_financing_summary", "defence_posture", "dual_use_posture", "public_contact",
   "current_activity", "current_activity_as_of", "operating_context", "canadian_footprint",
-  "snapshot_observations", "executive_relevance_summary", "reviewed_questions", "editorial_profile_version"
+  "display_lead", "role_descriptor", "snapshot_observations", "executive_relevance_summary", "reviewed_questions", "editorial_profile_version"
 ] as const;
 
 const refreshLeafEvidenceSchema = z.object({
@@ -1188,6 +1194,8 @@ export function validateOrganizationRefreshV2Field(
     current_activity_as_of: z.string().date().nullable(),
     operating_context: nullablePublicText(40, 2000),
     canadian_footprint: nullablePublicText(40, 2000),
+    display_lead: presentationTextSchema,
+    role_descriptor: presentationTextSchema,
     snapshot_observations: snapshotObservationsSchema,
     executive_relevance_summary: nullablePublicText(80, 1200),
     reviewed_questions: z.array(reviewedQuestionSchema).max(4),
@@ -1255,6 +1263,11 @@ export const organizationRefreshBundleV2Schema = z.object({
         && operation.parentId !== candidate.targetMatch.entityId) {
       context.addIssue({ code: z.ZodIssueCode.custom, message: "The child operation must belong to the matched organization.", path: [...path, "parentId"] });
     }
+    const shortCopyLeaves = operation.operation === "set_field" && ["display_lead","role_descriptor"].includes(operation.field) ? ["after"]
+      : (operation.operation === "add_child" || operation.operation === "update_child") && operation.entityType === "capability"
+        ? Object.keys((operation.operation === "add_child" ? operation.value.presentationCopy : operation.after.presentationCopy) as object ?? {}).map(key=>`${operation.operation === "add_child" ? "value" : "after"}.presentationCopy.${key}`) : [];
+    for (const leaf of shortCopyLeaves) if (!operation.leafEvidence.some(binding=>binding.fieldPath===leaf && binding.evidenceIds.some(id=>evidenceById.get(id)?.claimClass==="source_backed"))) context.addIssue({code:z.ZodIssueCode.custom,message:"Presentation copy requires source-backed leaf evidence.",path:[...path,"leafEvidence"]});
+    if (operation.operation === "update_child" && operation.entityType === "capability" && operation.after.presentationCopy !== undefined && operation.before.presentationCopy === undefined) context.addIssue({code:z.ZodIssueCode.custom,message:"Presentation-copy changes require the complete current copy baseline, including nulls.",path:[...path,"before"]});
     if (operation.operation === "set_field" && operation.field === "snapshot_observations") {
       if (candidate.editorialStandard !== "reader_usefulness_v1") context.addIssue({code: z.ZodIssueCode.custom, message: "Snapshot observations require the reader-usefulness contract.", path});
       const parsed = snapshotObservationsSchema.safeParse(operation.after);

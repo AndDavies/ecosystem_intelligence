@@ -271,7 +271,7 @@ describe("rendered internal-link audit graph", () => {
     expect(missionDetail).toContain('<span className="sr-only">: {brief.title}</span>');
     expect(publicNeedDetail).toContain('<span className="sr-only">: {signal.title}</span>');
     expect(organizationCard).toContain("Explore {organization.name}");
-    expect(organizationDossier).toContain("Explore {capability.name}");
+    expect(organizationDossier).toContain("aria-label={`Open ${capability.name}`}");
     expect(`${briefCollection}\n${briefDetail}\n${missionDetail}\n${publicNeedDetail}\n${organizationCard}\n${organizationDossier}`).not.toMatch(/Read the article|Read the Signal|Explore profile|Open technology profile/);
   });
 

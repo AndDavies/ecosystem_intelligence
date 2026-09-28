@@ -77,6 +77,8 @@ export interface AtlasDemandMatch {
 }
 
 export interface AtlasCapability {
+  /** Additive local presentation proposal; production loaders do not populate it yet. */
+  presentationCopy?: import("@/lib/atlas/dossier-presentation-copy").CapabilityPresentationCopy;
   id: string;
   organizationId: string;
   slug: string;
@@ -204,6 +206,8 @@ export interface AtlasDossierMediaAsset {
 }
 
 export interface AtlasOrganization {
+  /** Additive local presentation proposal; production loaders do not populate it yet. */
+  presentationCopy?: import("@/lib/atlas/dossier-presentation-copy").OrganizationPresentationCopy;
   id: string;
   slug: string;
   name: string;

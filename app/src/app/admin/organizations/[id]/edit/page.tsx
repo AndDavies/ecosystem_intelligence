@@ -1,3 +1,4 @@
+import { ReviewedPresentationFields } from "@/components/atlas/reviewed-presentation-fields";
 import Image from "next/image";
 import Link from "@/components/atlas/navigation-link";
 import { AlertTriangle, Building2, CircleHelp, ExternalLink, Trash2, Upload } from "lucide-react";
@@ -6,6 +7,7 @@ import { AdminNav } from "@/components/atlas/admin-nav";
 import { EmptyCoverage, PublicCard, PublicPageShell } from "@/components/atlas/public-page-shell";
 import { PendingButton } from "@/components/ui/pending-button";
 import {
+  editPublishedPresentationCopy,
   editPublishedOrganization,
   editPublishedOrganizationContact,
   editPublishedOrganizationDossierChild,
@@ -17,6 +19,7 @@ import { requireAtlasStaff } from "@/lib/atlas/auth";
 import { organizationLogoUrl } from "@/lib/atlas/organization-logos";
 import { publicContactFromProfileData } from "@/lib/atlas/presentation";
 import { createClient } from "@/lib/supabase/server";
+import { collectPagedRows } from "@/lib/supabase/pagination";
 
 type RawLocation = {
   id: string;
@@ -33,6 +36,8 @@ type RawCapability = {
   slug: string;
   name: string;
   summary: string;
+  display_lead?: string | null;
+  catalogue_teaser?: string | null;
   capability_type: string | null;
   core_features: string[];
   technology_readiness_level: number | null;
@@ -99,6 +104,10 @@ type DossierRow = {
   name: string;
   legal_name: string | null;
   description: string;
+  updated_at: string;
+  display_lead?: string | null;
+  role_descriptor?: string | null;
+  executive_relevance_summary?: string | null;
   website_url: string | null;
   entity_kind: string;
   organization_categories: string[];
@@ -150,6 +159,7 @@ const entityKinds = [
 const errorMessages: Record<string, string> = {
   "invalid-edit": "Some required fields are missing or invalid. Check the highlighted section values and try again.",
   "update-failed": "The public record was not changed. Refresh the page and verify that its location, technology, and classification values still exist.",
+  "presentation-copy-update-failed": "The record changed or the selected evidence does not support this entity. Reload, inspect the sources, and review the introduction with the full narrative before saving.",
   "invalid-contact": "Check the contact fields. Public links must use HTTPS, the email must be valid, and an editorial rationale is required.",
   "contact-update-failed": "The public contact details were not changed. Refresh the page and try again.",
   "invalid-editorial-profile": "Check the dossier narrative, current-activity date, curated questions, and editorial rationale.",
@@ -164,6 +174,7 @@ const errorMessages: Record<string, string> = {
 };
 
 const successMessages: Record<string, string> = {
+  "presentation-copy-updated": "Reviewed presentation copy saved and the public profile refreshed. The complete narrative is unchanged.",
   "contact-updated": "Public contact details updated.",
   "editorial-profile-updated": "Cited dossier narrative updated and the public profile refreshed.",
   "dossier-child-updated": "Cited public-record wording updated and the public profile refreshed.",
@@ -219,6 +230,10 @@ export default async function EditPublishedOrganizationPage({
   const citation = dossier.citations?.find((item) => item.citation.entity_type === "organization" && item.citation.entity_id === dossier.id)
     ?? dossier.citations?.find((item) => item.citation.entity_type === "capability" && item.citation.entity_id === capability?.id);
 
+  const copyEvidence = await collectPagedRows((from,to) => supabase.from("field_citations")
+    .select("entity_type, entity_id, evidence_snippet_id, field_name, evidence_snippets!inner(excerpt, sources!inner(title, canonical_url))")
+    .in("entity_id", [dossier.id, ...(capability ? [capability.id] : [])]).order("id").range(from,to), "presentation-copy evidence");
+  const normalizedCopyEvidence = copyEvidence.map(item=>({...item,evidence_snippets:(Array.isArray(item.evidence_snippets)?item.evidence_snippets:[item.evidence_snippets]).map(evidence=>({...evidence,sources:Array.isArray(evidence.sources)?evidence.sources:[evidence.sources]}))}));
   const fieldClass = "form-control";
   const areaClass = "form-control h-auto py-3 leading-6";
 
@@ -293,6 +308,20 @@ export default async function EditPublishedOrganizationPage({
       <EditorialProfileEditor dossier={dossier} />
       <DossierRecordMaintenance dossier={dossier} />
 
+      {Object.prototype.hasOwnProperty.call(dossier,"display_lead") ? [
+        {kind:"organization" as const, id:dossier.id, name:dossier.name, narrative:dossier.description, copy:{displayLead:dossier.display_lead,roleDescriptor:dossier.role_descriptor}},
+        ...(capability ? [{kind:"capability" as const,id:capability.id,name:capability.name,narrative:capability.summary,copy:{displayLead:capability.display_lead,catalogueTeaser:capability.catalogue_teaser}}] : [])
+      ].map(target=><form action={editPublishedPresentationCopy} key={target.id} className="mb-5">
+        <PublicCard title={`Reviewed presentation: ${target.name}`} eyebrow="Factual copy · distinct from full narrative and TNM assessment">
+          <input type="hidden" name="organizationId" value={dossier.id}/><input type="hidden" name="capabilityId" value={target.kind==="capability"?target.id:""}/><input type="hidden" name="baseline" value={dossier.updated_at}/>
+          <details className="mb-4"><summary>Read the full narrative and current TNM assessment</summary><p className="mt-3 whitespace-pre-line">{target.narrative}</p>{dossier.executive_relevance_summary?<p className="mt-3 whitespace-pre-line"><strong>TNM assessment: </strong>{dossier.executive_relevance_summary}</p>:null}</details>
+          <ReviewedPresentationFields copy={target.copy} kind={target.kind}/>
+          <fieldset className="my-4"><legend className="text-sm font-semibold">Select the public evidence supporting this wording</legend>{[...new Map(normalizedCopyEvidence.filter(item=>item.entity_type===target.kind&&item.entity_id===target.id).map(item=>[item.evidence_snippet_id,item])).values()].map(item=><label key={item.evidence_snippet_id} className="mt-2 flex items-start gap-2 text-xs"><input type="checkbox" name="evidenceId" value={item.evidence_snippet_id}/><span>{item.evidence_snippets.map((evidence,index)=><span key={index} className="block"><span className="block whitespace-pre-line">{evidence.excerpt}</span>{evidence.sources.map((source,sourceIndex)=><Link key={sourceIndex} href={source.canonical_url} target="_blank" rel="noreferrer" className="mt-1 block underline">{source.title} <ExternalLink className="inline size-3"/></Link>)}</span>)}</span></label>)}</fieldset>
+          <label className="my-4 flex gap-2 text-sm"><input required type="checkbox" name="reviewedTogether"/>I reviewed the short copy against the complete narrative, assessment and selected sources.</label>
+          <label className="grid gap-2 text-sm">Change rationale<textarea required name="rationale" minLength={3} maxLength={2000} rows={2} className="form-control h-auto"/></label>
+          <PendingButton type="submit" pendingLabel="Saving…" className="mt-4">Save reviewed published copy</PendingButton>
+        </PublicCard>
+      </form>) : null}
       {capability && location ? <form action={editPublishedOrganization} className="space-y-5">
         <input type="hidden" name="organizationId" value={dossier.id} />
         <input type="hidden" name="locationId" value={location.id} />
