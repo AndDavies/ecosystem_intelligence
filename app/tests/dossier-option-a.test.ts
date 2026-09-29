@@ -65,7 +65,7 @@ describe("Shared dossier content and handoffs", () => {
       for (const paragraph of dossierParagraphs(capability.summary)) expect(rows[i].textContent).toContain(paragraph);
       expect(rows[i].querySelector("details")?.hasAttribute("open")).toBe(false);
     });
-    expect(doc.querySelector("#capabilities")!.compareDocumentPosition(doc.querySelector("#company-context")!) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(doc.querySelector("#about")!.compareDocumentPosition(doc.querySelector("#capabilities")!) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     for (const anchor of doc.querySelectorAll("nav[aria-label='On this page'] a")) expect(doc.querySelector(anchor.getAttribute("href")!)).not.toBeNull();
     expect(doc.querySelector("#profile")).not.toBeNull();
     expect(doc.querySelector("#geography")).not.toBeNull();

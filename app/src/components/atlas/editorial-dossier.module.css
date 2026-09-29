@@ -1,5 +1,7 @@
 /* One reading grid for both dossier routes. Shared site chrome is unchanged. */
-.frame:global(.atlas-frame) { --dossier-reading-size: 17px; width: min(880px, calc(100% - 64px)); padding-block: 24px 32px; }
+.frame:global(.atlas-frame) { --dossier-reading-size: 17px; padding-block: 24px 32px; }
+/* Organizations reuse the shared content frame; the mobile rule below stays unchanged. */
+.frame:global(.atlas-frame):where(:not(.organizationFrame)) { width: min(880px, calc(100% - 64px)); }
 .frame > nav[aria-label="Breadcrumb"] { margin-bottom: 8px; }
 .frame :is(h1, h2, h3, h4):not(:where(:global(.atlas-newsletter-section) *)) { font-family: var(--font-barlow), Barlow, sans-serif; color: var(--atlas-ink); }
 .frame h1 { font-size: clamp(36px, 3.65vw, 52px); line-height: 1.08; font-weight: 800; letter-spacing: -.035em; overflow-wrap: anywhere; }

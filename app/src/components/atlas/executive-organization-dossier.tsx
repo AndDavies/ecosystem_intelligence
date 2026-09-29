@@ -40,13 +40,13 @@ export function ExecutiveOrganizationDossier({ organization, mapReturnTo, profil
   const hasAbout = Boolean(organization.description || editorial.operatingContext || editorial.canadianFootprint || organization.primaryLocation || editorial.executiveRelevanceSummary);
   const media = selectHeroMedia(organization.mediaAssets);
   const sections = [
-    ...(organization.capabilities.length ? [{ id: "capabilities", label: "Technologies & services" }] : []),
     ...(hasAbout ? [{ id: "about", label: "About" }] : []),
+    ...(organization.capabilities.length ? [{ id: "capabilities", label: "Technologies & services" }] : []),
     ...(hasPublicRecord ? [{ id: "public-record", label: "Public record" }] : []),
     ...(editorial.reviewedQuestions.length || sources.length ? [{ id: "verification", label: editorial.reviewedQuestions.length && sources.length ? "Questions & sources" : sources.length ? "Sources" : "Questions" }] : [])
   ];
   const actions = { type: "organization" as const, id: organization.id, slug: organization.slug, ownerSlug: organization.slug, title: organization.name, description: organization.description, profilePath, websiteUrl: organization.websiteUrl };
-  return <PublicPageShell variant="dossier" contentClassName={styles.frame} eyebrow={organizationKindLabel(organization.entityKind)} title={organization.name}
+  return <PublicPageShell variant="dossier" contentClassName={`${styles.frame} ${styles.organizationFrame}`} eyebrow={organizationKindLabel(organization.entityKind)} title={organization.name}
     breadcrumbs={[{ label: "Map", href: mapReturnTo }, { label: "Directory", href: "/organizations" }, { label: organization.name }]}
     pageHeader={<header className={styles.header}>
       <div>
@@ -73,16 +73,16 @@ export function ExecutiveOrganizationDossier({ organization, mapReturnTo, profil
     ]} />
     <DossierSectionNavigator sections={sections} />
     <article className={styles.body} data-editorial-dossier="organization">
-      {organization.capabilities.length ? <section id="capabilities" tabIndex={-1} className={styles.chapter} aria-labelledby="capabilities-heading">
-        <div className={styles.sectionTop}><h2 id="capabilities-heading">Technologies &amp; services <span className={styles.count}>{organization.capabilities.length}</span></h2></div>
-        {organization.capabilities.map((capability, index) => <CapabilityRow key={capability.id} capability={capability} index={index} organizationId={organization.id} />)}
-      </section> : null}
       {hasAbout ? <section id="about" tabIndex={-1} className={styles.chapter} aria-labelledby="about-heading">
         <h2 id="about-heading">About {organization.name}</h2>
         {organization.description ? <div id="company-context" tabIndex={-1} className={styles.prose}><span id="profile" /><DossierParagraphs text={organization.description} />{typeof organization.profileData.portfolioSummary === "string" ? <><h3>Systems and integration</h3><DossierParagraphs text={organization.profileData.portfolioSummary} /></> : null}{media ? <DossierHeroMedia media={media} organizationName={organization.name} /> : null}</div> : null}
         {editorial.operatingContext ? <DossierReadingSection id="operating-context" title="Operating context" level={3}><DossierParagraphs text={editorial.operatingContext} /></DossierReadingSection> : null}
         {editorial.canadianFootprint || organization.primaryLocation ? <DossierReadingSection id="canadian-footprint" alias="geography" title="Canadian footprint" level={3}><DossierParagraphs text={editorial.canadianFootprint} />{organization.primaryLocation ? <div className={styles.mapCallout}><MapPin className="size-4" aria-hidden="true" /><div><p>{locationContext(organization, false)}</p><Link href={selectedMapHref(mapReturnTo, organization.id)} data-profile-action="map_open" data-profile-target-id={organization.id} data-profile-target-type="map" data-profile-section="geography" className="atlas-prose-link">Open the map <ArrowRight className="ml-1 size-3" aria-hidden="true" /></Link></div></div> : null}</DossierReadingSection> : null}
         {editorial.executiveRelevanceSummary ? <DossierReadingSection id="assessment" title="TNM assessment" level={3}><DossierParagraphs text={editorial.executiveRelevanceSummary} /><p className={styles.caveat}>Interpretation of the public record. Not qualification, endorsement or evidence of buyer interest.</p></DossierReadingSection> : null}
+      </section> : null}
+      {organization.capabilities.length ? <section id="capabilities" tabIndex={-1} className={styles.chapter} aria-labelledby="capabilities-heading">
+        <div className={styles.sectionTop}><h2 id="capabilities-heading">Technologies &amp; services <span className={styles.count}>{organization.capabilities.length}</span></h2></div>
+        {organization.capabilities.map((capability, index) => <CapabilityRow key={capability.id} capability={capability} index={index} organizationId={organization.id} />)}
       </section> : null}
       {hasPublicRecord ? <section id="public-record" tabIndex={-1} className={styles.chapter} aria-labelledby="public-record-heading">
         <h2 id="public-record-heading">Public record</h2>
