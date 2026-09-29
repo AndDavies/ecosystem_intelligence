@@ -1,4 +1,3 @@
-import { catalogueSupportsAside } from "@/lib/atlas/dossier-layout";
 import Image from "next/image";
 import Link from "@/components/atlas/navigation-link";
 import { Suspense } from "react";
@@ -33,40 +32,35 @@ export function ExecutiveOrganizationDossier({ organization, mapReturnTo, profil
     ...capability.missionMatches.map(match => ({ key: `mission-${match.id}`, capability, match, title: match.missionArea.name, href: `/missions/${match.missionArea.slug}`, type: "Mission area", action: "mission_open", targetId: match.missionArea.id, targetType: "mission_area" })),
     ...capability.demandMatches.map(match => ({ key: `need-${match.id}`, capability, match, title: match.demandTitle, href: `/demand/${match.demandSlug}`, type: "Released Defence need", action: "public_need_open", targetId: match.demandRequirementId, targetType: "public_need" }))
   ]);
-  const hasPublicRecord = Boolean(organization.programs.length || organization.relationships.length || organization.fundingEvents.length);
   const hasCommercial = Boolean(organization.commercialStatus || organization.disclosedFinancingSummary || organization.ownership || editorial.snapshotObservations?.length || organization.employeeRange || organization.companyStage);
   const currentActivitySources = organization.citations.filter(citation => citation.fieldName === "current_activity");
   const hasActivity = Boolean(editorial.currentActivity && editorial.currentActivityAsOf && currentActivitySources.length);
-  const hasContact = Boolean(organization.websiteUrl || Object.values(publicContact).some(Boolean) || connections.length);
-  const hasContext = Boolean(editorial.executiveRelevanceSummary || hasContact);
-  const besideCatalogue = catalogueSupportsAside(organization.capabilities, editorial.executiveRelevanceSummary, Number(Boolean(organization.websiteUrl)) + Object.values(publicContact).filter(Boolean).length + Number(Boolean(connections.length)));
+  const hasContact = Boolean(organization.websiteUrl || Object.values(publicContact).some(Boolean));
+  const hasPublicRecord = Boolean(hasActivity || hasCommercial || organization.programs.length || organization.relationships.length || organization.fundingEvents.length || connections.length);
+  const hasAbout = Boolean(organization.description || editorial.operatingContext || editorial.canadianFootprint || organization.primaryLocation || editorial.executiveRelevanceSummary);
   const media = selectHeroMedia(organization.mediaAssets);
   const sections = [
-    ...(organization.capabilities.length ? [{ id: "capabilities", label: "Capabilities" }] : []),
-    ...(organization.description ? [{ id: "company-context", label: organization.entityKind === "company" ? "Company" : "Organization" }] : []),
-    ...(editorial.operatingContext ? [{ id: "operating-context", label: "Operating context" }] : []),
-    ...(hasCommercial ? [{ id: "commercial", label: organization.entityKind === "company" ? "Commercial context" : "Operating model" }] : []),
+    ...(organization.capabilities.length ? [{ id: "capabilities", label: "Technologies & services" }] : []),
+    ...(hasAbout ? [{ id: "about", label: "About" }] : []),
     ...(hasPublicRecord ? [{ id: "public-record", label: "Public record" }] : []),
-    ...(connections.length ? [{ id: "connections", label: "Connections" }] : []),
-    ...(editorial.reviewedQuestions.length ? [{ id: "questions", label: "Questions" }] : []),
-    ...(sources.length ? [{ id: "sources", label: "Sources" }] : [])
+    ...(editorial.reviewedQuestions.length || sources.length ? [{ id: "verification", label: editorial.reviewedQuestions.length && sources.length ? "Questions & sources" : sources.length ? "Sources" : "Questions" }] : [])
   ];
   const actions = { type: "organization" as const, id: organization.id, slug: organization.slug, ownerSlug: organization.slug, title: organization.name, description: organization.description, profilePath, websiteUrl: organization.websiteUrl };
   return <PublicPageShell variant="dossier" contentClassName={styles.frame} eyebrow={organizationKindLabel(organization.entityKind)} title={organization.name}
     breadcrumbs={[{ label: "Map", href: mapReturnTo }, { label: "Directory", href: "/organizations" }, { label: organization.name }]}
     pageHeader={<header className={styles.header}>
       <div>
-        <div className={styles.identity}><OrganizationIdentityMark organization={organization} /><div className={styles.identityText}>
-          <p className={styles.byline}><strong>{organizationKindLabel(organization.entityKind)}</strong>{organization.primaryLocation?.provinceTerritory ? <span className={styles.region}>{organization.primaryLocation.provinceTerritory}</span> : null}</p>
+        <div className={styles.identity}><div className={styles.identityText}>
+          <p className={styles.byline}><strong>{organizationKindLabel(organization.entityKind)}</strong>{organization.primaryLocation?.provinceTerritory ? <span>{organization.primaryLocation.provinceTerritory}</span> : null}</p>
           <h1>{organization.name}</h1>
           {organization.presentationCopy?.roleDescriptor ? <p className={styles.role}>{organization.presentationCopy.roleDescriptor}</p> : null}
-        </div></div>
+        </div><OrganizationIdentityMark organization={organization} /></div>
         <DossierParagraphs text={organization.presentationCopy?.displayLead} className={styles.lead} />
         {!organization.presentationCopy?.displayLead && organization.description ? <a href="#company-context" className={`atlas-prose-link ${styles.fullOverviewLink}`}>Read the full overview <ArrowRight className="size-3.5" aria-hidden="true" /></a> : null}
         <DossierActions {...actions} />
       </div>
-      <aside className={styles.facts} aria-label="Profile facts"><h2>Profile at a glance</h2><dl className={styles.factGrid}>
-        {organization.primaryLocation ? <div className={styles.wideFact}><dt>Listed Canadian location</dt><dd>{organization.primaryLocation.name}</dd></div> : null}
+      <aside className={styles.facts} aria-label="Profile facts"><dl className={styles.factGrid}>
+        {organization.primaryLocation ? <div><dt>Listed Canadian location</dt><dd>{organization.primaryLocation.name}</dd></div> : null}
         {organization.foundedYear ? <div><dt>{organization.entityKind === "company" ? "Founded" : "Established"}</dt><dd>{organization.foundedYear}</dd></div> : null}
         <div><dt>Published capabilities</dt><dd>{organization.capabilities.length} {organization.capabilities.length === 1 ? "record" : "records"}</dd></div>
         {organization.lastReviewedAt ? <div><dt>Reviewed</dt><dd>{formatDate(organization.lastReviewedAt)}</dd></div> : null}
@@ -79,41 +73,47 @@ export function ExecutiveOrganizationDossier({ organization, mapReturnTo, profil
     ]} />
     <DossierSectionNavigator sections={sections} />
     <article className={styles.body} data-editorial-dossier="organization">
-      {organization.capabilities.length || hasContext ? <div className={besideCatalogue ? styles.catalogueWithContext : styles.catalogueFlow}>
-        {organization.capabilities.length ? <section id="capabilities" tabIndex={-1} aria-labelledby="capabilities-heading">
-          <div className={styles.sectionTop}><h2 id="capabilities-heading">Technologies &amp; services <span className={styles.count}>{String(organization.capabilities.length).padStart(2, "0")}</span></h2><p>Explore a specific offering</p></div>
-          {organization.capabilities.map((capability, index) => <CapabilityRow key={capability.id} capability={capability} index={index} organizationId={organization.id} />)}
-        </section> : null}
-        {hasContext ? <aside className={styles.contextAside}>
-          {editorial.executiveRelevanceSummary ? <section className={styles.assessment} aria-labelledby="assessment-heading"><p className={styles.label}>TNM assessment</p><h2 id="assessment-heading">Where it may fit</h2><DossierParagraphs text={editorial.executiveRelevanceSummary} /><p className={styles.caveat}>Interpretation of the public record. Not qualification, endorsement or evidence of buyer interest.</p></section> : null}
-          {hasContact || sources.length ? <div className={styles.contact}><h3>Go to the source</h3><p>Open the original records or the organization’s official contact route.</p><div className={styles.contactLinks}>
-            {sources.length ? <a href="#sources" className="atlas-prose-link">Original sources</a> : null}
-            {publicContact.contactPageUrl || organization.websiteUrl ? <ExternalSourceLink href={publicContact.contactPageUrl ?? organization.websiteUrl!}>Official contact</ExternalSourceLink> : null}
-            {publicContact.publicEmail ? <a className="atlas-prose-link" href={`mailto:${publicContact.publicEmail}`}>{publicContact.publicEmail}</a> : null}
-            {publicContact.publicPhone ? <a className="atlas-prose-link" href={`tel:${publicContact.publicPhone}`}>{publicContact.publicPhone}</a> : null}
-            {publicContact.linkedInUrl ? <ExternalSourceLink href={publicContact.linkedInUrl}>Official LinkedIn</ExternalSourceLink> : null}
-            {connections.length ? <a className="atlas-prose-link" href="#connections">Published mission and need connections</a> : null}
-          </div>{connections.length ? <p>Connections stay separate from documented products and applications.</p> : null}</div> : null}
-        </aside> : null}
-      </div> : null}
-      {hasActivity ? <section id="why-now" tabIndex={-1} className={styles.activity} aria-labelledby="why-now-heading"><div><p className={styles.label}>Dated public development</p><h2 id="why-now-heading">Recent activity</h2><p className={styles.date}>{formatDate(editorial.currentActivityAsOf)}</p></div><div className={styles.prose}><DossierParagraphs text={editorial.currentActivity} />{[...new Map(currentActivitySources.map(source => [source.sourceUrl, source])).values()].map(source => <ExternalSourceLink key={source.id} href={source.sourceUrl} className={styles.sourceInline}>Read the original record<span className="sr-only">: {source.sourceTitle}</span></ExternalSourceLink>)}</div></section> : null}
-      <div className={styles.research}>
-        {organization.description ? <DossierReadingSection id="company-context" alias="profile" title={organization.entityKind === "company" ? "Company context" : "Organization context"} note="The full organization overview."><DossierParagraphs text={organization.description} />{typeof organization.profileData.portfolioSummary === "string" ? <><h3>Systems and integration</h3><DossierParagraphs text={organization.profileData.portfolioSummary} /></> : null}{media ? <DossierHeroMedia media={media} organizationName={organization.name} /> : null}</DossierReadingSection> : null}
-        {editorial.operatingContext ? <DossierReadingSection id="operating-context" title="Operating context" note="Interfaces, delivery responsibilities and practical constraints."><DossierParagraphs text={editorial.operatingContext} /></DossierReadingSection> : null}
-        {editorial.canadianFootprint || organization.primaryLocation ? <DossierReadingSection id="canadian-footprint" alias="geography" title="Canadian footprint" note="Locations and industrial activity, with their scope intact."><DossierParagraphs text={editorial.canadianFootprint} />{organization.primaryLocation ? <div className={styles.mapCallout}><MapPin className="size-4" aria-hidden="true" /><div><p>{locationContext(organization, false)}</p><Link href={selectedMapHref(mapReturnTo, organization.id)} data-profile-action="map_open" data-profile-target-id={organization.id} data-profile-target-type="map" data-profile-section="geography" className="atlas-prose-link">Open the map <ArrowRight className="ml-1 size-3" aria-hidden="true" /></Link></div></div> : null}</DossierReadingSection> : null}
-        {hasCommercial ? <DossierReadingSection id="commercial" alias="commercial-context" title={organization.entityKind === "company" ? "Commercial context" : "Operating model and access"} note={organization.entityKind === "company" ? "Keep reporting period, entity scope and the stage of each commitment together." : "How the organization operates, who it serves and the conditions of access."}>
-          <CompanySnapshot organization={organization} presentation="commercial" />
+      {organization.capabilities.length ? <section id="capabilities" tabIndex={-1} className={styles.chapter} aria-labelledby="capabilities-heading">
+        <div className={styles.sectionTop}><h2 id="capabilities-heading">Technologies &amp; services <span className={styles.count}>{organization.capabilities.length}</span></h2></div>
+        {organization.capabilities.map((capability, index) => <CapabilityRow key={capability.id} capability={capability} index={index} organizationId={organization.id} />)}
+      </section> : null}
+      {hasAbout ? <section id="about" tabIndex={-1} className={styles.chapter} aria-labelledby="about-heading">
+        <h2 id="about-heading">About {organization.name}</h2>
+        {organization.description ? <div id="company-context" tabIndex={-1} className={styles.prose}><span id="profile" /><DossierParagraphs text={organization.description} />{typeof organization.profileData.portfolioSummary === "string" ? <><h3>Systems and integration</h3><DossierParagraphs text={organization.profileData.portfolioSummary} /></> : null}{media ? <DossierHeroMedia media={media} organizationName={organization.name} /> : null}</div> : null}
+        {editorial.operatingContext ? <DossierReadingSection id="operating-context" title="Operating context" level={3}><DossierParagraphs text={editorial.operatingContext} /></DossierReadingSection> : null}
+        {editorial.canadianFootprint || organization.primaryLocation ? <DossierReadingSection id="canadian-footprint" alias="geography" title="Canadian footprint" level={3}><DossierParagraphs text={editorial.canadianFootprint} />{organization.primaryLocation ? <div className={styles.mapCallout}><MapPin className="size-4" aria-hidden="true" /><div><p>{locationContext(organization, false)}</p><Link href={selectedMapHref(mapReturnTo, organization.id)} data-profile-action="map_open" data-profile-target-id={organization.id} data-profile-target-type="map" data-profile-section="geography" className="atlas-prose-link">Open the map <ArrowRight className="ml-1 size-3" aria-hidden="true" /></Link></div></div> : null}</DossierReadingSection> : null}
+        {editorial.executiveRelevanceSummary ? <DossierReadingSection id="assessment" title="TNM assessment" level={3}><DossierParagraphs text={editorial.executiveRelevanceSummary} /><p className={styles.caveat}>Interpretation of the public record. Not qualification, endorsement or evidence of buyer interest.</p></DossierReadingSection> : null}
+      </section> : null}
+      {hasPublicRecord ? <section id="public-record" tabIndex={-1} className={styles.chapter} aria-labelledby="public-record-heading">
+        <h2 id="public-record-heading">Public record</h2>
+        {hasActivity ? <DossierReadingSection id="why-now" title="Recent activity" level={3}><p className={styles.date}>{formatDate(editorial.currentActivityAsOf)}</p><DossierParagraphs text={editorial.currentActivity} />{[...new Map(currentActivitySources.map(source => [source.sourceUrl, source])).values()].map(source => <ExternalSourceLink key={source.id} href={source.sourceUrl} className={styles.sourceInline}>Read the original record<span className="sr-only">: {source.sourceTitle}</span></ExternalSourceLink>)}</DossierReadingSection> : null}
+        {hasCommercial ? <DossierReadingSection id="commercial" alias="commercial-context" title={organization.entityKind === "company" ? "Commercial context" : "Operating model and access"} level={3}>
           <DossierParagraphs text={organization.commercialStatus} />
+          <CompanySnapshot organization={organization} presentation="commercial" />
           {organization.disclosedFinancingSummary ? <details className={styles.disclosure}><summary><ChevronDown aria-hidden="true" />Financing and disclosed activity</summary><DossierParagraphs text={organization.disclosedFinancingSummary} /></details> : null}
           {organization.ownership ? <details className={styles.disclosure}><summary><ChevronDown aria-hidden="true" />Ownership and entity scope</summary><DossierParagraphs text={organization.ownership} /></details> : null}
           {organization.employeeRange || organization.companyStage ? <dl className={styles.factGrid}>{organization.employeeRange ? <div><dt>Reported employee range</dt><dd>{organization.employeeRange}</dd></div> : null}{organization.companyStage ? <div><dt>Reported stage</dt><dd>{organization.companyStage}</dd></div> : null}</dl> : null}
         </DossierReadingSection> : null}
-        {hasPublicRecord ? <DossierReadingSection id="public-record" title="Public record" note="Dated programmes, contracts, funding and relationships.">{organization.programs.length ? <ProgramTimeline organization={organization} /> : null}{organization.relationships.length ? <RelationshipList organization={organization} /> : null}{organization.fundingEvents.length ? <FundingList organization={organization} /> : null}</DossierReadingSection> : null}
-        {connections.length ? <DossierReadingSection id="connections" title="Reviewed connections" note="Mission areas and released Defence needs.">{connections.map(({ key, capability, match, title, href, type, action, targetId, targetType }) => <article key={key} className={styles.connection}><div className={styles.connectionLabel}><span>{type} · {alignmentTypeLabel(match.matchType)}</span><span>Evidence strength: {toTitleCase(match.confidence)}</span></div><h3><Link href={href} className="atlas-prose-link" data-internal-link-role="contextual" data-internal-link-module="organization_connection" data-profile-action={action} data-profile-target-id={targetId} data-profile-target-type={targetType} data-profile-section="connections">{title}</Link></h3><p className={styles.caveat}>Contributing capability: <Link href={`/capabilities/${capability.slug}`} className="atlas-prose-link">{capability.name}</Link></p><DossierParagraphs text={match.alignmentSummary} /><div className={styles.connectionSources}>{[...new Map(match.citations.map(citation => [citation.sourceUrl, citation])).values()].map(citation => <ExternalSourceLink key={citation.id} href={citation.sourceUrl}>{citation.sourceTitle}</ExternalSourceLink>)}</div></article>)}<p className={styles.caveat}>Reviewed connections indicate possible relevance based on public evidence. They do not indicate procurement direction, eligibility, endorsement or customer interest.</p></DossierReadingSection> : null}
-      </div>
-      {editorial.reviewedQuestions.length ? <section id="questions" tabIndex={-1} className={styles.questions} aria-labelledby="questions-heading"><h2 id="questions-heading">Questions for a first conversation</h2><p>Specific points to resolve before treating a possible fit as a delivery commitment.</p><ol className={styles.questionGrid}>{editorial.reviewedQuestions.map((question, index) => <li key={question.id} className={styles.question}><span className={styles.number} aria-hidden="true">{String(index + 1).padStart(2, "0")}</span><h3>{question.question}</h3><DossierParagraphs text={question.context} /></li>)}</ol></section> : null}
-      <DossierSourceLibrary sources={sources} scope="These records support the organization, its owned capabilities and their reviewed connections." />
-      <section id="contact" tabIndex={-1} className={styles.next} aria-labelledby="contact-heading"><div><h2 id="contact-heading">Take the next conversation further.</h2><p>Save the organization, keep the supporting sources, and resolve the questions that matter to your project.</p></div><DossierActions {...actions} closing /></section>
+        <div className={styles.publicRecord}>
+          {organization.programs.length ? <ProgramTimeline organization={organization} /> : null}
+          {organization.relationships.length ? <RelationshipList organization={organization} /> : null}
+          {organization.fundingEvents.length ? <FundingList organization={organization} /> : null}
+        </div>
+        {connections.length ? <DossierReadingSection id="connections" title="Reviewed connections" level={3}>{connections.map(({ key, capability, match, title, href, type, action, targetId, targetType }) => <article key={key} className={styles.connection}><div className={styles.connectionLabel}><span>{type} · {alignmentTypeLabel(match.matchType)}</span><span>Evidence strength: {toTitleCase(match.confidence)}</span></div><h4><Link href={href} className="atlas-prose-link" data-internal-link-role="contextual" data-internal-link-module="organization_connection" data-profile-action={action} data-profile-target-id={targetId} data-profile-target-type={targetType} data-profile-section="connections">{title}</Link></h4><p className={styles.caveat}>Contributing capability: <Link href={`/capabilities/${capability.slug}`} className="atlas-prose-link">{capability.name}</Link></p><DossierParagraphs text={match.alignmentSummary} /><div className={styles.connectionSources}>{[...new Map(match.citations.map(citation => [citation.sourceUrl, citation])).values()].map(citation => <ExternalSourceLink key={citation.id} href={citation.sourceUrl}>{citation.sourceTitle}</ExternalSourceLink>)}</div></article>)}<p className={styles.caveat}>Reviewed connections indicate possible relevance based on public evidence. They do not indicate procurement direction, eligibility, endorsement or customer interest.</p></DossierReadingSection> : null}
+      </section> : null}
+      {editorial.reviewedQuestions.length || sources.length ? <section id="verification" tabIndex={-1} className={styles.chapter} aria-label="Questions and sources">
+        {editorial.reviewedQuestions.length ? <section id="questions" tabIndex={-1} className={styles.questions} aria-labelledby="questions-heading"><h2 id="questions-heading">Questions for a first conversation</h2><ol className={styles.questionGrid}>{editorial.reviewedQuestions.map((question, index) => <li key={question.id} className={styles.question}><span className={styles.number} aria-hidden="true">{String(index + 1).padStart(2, "0")}</span><div><h3>{question.question}</h3><DossierParagraphs text={question.context} /></div></li>)}</ol></section> : null}
+        <DossierSourceLibrary sources={sources} scope="These records support the organization, its owned capabilities and their reviewed connections." />
+      </section> : null}
+      <section id="contact" tabIndex={-1} className={styles.next} aria-label="Contact and next steps">
+        {hasContact ? <div className={styles.contactLinks}>
+          {publicContact.contactPageUrl || organization.websiteUrl ? <ExternalSourceLink href={publicContact.contactPageUrl ?? organization.websiteUrl!}>Official contact</ExternalSourceLink> : null}
+          {publicContact.publicEmail ? <a className="atlas-prose-link" href={`mailto:${publicContact.publicEmail}`}>{publicContact.publicEmail}</a> : null}
+          {publicContact.publicPhone ? <a className="atlas-prose-link" href={`tel:${publicContact.publicPhone}`}>{publicContact.publicPhone}</a> : null}
+          {publicContact.linkedInUrl ? <ExternalSourceLink href={publicContact.linkedInUrl}>LinkedIn</ExternalSourceLink> : null}
+        </div> : null}
+        <DossierActions {...actions} closing />
+      </section>
       <Suspense fallback={null}><RelatedIntelligenceLoader organization={organization} relatedIntelligence={relatedIntelligence} /></Suspense>
       {showsContextualNorthSignalSignup("organization", organization.slug) ? <NorthSignalInline placement="newsletter_inline_profile" trigger="profile_after_evidence" className="w-full" /> : null}
     </article>

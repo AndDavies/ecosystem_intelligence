@@ -179,15 +179,16 @@ Adapted from the grid and hierarchy guidance in [Michael Schwaibold's post](http
   fixed square so lazy imagery does not shift text. A selected map result uses
   Signal Wash plus a Signal Yellow rule and clear focus state; colour never
   changes its rank, confidence, or publication meaning.
-- Organization and capability dossiers use the approved Option A composition:
-  a light opening, compact record-facts panel, open numbered capability rows,
-  labelled assessment, aligned research sections and dark closing actions.
-  Editorial Blue supports assessment, dated activity and integration limits;
-  facts use Field on Paper. Reuse the shared header, footer, controls and assets.
+- Organization and capability dossiers use the Reading chapters refinement
+  selected by Andrew on 2026-09-29: a compact light opening, inline record facts,
+  open numbered capability rows and one stable reading column. Headings sit
+  above their content. Assessment stays explicitly labelled in the reading flow;
+  it does not require a coloured panel. Closing profile actions are quiet inline
+  links. Reuse the shared header, footer, controls, newsletter and assets.
 - Dossier-only navigation exception approved by Andrew on 2026-09-28: the
   horizontal section bar sticks below the actual site header on desktop and
   mobile, with horizontal scrolling when needed. Rendered sections alone
-  determine its links. Preserve fragment aliases, keyboard focus and source
+  determine its links, in document order. Preserve fragment aliases, keyboard focus and source
   disclosures reached by a fragment. Other routes retain their existing
   navigation behaviour.
 - Mission Areas carry the distinction between reviewed discovery lenses and
@@ -223,24 +224,27 @@ Adapted from the grid and hierarchy guidance in [Michael Schwaibold's post](http
   briefing by default and optional separately consented edition alerts. Use the Directional N for the visual mark and
   never use `Public Beta` as permanent wordmark, footer or social-card branding.
 - Organization dossiers put the complete capability index immediately after
-  the opening/index, with optional assessment beside it; activity, company,
-  operating, geographic and commercial context follow. Capability dossiers
-  put features/applications before the complete narrative, maturity,
-  availability and integration limits. Retain conditional reviewed connections,
-  programmes, relationships and evidence in both surfaces as applicable, then
-  sources and real next-conversation actions. Sparse records omit absent
-  optional sections without reserving space or using a separate renderer.
+  the opening/index. About groups the full overview, operating context, Canadian
+  footprint and labelled assessment. Public record groups dated activity,
+  commercial information, programmes, relationships and reviewed connections;
+  questions and sources follow. Capability dossiers put the complete narrative
+  before technical detail, use/integration, reviewed connections and sources.
+  Preserve all substantive paragraphs and qualifications. Sparse records omit
+  absent optional sections without reserving space or using a separate renderer.
 - Optional reviewed presentation copy is distinct from full narrative and TNM
   assessment. The Research application interface owns the additive field and
   publication contract. Missing short copy is omitted, never derived by slicing
   or summarizing the long narrative at render time. A full-overview/technical-summary
   link remains visible beside the main actions. No separate refreshed template
   or corpus backfill is needed.
-- Dossier supporting panels use content density to choose side-by-side or normal
-  reading flow. Short catalogues, missing teasers and long assessments place
-  supporting material beneath the catalogue; absent support removes its column.
-  This is a shared flow policy, never a company flag, item maximum or fixed-height
-  gap. Capability features and applications use the equivalent policy.
+- Dossiers share a single reading edge from identity through the last research
+  section. No content-density heuristic, competing sidebar or reserved track is
+  needed. Capability rows always use the same name/type/optional reviewed teaser
+  structure, with the complete technical summary available through disclosure.
+  Financial context, connection explanations, questions and source excerpts use
+  the same 17-pixel Inter reading size and generous line height as the main prose.
+  Metadata can be smaller; material qualifications cannot. Disclosure changes
+  visibility, never the stored narrative or its evidence associations.
 
 ### Defence Signals editorial reading
 

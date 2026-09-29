@@ -1,10 +1,10 @@
 .navigation.navigation.navigation { position: sticky; top: var(--dossier-header-height, 78px); z-index: 15; margin: 0; padding: 0; background: var(--atlas-surface); border-block: 1px solid var(--atlas-border); }
-.navigation.navigation .scroller { display: flex; flex-wrap: nowrap; gap: 38px; align-items: center; overflow-x: auto; scrollbar-width: thin; min-height: 58px; }
+.navigation.navigation .scroller { display: flex; flex-wrap: nowrap; gap: 24px; align-items: center; overflow-x: auto; scrollbar-width: thin; min-height: 58px; }
 .navigation .label { flex-shrink: 0; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--atlas-muted); }
-.navigation.navigation .scroller > ul { display: flex; flex-wrap: nowrap; align-items: center; flex-shrink: 0; gap: 28px; }
-.navigation a { display: flex; align-items: center; min-height: 58px; padding-top: 3px; white-space: nowrap; font-size: 12px; font-weight: 600; color: var(--atlas-muted); text-decoration: none; border-bottom: 3px solid transparent; }
+.navigation.navigation .scroller > ul { display: flex; flex-wrap: nowrap; align-items: center; flex-shrink: 0; gap: 24px; }
+.navigation a { display: flex; align-items: center; min-height: 58px; padding-top: 3px; white-space: nowrap; font-size: 14px; font-weight: 600; color: var(--atlas-muted); text-decoration: none; border-bottom: 3px solid transparent; }
 .navigation a[aria-current] { color: var(--atlas-ink); border-color: var(--atlas-signal); }
 .navigation a:hover { color: var(--atlas-link); }
 .navigation a:focus-visible { outline-offset: -4px; }
 @media(max-width:900px) { .navigation .label { display: none; } .navigation.navigation .scroller > ul { gap: 23px; } }
-@media(max-width:639px) { .navigation.navigation .scroller, .navigation a { min-height: 51px; } .navigation a { font-size: 11px; } .navigation.navigation .scroller > ul { gap: 24px; } }
+@media(max-width:639px) { .navigation.navigation .scroller, .navigation a { min-height: 51px; } .navigation a { font-size: 13px; } .navigation.navigation .scroller > ul { gap: 24px; } }

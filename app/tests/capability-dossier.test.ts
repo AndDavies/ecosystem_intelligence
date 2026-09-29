@@ -23,6 +23,14 @@ function render(capability = previewOrganization.capabilities[0], mapReturnTo = 
 }
 
 describe("editorial capability dossier", () => {
+  it("labels sibling capabilities accurately without mislabelling mixed related destinations", () => {
+    const capability = previewOrganization.capabilities[0];
+    const siblingsOnly = render({ ...capability, missionMatches: [], demandMatches: [], technicalDomains: [] });
+    expect(siblingsOnly.querySelector("#related-context")?.textContent).toBe(`Other capabilities from ${previewOrganization.name}`);
+    expect(siblingsOnly.querySelector("#related-context")?.parentElement?.querySelectorAll("a[href^='/capabilities/']").length).toBeGreaterThan(0);
+    expect(render().querySelector("#related-context")?.textContent).toBe("Other capabilities and related paths");
+  });
+
   it("groups source rows without losing distinct passages, locators or connection associations", () => {
     const capability = structuredClone(previewOrganization.capabilities[0]);
     const original = capability.citations[0];
@@ -52,7 +60,14 @@ describe("editorial capability dossier", () => {
     expect(missionOnly.querySelector("#mission-areas")?.textContent).toContain("not procurement eligibility");
     expect(doc.querySelector("aside[aria-label='Capability record']")?.textContent).toContain("Organization reviewed");
     expect(doc.querySelector("#defence-needs")?.textContent).toContain("eligibility");
-    for (const anchor of doc.querySelectorAll("nav[aria-label='On this page'] a")) expect(doc.querySelector(anchor.getAttribute("href")!)).not.toBeNull();
+    const targets = [...doc.querySelectorAll("nav[aria-label='On this page'] a")].map(anchor => doc.querySelector(anchor.getAttribute("href")!)!);
+    expect(targets.every(Boolean)).toBe(true);
+    for (let i = 1; i < targets.length; i++) expect(targets[i - 1].compareDocumentPosition(targets[i]) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(doc.querySelector("#overview")!.compareDocumentPosition(doc.querySelector("#technical-profile")!) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(doc.querySelector("#maturity")?.closest("#use-integration")).not.toBeNull();
+    const before = doc.body.textContent;
+    doc.querySelectorAll("details").forEach(details => { details.open = true; });
+    expect(doc.body.textContent).toBe(before);
     const sparse = render(previewOrganization.capabilities[1]);
     expect(sparse.querySelector("#mission-areas")).toBeNull();
     expect(sparse.querySelector("#defence-needs")).toBeNull();

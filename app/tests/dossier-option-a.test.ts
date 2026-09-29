@@ -14,8 +14,14 @@ vi.mock("@/components/atlas/public-share", () => ({ PublicShare: () => React.cre
 vi.mock("server-only", () => ({}));
 vi.stubGlobal("React", React);
 
-function render(key: FixtureKey) {
-  const organization = profileFixture(key);
+function render(key: FixtureKey | "single-no-copy") {
+  const organization = profileFixture(key === "single-no-copy" ? "kraken" : key);
+  if (key === "single-no-copy") {
+    organization.logo = null;
+    delete organization.presentationCopy;
+    organization.capabilities = [organization.capabilities[0]];
+    delete organization.capabilities[0].presentationCopy;
+  }
   const doc = document.implementation.createHTMLDocument();
   doc.body.innerHTML = renderToStaticMarkup(React.createElement(ExecutiveOrganizationDossier, { organization, profilePath: `/organizations/${organization.slug}`, mapReturnTo: "/map?domain=autonomy", relatedIntelligence: fixtureRelated, trackEngagement: false }));
   return { doc, organization };
@@ -48,7 +54,7 @@ describe("optional reviewed presentation copy", () => {
   });
 });
 
-describe("Option A dossier content and handoffs", () => {
+describe("Shared dossier content and handoffs", () => {
   it("keeps all eight capabilities and full paragraphs, with navigation only to rendered targets", () => {
     const { doc, organization } = render("long");
     expect(doc.querySelector('article[data-editorial-dossier="organization"] #capabilities')).not.toBeNull();
@@ -73,8 +79,8 @@ describe("Option A dossier content and handoffs", () => {
     for (const id of ["why-now", "operating-context", "commercial", "public-record", "connections", "questions", "sources"]) expect(doc.getElementById(id)).toBeNull();
     expect(doc.querySelector("header img")).toBeNull();
     const centre = render("centre").doc;
-    expect(centre.querySelector("#company-context h2")?.textContent).toBe("Organization context");
-    expect(centre.querySelector("#commercial h2")?.textContent).toBe("Operating model and access");
+    expect(centre.querySelector("#about h2")?.textContent).toContain("Research and Test Centre");
+    expect(centre.querySelector("#commercial h3")?.textContent).toBe("Operating model and access");
   });
 
   it("keeps source scope, distinct passages, public-record context and guarded actions", () => {
@@ -98,14 +104,29 @@ describe("Option A dossier content and handoffs", () => {
 });
 
 
-it("uses content density, not a capability-count maximum, for supporting panels", async () => {
- const {catalogueSupportsAside,featuresSupportAside}=await import("@/lib/atlas/dossier-layout");
- const {profileFixture}=await import("@/app/dev/profile-design/fixtures");
- const org=profileFixture("kraken");
- const noTeaser=org.capabilities.map(cap=>({...cap,presentationCopy:undefined}));
- expect(catalogueSupportsAside(noTeaser,"A long qualified assessment. ".repeat(35),3)).toBe(false);
- expect(catalogueSupportsAside(Array.from({length:12},(_,i)=>({...org.capabilities[0],id:`many-${i}`})),"A bounded assessment.",2)).toBe(true);
- expect(catalogueSupportsAside([],"Assessment only",1)).toBe(false);
- expect(featuresSupportAside([],['Application'])).toBe(false);
- expect(featuresSupportAside(['Feature'],['Long qualified application. '.repeat(50)])).toBe(false);
+it("orders chapters as rendered for rich, single-offering and sparse records", () => {
+  for (const key of ["kraken", "single-no-copy", "sparse", "connections", "centre"] as const) {
+    const { doc } = render(key);
+    const targets = [...doc.querySelectorAll("nav[aria-label='On this page'] a")].map(anchor => doc.querySelector(anchor.getAttribute("href")!)!);
+    expect(targets.every(Boolean)).toBe(true);
+    for (let i = 1; i < targets.length; i++) expect(targets[i - 1].compareDocumentPosition(targets[i]) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+  }
+});
+
+it("keeps a single offering intentional without short copy, while disclosures preserve identical complete research", () => {
+  const { doc, organization } = render("single-no-copy");
+  expect(doc.querySelectorAll("#capabilities > article")).toHaveLength(1);
+  expect(doc.querySelector("header")?.textContent).not.toContain(organization.description);
+  expect(doc.querySelector("a[href='#company-context']")).not.toBeNull();
+  expect(doc.querySelector("#assessment")?.closest("#about")).not.toBeNull();
+  const before = doc.body.textContent;
+  doc.querySelectorAll("details").forEach(details => { details.open = true; });
+  expect(doc.body.textContent).toBe(before);
+  for (const narrative of [organization.description, organization.editorialProfile.operatingContext, organization.disclosedFinancingSummary, organization.editorialProfile.executiveRelevanceSummary, organization.capabilities[0].summary, organization.capabilities[0].maturity, organization.capabilities[0].commercialAvailability]) {
+    for (const paragraph of dossierParagraphs(narrative)) expect(doc.body.textContent).toContain(paragraph);
+  }
+  for (const observation of organization.editorialProfile.snapshotObservations ?? []) {
+    expect(doc.querySelector("#commercial")?.textContent).toContain(observation.qualification);
+    expect(doc.querySelector("#commercial")?.textContent).toContain(observation.reportingScope);
+  }
 });

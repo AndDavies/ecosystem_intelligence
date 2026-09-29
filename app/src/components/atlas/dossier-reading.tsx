@@ -15,9 +15,10 @@ export function DossierParagraphs({ text, className = "" }: { text: string | nul
   return paragraphs.length ? <div className={`${styles.paragraphs} ${className}`}>{paragraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}</div> : null;
 }
 
-export function DossierReadingSection({ id, title, note, children, alias }: { id: string; title: string; note?: string; children: ReactNode; alias?: string }) {
+export function DossierReadingSection({ id, title, note, children, alias, level = 2 }: { id: string; title: string; note?: string; children: ReactNode; alias?: string; level?: 2 | 3 }) {
+  const Heading = level === 3 ? "h3" : "h2";
   return <section id={id} tabIndex={-1} className={styles.readingSection} aria-labelledby={`${id}-heading`}>
-    <div className={styles.sectionSide}>{alias ? <span id={alias} /> : null}<h2 id={`${id}-heading`}>{title}</h2>{note ? <p>{note}</p> : null}</div>
+    <div className={styles.sectionSide}>{alias ? <span id={alias} /> : null}<Heading id={`${id}-heading`}>{title}</Heading>{note ? <p>{note}</p> : null}</div>
     <div className={styles.prose}>{children}</div>
   </section>;
 }
@@ -25,6 +26,11 @@ export function DossierReadingSection({ id, title, note, children, alias }: { id
 export function DossierActions({ type, id, slug, ownerSlug, title, description, profilePath, websiteUrl, closing = false }: {
   type: "organization" | "capability"; id: string; slug: string; ownerSlug: string; title: string; description: string; profilePath: string; websiteUrl?: string | null; closing?: boolean;
 }) {
+  if (closing) return <div className={`${styles.actions} ${styles.continuation}`} aria-label={`${type === "organization" ? "Organization" : "Capability"} actions`}>
+    <Link href={`/collections?addType=${type}&addId=${id}&returnTo=${encodeURIComponent(profilePath)}`} prefetch={false} className="atlas-prose-link"><BookmarkPlus aria-hidden="true" />Add to shortlist</Link>
+    <Link href={`/connect/${ownerSlug}`} prefetch={false} className="atlas-prose-link">Request an introduction</Link>
+    <Link href={`/submit?submissionType=correction&targetType=${type}&targetId=${id}&returnTo=${encodeURIComponent(profilePath)}`} prefetch={false} className="atlas-prose-link">Suggest a correction <ArrowRight aria-hidden="true" /></Link>
+  </div>;
   const tools = <>
     {websiteUrl ? <ExternalSourceLink href={websiteUrl} className={styles.mobileWebsite}>Official website</ExternalSourceLink> : null}
     <DownloadLink href={`/api/export?type=${type}-dossier&slug=${slug}`} className="atlas-prose-link inline-flex items-center gap-1">Download profile <Download aria-hidden="true" /></DownloadLink>
@@ -35,11 +41,10 @@ export function DossierActions({ type, id, slug, ownerSlug, title, description, 
     <div className={styles.primaryActions}>
       <Link href={`/collections?addType=${type}&addId=${id}&returnTo=${encodeURIComponent(profilePath)}`} prefetch={false} className="atlas-signal-button gap-2"><BookmarkPlus aria-hidden="true" />Add to shortlist</Link>
       <Link href={`/connect/${ownerSlug}`} prefetch={false} className="atlas-secondary-button">Request an introduction</Link>
-      {!closing && websiteUrl ? <ExternalSourceLink href={websiteUrl} className={styles.website}>Official website</ExternalSourceLink> : null}
-      {!closing ? <details className={styles.mobileTools}><summary aria-label="More profile actions"><MoreHorizontal className="size-4" aria-hidden="true" /></summary><div className={styles.tools}>{tools}</div></details> : null}
+      {websiteUrl ? <ExternalSourceLink href={websiteUrl} className={styles.website}>Official website</ExternalSourceLink> : null}
+      <details className={styles.mobileTools}><summary aria-label="More profile actions"><MoreHorizontal className="size-4" aria-hidden="true" /></summary><div className={styles.tools}>{tools}</div></details>
     </div>
-    {!closing ? <div className={`${styles.tools} ${styles.desktopTools}`}>{tools}</div> : null}
-    {closing ? <Link href={`/submit?submissionType=correction&targetType=${type}&targetId=${id}&returnTo=${encodeURIComponent(profilePath)}`} prefetch={false} className={styles.correction}>Suggest a correction <ArrowRight className="size-3.5" aria-hidden="true" /></Link> : null}
+    <div className={`${styles.tools} ${styles.desktopTools}`}>{tools}</div>
   </div>;
 }
 
