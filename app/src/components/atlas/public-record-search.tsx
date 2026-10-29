@@ -19,6 +19,11 @@ export function PublicRecordSearch({ query = "", type, region, placement = "dire
     if (type) params.set("type", type);
     if (region) params.set("region", region);
     trackBetaEvent("filter_apply", { filter: "query", value: value ? "set" : "all", placement, measurement_version: "discovery_v2" }, { searchId: null });
+    if (placement === "directory" && value === query) {
+      const results = document.getElementById("directory-results-status");
+      results?.focus({ preventScroll: true });
+      results?.scrollIntoView({ block: "nearest" });
+    }
     router.push(`/organizations${params.size ? `?${params}` : ""}`);
   }
   function select(suggestion: AtlasLookupSuggestion) {

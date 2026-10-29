@@ -246,7 +246,7 @@ describe("relationship presentation", () => {
     expect(demandRelationshipAssessmentRole(pal, cyber)).toBe("broader");
   });
 
-  it("replaces a broader treatment overclaim while preserving direct assessment copy", () => {
+  it("preserves the reviewed assessment even when wording-based grouping is broader", () => {
     const cyber = getRelationshipPilotTreatment("public_need", "major-event-and-critical-infrastructure-cyber-defence")!;
     const broader = demandEntry({
       id: "jasco-cyber-copy",
@@ -264,7 +264,7 @@ describe("relationship presentation", () => {
     });
 
     expect(demandRelationshipAssessmentCopy(demandRelationshipAssessmentRole(broader, cyber), broader.match.alignmentSummary))
-      .toBe(broaderDemandRelationshipAssessmentCopy);
+      .toBe(broader.match.alignmentSummary);
     expect(broaderDemandRelationshipAssessmentCopy).not.toContain("may help");
     expect(demandRelationshipAssessmentCopy(demandRelationshipAssessmentRole(direct, cyber), direct.match.alignmentSummary))
       .toBe(direct.match.alignmentSummary);

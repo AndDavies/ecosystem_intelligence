@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "@/components/atlas/navigation-link";
 import { Suspense } from "react";
 import { ArrowRight, Building2, Compass, Layers3, MapPin, X, type LucideIcon } from "lucide-react";
+import { DirectoryFilters, DirectoryResultStatus } from "@/components/atlas/directory-controls";
 import { OrganizationDirectoryLoading } from "@/components/atlas/organization-directory-loading";
 import { PublicRecordSearch } from "@/components/atlas/public-record-search";
 import { OrganizationCard } from "@/components/atlas/organization-card";
@@ -17,10 +18,10 @@ import { socialMetadata } from "@/lib/seo/social";
 const PER_PAGE = 24;
 
 export const organizationsMetadata: Metadata = {
-  title: "Canadian Defence and Dual-Use Organizations",
-  description: "Find Canadian defence and dual-use organizations, understand their possible contribution, and decide which profiles are worth a closer look or conversation.",
+  title: "Defence and Dual-Use Organizations",
+  description: "Canadian-first discovery of worldwide defence and dual-use organizations: understand their possible contribution, and decide which profiles are worth a closer look or conversation.",
   alternates: { canonical: "/organizations" },
-  ...socialMetadata({ title: "Canadian Defence and Dual-Use Organizations", description: "Find Canadian organizations, understand what they may contribute, and decide which profiles are worth examining next.", path: "/organizations", eyebrow: "Canadian capability directory" })
+  ...socialMetadata({ title: "Defence and Dual-Use Organizations", description: "Find worldwide organizations, understand what they may contribute, and decide which profiles are worth examining next.", path: "/organizations", eyebrow: "Canadian capability directory" })
 };
 
 export type OrganizationSearchParams = Promise<{ page?: string | string[]; type?: string | string[]; region?: string | string[]; q?: string | string[] }>;
@@ -47,7 +48,7 @@ export function OrganizationsRoute({ searchParams }: { searchParams: Organizatio
       variant="collection"
       eyebrow="Canadian defence and dual-use directory"
       title="Find the people and technology your project needs."
-      description="Search companies, research centres and industry organizations. Open a profile to see what they offer and where they may fit."
+      description="Canadian-first discovery of companies, research centres and industry organizations worldwide. Open a profile to see what they offer. The map shows Canadian locations."
       actions={<Link href="/map?view=map" className="atlas-prose-link inline-flex min-h-11 items-center text-sm font-bold">Explore the map</Link>}
     >
       <Suspense fallback={<OrganizationDirectoryLoading />}>
@@ -106,10 +107,26 @@ async function OrganizationsDirectoryData({ searchParams }: { searchParams: Orga
   return (
     <>
       <div className="mt-6 max-w-3xl"><PublicRecordSearch query={activeQuery} type={activeType} region={activeRegion} /></div>
+      <DirectoryResultStatus stateKey={[activeQuery, activeType, activeRegion, directory.page].join("|")} focus={Boolean(activeQuery)}>
+        {hasFilters ? (
+          <div className="mt-5 flex flex-wrap items-center gap-2 border-y border-[var(--atlas-border)] py-3">
+            <span className="text-[11px] font-bold uppercase tracking-[0.1em] text-[var(--atlas-muted)]">Showing</span>
+            {activeQuery ? <span className="text-sm font-semibold">Search: {activeQuery}</span> : null}
+            {activeType ? <FilterPill label={organizationTypeFilterLabel(activeType)} removeHref={browseHref({ type: undefined })} /> : null}
+            {activeRegion ? <FilterPill label={activeRegionName ?? activeRegion} removeHref={browseHref({ region: undefined })} /> : null}
+            <Link href="/organizations" className="ml-auto text-xs font-bold text-[var(--atlas-primary)] underline-offset-4 hover:underline">
+              Clear all
+            </Link>
+          </div>
+        ) : null}
+
+        <p className="text-sm font-semibold">{directory.total.toLocaleString("en-CA")} {directory.total === 1 ? "organization" : "organizations"} found{hasFilters ? " with these filters" : ""}.</p>
+        {!directory.total && hasFilters ? <p className="mt-2 text-sm">Try a broader search or <Link href="/organizations" className="atlas-prose-link">clear all filters</Link>.</p> : null}
+      </DirectoryResultStatus>
       <dl className="atlas-directory-stats">
         <DirectoryStat icon={Building2} label="Published organizations" value={publishedOrganizationCount} tone="blue" />
         <DirectoryStat icon={Layers3} label="Technologies and services" value={publishedCapabilityCount} tone="evidence" />
-        <DirectoryStat icon={MapPin} label="Covered regions" value={coveredRegions} href="/regions" tone="signal" />
+        <DirectoryStat icon={MapPin} label="Canadian regions" value={coveredRegions} href="/regions" tone="signal" />
       </dl>
 
       <section className="mt-6">
@@ -125,7 +142,7 @@ async function OrganizationsDirectoryData({ searchParams }: { searchParams: Orga
         />
 
         <div className="atlas-directory-grid">
-        <aside className="atlas-directory-filters">
+        <DirectoryFilters activeCount={Number(Boolean(activeType)) + Number(Boolean(activeRegion))}>
           <BrowseRow
             label="Organization type"
             allLabel="All types"
@@ -140,8 +157,8 @@ async function OrganizationsDirectoryData({ searchParams }: { searchParams: Orga
             }))}
           />
           <BrowseRow
-            label="Region"
-            allLabel="All regions"
+            label="Canadian primary location"
+            allLabel="Worldwide / any location"
             allHref={browseHref({ region: undefined })}
             allActive={!activeRegion}
             options={regionFacets.map((region) => ({
@@ -152,22 +169,9 @@ async function OrganizationsDirectoryData({ searchParams }: { searchParams: Orga
               active: activeRegion === region.slug
             }))}
           />
-        </aside>
+        </DirectoryFilters>
 
         <div className="atlas-directory-records">
-        {hasFilters ? (
-          <div className="mt-5 flex flex-wrap items-center gap-2 border-y border-[var(--atlas-border)] py-3">
-            <span className="text-[11px] font-bold uppercase tracking-[0.1em] text-[var(--atlas-muted)]">Showing</span>
-            {activeQuery ? <span className="text-sm font-semibold">Search: {activeQuery}</span> : null}
-            {activeType ? <FilterPill label={organizationTypeFilterLabel(activeType)} removeHref={browseHref({ type: undefined })} /> : null}
-            {activeRegion ? <FilterPill label={activeRegionName ?? activeRegion} removeHref={browseHref({ region: undefined })} /> : null}
-            <Link href="/organizations" className="ml-auto text-xs font-bold text-[var(--atlas-primary)] underline-offset-4 hover:underline">
-              Clear all
-            </Link>
-          </div>
-        ) : null}
-
-        <p className="text-sm font-semibold" role="status">{directory.total.toLocaleString("en-CA")} {directory.total === 1 ? "organization" : "organizations"} found{hasFilters ? " with these filters" : " across Canada"}.</p>
         {directory.items.length ? (
           <>
             <div className="atlas-directory-list mt-4">

@@ -1,5 +1,7 @@
 "use client";
 
+import { discoveryEvidenceSignature, projectDiscovery, recallDiscovery, rememberDiscovery } from "@/lib/atlas/discovery-context";
+
 import { DownloadLink } from "@/components/atlas/download-link";
 import Link from "@/components/atlas/navigation-link";
 import {
@@ -45,8 +47,7 @@ import { publicOrganizationTypes } from "@/lib/atlas/lens-options";
 import {
   ATLAS_EXPLORER_PAGE_SIZE,
   projectAtlasExplorerOrganization,
-  selectedExplorerCapabilityIds,
-  projectAtlasMapOrganization
+  selectedExplorerCapabilityIds
 } from "@/lib/atlas/explorer-projection";
 import { atlasQueryFromSearchParams, atlasQueryToSearchParams, initialAtlasView } from "@/lib/atlas/query-params";
 import {
@@ -155,7 +156,9 @@ export function AtlasExplorer({
   const [loading, setLoading] = useState(false);
   const [discovery, setDiscovery] = useState<AtlasDiscoveryResult | null>(null);
   const [assistantTurns, setAssistantTurns] = useState<AtlasAssistantPriorTurn[]>([]);
+  const [recoveryNotice, setRecoveryNotice] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [outcomeFocus, setOutcomeFocus] = useState<{ controller: AbortController; targetId: string } | null>(null);
   const [organizationDetails, setOrganizationDetails] = useState<Record<string, AtlasOrganization>>({});
   const [detailLoadingId, setDetailLoadingId] = useState<string | null>(null);
   const [detailErrors, setDetailErrors] = useState<Record<string, string>>({});
@@ -163,15 +166,37 @@ export function AtlasExplorer({
   const rowRefs = useRef(new Map<string, HTMLTableRowElement>());
   const detailRequestsRef = useRef(new Set<string>());
   const resultRequestRef = useRef<AbortController | null>(null);
+  const restorationRequestRef = useRef<AbortController | null>(null);
   const pendingFiltersRef = useRef<AtlasQuery>(initialFilters);
 
   useEffect(() => () => resultRequestRef.current?.abort(), []);
 
+  // Only an explicit Ask submission requests focus. Restored history remains
+  // readable without moving focus, and superseded requests cannot steal it.
+  useEffect(() => {
+    if (!outcomeFocus) return;
+    const frame = window.requestAnimationFrame(() => {
+      if (outcomeFocus.controller.signal.aborted || resultRequestRef.current !== outcomeFocus.controller) return;
+      const target = document.getElementById(outcomeFocus.targetId);
+      target?.focus({ preventScroll: true });
+      target?.scrollIntoView({ block: "start", behavior: "auto" });
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [outcomeFocus]);
+
   function beginResultRequest() {
     resultRequestRef.current?.abort();
+    restorationRequestRef.current = null;
     const controller = new AbortController();
     resultRequestRef.current = controller;
     return controller;
+  }
+
+  function cancelRestorationForSelection() {
+    if (!restorationRequestRef.current) return;
+    restorationRequestRef.current.abort();
+    restorationRequestRef.current = null;
+    setLoading(false);
   }
 
   useEffect(() => {
@@ -187,12 +212,6 @@ export function AtlasExplorer({
   }, [canonicalizeExample, focusNeedOnMount, initialFilters]);
 
   useEffect(() => {
-    const restoreFromHistory = () => window.location.reload();
-    window.addEventListener("popstate", restoreFromHistory);
-    return () => window.removeEventListener("popstate", restoreFromHistory);
-  }, []);
-
-  useEffect(() => {
     const view = initialAtlasView(initialFilters, window.matchMedia("(min-width: 1024px)").matches);
     setViewMode(view);
     pendingFiltersRef.current = { ...pendingFiltersRef.current, view };
@@ -200,8 +219,13 @@ export function AtlasExplorer({
   }, [initialFilters]);
 
   useEffect(() => {
-    const restoreFragment = () => {
-      if (!window.location.hash.startsWith("#?")) return;
+    let firstRestoration = true;
+    const restoreFragment = async () => {
+      const initial = firstRestoration; firstRestoration = false;
+      if (!window.location.hash.startsWith("#?")) {
+        if (!initial && window.location.hash === "") void load({ ...initialFilters, view: initialAtlasView(initialFilters, window.matchMedia("(min-width: 1024px)").matches) }, { preserveSelection: true, restoreHistory: true });
+        return;
+      }
       const params = new URLSearchParams(window.location.hash.slice(2));
       const example = guidedSearchExampleFromSearchParams(params);
       if (example) { params.delete("example"); params.set("focus", example.focus.join(",")); }
@@ -212,7 +236,40 @@ export function AtlasExplorer({
       const next = atlasQueryFromSearchParams(params);
       next.view = initialAtlasView(next, window.matchMedia("(min-width: 1024px)").matches);
       setViewMode(next.view);
-      void load(next, { preserveSelection: true, restoreHistory: true });
+      const saved = recallDiscovery(next);
+      let validSaved = false;
+      if (saved) {
+        const controller = beginResultRequest();
+        restorationRequestRef.current = controller;
+        setLoading(true);
+        try {
+          const current = await Promise.all((saved.organizations ?? []).map(async organization => {
+            const response = await fetch(`/api/organizations/${encodeURIComponent(organization.slug)}`, { signal: controller.signal });
+            if (!response.ok) return null;
+            return await response.json() as AtlasOrganization;
+          }));
+          validSaved = current.every((organization, index) => organization && discoveryEvidenceSignature(organization) === discoveryEvidenceSignature(saved.organizations![index]));
+        } catch { validSaved = false; }
+        if (controller.signal.aborted) return;
+        restorationRequestRef.current = null;
+      }
+      if (saved && validSaved) {
+        resultRequestRef.current?.abort();
+        setRecoveryNotice("Restored your earlier assessment. Its supporting public records were checked again; Ask was not rerun.");
+        setLoading(false); setError(null);
+        setDiscovery(saved); setQuestion(saved.query); setAskOpen(true);
+        setResult(projectDiscovery(saved, initialResult));
+        setFilters(next); pendingFiltersRef.current = next;
+        setSelectedId(next.selected ?? null); setViewport(null);
+        setExpandedId(null); setOrganizationDetails({});
+        setAssistantTurns([{ query: saved.query, organizationIds: saved.organizationIds }]);
+      } else {
+        if (next.discovery || next.organizationIds?.length) {
+          setQuestion(next.query ?? "");
+          setRecoveryNotice("The earlier Ask assessment is unavailable or its evidence has changed. These are the current published records from that result set; the original fit assessment is not being repeated. You can ask the question again.");
+        } else setRecoveryNotice(null);
+        void load(next, { preserveSelection: true, restoreHistory: true });
+      }
     };
     restoreFragment();
     window.addEventListener("hashchange", restoreFragment);
@@ -222,23 +279,24 @@ export function AtlasExplorer({
   }, []);
 
   function writeMapState(nextFilters: AtlasQuery, mode: "push" | "replace" = "push") {
+    cancelRestorationForSelection();
     pendingFiltersRef.current = nextFilters;
     const path = mapPathForQuery(nextFilters);
     window.history[mode === "push" ? "pushState" : "replaceState"](window.history.state, "", path);
   }
 
   async function changeViewMode(nextView: ViewMode) {
-    const nextFilters = { ...pendingFiltersRef.current, view: nextView, selected: selectedId ?? undefined };
-    if (nextView === "map" && nextFilters.bounds) {
-      // Restore the full matching map projection before mounting its camera.
-      // A spatially paginated list must not become the map's entire corpus.
-      const refreshed = await load(nextFilters, { preserveDiscovery: true, preserveSelection: true });
-      if (!refreshed) return;
+    const nextFilters = { ...pendingFiltersRef.current, view: nextView, selected: selectedId ?? undefined,
+      ...(discovery?.assistant && nextView === "table" ? { bounds: undefined } : {}) };
+    if (!discovery?.assistant && nextFilters.bounds) {
+      // A single request owns the state/history transition in either direction.
+      await load(nextFilters, { preserveDiscovery: true, preserveSelection: true });
+      return;
     }
+    if (discovery?.assistant && nextView === "table") setViewport(null);
     setViewMode(nextView);
     setFilters(nextFilters);
     writeMapState(nextFilters);
-    if (nextView === "table" && nextFilters.bounds) void load(nextFilters, { preserveDiscovery: true, preserveSelection: true });
   }
 
   const exportHref = useMemo(() => {
@@ -271,6 +329,8 @@ export function AtlasExplorer({
     return result.mapOrganizations.filter((organization) => visibleIds.has(organization.id));
   }, [result.mapOrganizations, viewport]);
 
+  const visibleResultCount = viewMode === "table" ? result.total : visibleMapOrganizations.length;
+
   const selectedOrganization = useMemo(() => {
     const detail = selectedId ? organizationDetails[selectedId] : null;
     const preview = result.organizations.find((organization) => organization.id === selectedId) ?? null;
@@ -279,7 +339,7 @@ export function AtlasExplorer({
         filters,
         preview?.capabilities.map((capability) => capability.id)
       );
-      return projectAtlasExplorerOrganization(detail, filters, preferredCapabilityIds);
+      return { ...projectAtlasExplorerOrganization(detail, filters, preferredCapabilityIds), ...(preview?.discoveryAssessment ? { discoveryAssessment: preview.discoveryAssessment, citations: preview.citations } : {}) };
     }
     return preview;
   }, [filters, organizationDetails, result.organizations, selectedId]);
@@ -288,7 +348,7 @@ export function AtlasExplorer({
     const organizations = visibleOrganizations.map((organization) => {
       const detail = organizationDetails[organization.id];
       return detail
-        ? projectAtlasExplorerOrganization(detail, filters, new Set(organization.capabilities.map((capability) => capability.id)))
+        ? { ...projectAtlasExplorerOrganization(detail, filters, new Set(organization.capabilities.map((capability) => capability.id))), ...(organization.discoveryAssessment ? { discoveryAssessment: organization.discoveryAssessment, citations: organization.citations } : {}) }
         : organization;
     });
     const selectedIsVisible = selectedOrganization && visibleMapOrganizations.some((organization) => organization.id === selectedOrganization.id);
@@ -324,13 +384,15 @@ export function AtlasExplorer({
     submittedQuery: discovery?.query ?? filters.query
   });
 
-  async function load(nextFilters: AtlasQuery, options: { preserveDiscovery?: boolean; preserveSelection?: boolean; restoreHistory?: boolean } = {}) {
-    nextFilters = { ...nextFilters, view: nextFilters.view ?? viewMode };
+  async function load(nextFilters: AtlasQuery, options: { preserveDiscovery?: boolean; preserveSelection?: boolean; restoreHistory?: boolean; focusTarget?: string } = {}) {
+    nextFilters = { ...nextFilters, view: nextFilters.view ?? viewMode,
+      ...(!options.preserveDiscovery && !options.restoreHistory ? { discovery: undefined, selectedCapability: undefined, organizationIds: undefined, capabilityIds: undefined } : {}) };
     const controller = beginResultRequest();
     pendingFiltersRef.current = nextFilters;
     setLoading(true);
     setError(null);
     if (!options.preserveDiscovery) {
+      if (!options.restoreHistory) setRecoveryNotice(null);
       setDiscovery(null);
       setAssistantTurns([]);
     }
@@ -346,7 +408,8 @@ export function AtlasExplorer({
       const nextResult = (await response.json()) as AtlasExplorerQueryResult;
       if (controller.signal.aborted) return;
       setResult(nextResult);
-      const refreshedFilters = { ...nextFilters, view: pendingFiltersRef.current.view, page: 1, selected: options.preserveSelection ? nextFilters.selected : undefined };
+      const refreshedFilters = { ...nextFilters, view: nextFilters.view, page: 1, selected: options.preserveSelection ? nextFilters.selected : undefined };
+      setViewMode(refreshedFilters.view ?? viewMode);
       setFilters(refreshedFilters);
       setViewport(null);
       setSelectedId(refreshedFilters.selected ?? null);
@@ -354,11 +417,13 @@ export function AtlasExplorer({
       setOrganizationDetails({});
       setDetailErrors({});
       writeMapState(refreshedFilters, options.restoreHistory ? "replace" : "push");
+      if (options.focusTarget) setOutcomeFocus({ controller, targetId: options.focusTarget });
       return nextResult;
     } catch (loadError) {
       if (controller.signal.aborted) return;
       pendingFiltersRef.current = filters;
       setError(loadError instanceof Error ? loadError.message : "The ecosystem map could not be refreshed.");
+      if (options.focusTarget) setOutcomeFocus({ controller, targetId: "atlas-request-error" });
     } finally {
       if (!controller.signal.aborted) setLoading(false);
     }
@@ -370,6 +435,7 @@ export function AtlasExplorer({
 
     const controller = beginResultRequest();
     setQuestion(query);
+    setRecoveryNotice(null);
     setLoading(true);
     setError(null);
     try {
@@ -398,37 +464,27 @@ export function AtlasExplorer({
         zero_result: nextDiscovery.organizationIds.length === 0
       }, { searchId: nextDiscovery.searchId });
       if (nextDiscovery.assistant && nextDiscovery.organizations) {
-        const projectedOrganizations = nextDiscovery.organizations.map((organization) =>
-          projectAtlasExplorerOrganization(organization, { query })
-        );
-        setResult({
-          ...initialResult,
-          organizations: projectedOrganizations,
-          mapOrganizations: nextDiscovery.organizations.map(projectAtlasMapOrganization),
-          total: projectedOrganizations.length,
-          page: 1,
-          pageSize: Math.max(1, projectedOrganizations.length),
-          appliedFilters: nextDiscovery.filterChips,
-          hasMore: false,
-          nextPage: null
-        });
-        pendingFiltersRef.current = { query };
-        setFilters({ query });
+        setResult(projectDiscovery(nextDiscovery, initialResult));
+        const nextFilters: AtlasQuery = { query, view: viewMode, discovery: rememberDiscovery(nextDiscovery), organizationIds: nextDiscovery.organizations.map(organization => organization.id), capabilityIds: nextDiscovery.assistant.matches.flatMap(match => match.capabilityId ? [match.capabilityId] : []) };
+        pendingFiltersRef.current = nextFilters;
+        setFilters(nextFilters);
         setViewport(null);
         setSelectedId(null);
         setExpandedId(null);
         setOrganizationDetails({});
         setDetailErrors({});
         setAssistantTurns((turns) => [...turns, { query, organizationIds: nextDiscovery.organizationIds }].slice(-3));
-        window.history.replaceState(null, "", "/map");
+        writeMapState(nextFilters);
         setLoading(false);
+        setOutcomeFocus({ controller, targetId: "ask-true-north-answer" });
       } else {
-        await load(nextDiscovery.filters, { preserveDiscovery: true });
+        await load(nextDiscovery.filters, { preserveDiscovery: true, focusTarget: nextDiscovery.fallbackReason ? "ask-true-north-fallback" : "ask-true-north-outcome" });
       }
     } catch (discoveryError) {
       if (controller.signal.aborted) return;
       setError(discoveryError instanceof Error ? discoveryError.message : "The question could not be interpreted.");
       setLoading(false);
+      setOutcomeFocus({ controller, targetId: "atlas-request-error" });
     }
   }
 
@@ -500,15 +556,22 @@ export function AtlasExplorer({
   }
 
   function selectAssistantOrganization(id: string) {
-    setViewMode("map");
+    const mapped = result.mapOrganizations.some(organization => organization.id === id);
+    setViewMode(mapped ? "map" : "table");
     setMobileResultsState("preview");
-    updateSelection(id, true, "result", "map");
-    window.requestAnimationFrame(() => document.getElementById("ecosystem-map")?.scrollIntoView({ behavior: "smooth", block: "center" }));
+    if (!mapped) setViewport(null);
+    updateSelection(id, true, "result", mapped ? "map" : "table");
+    window.requestAnimationFrame(() => {
+      const target = document.getElementById(mapped ? "ecosystem-map" : "atlas-results-heading");
+      target?.scrollIntoView({ behavior: "smooth", block: "start" });
+      if (!mapped) target?.focus({ preventScroll: true });
+    });
   }
 
   function updateSelection(id: string, revealInTable = false, source: "map" | "result" = "result", nextView = viewMode) {
+    cancelRestorationForSelection();
     setSelectedId(id);
-    const nextFilters = { ...filters, view: nextView, selected: id, bounds: viewport?.bounds ?? filters.bounds };
+    const nextFilters = { ...filters, view: nextView, selected: id, selectedCapability: result.organizations.find(item => item.id === id)?.capabilities[0]?.id, bounds: nextView === "table" && discovery?.assistant ? undefined : viewport?.bounds ?? filters.bounds };
     setFilters(nextFilters);
     writeMapState(nextFilters);
     const organization = result.mapOrganizations.find((item) => item.id === id);
@@ -572,12 +635,14 @@ export function AtlasExplorer({
   }
 
   function updateViewport(nextViewport: { bounds: AtlasBounds; organizationIds: string[] }) {
+    if (viewMode !== "map" || restorationRequestRef.current) return;
     const nextSelectedId = selectedId && nextViewport.organizationIds.includes(selectedId) ? selectedId : null;
     const nextFilters = {
       ...filters,
       bounds: nextViewport.bounds,
       view: viewMode,
-      selected: nextSelectedId ?? undefined
+      selected: nextSelectedId ?? undefined,
+      selectedCapability: nextSelectedId ? filters.selectedCapability : undefined
     };
     setViewport(nextViewport);
     setSelectedId(nextSelectedId);
@@ -588,8 +653,9 @@ export function AtlasExplorer({
   }
 
   async function toggleExpanded(organization: AtlasExplorerOrganization, source: "mobile_list" | "table_expand") {
+    cancelRestorationForSelection();
     setSelectedId(organization.id);
-    const nextFilters = { ...filters, view: viewMode, selected: organization.id, bounds: viewport?.bounds ?? filters.bounds };
+    const nextFilters = { ...filters, view: viewMode, selected: organization.id, selectedCapability: organization.capabilities[0]?.id, bounds: viewport?.bounds ?? filters.bounds };
     setFilters(nextFilters);
     writeMapState(nextFilters);
     trackBetaEvent("result_select", { organization: organization.slug, source });
@@ -722,7 +788,7 @@ export function AtlasExplorer({
                 <div className="mb-3">
                   <p className="text-[10px] font-extrabold uppercase tracking-[0.1em] text-[var(--atlas-primary)]">Ask True North · AI-assisted</p>
                   <h2 id="ask-true-north-title" className="mt-1 font-[family-name:var(--font-barlow)] text-lg font-extrabold tracking-[-0.02em] text-[var(--atlas-ink)]">Not sure who or what to search for?</h2>
-                  <p className="mt-1 max-w-3xl text-xs leading-5 text-[var(--atlas-muted)]">Describe a challenge. See which Canadian capabilities may help.</p>
+                  <p className="mt-1 max-w-3xl text-xs leading-5 text-[var(--atlas-muted)]">Describe a challenge. Explore reviewed capabilities worldwide, with Canada first.</p>
                   <p className="mt-1 max-w-3xl text-xs leading-5 text-[var(--atlas-muted)]">Ask True North helps you explore who may help—and why.</p>
                 </div>
                 <form onSubmit={submitDiscovery} aria-label="Ask True North about a need" data-clarity-mask="true">
@@ -813,7 +879,7 @@ export function AtlasExplorer({
             <div className="hidden shrink-0 items-center gap-3 sm:flex">
               <span className="text-xs font-extrabold text-[var(--atlas-evidence)]">{result.total.toLocaleString("en-CA")} published {result.total === 1 ? "result" : "results"}</span>
               <DownloadLink href={exportHref} className="inline-flex min-h-9 items-center gap-2 text-xs font-bold text-[var(--atlas-primary)] no-underline hover:underline"><Download className="size-4" />Export</DownloadLink>
-              <PublicShare title="True North Map: Canada’s defence and dual-use ecosystem" description="Explore reviewed Canadian organizations, technologies, Defence needs, and the evidence behind them." useCurrentUrl className="h-9 px-3" />
+              <PublicShare title="True North Map: Canada’s defence and dual-use ecosystem" description="Explore reviewed organizations worldwide, with Canada first, technologies, Defence needs, and the evidence behind them." useCurrentUrl className="h-9 px-3" />
             </div>
           </div>
 
@@ -822,7 +888,7 @@ export function AtlasExplorer({
           {filterPanelOpen ? (
             <section id="atlas-map-filters" className="mt-3 rounded-2xl border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] p-4" aria-label="Ecosystem map filters">
               <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-                <FilterSelect label="Region" allOptionLabel="All regions" value={filters.region ?? ""} options={regions.map((region) => ({ value: region.slug, label: `${region.name} (${region.organizationCount})` }))} onChange={(value) => { trackBetaEvent("filter_apply", { filter: "region", value: value || "all" }); void load({ ...filters, region: value || undefined }); }} />
+                <FilterSelect label="Canadian primary location" allOptionLabel="Worldwide / any location" value={filters.region ?? ""} options={regions.map((region) => ({ value: region.slug, label: `${region.name} (${region.organizationCount})` }))} onChange={(value) => { trackBetaEvent("filter_apply", { filter: "region", value: value || "all" }); void load({ ...filters, region: value || undefined }); }} />
                 <FilterSelect label="Organization type" allOptionLabel="All organization types" value={filters.type ?? ""} options={result.facets.organizationTypes.filter((type) => (publicOrganizationTypes.has(type.value) || type.value === filters.type)).map((type) => ({ value: type.value, label: `${type.label} (${type.count})` }))} onChange={(value) => { trackBetaEvent("filter_apply", { filter: "type", value: value || "all" }); void load({ ...filters, type: value || undefined }); }} />
                 <FilterSelect label="Technology area" allOptionLabel="All technology areas" value={filters.domain ?? ""} options={technicalDomains.map((domain) => ({ value: domain.slug, label: domain.name }))} onChange={(value) => { trackBetaEvent("filter_apply", { filter: "domain", value: value || "all" }); void load({ ...filters, domain: value || undefined }); }} />
                 <FilterSelect label="Mission area" allOptionLabel="All mission areas" value={filters.mission ?? ""} options={missionAreas.map((mission) => ({ value: mission.slug, label: mission.name }))} onChange={(value) => { trackBetaEvent("filter_apply", { filter: "mission", value: value || "all" }); void load({ ...filters, mission: value || undefined }); }} />
@@ -832,9 +898,10 @@ export function AtlasExplorer({
             </section>
           ) : null}
 
-          {error ? <div className="mt-3 flex items-start gap-2 rounded-xl border border-[var(--atlas-danger)] bg-[var(--atlas-danger-soft)] px-3 py-2 text-sm text-[var(--atlas-danger)]" role="alert"><CircleAlert className="mt-0.5 size-4 shrink-0" />{error}</div> : null}
+          {error ? <div id="atlas-request-error" tabIndex={-1} className="scroll-mt-24 mt-3 flex items-start gap-2 rounded-xl border border-[var(--atlas-danger)] bg-[var(--atlas-danger-soft)] px-3 py-2 text-sm text-[var(--atlas-danger)]" role="alert"><CircleAlert className="mt-0.5 size-4 shrink-0" />{error}</div> : null}
+          {recoveryNotice ? <p role="status" className="mx-3 my-3 rounded-lg bg-[var(--atlas-blue-soft)] p-3 text-sm leading-6">{recoveryNotice}</p> : null}
           {discovery?.fallbackReason ? <AssistantFallback reason={discovery.fallbackReason} quota={discovery.quota} returnTo={mapReturnTo} /> : null}
-          {discovery?.interpretation === "no_match" && !discovery.assistant ? <div className="mt-3 rounded-xl border border-[var(--atlas-amber)] bg-[var(--atlas-amber-soft)] px-3 py-2 text-sm text-[var(--atlas-amber)]">No published records match every interpreted filter. Try a broader geography, remove one filter, or tell us what is missing.</div> : null}
+          {discovery && !discovery.assistant && !discovery.fallbackReason ? <p id="ask-true-north-outcome" tabIndex={-1} role="status" className="scroll-mt-24 mt-3 rounded-xl border border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] px-3 py-2 text-sm text-[var(--atlas-ink)]">{discovery.interpretation === "no_match" ? "No published records match every interpreted filter. Try a broader geography, remove one filter, or tell us what is missing." : `${result.total} ${result.total === 1 ? "organization matches" : "organizations match"} the interpreted search filters. Explore the current published records below.`}</p> : null}
         </div>
           {discovery?.assistant ? <div className="bg-[var(--atlas-surface-muted)] px-3 pb-3 sm:px-5 sm:pb-5"><AssistantAnswer discovery={discovery} returnTo={mapReturnTo} onSelectOrganization={selectAssistantOrganization} onAskSuggestion={(suggestion) => void runDiscovery(suggestion)} onStartNewQuestion={startNewQuestion} /></div> : null}
         <div id="ecosystem-map" data-atlas-workspace className={cn("scroll-mt-24 border-y border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] lg:grid lg:h-[max(480px,calc(100dvh-310px))] lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-px", viewMode === "table" && "hidden lg:hidden")}>
@@ -905,20 +972,20 @@ export function AtlasExplorer({
           <div className="flex flex-col gap-3 border-b border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                <h2 className="text-base font-bold tracking-[-0.01em] text-[var(--atlas-ink)]">Search results</h2>
+                <h2 id="atlas-results-heading" tabIndex={-1} className="text-base font-bold tracking-[-0.01em] text-[var(--atlas-ink)]">Search results</h2>
                 <span className="text-xs text-[var(--atlas-muted)]">
-                  {visibleMapOrganizations.length} {visibleMapOrganizations.length === 1 ? "organization" : "organizations"} found
-                  {visibleOrganizationsWithDetails.length < visibleMapOrganizations.length
+                  {visibleResultCount} {visibleResultCount === 1 ? "organization" : "organizations"} found
+                  {visibleOrganizationsWithDetails.length < visibleResultCount
                     ? ` · ${visibleOrganizationsWithDetails.length} detailed results loaded`
                     : ""}
                 </span>
               </div>
               <p className="mt-1 text-xs text-[var(--atlas-muted)]">
-                {viewport || filters.bounds ? "Limited to the selected map area. Your other filters still apply." : "Searching across Canada with your current filters."}
+                {viewport || filters.bounds ? "Limited to the selected map area. Your other filters still apply." : "Searching published organizations with your current filters."}
               </p>
             </div>
             <div className="flex flex-wrap items-center gap-3">
-              {filters.bounds || viewport ? <button type="button" className="inline-flex min-h-11 items-center text-xs font-bold underline underline-offset-4" onClick={() => { setViewMode("table"); void load({ ...pendingFiltersRef.current, bounds: undefined, view: "table" }); }}>Search all Canada</button> : null}
+              {filters.bounds || viewport ? <button type="button" className="inline-flex min-h-11 items-center text-xs font-bold underline underline-offset-4" onClick={() => { setViewMode("table"); void load({ ...pendingFiltersRef.current, bounds: undefined, view: "table" }); }}>Search all organizations</button> : null}
               <DownloadLink href={exportHref} className="inline-flex items-center gap-2 text-xs font-semibold text-[var(--atlas-primary)] no-underline hover:underline">
                 <Download className="size-4" />
                 Export visible results
@@ -1046,7 +1113,7 @@ export function AtlasExplorer({
           <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-2">
             <EvidenceLegendDisclosure className="[&>summary]:min-h-11" />
             <DownloadLink href={exportHref} className="inline-flex min-h-11 items-center gap-2 px-1 text-xs font-bold text-[var(--atlas-primary)] no-underline hover:underline"><Download className="size-4" />Export</DownloadLink>
-            <PublicShare title="True North Map: Canada’s defence and dual-use ecosystem" description="Explore reviewed Canadian organizations, technologies, Defence needs, and the evidence behind them." useCurrentUrl className="h-11 px-3" />
+            <PublicShare title="True North Map: Canada’s defence and dual-use ecosystem" description="Explore reviewed organizations worldwide, with Canada first, technologies, Defence needs, and the evidence behind them." useCurrentUrl className="h-11 px-3" />
           </div>
           <p className="mt-2 flex items-start gap-2 text-[11px] leading-5 text-[var(--atlas-muted)]"><Info className="mt-0.5 size-3.5 shrink-0 text-[var(--atlas-evidence)]" aria-hidden="true" /><span>{caveat}</span></p>
         </section>

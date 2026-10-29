@@ -128,7 +128,7 @@ describe("public data access", () => {
     );
 
     expect(detailSection).toContain("getCachedAtlasOrganizationBySlug(slug)");
-    expect(repository).toContain('"ecosystem-intelligence-organization-detail-v5"');
+    expect(repository).toContain('"ecosystem-intelligence-organization-detail-v6-geography"');
     expect(repository).toContain("tags: [atlasOrganizationCacheTag(slug), atlasOrganizationGlobalCacheTag]");
     expect(discoveryCacheSection).toContain("tags: [atlasDiscoveryCacheTag]");
     expect(discoveryCacheSection).not.toContain('tags: ["atlas-public"]');
@@ -193,11 +193,15 @@ describe("public data access", () => {
       "src/app/capabilities/[slug]/page.tsx",
       "src/app/demand/[slug]/page.tsx"
     ];
-    const links = (await Promise.all(files.map(source))).flatMap((contents) =>
+    const surfaces = await Promise.all(files.map(source));
+    const links = surfaces.flatMap((contents) =>
       contents.match(/<Link\b[^>]*href=\{`\/organizations\/\$\{[^>]+>/g) ?? []
     );
 
-    expect(links.length).toBeGreaterThanOrEqual(15);
+    expect(links.length).toBeGreaterThanOrEqual(6);
+    const scopedLinks = surfaces.flatMap(text => text.match(/<Link\s[^>]*href=\{discoveryProfileHref\([^>]+/g) ?? []);
+    expect(scopedLinks.length).toBeGreaterThanOrEqual(9);
+    scopedLinks.forEach(link => expect(link).toContain("prefetch={false}"));
     links.forEach((link) => expect(link).toContain("prefetch={false}"));
 
     const computedSurfaces = await Promise.all([

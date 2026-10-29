@@ -5,7 +5,7 @@ import { atlasQueryFromSearchParams } from "@/lib/atlas/query-params";
 import { getAtlasCapabilityBySlug, getAtlasOrganizationBySlug, getAtlasRegionBySlug, getAtlasOrganizationsForExport, getAtlasOrganizationsForCollection } from "@/lib/atlas/repository";
 import { getAtlasUser } from "@/lib/atlas/auth";
 import { createClient } from "@/lib/supabase/server";
-import { atlasResultsCapabilityExportScope, buildCsv } from "@/lib/export/csv";
+import { atlasResultsCapabilities, atlasResultsCapabilityExportScope, buildCsv } from "@/lib/export/csv";
 
 export const runtime = "nodejs";
 
@@ -46,6 +46,8 @@ async function generateExport(request: Request, user: { id: string }) {
       "organization_types",
       "city",
       "province_territory",
+      "country_code",
+      "location_role",
       "region",
       "geographic_confidence",
       "source_confidence",
@@ -58,7 +60,7 @@ async function generateExport(request: Request, user: { id: string }) {
       "scope_note"
     ];
     const rows = (await organizations).map((organization) => {
-      const scopedCapabilities = capabilityScope.includeCapabilities ? organization.capabilities : [];
+      const scopedCapabilities = atlasResultsCapabilities(organization.capabilities, query);
       const citations = [
         ...organization.citations,
         ...scopedCapabilities.flatMap((capability) => [
@@ -76,6 +78,8 @@ async function generateExport(request: Request, user: { id: string }) {
         organization.categories.join("; "),
         organization.primaryLocation?.city,
         organization.primaryLocation?.provinceTerritory,
+        organization.primaryLocation?.countryCode,
+        organization.primaryLocation?.locationRole,
         organization.primaryLocation?.regionSlug,
         organization.primaryLocation?.geographicConfidence,
         organization.sourceConfidence,

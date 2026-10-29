@@ -9,7 +9,7 @@ export async function AtlasHomeCoverage() {
         {summary.organizations.toLocaleString("en-CA")}
       </strong>
       <span className="text-xs font-medium leading-4 text-[var(--atlas-muted)]">
-        published organizations<br />across Canada
+        published organizations<br />in the directory
       </span>
     </span>
   );

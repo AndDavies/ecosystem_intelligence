@@ -33,6 +33,14 @@ Use the [Cross-System testing policy](Cross-System%20Change%20And%20Regression%2
 10. Before any database command, verify the selected project reference is exactly `facoactpdckkhciamflk`. A stale local Supabase link is a hard stop; prefer an explicitly project-pinned control-plane call when the CLI database login role is unavailable.
 11. For the canonical-repair v4/1.8.0 release, preserve the two-stage order: apply the additive migration while the old v3 application remains compatible; recheck ordinary new/refresh Review and Publish; deploy the compatible application; wait for the exact commit to be READY; then require the live contract endpoint to advertise v4, pipeline 1.8.0 and `organization_canonical_repair_bundle_v1`. Do not prepare or stage a repair run between those stages.
 
+## Worldwide company eligibility
+
+The integrated October 29 candidate is authorized for implementation, independent challenge and parent PM acceptance before production promotion. Earlier local checks are historical, not this candidate's release evidence. The October 26 production migration attempt was denied before execution; after parent acceptance, verify the live migration ledger and publisher definition again before one project-pinned retry under the new authorization. Stop if approval review denies that action again.
+
+Apply `20261026140028_worldwide_company_geography.sql` before deploying the compatible application. The additive migration checks the original guarded publisher definition, preserves its Review/Publish controls, permits absent geography and factual roles, and adds public security-invoker Canadian-map count and readiness RPCs. It makes no canonical content changes. Historical Canadian packets retain their route; non-Canadian locations require an explicit role. After the exact accepted commit is READY, require the live contract's `candidateWorldwideCompanies: worldwide_companies_v1` before affected private intake. Recheck typed Review, separate Publish, foreign/null/facility facts, Canadian-only pins, country-aware filters and separate directory/map counts.
+
+Pause incompatible intake on rollback and preserve staged packets. Before any worldwide records are published, the previous application remains usable with the unchanged Canadian corpus. After foreign or unknown geography is published, an application rollback must retain the worldwide-aware readers, role display and Canadian-only map filters; reverting to an older reader can misrepresent geography. Prefer an additive forward repair. Do not remove the migration or rewrite existing records as a rollback shortcut. Acceptance and Publish remain separate human actions.
+
 ## Option A and optional presentation copy
 
 Release candidate prepared locally on September 28; this paragraph is not evidence of deployment. No content backfill is required. All existing records use the same organization/capability template; four reviewed presentation values are nullable and additive.

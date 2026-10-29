@@ -25,6 +25,7 @@ Use the [Codex Workflow Contract](context/governance/Codex%20Workflow%20Contract
 
 - Preserve Andrew's selected model and effort. Do not introduce a research API executor, agents, plugins or configuration to enforce a model choice.
 - Genuine research ends with guarded private Admin Review intake, not a local file. Continue authorized assembly and intake without another approval; human acceptance and separate Publish remain mandatory. Canonical repairs require individual review/publication.
+- Companies worldwide are eligible for research, directory inclusion and private review without Canadian presence or relevance. Retain normal identity, concrete offering, evidence, taxonomy, lifecycle and duplicate controls. Canada-first remains a discovery priority, not an intake gate. The map shows Canadian locations only; profiles preserve real foreign geography. Never infer a partnership or entry plan from interest.
 - Signals has its own narrowly isolated editorial publication authority. North Signal preparation and visibility do not acquire campaign, outreach or core-record publication authority.
 - Keep secrets, installed private skills, raw provider/source material and ignored working evidence out of Git. Preserve unrelated work and research recovery artifacts. Create collateral only when requested.
 - A proposal is not an adopted requirement; historical approval is not current authorization. Use the [existing plans mechanism](context/governance/plans/README.md) for multi-session work.

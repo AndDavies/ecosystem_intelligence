@@ -29,6 +29,8 @@ type RawLocation = {
   longitude: number | null;
   geographic_confidence: string;
   is_primary: boolean;
+  country_code?: string;
+  location_role?: string;
 };
 
 type RawCapability = {
@@ -203,7 +205,7 @@ export default async function EditPublishedOrganizationPage({
   const dossier = data as unknown as DossierRow;
   const capabilities = dossier.capabilities ?? [];
   const capability = capabilities.find((item) => item.id === query.capability) ?? capabilities[0];
-  const location = (dossier.locations ?? []).find((item) => item.is_primary) ?? dossier.locations?.[0];
+  const location = (dossier.locations ?? []).find((item) => item.is_primary);
 
   const [{ data: domains }, { data: clusters }, { data: clusterLinks }, { data: logos }] = await Promise.all([
     supabase.from("technical_domains").select("id, slug, name, summary").eq("publication_status", "published").order("name"),
@@ -322,7 +324,7 @@ export default async function EditPublishedOrganizationPage({
           <PendingButton type="submit" pendingLabel="Saving…" className="mt-4">Save reviewed published copy</PendingButton>
         </PublicCard>
       </form>) : null}
-      {capability && location ? <form action={editPublishedOrganization} className="space-y-5">
+      {capability && location && location.province_territory ? <form action={editPublishedOrganization} className="space-y-5">
         <input type="hidden" name="organizationId" value={dossier.id} />
         <input type="hidden" name="locationId" value={location.id} />
         <input type="hidden" name="capabilityId" value={capability.id} />
@@ -340,12 +342,13 @@ export default async function EditPublishedOrganizationPage({
           <EditField label="Categories" className="mt-4"><textarea name="categories" required rows={3} defaultValue={(dossier.organization_categories ?? []).join("\n")} className={areaClass} /><FieldHint>One category per line. These remain internal taxonomy labels.</FieldHint></EditField>
         </PublicCard>
 
-        <PublicCard title="Primary location" eyebrow="Map and regional discovery">
+        <PublicCard title="Primary location" eyebrow="Factual geography">
+          <p className="mb-4 text-sm">{location.country_code ?? "Country not recorded"} · {location.location_role?.replaceAll("_", " ") ?? "Location role not recorded"}. Country and role are preserved here. Location changes need a separately reviewed maintenance change. Only Canadian locations appear on the map.</p>
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
             <EditField label="City"><input name="city" required defaultValue={location.city ?? ""} className={fieldClass} /></EditField>
             <EditField label="Province or territory"><input name="provinceTerritory" required defaultValue={location.province_territory ?? ""} className={fieldClass} /></EditField>
-            <EditField label="Latitude"><input name="latitude" type="number" step="any" min="41" max="84" required defaultValue={location.latitude ?? ""} className={fieldClass} /></EditField>
-            <EditField label="Longitude"><input name="longitude" type="number" step="any" min="-142" max="-52" required defaultValue={location.longitude ?? ""} className={fieldClass} /></EditField>
+            <EditField label="Latitude"><input name="latitude" type="number" step="any" min={location.country_code === "CA" ? 40 : -90} max={location.country_code === "CA" ? 84 : 90} required defaultValue={location.latitude ?? ""} className={fieldClass} /></EditField>
+            <EditField label="Longitude"><input name="longitude" type="number" step="any" min={location.country_code === "CA" ? -142 : -180} max={location.country_code === "CA" ? -52 : 180} required defaultValue={location.longitude ?? ""} className={fieldClass} /></EditField>
             <EditField label="Map accuracy"><select name="geographicConfidence" defaultValue={location.geographic_confidence} className={fieldClass}><option value="exact">Exact</option><option value="city_centroid">City centre</option><option value="regional">Regional only</option><option value="unverified">Unverified</option></select></EditField>
           </div>
         </PublicCard>
@@ -410,7 +413,7 @@ export default async function EditPublishedOrganizationPage({
       </form> : (
         <EmptyCoverage
           title="Capability and location maintenance is unavailable"
-          detail="Narrative, public contact, logo, program, funding, and relationship maintenance remain available above. Add a missing linked capability or primary location through the reviewed research workflow before using the combined taxonomy and map editor."
+          detail="Narrative, public contact, logo, program, funding, and relationship maintenance remain available above. Unknown geography and a missing province/state are legitimate facts. This combined editor requires a capability and complete existing location. Location or identity changes need separately reviewed maintenance."
         />
       )}
     </PublicPageShell>

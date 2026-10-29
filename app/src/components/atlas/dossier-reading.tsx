@@ -49,9 +49,10 @@ export function DossierActions({ type, id, slug, ownerSlug, title, description, 
 }
 
 export function DossierSourceLibrary({ sources, id = "sources", scope }: { sources: CapabilitySource[]; id?: string; scope: string }) {
-  if (!sources.length) return null;
   return <section id={id} tabIndex={-1} className={styles.sources} aria-labelledby={`${id}-heading`}>
+    {id === "sources" ? <span id="evidence" tabIndex={-1} /> : null}
     <div className={styles.sectionTop}><h2 id={`${id}-heading`}>Original sources <span className={styles.count}>{sources.length} linked {sources.length === 1 ? "record" : "records"}</span></h2></div>
+    {!sources.length ? <p>No approved source records are available for this profile yet.</p> : null}
     <p>{scope} A source count is not a count of independent confirmations.</p>
     <ol id="source-library" className={styles.sourceList}>{sources.slice(0, 4).map((source, index) => <DossierSourceRow key={source.source.sourceUrl} entry={source} index={index} />)}</ol>
     {sources.length > 4 ? <details className={`${styles.disclosure} ${styles.moreSources}`}><summary><ChevronDown aria-hidden="true" />Show {sources.length - 4} more source {sources.length === 5 ? "record" : "records"}</summary><ol start={5}>{sources.slice(4).map((source, index) => <DossierSourceRow key={source.source.sourceUrl} entry={source} index={index + 4} />)}</ol></details> : null}

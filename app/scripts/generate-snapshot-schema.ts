@@ -1,11 +1,11 @@
 import { readFile, writeFile } from 'node:fs/promises';
-import { zodToJsonSchema } from '../node_modules/openai/_vendor/zod-to-json-schema/index.js';
+import { toJSONSchema } from 'zod';
 import { snapshotObservationsSchema } from '../src/lib/atlas/company-snapshot';
 // The existing portable contract is maintained alongside Zod. Generate only this additive definition.
 async function main() {
 const target='../research/ingestion/schema/research-candidate-batch-v2.schema.json';
 let text=await readFile(target,'utf8');
-const generated=zodToJsonSchema(snapshotObservationsSchema,{$refStrategy:'none'});
+const generated=toJSONSchema(snapshotObservationsSchema,{target:'draft-7',io:'input'});
 const schema=JSON.parse(text);
 schema.$defs.snapshotObservations=generated;
 schema.$defs.candidateCommon.properties.editorialStandard={const:'reader_usefulness_v1'};

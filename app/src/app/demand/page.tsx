@@ -9,7 +9,7 @@ import { CollectionContinuation, PublicCard, PublicPageShell } from "@/component
 import { PaginationNav } from "@/components/ui/pagination-nav";
 import { getAtlasDemandIndex } from "@/lib/atlas/repository";
 import { normalizedPage, paginate } from "@/lib/pagination";
-import { toTitleCase } from "@/lib/utils";
+import { formatDate, toTitleCase } from "@/lib/utils";
 import { socialMetadata } from "@/lib/seo/social";
 
 // Publication invalidates the shared atlas data cache, but this index must also
@@ -18,9 +18,9 @@ export const dynamic = "force-dynamic";
 
 const metadata: Metadata = {
   title: "Defence needs",
-  description: "Start with a released Canadian or allied need, then inspect the Canadian technologies that may be relevant and the limits of that assessment.",
+  description: "Start with a released Canadian or allied need, then inspect the technologies that may be relevant and the limits of that assessment.",
   alternates: { canonical: "/demand" },
-  ...socialMetadata({ title: "Defence needs", description: "See released defence needs, then explore reviewed Canadian technologies that may help.", path: "/demand", eyebrow: "Start with the problem" })
+  ...socialMetadata({ title: "Defence needs", description: "See released defence needs, then explore reviewed technologies that may help.", path: "/demand", eyebrow: "Start with the problem" })
 };
 
 type DemandSearchParams = Promise<{ page?: string }>;
@@ -35,14 +35,14 @@ export default function DemandIndexPage({ searchParams }: { searchParams: Demand
       variant="collection"
       eyebrow="Released Defence needs"
       title="What defence need was released?"
-      description="Read released government and allied needs, then inspect the Canadian technologies that may be relevant."
+      description="Read released government and allied needs, then inspect the technologies that may be relevant."
       actions={<Link href="/map?start=need#ask-true-north" className="atlas-primary-button min-h-11 gap-2 px-5 text-sm">Explore the map <ArrowRight className="size-4" aria-hidden="true" /></Link>}
     >
       <Suspense fallback={<DemandDirectoryFallback />}>
         <DemandDirectoryData searchParams={searchParams} />
       </Suspense>
       <CollectionContinuation
-        title="Explore related Canadian capability."
+        title="Explore related reviewed capability."
         description="Move from a released defence need into the technologies, organizations and evidence that may be relevant."
         links={[{ label: "Explore the map", href: "/map" }, { label: "Browse organizations", href: "/organizations" }]}
       />
@@ -63,6 +63,7 @@ async function DemandDirectoryData({ searchParams }: { searchParams: DemandSearc
           <div><p className="font-semibold">The public problems are visible; reviewed technology matches are still being built.</p><p className="mt-1 text-xs leading-5">{snapshot.sourceCount} public {snapshot.sourceCount === 1 ? "source is" : "sources are"} represented through {snapshot.demands.length} reviewed problem {snapshot.demands.length === 1 ? "statement" : "statements"}. No organization matches have been published yet.</p></div>
         </div>
       ) : null}
+      <p className="mb-5 text-sm leading-6 text-[var(--atlas-muted)]">Source type describes the released document. These listings do not establish whether a competition is currently open; check the original source for current deadlines, availability and eligibility.</p>
       <div className="atlas-demand-grid grid gap-x-6 gap-y-4 lg:grid-cols-2">
         {directory.items.map((demand) => (
           <PublicCard key={demand.id} className="group relative flex h-full flex-col transition-colors" contentClassName="flex h-full flex-col">
@@ -71,6 +72,7 @@ async function DemandDirectoryData({ searchParams }: { searchParams: DemandSearc
               <span className="rounded bg-[var(--atlas-evidence-soft)] px-2 py-1 text-xs font-semibold text-[var(--atlas-evidence)] ring-1 ring-[var(--atlas-primary-border)]">Demand signal</span>
             </div>
             <p className="mt-5 text-xs font-bold uppercase tracking-[0.1em] text-[var(--atlas-muted)]">{demand.source.publisher} · {demand.source.sourceKind ? toTitleCase(demand.source.sourceKind) : "Public problem statement"}</p>
+            <p className="mt-2 text-xs leading-5 text-[var(--atlas-muted)]">{demand.source.publishedOn ? `Source published ${formatDate(demand.source.publishedOn)}` : "Source publication date not stated"} · Source verified {formatDate(demand.source.sourceVerifiedAt)}</p>
             <h2 className="mt-1 text-lg font-bold tracking-[-0.02em] text-[var(--atlas-ink)]">{demand.title}</h2>
             <p className="mt-3 text-sm leading-6 text-[var(--atlas-muted)]">{demand.problemStatement}</p>
             <div className="mt-auto pt-5">

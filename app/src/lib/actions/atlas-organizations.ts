@@ -42,8 +42,8 @@ const publishedOrganizationEditSchema = z.object({
   freshnessStatus: z.enum(["current", "review_due", "stale"]),
   city: z.string().trim().min(1).max(160),
   provinceTerritory: z.string().trim().min(1).max(160),
-  latitude: z.coerce.number().min(41).max(84),
-  longitude: z.coerce.number().min(-142).max(-52),
+  latitude: z.coerce.number().min(-90).max(90),
+  longitude: z.coerce.number().min(-180).max(180),
   geographicConfidence: z.enum(["exact", "city_centroid", "regional", "unverified"]),
   capabilityName: z.string().trim().min(1).max(240),
   capabilitySummary: z.string().trim().min(40).max(4000),
@@ -526,6 +526,12 @@ export async function editPublishedOrganization(formData: FormData) {
   };
 
   const supabase = await createClient({ writeCookies: true });
+  const { data: preservedLocation, error: locationError } = await supabase.from("locations")
+    .select("country_code").eq("id", parsed.data.locationId).single();
+  if (locationError || !preservedLocation?.country_code || (preservedLocation.country_code === "CA"
+    && (parsed.data.latitude < 40 || parsed.data.latitude > 84 || parsed.data.longitude < -142 || parsed.data.longitude > -52))) {
+    redirect(`${returnPath}?error=invalid-edit`);
+  }
   const { data: organizationSlug, error } = await supabase.rpc("update_published_organization_dossier", {
     p_organization_id: parsed.data.organizationId,
     p_location_id: parsed.data.locationId,

@@ -84,6 +84,7 @@ export function assessAtlasOperationalPayloads(
   const mapCount = Array.isArray(atlas.mapOrganizations) ? atlas.mapOrganizations.length : null;
   const detailCount = Array.isArray(atlas.organizations) ? atlas.organizations.length : null;
   const summaryOrganizations = finiteNumber(summary.organizations);
+  const eligibleMapCount = finiteNumber(summary.mappableOrganizations);
 
   if (health.status !== "ok" || healthChecks.catalogueConsistent !== true) {
     findings.push({ url: urls.health, issue: "Health endpoint did not confirm a consistent public catalogue" });
@@ -91,8 +92,15 @@ export function assessAtlasOperationalPayloads(
   if (summaryOrganizations === null || total === null || mapCount === null || detailCount === null) {
     findings.push({ url: urls.atlas, issue: "Atlas operational payload is incomplete" });
   } else {
-    if (summaryOrganizations !== total || total !== mapCount) {
-      findings.push({ url: urls.atlas, issue: "Published organization totals do not match the complete map projection" });
+    if (summaryOrganizations !== total) {
+      findings.push({ url: urls.atlas, issue: "Published organization totals do not match the public directory" });
+    }
+    if (mapCount !== (eligibleMapCount ?? total) || (eligibleMapCount !== null && (eligibleMapCount < 0 || eligibleMapCount > total))) {
+      findings.push({ url: urls.atlas, issue: "Canadian map projection does not match its independently counted eligible locations" });
+    }
+    if (eligibleMapCount !== null && (atlas.mapOrganizations as Array<{primaryLocation?: {countryCode?: string; latitude?: unknown; longitude?: unknown}}>)
+      .some(item => item?.primaryLocation?.countryCode !== "CA" || !Number.isFinite(item.primaryLocation.latitude) || !Number.isFinite(item.primaryLocation.longitude))) {
+      findings.push({ url: urls.atlas, issue: "Canadian map projection contains foreign or unresolved geography" });
     }
     if (detailCount > 18) {
       findings.push({ url: urls.atlas, issue: `Initial rich result page exceeded 18 records (${detailCount})` });

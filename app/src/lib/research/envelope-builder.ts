@@ -68,8 +68,10 @@ export function buildDossierEnvelopes(input: {
       recoveryAttempts:decision.recoveryAttempts,disposition:'qualified',doNotIngestReason:null,targetMatch:candidate.targetMatch,
       signalIds:candidate.signalIds,refreshSummary:decision.refreshSummary,intendedChanges:candidate.operations.map(o=>o.reviewerExplanation)
     });
+    const primaryLink = snapshot.tables.organization_locations?.find(link=>link.organization_id===organization.id && link.is_primary===true && link.publication_status==='published');
+    const country = snapshot.tables.locations?.find(location=>location.id===primaryLink?.location_id)?.country_code;
     prospects.push({id:subject.subjectId,name:organization.name,proposedEntityType:'organization',proposedOrganizationKind:organization.entity_kind,
-      canonicalUrl,discoverySourceUrl:source.url,discoveryLane:decision.discoveryLane,countryCode:'CA',fitSummary:decision.fitSummary,
+      canonicalUrl,discoverySourceUrl:source.url,discoveryLane:decision.discoveryLane,countryCode:typeof country==='string' ? country : null,fitSummary:decision.fitSummary,
       disposition:'selected',rejectionReason:null,recoveryAttempts:decision.recoveryAttempts});
   }
   return {

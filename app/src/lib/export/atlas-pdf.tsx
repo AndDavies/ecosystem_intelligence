@@ -1,3 +1,4 @@
+import { toTitleCase } from "@/lib/utils";
 import { formatSnapshotDate, formatSnapshotValue, snapshotLabels } from "@/lib/atlas/company-snapshot";
 import React from "react";
 import { Document, Link, Page, StyleSheet, Text, View, renderToBuffer } from "@react-pdf/renderer";
@@ -44,15 +45,12 @@ const styles = StyleSheet.create({
   profileLabel: { color: colors.muted, fontSize: 7 },
   profileValue: { marginTop: 2, color: colors.navy, fontFamily: "Helvetica-Bold", fontSize: 8.5 },
   caveat: { marginTop: 8, padding: 8, borderRadius: 3, backgroundColor: colors.paleBlue, color: colors.slate, fontSize: 7.5 },
-  footer: { position: "absolute", bottom: 20, left: 38, right: 38, flexDirection: "row", justifyContent: "space-between", color: colors.muted, fontSize: 7 }
+  footer: { position: "absolute", bottom: 20, left: 38, color: colors.muted, fontSize: 7 }
 });
 
 function Footer() {
   return (
-    <View style={styles.footer} fixed>
-      <Text>True North Map · Public sources only</Text>
-      <Text render={({ pageNumber, totalPages }) => `${pageNumber} / ${totalPages}`} />
-    </View>
+    <Text style={styles.footer} fixed>True North Map · Public sources only</Text>
   );
 }
 
@@ -95,6 +93,13 @@ function Sources({ organization, capability }: { organization: AtlasOrganization
   );
 }
 
+function CapabilityQualifiers({ capability }: { capability: AtlasCapability }) {
+  const qualifiers = [capability.maturity ? `Maturity: ${capability.maturity}` : null,
+    capability.commercialAvailability ? `Availability: ${capability.commercialAvailability}` : null,
+    capability.technologyReadinessLevel != null ? `TRL: ${capability.technologyReadinessLevel}` : null].filter(Boolean);
+  return qualifiers.length ? <Text style={styles.meta}>{qualifiers.join(" · ")}</Text> : null;
+}
+
 function OrganizationPdf({ organization }: { organization: AtlasOrganization }) {
   const alignments = organization.capabilities.flatMap((capability) => [...capability.missionMatches, ...capability.demandMatches]);
 
@@ -115,7 +120,7 @@ function OrganizationPdf({ organization }: { organization: AtlasOrganization }) 
                 <View key={capability.id} style={styles.card} wrap={false}>
                   <Text style={styles.capabilityTitle}>{capability.name}</Text>
                   {capability.capabilityType ? <Text style={styles.meta}>{capability.capabilityType}</Text> : null}
-                  <Text style={styles.body}>{capability.summary}</Text>
+                  <Text style={styles.body}>{capability.summary}</Text><CapabilityQualifiers capability={capability} />
                   {capability.coreFeatures.length ? <><Text style={styles.label}>Core features</Text><BulletList values={capability.coreFeatures} /></> : null}
                   {capability.defenceApplications.length ? <><Text style={styles.label}>Defence and security uses</Text><BulletList values={capability.defenceApplications} /></> : null}
                 </View>
@@ -139,7 +144,7 @@ function OrganizationPdf({ organization }: { organization: AtlasOrganization }) 
           <View style={styles.rail}>
             <View style={styles.paleCard}>
               <Text style={styles.eyebrow}>{organizationSnapshotTitle(organization.entityKind)}</Text>
-              <ProfileRow label="Headquarters" value={organization.primaryLocation?.name} />
+              <ProfileRow label={organization.primaryLocation?.locationRole ? toTitleCase(organization.primaryLocation.locationRole) : "Listed location"} value={organization.primaryLocation ? [organization.primaryLocation.name, organization.primaryLocation.countryCode].filter(Boolean).join(", ") : null} />
               <ProfileRow label="Location accuracy" value={organization.primaryLocation ? locationAccuracyLabel(organization.primaryLocation.geographicConfidence) : null} />
               <ProfileRow label="Organization type" value={organization.entityKind.replaceAll("_", " ")} />
               <ProfileRow label="Categories" value={organization.categories.map((item) => item.replaceAll("_", " ")).join(", ")} />
@@ -169,7 +174,7 @@ function ExecutiveOrganizationPdf({ organization }: { organization: AtlasOrganiz
         <Text style={styles.brand}>True North Map / Executive Organization Dossier</Text>
         <Text style={styles.title}>{organization.name}</Text>
         <Text style={styles.description}>{organization.description}</Text>
-        <Text style={styles.meta}>{[organization.entityKind.replaceAll("_", " "), ...organization.categories.map(category => category.replaceAll("_", " ")), organization.primaryLocation?.name, organization.primaryLocation ? locationAccuracyLabel(organization.primaryLocation.geographicConfidence) : null, organization.foundedYear ? `Founded ${organization.foundedYear}` : null, organization.companyStage, organization.employeeRange ? `${organization.employeeRange} employees` : null, `Evidence: ${evidenceStrengthLabel(organization.sourceConfidence)}`].filter(Boolean).join(" · ")}</Text>
+        <Text style={styles.meta}>{[organization.entityKind.replaceAll("_", " "), ...organization.categories.map(category => category.replaceAll("_", " ")), organization.primaryLocation ? `${organization.primaryLocation.name}, ${organization.primaryLocation.countryCode}${organization.primaryLocation.locationRole ? ` · ${toTitleCase(organization.primaryLocation.locationRole)}` : ""}` : null, organization.primaryLocation ? locationAccuracyLabel(organization.primaryLocation.geographicConfidence) : null, organization.foundedYear ? `Founded ${organization.foundedYear}` : null, organization.companyStage, organization.employeeRange ? `${organization.employeeRange} employees` : null, `Evidence: ${evidenceStrengthLabel(organization.sourceConfidence)}`].filter(Boolean).join(" · ")}</Text>
         <View style={styles.divider} />
         {(organization.editorialProfile.snapshotObservations ?? []).map(item => <View key={item.id} style={styles.section}><Text style={styles.label}>{snapshotLabels[item.metric]}{item.basis === "forecast" ? " · forecast" : item.basis === "conditional" ? " · conditional" : ""}</Text><Text>{formatSnapshotValue(item, "readable")} · {item.period}</Text><Text>{item.subjectName} · {item.reportingScope}</Text><Text>{item.qualification}</Text><Text style={styles.sourceMeta}>{item.sourceLocator} · observation dated {formatSnapshotDate(item.asOf)}: {item.sourceUrl}</Text></View>)}
         {organization.editorialProfile.currentActivity ? (
@@ -183,7 +188,8 @@ function ExecutiveOrganizationPdf({ organization }: { organization: AtlasOrganiz
           <View>
             {organization.disclosedFinancingSummary ? <View style={styles.section}><Text style={styles.sectionTitle}>Commercial and industrial context</Text><Text style={styles.body}>{organization.disclosedFinancingSummary}</Text></View> : null}
             {typeof organization.profileData.portfolioSummary === "string" ? <View style={styles.section}><Text style={styles.sectionTitle}>Systems and integration</Text><Text style={styles.body}>{organization.profileData.portfolioSummary}</Text></View> : null}
-            {organization.editorialProfile.operatingContext ? <View style={styles.section}><Text style={styles.eyebrow}>Organization profile</Text><Text style={styles.sectionTitle}>Operating context</Text><Text style={styles.body}>{organization.editorialProfile.operatingContext}</Text>{organization.editorialProfile.canadianFootprint ? <><Text style={styles.label} minPresenceAhead={48}>Canadian footprint</Text><Text style={styles.body}>{organization.editorialProfile.canadianFootprint}</Text></> : null}</View> : null}
+            {organization.editorialProfile.operatingContext ? <View style={styles.section}><Text style={styles.eyebrow}>Organization profile</Text><Text style={styles.sectionTitle}>Operating context</Text><Text style={styles.body}>{organization.editorialProfile.operatingContext}</Text></View> : null}
+            {organization.editorialProfile.canadianFootprint ? <View style={styles.section}><Text style={styles.label} minPresenceAhead={48}>Geographic context</Text><Text style={styles.body}>{organization.editorialProfile.canadianFootprint}</Text></View> : null}
             {(missionConnections.length || demandConnections.length) ? <View style={styles.section}>
               <Text style={styles.eyebrow}>Reviewed assessments</Text>
               <Text style={styles.sectionTitle}>Where this organization could contribute</Text>
@@ -199,7 +205,7 @@ function ExecutiveOrganizationPdf({ organization }: { organization: AtlasOrganiz
         <Text style={styles.brand}>True North Map / {organization.name}</Text>
         <Text style={styles.title}>Capabilities and public record</Text>
         <View style={styles.divider} />
-        {organization.capabilities.map((capability) => <View key={capability.id} style={styles.card} wrap={false}><Text style={styles.capabilityTitle}>{capability.name}</Text>{capability.capabilityType ? <Text style={styles.meta}>{capability.capabilityType}</Text> : null}<Text style={styles.body}>{capability.summary}</Text>{capability.coreFeatures.length ? <><Text style={styles.label}>Core features</Text><BulletList values={capability.coreFeatures} /></> : null}</View>)}
+        {organization.capabilities.map((capability) => <View key={capability.id} style={styles.card} wrap={false}><Text style={styles.capabilityTitle}>{capability.name}</Text>{capability.capabilityType ? <Text style={styles.meta}>{capability.capabilityType}</Text> : null}<Text style={styles.body}>{capability.summary}</Text><CapabilityQualifiers capability={capability} />{capability.coreFeatures.length ? <><Text style={styles.label}>Core features</Text><BulletList values={capability.coreFeatures} /></> : null}</View>)}
         {organization.programs.length ? <View style={styles.section}><Text style={styles.eyebrow}>Contracts, programs, and deployments</Text>{organization.programs.map((participation) => <View key={participation.id} style={styles.paleCard} wrap={false}><Text style={styles.capabilityTitle}>{participation.programName}</Text><Text style={styles.meta}>{participation.participationType}{participation.lifecycleStage ? ` · ${participation.lifecycleStage}` : ""}{participation.announcedOn ? ` · ${participation.announcedOn}` : ""}</Text>{participation.publicSummary ? <Text style={styles.body}>{participation.publicSummary}</Text> : null}{participation.programSummary ? <Text style={styles.sourceMeta}>Program: {participation.programSummary}</Text> : null}</View>)}</View> : null}
         {(organization.relationships.length || organization.fundingEvents.length) ? <View style={styles.grid}>
           <View style={styles.main}>{organization.relationships.length ? <View style={styles.section}><Text style={styles.sectionTitle}>Ecosystem relationships</Text>{organization.relationships.map((relationship) => <View key={relationship.id} style={styles.paleCard} wrap={false}><Text style={{ fontFamily: "Helvetica-Bold" }}>{relationship.relatedOrganization?.name ?? relationship.relatedOrganizationName ?? relationship.relationshipType}</Text><Text style={styles.meta}>{relationship.relationshipType}</Text><Text style={styles.body}>{relationship.publicSummary}</Text></View>)}</View> : null}</View>
@@ -308,6 +314,8 @@ function LookbookPdf({ title, subtitle, entries }: { title: string; subtitle: st
                 {selectedCapability ? (
                   <View style={styles.card}>
                     <Text style={styles.sectionTitle}>{selectedCapability.name}</Text>
+                    <Text style={styles.body}>{selectedCapability.summary}</Text>
+                    <CapabilityQualifiers capability={selectedCapability} />
                     {selectedCapability.coreFeatures.length ? <><Text style={styles.label}>Core features</Text><BulletList values={selectedCapability.coreFeatures} /></> : null}
                     {selectedCapability.defenceApplications.length ? <><Text style={styles.label}>Defence and security uses</Text><BulletList values={selectedCapability.defenceApplications} /></> : null}
                   </View>
@@ -335,7 +343,7 @@ function LookbookPdf({ title, subtitle, entries }: { title: string; subtitle: st
                   <Text style={styles.eyebrow}>{subtitle}</Text>
                   <ProfileRow label="Organization" value={organization.name} />
                   <ProfileRow label="Organization type" value={organization.entityKind.replaceAll("_", " ")} />
-                  <ProfileRow label="Headquarters" value={organization.primaryLocation?.name} />
+                  <ProfileRow label={organization.primaryLocation?.locationRole ? toTitleCase(organization.primaryLocation.locationRole) : "Listed location"} value={organization.primaryLocation ? [organization.primaryLocation.name, organization.primaryLocation.countryCode].filter(Boolean).join(", ") : null} />
                   <ProfileRow label="Public evidence" value={evidenceStrengthLabel(selectedCapability?.sourceConfidence ?? organization.sourceConfidence)} />
                   <ProfileRow label="Location accuracy" value={organization.primaryLocation ? locationAccuracyLabel(organization.primaryLocation.geographicConfidence) : null} />
                 </View>

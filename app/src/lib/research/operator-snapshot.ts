@@ -49,6 +49,8 @@ export async function captureOperatorSnapshot(runId: string, slugs: string[]): P
   await boundedMap(['capabilities','organization_locations','organization_aliases','program_participations','organization_relationships','funding_events'], 3, async table => {
     tables[table] = await read(table, '*', ['organization_id',ids]);
   });
+  const locationIds = [...new Set(tables.organization_locations.map(link => String(link.location_id)))];
+  tables.locations = locationIds.length ? await read('locations', '*', ['id',locationIds]) : [];
   const capabilityIds = tables.capabilities.map(c => String(c.id));
   await boundedMap(['programs','mission_areas','technical_domains','demand_requirements'], 3, async table => {tables[table] = await read(table, '*', undefined, true);});
   tables.identities = await read('organizations', 'id,slug,name,legal_name,website_url,entity_kind,editorial_profile_version,updated_at', undefined, true);
@@ -66,6 +68,7 @@ export async function captureOperatorSnapshot(runId: string, slugs: string[]): P
     if (JSON.stringify(await read(table, '*', ['organization_id',ids])) !== JSON.stringify(tables[table])) throw new Error('Child graph changed during capture; retry with a new snapshot.');
   });
   const after = await read('organizations', '*', ['slug',slugs], true);
+  if (locationIds.length && JSON.stringify(await read('locations', '*', ['id',locationIds])) !== JSON.stringify(tables.locations)) throw new Error('Locations changed during capture.');
   if (JSON.stringify(after) !== JSON.stringify(organizations)) throw new Error('Targets changed during capture; retry with a new snapshot.');
   const deployedContract = await assertDeployedResearchReviewContract([], {phase:'preparation'});
   return {schemaVersion:'research_operator_snapshot_v1', runId, projectId, collectedAt, completedAt:new Date().toISOString(), targetSlugs:slugs, deployedContract, tables};

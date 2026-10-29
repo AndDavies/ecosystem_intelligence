@@ -139,6 +139,8 @@ An enrichment run does not edit a published dossier directly. It creates a typed
 
 The current normalized organization paths are `organization_bundle_v3` for a new organization and `organization_refresh_bundle_v2` for an existing one. New bundles can carry the editorial profile, capabilities, program participations, funding events, relationships, public contact and approved-logo disposition. Refresh v2 can set an allowlisted organization field, set a kind-specific profile field, add a supported child, or update a stable capability or participation child. It has no delete operation. Every source-backed leaf must map to field evidence before Review, and the separate Publish transaction writes citations to the canonical normalized entity.
 
+Companies worldwide are eligible for research, directory inclusion and private review without Canadian presence or relevance. Retain normal identity, concrete offering, evidence, taxonomy, lifecycle and duplicate controls. Canada-first remains a discovery priority, not an intake gate. The map shows Canadian locations only; profiles preserve real foreign geography. Never infer a partnership or entry plan from interest. New v3 candidates use actual primaryLocation facts or null when unresolved; locationRole preserves headquarters, facility, test site or regional role and is required for a non-Canadian location. Historical Canadian packets retain their existing default. Worldwide packets require deployed candidateWorldwideCompanies: worldwide_companies_v1 compatibility. See the Research interface.
+
 Under pipeline 1.7.3, each new or refresh dossier must
 explicitly propose `executive_relevance_summary` or `null` after coverage
 validation. A refresh preview applies the reviewed operation set to the byte-exact

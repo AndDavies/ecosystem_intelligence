@@ -1,4 +1,5 @@
 import { expect, it, vi } from "vitest";
+import { zodTextFormat } from "openai/helpers/zod";
 vi.mock("server-only", () => ({}));
 import { assistantAnswerReferences, buildAssistantCatalog, finalizeAssistantAnswer, classifyAssistantFailure } from "@/lib/atlas/assistant";
 import { atlasTestSnapshot } from "./fixtures/atlas-snapshot";
@@ -11,6 +12,14 @@ function fixture() {
   const raw = { outcome:"closest_supported" as const, interpretedNeed:"Testing access",summary:"A supported place to begin, subject to availability.",matches:[{organizationId:"o1",capabilityId:null,fitLevel:"plausible" as const,supportPoints:[{text:"Concrete support",citationIds:[refs.catalogue.organizations[0].citations[0].id]}],limitations:["Availability unverified"],hasMaterialGap:true}],gaps:["Availability is unverified."],followUpSuggestions:[] };
   return {snapshot,orgs,refs,raw};
 }
+it("builds and parses the real structured-output schema with the installed SDK", () => {
+ const {refs,raw}=fixture();
+ const format=zodTextFormat(refs.schema,"true_north_map_assessment");
+ expect(format.type).toBe("json_schema");
+ expect(format.schema).toMatchObject({type:"object",properties:{matches:{type:"array"}}});
+ expect(format.$parseRaw(JSON.stringify(raw))).toEqual(raw);
+ expect(()=>format.$parseRaw(JSON.stringify({...raw,outcome:"unsupported"}))).toThrow();
+});
 it("maps bounded references exactly to admitted IDs and preserves the leading answer",()=>{
  const {snapshot,orgs,refs,raw}=fixture(); const decoded=refs.decode(raw);
  expect(decoded.matches[0].organizationId).toBe(orgs[0].id);

@@ -71,4 +71,18 @@ describe("launch operational checks", () => {
     );
     expect(findings.some((finding) => finding.issue.includes("totals do not match"))).toBe(true);
   });
+  it("keeps global directory totals separate from independently counted Canadian markers", () => {
+    const health = {status:"ok",checks:{catalogueConsistent:true}};
+    const summary = {organizations:25,mappableOrganizations:20};
+    const atlas = {total:25,mapOrganizations:Array.from({length:20},()=>({primaryLocation:{countryCode:"CA",latitude:45,longitude:-63}})),organizations:Array.from({length:18})};
+    const urls = {health:"/api/health",summary:"/api/atlas/summary",atlas:"/api/atlas"};
+    expect(assessAtlasOperationalPayloads(health,summary,atlas,urls)).toEqual([]);
+    expect(assessAtlasOperationalPayloads(health,summary,{...atlas,mapOrganizations:atlas.mapOrganizations.slice(1)},urls).some(f=>f.issue.includes("independently counted"))).toBe(true);
+  });
+  it("rejects foreign or unknown markers even when their count matches", () => {
+    const markers = [{primaryLocation:{countryCode:"US",latitude:37,longitude:-122}},{primaryLocation:{countryCode:"CA",latitude:null,longitude:-63}}];
+    const findings=assessAtlasOperationalPayloads({status:"ok",checks:{catalogueConsistent:true}},{organizations:2,mappableOrganizations:2},{total:2,mapOrganizations:markers,organizations:[]},{health:"health",summary:"summary",atlas:"atlas"});
+    expect(findings.some(f=>f.issue.includes("foreign or unresolved"))).toBe(true);
+  });
+
 });

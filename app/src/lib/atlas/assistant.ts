@@ -293,6 +293,8 @@ export function buildAssistantCatalog(snapshot: AtlasSnapshot, organizations = s
       location: organization.primaryLocation
         ? {
             city: organization.primaryLocation.city,
+            countryCode: organization.primaryLocation.countryCode,
+            locationRole: organization.primaryLocation.locationRole,
             provinceOrTerritory: organization.primaryLocation.provinceTerritory,
             region: organization.primaryLocation.regionSlug
           }

@@ -136,7 +136,7 @@ describe("phase 2 launch hardening", () => {
     expect(mapPage).toContain("<Suspense fallback={<MapFallback />}");
     expect(repository).toContain("loadWarmAtlasDiscoverySnapshot");
     expect(repository).toContain("getCachedAtlasDiscoveryTablePage");
-    expect(repository).toContain("ecosystem-intelligence-atlas-discovery-table-page-v2");
+    expect(repository).toContain("ecosystem-intelligence-atlas-discovery-table-page-v3-geography");
     expect(repository).not.toContain("ecosystem-intelligence-atlas-discovery-v3");
     expect(repository).toContain('tags: ["atlas-public"]');
     expect(repository).toContain("queryAtlasExplorerSnapshot(await getAtlasDiscoverySnapshot(), query)");
@@ -186,7 +186,7 @@ describe("phase 2 launch hardening", () => {
     expect(demand).toContain("<Suspense fallback={<DemandDirectoryFallback />}");
     expect(demand).not.toContain("getAtlasSnapshot");
 
-    expect(repository).toContain("ecosystem-intelligence-demand-index-v2");
+    expect(repository).toContain("ecosystem-intelligence-demand-index-v3-source-dates");
     expect(repository).toContain('tags: ["atlas-public"]');
     const demandIndexLoader = supabaseRepository.slice(
       supabaseRepository.indexOf("loadAtlasDemandIndexFromSupabase"),
@@ -296,13 +296,13 @@ describe("phase 2 launch hardening", () => {
 
     expect(workspacePackage.scripts["security:validate"]).toContain("audit --audit-level high");
     expect(workspacePackage.scripts["release:validate"]).toContain("pnpm security:validate");
-    expect(appPackage.dependencies.next).toBe("^15.5.24");
-    expect(appPackage.dependencies.sharp).toBe("0.35.4");
+    expect(appPackage.dependencies.next).toBe("^15.5.28");
+    expect(appPackage.dependencies.sharp).toBe("0.35.5");
     expect(appPackage.dependencies).not.toHaveProperty("shadcn");
     expect(appPackage.devDependencies).toHaveProperty("shadcn");
     expect(pnpmWorkspace).toContain('"postcss": "8.5.23"');
     expect(pnpmWorkspace).toContain('"hono": "4.12.34"');
-    expect(pnpmWorkspace).toContain('"sharp": "0.35.4"');
+    expect(pnpmWorkspace).toContain('"sharp": "0.35.5"');
     expect(pnpmWorkspace).toContain('"ws": "8.21.0"');
   });
 

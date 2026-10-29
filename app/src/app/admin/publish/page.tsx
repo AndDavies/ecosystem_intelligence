@@ -157,7 +157,7 @@ function publicationDisplay(row: PublishableRow) {
     name: row.parsed.data.organization.name,
     description: row.parsed.data.organization.description,
     detail: [
-      [row.parsed.data.organization.primaryLocation.city, row.parsed.data.organization.primaryLocation.provinceTerritory].filter(Boolean).join(", ") || "Location pending",
+      [row.parsed.data.organization.primaryLocation?.city, row.parsed.data.organization.primaryLocation?.provinceTerritory, row.parsed.data.organization.primaryLocation?.countryCode, row.parsed.data.organization.primaryLocation && "locationRole" in row.parsed.data.organization.primaryLocation ? row.parsed.data.organization.primaryLocation.locationRole : null].filter(Boolean).join(", ") || "Location pending",
       row.parsed.data.organization.entityKind.replaceAll("_", " "),
       row.parsed.data.capabilities[0]?.name
         ?? (row.parsed.version === "v3" ? row.parsed.data.programParticipations[0]?.program.name : row.parsed.data.programs[0]?.name)

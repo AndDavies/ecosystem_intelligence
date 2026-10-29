@@ -8,3 +8,5 @@
 .navigation a:focus-visible { outline-offset: -4px; }
 @media(max-width:900px) { .navigation .label { display: none; } .navigation.navigation .scroller > ul { gap: 23px; } }
 @media(max-width:639px) { .navigation.navigation .scroller, .navigation a { min-height: 51px; } .navigation a { font-size: 13px; } .navigation.navigation .scroller > ul { gap: 24px; } }
+
+@media(max-width:639px) { .navigation.navigation .scroller { overflow: visible; } .navigation.navigation .scroller > ul { flex-wrap: wrap; flex-shrink: 1; gap: 0 18px; } .navigation a { min-height: 44px; white-space: normal; } }

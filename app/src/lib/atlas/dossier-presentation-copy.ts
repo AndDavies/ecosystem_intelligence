@@ -15,7 +15,7 @@ export type OrganizationPresentationCopy = z.infer<typeof organizationPresentati
 export type CapabilityPresentationCopy = z.infer<typeof capabilityPresentationCopySchema>;
 export const dossierPresentationDraftSchema = z.object({
   organization: organizationPresentationCopySchema,
-  capabilities: z.record(capabilityPresentationCopySchema)
+  capabilities: z.record(z.string(), capabilityPresentationCopySchema)
 }).strict();
 export type DossierPresentationDraft = z.infer<typeof dossierPresentationDraftSchema>;
 

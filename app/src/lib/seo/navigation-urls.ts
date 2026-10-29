@@ -1,6 +1,6 @@
 import { safeLocalReturnPath } from "@/lib/safe-return";
 
-export const mapStateKeys = new Set(["q", "bounds", "region", "metro", "type", "capability", "domain", "mission", "demand", "stage", "program", "cluster", "focus", "view", "selected", "page", "pageSize", "example", "start"]);
+export const mapStateKeys = new Set(["q", "bounds", "region", "metro", "type", "capability", "domain", "mission", "demand", "stage", "program", "cluster", "focus", "view", "selected", "selectedCapability", "discovery", "organizationIds", "capabilityIds", "page", "pageSize", "example", "start"]);
 const profileNavigationKeys = new Set(["returnTo", "selected", "bounds", "view"]);
 export const isProfilePath = (path: string) => /^\/(organizations|capabilities)\/[^/]+$/.test(path) && path !== "/organizations/filter";
 

@@ -3,7 +3,7 @@ import "server-only";
 
 import { cache } from "react";
 import { unstable_cache } from "next/cache";
-import { getAtlasMetroArea, inferAtlasMetroArea, organizationMatchesMetro } from "@/lib/atlas/geography";
+import { getAtlasMetroArea, inferAtlasMetroArea, organizationMatchesMetro, organizationMatchesCanadianRegion } from "@/lib/atlas/geography";
 import { organizationMatchesGuidedSearchFocus } from "@/lib/atlas/guided-search";
 import {
   loadAtlasCapabilityBySlugFromSupabase,
@@ -127,12 +127,7 @@ const withDemandFallback = createPublicReadFallback<AtlasDemandIndexSnapshot>();
 
 function buildRegions(snapshot: Pick<AtlasQueryableSnapshot, "organizations" | "clusters">): AtlasRegion[] {
   return regionDefinitions.map((definition) => {
-    const organizations =
-      definition.slug === "canada"
-        ? snapshot.organizations
-        : snapshot.organizations.filter(
-            (organization) => organization.primaryLocation?.regionSlug === definition.slug
-          );
+    const organizations = snapshot.organizations.filter(organization => organizationMatchesCanadianRegion(organization, definition.slug));
     const capabilityIds = new Set(organizations.flatMap((organization) => organization.capabilities.map((item) => item.id)));
     const clusters = snapshot.clusters.filter(
       (cluster) => definition.slug === "canada" || cluster.regionSlug === definition.slug
@@ -165,7 +160,7 @@ const getCachedAtlasDiscoveryTablePage = unstable_cache(
     console.info(JSON.stringify({ event: "discovery_cache_fill", table, from, rows: Array.isArray(result.data) ? result.data.length : 0, ms: Math.round(performance.now()-started), failed: Boolean(result.error) }));
     return result;
   },
-  ["ecosystem-intelligence-atlas-discovery-table-page-v2"],
+  ["ecosystem-intelligence-atlas-discovery-table-page-v3-geography"],
   { revalidate: publicDiscoveryCacheSeconds, tags: [atlasDiscoveryCacheTag] }
 ) as typeof loadAtlasDiscoveryTablePageFromSupabase;
 
@@ -181,20 +176,20 @@ async function loadWarmAtlasDiscoverySnapshot() {
 
 const getCachedAtlasCoverageSummary = unstable_cache(
   () => withPublicReadRetry(loadAtlasCoverageSummaryFromSupabase),
-  ["ecosystem-intelligence-atlas-coverage-summary-v3"],
+  ["ecosystem-intelligence-atlas-coverage-summary-v4-geography"],
   { revalidate: publicDiscoveryCacheSeconds, tags: ["atlas-public"] }
 );
 
 const getCachedAtlasDemandIndex = unstable_cache(
   () => withPublicReadRetry(loadAtlasDemandIndexFromSupabase),
-  ["ecosystem-intelligence-demand-index-v2"],
+  ["ecosystem-intelligence-demand-index-v3-source-dates"],
   { revalidate: publicDiscoveryCacheSeconds, tags: ["atlas-public"] }
 );
 
 function getCachedAtlasOrganizationBySlug(slug: string) {
   return unstable_cache(
     () => withPublicReadRetry(() => loadAtlasOrganizationBySlugFromSupabase(slug)),
-    ["ecosystem-intelligence-organization-detail-v5", slug],
+    ["ecosystem-intelligence-organization-detail-v6-geography", slug],
     { revalidate: publicRecordCacheSeconds, tags: [atlasOrganizationCacheTag(slug), atlasOrganizationGlobalCacheTag] }
   )();
 }
@@ -217,14 +212,14 @@ const getCachedPublishedOrganizationLogos = unstable_cache(
 function getCachedAtlasCapabilityBySlug(slug: string) {
   return unstable_cache(
     () => withPublicReadRetry(() => loadAtlasCapabilityBySlugFromSupabase(slug)),
-    ["ecosystem-intelligence-capability-detail-v3", slug],
+    ["ecosystem-intelligence-capability-detail-v4-geography", slug],
     { revalidate: publicRecordCacheSeconds, tags: [atlasCapabilityCacheTag(slug), "atlas-public"] }
   )();
 }
 
 const getCachedAtlasDemandBySlug = unstable_cache(
   (slug: string) => withPublicReadRetry(() => loadAtlasDemandBySlugFromSupabase(slug)),
-  ["ecosystem-intelligence-demand-detail-v1"],
+  ["ecosystem-intelligence-demand-detail-v2-source-locators"],
   { revalidate: publicRecordCacheSeconds, tags: ["atlas-public"] }
 );
 
@@ -590,15 +585,13 @@ export function matchingAtlasOrganizations(snapshot: AtlasQueryableSnapshot, que
     ? new Set(snapshot.clusters.find((cluster) => cluster.slug === query.cluster)?.capabilityIds ?? [])
     : null;
   return snapshot.organizations
-    .filter((organization) => !query.query || matchesQuery(organization, query.query))
+    .filter((organization) => query.organizationIds?.length ? query.organizationIds.includes(organization.id) : !query.query || matchesQuery(organization, query.query))
     .filter((organization) => !query.focus?.length || organizationMatchesGuidedSearchFocus(organization, query.focus))
     .filter((organization) => !query.bounds || inBounds(organization, query.bounds))
     .filter(
       (organization) =>
         !query.region ||
-        query.region === "canada" ||
-        organization.primaryLocation?.regionSlug === query.region ||
-        normalize(organization.primaryLocation?.provinceTerritory ?? "") === normalize(query.region)
+        organizationMatchesCanadianRegion(organization, query.region)
     )
     .filter((organization) => !query.metro || organizationMatchesMetro(organization, query.metro))
     .filter((organization) => matchesOrganizationType(organization, query.type))
@@ -879,10 +872,7 @@ export async function getAtlasRegionBySlug(slug: string) {
   const region = snapshot.regions.find((item) => item.slug === slug);
   if (!region) return null;
 
-  const organizations =
-    slug === "canada"
-      ? snapshot.organizations
-      : snapshot.organizations.filter((organization) => organization.primaryLocation?.regionSlug === slug);
+  const organizations = snapshot.organizations.filter(organization => organizationMatchesCanadianRegion(organization, slug));
   const capabilityIds = new Set(organizations.flatMap((organization) => organization.capabilities.map((item) => item.id)));
   const clusters = snapshot.clusters.filter(
     (cluster) => (slug === "canada" || cluster.regionSlug === slug) && cluster.capabilityIds.some((id) => capabilityIds.has(id))
@@ -900,12 +890,7 @@ export const getAtlasRegionDirectoryBySlug = cache(async (slug: string) => {
   const region = snapshot.regions.find((item) => item.slug === slug);
   if (!region) return null;
 
-  const organizations =
-    slug === "canada"
-      ? snapshot.organizations
-      : snapshot.organizations.filter(
-          (organization) => organization.primaryLocation?.regionSlug === slug
-        );
+  const organizations = snapshot.organizations.filter(organization => organizationMatchesCanadianRegion(organization, slug));
   const capabilityIds = new Set(
     organizations.flatMap((organization) => organization.capabilities.map((item) => item.id))
   );

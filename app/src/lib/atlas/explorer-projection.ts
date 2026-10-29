@@ -1,3 +1,4 @@
+import { organizationHasCanadianMapLocation } from "@/lib/atlas/geography";
 import type {
   AtlasCapability,
   AtlasCitation,
@@ -32,6 +33,10 @@ export function selectedExplorerCapabilityIds(
 }
 
 function matchingCapability(organization: AtlasOrganization, query: AtlasQuery, preferredCapabilityIds?: ReadonlySet<string>) {
+  if (query.selected === organization.id && query.selectedCapability) {
+    return organization.capabilities.find(capability => capability.id === query.selectedCapability) ?? null;
+  }
+  if (query.organizationIds?.length && !preferredCapabilityIds) preferredCapabilityIds = new Set(query.capabilityIds ?? []);
   const hasCapabilityConstraint = Boolean(
     query.focus?.length ||
     query.domain ||
@@ -182,9 +187,10 @@ export function projectAtlasMapOrganization(organization: AtlasOrganization): At
     slug: organization.slug,
     name: organization.name,
     entityKind: organization.entityKind,
-    primaryLocation: organization.primaryLocation
+    primaryLocation: organizationHasCanadianMapLocation(organization) && organization.primaryLocation
       ? {
           name: organization.primaryLocation.name,
+          countryCode: organization.primaryLocation.countryCode,
           latitude: organization.primaryLocation.latitude,
           longitude: organization.primaryLocation.longitude,
           geographicConfidence: organization.primaryLocation.geographicConfidence
@@ -204,7 +210,7 @@ export function projectAtlasExplorerResult(
   return {
     ...result,
     organizations: result.organizations.map((organization) => projectAtlasExplorerOrganization(organization, query, preferredCapabilityIds)),
-    mapOrganizations: mapOrganizations.map(projectAtlasMapOrganization),
+    mapOrganizations: mapOrganizations.filter(organizationHasCanadianMapLocation).map(projectAtlasMapOrganization),
     hasMore,
     nextPage: hasMore ? result.page + 1 : null
   };

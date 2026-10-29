@@ -86,6 +86,31 @@ describe("public-beta validation", () => {
     expect(betaEventSchema.safeParse({ ...eventContract, eventName: "email_address", contextPath: "/", metadata: {} }).success).toBe(false);
   });
 
+  it("bounds event metadata before parsing its values and preserves zero through eight valid properties", () => {
+    const event = { ...eventContract, eventName: "result_select", contextPath: "/" };
+    for (const value of [{ nested: "invalid metadata value" }, "bounded value"]) {
+      const metadata = Object.fromEntries(Array.from({ length: 10_000 }, (_, index) => [`property-${index}`, value]));
+      const parsed = betaEventSchema.safeParse({ ...event, metadata });
+      expect(parsed.success).toBe(false);
+      if (!parsed.success) {
+        expect(parsed.error.issues).toHaveLength(1);
+        expect(parsed.error.issues[0]).toMatchObject({ code: "custom", path: ["metadata"], message: "Too many event properties." });
+      }
+    }
+
+    const allowed = Object.entries({
+      organization: "organization-one", source: "map", presentation: "card", target: null,
+      position_band: 2, destination: "organization", placement: "results", measurement_version: "v1"
+    });
+    for (let count = 0; count <= 8; count++) {
+      const metadata = Object.fromEntries(allowed.slice(0, count));
+      expect(betaEventSchema.parse({ ...event, metadata }).metadata).toEqual(metadata);
+    }
+    expect(betaEventSchema.parse(event).metadata).toEqual({});
+    expect(betaEventSchema.safeParse({ ...event, metadata: [] }).success).toBe(false);
+    expect(betaEventSchema.safeParse({ ...event, metadata: { organization: { nested: "still invalid" } } }).success).toBe(false);
+  });
+
   it("keeps dossier engagement actions enumerated and metadata free of narrative or contact data", () => {
     const base = {
       eventName: "profile_engagement" as const,
@@ -161,6 +186,36 @@ describe("public-beta validation", () => {
       contextPath: "/",
       priorTurns: Array.from({ length: 4 }, (_, index) => ({ query: `Question ${index}`, organizationIds: [String(index)] }))
     }).success).toBe(false);
+  });
+
+  it("rejects oversized assistant arrays before validating their elements", () => {
+    // Exercise the schema used before auth/quota in /api/discover. Invalid children
+    // must not amplify one collection limit into thousands of validation issues.
+    const oversizedTurns = betaDiscoveryRequestSchema.safeParse({
+      query: "Find maritime sensors",
+      priorTurns: Array.from({ length: 2000 }, () => ({ query: "", organizationIds: [""] }))
+    });
+    expect(oversizedTurns.success).toBe(false);
+    if (!oversizedTurns.success) {
+      expect(oversizedTurns.error.issues).toHaveLength(1);
+      expect(oversizedTurns.error.issues[0]).toMatchObject({ code: "too_big", path: ["priorTurns"] });
+    }
+
+    const oversizedNestedIds = betaDiscoveryRequestSchema.safeParse({
+      query: "Find maritime sensors",
+      priorTurns: [{ query: "Earlier question", organizationIds: Array(2000).fill("") }]
+    });
+    expect(oversizedNestedIds.success).toBe(false);
+    if (!oversizedNestedIds.success) {
+      expect(oversizedNestedIds.error.issues).toHaveLength(1);
+      expect(oversizedNestedIds.error.issues[0]).toMatchObject({ code: "too_big", path: ["priorTurns", 0, "organizationIds"] });
+    }
+
+    const boundedTurns = Array.from({ length: 3 }, (_, turn) => ({
+      query: `Earlier question ${turn}`,
+      organizationIds: Array.from({ length: 5 }, (_, organization) => `organization-${organization}`)
+    }));
+    expect(betaDiscoveryRequestSchema.parse({ query: "Find maritime sensors", priorTurns: boundedTurns }).priorTurns).toEqual(boundedTurns);
   });
 
   it("rejects query, referrer and personal data while deriving server-side traffic classes", () => {

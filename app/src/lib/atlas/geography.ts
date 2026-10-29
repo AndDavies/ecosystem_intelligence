@@ -54,7 +54,20 @@ export function inferAtlasMetroArea(rawQuery: string) {
 export function organizationMatchesMetro(organization: AtlasOrganization, metroSlug: string) {
   const metro = getAtlasMetroArea(metroSlug);
   const city = organization.primaryLocation?.city;
-  if (!metro || !city) return false;
+  if (!metro || !city || organization.primaryLocation?.countryCode !== "CA" || organization.primaryLocation.provinceTerritory !== "Nova Scotia") return false;
   const normalizedCity = normalizeGeography(city);
   return metro.cities.some((candidate) => normalizeGeography(candidate) === normalizedCity);
+}
+
+export function organizationMatchesCanadianRegion(organization: Pick<AtlasOrganization, "primaryLocation">, region: string) {
+  const location = organization.primaryLocation;
+  if (location?.countryCode !== "CA") return false;
+  return region === "canada" || location.regionSlug === region || normalizeGeography(location.provinceTerritory ?? "") === normalizeGeography(region);
+}
+
+/** Only real Canadian coordinate pairs become map markers; directory inclusion is independent. */
+export function organizationHasCanadianMapLocation(organization: Pick<AtlasOrganization, "primaryLocation">) {
+  const location = organization.primaryLocation;
+  return location?.countryCode === "CA" && typeof location.latitude === "number" && Number.isFinite(location.latitude)
+    && typeof location.longitude === "number" && Number.isFinite(location.longitude);
 }

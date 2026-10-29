@@ -19,10 +19,11 @@ async function cite(entityType:string,id:string,citations:AtlasOrganization['cit
 }
 await db.exec('begin');
 const routes:string[]=[];
-for(const key of ['kraken','airbus','subsea','long','sparse','centre','connections','no-copy','partial-copy','multi-no-teaser','many','zero'] as const){
- const org=profileFixture((key==='many'?'long':key==='zero'?'sparse':['no-copy','partial-copy','multi-no-teaser','many'].includes(key)?'kraken':key) as FixtureKey);
+for(const key of ['kraken','single-no-copy','airbus','subsea','long','sparse','centre','connections','no-copy','partial-copy','multi-no-teaser','many','zero','foreign-facility','unknown-location'] as const){
+ const org=profileFixture((key==='single-no-copy'?'kraken':key==='many'?'long':['zero','foreign-facility','unknown-location'].includes(key)?'sparse':['no-copy','partial-copy','multi-no-teaser','many'].includes(key)?'kraken':key) as FixtureKey);
  const synthetic=!['kraken','airbus','subsea'].includes(key);
  if(synthetic){org.slug=`synthetic-${key}`;if(!["long","centre"].includes(key))org.name=`Synthetic ${key} review record`;org.logo=null;for(const c of org.capabilities)c.slug=`${org.slug}-${c.slug}`;}
+ if(key==='single-no-copy'){org.capabilities=[org.capabilities[0]];org.presentationCopy=undefined;org.capabilities[0].presentationCopy=undefined;}
  if(key==='no-copy'||key==='multi-no-teaser'){org.presentationCopy=undefined;org.capabilities.forEach(c=>c.presentationCopy=undefined);}
  if(key==='no-copy'){org.editorialProfile.version=null;org.description+='\n\nA second paragraph verifies preserved blank-line structure in the unrefreshed loader path.';}
  if(key==='partial-copy'){org.presentationCopy={roleDescriptor:'Synthetic partial presentation example'};org.capabilities.forEach(c=>c.presentationCopy={catalogueTeaser:c.presentationCopy?.catalogueTeaser});}
@@ -31,10 +32,12 @@ for(const key of ['kraken','airbus','subsea','long','sparse','centre','connectio
  if(key==='many')org.capabilities=Array.from({length:12},(_,i)=>({...structuredClone(org.capabilities[i%8]),id:randomUUID(),slug:`synthetic-many-capability-${i+1}`,name:`Synthetic offering ${i+1}`,presentationCopy:undefined}));
  if(org.primaryLocation && org.primaryLocation.latitude===null){const points={kraken:[47.5615,-52.7126],airbus:[45.6501,-74.0837],subsea:[48.6505788,-123.398324]};const point=points[key as keyof typeof points]??points.kraken;org.primaryLocation.latitude=point[0];org.primaryLocation.longitude=point[1];}
  if(!org.primaryLocation) org.primaryLocation={id:randomUUID(),name:"Synthetic regional location",city:null,provinceTerritory:"Nova Scotia",countryCode:"CA",latitude:44.6488,longitude:-63.5752,geographicConfidence:"regional",regionSlug:"atlantic-canada"};
+ if(key==='foreign-facility')org.primaryLocation={id:randomUUID(),name:'Synthetic Bristol facility',city:'Bristol',provinceTerritory:null,countryCode:'GB',latitude:51.45,longitude:-2.59,geographicConfidence:'city_centroid',regionSlug:'',locationRole:'facility'};
+ if(key==='unknown-location')org.primaryLocation=null;
  if(key==='connections')org.citations.push({...org.citations[0],sourceUrl:'https://example.org/synthetic-long-source-title',sourceTitle:'Synthetic long source title: public integration, configuration-specific operating qualifications, programme participation and supporting infrastructure across several phases of development and acceptance; this fixture is not evidence of a real organization or a real deployment.'});
  const id=randomUUID();org.id=id;
  await insert('organizations',{id,slug:org.slug,name:org.name,legal_name:org.legalName,description:org.description,website_url:org.websiteUrl,entity_kind:org.entityKind,organization_categories:org.categories.length?org.categories:[org.entityKind==='company'?'commercial_company':org.entityKind],source_confidence:org.sourceConfidence,freshness_status:org.freshnessStatus,publication_status:'draft',published_at:'2026-09-28T00:00:00Z',last_reviewed_at:org.lastReviewedAt,founded_year:org.foundedYear,employee_range:org.employeeRange,company_stage:org.companyStage,ownership:org.ownership,commercial_status:org.commercialStatus,disclosed_financing_summary:org.disclosedFinancingSummary,profile_data:org.profileData,editorial_profile_version:org.editorialProfile.version,current_activity:org.editorialProfile.currentActivity,current_activity_as_of:org.editorialProfile.currentActivityAsOf,operating_context:org.editorialProfile.operatingContext,canadian_footprint:org.editorialProfile.canadianFootprint,executive_relevance_summary:org.editorialProfile.executiveRelevanceSummary,reviewed_questions:JSON.stringify(org.editorialProfile.reviewedQuestions),snapshot_observations:JSON.stringify(synthetic?[]:org.editorialProfile.snapshotObservations??[]),display_lead:org.presentationCopy?.displayLead??null,role_descriptor:org.presentationCopy?.roleDescriptor??null});
- if(org.primaryLocation){const l=org.primaryLocation,lid=randomUUID();await insert('locations',{id:lid,name:l.name,city:l.city,province_territory:l.provinceTerritory,country_code:l.countryCode,latitude:l.latitude,longitude:l.longitude,geographic_confidence:l.geographicConfidence});await insert('organization_locations',{organization_id:id,location_id:lid,location_role:synthetic?'regional_role':'headquarters',is_primary:true,publication_status:'published'});}
+ if(org.primaryLocation){const l=org.primaryLocation,lid=randomUUID();await insert('locations',{id:lid,name:l.name,city:l.city,province_territory:l.provinceTerritory,country_code:l.countryCode,latitude:l.latitude,longitude:l.longitude,geographic_confidence:l.geographicConfidence});await insert('organization_locations',{organization_id:id,location_id:lid,location_role:l.locationRole??(synthetic?'regional_role':'headquarters'),is_primary:true,publication_status:'published'});}
  await cite('organization',id,org.citations);
  // Official logo storage path only. The isolated server redirects asset requests to this approved public asset.
  if(org.logo)await insert('media_assets',{organization_id:id,asset_type:'logo',storage_path:new URL(org.logo.publicUrl).pathname.split('/atlas-public-media/')[1],source_url:org.logo.sourceUrl,source_visibility:'public',attribution_text:org.logo.attributionText,approval_status:'approved',publication_status:'published'});
@@ -52,6 +55,14 @@ for(const key of ['kraken','airbus','subsea','long','sparse','centre','connectio
  await db.query("update public.organizations set publication_status='published' where id=$1",[id]);
  routes.push(`/organizations/${org.slug}`);
 }
+// Synthetic released need uses the same public source verification gate as production.
+const reviewer=randomUUID();
+await db.query('insert into auth.users(id) values($1) on conflict do nothing',[reviewer]);
+await db.exec("update public.demand_sources ds set publication_status='draft'");
+for(const row of (await db.query<{id:string;source_id:string}>('select id, source_id from public.demand_sources')).rows){
+ const evidence=(await db.query<{id:string}>('select id from public.evidence_snippets where source_id=$1 limit 1',[row.source_id])).rows[0];
+ if(evidence)await db.query("update public.demand_sources set source_evidence_snippet_id=$1,source_verified_at='2026-10-29',source_verified_by=$2,published_on='2026-10-01',source_kind='capability_plan',publication_status='published' where id=$3",[evidence.id,reviewer,row.id]);
+}
 await db.exec('commit');
 await db.exec('set role anon');
 // No fixture bypass: every relation goes through actual PostgreSQL RLS and the real view.
@@ -60,6 +71,9 @@ const server=createServer((req,res)=>{queue=queue.then(async()=>{
  try{
  const url=new URL(req.url??'/', 'http://127.0.0.1:54329');
  if(url.pathname.startsWith('/storage/v1/object/public/atlas-public-media/')){res.writeHead(302,{Location:`https://facoactpdckkhciamflk.supabase.co${url.pathname}`});res.end();return;}
+ if(url.pathname==='/auth/v1/user'){res.writeHead(401,{'Content-Type':'application/json'});res.end(JSON.stringify({message:'Anonymous isolated review'}));return;}
+ if(url.pathname==='/rest/v1/rpc/atlas_canadian_map_organization_count'){res.writeHead(200,{'Content-Type':'application/json'});res.end(JSON.stringify((await db.query<{count:number}>('select public.atlas_canadian_map_organization_count() count')).rows[0].count));return;}
+ if(url.pathname==='/rest/v1/rpc/research_worldwide_companies_ready'){res.writeHead(200,{'Content-Type':'application/json'});res.end('true');return;}
  if(url.pathname==='/rest/v1/rpc/dossier_presentation_copy_ready'){res.writeHead(200,{'Content-Type':'application/json'});res.end(JSON.stringify((await db.query<{ready:boolean}>('select public.dossier_presentation_copy_ready() ready')).rows[0].ready));return;}
  if(!['GET','HEAD'].includes(req.method??''))throw new Error('Local review API is read-only');
  const table=url.pathname.match(/^\/rest\/v1\/([a-z_]+)$/)?.[1];if(!table)throw new Error('Unknown route');

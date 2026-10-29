@@ -435,7 +435,7 @@ async function fileExists(filePath: string) {
 let validationReader: ReturnType<typeof createResearchArtifactReader> | null = null;
 
 async function readArtifact<Schema extends z.ZodTypeAny>(filePath: string, schema: Schema) {
-  return validationReader ? validationReader.parse(filePath,schema) : schema.safeParse(await readJson<unknown>(filePath)) as z.SafeParseReturnType<z.input<Schema>,z.output<Schema>>;
+  return validationReader ? validationReader.parse(filePath,schema) : schema.safeParse(await readJson<unknown>(filePath)) as z.ZodSafeParseResult<z.output<Schema>>;
 }
 
 async function readJson<T>(filePath: string): Promise<T> {
@@ -815,7 +815,7 @@ async function prepareRun(args: string[]) {
     selectedGap = {
       coverageView: explicitOrganizationKinds.every((kind) => kind === "company") ? "supply" : "ecosystem_support",
       dimension: `organization-kind:${explicitOrganizationKinds.join("+")}`,
-      reason: `The operator explicitly scoped this run to increase reviewable Canadian ${kindLabel} coverage while preserving evidence and duplicate controls.`,
+      reason: `The operator explicitly scoped this run to increase reviewable Canada-first ${kindLabel} coverage while preserving evidence and duplicate controls.`,
       score: 1000
     };
   }
@@ -862,7 +862,7 @@ async function prepareRun(args: string[]) {
     status: "active",
     intelligenceRequirement: canonicalRepair
       ? `Resolve the exact published identity, Canadian nexus, lifecycle status, aliases, successor evidence, canonical child validity, protected dependencies, and collision risks needed to repair ${selectedGap.dimension} without hard deletion, claim transfer, or bypassing human Review and Publish.`
-      : `Resolve the specific capabilities or public needs, Canadian relevance, technical and operational detail, proof and current activity, Mission Area or Public Need connection, material unknowns, and next reviewer action needed to address ${selectedGap.dimension}: ${selectedGap.reason}`,
+      : `Resolve the specific capabilities or public needs, relevant operating context, technical and operational detail, proof and current activity, Mission Area or Public Need connection, material unknowns, and next reviewer action needed to address ${selectedGap.dimension}: ${selectedGap.reason}`,
     targetSubjects: organizationTargetMode ? resolvedDossierTargets.map((target) => ({
       subjectId: `organization-${target.slug}`,
       subjectType: "organization" as const,
@@ -916,7 +916,7 @@ async function prepareRun(args: string[]) {
       {
         questionId: "identity-canadian-presence",
         subjectType: "organization",
-        question: "What is the canonical organization identity, ownership context, aliases, and evidence of an active Canadian operating presence?",
+        question: "What is the canonical identity, ownership and actual operating geography? Preserve real headquarters and operating locations; companies worldwide qualify without Canadian presence or relevance. Canadian presence or entry claims require their own public evidence. Foreign locations are not mapped.",
         targetFieldPaths: ["organization.name", "organization.aliases", "organization.primaryLocation", "organization.publicContact", "organization.canadianFootprint"],
         evidenceThreshold: "one_anchor"
       },
@@ -1874,7 +1874,8 @@ async function writeStaging(runPath: string, candidatePath: string) {
   const stagingPath = path.join(stagingDir, `${run.runId}.json`);
   const contractCandidates = batch.candidates.map((candidate) => ({
     candidate_kind: candidate.candidateKind,
-    schema_version: candidate.schemaVersion
+    schema_version: candidate.schemaVersion,
+    proposed_record: candidate
   }));
   const contractIssues = researchCandidateContractIssues(contractCandidates);
   if (contractIssues.length) {

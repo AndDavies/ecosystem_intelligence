@@ -35,6 +35,10 @@ export function atlasQueryFromSearchParams(searchParams: URLSearchParams): Atlas
     cluster: read("cluster"),
     focus: normalizeGuidedSearchFocus(searchParams.getAll("focus")),
     view: view === "map" || view === "table" ? view : undefined,
+    selectedCapability: read("selectedCapability")?.match(/^[0-9a-f-]{36}$/i)?.[0],
+    organizationIds: read("organizationIds")?.split(",").filter(id => /^[0-9a-f-]{36}$/i.test(id)).slice(0, 10),
+    capabilityIds: read("capabilityIds")?.split(",").filter(id => /^[0-9a-f-]{36}$/i.test(id)).slice(0, 10),
+    discovery: read("discovery")?.match(/^[0-9a-f-]{36}$/i)?.[0],
     selected: selected && /^[0-9a-f-]{36}$/i.test(selected) ? selected : undefined,
     page: positiveInteger(searchParams.get("page"), 1),
     pageSize: positiveInteger(searchParams.get("pageSize"), 25)
@@ -61,6 +65,10 @@ export function atlasQueryToSearchParams(query: AtlasQuery) {
   if (focus.length) set("focus", focus.join(","));
   set("view", query.view);
   set("selected", query.selected);
+  set("selectedCapability", query.selectedCapability);
+  set("discovery", query.discovery);
+  set("organizationIds", query.organizationIds?.join(","));
+  set("capabilityIds", query.capabilityIds?.join(","));
   if (query.bounds) {
     set("bounds", [query.bounds.west, query.bounds.south, query.bounds.east, query.bounds.north].join(","));
   }

@@ -4,7 +4,7 @@ import type { AtlasEntityKind } from "@/types/atlas";
 export function publicCitationSourceLocator(value: unknown) {
   const locator = typeof value === "string" ? value.trim() : "";
   // Older intake records stored an operation-field path here, not a location in the source.
-  return locator && !/^operations(?:\.|\[|$)/.test(locator) ? locator : null;
+  return locator && !/^(?:operations|requirements|organization|capabilities|candidate|profileData)(?:\.|\[|$)/.test(locator) ? locator : null;
 }
 
 export const organizationProfileFieldAllowlist = {

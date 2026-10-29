@@ -165,9 +165,14 @@ const betaEventBaseSchema = z.object({
   utmContent: optionalUtm,
   sessionId: optionalUuid,
   searchId: optionalUuid,
-  metadata: z.record(databaseText().max(80), pilotMetadataValue)
-    .refine((value) => Object.keys(value).length <= 8, "Too many event properties.")
-    .default({})
+  metadata: z.preprocess((value, context) => {
+    // Reject the collection before record parsing can allocate an issue per value.
+    if (value !== null && typeof value === "object" && !Array.isArray(value) && Object.keys(value).length > 8) {
+      context.addIssue({ code: "custom", message: "Too many event properties." });
+      return z.NEVER;
+    }
+    return value;
+  }, z.record(databaseText().max(80), pilotMetadataValue)).default({})
 });
 
 export const betaEventSchema = betaEventBaseSchema.superRefine((event, context) => {

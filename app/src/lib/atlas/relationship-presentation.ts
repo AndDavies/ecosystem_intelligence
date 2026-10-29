@@ -248,10 +248,10 @@ export function demandRelationshipAssessmentRole(
 }
 
 export function demandRelationshipAssessmentCopy(
-  role: DemandRelationshipAssessmentRole,
+  _role: DemandRelationshipAssessmentRole,
   alignmentSummary: string
 ) {
-  return role === "broader" ? broaderDemandRelationshipAssessmentCopy : alignmentSummary;
+  return alignmentSummary;
 }
 
 type MissionCapability = AtlasMissionOrganizationConnection["capabilities"][number];

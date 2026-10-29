@@ -27,8 +27,8 @@ export const revalidate = 300;
 type RelatedDemandSignal = ReturnType<typeof selectRelationshipSignals>[number] & { explicitRecordLink: boolean };
 
 const demandAssessmentRoleLabel: Record<DemandRelationshipAssessmentRole, string> = {
-  direct: "Direct functional overlap",
-  enabling: "Enabling system",
+  direct: "Description mentions the core function",
+  enabling: "Description mentions a supporting function",
   broader: "Broader published connection"
 };
 
@@ -109,7 +109,8 @@ function LegacyDemandContent({ demand, controlSlug }: { demand: AtlasDemandRequi
                       </div>
                       <span className="w-fit rounded bg-[var(--atlas-primary-soft)] px-2 py-1 text-[10px] font-semibold text-[var(--atlas-primary)]">{evidenceStrengthLabel(match.confidence)} public evidence</span>
                     </div>
-                    <p className="mt-3 text-xs leading-5 text-[var(--atlas-ink-soft)]">{match.alignmentSummary}</p>
+                    <p className="mt-3 text-xs font-bold">Source-backed offering</p><p className="mt-1 text-sm leading-6 text-[var(--atlas-ink-soft)]">{capability.summary}</p>
+                    <p className="mt-3 text-xs font-bold">Reviewed connection</p><p className="mt-1 text-xs leading-5 text-[var(--atlas-ink-soft)]">{match.alignmentSummary}</p>
                     <div className="mt-3 rounded-xl border border-[var(--atlas-border)] bg-white/70 p-3">
                       <p className="text-[10px] font-bold uppercase tracking-[0.1em] text-[var(--atlas-muted)]">What supports this assessment</p>
                       {match.citations.length ? <EvidenceList citations={match.citations} /> : <p className="mt-2 text-xs leading-5 text-[var(--atlas-muted)]">The reviewed technology profile and released defence need support this assessment. Open both records before acting.</p>}
@@ -172,7 +173,9 @@ function TreatmentResult({
       </div>
       <p className="mt-4 text-[10px] font-bold uppercase tracking-[0.1em] text-[var(--atlas-muted)]">Source-backed capability</p>
       <p className="mt-1 text-xs leading-5 text-[var(--atlas-ink-soft)]">{capability.summary}</p>
-      <p className={`mt-3 text-[10px] font-bold uppercase tracking-[0.1em] ${assessmentRole === "broader" ? "text-[var(--atlas-amber)]" : "text-[var(--atlas-muted)]"}`}>Our assessment · {demandAssessmentRoleLabel[assessmentRole]}</p>
+      <p className={`mt-3 text-[10px] font-bold uppercase tracking-[0.1em] ${assessmentRole === "broader" ? "text-[var(--atlas-amber)]" : "text-[var(--atlas-muted)]"}`}>Discovery grouping · {demandAssessmentRoleLabel[assessmentRole]}</p>
+      <p className="mt-1 text-xs leading-5 text-[var(--atlas-muted)]">Grouped by wording in the published capability description. This is a navigation aid; the reviewed connection below and its sources establish the limits.</p>
+      <p className="mt-3 text-[10px] font-bold uppercase tracking-[0.1em]">Our assessment · Reviewed connection</p>
       <p className="mt-1 text-xs leading-5 text-[var(--atlas-muted)]">{demandRelationshipAssessmentCopy(assessmentRole, match.alignmentSummary)}</p>
       <details className="mt-3 rounded-[14px] bg-[var(--atlas-surface-muted)] px-4 py-3">
         <summary className="flex min-h-11 cursor-pointer items-center text-xs font-bold text-[var(--atlas-ink-soft)]">Review supporting public evidence</summary>
@@ -219,7 +222,7 @@ function TreatmentDemandContent({
 
       <section className="mt-7 border-y border-[var(--atlas-border)] bg-[var(--atlas-blue-soft)] px-5 py-6 sm:px-7" aria-labelledby="public-need-contribution-heading">
         <p className="atlas-eyebrow">{publicLanguage.assessment}</p>
-        <h2 id="public-need-contribution-heading" className="mt-2 font-[family-name:var(--font-barlow)] text-2xl font-extrabold tracking-[-0.04em] text-[var(--atlas-ink)]">How Canadian capability may contribute</h2>
+        <h2 id="public-need-contribution-heading" className="mt-2 font-[family-name:var(--font-barlow)] text-2xl font-extrabold tracking-[-0.04em] text-[var(--atlas-ink)]">How reviewed capability may contribute</h2>
         <p className="mt-3 max-w-4xl text-sm leading-6 text-[var(--atlas-ink-soft)]">{treatment.contributionSummary}</p>
         {featuredCapabilityNames.length ? <p className="mt-3 text-xs leading-5 text-[var(--atlas-muted)]">The first reviewed records include {featuredCapabilityNames.join(", ")}.</p> : null}
       </section>
@@ -235,8 +238,11 @@ function TreatmentDemandContent({
         <section className="mt-12" aria-labelledby="public-need-complete-heading">
           <p className="atlas-eyebrow">{remainingMatches.length} additional reviewed {remainingMatches.length === 1 ? "assessment" : "assessments"}</p>
           <h2 id="public-need-complete-heading" className="mt-2 text-2xl font-extrabold tracking-[-0.04em] text-[var(--atlas-ink)]">Remaining published connections</h2>
-          <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)]">The rest of the published set remains available once, with supporting evidence collapsed until it is useful.</p>
-          <div className="mt-6 divide-y divide-[var(--atlas-border)] bg-white px-5 py-1 sm:px-7">{remainingMatches.map((entry) => <TreatmentResult key={entry.match.id} entry={entry} treatment={treatment} positionIndex={positionByMatchId.get(entry.match.id) ?? 0} placement="complete" />)}</div>
+          <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)]">Additional and broader connections remain available with their complete reviewed rationale and supporting evidence.</p>
+          <details className="mt-6 border border-[var(--atlas-border)] bg-white px-5 sm:px-7">
+            <summary className="flex min-h-11 cursor-pointer items-center py-3 text-sm font-bold">Inspect {remainingMatches.length} additional published {remainingMatches.length === 1 ? "connection" : "connections"}</summary>
+            <div className="divide-y divide-[var(--atlas-border)]">{remainingMatches.map((entry) => <TreatmentResult key={entry.match.id} entry={entry} treatment={treatment} positionIndex={positionByMatchId.get(entry.match.id) ?? 0} placement="complete" />)}</div>
+          </details>
         </section>
       ) : null}
 
@@ -393,7 +399,7 @@ export default async function DemandPage({ params }: { params: Promise<{ slug: s
         {
           "@context": "https://schema.org",
           "@type": "ItemList",
-          name: `Reviewed Canadian capability connections for ${demand.title}`,
+          name: `Reviewed capability connections for ${demand.title}`,
           numberOfItems: orderedMatches.length,
           itemListElement: orderedMatches.slice(0, 100).map(({ organization, capability }, index) => ({
             "@type": "ListItem",

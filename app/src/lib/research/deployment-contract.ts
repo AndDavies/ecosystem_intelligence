@@ -24,6 +24,7 @@ export type ResearchReviewContract = {
   candidateLogoPublication?: "candidate_logo_v1";
   candidatePresentationCopyPublication?: "dossier_presentation_copy_v1";
   candidateSnapshotPublication?: "company_snapshot_observations_v1";
+  candidateWorldwideCompanies?: "worldwide_companies_v1";
   candidateSchemas: Record<SupportedResearchCandidateKind, readonly string[]>;
 };
 
@@ -33,6 +34,7 @@ export const researchReviewContract: ResearchReviewContract = {
   candidateLogoPublication: "candidate_logo_v1",
   candidatePresentationCopyPublication: "dossier_presentation_copy_v1",
   candidateSnapshotPublication: "company_snapshot_observations_v1",
+  candidateWorldwideCompanies: "worldwide_companies_v1",
   candidateSchemas: supportedResearchCandidateSchemas
 };
 
@@ -56,10 +58,18 @@ export function isSupportedResearchCandidateKind(value: string): value is Suppor
 
 export function researchCandidateContractIssues(
   candidates: ResearchCandidateContractInput[],
-  contract: Pick<ResearchReviewContract, "contractVersion" | "pipelineVersion" | "candidateSchemas" | "candidateLogoPublication" | "candidateSnapshotPublication" | "candidatePresentationCopyPublication"> = researchReviewContract,
+  contract: Pick<ResearchReviewContract, "contractVersion" | "pipelineVersion" | "candidateSchemas" | "candidateLogoPublication" | "candidateSnapshotPublication" | "candidatePresentationCopyPublication" | "candidateWorldwideCompanies"> = researchReviewContract,
   requiredPipelineVersion: string = currentResearchPipelineVersion
 ) {
   const issues: string[] = [];
+  const international = candidates.some(candidate => {
+    const payload = candidate.proposed_record as { organization?: { primaryLocation?: { countryCode?: string; locationRole?: string } | null } } | undefined;
+    const country = payload?.organization?.primaryLocation?.countryCode;
+    return payload?.organization?.primaryLocation === null || Boolean(country && country !== "CA") || Boolean(payload?.organization?.primaryLocation?.locationRole);
+  });
+  if (international && contract.candidateWorldwideCompanies !== "worldwide_companies_v1") {
+    issues.push("Worldwide company intake requires deployed worldwide Review, publication and Canadian-only map support.");
+  }
   if (candidates.some(candidate => {
     const payload = candidate.proposed_record as { candidateLogo?: { storagePath?: unknown } } | undefined;
     return Boolean(payload?.candidateLogo?.storagePath);

@@ -29,6 +29,10 @@ Secondary users:
 5. Export a dossier, regional report, filtered dataset, or saved lookbook.
 6. Claim, correct, or suggest a public profile without enabling direct self-publication.
 7. Give editors a governed path from a URL, PDF, agent lead, or manual entry to a reviewed canonical record.
+
+## Geographic eligibility
+
+Companies worldwide are eligible for research, directory inclusion and private review without Canadian presence or relevance. Retain normal identity, concrete offering, evidence, taxonomy, lifecycle and duplicate controls. Canada-first remains a discovery priority, not an intake gate. The map shows Canadian locations only; profiles preserve real foreign geography. Never infer a partnership or entry plan from interest.
 ## Exports
 
 Public exports:

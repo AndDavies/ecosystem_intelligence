@@ -249,7 +249,7 @@ function evaluateOrganizationBundleContract(candidateValue: unknown) {
         proposedCategories: candidate.organization.categories,
         websiteUrl: candidate.organization.websiteUrl,
         aliases: candidate.organization.aliases,
-        location: { city: candidate.organization.primaryLocation.city, provinceTerritory: candidate.organization.primaryLocation.provinceTerritory, countryCode: "CA" },
+        location: { city: candidate.organization.primaryLocation?.city ?? null, provinceTerritory: candidate.organization.primaryLocation?.provinceTerritory ?? null, countryCode: "CA" },
         candidateCapabilityName: candidate.capabilities[0]?.name ?? null,
         roleSpecificEvidence: "The synthetic official profile describes a concrete modular coastal-surveillance software capability and its Canadian operating location."
       }]

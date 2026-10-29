@@ -6,7 +6,9 @@ Last reviewed: 2026-09-12
 
 ## What this project is
 
-True North Map is a Canadian defence capability-discovery platform. It helps people find Canadian defence and dual-use organizations and technologies, understand where they may fit, and decide who is worth speaking with next.
+True North Map is a Canada-first defence capability-discovery platform. It helps people find Canadian defence and dual-use organizations and technologies, together with companies worldwide, understand where they may fit, and decide who is worth speaking with next.
+
+Companies worldwide are eligible for research, directory inclusion and private review without Canadian presence or relevance. Retain normal identity, concrete offering, evidence, taxonomy, lifecycle and duplicate controls. Canada-first remains a discovery priority, not an intake gate. The map shows Canadian locations only; profiles preserve real foreign geography. Never infer a partnership or entry plan from interest.
 
 The project is not a procurement portal, an official government directory, a CRM, or a source of classified information. Its public promise is simpler:
 

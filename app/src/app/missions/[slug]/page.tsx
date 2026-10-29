@@ -38,7 +38,7 @@ export async function generateMetadata({ params, searchParams }: { params: Promi
     title: pageTitle,
     description,
     alternates: { canonical: path },
-    ...socialMetadata({ title: socialTitle, description, path, eyebrow: "Mission area and Use Case", detail: "Canadian organizations and technologies that may be worth examining" })
+    ...socialMetadata({ title: socialTitle, description, path, eyebrow: "Mission area and Use Case", detail: "organizations worldwide and technologies that may be worth examining" })
   }, path, normalizedPage((await searchParams).page));
 }
 
@@ -193,7 +193,7 @@ export default async function MissionDetailPage({
         {
           "@context": "https://schema.org",
           "@type": "ItemList",
-          name: `Canadian organizations reviewed for ${result.missionArea.name}`,
+          name: `Organizations reviewed for ${result.missionArea.name}`,
           numberOfItems: presentationSequence.length,
           itemListElement: presentationSequence.slice(0, 100).map((connection, index) => ({
             "@type": "ListItem",
@@ -213,6 +213,7 @@ export default async function MissionDetailPage({
         }
       ]} />
 
+      <nav aria-label="Mission sections" className="mb-6 flex flex-wrap gap-3"><a href="#mission-technologies" className="atlas-signal-button min-h-11 px-4 text-sm">Explore technologies ({result.capabilityCount})</a>{result.publicNeeds.length ? <a href="#mission-public-needs-heading" className="atlas-secondary-button min-h-11 px-4 text-sm">Related Defence needs</a> : null}</nav>
       <div className="grid gap-4 sm:grid-cols-3">
         <StatTile icon={SearchCheck} label="Organizations reviewed for this mission" value={result.organizations.length} />
         <StatTile icon={Layers3} label="Mapped technologies" value={result.capabilityCount} />
@@ -224,11 +225,12 @@ export default async function MissionDetailPage({
         <p className="mt-2 pl-6">This page shows reviewed True North Map assessments. It is not a released requirement, procurement priority, endorsement, customer interest, or classified guidance.</p>
       </details>
 
+      <span id="mission-technologies" tabIndex={-1} className="block scroll-mt-24" />
       {treatment && showTreatmentIntro ? (
         <>
           <section className="mt-7 border-y border-[var(--atlas-border)] bg-[var(--atlas-blue-soft)] px-5 py-6 sm:px-7" aria-labelledby="mission-contribution-heading">
             <p className="atlas-eyebrow">Our assessment</p>
-            <h2 id="mission-contribution-heading" className="mt-2 font-[family-name:var(--font-barlow)] text-2xl font-extrabold tracking-[-0.04em] text-[var(--atlas-ink)]">How Canadian capability may contribute</h2>
+            <h2 id="mission-contribution-heading" className="mt-2 font-[family-name:var(--font-barlow)] text-2xl font-extrabold tracking-[-0.04em] text-[var(--atlas-ink)]">How capability may contribute</h2>
             <p className="mt-3 max-w-4xl text-sm leading-6 text-[var(--atlas-ink-soft)]">{treatment.contributionSummary}</p>
             {featuredCapabilityNames.length ? <p className="mt-3 text-xs leading-5 text-[var(--atlas-muted)]">The first reviewed records include {featuredCapabilityNames.join(", ")}.</p> : null}
           </section>
@@ -249,6 +251,39 @@ export default async function MissionDetailPage({
           </section>
         </>
       ) : null}
+
+      <section className="mt-12" aria-labelledby="mission-organizations-heading">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="atlas-eyebrow">Our assessment</p>
+            <h2 id="mission-organizations-heading" className="mt-2 text-2xl font-extrabold tracking-[-0.04em] text-[var(--atlas-ink)]">{treatment ? "Remaining reviewed connections" : "Technologies reviewed for this mission"}</h2>
+            <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)]">{treatment ? "Each published connection appears once. The remaining set keeps the same deterministic presentation order without expressing supplier preference." : "Every record below shows the technology reviewed for this mission and its organization-specific reason. Organizations are ordered by the strongest published assessment on this page, then alphabetically, not ranked or recommended."}</p>
+          </div>
+          <Link href={`/map?mission=${result.missionArea.slug}`} data-internal-link-role="contextual" data-internal-link-module="mission_map" className="atlas-secondary-button h-10 w-fit gap-2 px-4 text-xs">See every map point <Compass className="size-3.5" aria-hidden="true" /></Link>
+        </div>
+
+        {directory.items.length ? (
+          <>
+            <div className="mt-7 grid gap-5 lg:grid-cols-2">
+              {directory.items.map((connection, index) => (
+                <MissionOrganizationCard
+                  key={connection.organization.id}
+                  connection={connection}
+                  relationshipContext={treatment || control ? {
+                    targetSlug: result.missionArea.slug,
+                    positionBand: relationshipPositionBand(positionByOrganizationId.get(connection.organization.id) ?? (directory.start + index - 1)),
+                    variant: treatment ? "treatment" : "control",
+                    placement: "complete"
+                  } : undefined}
+                />
+              ))}
+            </div>
+            <PaginationNav path={path} page={directory.page} totalPages={directory.totalPages} start={directory.start} end={directory.end} total={directory.total} itemLabel="organizations" />
+          </>
+        ) : treatment && featuredConnections.length ? null : (
+          <div className="mt-7"><EmptyCoverage title="No reviewed connections yet" detail="The Mission area remains visible as a coverage gap until reviewed technology can support it." /></div>
+        )}
+      </section>
 
       {presentedPublicNeeds.length ? (
         <section className="mt-12" aria-labelledby="mission-public-needs-heading">
@@ -319,38 +354,6 @@ export default async function MissionDetailPage({
         </section>
       ) : null}
 
-      <section className="mt-12" aria-labelledby="mission-organizations-heading">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="atlas-eyebrow">Our assessment</p>
-            <h2 id="mission-organizations-heading" className="mt-2 text-2xl font-extrabold tracking-[-0.04em] text-[var(--atlas-ink)]">{treatment ? "Remaining reviewed connections" : "Canadian technology mapped to this mission"}</h2>
-            <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--atlas-muted)]">{treatment ? "Each published connection appears once. The remaining set keeps the same deterministic presentation order without expressing supplier preference." : "Every record below shows the technology reviewed for this mission and its organization-specific reason. Organizations are ordered by the strongest published assessment on this page, then alphabetically, not ranked or recommended."}</p>
-          </div>
-          <Link href={`/map?mission=${result.missionArea.slug}`} data-internal-link-role="contextual" data-internal-link-module="mission_map" className="atlas-secondary-button h-10 w-fit gap-2 px-4 text-xs">See every map point <Compass className="size-3.5" aria-hidden="true" /></Link>
-        </div>
-
-        {directory.items.length ? (
-          <>
-            <div className="mt-7 grid gap-5 lg:grid-cols-2">
-              {directory.items.map((connection, index) => (
-                <MissionOrganizationCard
-                  key={connection.organization.id}
-                  connection={connection}
-                  relationshipContext={treatment || control ? {
-                    targetSlug: result.missionArea.slug,
-                    positionBand: relationshipPositionBand(positionByOrganizationId.get(connection.organization.id) ?? (directory.start + index - 1)),
-                    variant: treatment ? "treatment" : "control",
-                    placement: "complete"
-                  } : undefined}
-                />
-              ))}
-            </div>
-            <PaginationNav path={path} page={directory.page} totalPages={directory.totalPages} start={directory.start} end={directory.end} total={directory.total} itemLabel="organizations" />
-          </>
-        ) : treatment && featuredConnections.length ? null : (
-          <div className="mt-7"><EmptyCoverage title="No reviewed connections yet" detail="The Mission area remains visible as a coverage gap until reviewed Canadian technology can support it." /></div>
-        )}
-      </section>
       <ExploreNext
         links={missionExploreLinks}
         module="mission_area"

@@ -55,6 +55,19 @@ describe("optional reviewed presentation copy", () => {
 });
 
 describe("Shared dossier content and handoffs", () => {
+  it("renders foreign geography and country metadata without implying Canadian premises", () => {
+    const organization = profileFixture("kraken");
+    organization.primaryLocation = { id:"foreign-location",name:"South San Francisco, California",city:"South San Francisco",provinceTerritory:"California",countryCode:"US",latitude:37.6547,longitude:-122.4077,geographicConfidence:"city_centroid",regionSlug:"" };
+    organization.editorialProfile.canadianFootprint = "No Canadian operating location is established in the reviewed sources.";
+    const doc = document.implementation.createHTMLDocument();
+    doc.body.innerHTML = renderToStaticMarkup(React.createElement(ExecutiveOrganizationDossier, { organization, profilePath:"/organizations/foreign-fixture",mapReturnTo:"/map",relatedIntelligence:fixtureRelated,trackEngagement:false }));
+    expect(doc.body.textContent).toContain("Listed location");
+    expect(doc.body.textContent).toContain("Location");
+    expect(doc.querySelector("a[data-profile-action='map_open']")).toBeNull();
+    expect(doc.body.textContent).not.toContain("Listed Canadian location");
+    const json = doc.querySelector('script[type="application/ld+json"]')?.textContent;
+    expect(json).toContain('"addressCountry":"US"');
+  });
   it("keeps all eight capabilities and full paragraphs, with navigation only to rendered targets", () => {
     const { doc, organization } = render("long");
     expect(doc.querySelector('article[data-editorial-dossier="organization"] #capabilities')).not.toBeNull();
@@ -76,7 +89,9 @@ describe("Shared dossier content and handoffs", () => {
     const { doc, organization } = render("sparse");
     expect(doc.querySelector("header")?.textContent).not.toContain(organization.description);
     expect(doc.querySelector("#company-context")?.textContent).toContain(organization.description);
-    for (const id of ["why-now", "operating-context", "commercial", "public-record", "connections", "questions", "sources"]) expect(doc.getElementById(id)).toBeNull();
+    for (const id of ["why-now", "operating-context", "commercial", "public-record", "connections", "questions"]) expect(doc.getElementById(id)).toBeNull();
+    expect(doc.querySelector("#sources")?.textContent).toContain("No approved source records");
+    expect(doc.querySelector("#evidence")).not.toBeNull();
     expect(doc.querySelector("header img")).toBeNull();
     const centre = render("centre").doc;
     expect(centre.querySelector("#about h2")?.textContent).toContain("Research and Test Centre");

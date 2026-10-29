@@ -3,6 +3,7 @@ import { snapshotObservationsSchema } from "@/lib/atlas/company-snapshot";
 import { z } from "zod";
 import { organizationProfileFieldAllowlist } from "@/lib/atlas/public-profile-data";
 import { normalizeOrganizationIdentity } from "@/lib/research/identity-normalization";
+import { organizationLeadCountrySchema, organizationPrimaryLocationSchema } from "@/lib/research/organization-geography";
 
 export { organizationProfileFieldAllowlist } from "@/lib/atlas/public-profile-data";
 
@@ -426,7 +427,7 @@ const organizationLeadSchema = z.object({
   location: z.object({
     city: z.string().trim().min(1).max(160).nullable(),
     provinceTerritory: z.string().trim().min(1).max(160).nullable(),
-    countryCode: z.string().length(2)
+    countryCode: organizationLeadCountrySchema
   }),
   candidateCapabilityName: z.string().trim().min(2).max(240).nullable(),
   roleSpecificEvidence: z.string().trim().min(40).max(4000)
@@ -855,14 +856,7 @@ export const organizationBundleV3Schema = z.object({
     websiteUrl: httpsUrlSchema,
     entityKind: z.enum(organizationKindValues),
     categories: z.array(z.enum(organizationCategoryValues)).min(1),
-    primaryLocation: z.object({
-      city: z.string().trim().min(1).max(160),
-      provinceTerritory: z.string().trim().min(1).max(160),
-      countryCode: z.literal("CA"),
-      latitude: z.number().min(40).max(84),
-      longitude: z.number().min(-142).max(-52),
-      geographicConfidence: z.enum(["exact", "city_centroid", "regional"])
-    }).strict(),
+    primaryLocation: organizationPrimaryLocationSchema,
     foundedYear: z.number().int().min(1800).max(2100).nullable(),
     employeeRange: nullablePublicText(1, 120),
     companyStage: nullablePublicText(1, 120),
@@ -881,7 +875,7 @@ export const organizationBundleV3Schema = z.object({
     snapshotObservations: snapshotObservationsSchema.optional(),
     executiveRelevanceSummary: nullablePublicText(80, 1200).optional(),
     reviewedQuestions: z.array(reviewedQuestionSchema).max(4),
-    profileData: z.record(profileFieldValueSchema)
+    profileData: z.record(z.string(), profileFieldValueSchema)
   }).strict(),
   capabilities: z.array(capabilityV3Schema).max(10),
   programParticipations: z.array(organizationProgramParticipationV3Schema).max(20),
@@ -1916,7 +1910,7 @@ export const researchSignalBatchV1Schema = z.object({
   createdAt: z.string().datetime(),
   watermarkStart: z.string().datetime(),
   watermarkEnd: z.string().datetime(),
-  sourceFamilyCounters: z.record(signalSourceChannelSchema, z.number().int().min(0)),
+  sourceFamilyCounters: z.partialRecord(signalSourceChannelSchema, z.number().int().min(0)),
   warnings: z.array(z.string().trim().min(10).max(1000)),
   signals: z.array(z.object({
     signalId: slugSchema,

@@ -14,7 +14,7 @@ describe("functional discovery collections", () => {
     ]);
 
     expect(organizations).toContain("Find the people and technology your project needs.");
-    expect(organizations).toContain("Search companies, research centres and industry organizations.");
+    expect(organizations).toContain("Canadian-first discovery of companies, research centres and industry organizations worldwide.");
     expect(organizations).toContain("Have a specific need?");
     expect(regions).toContain("Explore capability by region.");
     expect(regions).toContain("Counts and locations reflect the current published record.");
@@ -64,7 +64,7 @@ describe("functional discovery collections", () => {
     expect(explorer).toContain("Find a company, technology or area.");
     expect(explorer).toContain("Search by name or subject, then narrow the results.");
     expect(explorer).toContain("Ask True North · AI-assisted");
-    expect(explorer).toContain("Describe a challenge. See which Canadian capabilities may help.");
+    expect(explorer).toContain("Describe a challenge. Explore reviewed capabilities worldwide, with Canada first.");
     expect(explorer).toContain("Filters update the map, results, URL and export together.");
     expect(explorer).toContain("result.mapOrganizations");
     expect(mapPage).toContain("atlasQueryFromSearchParams");

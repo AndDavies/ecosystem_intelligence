@@ -31,9 +31,9 @@ export default function NavigationLink({ href, onClick, onPointerDown, onContext
     if (!raw) return;
     const destination = new URL(raw, window.location.origin);
     if (destination.origin !== window.location.origin || !isProfilePath(destination.pathname)) return;
-    if (window.location.pathname === "/map") remember(`${window.location.pathname}${window.location.search}${window.location.hash}`);
+    if (destination.searchParams.has("returnTo")) remember(destination.searchParams.get("returnTo")!);
+    else if (window.location.pathname === "/map") remember(`${window.location.pathname}${window.location.search}${window.location.hash}`);
     else if (isProfilePath(window.location.pathname)) readReturn();
-    else if (destination.searchParams.has("returnTo")) remember(destination.searchParams.get("returnTo")!);
     else readReturn();
   };
   return <NextLink {...props} href={returnHref ?? normalized}

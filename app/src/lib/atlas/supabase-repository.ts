@@ -42,7 +42,7 @@ type Row = Record<string, unknown>;
 const atlasColumns = {
   organizations: "id, slug, name, legal_name, description, website_url, entity_kind, organization_categories, source_confidence, freshness_status, last_reviewed_at, founded_year, employee_range, company_stage, ownership, commercial_status, disclosed_financing_summary, defence_posture, dual_use_posture, profile_data",
   locations: "id, name, city, province_territory, country_code, latitude, longitude, geographic_confidence",
-  organizationLocations: "organization_id, location_id, is_primary",
+  organizationLocations: "organization_id, location_id, location_role, is_primary",
   capabilities: "id, organization_id, slug, name, summary, capability_type, core_features, technology_readiness_level, maturity, commercial_availability, defence_applications, novelty, technical_tags, source_confidence, last_reviewed_at",
   technicalDomains: "id, slug, name, summary",
   capabilityDomains: "capability_id, technical_domain_id",
@@ -254,7 +254,12 @@ function asConfidence(value: unknown): AtlasConfidence {
   return value === "high" || value === "moderate" ? value : "needs_review";
 }
 
-function regionSlugForProvince(value: string | null) {
+function asLocationRole(value: unknown): AtlasLocation["locationRole"] {
+  return value === "headquarters" || value === "facility" || value === "test_site" || value === "regional_role" ? value : undefined;
+}
+
+function regionSlugForProvince(value: string | null, countryCode: string) {
+  if (countryCode !== "CA") return "";
   if (["Newfoundland and Labrador", "Nova Scotia", "New Brunswick", "Prince Edward Island"].includes(value ?? "")) {
     return "atlantic-canada";
   }
@@ -505,7 +510,7 @@ export async function loadAtlasDiscoverySnapshotFromSupabase(
       geographicConfidence: ["exact", "city_centroid", "regional"].includes(asString(row.geographic_confidence))
         ? (asString(row.geographic_confidence) as AtlasLocation["geographicConfidence"])
         : "unverified",
-      regionSlug: regionSlugForProvince(provinceTerritory)
+      regionSlug: regionSlugForProvince(provinceTerritory, asString(row.country_code, "CA"))
     };
   };
 
@@ -602,11 +607,10 @@ export async function loadAtlasDiscoverySnapshotFromSupabase(
     const mappedLocations = (locationLinksByOrganization.get(id) ?? [])
       .map((link) => {
         const location = locationById.get(asString(link.location_id));
-        return location ? { link, location: mapLocation(location) } : null;
+        return location ? { link, location: { ...mapLocation(location), locationRole: asLocationRole(link.location_role) } } : null;
       })
-      .filter((value): value is { link: Row; location: AtlasLocation } => Boolean(value));
+      .filter((value): value is NonNullable<typeof value> => Boolean(value));
     const primaryLocation = mappedLocations.find((value) => Boolean(value.link.is_primary))?.location
-      ?? mappedLocations[0]?.location
       ?? null;
     const organizationCapabilities = (capabilitiesByOrganization.get(id) ?? [])
       .map((capability) => capabilityById.get(asString(capability.id)))
@@ -714,6 +718,8 @@ export async function loadAtlasDemandIndexFromSupabase(): Promise<AtlasDemandInd
     publisher: string;
     sourceKind: string | null;
     commitmentLevel: string | null;
+    publishedOn: string | null;
+    sourceVerifiedAt: string;
   }>();
 
   demandSourceRows.forEach((row) => {
@@ -732,7 +738,9 @@ export async function loadAtlasDemandIndexFromSupabase(): Promise<AtlasDemandInd
       id: asString(row.id),
       publisher: asString(row.publisher),
       sourceKind: asNullableString(row.source_kind),
-      commitmentLevel: asNullableString(row.commitment_level)
+      commitmentLevel: asNullableString(row.commitment_level),
+      publishedOn: asNullableString(row.published_on),
+      sourceVerifiedAt: asString(row.source_verified_at)
     });
   });
 
@@ -770,10 +778,11 @@ export async function loadAtlasDemandIndexFromSupabase(): Promise<AtlasDemandInd
 
 export async function loadAtlasCoverageSummaryFromSupabase(): Promise<AtlasCoverageSummary> {
   const supabase = createPublicClient();
-  const [organizationsResult, capabilitiesResult, sourcesResult] = await Promise.all([
+  const [organizationsResult, capabilitiesResult, sourcesResult, mapCountResult] = await Promise.all([
     supabase.from("organizations").select("id", { count: "exact", head: true }).eq("publication_status", "published"),
     supabase.from("capabilities").select("id", { count: "exact", head: true }).eq("publication_status", "published"),
-    supabase.from("sources").select("id", { count: "exact", head: true }).eq("visibility", "public").eq("public_approved", true)
+    supabase.from("sources").select("id", { count: "exact", head: true }).eq("visibility", "public").eq("public_approved", true),
+    supabase.rpc("atlas_canadian_map_organization_count")
   ]);
   [
     [organizationsResult, "published organization count"],
@@ -783,6 +792,7 @@ export async function loadAtlasCoverageSummaryFromSupabase(): Promise<AtlasCover
 
   return {
     organizations: organizationsResult.count ?? 0,
+    ...(mapCountResult.error || mapCountResult.data === null ? {} : { mappableOrganizations: Number(mapCountResult.data) }),
     capabilities: capabilitiesResult.count ?? 0,
     sources: sourcesResult.count ?? 0,
     generatedAt: new Date().toISOString()
@@ -1100,7 +1110,7 @@ export async function loadAtlasSnapshotFromSupabase(scope?: AtlasSnapshotScope):
       geographicConfidence: ["exact", "city_centroid", "regional"].includes(asString(row.geographic_confidence))
         ? (asString(row.geographic_confidence) as AtlasLocation["geographicConfidence"])
         : "unverified",
-      regionSlug: regionSlugForProvince(provinceTerritory)
+      regionSlug: regionSlugForProvince(provinceTerritory, asString(row.country_code, "CA"))
     };
   };
 
@@ -1187,11 +1197,11 @@ export async function loadAtlasSnapshotFromSupabase(scope?: AtlasSnapshotScope):
     const mappedLocations = locationLinks
       .map((link) => {
         const locationRow = locationById.get(asString(link.location_id));
-        return locationRow ? { link, location: mapLocation(locationRow) } : null;
+        return locationRow ? { link, location: { ...mapLocation(locationRow), locationRole: asLocationRole(link.location_role) } } : null;
       })
-      .filter((value): value is { link: Row; location: AtlasLocation } => Boolean(value));
+      .filter((value): value is NonNullable<typeof value> => Boolean(value));
     const primaryLocation =
-      mappedLocations.find((value) => Boolean(value.link.is_primary))?.location ?? mappedLocations[0]?.location ?? null;
+      mappedLocations.find((value) => Boolean(value.link.is_primary))?.location ?? null;
     const capabilities = (capabilitiesByOrganization.get(id) ?? [])
       .map((capability) => capabilityById.get(asString(capability.id)))
       .filter((value): value is AtlasCapability => Boolean(value));
@@ -1278,7 +1288,7 @@ export async function loadAtlasSnapshotFromSupabase(scope?: AtlasSnapshotScope):
       sourceUrl,
       sourceKind: asNullableString(row.source_kind),
       commitmentLevel: asNullableString(row.commitment_level),
-      sourceLocator: asNullableString(sourceEvidence.source_locator),
+      sourceLocator: publicCitationSourceLocator(sourceEvidence.source_locator),
       sourceExcerpt: asString(sourceEvidence.excerpt),
       sourceVerifiedAt: asString(row.source_verified_at),
       isSourceVerified
@@ -1430,12 +1440,13 @@ export function mapAtlasOrganizationDossierRow(row: Row): AtlasOrganization {
         city: asNullableString(locationRow.city),
         provinceTerritory,
         countryCode: asString(locationRow.country_code, "CA"),
+        locationRole: asLocationRole(locationRow.location_role),
         latitude: asNumber(locationRow.latitude),
         longitude: asNumber(locationRow.longitude),
         geographicConfidence: ["exact", "city_centroid", "regional"].includes(asString(locationRow.geographic_confidence))
           ? asString(locationRow.geographic_confidence) as AtlasLocation["geographicConfidence"]
           : "unverified" as const,
-        regionSlug: regionSlugForProvince(provinceTerritory)
+        regionSlug: regionSlugForProvince(provinceTerritory, asString(locationRow.country_code, "CA"))
       } satisfies AtlasLocation;
     })()
   }));
@@ -1591,7 +1602,6 @@ export function mapAtlasOrganizationDossierRow(row: Row): AtlasOrganization {
   });
 
   const primaryLocation = locationEntries.find((entry) => entry.isPrimary)?.location
-    ?? locationEntries[0]?.location
     ?? null;
   return {
     id,

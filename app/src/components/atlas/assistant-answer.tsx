@@ -1,5 +1,6 @@
 "use client";
 
+import { discoveryProfileHref } from "@/lib/atlas/discovery-context";
 import Link from "@/components/atlas/navigation-link";
 import {
   ArrowRight,
@@ -74,7 +75,7 @@ export function AssistantFallback({
   returnTo?: string;
 }) {
   return (
-    <aside className="mt-4 flex flex-col gap-3 rounded-[20px] border border-[var(--atlas-amber)]/30 bg-[var(--atlas-amber-soft)] p-4 sm:flex-row sm:items-center sm:justify-between" aria-live="polite">
+    <aside id="ask-true-north-fallback" tabIndex={-1} className="scroll-mt-24 mt-4 flex flex-col gap-3 rounded-[20px] border border-[var(--atlas-amber)]/30 bg-[var(--atlas-amber-soft)] p-4 sm:flex-row sm:items-center sm:justify-between" aria-live="polite">
       <div className="flex items-start gap-3">
         <MessageCircleQuestion className="mt-0.5 size-5 shrink-0 text-[var(--atlas-amber)]" />
         <p className="text-xs leading-5 text-[var(--atlas-ink-soft)]">{fallbackCopy[reason]}</p>
@@ -115,7 +116,7 @@ export function AssistantAnswer({
             <span className="inline-flex items-center gap-1.5 rounded-full bg-[var(--atlas-signal)] px-3 py-1 text-[10px] font-extrabold uppercase tracking-[0.1em] text-[var(--atlas-ink)]"><Sparkles className="size-3" />Ask True North</span>
             <span className="text-[11px] font-semibold text-white/65">{outcome.label}</span>
           </div>
-          <h2 id="ask-true-north-answer" className="mt-3 max-w-3xl text-xl font-extrabold tracking-[-0.025em] sm:text-2xl">{answer.interpretedNeed}</h2>
+          <h2 id="ask-true-north-answer" tabIndex={-1} className="scroll-mt-24 mt-3 max-w-3xl text-xl font-extrabold tracking-[-0.025em] sm:text-2xl">{answer.interpretedNeed}</h2>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-white/75">{answer.summary}</p>
           <p className="mt-2 text-[11px] leading-5 text-white/55">{outcome.detail}</p>
         </div>
@@ -164,9 +165,9 @@ export function AssistantAnswer({
                   ) : null}
                 </div>
                 <div className="flex flex-col gap-2 lg:border-l lg:border-[var(--atlas-border)] lg:pl-4">
-                  <button type="button" onClick={() => onSelectOrganization(organization.id)} className="atlas-primary-button h-10 gap-2 px-3 text-xs">Show on map <ArrowRight className="size-3.5" /></button>
-                  <Link href={`/organizations/${organization.slug}`} prefetch={false} className="atlas-secondary-button h-10 gap-2 px-3 text-xs">Open {organization.name} profile <ExternalLink className="size-3.5" /></Link>
-                  <Link href={`/organizations/${organization.slug}#evidence`} prefetch={false} className="atlas-secondary-button h-10 gap-2 px-3 text-xs">Inspect evidence <ExternalLink className="size-3.5" /></Link>
+                  <button type="button" onClick={() => onSelectOrganization(organization.id)} className="atlas-primary-button h-10 gap-2 px-3 text-xs">Show this result <ArrowRight className="size-3.5" /></button>
+                  <Link href={discoveryProfileHref(organization, capability, false, returnTo)} prefetch={false} className="atlas-secondary-button h-10 gap-2 px-3 text-xs">Open {capability?.name ?? organization.name} profile <ExternalLink className="size-3.5" /></Link>
+                  <Link href={discoveryProfileHref(organization, capability, true, returnTo)} prefetch={false} className="atlas-secondary-button h-10 gap-2 px-3 text-xs">Inspect evidence <ExternalLink className="size-3.5" /></Link>
                   <Link href={`/collections?addType=organization&addId=${organization.id}&returnTo=${encodeURIComponent(returnTo)}`} className="atlas-secondary-button h-10 gap-2 px-3 text-xs"><BookmarkPlus className="size-3.5" />Shortlist</Link>
                   {citations.length ? (
                     <div className="mt-1 border-t border-[var(--atlas-border)] pt-3">

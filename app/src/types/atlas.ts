@@ -29,6 +29,7 @@ export interface AtlasLocation {
   city: string | null;
   provinceTerritory: string | null;
   countryCode: string;
+  locationRole?: "headquarters" | "facility" | "test_site" | "regional_role";
   latitude: number | null;
   longitude: number | null;
   geographicConfidence: "exact" | "city_centroid" | "regional" | "unverified";
@@ -325,6 +326,7 @@ export interface AtlasDiscoverySnapshot {
 
 export interface AtlasCoverageSummary {
   organizations: number;
+  mappableOrganizations?: number;
   capabilities: number;
   sources: number;
   generatedAt: string;
@@ -344,7 +346,7 @@ export interface AtlasDemandIndexItem {
   matchCount: number;
   source: Pick<
     AtlasDemandSource,
-    "id" | "publisher" | "sourceKind" | "commitmentLevel"
+    "id" | "publisher" | "sourceKind" | "commitmentLevel" | "publishedOn" | "sourceVerifiedAt"
   >;
 }
 
@@ -440,6 +442,10 @@ export interface AtlasQuery {
   focus?: AtlasGuidedSearchFocus[];
   view?: "map" | "table";
   selected?: string;
+  selectedCapability?: string;
+  discovery?: string;
+  organizationIds?: string[];
+  capabilityIds?: string[];
   page?: number;
   pageSize?: number;
 }
@@ -483,6 +489,7 @@ export interface AtlasExplorerOrganization extends Pick<
    * accepted; render through organizationLogoSource for both shapes.
    */
   logoUrl?: string | null;
+  discoveryAssessment?: Pick<AtlasAssistantMatch, "supportPoints" | "limitations" | "fitLevel" | "evidenceLevel">;
 }
 
 /**
@@ -493,7 +500,7 @@ export interface AtlasMapOrganization extends Pick<
   AtlasOrganization,
   "id" | "slug" | "name" | "entityKind"
 > {
-  primaryLocation: Pick<AtlasLocation, "name" | "latitude" | "longitude" | "geographicConfidence"> | null;
+  primaryLocation: Pick<AtlasLocation, "name" | "countryCode" | "latitude" | "longitude" | "geographicConfidence"> | null;
 }
 
 export type AtlasExplorerCitation = Pick<

@@ -216,6 +216,7 @@ function DemandMatchCandidateCard({ candidate, record }: { candidate: CandidateR
         <p className="mt-2 text-sm leading-6 text-[var(--admin-ink-soft)]">{record.alignmentSummary}</p>
         <div className="mt-3 flex flex-wrap gap-2">{record.matchedConcepts.map((concept) => <span key={concept} className="rounded-full border border-[var(--admin-evidence-border)] bg-white px-2.5 py-1 text-[10px] font-semibold text-[var(--admin-evidence)]">{concept}</span>)}</div>
       </div>
+      <p className="mt-4 text-sm leading-6">Review the offering and released need together. Identify the concrete function this capability contributes, the supporting passage, configuration or maturity limits, and the consequential integration question. Shared topic words alone do not establish a useful match.</p>
       <aside className="mt-4 rounded-md border border-[var(--admin-success-border)] bg-[var(--admin-success-soft)] p-4"><p className="text-[10px] font-bold uppercase tracking-[0.08em] text-[var(--admin-success)]">What publication will do</p><p className="mt-2 text-xs leading-5 text-[var(--admin-ink-soft)]">Add a reviewed, moderate-confidence connection to the technology and demand profiles. The underlying records and citations remain unchanged.</p></aside>
       <details className="mt-4 rounded-md border border-[var(--admin-border)] bg-[var(--admin-surface-soft)] p-3 text-xs"><summary className="cursor-pointer font-semibold text-[var(--admin-muted-strong)]">Matching method and caveats</summary><p className="mt-2 leading-5 text-[var(--admin-muted)]">{record.rationale}</p></details>
       <ReviewerRationale rationale={candidate.reviewer_rationale ?? record.reviewerRationale} />
@@ -226,7 +227,7 @@ function DemandMatchCandidateCard({ candidate, record }: { candidate: CandidateR
       <div className="mt-4 grid gap-3 lg:grid-cols-[1fr_auto_auto_auto] lg:items-end">
         <form action={publishDemandMatchCandidate} className="contents">
           <input type="hidden" name="candidateId" value={candidate.id} />
-          <label className="grid gap-1.5 text-xs font-semibold text-[var(--admin-ink-soft)]">Why this match should be public<textarea name="rationale" required minLength={20} maxLength={2000} rows={5} defaultValue={publicationRationale} className={areaClass} /></label>
+          <label className="grid gap-1.5 text-xs font-semibold text-[var(--admin-ink-soft)]">Explain the function, contribution and limit supported by both records<textarea name="rationale" required minLength={20} maxLength={2000} rows={5} defaultValue={publicationRationale} className={areaClass} /></label>
           <PendingButton unstyled type="submit" pendingLabel="Publishing…" className="inline-flex h-10 items-center justify-center gap-2 rounded-md bg-[var(--admin-action)] px-4 text-xs font-semibold text-white">Publish match</PendingButton>
         </form>
         <form action={reviewAtlasCandidate} className="contents">
@@ -379,7 +380,7 @@ function TypedOrganizationCandidateCard({
 }) {
   const duplicateCheck = candidate.duplicate_check as { status?: string } | null;
   const location = record.organization.primaryLocation;
-  const locationLabel = [location.city, location.provinceTerritory, location.countryCode].filter(Boolean).join(", ");
+  const locationLabel = [location?.city, location?.provinceTerritory, location?.countryCode].filter(Boolean).join(", ");
   const areaClass = "rounded-md border border-[var(--admin-border)] bg-white px-3 py-2 text-sm font-normal leading-6 outline-none focus:border-[var(--admin-action)]";
   const roleLabel = record.organization.entityKind.replaceAll("_", " ");
 
@@ -388,7 +389,7 @@ function TypedOrganizationCandidateCard({
       <CandidateLogoReview candidateId={candidate.id} record={record} />
       <div className="grid gap-4 md:grid-cols-3">
         <ReviewFact label="Organization type" value={roleLabel} />
-        <ReviewFact label="Location" value={locationLabel || "Canada · location not yet resolved"} />
+        <ReviewFact label="Location" value={locationLabel ? `${locationLabel}${location && "locationRole" in location && location.locationRole ? ` · ${String(location.locationRole).replaceAll("_", " ")}` : ""}` : "Not established in public evidence; no map pin"} />
         <ReviewFact label="Duplicate check" value={duplicateCheck?.status === "clear" ? "No likely duplicate found" : "Resolution required"} tone={duplicateCheck?.status === "clear" ? "success" : "warning"} />
       </div>
       <p className="mt-4 text-sm leading-6 text-[var(--admin-muted-strong)]">{record.organization.description}</p>

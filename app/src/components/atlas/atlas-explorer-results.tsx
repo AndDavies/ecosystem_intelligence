@@ -1,5 +1,6 @@
 "use client";
 
+import { discoveryProfileHref } from "@/lib/atlas/discovery-context";
 import Link from "@/components/atlas/navigation-link";
 import {
   ArrowRight,
@@ -69,6 +70,7 @@ function capabilityResultEyebrow(filters: AtlasQuery) {
   return "Organization profile";
 }
 export function rowEvidence(organization: AtlasExplorerOrganization, capability: AtlasExplorerCapability | null) {
+  if (organization.discoveryAssessment) return Array.from(new Map(organization.citations.map(citation => [citation.sourceUrl, citation])).values());
   const citations = [
     ...organization.citations,
     ...(capability?.citations ?? []),
@@ -102,7 +104,7 @@ export function ResultsRail({
   totalInView,
   filters,
   selectedId,
-  returnTo: _returnTo,
+  returnTo,
   onSelect
 }: {
   organizations: AtlasExplorerOrganization[];
@@ -137,7 +139,7 @@ export function ResultsRail({
                     <span className={cn("mt-2 inline-flex rounded-lg border px-2 py-1 text-[9px] font-bold", selected ? "border-[rgba(36,40,39,0.3)] text-[var(--atlas-ink)]" : "border-white/25 text-white/80")}>{evidence.length ? `${evidenceStrengthLabel(capability?.sourceConfidence ?? organization.sourceConfidence)} evidence · ${evidence.length} ${evidence.length === 1 ? "source" : "sources"}` : "Open profile for sources"}</span>
                   </span>
                 </button>
-                <Link href={`/organizations/${organization.slug}`} prefetch={false} className={cn("flex items-center justify-center no-underline hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset", selected ? "text-[var(--atlas-ink)] focus-visible:ring-[var(--atlas-ink)]" : "text-white/80 hover:text-[var(--atlas-signal)] focus-visible:ring-[var(--atlas-signal)]")} aria-label={`Open ${organization.name} profile`}>
+                <Link href={discoveryProfileHref(organization, capability, false, returnTo)} prefetch={false} className={cn("flex items-center justify-center no-underline hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset", selected ? "text-[var(--atlas-ink)] focus-visible:ring-[var(--atlas-ink)]" : "text-white/80 hover:text-[var(--atlas-signal)] focus-visible:ring-[var(--atlas-signal)]")} aria-label={`Open ${organization.name} profile`}>
                   <ChevronRight className="size-5" />
                 </Link>
               </li>
@@ -256,7 +258,7 @@ function MobileSelectedPreview({
 }) {
   const evidence = rowEvidence(organization, capability);
   const alignment = selectedAlignment(capability, filters);
-  const summary = alignment?.alignmentSummary ?? capability?.summary ?? organization.description;
+  const summary = organization.discoveryAssessment?.supportPoints.map(point => point.text).join(" ") ?? alignment?.alignmentSummary ?? capability?.summary ?? organization.description;
   const confidence = alignment?.confidence ?? capability?.sourceConfidence ?? organization.sourceConfidence;
   return (
     <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-3">
@@ -272,14 +274,16 @@ function MobileSelectedPreview({
         <div className="mt-3 border-l-2 border-[var(--atlas-signal)] pl-3">
           <p className="text-[10px] font-extrabold uppercase tracking-[0.1em] text-[var(--atlas-evidence)]">{alignment ? alignmentTypeLabel(alignment.matchType) : capability ? "Reviewed technology" : capabilityResultEyebrow(filters)}</p>
           <p className="mt-1 text-sm font-extrabold">{capability?.name ?? "Organization profile"}</p>
-          <p className="mt-1 line-clamp-3 text-xs leading-5 text-[var(--atlas-muted)]">{summary}</p>
+          {organization.discoveryAssessment ? <p className="mt-2 text-[10px] font-bold">Ask assessment · {organization.discoveryAssessment.fitLevel} fit</p> : null}
+        <p className="mt-1 line-clamp-3 text-xs leading-5 text-[var(--atlas-muted)]">{summary}</p>
+        {organization.discoveryAssessment?.limitations.length ? <p className="mt-2 text-xs leading-5"><strong>Still unverified: </strong>{organization.discoveryAssessment.limitations.join(" ")}</p> : null}
         </div>
         <div className="mt-3 flex flex-wrap gap-1.5 text-[10px] font-semibold">
           <span className={cn("rounded-full px-2.5 py-1 ring-1", evidenceStrengthChipClass[confidence])}>{publicLanguage.evidenceStrength}: {evidenceStrengthLabel(confidence)}</span>
           <span className="rounded-full bg-[var(--atlas-surface-muted)] px-2.5 py-1 text-[var(--atlas-muted)]">{evidence.length ? `${evidence.length} ${evidence.length === 1 ? "source" : "sources"}` : "Sources on profile"}</span>
         </div>
         <div className="mt-4 grid grid-cols-2 gap-2">
-          <Link href={`/organizations/${organization.slug}`} prefetch={false} className="atlas-primary-button h-10 gap-1.5 px-2 text-xs">View profile<span className="sr-only">: {organization.name}</span> <ArrowRight className="size-3.5" /></Link>
+          <Link href={discoveryProfileHref(organization, capability, false, returnTo)} prefetch={false} className="atlas-primary-button h-10 gap-1.5 px-2 text-xs">View {capability ? "capability" : "profile"}<span className="sr-only">: {organization.name}</span> <ArrowRight className="size-3.5" /></Link>
           <Link href={`/collections?addType=organization&addId=${organization.id}&returnTo=${encodeURIComponent(returnTo)}`} className="atlas-secondary-button h-10 gap-1.5 px-2 text-xs"><BookmarkPlus className="size-3.5" />Shortlist</Link>
         </div>
       </div>
@@ -329,7 +333,7 @@ export function LookbookPeek({
   const evidence = rowEvidence(organization, capability);
   const alignment = selectedAlignment(capability, filters);
   const confidence = alignment?.confidence ?? capability?.sourceConfidence ?? organization.sourceConfidence;
-  const summary = alignment?.alignmentSummary ?? capability?.summary ?? organization.description;
+  const summary = organization.discoveryAssessment?.supportPoints.map(point => point.text).join(" ") ?? alignment?.alignmentSummary ?? capability?.summary ?? organization.description;
   const location = organization.primaryLocation;
   const verificationStatus = organization.freshnessStatus === "current"
     ? `Last verified ${formatDate(organization.lastReviewedAt)}`
@@ -366,7 +370,9 @@ export function LookbookPeek({
           {alignment ? alignmentTypeLabel(alignment.matchType) : capability ? "Reviewed technology" : capabilityResultEyebrow(filters)}
         </p>
         <p className="mt-1 text-xs font-semibold leading-5 text-[var(--atlas-ink-soft)]">{capability?.name ?? "Organization profile"}</p>
+        {organization.discoveryAssessment ? <p className="mt-2 text-[10px] font-bold">Ask assessment · {organization.discoveryAssessment.fitLevel} fit</p> : null}
         <p className="mt-1 line-clamp-3 text-[11px] leading-[1.1rem] text-[var(--atlas-muted)]">{summary}</p>
+        {organization.discoveryAssessment?.limitations.length ? <p className="mt-2 text-xs leading-5"><strong>Still unverified: </strong>{organization.discoveryAssessment.limitations.join(" ")}</p> : null}
       </div>
 
       <div className="mt-3 flex flex-wrap gap-1.5 text-[10px] font-semibold">
@@ -380,11 +386,11 @@ export function LookbookPeek({
 
       <div className="mt-4 grid grid-cols-2 gap-2">
         <Link
-          href={`/organizations/${organization.slug}`}
+          href={discoveryProfileHref(organization, capability, false, returnTo)}
           prefetch={false}
           className="atlas-primary-button col-span-2 h-10 gap-2 px-3 text-xs"
         >
-          View profile<span className="sr-only">: {organization.name}</span>
+          View {capability ? "capability" : "profile"}<span className="sr-only">: {organization.name}</span>
           <ArrowRight className="size-3.5" />
         </Link>
         <Link
@@ -395,7 +401,7 @@ export function LookbookPeek({
           Add to shortlist
         </Link>
         <Link
-          href={`/organizations/${organization.slug}#evidence`}
+          href={discoveryProfileHref(organization, capability, true, returnTo)}
           prefetch={false}
           className="atlas-secondary-button h-10 gap-1.5 px-2 text-[11px]"
         >
@@ -482,7 +488,7 @@ export function MobileOrganizationCard({
             <span className="block text-sm font-bold text-[var(--atlas-primary)]">{organization.name}</span>
             <span className="mt-1 block text-xs font-semibold leading-5 text-[var(--atlas-ink-soft)]">{capability?.name ?? capabilityResultLabel(filters)}</span>
             <span className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-[var(--atlas-muted)]">
-              <span>{location?.provinceTerritory ?? "Location under review"}</span>
+              <span>{location ? [location.city, location.provinceTerritory, location.countryCode].filter(Boolean).join(", ") : "Location not established"}</span>
               <span>{evidence.length ? `${evidence.length} ${evidence.length === 1 ? "source" : "sources"}` : "Sources on profile"}</span>
               <span>Last verified {formatDate(capability?.lastReviewedAt ?? organization.lastReviewedAt)}</span>
             </span>
@@ -494,8 +500,9 @@ export function MobileOrganizationCard({
         <div className="border-t border-[var(--atlas-border)] bg-[var(--atlas-surface-muted)] px-4 py-4">
           {detailLoading ? <p className="mb-3 flex items-center gap-2 text-xs font-semibold text-[var(--atlas-muted)]"><LoaderCircle className="size-3.5 animate-spin" />Loading the complete profile…</p> : null}
           {detailError ? <p className="mb-3 text-xs font-semibold text-[var(--atlas-danger)]">{detailError} The reviewed preview remains available below.</p> : null}
-          <h3 className="text-xs font-bold text-[var(--atlas-ink)]">{alignment ? `Why it may fit ${alignmentSubject(alignment)}` : "What it does"}</h3>
-          <p className="mt-2 text-xs leading-5 text-[var(--atlas-ink-soft)]">{alignment?.alignmentSummary ?? capability?.summary ?? organization.description}</p>
+          <h3 className="text-xs font-bold text-[var(--atlas-ink)]">{organization.discoveryAssessment ? "Ask assessment for your question" : alignment ? `Why it may fit ${alignmentSubject(alignment)}` : "What it does"}</h3>
+          <p className="mt-2 text-xs leading-5 text-[var(--atlas-ink-soft)]">{organization.discoveryAssessment?.supportPoints.map(point => point.text).join(" ") ?? alignment?.alignmentSummary ?? capability?.summary ?? organization.description}</p>
+          {organization.discoveryAssessment?.limitations.length ? <p className="mt-2 text-xs leading-5 text-[var(--atlas-muted)]"><strong>Still unverified: </strong>{organization.discoveryAssessment.limitations.join(" ")}</p> : null}
 
           {capability?.defenceApplications.length ? (
             <div className="mt-3 flex flex-wrap gap-1.5">
@@ -523,12 +530,12 @@ export function MobileOrganizationCard({
               <span className="sr-only"> (opens in a new tab)</span>
             </a>
           ) : null}
-          <Link href={`/organizations/${organization.slug}#evidence`} prefetch={false} className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-[var(--atlas-primary)] no-underline hover:underline">
+          <Link href={discoveryProfileHref(organization, capability, true, returnTo)} prefetch={false} className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-[var(--atlas-primary)] no-underline hover:underline">
             Inspect evidence
             <ExternalLink className="size-3" />
           </Link>
-          <Link href={`/organizations/${organization.slug}`} prefetch={false} className="atlas-primary-button mt-4 h-10 w-full gap-2 px-3 text-xs">
-            Explore the organization
+          <Link href={discoveryProfileHref(organization, capability, false, returnTo)} prefetch={false} className="atlas-primary-button mt-4 h-10 w-full gap-2 px-3 text-xs">
+            Explore {capability ? "the capability" : "the organization"}
             <ExternalLink className="size-3.5" />
           </Link>
           <Link href={`/collections?addType=organization&addId=${organization.id}&returnTo=${encodeURIComponent(returnTo)}`} className="atlas-secondary-button mt-2 h-10 w-full gap-1.5 px-3 text-xs">
@@ -610,9 +617,9 @@ export function OrganizationRows({
           </span>
         </th>
         <td className="max-w-[280px] px-3 py-3 leading-4">{capability?.name ?? capabilityResultLabel(filters)}</td>
-        <td className="px-3 py-3">{location?.provinceTerritory ?? "Location under review"}</td>
+        <td className="px-3 py-3">{location ? [location.city, location.provinceTerritory, location.countryCode].filter(Boolean).join(", ") : "Location not established"}</td>
         <td className="px-3 py-3">
-          {alignment ? (
+          {organization.discoveryAssessment ? <><span className="block text-[10px] font-bold text-[var(--atlas-evidence)]">Ask assessment</span><span className="mt-1 block text-[11px] leading-4">{organization.discoveryAssessment.supportPoints[0]?.text}</span></> : alignment ? (
             <span className={cn(
               "inline-flex rounded px-2 py-1 text-[10px] font-semibold",
               alignment.matchType === "public_source_alignment" ? "bg-[var(--atlas-evidence-soft)] text-[var(--atlas-evidence)]" : "bg-[var(--atlas-amber-soft)] text-[var(--atlas-amber)]"
@@ -634,9 +641,10 @@ export function OrganizationRows({
             <div className="grid gap-0 px-4 py-4 lg:grid-cols-[1.1fr_0.9fr_0.78fr]">
               <section className="pr-5 lg:border-r lg:border-[var(--atlas-primary-border)]" aria-labelledby={`why-${organization.id}`}>
                 <h3 id={`why-${organization.id}`} className="text-xs font-bold text-[var(--atlas-ink)]">
-                  {alignment ? `Why it may fit ${alignmentSubject(alignment)}` : "What it does"}
+                  {organization.discoveryAssessment ? "Ask assessment for your question" : alignment ? `Why it may fit ${alignmentSubject(alignment)}` : "What it does"}
                 </h3>
-                <p className="mt-2 text-xs leading-5 text-[var(--atlas-ink-soft)]">{alignment?.alignmentSummary ?? capability?.summary ?? organization.description}</p>
+                <p className="mt-2 text-xs leading-5 text-[var(--atlas-ink-soft)]">{organization.discoveryAssessment?.supportPoints.map(point => point.text).join(" ") ?? alignment?.alignmentSummary ?? capability?.summary ?? organization.description}</p>
+          {organization.discoveryAssessment?.limitations.length ? <p className="mt-2 text-xs leading-5 text-[var(--atlas-muted)]"><strong>Still unverified: </strong>{organization.discoveryAssessment.limitations.join(" ")}</p> : null}
                 {capability?.defenceApplications.length ? (
                   <div className="mt-3 flex flex-wrap gap-1.5">
                     {capability.defenceApplications.slice(0, 3).map((item) => (
@@ -674,15 +682,15 @@ export function OrganizationRows({
                     <dd className="mt-1 font-medium text-[var(--atlas-ink-soft)]">{location ? locationAccuracyLabel(location.geographicConfidence) : "Not verified"}</dd>
                   </div>
                 </dl>
-                <Link href={`/organizations/${organization.slug}`} prefetch={false} className="atlas-primary-button mt-4 h-9 w-full gap-2 px-3 text-xs">
-                  Explore the organization
+                <Link href={discoveryProfileHref(organization, capability, false, returnTo)} prefetch={false} className="atlas-primary-button mt-4 h-9 w-full gap-2 px-3 text-xs">
+                  Explore {capability ? "the capability" : "the organization"}
                   <ExternalLink className="size-3.5" />
                 </Link>
                 <Link href={`/collections?addType=organization&addId=${organization.id}&returnTo=${encodeURIComponent(returnTo)}`} className="atlas-secondary-button mt-2 h-9 w-full gap-1.5 px-3 text-xs">
                   <BookmarkPlus className="size-3.5" />
                   Add to shortlist
                 </Link>
-                <Link href={`/organizations/${organization.slug}#evidence`} prefetch={false} className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-[var(--atlas-primary)] no-underline hover:underline">
+                <Link href={discoveryProfileHref(organization, capability, true, returnTo)} prefetch={false} className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-[var(--atlas-primary)] no-underline hover:underline">
                   Inspect evidence
                   <ExternalLink className="size-3" />
                 </Link>

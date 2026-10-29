@@ -9,7 +9,7 @@ export function CompanySnapshot({ organization, presentation = "snapshot" }: { o
   const company = organization.entityKind === "company";
   const location = organization.primaryLocation;
   const identityFacts = presentation === "commercial" ? [] : [
-    location ? {label: "Operating base", value: [location.city, location.provinceTerritory].filter(Boolean).join(", ") || location.name} : null,
+    location ? {label: "Operating base", value: [location.city, location.provinceTerritory, location.countryCode].filter(Boolean).join(", ") || location.name} : null,
     organization.foundedYear ? {label: "Founded", value: organization.foundedYear} : null
   ].filter(fact => fact !== null);
   if (!observations.length && !identityFacts.length) return null;
