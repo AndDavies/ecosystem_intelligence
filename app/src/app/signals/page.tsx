@@ -9,6 +9,7 @@ import { signalLeadVisual } from "@/lib/signals/visuals";
 import { SignalTagPill } from "@/components/atlas/signal-tag-pill";
 import { JsonLd } from "@/components/seo/json-ld";
 import { getAllPublishedSignals } from "@/lib/atlas/signals";
+import { projectSignalArchiveEdition } from "@/lib/signals/archive";
 import { signalEditionExcerpt } from "@/lib/signals/presentation";
 import { collectSignalTags } from "@/lib/signals/taxonomy";
 import { absoluteUrl, siteName } from "@/lib/site";
@@ -50,7 +51,7 @@ export default async function SignalsPage() {
       </div>
     </article> : <section className="mt-9 border-y border-[var(--atlas-border)] bg-white px-6 py-12 text-center"><RadioTower className="mx-auto size-7 text-[var(--atlas-evidence)]" /><h2 className="mt-4 text-xl font-extrabold">The first Signals edition is being prepared.</h2><p className="mx-auto mt-2 max-w-xl text-sm leading-6 text-[var(--atlas-muted)]">An edition appears only when the scan finds enough distinct, durable public evidence to support a useful read.</p></section>}
 
-    <SignalArchiveBrowser editions={editions} featuredId={latest?.id} />
+    <SignalArchiveBrowser editions={editions.map(projectSignalArchiveEdition)} featuredId={latest?.id} />
     <NorthSignalInline placement="newsletter_inline_signals" trigger="signals_feature_complete" className="mt-8" />
   </PublicPageShell>;
 }

@@ -4,6 +4,14 @@ Status: chronological implementation record
 Owner: Andrew Davies
 Last reviewed: 2026-09-05
 
+## 2026-10-29 — Production-discovered reader repair candidate
+
+Parent PM acceptance promoted `ec4ca4b` with metadata-only ledger reconciliation `f9d22bc`; the single worldwide migration and exact Git-triggered deployment completed. Live verification then exposed an oversized Signals archive payload, orphan schema text in two Ask limitations, and unchanged Ask assessments invalidated by richer dossier serialization. The scoped local repair sends compact archive card/search data while retaining the full archive and article evidence, rejects or removes only the observed malformed limitation key at finalization, and compares shared admitted Ask facts rather than unrelated dossier additions. The serializer regression uses actual discovery SELECTs, qualification/evidence hydration and dossier mapping, and retains confidence, availability, geography, ownership and reviewed-alignment invalidation.
+
+The repair is distinct from the accepted release and requires parent quick acceptance before another push. Focused verification passed 37 tests and typecheck; independent archive browser checks covered all 75 public editions, 74 unique earlier articles across 19 pages, search/tags/reset/focus and mobile overflow. Local development HTML is approximately 1.09 MB against the unchanged 2 MB production limit; final exact-candidate aggregate and production checks remain the release evidence. No provider/model configuration, schema, publication, access or budget changes are part of this repair.
+
+The original cold public-view p95 of 604 ms still exceeds its 500 ms budget. Read-only diagnosis found transport/gateway variability outside much shorter SQL execution, without statement timeouts. This limitation remains open; held dossier intake remains blocked until the parent accepts live health. No SQL/index repair or repeated sampling to obtain a pass is justified by that evidence.
+
 ## 2026-10-29 — Integrated discovery and worldwide release candidate
 
 Implemented the adopted Ask capability/evidence journey, mobile directory and mission navigation, and worldwide company geography compatibility. Ask retains the chosen offering and qualified explanation through map/list/table and profile returns; tab-local historical assessments are checked against the complete current public record and unavailable assessments recover honestly from the original public result cohort. Newer view/selection/close actions cancel pending history restoration. Mobile directory outcomes precede accessible persistent filters, mission technology links precede editorial context, and opportunity dates/types remain source facts without inferring open status. Reviewed relationship rationale and human Review/Publish remain unchanged.

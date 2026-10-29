@@ -1,26 +1,22 @@
 "use client";
-import { signalPlainText } from "@/lib/signals/formatting";
 
 import Link from "@/components/atlas/navigation-link";
 import { ArrowRight, ChevronLeft, ChevronRight, Search, X } from "lucide-react";
 import { useMemo, useRef, useState } from "react";
 import { SignalVisual } from "@/components/atlas/signal-visual";
-import type { SignalEdition } from "@/lib/atlas/signals";
 import { paginate } from "@/lib/pagination";
-import { filterSignalArchive } from "@/lib/signals/archive";
-import { signalEditionExcerpt } from "@/lib/signals/presentation";
+import { filterSignalArchive, type SignalArchiveEntry } from "@/lib/signals/archive";
 import { collectSignalTags, getSignalTagDefinition, getSignalTagLabel, type SignalTag } from "@/lib/signals/taxonomy";
-import { signalLeadVisual } from "@/lib/signals/visuals";
 
 const dateFormatter = new Intl.DateTimeFormat("en-CA", { dateStyle: "long" });
 const tagGroups = [{ id: "environment", label: "Operating environment" }, { id: "activity", label: "Development" }, { id: "technology", label: "Technology" }] as const;
 
-export function SignalArchiveBrowser({ editions, featuredId }: { editions: SignalEdition[]; featuredId?: string }) {
+export function SignalArchiveBrowser({ editions, featuredId }: { editions: SignalArchiveEntry[]; featuredId?: string }) {
   const [query, setQuery] = useState("");
   const [selectedTag, setSelectedTag] = useState<SignalTag | null>(null);
   const [page, setPage] = useState(1);
   const headingRef = useRef<HTMLHeadingElement>(null);
-  const availableTags = useMemo(() => collectSignalTags(editions.flatMap((edition) => edition.items)), [editions]);
+  const availableTags = useMemo(() => collectSignalTags(editions), [editions]);
   const filtering = Boolean(query.trim() || selectedTag);
   const visibleEditions = useMemo(() => filterSignalArchive(editions, query, selectedTag, featuredId), [editions, query, selectedTag, featuredId]);
   const directory = paginate(visibleEditions, page, 4);
@@ -49,13 +45,13 @@ export function SignalArchiveBrowser({ editions, featuredId }: { editions: Signa
     </div>
 
     {directory.items.length ? <div className="grid gap-6 pt-6 lg:grid-cols-2">{directory.items.map((edition) => {
-      const tags = collectSignalTags(edition.items).slice(0, 5);
+      const tags = edition.tags.slice(0, 5);
       return <article key={edition.id} className="atlas-signal-teaser">
-        <SignalVisual visual={signalLeadVisual(edition)} />
+        <SignalVisual visual={edition.visual} />
         <div className="atlas-signal-teaser-copy">
           <time dateTime={edition.editionDate} className="text-xs font-bold text-white/70">{dateFormatter.format(new Date(`${edition.editionDate}T12:00:00Z`))}</time>
           <h3 className="mt-3 text-2xl font-extrabold leading-tight tracking-[-0.035em]"><Link href={`/signals/${edition.slug}`} className="text-white no-underline hover:underline">{edition.title}</Link></h3>
-          <p className="mt-3 line-clamp-2 text-sm leading-6 text-white/75">{edition.summarySections ? signalEditionExcerpt(edition) : signalPlainText(edition.items[0]?.bottomLine || edition.executiveSummary)}</p>
+          <p className="mt-3 line-clamp-2 text-sm leading-6 text-white/75">{edition.excerpt}</p>
           <div className="mt-auto flex flex-wrap items-end justify-between gap-4 pt-6">
             <div className="flex min-w-0 flex-wrap gap-x-3 gap-y-1">{tags.map((tag) => <span key={tag} className="atlas-archive-tag">{getSignalTagLabel(tag)}</span>)}</div>
             <Link href={`/signals/${edition.slug}`} data-internal-link-role="contextual" data-internal-link-module="signals_archive" className="atlas-signal-button min-h-11 shrink-0 gap-2 px-4 py-2 text-sm font-extrabold no-underline hover:no-underline">Read the signal <ArrowRight className="size-4" /></Link>

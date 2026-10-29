@@ -1,3 +1,5 @@
+import { assistantEvidenceProjection } from "@/lib/atlas/assistant-evidence";
+import { hasOrphanCitationKey } from "@/lib/atlas/assistant-prose";
 import { safeMapReturn } from "@/lib/seo/navigation-urls";
 import { projectAtlasExplorerOrganization, projectAtlasMapOrganization } from "@/lib/atlas/explorer-projection";
 import { organizationHasCanadianMapLocation } from "@/lib/atlas/geography";
@@ -50,18 +52,22 @@ export function recallDiscovery(query: AtlasQuery): AtlasDiscoveryResult | null 
     const saved = JSON.parse(sessionStorage.getItem(key) ?? "null");
     if (!saved || saved.expires < Date.now()) { sessionStorage.removeItem(key); return null; }
     if (saved.discovery?.query !== query.query || !saved.discovery.assistant || !Array.isArray(saved.discovery.organizations)) return null;
+    // Old tab snapshots may predate the output guard. Recover the public cohort
+    // honestly rather than restore a known-malformed historical assessment.
+    if (!Array.isArray(saved.discovery.assistant.matches) || saved.discovery.assistant.matches.some((match: { limitations?: unknown }) =>
+      !Array.isArray(match.limitations) || match.limitations.some(value => typeof value !== "string" || hasOrphanCitationKey(value)))) return null;
     return saved.discovery as AtlasDiscoveryResult;
   } catch { return null; }
 }
 
 /** Evidence identity is independent of query order, media delivery and JSON key order. */
 export function discoveryEvidenceSignature(organization: AtlasOrganization) {
-  // Conservatively invalidate on any public-record change, including confidence,
-  // readiness, geography, reviewed relationships and their qualifications.
+  // Compare equivalent Ask/dossier representations without discarding any
+  // admitted confidence, readiness, geography, alignment or source evidence.
   function canonical(value: unknown): unknown {
     if (Array.isArray(value)) return value.map(canonical).sort((a, b) => JSON.stringify(a).localeCompare(JSON.stringify(b)));
     if (value && typeof value === "object") return Object.fromEntries(Object.entries(value).sort(([a], [b]) => a.localeCompare(b)).map(([key, item]) => [key, canonical(item)]));
     return value;
   }
-  return JSON.stringify(canonical(organization));
+  return JSON.stringify(canonical(assistantEvidenceProjection(organization)));
 }

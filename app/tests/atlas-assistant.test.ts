@@ -216,3 +216,32 @@ it("does not count identical support statements twice", () => {
   const result = finalizeAssistantAnswer(citedSnapshot(), raw);
   expect(result.matches[0].supportPoints).toHaveLength(1); expect(result.matches[0].fitLevel).toBe("plausible");
 });
+
+it("removes only orphan citationIds limitation artifacts while retaining every substantive qualification", () => {
+  const raw = answer();
+  raw.matches[0].hasMaterialGap = true;
+  raw.matches[0].limitations = [
+    "The reviewed evidence does not establish underwater multi-hop mesh networking. citationIds",
+    "citationIds",
+    "The public API does not expose citationIds.",
+    "A proposed adaptation is not a demonstrated capability."
+  ];
+  const finalized = finalizeAssistantAnswer(citedSnapshot(), raw);
+  expect(finalized.matches[0].limitations).toEqual([
+    "The reviewed evidence does not establish underwater multi-hop mesh networking.",
+    "The public API does not expose citationIds.",
+    "A proposed adaptation is not a demonstrated capability."
+  ]);
+  expect(finalized.matches[0].fitLevel).toBe("plausible");
+  expect(finalized.matches[0].supportPoints).toEqual(raw.matches[0].supportPoints);
+});
+
+it("rejects all-technical limitations through the existing invalid-output fallback instead of hiding the gap", () => {
+  const raw = answer(); raw.matches[0].hasMaterialGap = true; raw.matches[0].limitations = ["citationIds"];
+  try {
+    finalizeAssistantAnswer(citedSnapshot(), raw);
+    throw new Error("The invalid output must not become a displayed assessment");
+  } catch (error) {
+    expect(classifyAssistantFailure(error).fallbackReason).toBe("invalid_output");
+  }
+});

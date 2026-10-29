@@ -82,3 +82,15 @@ describe("capability-specific discovery context", () => {
     expect(publicCitationSourceLocator("Section 4, page 12")).toBe("Section 4, page 12");
   });
 });
+
+it("invalidates pre-guard historical assessments with orphan schema text without changing their public cohort", () => {
+  for (const limitations of [["citationIds"], ["A proposed adaptation is not demonstrated. citationIds"]]) {
+    const old = structuredClone(discovery); old.assistant!.matches[0].limitations = limitations;
+    const id = rememberDiscovery(old)!;
+    expect(recallDiscovery({ query: old.query, discovery: id })).toBeNull();
+    expect(old.organizationIds).toEqual(discovery.organizationIds);
+  }
+  const legitimate = structuredClone(discovery); legitimate.assistant!.matches[0].limitations = ["The API does not expose citationIds."];
+  const id = rememberDiscovery(legitimate)!;
+  expect(recallDiscovery({ query: legitimate.query, discovery: id })?.assistant?.matches[0].limitations).toEqual(legitimate.assistant!.matches[0].limitations);
+});

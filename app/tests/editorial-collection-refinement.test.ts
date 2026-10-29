@@ -22,7 +22,8 @@ describe("editorial collection refinement", () => {
     expect(archive).toContain("hidden flex-wrap gap-2 xl:flex");
     expect(browser).toContain("More Signals");
     expect(browser).toContain('<section className="mt-4"');
-    expect(browser).toContain("edition.items[0]?.bottomLine || edition.executiveSummary");
+    expect(archive).toContain("editions.map(projectSignalArchiveEdition)");
+    expect(browser).toContain("edition.excerpt");
     expect(browser).toContain("line-clamp-2");
     expect(detail).toContain("Continue in True North Map");
     expect(detail).not.toContain('href="/briefs"');

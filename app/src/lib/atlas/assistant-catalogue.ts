@@ -1,4 +1,5 @@
 import "server-only";
+import { assistantEvidenceFields } from "@/lib/atlas/assistant-evidence";
 
 import { unstable_cache } from "next/cache";
 import { createPublicClient } from "@/lib/supabase/public";
@@ -77,10 +78,7 @@ export async function hydrateAssistantOrganizations(organizations: AtlasOrganiza
   const graph = await loadPublicCitationGraph([
     { entityType: "organization", ids: admitted.map(o => o.id) },
     { entityType: "capability", ids: admitted.flatMap(o => o.capabilities.map(c => c.id)) }
-  ], [], { signal, fieldsByEntity: {
-    organization: ["name", "legal_name", "entity_kind", "description", "operating_context", "canadian_footprint", "defence_posture", "dual_use_posture", "commercial_status", "primary_location", "primary_location.city", "primary_location.provinceterritory", "primary_location.countrycode", "profileData.mandate", "profileData.operatingModel", "profileData.qualityCertification", "profileData.securityPosture"],
-    capability: ["name", "summary", "core_features", "defence_applications", "maturity", "commercial_availability", "technology_readiness_level", "update_child", "add_child"]
-  } });
+  ], [], { signal, fieldsByEntity: assistantEvidenceFields });
   const citations = new Map<string, AtlasCitation[]>();
   for (const { citation, evidence, source } of dossierCitationRows(graph).sort((a,b) => String(a.citation.id).localeCompare(String(b.citation.id)))) {
     if (typeof source.canonical_url !== "string") continue;
