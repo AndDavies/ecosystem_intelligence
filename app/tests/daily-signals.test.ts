@@ -212,7 +212,9 @@ describe("daily Signals contract", () => {
     expect(archiveBrowser).not.toContain("source-linked signals</span>");
     expect(archiveBrowser).toContain("Read the signal");
     expect(archiveBrowser).toContain("atlas-signal-teaser");
-    expect(archiveBrowser).toContain("signalLeadVisual(edition)");
+    expect(archive).toContain("editions.map(projectSignalArchiveEdition)");
+    expect(archiveBrowser).toContain("visual={edition.visual}");
+    expect(await readFile(path.resolve("src/lib/signals/archive.ts"), "utf8")).toContain("visual: signalLeadVisual(edition)");
     expect(archiveBrowser).toContain("atlas-signal-button");
     expect(archiveBrowser).not.toContain("hover:bg-[var(--atlas-blue-soft)] hover:shadow");
     expect(archiveBrowser).not.toContain("hover:-translate-y");
