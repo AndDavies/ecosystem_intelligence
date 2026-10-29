@@ -63,7 +63,7 @@ export async function createAtlasTestDatabase() {
     await db.exec(migration);
   };
   const afterFixtureMigrations = new Set([
-    "20261026140028_worldwide_company_geography.sql",
+    "20261029123026_worldwide_company_geography.sql",
     "20260928134150_dossier_presentation_copy.sql",
     "20260927124955_company_snapshot_observations.sql",
     "20260809222847_organization_dossier_v3.sql",
